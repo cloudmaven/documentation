@@ -7,8 +7,13 @@ permalink: index.html
 <<<<<<< HEAD
 summary: This is where we document procedures for migrating your research to the cloud.
 =======
+<<<<<<< HEAD
 summary: These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
 >>>>>>> d2565baf0b0c6336b686abbb7436fa1aba66c152
+=======
+summary: These brief instructions will help you folks get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
+>>>>>>> origin/master
+>>>>>>> gh-pages
 ---
 
 ## Download or clone the theme
