@@ -4,11 +4,7 @@ keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
-<<<<<<< HEAD
 summary: This is where we document procedures for migrating your research to the cloud.
-=======
-summary: These brief instructions will help you folks get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
->>>>>>> origin/master
 ---
 
 ## Download or clone the theme
