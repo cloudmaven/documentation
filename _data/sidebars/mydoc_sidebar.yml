@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Cloudmaven
+  product: Documentation
   version: 
   folders:
 
@@ -44,19 +44,79 @@ entries:
       url: /mydoc_support.html
       output: web, pdf
 
-  - title: Procedurals
+  - title: AWS Procedurals
     output: web, pdf
     folderitems:
 
-    - title: Azure 
+    - title: CFN Cluster
       url: /mydoc_release_notes_60.html
       output: web, pdf
 
-    - title: AWS
+    - title: IOT with Arduino Yun
       url: /mydoc_release_notes_50.html
       output: web, pdf
 
-  - title: Dynamic Information Framework
+    - title: HIPAA
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Jupyter
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Rosetta 
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: IAM
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: EC2 Resources
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+  - title: Azure Procedurals
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /mydoc_release_notes_60.html
+      output: web, pdf
+
+    - title: Web Frameworks
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Adding PDF Buttons
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Data API building
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: CDN
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: HIPAA
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: VS
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Resource Groups
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: ML Studio
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+  - title: Github Pages
     output: web, pdf
     folderitems:
 
@@ -76,11 +136,11 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Pages
+    - title: Python itself
       url: /mydoc_pages.html
       output: web, pdf
 
-    - title: Posts
+    - title: Python Package Index
       url: /mydoc_posts.html
       output: web, pdf
 
@@ -96,17 +156,6 @@ entries:
       url: /mydoc_content_reuse.html
       output: web, pdf
 
-    - title: Collections
-      url: /mydoc_collections.html
-      output: web, pdf
-
-    - title: WebStorm editor tips
-      url: /mydoc_webstorm_text_editor.html
-      output: web, pdf
-
-    - title: Atom editor tips
-      url: /mydoc_atom_text_editor.html
-      output: web, pdf
 
   - title: Math Club
     output: web, pdf

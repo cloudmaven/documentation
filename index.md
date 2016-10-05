@@ -4,7 +4,8 @@ keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
-summary: This is where we document procedures for migrating your research to the cloud.
+toc: false
+summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.
 ---
 
 ## Download or clone the theme
