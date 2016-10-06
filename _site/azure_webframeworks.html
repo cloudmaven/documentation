@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="keywords" content=" jekyll on windows, pc, ruby, ruby dev kit">
-<title>Install Jekyll on Windows | Research Computing Resources</title>
+<meta name="description" content="Web Frameworks on Azure">
+<meta name="keywords" content="Azure,  azure, procedural">
+<title>Azure Procedural | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 
@@ -133,7 +133,7 @@
                 
                 
                 
-			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Install Jekyll on Windows page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Azure Procedural page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
 
 		
                 <!--comment out this block if you want to hide search-->
@@ -149,7 +149,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Install Jekyll on Windows">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Azure Procedural">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -247,7 +247,7 @@
             
             
             
-            <li><a href="azure_webframeworks.html">Web Frameworks</a></li>
+            <li class="active"><a href="azure_webframeworks.html">Web Frameworks</a></li>
             
             
             
@@ -290,7 +290,7 @@
             
             
             
-            <li class="active"><a href="mydoc_install_jekyll_on_windows.html">Install Jekyll on Windows</a></li>
+            <li><a href="mydoc_install_jekyll_on_windows.html">Install Jekyll on Windows</a></li>
             
             
             
@@ -366,13 +366,15 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Install Jekyll on Windows</h1>
+   <h1 class="post-title-main">Azure Procedural</h1>
 </div>
 
 
 
 <div class="post-content">
 
+   
+    <div class="summary">Web Frameworks on Azure</div>
    
 
     
@@ -404,115 +406,62 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/mydoc_install_jekyll_on_windows.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/azure_webframeworks.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
     
 
     
 
-  <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> For a better terminal emulator on Windows, use <a href="https://git-for-windows.github.io/">Git Bash</a>. Git Bash gives you Linux-like control on Windows.</div>
+  <h2 id="web-frameworks">Web Frameworks</h2>
+<p>Download PDF <a href="/pdf/Doc43_Jupyter_on_AWS.pdf">here</a></p>
 
-<h2 id="install-ruby">Install Ruby</h2>
+<h2 id="jupyter-notebook-as-a-service">Jupyter Notebook As A Service</h2>
+<p>This document describes how to set your Jupyter Notebook (JpyNb) server to boot on startup so you do not have to type “jupyter notebook” at the command line every time. Also, if your EC2 instance fails and re-boots, JpyNb restarts automatically.</p>
 
-<p>First you must install Ruby because Jekyll is a Ruby-based program and needs Ruby to run.</p>
+<p>I’m assuming you have knowledge of basic linux commands e.g. wget, cp, mv and chmod. I also recommend installing JpyNb from Anaconda. The example below assumes that JpyNb is installed through Anaconda. It also assumes that you have an EC2 instance with Ubuntu.</p>
 
-<ol>
-  <li>Go to <a href="http://rubyinstaller.org/downloads/">RubyInstaller for Windows</a>.</li>
-  <li>Under <strong>RubyInstallers</strong>, download and install one of the Ruby installers (usually one of the first two options).</li>
-  <li>Double-click the downloaded file and proceed through the wizard to install it.</li>
-</ol>
+<p>Download this [init.d script] (https://gist.github.com/Doowon/38910829898a6624ce4ed554f082c4dd) and save as /etc/init.d/jupyter</p>
 
-<h2 id="install-ruby-development-kit">Install Ruby Development Kit</h2>
+<p>Edit the file and change this line:</p>
 
-<p>Some extensions Jekyll uses require you to natively build the code using the Ruby Development Kit.</p>
+<blockquote>
+  <p>DAEMON=/home/ubuntu/anaconda3/bin/jupyter-notebook</p>
+</blockquote>
 
-<ol>
-  <li>Go to <a href="http://rubyinstaller.org/downloads/">RubyInstaller for Windows</a>.</li>
-  <li>Under the <strong>Development Kit</strong> section near the bottom, download one of the <strong>For use with Ruby 2.0 and above…</strong> options (either the 32-bit or 64-bit version).</li>
-  <li>Move your downloaded file onto your <strong>C</strong> drive in a folder called something like <strong>RubyDevKit</strong>.</li>
-  <li>Extract the compressed folder’s contents into the folder.</li>
-  <li>
-    <p>Browse to the <strong>RubyDevKit</strong> location on your C drive using your Command Line Prompt.</p>
+<p>Also make sure there’s a /var/log/jupyter/ folder, or you can create one using mkdir. You may need sudo privileges.</p>
 
-    <p>To see the contents of your current directory, type <code>dir</code>. To move into a directory, type <code>cd foldername</code>, where “foldername” is the name of the folder you want to enter. To move up a directory, type <code>cd ../</code> one or more times depending on how many levels you want to move up. To move into your user’s directory, type <code>/users</code>. The <code>/</code> at the beginning of the path automatically starts you at the root.</p>
-  </li>
-  <li>Type <code class="highlighter-rouge">ruby dk.rb init</code></li>
-  <li>Type <code class="highlighter-rouge">ruby dk.rb install</code></li>
-</ol>
+<p>Then do the following:
+```
+    sudo chmod +x /etc/init.d/jupyter</p>
 
-<p>If you get stuck, see the <a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">official instructions for installing Ruby Dev Kit</a>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># generate a config file
 
-<h2 id="bundler">Install the Jekyll gem</h2>
+sudo jupyter --generate-config -f /etc/jupyter/jupyter_config.py
 
-<p>At this point you should have Ruby and Rubygem on your machine.</p>
+# start service
 
-<p>Now use <code class="highlighter-rouge">gem</code> to install Jekyll:</p>
+sudo service jupyter start
 
-<div class="highlighter-rouge"><pre class="highlight"><code>gem install jekyll
+# start jupyter on boot
+
+sudo update-rc.d jupyterhub defaults
+
+# stop service
+
+sudo service jupyterhub stop ```
 </code></pre>
 </div>
 
-<p>You can now use Jekyll to create new Jekyll sites following the quick-start instructions on <a href="http://jekyllrb.com">Jekyllrb.com</a>.</p>
-
-<h2 id="installing-dependencies-through-bundler">Installing dependencies through Bundler</h2>
-
-<p>Some Jekyll themes will require certain Ruby gem dependencies. These dependencies are stored in something called a Gemfile, which is packaged with the Jekyll theme. You can install these dependencies through Bundler. (Although you don’t need to install Bundler for this Documentation theme, it’s a good idea to do so.)</p>
-
-<p><a href="http://bundler.io/">Bundler</a> is a package manager for RubyGems. You can use it to get all the gems (or Ruby plugins) that you need for your Jekyll project.</p>
-
-<p>You install Bundler by using the gem command with RubyGems:</p>
-
-<h2 id="install-bundler">Install Bundler</h2>
-
-<ol>
-  <li>Install Bundler: <code class="highlighter-rouge">gem install bundler</code></li>
-  <li>
-    <p>Initialize Bundler: <code class="highlighter-rouge">bundle init</code></p>
-
-    <p>This will create a new Gemfile.</p>
-  </li>
-  <li>
-    <p>Open the Gemfile in a text editor.</p>
-
-    <p>Typically you can open files from the Command Prompt by just typing the filename, but because Gemfile doesn’t have a file extension, no program will automatically open it. You may need to use your File Explorer and browse to the directory, and then open the Gemfile in a text editor such as Notepad.</p>
-  </li>
-  <li>
-    <p>Remove the existing contents. Then paste in the following:</p>
-
-    <div class="highlighter-rouge"><pre class="highlight"><code>source "https://rubygems.org"
-
-gem 'wdm'
-gem 'jekyll'
-</code></pre>
-    </div>
-    <p>The <a href="https://rubygems.org/gems/wdm/versions/0.1.1">wdm gem</a> allows for the polling of the directory and rebuilding of the Jekyll site when you make changes. This gem is needed for Windows users, not Mac users.</p>
-  </li>
-  <li>Save and close the file.</li>
-  <li>
-    <p>Type <code class="highlighter-rouge">bundle install</code>.</p>
-
-    <p>Bundle retrieves all the needed gems and gem dependencies and downloads them to your computer. At this time, Bundle also takes a snapshot of all the gems used in your project and creates a Gemfile.lock file to store this information.</p>
-  </li>
-</ol>
-
-<h2 id="git-clients-for-windows">Git Clients for Windows</h2>
-
-<p>Although you can use the default command prompt with Windows, it’s recommended that you use <a href="https://git-for-windows.github.io/">Git Bash</a> instead. The Git Bash client will allow you to run shell scripts and execute other Unix commands.</p>
-
-<h2 id="serve-the-jekyll-documentation-theme">Serve the Jekyll Documentation theme</h2>
-
-<ol>
-  <li>Browse to the directory where you downloaded the Documentation theme for Jekyll.</li>
-  <li>Type <code class="highlighter-rouge">jekyll serve</code></li>
-  <li>
-    <p>Go to the preview address in the browser. (Make sure you include the <code class="highlighter-rouge">/</code> at the end.)</p>
-
-    <p>Unfortunately, the Command Prompt doesn’t allow you to easily copy and paste the URL, so you’ll have to type it manually.</p>
-  </li>
-</ol>
+<p>Voila!</p>
 
 
 
     <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        
         
     </div>
 
@@ -526,7 +475,7 @@ gem 'jekyll'
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 cloudmaven. All rights reserved. <br />
- Site last generated: Oct 6, 2016 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Oct 6, 2016 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

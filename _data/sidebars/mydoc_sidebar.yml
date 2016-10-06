@@ -25,27 +25,23 @@ entries:
     folderitems:
 
     - title: CFN Cluster
-      url: /mydoc_release_notes_60.html
+      url: /aws_cfncluster.html
       output: web, pdf
 
-    - title: IOT with Arduino Yun
-      url: /mydoc_release_notes_50.html
+    - title: IoT
+      url: /aws_iot.html
       output: web, pdf
 
     - title: HIPAA
-      url: /mydoc_release_notes_50.html
+      url: /aws_hipaa.html
       output: web, pdf
 
     - title: Jupyter
-      url: /jupyter_index.html
+      url: /aws_jupyter.html
       output: web, pdf
 
     - title: Rosetta 
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
-    - title: Rob's EC2 Test
-      url: /pdf\/Doc46_EC2_Resources_on_AWS.pdf
+      url: /aws_rosetta.html
       output: web, pdf
 
     - title: EC2 Resources
@@ -56,42 +52,19 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Overview
-      url: /mydoc_release_notes_60.html
-      output: web, pdf
-
     - title: Web Frameworks
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
-    - title: Adding PDF Buttons
-      url: /mydoc_release_notes_50.html
+      url: /azure_webframeworks.html
       output: web, pdf
 
     - title: Data API building
-      url: /mydoc_release_notes_50.html
+      url: /azure_api.html
       output: web, pdf
 
-    - title: CDN
-      url: /mydoc_release_notes_50.html
+    - title: Visual Studio 
+      url: /index.html
       output: web, pdf
 
-    - title: HIPAA
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
-    - title: VS
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
-    - title: Resource Groups
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
-    - title: ML Studio
-      url: /mydoc_release_notes_50.html
-      output: web, pdf
-
+  
   - title: Github Pages
     output: web, pdf
     folderitems:
@@ -112,73 +85,30 @@ entries:
     output: web, pdf
 
     folderitems:
-    - title: Python itself
-      url: /mydoc_pages.html
+    - title: Miscellaneous
+      url: /python_misc.html
       output: web, pdf
 
-    - title: Python Package Index
-      url: /mydoc_posts.html
-      output: web, pdf
-
-    - title: Lists
-      url: /mydoc_lists.html
-      output: web, pdf
-
-    - title: Conditional logic
-      url: /mydoc_conditional_logic.html
-      output: web, pdf
-
-    - title: Content reuse
-      url: /mydoc_content_reuse.html
-      output: web, pdf
-
-
-  - title: Math Club
-    output: web, pdf
-
-    folderitems:
-    - title: Sidebar navigation
-      url: /mydoc_sidebar_navigation.html
-      output: web, pdf
-
-    - title: YAML tutorial in the context of Jekyll
-      url: /mydoc_yaml_tutorial.html
-      output: web, pdf
-
-    - title: Tags
-      url: /mydoc_tags.html
-      output: web, pdf
-
-    - title: Series
-      url: /mydoc_series.html
-      output: web, pdf
 
   - title: Research Computing
     output: web, pdf
 
     folderitems:
-    - title: Tooltips
-      url: /mydoc_adding_tooltips.html
+    - title: Cloud in Research Proposals
+      url: /rc_proposals.html
       output: web, pdf
 
-    - title: Alerts
-      url: /mydoc_alerts.html
+    - title: Build-Test-Share
+      url: /rc_buildtestshare.html
       output: web, pdf
 
-    - title: Icons
-      url: /mydoc_icons.html
-      output: web, pdf
-
-    - title: Images
-      url: /mydoc_images.html
-      output: web, pdf
 
   - title: Organic Chemistry
     output: web, pdf
 
     folderitems:
-    - title: Commenting on files
-      url: /mydoc_commenting_on_files.html
+    - title: Biogeochemistry Data System
+      url: /orgchem_bds.html
       output: web, pdf
 
 #    - title: Git collaboration
