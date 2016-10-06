@@ -37,7 +37,11 @@ entries:
       output: web, pdf
 
     - title: Jupyter
+<<<<<<< HEAD
       url: /aws_jupyter.html
+=======
+      url: /mydoc_release_notes_50.html
+>>>>>>> parent of 1f75416... new file structure
       output: web, pdf
 
     - title: Rosetta 
