@@ -26,6 +26,16 @@
 
 
 {
+"title": "AWS Procedural",
+"tags": "AWS",
+"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
+"url": "jupyter_index.html",
+"summary": "Jupyter Notebook Troubleshooting on AWS"
+},
+
+
+
+{
 "title": "About the theme author",
 "tags": "getting_started",
 "keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",

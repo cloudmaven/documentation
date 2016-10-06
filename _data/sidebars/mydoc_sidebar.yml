@@ -37,7 +37,7 @@ entries:
       output: web, pdf
 
     - title: Jupyter
-      url: /mydoc_release_notes_50.html
+      url: /jupyter_index.html
       output: web, pdf
 
     - title: Rosetta 
