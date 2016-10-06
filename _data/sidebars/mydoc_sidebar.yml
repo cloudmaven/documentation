@@ -3,6 +3,7 @@
 entries:
 - title: sidebar
   product: Documentation
+  url: /index.html
   version: 
   folders:
 
@@ -18,11 +19,6 @@ entries:
       url: /tocpage
       output: pdf
       type: frontmatter
-
-  - title: Overview
-    url: /index.html
-    output: web, pdf
-    folderitems:
 
   - title: AWS Procedurals
     output: web, pdf
