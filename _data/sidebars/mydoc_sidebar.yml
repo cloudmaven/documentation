@@ -48,12 +48,12 @@ entries:
       url: /mydoc_release_notes_50.html
       output: web, pdf
 
-    - title: IAM
-      url: /mydoc_release_notes_50.html
+    - title: Rob's EC2 Test
+      url: /pdf\/Doc46_EC2_Resources_on_AWS.pdf
       output: web, pdf
 
     - title: EC2 Resources
-      url: /mydoc_release_notes_50.html
+      url: /aws_ec2resources.html
       output: web, pdf
 
   - title: Azure Procedurals
