@@ -38,8 +38,15 @@ entries:
 
     - title: Jupyter
 <<<<<<< HEAD
+<<<<<<< HEAD
       url: /aws_jupyter.html
 =======
+=======
+      url: /mydoc_release_notes_50.html
+      output: web, pdf
+
+    - title: Rosetta 
+>>>>>>> parent of 1f75416... new file structure
       url: /mydoc_release_notes_50.html
 >>>>>>> parent of 1f75416... new file structure
       output: web, pdf
