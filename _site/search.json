@@ -6,9 +6,9 @@
 {
 "title": "AWS Procedural",
 "tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "jupyter_index.html",
-"summary": "Jupyter Notebook Troubleshooting on AWS"
+"keywords": "aws, cfncluster, procedures",
+"url": "aws_cfncluster.html",
+"summary": "Running the CFNCluster on AWS"
 },
 
 
@@ -26,9 +26,19 @@
 {
 "title": "AWS Procedural",
 "tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "jupyter_index.html",
-"summary": "Jupyter Notebook Troubleshooting on AWS"
+"keywords": "aws, hipaa, procedures",
+"url": "aws_hipaa.html",
+"summary": "Description of HIPAA-compliant data system built on AWS"
+},
+
+
+
+{
+"title": "AWS Procedural",
+"tags": "AWS",
+"keywords": "aws, iot, procedures",
+"url": "aws_iot.html",
+"summary": "IoT experiments"
 },
 
 
@@ -54,24 +64,11 @@
 
 
 {
-"title": "AWS Procedural",
-"tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "jupyter_index.html",
-"summary": "Jupyter Notebook Troubleshooting on AWS"
-},
-
-
-
-{
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"title": "AWS Procedural",
-"tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "jupyter_index.html",
-"summary": "Jupyter Notebook Troubleshooting on AWS"
+"title": "Azure Procedural",
+"tags": "Azure",
+"keywords": "azure, procedural",
+"url": "azure_webframeworks.html",
+"summary": "Web Frameworks on Azure"
 },
 
 
@@ -89,12 +86,6 @@
 
 
 {
-=======
->>>>>>> parent of 1f75416... new file structure
-=======
->>>>>>> parent of 1f75416... new file structure
-=======
->>>>>>> parent of 1f75416... new file structure
 "title": "About the theme author",
 "tags": "getting_started",
 "keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",

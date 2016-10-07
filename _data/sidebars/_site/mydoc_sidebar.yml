@@ -1,0 +1,117 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Documentation
+  url: /index.html
+  version: 
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: AWS Procedurals
+    output: web, pdf
+    folderitems:
+
+    - title: CFN Cluster
+      url: /aws_cfncluster.html
+      output: web, pdf
+
+    - title: IoT
+      url: /aws_iot.html
+      output: web, pdf
+
+    - title: HIPAA
+      url: /aws_hipaa.html
+      output: web, pdf
+
+    - title: Jupyter
+      url: /aws_jupyter.html
+      output: web, pdf
+
+    - title: Rosetta 
+      url: /aws_rosetta.html
+      output: web, pdf
+
+    - title: EC2 Resources
+      url: /aws_ec2resources.html
+      output: web, pdf
+
+  - title: Azure Procedurals
+    output: web, pdf
+    folderitems:
+
+    - title: Web Frameworks
+      url: /azure_webframeworks.html
+      output: web, pdf
+
+    - title: Data API building
+      url: /azure_api.html
+      output: web, pdf
+
+    - title: Visual Studio 
+      url: /index.html
+      output: web, pdf
+
+  
+  - title: Github Pages
+    output: web, pdf
+    folderitems:
+
+    - title: About Ruby, Gems, Bundler, etc.
+      url: /mydoc_about_ruby_gems_etc.html
+      output: web, pdf
+
+    - title: Install Jekyll on Mac
+      url: /mydoc_install_jekyll_on_mac.html
+      output: web, pdf
+
+    - title: Install Jekyll on Windows
+      url: /mydoc_install_jekyll_on_windows.html
+      output: web, pdf
+
+  - title: Python
+    output: web, pdf
+
+    folderitems:
+    - title: Miscellaneous
+      url: /python_misc.html
+      output: web, pdf
+
+
+  - title: Research Computing
+    output: web, pdf
+
+    folderitems:
+    - title: Cloud in Research Proposals
+      url: /rc_proposals.html
+      output: web, pdf
+
+    - title: Build-Test-Share
+      url: /rc_buildtestshare.html
+      output: web, pdf
+
+
+  - title: Organic Chemistry
+    output: web, pdf
+
+    folderitems:
+    - title: Biogeochemistry Data System
+      url: /orgchem_bds.html
+      output: web, pdf
+
+#    - title: Git collaboration
+#      url: /mydoc_git_collaboration
+#      output: web, pdf
+

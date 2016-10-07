@@ -26,7 +26,7 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/jupyter_index.html</loc>
+    <loc>http://idratherbewriting.com/aws_cfncluster.html</loc>
   </url>
   
   
@@ -38,7 +38,13 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/jupyter_index.html</loc>
+    <loc>http://idratherbewriting.com/aws_hipaa.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_iot.html</loc>
   </url>
   
   
@@ -56,16 +62,7 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/jupyter_index.html</loc>
-  </url>
-  
-  
-  
-  <url>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <loc>http://idratherbewriting.com/jupyter_index.html</loc>
+    <loc>http://idratherbewriting.com/azure_webframeworks.html</loc>
   </url>
   
   
@@ -79,12 +76,6 @@
   
   
   <url>
-=======
->>>>>>> parent of 1f75416... new file structure
-=======
->>>>>>> parent of 1f75416... new file structure
-=======
->>>>>>> parent of 1f75416... new file structure
     <loc>http://idratherbewriting.com/mydoc_about.html</loc>
   </url>
   
