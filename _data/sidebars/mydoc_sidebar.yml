@@ -39,9 +39,12 @@ entries:
     - title: Jupyter
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       url: /aws_jupyter.html
 =======
 =======
+=======
+>>>>>>> parent of 1f75416... new file structure
       url: /mydoc_release_notes_50.html
       output: web, pdf
 
