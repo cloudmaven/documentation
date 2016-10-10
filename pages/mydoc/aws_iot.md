@@ -10,7 +10,7 @@ folder: mydoc
 ---
 
 IoT experiment with Arduino Yun
-Download PDF [here](/pdf/Doc40_AWS_IOT_Arduino_Yun.pdf) 
+Download PDF [here](/documentation/pdf/Doc40_AWS_IOT_Arduino_Yun.pdf) 
 
 
 {% include links.html %}

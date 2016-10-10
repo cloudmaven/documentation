@@ -48,6 +48,7 @@ If you have your own registered domain, you can set your A-Record to point to th
 An A-record points the hostname (here "compute") to the AWS instance Elastic IP (here "52.41.144.22"). I can then ssh into my compute instance using ec2-user@compute.cloudmaven.org. You can also set up similarly an A record called ftp that points to the elastic IP of your ftp server instance to allow ftp access into say ftp.cloudmaven org 
 
 
-## Rob's EC2 Documentation
-Download here for now - test
+## EC2 instance background
+Download PDF [here](/documentation/pdf/Doc46_EC2_Resources_on_AWS.pdf)
+
 {% include links.html %}

@@ -9,7 +9,7 @@ permalink: aws_hipaa.html
 folder: mydoc
 ---
 
-Download PDF [here](/pdf/Doc42_HIPAA_on_AWS.pdf) 
+Download PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) 
 
 
 {% include links.html %}

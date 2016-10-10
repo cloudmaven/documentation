@@ -61,7 +61,7 @@ entries:
       output: web, pdf
 
     - title: Visual Studio 
-      url: /index.html
+      url: /azure_vs.html
       output: web, pdf
 
   

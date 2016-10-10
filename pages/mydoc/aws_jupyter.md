@@ -10,7 +10,7 @@ folder: mydoc
 ---
 
 ## Creating Alarms for Jupyter Notebook Service
-Download PDF [here](/pdf/Doc43_Jupyter_on_AWS.pdf) 
+Download PDF [here](/documentation/pdf/Doc43_Jupyter_on_AWS.pdf) 
 
 ## Jupyter Notebook As A Service
 This document describes how to set your Jupyter Notebook (JpyNb) server to boot on startup so you do not have to type "jupyter notebook" at the command line every time. Also, if your EC2 instance fails and re-boots, JpyNb restarts automatically. 
@@ -39,7 +39,7 @@ Then do the following:
     
     # start jupyter on boot
     
-    sudo update-rc.d jupyterhub defaults
+    sudo update-rc.d jupyter defaults
     
     # stop service
     

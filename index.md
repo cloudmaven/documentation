@@ -16,8 +16,8 @@ We've compiled a guide to help make your life easier. Navigation on the left. Go
  
 ## Contacts
 
-Rob Fatland \: rob5@uw.edu
+Rob Fatland \: rob5[at]uw[dot]edu
 
-Amanda Tan \: amandach@uw.edu 
+Amanda Tan \: amandach[at]uw[dot]edu 
 
 {% include links.html %}
