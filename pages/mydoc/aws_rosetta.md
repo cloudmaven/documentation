@@ -1,11 +1,11 @@
 ---
 title: AWS Procedural
 keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
-last_updated: July 3, 2016
+last_updated: October 10, 2016
 tags: [AWS]
-summary: "Jupyter Notebook Troubleshooting on AWS"
+summary: "Implementation of the Rosetta molecular engineering software on the AWS cloud"
 sidebar: mydoc_sidebar
-permalink: jupyter_index.html
+permalink: aws_rosetta.html
 folder: mydoc
 ---
 
