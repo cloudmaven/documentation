@@ -2,7 +2,7 @@
 title: "Azure procedurals"
 tagName: Azure
 search: exclude
-permalink: azure.html
+permalink: tag_azure.html
 sidebar: mydoc_sidebar
 folder: tags
 ---
