@@ -2,7 +2,7 @@
 title: "AWS procedurals"
 tagName: AWS
 search: exclude
-permalink: tag_aws.html
+permalink: tag_AWS.html
 sidebar: mydoc_sidebar
 folder: tags
 ---
