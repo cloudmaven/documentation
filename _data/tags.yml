@@ -10,3 +10,8 @@ allowed-tags:
   - news
   - troubleshooting
   - mobile
+  - AWS
+  - Azure
+  - research_computing
+  - data_api
+  - python
