@@ -9,7 +9,7 @@ permalink: aws_cfncluster.html
 folder: mydoc
 ---
 
-Download PDF [here](/documentation/pdf/Doc43_Jupyter_on_AWS.pdf) 
+Download PDF [here](/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf) 
 
 
 {% include links.html %}
