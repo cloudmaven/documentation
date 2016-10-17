@@ -5,7 +5,7 @@ last_updated: July 3, 2016
 tags: [AWS]
 summary: "Jupyter Notebook Troubleshooting on AWS"
 sidebar: mydoc_sidebar
-permalink: jupyter_index.html
+permalink: aws_jupyter.html
 folder: mydoc
 ---
 
