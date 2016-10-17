@@ -102,6 +102,10 @@ entries:
       url: /rc_buildtestshare.html
       output: web, pdf
 
+    - title: Dynamic Information Framework
+      url: /rc_dif.html
+      output: web, pdf
+
 
   - title: Organic Chemistry
     output: web, pdf

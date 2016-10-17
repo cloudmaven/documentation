@@ -93,6 +93,16 @@
 
 
 
+{
+"title": "Research Computing Calendar",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "calendar.html",
+"summary": ""
+},
+
+
+
 
 
 {
@@ -121,6 +131,16 @@
 "keywords": "json, scrolling, scrollto, jquery plugin",
 "url": "jsmydoc_scroll.html",
 "summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
+},
+
+
+
+{
+"title": "Research Computing Calendar",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "calendar.html",
+"summary": ""
 },
 
 
@@ -374,6 +394,16 @@
 },
 
 
+
+
+
+{
+"title": "Research Computing - DIF",
+"tags": "AWS",
+"keywords": "research_computing",
+"url": "research_dif.html",
+"summary": "Dynamic Information Framework - A Multi-sector, Geospatial Gateway for Decision Making"
+},
 
 
 
