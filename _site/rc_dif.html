@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.">
-<meta name="keywords" content="getting_started,  sample homepage">
-<title>Documentation for Cloud Computing and Data Science | Research Computing Resources</title>
+<meta name="description" content="Dynamic Information Framework - A Multi-sector, Geospatial Gateway for Decision Making">
+<meta name="keywords" content="research_computing,  research_computing">
+<title>Research Computing - DIF | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 
@@ -133,7 +133,7 @@
                 
                 
                 
-			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Documentation for Cloud Computing and Data Science page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Research Computing - DIF page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
 
 		
                 <!--comment out this block if you want to hide search-->
@@ -149,7 +149,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Documentation for Cloud Computing and Data Science">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Research Computing - DIF">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -334,7 +334,7 @@
             
             
             
-            <li><a href="rc_dif.html">Dynamic Information Framework</a></li>
+            <li class="active"><a href="rc_dif.html">Dynamic Information Framework</a></li>
             
             
             
@@ -373,7 +373,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Documentation for Cloud Computing and Data Science</h1>
+   <h1 class="post-title-main">Research Computing - DIF</h1>
 </div>
 
 
@@ -381,31 +381,44 @@
 <div class="post-content">
 
    
-    <div class="summary">Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.</div>
+    <div class="summary">Dynamic Information Framework - A Multi-sector, Geospatial Gateway for Decision Making</div>
    
 
     
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
 
     
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages//index.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/rc_dif.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
     
 
     
 
-  <h2 id="introduction">Introduction</h2>
-
-<p>Looking to utilize data science tools and the cloud for your research? <a href="https://www.youtube.com/watch?v=-rDw2YBUz6A">Would that it were so simple!</a></p>
-
-<p>We’ve compiled a guide to help make your life easier. Navigation on the left. Go cloud crazy.</p>
-
-<h2 id="contacts">Contacts</h2>
-
-<p>Rob Fatland : rob5[at]uw[dot]edu</p>
-
-<p>Amanda Tan : amandach[at]uw[dot]edu</p>
+  <p>Download PDF <a href="/documentation/pdf/Doc43_Jupyter_on_AWS.pdf">here</a></p>
 
 
 
@@ -415,7 +428,7 @@
         
         
         
-        <a href="tag_getting_started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting_started</a>
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
         
         
         
@@ -431,7 +444,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 cloudmaven. All rights reserved. <br />
- Site last generated: Oct 17, 2016 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Oct 17, 2016 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

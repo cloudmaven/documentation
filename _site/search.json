@@ -47,7 +47,7 @@
 "title": "AWS Procedural",
 "tags": "AWS",
 "keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "jupyter_index.html",
+"url": "aws_jupyter.html",
 "summary": "Jupyter Notebook Troubleshooting on AWS"
 },
 
@@ -161,6 +161,16 @@
 "keywords": "news, blog, updates, release notes, announcements",
 "url": "news_archive.html",
 "summary": ""
+},
+
+
+
+{
+"title": "Biogeochemistry Data System",
+"tags": "BDS",
+"keywords": "BDS",
+"url": "orgchem_bds.html",
+"summary": "Documentation for the Biogeochemistry Data System"
 },
 
 
@@ -398,12 +408,46 @@
 
 
 {
-"title": "Research Computing - DIF",
-"tags": "AWS",
+"title": "Miscellaneous Python Documentation",
+"tags": "python",
 "keywords": "research_computing",
-"url": "research_dif.html",
+"url": "python_misc.html",
+"summary": "Python tools and tips"
+},
+
+
+
+{
+"title": "Build-Test-Share",
+"tags": "research_computing",
+"keywords": "research_computing",
+"url": "rc_buildtestshare.html",
+"summary": "Build-test-share -  An Agile Framework"
+},
+
+
+
+{
+"title": "Research Computing - DIF",
+"tags": "research_computing",
+"keywords": "research_computing",
+"url": "rc_dif.html",
 "summary": "Dynamic Information Framework - A Multi-sector, Geospatial Gateway for Decision Making"
 },
+
+
+
+{
+"title": "Cloud in Research Proposals",
+"tags": "research_computing",
+"keywords": "research_computing",
+"url": "rc_proposals.html",
+"summary": "Cloud Success Stories and upcoming work"
+},
+
+
+
+
 
 
 

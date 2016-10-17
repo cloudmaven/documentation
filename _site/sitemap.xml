@@ -50,7 +50,7 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/jupyter_index.html</loc>
+    <loc>http://idratherbewriting.com/aws_jupyter.html</loc>
   </url>
   
   
@@ -119,6 +119,12 @@
   
   <url>
     <loc>http://idratherbewriting.com/news_archive.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/orgchem_bds.html</loc>
   </url>
   
   
@@ -264,8 +270,30 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/research_dif.html</loc>
+    <loc>http://idratherbewriting.com/python_misc.html</loc>
   </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_buildtestshare.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_dif.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_proposals.html</loc>
+  </url>
+  
+  
+  
+  
   
   
   
