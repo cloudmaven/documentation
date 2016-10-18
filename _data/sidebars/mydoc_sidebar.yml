@@ -23,6 +23,22 @@ entries:
   - title: AWS Procedurals
     output: web, pdf
     folderitems:
+    
+    - title: First Cloud Walkthrough
+      url: /aws_walkthrough.html
+      output: web, pdf
+
+    - title: EC2 Resources
+      url: /aws_ec2resources.html
+      output: web, pdf
+    
+    - title: Jupyter
+      url: /aws_jupyter.html
+      output: web, pdf
+
+    - title: HIPAA
+      url: /aws_hipaa.html
+      output: web, pdf
 
     - title: CFN Cluster
       url: /aws_cfncluster.html
@@ -32,20 +48,8 @@ entries:
       url: /aws_iot.html
       output: web, pdf
 
-    - title: HIPAA
-      url: /aws_hipaa.html
-      output: web, pdf
-
-    - title: Jupyter
-      url: /aws_jupyter.html
-      output: web, pdf
-
     - title: Rosetta 
       url: /aws_rosetta.html
-      output: web, pdf
-
-    - title: EC2 Resources
-      url: /aws_ec2resources.html
       output: web, pdf
 
   - title: Azure Procedurals
