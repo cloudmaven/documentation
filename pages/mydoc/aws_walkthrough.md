@@ -150,7 +150,4 @@ Figure out how much this should have cost and how much it did cost
 Calculate what a large processing run will cost
 
 
-Download PDF [here](/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf) 
-
-
 {% include links.html %}
