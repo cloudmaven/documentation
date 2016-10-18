@@ -10,6 +10,7 @@ folder: mydoc
 ---
 
 Download PDF [here](/documentation/pdf/First_cloud_walkthrough.pdf)
+
 ## Introduction
 The purpose of this document -- available at http://cloudmaven.org -- is to narrate a common experience:  "First time using the AWS cloud" by making you the observer of a research graduate student, Pearl by name, who goes through that process. Pearl's situation is a fairly common pattern: She has a large amount of data processing in mind for her work and she has written some necessary software in Python. There is more on this below. The point is she wants to get onto the cloud and get back to running her code on the data as quickly as possible. She has taken on an additional task as well: Pearl will manage the cloud account for the entire research group so she will need some additional skills. 
 
