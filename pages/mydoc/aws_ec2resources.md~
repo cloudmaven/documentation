@@ -8,9 +8,6 @@ sidebar: mydoc_sidebar
 permalink: aws_ec2resources.html
 folder: mydoc
 ---
-## Introduction
-On the Amazon Web Services (AWS) public cloud we frequently rent computers; and these are called *EC2 instances*. EC2 instances are documented elsewhere at [cloudmaven.org](http://cloudmaven.org). 
-The purpose of this page is to review some of the cloud resources that are associated with EC2 instances, things like persistent ip addresses and human-friendly names for websites called DNS entries. 
 
 ## FTP Setup and EC2 Instance
 Overview: Create a virtual machine, install the ftp server and setup user accounts. Bonus: Bind your EC2 instance to an Elastic IP so you can reuse the same public IP even if your instance changes!
