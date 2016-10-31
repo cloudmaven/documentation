@@ -18,7 +18,8 @@ The purpose of this document -- available at http://cloudmaven.org -- is to narr
 
 ## Objectives
 	
-Day One
+Day One (this document)
+
 * Discover the AWS Console and decouple the account from a billing    account 	
 * Receive research credits for this account (and manage a    'gap' time interval) 	
 * Look briefly at getting a machine 	
