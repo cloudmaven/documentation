@@ -18,24 +18,20 @@ The purpose of this document -- available at http://cloudmaven.org -- is to narr
 
 ## Objectives
 	
-Day One
+
 * Discover the AWS Console and decouple the account from a billing    account 	
 * Receive research credits for this account (and manage a    'gap' time interval) 	
 * Look briefly at getting a machine 	
 * Do some    initial account administration tasks 	
-
-Day Two and so on...
-
 * Choose and spin up an EC2    instance (cloud computer); add some memory 	
 * Connect to the EC2    instance with ssh and scp; shutdown the instance, start it again 	
 * Add generic software and custom software and some data 	
 * Do some    simple tests and create both a snapshot and an AMI of the EC2    instance 	
 * See if the code can do an intensive job… and diagnose any    problems 	
 * Get the code to run in parallel 	
-* Spin up a cluster of machines, do a parallel run 	
-* Figure out how much this should have cost and how much it did cost 	
-* Calculate what a large processing run will cost
-
+* Spin up a cluster of    machines, do a parallel run 	
+* Figure out how much this should have    cost and how much it did cost 	
+* Calculate what a large processing    run will cost
 
 ## Discover the AWS Console and decouple the account from a billing account
 The lead faculty member for this project is David; who some time ago received an AWS cloud account. This account was linked to another account that acted as a Master Account for purposes of creating a single point of billing. To receive his research credits David will have to decouple his account from that Master Account. We follow Pearl as she breaks this link. 
@@ -148,8 +144,6 @@ This should be sufficient to activate MFA access for this IAM User.
 
 Kilroy please attend to other bullets in the above list
 
-## Last steps for Day One
-
 Pearl now logs out of the AWS Console: She is no longer the Account Manager. She has received a login URL as part of her login credentials; so she types this URL into her browser and at the prompts enters her IAM User name 'pearl' and her password. This takes her to an MFA page where she enters a six digit code. From here she finds herself back at the AWS Console page with Administrator privileges. That is: She is now logged in as her IAM User self, an Administrator; not as the Account Manager. 
 
 David would do likewise to do work under this account; as would everyone else on the research team. This work is not done when logged in as the Account Manager; only when logged in as IAM Users. Each IAM User has their own username, password and MFA activated. This information should be kept secure to prevent giving non-team-members access to the account. Again: This includes keeping this information away from code management repositories such as GitHub.  
@@ -170,15 +164,14 @@ There are ways of cutting cost that are not described here. That is: You can rea
 **Connect to the EC2 instance with ssh and scp; shutdown the instance, start it again**
 
 
-## Day Two and beyond
-
-* Add generic software and custom software and some data
-* Do some simple tests and create both a snapshot and an AMI of the EC2 instance
-* See if the code can do an intensive job… and diagnose any problems
-* Get the code to run in parallel
-* Spin up a cluster of machines, do a parallel run
-* Figure out how much this should have cost and how much it did cost
-* Calculate what a large processing run will cost
+To be added
+Add generic software and custom software and some data
+Do some simple tests and create both a snapshot and an AMI of the EC2 instance
+See if the code can do an intensive job… and diagnose any problems
+Get the code to run in parallel
+Spin up a cluster of machines, do a parallel run
+Figure out how much this should have cost and how much it did cost
+Calculate what a large processing run will cost
 
 
 {% include links.html %}
