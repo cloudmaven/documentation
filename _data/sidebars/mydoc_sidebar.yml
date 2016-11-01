@@ -32,7 +32,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: What the cloud is and isn't
+    - title: What is the cloud
       url: /cloud_intro.html
       output: web, pdf
 
@@ -72,8 +72,8 @@ entries:
       url: /aws_console.html
       output: web, pdf
 
-   - title: AWS Account Management 
-      url: /aws_accountmana.html
+    - title: AWS Account Management 
+      url: /aws_accountmanage.html
       output: web, pdf
 
     - title: EC2 Instances
@@ -147,7 +147,6 @@ entries:
     - title: Jupyter Notebooks on Azure
       url: /azure_jupyter.html
       output: web, pdf
-
   
   - title: Google Procedurals
     output: web, pdf
@@ -163,8 +162,8 @@ entries:
 
   - title: Research Computing Case Studies
     output: web, pdf
-
     folderitems:
+
     - title: Geoserver
       url: /rc_geoserver.html
       output: web, pdf
@@ -177,11 +176,10 @@ entries:
       url: /rc_orgchem.html
       output: web, pdf
 
-
   - title: Resources
     output: web, pdf
-
     folderitems:
+
     - title: Docker Containers
       url: /resources_docker.html
       output: web, pdf
@@ -197,4 +195,3 @@ entries:
     - title: Github
       url: /resources_github.html
       output: web, pdf
-

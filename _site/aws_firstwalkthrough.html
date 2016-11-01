@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Protease Inhibition Research: Cloud Migration Study">
+<meta name="keywords" content="AWS,  aws, cfncluster, procedures">
+<title>First Cloud Walkthrough | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the First Cloud Walkthrough page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="First Cloud Walkthrough">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="proposals.html">Proposal Prep</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cloud_intro.html">What is the cloud</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_datasecurity.html">Data Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_cost.html">Cost Management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_computepower.html">Compute Power</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Procedurals</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="aws_firstwalkthrough.html">First Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_secondwalkthrough.html">Second Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_thirdwalkthrough.html">Third Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_fourthwalkthrough.html">Fourth Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Using the AWS Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_accountmanage.html">AWS Account Management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2instances.html">EC2 Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2resources.html">EC2 Resources</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cfncluster.html">CFN Cluster, SGE & Boto</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter Notebooks on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA Compliance on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spotmarket.html">Spot Market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_rds.html">RDS, DynamoDB & Other DBs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Procedurals</a>
+        <ul>
+            
+            
+            
+            <li><a href="azure_firstwalkthrough.html">First Day Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_portal.html">Using the Azure Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_vs.html">Visual Studio and Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_webframeworks.html">Web Frameworks on Azure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_api.html">Data API building</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_mls.html">Azure Machine Learning Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_spark.html">Spark on Azure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_jupyter.html">Jupyter Notebooks on Azure</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google Procedurals</a>
+        <ul>
+            
+            
+            
+            <li><a href="google_earthengine.html">Google Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="google_appengine.html">Google App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research Computing Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_geoserver.html">Geoserver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_orgchem.html">Organic Chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Resources</a>
+        <ul>
+            
+            
+            
+            <li><a href="resources_docker.html">Docker Containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="resources_viz.html">Data Visualization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="resources_github.html">Github</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">First Cloud Walkthrough</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Protease Inhibition Research: Cloud Migration Study</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/aws_firstwalkthrough.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <p>Download PDF <a href="/documentation/pdf/First_cloud_walkthrough.pdf">here</a></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The purpose of this document – available at http://cloudmaven.org – is to narrate a common experience:  “First time using the AWS cloud” by making you the observer of a research graduate student, Pearl by name, who goes through that process. Pearl’s situation is a fairly common pattern: She has a large amount of data processing in mind for her work and she has written some necessary software in Python. There is more on this below. The point is she wants to get onto the cloud and get back to running her code on the data as quickly as possible. She has taken on an additional task as well: Pearl will manage the cloud account for the entire research group so she will need some additional skills.</p>
+
+<p>(Note this document is under construction, incomplete, missing bits flagged with ‘kilroy’)</p>
+
+<h2 id="objectives">Objectives</h2>
+
+<ul>
+  <li>Discover the AWS Console and decouple the account from a billing    account</li>
+  <li>Receive research credits for this account (and manage a    ‘gap’ time interval)</li>
+  <li>Look briefly at getting a machine</li>
+  <li>Do some    initial account administration tasks</li>
+  <li>Choose and spin up an EC2    instance (cloud computer); add some memory</li>
+  <li>Connect to the EC2    instance with ssh and scp; shutdown the instance, start it again</li>
+  <li>Add generic software and custom software and some data</li>
+  <li>Do some    simple tests and create both a snapshot and an AMI of the EC2    instance</li>
+  <li>See if the code can do an intensive job… and diagnose any    problems</li>
+  <li>Get the code to run in parallel</li>
+  <li>Spin up a cluster of    machines, do a parallel run</li>
+  <li>Figure out how much this should have    cost and how much it did cost</li>
+  <li>Calculate what a large processing    run will cost</li>
+</ul>
+
+<h2 id="discover-the-aws-console-and-decouple-the-account-from-a-billing-account">Discover the AWS Console and decouple the account from a billing account</h2>
+<p>The lead faculty member for this project is David; who some time ago received an AWS cloud account. This account was linked to another account that acted as a Master Account for purposes of creating a single point of billing. To receive his research credits David will have to decouple his account from that Master Account. We follow Pearl as she breaks this link.</p>
+
+<p>Log in as David: Given his account name and his password. The URL is kilroy. Kilroy screencap.</p>
+
+<p>Notice that Pearl is now looking at the main AWS console featuring 50+ icons, each with a short text description.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic1.png" alt="pic1" /></p>
+
+<p>Only a few of these icons come into play here; the rest can be ignored or explored at a future date. This console is like the factory floor where one starts to build. Pearl takes a minute to look at some of the icons and some of the text.</p>
+
+<p>However: To un-link this account she needs to leave the factory floor – the AWS Console – and go into the ‘office’ where the account is managed. That is, we want to go to the <strong>My Account</strong> page, typically from the identity dropdown at the upper right.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic2.png" alt="pic2" /></p>
+
+<p>To see this left-side list of context pages:</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic3.png" alt="pic3" /></p>
+
+<p>Now that Pearl is on this page she notices the above, a recurring feature of the AWS console: In a given context on the AWS console website there will be a useful menu on the left side. Here we want to select Consolidated Billing. If this account is linked to a ‘bigger’ account there is a button here to Remove account. This is what Pearl will do so that David’s account will be eligible to receive research credits.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic4.png" alt="pic4" /></p>
+
+<h2 id="receive-research-credits-for-this-account-and-manage-a-gap-time-interval">Receive research credits for this account (and manage a ‘gap’ time interval)</h2>
+
+<p>Recall that Pearl is logged in as David, but more specifically she is logged in as the Account Manager, the person who has the top level of permissions for this account. David has been awarded $8k in research credits and those research credits are not real dollars; they can only be burned (used) from this AWS account. However those credits will not be awarded until the first day of the following month where today is the 12th of this month. So let’s see how Pearl is going to manage this.</p>
+
+<p>Pearl goes to the <strong>Dashboard</strong> selection for <strong>My Account</strong> where she can see the account number. She sends an email to the AWS research credit manager telling her both the email address and the account number associated with this account. She receives a confirmation that the research credits will be available on the first of next month. Now Pearl can either wait 19 days or she can incur some charges while she learns how to use the AWS cloud. She chooses the latter since paying for 19 days of cloud use will ultimately be David’s problem. (And just to be sure she checks with David who says it is ok.)</p>
+
+<p>Now Pearl opens up a notes file and starts taking notes on what she is doing. The notes file is kept in a secure location on her computer that is not part of any source code version control repository. This ensures that Pearl’s notes are not accidentally shared to the internet: They may contain exploitable information. Let’s refer to this as Pearl’s Secure Location. In addition to notes she can keep Credential files here. At least initially she will be acting as the Account Administrator for the entire research team. This role is not the same as Account Manager described above.  The Account Manager might have financial matters to deal with at some point but is largely not involved in the operation of this AWS account. The Account Administrator will track spending and make sure that all of the other account Users are following good practices.</p>
+
+<p>At this point the AWS Solution Architect – a person from Amazon who knows how everything works – is asking Pearl to follow protocol regarding this account: He wants her to create a new User and log out and log back in as that User. However she is going to ignore him for the moment and go look at machine instances (computers she can use).</p>
+
+<h2 id="look-briefly-at-getting-a-machine">Look briefly at getting a machine</h2>
+<p>Pearl returns to the AWS Console by clicking on the cube icon at the upper left. She notices the item called EC2; so she clicks on that.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic5.png" alt="pic1" /></p>
+
+<p>An <strong>EC2 instance is the AWS term for a computer</strong>. AWS has a large number of these available; they comprise the compute power of the Amazon cloud. Each EC2 instance will have associated memory (RAM) just like any other computer. EC2 instances also have some amount of disk space associated, large enough to host the machine’s operating system. To attach additional disk space – known as Elastic Block Storage (EBS) – is a common task; but there is a fee that is proportional to the amount of disk space that you attach; so it is typical to get what you need and not more.   See http://www.rightscale.com/blog/cloud-industry-insights/amazons-elastic-block-store-explained.</p>
+
+<p>Pearl notices that she has no instances currently in operation; and that there is a button called</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic6.png" alt="pic1" /></p>
+
+<p>She clicks on this and finds that the first choice in getting a machine is to choose the operating system. She chooses AWS Linux.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic7.png" alt="pic1" /></p>
+
+<p>This is a version of Linux that is aligned with other AWS technologies. The login username for this OS is <strong>ec2-user</strong>; and Pearl will use this account name but without a password. Rather she will be using an authentication certificate.</p>
+
+<p>Pearl finds that the second choice she has is machine type.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic8.png" alt="pic1" /></p>
+
+<p>There is a list provided of about 45 choices, from small ‘t-class’ machines to large ‘x-class’ machines. Rather than go further with starting up a machine Pearl cancels out of this and returns to the AWS Console. It’s time to follow protocol.</p>
+
+<h2 id="do-some-initial-account-administration-tasks">Do some initial account administration tasks</h2>
+<p>In order to avoid logging in as Account Administrator (which has the highest level of control over the account) Pearl is now going to use the Identity and Access Management (IAM) page to create two new identities or IAM Users. The icon for IAM Management looks like a key.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic9.png" alt="pic1" /></p>
+
+<p>(this example is from the ‘uwcloudczar’ account, not Pearl/David’s account.)</p>
+
+<p>Now that she is in the IAM page Pearl notices again the left sidebar context menu. Pearl is now going to create an IAM User identity for herself and for David. She clicks on Users and selects</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic10.png" alt="pic1" /></p>
+
+<p>She adds account names ‘pearl’ and ‘david’.</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic11.png" alt="pic1" /></p>
+
+<p>These will be two new IAM Users under this account. Each User receives four additional points of attention to complete this task.</p>
+
+<ul>
+  <li>Assign each User an Administrator Policy</li>
+  <li>Assign each User a Password Login</li>
+  <li>Require each User to activate Multi Factor Authentication (MFA)</li>
+  <li>Train each User on using this account.</li>
+</ul>
+
+<p>Kilroy details needed…</p>
+
+<p>Pearl now logs out of the AWS Console: She is no longer the Account Manager. She has received a login URL as part of her login credentials; so she types this URL into her browser and at the prompts enters her IAM User name ‘pearl’ and her password. This takes her to an MFA page where she enters a six digit code. From here she finds herself back at the AWS Console page with Administrator privileges. That is: She is now logged in as her IAM User self, an Administrator; not as the Account Manager.</p>
+
+<p>David would do likewise to do work under this account; as would everyone else on the research team. This work is not done when logged in as the Account Manager; only when logged in as IAM Users. Each IAM User has their own username, password and MFA activated. This information should be kept secure to prevent giving non-team-members access to the account. Again: This includes keeping this information away from code management repositories such as GitHub.</p>
+
+<h2 id="choose-and-spin-up-an-ec2-instance-cloud-computer-add-some-memory">Choose and spin up an EC2 instance (cloud computer); add some memory</h2>
+<p>Pearl now decides to go back to EC2 and actually start up an EC2 instance. She returns to the EC2 page. At the top are listed a set of EC2 Resources, for example:</p>
+
+<p><img src="/documentation/images/aws_firstwalkthrough_pic12.png" alt="pic1" /></p>
+
+<p>We describe EC2 Resources in more detail under that subject heading. One of the most useful EC2 resources to be aware of is the Elastic IP.   This is a persistent ip address that you can associate with an EC2 instance even if you shut it down and start it up again. Without this feature an EC2 that you stop and re-start will be assigned a new IP address each time, making it a bit of a moving target if you need to ssh to that instance.</p>
+
+<p>Pearl again clicks on the Start EC2 Instance button, selects AWS Linux as the operating system, and looks through the resulting set of instance options. These have corresponding on-demand cost rates as described at this link:</p>
+
+<p><a href="http://aws.amazon.com/ec2/pricing/on-demand">http://aws.amazon.com/ec2/pricing/on-demand</a></p>
+
+<p>There are ways of cutting cost that are not described here. That is: You can realize considerable savings at AWS paying as low as only 10% of on-demand rates; for example see the documentation concerning the AWS Spot Market. For now Pearl will pay the on-demand rate. She chooses an r3.2xlarge instance which will cost $0.67 per hour. This is a powerful machine with 8 virtual CPUs. (kilroy put cost analysis here? If so include spot)</p>
+
+<p><strong>Connect to the EC2 instance with ssh and scp; shutdown the instance, start it again</strong></p>
+
+<p>To be added
+Add generic software and custom software and some data
+Do some simple tests and create both a snapshot and an AMI of the EC2 instance
+See if the code can do an intensive job… and diagnose any problems
+Get the code to run in parallel
+Spin up a cluster of machines, do a parallel run
+Figure out how much this should have cost and how much it did cost
+Calculate what a large processing run will cost</p>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Nov 1, 2016 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Documentation
+  url: /index.html
+  version: 
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Proposals
+    output: web, pdf
+    folderitems:
+
+    - title: Proposal Prep
+      url: /proposals.html
+      output: web, pdf
+
+  - title: Cloud Core
+    output: web, pdf
+    folderitems:
+
+    - title: What the cloud is and isn't
+      url: /cloud_intro.html
+      output: web, pdf
+
+    - title: Data Security
+      url: /cloud_datasecurity.html
+      output: web, pdf
+
+    - title: Cost Management
+      url: /cloud_cost.html
+      output: web, pdf
+
+    - title: Compute Power
+      url: /cloud_computepower.html
+      output: web, pdf
+
+  - title: AWS Procedurals
+    output: web, pdf
+    folderitems:
+    
+    - title: First Cloud Walkthrough
+      url: /aws_firstwalkthrough.html
+      output: web, pdf
+
+    - title: Second Cloud Walkthrough
+      url: /aws_secondwalkthrough.html
+      output: web, pdf
+
+    - title: Third Cloud Walkthrough
+      url: /aws_thirdwalkthrough.html
+      output: web, pdf
+
+    - title: Fourth Cloud Walkthrough
+      url: /aws_fourthwalkthrough.html
+      output: web, pdf
+
+    - title: Using the AWS Console
+      url: /aws_console.html
+      output: web, pdf
+
+   - title: AWS Account Management 
+      url: /aws_accountmana.html
+      output: web, pdf
+
+    - title: EC2 Instances
+      url: /aws_ec2instances.html
+      output: web, pdf
+
+    - title: EC2 Resources
+      url: /aws_ec2resources.html
+      output: web, pdf
+
+    - title: CFN Cluster, SGE & Boto 
+      url: /aws_cfncluster.html
+      output: web, pdf
+    
+    - title: Jupyter Notebooks on AWS
+      url: /aws_jupyter.html
+      output: web, pdf
+
+    - title: HIPAA Compliance on AWS
+      url: /aws_hipaa.html
+      output: web, pdf
+
+    - title: IoT on AWS
+      url: /aws_iot.html
+      output: web, pdf
+
+    - title: Spark on AWS
+      url: /aws_spark.html
+      output: web, pdf
+
+    - title: Spot Market 
+      url: /aws_spotmarket.html
+      output: web, pdf
+
+    - title: RDS, DynamoDB & Other DBs
+      url: /aws_rds.html
+      output: web, pdf
+
+  - title: Azure Procedurals
+    output: web, pdf
+    folderitems:
+
+    - title: First Day Cloud Walkthrough
+      url: /azure_firstwalkthrough.html
+      output: web, pdf
+
+    - title: Using the Azure Portal
+      url: /azure_portal.html
+      output: web, pdf
+
+    - title: Visual Studio and Python
+      url: /azure_vs.html
+      output: web, pdf
+
+    - title: Web Frameworks on Azure
+      url: /azure_webframeworks.html
+      output: web, pdf
+
+    - title: Data API building
+      url: /azure_api.html
+      output: web, pdf
+
+    - title: Azure Machine Learning Studio 
+      url: /azure_mls.html
+      output: web, pdf
+
+    - title: Spark on Azure 
+      url: /azure_spark.html
+      output: web, pdf
+
+    - title: Jupyter Notebooks on Azure
+      url: /azure_jupyter.html
+      output: web, pdf
+  
+  - title: Google Procedurals
+    output: web, pdf
+    folderitems:
+
+    - title: Google Earth Engine
+      url: /google_earthengine.html
+      output: web, pdf
+
+    - title: Google App Engine
+      url: /google_appengine.html
+      output: web, pdf
+
+  - title: Research Computing Case Studies
+    output: web, pdf
+
+    folderitems:
+    - title: Geoserver
+      url: /rc_geoserver.html
+      output: web, pdf
+
+    - title: Rosetta
+      url: /rc_rosetta.html
+      output: web, pdf
+
+    - title: Organic Chemistry
+      url: /rc_orgchem.html
+      output: web, pdf
+
+  - title: Resources
+    output: web, pdf
+
+    folderitems:
+    - title: Docker Containers
+      url: /resources_docker.html
+      output: web, pdf
+
+    - title: Data Science Studio
+      url: http://escience.washington.edu
+      output: web, pdf
+
+    - title: Data Visualization
+      url: /resources_viz.html
+      output: web, pdf
+
+    - title: Github
+      url: /resources_github.html
+      output: web, pdf

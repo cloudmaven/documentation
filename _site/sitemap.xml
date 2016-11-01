@@ -26,13 +26,43 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/aws_accountmanage.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/aws_cfncluster.html</loc>
   </url>
   
   
   
   <url>
+    <loc>http://idratherbewriting.com/aws_console.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_ec2instances.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/aws_ec2resources.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_firstwalkthrough.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_fourthwalkthrough.html</loc>
   </url>
   
   
@@ -56,7 +86,31 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/aws_rosetta.html</loc>
+    <loc>http://idratherbewriting.com/aws_rds.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_secondwalkthrough.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_spark.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_spotmarket.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_thirdwalkthrough.html</loc>
   </url>
   
   
@@ -69,6 +123,36 @@
   
   <url>
     <loc>http://idratherbewriting.com/azure_api.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azure_firstwalkthrough.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azure_jupyter.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azure_mls.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azure_portal.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azure_spark.html</loc>
   </url>
   
   
@@ -90,6 +174,42 @@
   </url>
   
   
+  
+  <url>
+    <loc>http://idratherbewriting.com/cloud_computepower.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/cloud_cost.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/cloud_datasecurity.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/cloud_intro.html</loc>
+  </url>
+  
+  
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/google_appengine.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/google_earthengine.html</loc>
+  </url>
   
   
   
@@ -125,12 +245,6 @@
   
   <url>
     <loc>http://idratherbewriting.com/news_archive.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>http://idratherbewriting.com/orgchem_bds.html</loc>
   </url>
   
   
@@ -276,6 +390,12 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/proposals.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/python_misc.html</loc>
   </url>
   
@@ -294,7 +414,43 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/rc_geoserver.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_orgchem.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/rc_proposals.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_rosetta.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/resources_docker.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/resources_github.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/resources_viz.html</loc>
   </url>
   
   
