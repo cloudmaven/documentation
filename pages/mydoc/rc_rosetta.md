@@ -1,11 +1,11 @@
 ---
-title: AWS Procedural
-keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
-last_updated: October 10, 2016
-tags: [AWS]
+title: Research Computing Case Studies
+keywords: research_computing
+last_updated: October 6, 2016
+tags: [research_computing,hpc,rosetta,case_studies]
 summary: "Implementation of the Rosetta molecular engineering software on the AWS cloud"
 sidebar: mydoc_sidebar
-permalink: aws_rosetta.html
+permalink: rc_rosetta.html
 folder: mydoc
 ---
 

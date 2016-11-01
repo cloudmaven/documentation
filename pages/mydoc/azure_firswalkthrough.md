@@ -2,10 +2,10 @@
 title: Azure Procedural
 keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [Azure,visual_studio]
-summary: "Visual Studio and Python on Azure"
+tags: [Azure,introduction]
+summary: "Microsoft Azure First Walkthrough "
 sidebar: mydoc_sidebar
-permalink: azure_vs.html
+permalink: azure_firstwalkthrough.html
 folder: mydoc
 ---
 

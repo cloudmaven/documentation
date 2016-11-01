@@ -2,13 +2,13 @@
 title: Azure Procedural
 keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [Azure,visual_studio]
-summary: "Visual Studio and Python on Azure"
+tags: [Azure,jupyter]
+summary: "Jupyter Notebooks on Azure"
 sidebar: mydoc_sidebar
-permalink: azure_vs.html
+permalink: azure_jupyter.html
 folder: mydoc
 ---
 
-Placeholder. Documentation in progress. 
+Placeholder. Page in progress.
 
 {% include links.html %}

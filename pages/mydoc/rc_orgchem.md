@@ -1,11 +1,11 @@
 ---
-title: Biogeochemistry Data System
+title: Research Computing Case Studies - Organic Chemistry
 keywords: BDS
 last_updated: October 6, 2016
-tags: [BDS]
+tags: [research_computing, case_studies]
 summary: "Documentation for the Biogeochemistry Data System "
 sidebar: mydoc_sidebar
-permalink: orgchem_bds.html
+permalink: rc_orgchem.html
 folder: mydoc
 ---
 
