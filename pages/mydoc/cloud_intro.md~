@@ -9,10 +9,9 @@ permalink: cloud_intro.html
 folder: mydoc
 ---
 
-![pic2](/documentation/images/Alice_hallway.png)
+![pic1](/documentation/images/Alice_hallway.png)
 
 {% include links.html %}
-
 
 ## Introduction
 The purpose of this document -- available at http://cloudmaven.org -- is to introduce you to cloud computing as

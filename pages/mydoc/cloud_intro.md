@@ -21,7 +21,7 @@ a research platform. The University of Washington has introductory material [her
 
 ## Cornell Cloud Forum Notes
 
-[Forum website](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
+Forum website is [here](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
 
 Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right here.
 
