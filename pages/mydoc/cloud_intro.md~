@@ -102,4 +102,9 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Glenn Blackler, University of California, Santa Cruze
 	* Erik Lundberg, University of Washington
 
+* Stanford talk on security standards and related
+	* Jim Laney, Rupert Burke (kilroy) at UW IT might be interested in these links
+	* https://minsec.stanford.edu/ Stanford's prescriptive system security guidelines
+	* http://dataclass.stanford.edu/ is the Stanford classification system
+
 {% include links.html %}
