@@ -9,10 +9,9 @@ permalink: cloud_intro.html
 folder: mydoc
 ---
 
-Placeholder. Page coming soon. 
+![pic1](/documentation/images/Alice_hallway.png)
 
 {% include links.html %}
-
 
 ## Introduction
 The purpose of this document -- available at http://cloudmaven.org -- is to introduce you to cloud computing as
@@ -22,7 +21,7 @@ a research platform. The University of Washington has introductory material [her
 
 ## Cornell Cloud Forum Notes
 
-Forum website: http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016
+[Forum website](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
 
 Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right here.
 
@@ -34,9 +33,8 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Bob Winding Notre Dame
 	* Gerard Shockly Boston University
 	* Laurie Collinsworth Cornell University
-	* --fourth individual--
+	* Ben Rota Harvard University
 
-![pic2](/documentation/images/aws_firstwalkthrough_pic2.png)
 
 
 {% include links.html %}
