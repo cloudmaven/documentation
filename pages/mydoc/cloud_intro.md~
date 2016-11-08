@@ -22,14 +22,19 @@ a research platform.
 
 ## Cornell Cloud Forum Notes
 
-![Forum website](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016)
+Forum website: http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016
 
 Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right here.
 
 * First speaker is Gerard Shockley from Boston Univeristy; he covered the breakdown of information from the survey
 ** Of particular interest were the remarks on Exit and Entrance strategies; and HIPAA
-* Second speaker from Notre Dame
+* Second speaker is Sharif Nijim from Notre Dame
 ** Very low-key individual
+* Panel discussion
+** Bob Winding Notre Dame
+** Gerard Shockly Boston University
+** Laurie Collinsworth Cornell University
+** --fourth individual--
 
 ![pic2](/documentation/images/aws_firstwalkthrough_pic2.png)
 
