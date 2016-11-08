@@ -52,9 +52,10 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Phil Robinson (Cornell): Student services IT (SSIT) 
 	* Jeff Gumpf: AWS workspaces for grad students
 		* Kilroy Absolutely have to pursue this with Nancy / STF Pool A plan
-	* Susan Kelley: Bringing IT Partners on campus along for the ride
+			* $80 per student per ? time ?
+	* Susan Kelley (Yale): Bringing IT Partners on campus along for the ride
 	* Bob Winding: Research data security NIST 800-171 compliance in GovCloud (ITAR information)
-	* Brett Haranin: Cloud adoption, a developer's perspective
+	* Brett Haranin: Cloud adoption, a developer's perspective (skipped)
 	* Ben Rota (Harvard): Cost engineering in AWS
 	* Scotty Logan: Dirty dancing in the cloud
 	* Rob Fatland: Research cloud computing garden path success stories
