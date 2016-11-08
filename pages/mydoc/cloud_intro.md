@@ -15,8 +15,16 @@ folder: mydoc
 
 ## Introduction
 The purpose of this document -- available [here](http://cloudmaven.org "Cloud Maven technical website") -- is to introduce you to cloud computing as
-a research platform. The University of Washington has introductory material 
+a research platform. 
+
+## Some useful links
+
+* The University of Washington has introductory material 
 [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
+* True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
+that specifically in the AWS framework [here](https://awstcocalculator.com/).
+* If you are interested in using Python to control your AWS computing environment: 
+Look into the [boto SDK](http://boto3.readthedocs.io/en/latest/ "Boto 3")
 
 (Website in dev; flag string is 'kilroy') 
 
@@ -72,6 +80,26 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Codify infrastructure decisions
 	* Document in code and so on
 	* Have a process...
+	* And here are our three patterns for solving problems
+		* cloud formation template: How to create (and destroy) resources
+			* JSON, stack... fire it off with CLI or API or console
+			* Create Stack is the button you want to get to in the console
+			* Delete Stack is another nice thing... "did I really delete everything I needed to?" > Yes!
+			* Configuration as code: Version control! 
+		* docker: For environment configuration (to avoid go install all of these packages)
+		* Jenkins: DevOps gap-filling glue. "Continuous integration (CI) tool"
+			* check out a git repo
+			* build a Java app
+			* integrate with slack / email / ... 
+			* Kilroy worth a look I think: We should understand what all Jenkins can do... "warr files"?
+				* Could this be Brian Warr? Probably not.
 
+* Sharif Nijim on moving a Windows-oriented DMS to AWS
+
+* Panel on ERPs in the Cloud: Enterprise Resource Planning (Workday and the like)
+	* Jim Behm, University of Michigan
+	* David McCartney, Ohio State
+	* Glenn Blackler, University of California, Santa Cruze
+	* Erik Lundberg, University of Washington
 
 {% include links.html %}
