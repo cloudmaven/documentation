@@ -16,7 +16,7 @@ Placeholder. Page coming soon.
 
 ## Introduction
 The purpose of this document -- available at http://cloudmaven.org -- is to introduce you to cloud computing as
-a research platform. 
+a research platform. The University of Washington has introductory material [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
 
 (Note this document is under construction, incomplete, missing sections are flagged with the string 'kilroy')
 
