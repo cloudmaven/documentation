@@ -14,10 +14,12 @@ folder: mydoc
 {% include links.html %}
 
 ## Introduction
-The purpose of this document -- available at http://cloudmaven.org -- is to introduce you to cloud computing as
-a research platform. The University of Washington has introductory material [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
+The purpose of this document -- available [here](http://cloudmaven.org "Cloud Maven technical website") -- is to introduce you to cloud computing as
+a research platform. The University of Washington has introductory material 
+[here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
 
-(Note this document is under construction, incomplete, missing sections are flagged with the string 'kilroy')
+(Website in dev; flag string is 'kilroy') 
+
 
 ## Cornell Cloud Forum Notes
 
@@ -34,6 +36,15 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Gerard Shockly Boston University
 	* Laurie Collinsworth Cornell University
 	* Ben Rota Harvard University
+	* From the "Future State" slide and related discussion
+		* CloudFront WAF
+		* VPC Mirror port
+		* VDI in the cloud
+		* Authentication in the cloud
+		* IPS/IDS Palo Alto
+		* Trying to avoid choke points
+		* Can't replicate AWS tools/facilities; so use those first and augment
+		* "We're just trying to solve the learning curve problem."
 
 
 
