@@ -29,8 +29,10 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 
 * First speaker is Gerard Shockley from Boston Univeristy; he covered the breakdown of information from the survey
 	* Of particular interest were the remarks on Exit and Entrance strategies; and HIPAA
+
 * Second speaker is Sharif Nijim from Notre Dame
 	* Very low-key individual
+
 * Panel discussion
 	* Bob Winding Notre Dame
 	* Gerard Shockly Boston University
@@ -45,6 +47,19 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 		* Trying to avoid choke points
 		* Can't replicate AWS tools/facilities; so use those first and augment
 		* "We're just trying to solve the learning curve problem."
+
+* Lightning Rounds: Introduced by Jim Behm University of Michigan
+	* Phil Robinson (Cornell): Student services IT (SSIT) 
+	* Jeff Gumpf: AWS workspaces for grad students
+	* Susan Kelley: Bringing IT Partners on campus along for the ride
+	* Bob Winding Research data security NIST reg compliance in GovCloud
+	* Brett Haranin: Cloud adoption, a developer's perspective
+	* Ben Rota (Harvard): Cost engineering in AWS
+	* Scotty Logan: Dirty dancing in the cloud
+	* Rob Fatland: Research cloud computing garden path success stories
+	* Erik Mitchell: Library and NoSQL
+	* Sara Jeanes: Cloud contracts and procurement
+	* Shawn Bower: The meaning of DevOps
 
 
 
