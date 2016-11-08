@@ -60,9 +60,18 @@ Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right 
 	* Scotty Logan: Dirty dancing in the cloud
 	* Rob Fatland: Research cloud computing garden path success stories
 	* Erik Mitchell: Library and NoSQL
+		* UCLA and UC Berkeley; 378e6; NoSQL
 	* Sara Jeanes: Cloud contracts and procurement
 	* Shawn Bower: The meaning of DevOps
+	* Dave (Cornell)
+		* access control and mutual bursting
+			* https://www.cac.cornell.edu/services/cloudservices.aspx
+			* https://federatedcloud.org/
 
+* Mark Fischer talk: Automation on AWS
+	* Codify infrastructure decisions
+	* Document in code and so on
+	* Have a process...
 
 
 {% include links.html %}
