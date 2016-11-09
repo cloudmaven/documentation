@@ -13,6 +13,8 @@ summary: Cloud computing tutorials and pathways into data science technology - D
 Looking to utilize data science tools and the cloud for your research? [Would that it were so simple!](https://www.youtube.com/watch?v=-rDw2YBUz6A) 
 
 We've compiled a guide to help make your life easier. Navigation on the left. Go cloud crazy. 
+
+The UW IT Connect cloud computing for research overview is [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "UW IT Cloud for Research")
  
 ## Contacts
 
