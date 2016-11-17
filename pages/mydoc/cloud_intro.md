@@ -25,12 +25,70 @@ a research platform.
 that specifically in the AWS framework [here](https://awstcocalculator.com/).
 * If you are interested in using Python to control your AWS computing environment: 
 Look into the [boto SDK](http://boto3.readthedocs.io/en/latest/ "Boto 3")
+* AWS EC2 instance [descriptions](http://cloudmaven.org "kilroy") 
+and [on-demand rates](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-demand rates")
 
 (Website in dev; flag string is 'kilroy') 
 
+## Geohackweek UW Cloud Intro November 17 2016
+
+This presentation is from the view of a cloud computing advocacy team at UW Research Computing. 
+You can reach us at rob at uw dot edu and amandach at uw dot edu.
+We present this as Introduction, Framework, Jargon Dive and Closing; then WRYTYNSP with Amanda.
+
+* Your goal is the same as our goal: Focus on the science.
+* CC is successful only when it disappears; it is showing every sign of succeeding.
+* If you have challenges in your research computing: You may need to make some changes.
+	* If you are the Red Queen you may perceive that you do not have time...
+	* This talk is intended to give you a Framework for thinking about cloud computing
+
+## Cloud Computing Framework Elements
+
+* Research in the Data Deluge Era = perfunctory + exploratory
+	* GDS
+
+* Cloud pillars (sounds dubious) are compute, storage, network, data management and Services
+	
+* Cloud management pillars are identity, authentication, security, cost, and training
+
+* Cloud practice pillars are Build, Test, Share 
+	* And here at UW IT we have some more notes and suggestions
+
+* Beware Geeks...
+	* "Hey I just put my Jupyter Notebook on the cloud!!!"
+	* More accurately the cloud is a fractal wild west
+		* http://cloudmaven.org has an entry on installing Jupyter on the cloud
+		* Oh but there is a nohup gotcha
+		* Oh but there is a kernel patch gotcha
+		* Oh ...
+
+## Let us go then, you and I, briefly into the jargon abyss
+
+* Third Party
+* Stack Overflow
+* YouTube
+* AWS
+* Azure
+* S3 / Blob
+* EC2: Tim and Tychele
+* IAM
+* EBS
+* RDS
+* AMI
+* Exit Strategy
+* HTC
+* HPC and CFD and the Law of Moore
+* IOT
+* Servers and Clients and APIs 
+
+## Final Remarks
+
+* The cloud is work; but "we like what we are used to" so the challenge is really put to the Red Queens
+* Our motto 'Build Test Share' is about research computing (props to eScience) where cloud is one of many means to this end
+* That said: The Maven can stand up a data API in 20 minutes on Azure. Take it away Maven.
+
 
 ## Cornell Cloud Forum Notes
-
 Forum website is [here](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
 
 Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right here.
