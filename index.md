@@ -1,3 +1,5 @@
+$Don't Panic$
+
 ---
 title: Documentation for Cloud Computing and Data Science
 keywords: sample homepage
@@ -7,8 +9,6 @@ permalink: index.html
 toc: false
 summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.
 ---
-
-# Don't Panic
 
 ## Introduction
 
