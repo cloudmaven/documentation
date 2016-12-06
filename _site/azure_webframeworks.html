@@ -572,6 +572,64 @@ $('#toc').on('click', 'a', function() {
 <h2 id="adding-pdf-buttons">Adding PDF buttons</h2>
 <p>Download PDF <a href="/documentation/pdf/Doc02_Djargon_on_Azure_Add_PDF_Button.pdf">here</a></p>
 
+<h2 id="introduction">Introduction</h2>
+<p>The purpose of this page is to introduce you to the integration of three common Python web frameworks
+–Django, Bottle and Flask–with the Azure cloud technology stack. The principle idea is that Microsoft 
+has a powerful IDE called Visual Studio that you can configure to publish content to Azure; and it 
+allows you to quickly configure and publish one of these web frameworks. We particularly endorse this
+route because the web frameworks in turn support APIs (Application Program Interfaces) that serve out 
+data in response to RESTful queries.</p>
+
+<h2 id="example-rest-api-client-in-python">Example REST API Client in Python</h2>
+
+<p>Here is a typical scenario: You have some stream gauge data that you would like to make publicly available 
+through a programmatic interface. By this we mean that a computer program can talk to your system and obtain
+data without involving human beings, web browsers, clicking on <Download> buttons, and so forth.</Download></p>
+
+<p>You begin by following this recipe:</p>
+
+<ol>
+  <li>Get an Azure account</li>
+  <li>Install Visual Studio and link it to your Azure account</li>
+  <li>Create a new Django solution in Visual Studio called streamdata.</li>
+  <li>Include an API in your solution and publish this to Azure.
+    <ul>
+      <li>This might be a website called streamdata.azurewebsites.net</li>
+    </ul>
+  </li>
+  <li>Test your API; let us imagine that it works great</li>
+  <li>Write a Python Client that automatically gets stream data from the website</li>
+</ol>
+
+<p>“Write a Python Client” might sound intimidating but it is quite straightforward.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">dif</span><span class="p">(</span><span class="n">calltype</span><span class="p">,</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">station</span><span class="p">):</span>
+    <span class="n">baseurl</span> <span class="o">=</span> <span class="s">'https://streamdata.azurewebsites.net/'</span>
+    <span class="n">apiqual</span> <span class="o">=</span> <span class="s">'api/'</span>
+    <span class="n">typequal</span> <span class="o">=</span> <span class="n">calltype</span> <span class="o">+</span> <span class="s">'?'</span>
+    <span class="n">sdatequal</span> <span class="o">=</span> <span class="s">'start='</span> <span class="o">+</span> <span class="n">date1</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+    <span class="n">edatequal</span> <span class="o">=</span> <span class="s">'end='</span> <span class="o">+</span> <span class="n">date2</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+    <span class="n">stationqual</span> <span class="o">=</span> <span class="s">'station='</span> <span class="o">+</span> <span class="n">station</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+    <span class="n">api_call</span> <span class="o">=</span> <span class="n">baseurl</span> <span class="o">+</span> <span class="n">apiqual</span> <span class="o">+</span> <span class="n">typequal</span> <span class="o">+</span> <span class="n">sdatequal</span> <span class="o">+</span> <span class="n">edatequal</span> <span class="o">+</span> <span class="n">stationqual</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">api_call</span><span class="p">)</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">t3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">'urlopen required'</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">,</span> <span class="s">'seconds; read() required'</span><span class="p">,</span> <span class="n">t3</span> <span class="o">-</span> <span class="n">t2</span><span class="p">,</span> <span class="s">'seconds'</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">dif</span><span class="p">(</span><span class="s">'gethydrograph'</span><span class="p">,</span> <span class="s">'1995-01-01'</span><span class="p">,</span> <span class="s">'2000-12-31'</span><span class="p">,</span> <span class="s">'UCHKU'</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">94</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>You would run this program on your laptop (say) or some other computer where you want to look
+at the data. It will reach out to the Azure site and come back with the data if all goes well.</p>
+
 
 
     <div class="tags">
@@ -596,7 +654,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Nov 1, 2016 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Dec 6, 2016 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

@@ -566,7 +566,238 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>Placeholder. Page coming soon.</p>
+  <p><img src="/documentation/images/cloudcore_Alice_hallway.png" alt="pic1" /></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The purpose of this document – available <a href="http://cloudmaven.org" title="Cloud Maven technical website">here</a> – is to introduce you to cloud computing as
+a research platform.</p>
+
+<h2 id="some-useful-links">Some useful links</h2>
+
+<ul>
+  <li>The University of Washington has introductory material 
+<a href="https://itconnect.uw.edu/research/cloud-computing-for-research/" title="Intro to cloud computing for research">here</a>.</li>
+  <li>True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
+that specifically in the AWS framework <a href="https://awstcocalculator.com/">here</a>.</li>
+  <li>If you are interested in using Python to control your AWS computing environment: 
+Look into the <a href="http://boto3.readthedocs.io/en/latest/" title="Boto 3">boto SDK</a></li>
+  <li>AWS EC2 instance <a href="http://cloudmaven.org" title="kilroy">descriptions</a> 
+and <a href="http://aws.amazon.com/ec2/pricing/on-demand" title="AWS EC2 on-demand rates">on-demand rates</a></li>
+</ul>
+
+<p>(Website in dev; flag string is ‘kilroy’)</p>
+
+<h2 id="geohackweek-uw-cloud-intro-november-17-2016">Geohackweek UW Cloud Intro November 17 2016</h2>
+
+<p>This presentation is from the view of a cloud computing advocacy team at UW Research Computing. 
+You can reach us at rob at uw dot edu and amandach at uw dot edu.
+We present this as Introduction, Framework, Jargon Dive and Closing; then WRYTYNSP with Amanda.</p>
+
+<ul>
+  <li>Your goal is the same as our goal: Focus on the science.</li>
+  <li>CC is successful only when it disappears; it is showing every sign of succeeding.</li>
+  <li>If you have challenges in your research computing: You may need to make some changes.
+    <ul>
+      <li>If you are the Red Queen you may perceive that you do not have time…</li>
+      <li>This talk is intended to give you a Framework for thinking about cloud computing</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cloud-computing-framework-elements">Cloud Computing Framework Elements</h2>
+
+<ul>
+  <li>Research in the Data Deluge Era = perfunctory + exploratory
+    <ul>
+      <li>GDS</li>
+    </ul>
+  </li>
+  <li>
+    <p>Cloud pillars (sounds dubious) are compute, storage, network, data management and Services</p>
+  </li>
+  <li>
+    <p>Cloud management pillars are identity, authentication, security, cost, and training</p>
+  </li>
+  <li>Cloud practice pillars are Build, Test, Share
+    <ul>
+      <li>And here at UW IT we have some more notes and suggestions</li>
+    </ul>
+  </li>
+  <li>Beware Geeks…
+    <ul>
+      <li>“Hey I just put my Jupyter Notebook on the cloud!!!”</li>
+      <li>More accurately the cloud is a fractal wild west
+        <ul>
+          <li>http://cloudmaven.org has an entry on installing Jupyter on the cloud</li>
+          <li>Oh but there is a nohup gotcha</li>
+          <li>Oh but there is a kernel patch gotcha</li>
+          <li>Oh …</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="let-us-go-then-you-and-i-briefly-into-the-jargon-abyss">Let us go then, you and I, briefly into the jargon abyss</h2>
+
+<ul>
+  <li>Third Party</li>
+  <li>Stack Overflow</li>
+  <li>YouTube</li>
+  <li>AWS</li>
+  <li>Azure</li>
+  <li>S3 / Blob</li>
+  <li>EC2: Tim and Tychele</li>
+  <li>IAM</li>
+  <li>EBS</li>
+  <li>RDS</li>
+  <li>AMI</li>
+  <li>Exit Strategy</li>
+  <li>HTC</li>
+  <li>HPC and CFD and the Law of Moore</li>
+  <li>IOT</li>
+  <li>Servers and Clients and APIs</li>
+</ul>
+
+<h2 id="final-remarks">Final Remarks</h2>
+
+<ul>
+  <li>The cloud is work; but “we like what we are used to” so the challenge is really put to the Red Queens</li>
+  <li>Our motto ‘Build Test Share’ is about research computing (props to eScience) where cloud is one of many means to this end</li>
+  <li>That said: The Maven can stand up a data API in 20 minutes on Azure. Take it away Maven.</li>
+</ul>
+
+<h2 id="cornell-cloud-forum-notes">Cornell Cloud Forum Notes</h2>
+<p>Forum website is <a href="http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016" title="Cornell Cloud Forum 2016">here</a></p>
+
+<p>Temporarily I am placing notes from the Cornell Cloud Forum Nov 8–9 2016 right here.</p>
+
+<ul>
+  <li>First speaker is Gerard Shockley from Boston Univeristy; he covered the breakdown of information from the survey
+    <ul>
+      <li>Of particular interest were the remarks on Exit and Entrance strategies; and HIPAA</li>
+    </ul>
+  </li>
+  <li>Second speaker is Sharif Nijim from Notre Dame
+    <ul>
+      <li>Very low-key individual</li>
+    </ul>
+  </li>
+  <li>Panel discussion
+    <ul>
+      <li>Bob Winding Notre Dame</li>
+      <li>Gerard Shockly Boston University</li>
+      <li>Laurie Collinsworth Cornell University</li>
+      <li>Ben Rota Harvard University</li>
+      <li>From the “Future State” slide and related discussion
+        <ul>
+          <li>CloudFront WAF</li>
+          <li>VPC Mirror port</li>
+          <li>VDI in the cloud</li>
+          <li>Authentication in the cloud</li>
+          <li>IPS/IDS Palo Alto</li>
+          <li>Trying to avoid choke points</li>
+          <li>Can’t replicate AWS tools/facilities; so use those first and augment</li>
+          <li>“We’re just trying to solve the learning curve problem.”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Lightning Rounds: Introduced by Jim Behm University of Michigan
+    <ul>
+      <li>Phil Robinson (Cornell): Student services IT (SSIT)</li>
+      <li>Jeff Gumpf: AWS workspaces for grad students
+        <ul>
+          <li>Kilroy Absolutely have to pursue this with Nancy / STF Pool A plan
+            <ul>
+              <li>$80 per student per ? time ?</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Susan Kelley (Yale): Bringing IT Partners on campus along for the ride</li>
+      <li>Bob Winding: Research data security NIST 800-171 compliance in GovCloud (ITAR information)</li>
+      <li>Brett Haranin: Cloud adoption, a developer’s perspective (skipped)</li>
+      <li>Ben Rota (Harvard): Cost engineering in AWS</li>
+      <li>Scotty Logan: Dirty dancing in the cloud</li>
+      <li>Rob Fatland: Research cloud computing garden path success stories</li>
+      <li>Erik Mitchell: Library and NoSQL
+        <ul>
+          <li>UCLA and UC Berkeley; 378e6; NoSQL</li>
+        </ul>
+      </li>
+      <li>Sara Jeanes: Cloud contracts and procurement</li>
+      <li>Shawn Bower: The meaning of DevOps</li>
+      <li>Dave (Cornell)
+        <ul>
+          <li>access control and mutual bursting
+            <ul>
+              <li>https://www.cac.cornell.edu/services/cloudservices.aspx</li>
+              <li>https://federatedcloud.org/</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Mark Fischer talk: Automation on AWS
+    <ul>
+      <li>Codify infrastructure decisions</li>
+      <li>Document in code and so on</li>
+      <li>Have a process…</li>
+      <li>And here are our three patterns for solving problems
+        <ul>
+          <li>cloud formation template: How to create (and destroy) resources
+            <ul>
+              <li>JSON, stack… fire it off with CLI or API or console</li>
+              <li>Create Stack is the button you want to get to in the console</li>
+              <li>Delete Stack is another nice thing… “did I really delete everything I needed to?” &gt; Yes!</li>
+              <li>Configuration as code: Version control!</li>
+            </ul>
+          </li>
+          <li>docker: For environment configuration (to avoid go install all of these packages)</li>
+          <li>Jenkins: DevOps gap-filling glue. “Continuous integration (CI) tool”
+            <ul>
+              <li>check out a git repo</li>
+              <li>build a Java app</li>
+              <li>integrate with slack / email / …</li>
+              <li>Kilroy worth a look I think: We should understand what all Jenkins can do… “warr files”?
+                <ul>
+                  <li>Could this be Brian Warr? Probably not.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Sharif Nijim on moving a Windows-oriented DMS to AWS</p>
+  </li>
+  <li>Panel on ERPs in the Cloud: Enterprise Resource Planning (Workday and the like)
+    <ul>
+      <li>Jim Behm, University of Michigan</li>
+      <li>David McCartney, Ohio State</li>
+      <li>Glenn Blackler, University of California, Santa Cruze</li>
+      <li>Erik Lundberg, University of Washington</li>
+    </ul>
+  </li>
+  <li>Stanford talk on security standards and related
+    <ul>
+      <li>Bruce Vincent</li>
+      <li>Scotty Logan
+        <ul>
+          <li>As last year: We should steal (kilroy) everything this guy does</li>
+        </ul>
+      </li>
+      <li>Xueshan Feng</li>
+      <li>Jim Laney, Rupert Burke (kilroy) at UW IT might be interested in these links</li>
+      <li>https://minsec.stanford.edu/ Stanford’s prescriptive system security guidelines</li>
+      <li>http://dataclass.stanford.edu/ is the Stanford classification system</li>
+    </ul>
+  </li>
+</ul>
 
 
 
@@ -592,7 +823,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Nov 1, 2016 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Dec 6, 2016 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>
