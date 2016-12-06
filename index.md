@@ -1,5 +1,5 @@
 ---
-title: Don't Panic... Documentation for Cloud Computing and Data Science
+title: Don't Panic...\n Documentation for Cloud Computing and Data Science
 keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
