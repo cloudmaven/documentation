@@ -8,6 +8,8 @@ toc: false
 summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.
 ---
 
+# Don't Panic
+
 ## Introduction
 
 Are you looking to utilize data science tools and the cloud for your research? [Would that it were so simple!](https://www.youtube.com/watch?v=-rDw2YBUz6A) 
