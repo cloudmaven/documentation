@@ -5,7 +5,7 @@ tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
 toc: false
-summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington.
+summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington. We offer solutions to help streamline your research analysis, processing, collaboration, and publication pathways. 
 ---
 
 ## Introduction
