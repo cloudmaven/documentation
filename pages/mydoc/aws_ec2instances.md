@@ -14,6 +14,10 @@ An EC2 (Elastic Cloud Compute) instance is essentially a virtual server; it is n
 
 The purpose of this page is to describe the terminology and relationships of Amazon Web Services (AWS) EC2 instances, AMIs, Elastic Block Storage (EBS) and Snapshots of EBS volumes: Broadly EC2 Resources. EBS or Elastic Block Storage and EFS or Elastic File System are two ways of managing operational memory in AWS EC2 instances and clusters.  In passing we also define / describe Elastic IPs and Key Pairs and sharing access to S3. This document does not currently cover EFS, Elastic File System.
  
+## Pricing
+EC2 Instance pricing: https://aws.amazon.com/ec2/pricing/on-demand/
+[AWS Calculator](http://calculator.s3.amazonaws.com/index.html)
+
 ## Setting up an EC2 Instance
 
 Links
