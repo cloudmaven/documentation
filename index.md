@@ -1,5 +1,5 @@
 ---
-title: Don't Panic... Documentation for Cloud Computing and Data Science
+title: Documentation for Cloud Computing and Data Science
 keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
@@ -10,7 +10,7 @@ summary: Cloud computing tutorials and pathways into data science technology - D
 
 ## Introduction
 
-Are you looking to use data science tools and the cloud for your research? [(Would that it were so simple!)](https://www.youtube.com/watch?v=-rDw2YBUz6A) 
+![Don't Panic!](/documentation/images/dontpanic.png) Are you looking to use data science tools and the cloud for your research? [(Would that it were so simple!)](https://www.youtube.com/watch?v=-rDw2YBUz6A) 
 
 We've compiled a guide to help make your life easier. Navigation on the left. Go cloud crazy. 
 
