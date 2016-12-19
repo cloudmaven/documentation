@@ -16,7 +16,7 @@ This describes how to run a Jupyter Notebook server on an AWS instance for acces
 2. Install Jupyter Notebook (sudo apt-get install jupyter-notebook)
 3. Once you've installed Jupyter Notebook, follow the steps below:
 
-``` 
+```bash
 $ jupyter notebook --generate-config 
 
 ```
@@ -47,7 +47,7 @@ $ vi ~/.jupyter/jupyter_notebook_config.py
 ```
 
 You will want to add the following lines to the config file (or uncomment those lines): 
-```
+```bash
 # Set options for certfile, ip, password, and toggle off
 # browser auto-opening
 c.NotebookApp.certfile = u'/absolute/path/to/your/certificate/mycert.pem'
