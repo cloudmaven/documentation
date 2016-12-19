@@ -58,6 +58,16 @@ sudo service tomcat7 restart
 ```
 
 Download the latest release of geoserver web archive on this page: http://geoserver.org/release/stable/
-At this time, the latest release is 
+At this time, the latest release is 2.10.
 
+```bash
+$ wget 'http://sourceforge.net/projects/geoserver/files/GeoServer/2.10.0/geoserver-2.10.0-war.zip'
+$ sudo mv geoserver-2.10.0-war.zip /var/lib/tomcat7/webapp/
+$ sudo unzip /var/lib/tomcat7/webapp/
+$ sudo service tomcat7 restart
+```
+
+That's it. You may be prompted to install unzip in that case, just `sudo apt install unzip` and proceed accordingly. 
+
+The next steps will involve attaching a disk drive to your EC2 instance and specifying the data folder location in geoserver as a best practice to separate your data from your service deployment machine. 
 {% include links.html %}
