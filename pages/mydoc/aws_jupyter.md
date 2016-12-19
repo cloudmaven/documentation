@@ -18,9 +18,9 @@ This describes how to run a Jupyter Notebook server on an AWS instance for acces
 
 ```bash
 $ jupyter notebook --generate-config 
-
 ```
 Then launch ipython and generate a hashed passwor to add to the configuration file you generated:
+
 ```bash
 $ ipython
 
@@ -32,21 +32,25 @@ Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
 ```
 
 Generate a self-signed certificate using openssl so that your hashed password is encrypted
+
 ```
 $ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 ```
 
 Set Jupyter Notebook to use the certificate when it starts: 
+
 ```
 $ jupyter notebook --certfile=mycert.pem --keyfile mykey.key
 ```
 
 Edit the config file:
+
 ```
 $ vi ~/.jupyter/jupyter_notebook_config.py
 ```
 
 You will want to add the following lines to the config file (or uncomment those lines): 
+
 ```bash
 # Set options for certfile, ip, password, and toggle off
 # browser auto-opening
