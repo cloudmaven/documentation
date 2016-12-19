@@ -16,6 +16,8 @@ We've compiled a guide to help make your life easier. Navigation on the left. Go
 
 The UW IT Connect cloud computing for research overview is [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "UW IT Cloud for Research")
  
+
+
 ## Contacts
 
 Rob Fatland \: rob5[at]uw[dot]edu
