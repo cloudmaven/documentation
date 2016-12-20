@@ -112,6 +112,14 @@ entries:
       url: /aws_rds.html
       output: web, pdf
 
+  - title: AWS Case Studies
+    output: web, pdf
+    folderitems:
+    
+    - title: Genome Association Studies
+      url: /aws_genomeassociationstudies.html
+      output: web, pdf
+ 
   - title: Azure Procedurals
     output: web, pdf
     folderitems:
