@@ -9,5 +9,10 @@ permalink: proposals.html
 folder: mydoc
 ---
 
-Placeholder. Page coming soon. 
+## Introduction
+
+The purpose of this page is to describe cloud ...
+
+
+
 {% include links.html %}
