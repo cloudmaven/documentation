@@ -1,5 +1,5 @@
 ---
-title: Don't Panic...
+title: Don't Panic!
 keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
