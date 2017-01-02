@@ -29,10 +29,13 @@ Look into the [boto SDK](http://boto3.readthedocs.io/en/latest/ "Boto 3")
 and [on-demand rates](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-demand rates")
 
 ## Warnings
+***The information on this page could start you on an irrevocable course into cloud computing; massively reducing
+your waiting time for intensive jobs to complete and enabling you to share your results with your colleagues and
+colleagues you have never even met. Proceed at your own risk.***
 
 ## Cloud-based Research: The Theoretical Minimum Knowledge You Need
 
-###Introduction
+### Introduction
 This essay presents cloud computing for research in its essentials, a 'theoretical minimum' that you should know if you are interested in doing research computing on the cloud. (Term borrowed from Leonard Susskind.) The cloud is a powerful flexible computing environment that can change and particularly streamline how you do computing. We present the argument for this here along with caveats and qualifiers. Our goal is to give you a realistic picture of what a cloud transition involves.
 
 ### The Case for Cloud
@@ -41,7 +44,7 @@ you see room for improvement in your computing then the cloud is worth understan
 advantages of cloud migration.
 * You pay for the compute power that you use.
 * You do not have to purchase, maintain, update, and re-purchase equipment
-#* You have access to computing at tremendous scale; from one core to tens of thousands depending on your needs
+* You have access to computing at tremendous scale; from one core to tens of thousands depending on your needs
 * You do not have to wait for cloud computing resources to become available
 * You can run your computing jobs to completion without interruption
 * You can purchase services such as a database without having to install and maintain them
@@ -71,6 +74,8 @@ Cost is managed by turning off resources when they are not in use; and by carefu
 when running jobs. Both of these tasks can be associated with automatic alarms that can prevent cloud usage from getting
 #out of control and expensive.
 
+See also the section below on cloud research credits, a way to mitigate the cost of learning if the cloud works for you.
+
 ### Machines
 Cloud computers typically run a version of Linux or a version of Windows. Furthermore you can choose from among dozens of machine types with varying amounts of memory and computing power. Cloud computers are accessed from (say) your laptop using various Client Applications, starting with **ssh** or **PuTTY**. As a rule you would develop your code locally, test it, and then deploy it to cloud machines where it runs. 
 
@@ -98,16 +103,25 @@ The cloud is elastic -- designed to expand to meet computing challenges -- but t
 
 ### Research Credit
 
+AWS and Microsoft Azure both have programs to grant cloud credits to approved research programs. The one-page application typically requires one to three months to process and can secure you in the neighborhood of $20,000 in cloud credits good for one year.
+
 https://aws.amazon.com/research-credits/ 
 http://azure4research.com
 
-This section describes applying for and using a research credit-based cloud account. The idea is to remove the cost risk of learning how to use the cloud as a funded experiment while anticipating future costing should the experiment prove successful.
+The idea of these programs is to remove the cost risk of learning how to use the cloud. We anticipate that in the course
+of a successful cloud adoption process you will learn to cost and budget for cloud computing after the grant is expired.
 
-### Support
-You probably want Support. You can pay for it with your research credits. It costs you $100 / month for "Business Level support" (or some percent of your monthly budget if that is larger). 
+### Support contracts
+You may very well want to pay a surcharge for technical support on your cloud account. You can pay for this using your research credits. It costs you $100 / month on AWS for "Business Level support" (or ten percent of your monthly budget if that is larger). You will 
+be connected with skilled cloud professionals who will be able to help you overcome technical obstacles. You can also opt in to
+a support contract when you realize you need it.
 
 ### Services
 This section describes the part of the cloud that you don't know about; but can learn: Services that are often dissociated from machines.
+
+## Divider
+From here down is resource material that Kilroy needs to integrate into this page. Also missing is the DSS path to
+spending time with solution architects. 
 
 ## Geohackweek UW Cloud Intro November 17 2016
 
@@ -158,11 +172,9 @@ We present this as Introduction, Framework, Jargon Dive and Closing; then WRYTYN
 
 
 ## Cornell Cloud Forum Notes
-Forum website is [here](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
+[Forum website](http://cio.cornell.edu/community/itcornell-community-conferences/cloud-forum-2016 "Cornell Cloud Forum 2016")
 
-Temporarily I am placing notes from the Cornell Cloud Forum Nov 8--9 2016 right here.
-
-* First speaker is Gerard Shockley from Boston Univeristy; he covered the breakdown of information from the survey
+* Gerard Shockley from Boston Univeristy; information from the survey
 	* Of particular interest were the remarks on Exit and Entrance strategies; and HIPAA
 
 * Second speaker is Sharif Nijim from Notre Dame
