@@ -47,4 +47,6 @@ Draft Agenda (to be modified based on enrollment responses)
 * 15:45 - 17:00 Discussion 
 * 17:00 Event Closes 
 
+Please fill out the registration form [here](https://docs.google.com/a/uw.edu/forms/d/e/1FAIpQLScVwNKd-Bf7jO_r8lyMGHQlEcGbFTc4nP0vRVeo4iCweL8hLw/viewform?c=0&w=1&usp=mail_form_link)
+
 {% include links.html %}
