@@ -119,7 +119,11 @@ entries:
     - title: Genome Association Studies
       url: /aws_genomeassociationstudies.html
       output: web, pdf
- 
+      
+    - title: Geospatial Data Sharing
+      url: /aws_geoserver.html
+      output: web, pdf
+      
   - title: Azure Procedurals
     output: web, pdf
     folderitems:
