@@ -54,8 +54,9 @@ advantages of cloud migration.
 
 * You can easily build a web presence and use that to share data and information: With collaborators or with the public
 
-### The Case for the eScience Institute. 
-See [this website](http://escience.washington.edu/)!
+### eScience Institute. 
+The **eScience Institute** is our originating organization at the University of Washington. They can help you with
+computing challenges beyond the cloud. For more please visit [our website](http://escience.washington.edu/)!
 
 ### Skills
 In order to successfully carry your computing to the cloud -- in addition to the transfer process -- you and your team will need to learn a new set of skills. Some of the terms are general and some are associated with a cloud vendor you might work with. In general terms you will need to understand account management, security, cost estimation, and computing scale; all in relation to your work. You will also benefit from an approach to research software development that keeps your project on track.  So in summary there is some learning and implementation overhead. We recommend setting aside time for training (either online or in person if this is possible) and setting aside more time for group discussions on how to migrate to the cloud. If your research group sees the benefits and are anxious to get going they/you are likely to find that the cloud learning curve is not as onerous as it might first seem; and it is even fun.
