@@ -120,14 +120,17 @@ This section describes the part of the cloud that you don't know about; but can 
 
 ### Getting started
 
-Your access to the cloud proceeds based on having a *cloud account* which is like an email account. Your account ID gets you
-access (through a web browser) to a cloud console where you allocate and manage resources. For example suppose you have both
-some data and some processing code. You can log in to your cloud account, allocate a machine (for which you will pay an hourly
-rate, for example 3 cents per hour) and get login credentials for that machine; all from your browser. Once you have those
-credentials you can use WinSCP to copy both your code and your data to your rented cloud computer. You can compile your code
-and run an analysis on the data; and you can recover the results again using WinSCP back to your laptop. 
+Your access to the cloud depends on you having a *cloud account* like an email account. Your account ID gets you
+access through a web browser to a cloud console where you allocate and manage resources. Suppose you have both
+data and code on your Windows PC. You want to get a powerful machine to run some analysis; here are the steps:
+* Log in to your cloud account
+* Allocate a Linux machine (for which you will pay an hourly rate, for example 47 cents per hour
+* Download the login credentials for that machine
+* Use WinSCP to copy your code and data to that rented cloud computer 
+* Compile and run your code
+* Recover the results using WinSCP 
 
-Therefore to get started you will need an account. There are four approaches (at least!):
+There are many more details but this example covers the basic framework of getting something done on the cloud. To get started you will need an account. There are at least four approaches open to you:
 
 1. Cloud novice approach: Get a [$100 free credit account on AWS](https://aws.amazon.com/free/) or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
 
