@@ -5,7 +5,7 @@ last_updated: December 19, 2016
 tags: [research_computing,geospatial,case_studies]
 summary: "Use of Geospatial Tools for Research - Case Studies "
 sidebar: mydoc_sidebar
-permalink: rc_geoserver.html
+permalink: aws_geoserver.html
 folder: mydoc
 ---
 

@@ -119,7 +119,15 @@ entries:
     - title: Genome Association Studies
       url: /aws_genomeassociationstudies.html
       output: web, pdf
- 
+      
+    - title: Geospatial Data Sharing
+      url: /aws_geoserver.html
+      output: web, pdf
+      
+    - title: Rosetta
+      url: /aws_rosetta.html
+      output: web, pdf
+      
   - title: Azure Procedurals
     output: web, pdf
     folderitems:
@@ -140,10 +148,6 @@ entries:
       url: /azure_webframeworks.html
       output: web, pdf
 
-    - title: Data API building
-      url: /azure_api.html
-      output: web, pdf
-
     - title: Azure Machine Learning Studio 
       url: /azure_mls.html
       output: web, pdf
@@ -154,6 +158,14 @@ entries:
 
     - title: Jupyter Notebooks on Azure
       url: /azure_jupyter.html
+      output: web, pdf
+      
+  - title: Azure Case Studies
+    output: web, pdf
+    folderitems:
+    
+    - title: Data API building
+      url: /azure_api.html
       output: web, pdf
   
   - title: Google Procedurals
@@ -166,22 +178,6 @@ entries:
 
     - title: Google App Engine
       url: /google_appengine.html
-      output: web, pdf
-
-  - title: Research Computing Case Studies
-    output: web, pdf
-    folderitems:
-
-    - title: Geoserver
-      url: /rc_geoserver.html
-      output: web, pdf
-
-    - title: Rosetta
-      url: /rc_rosetta.html
-      output: web, pdf
-
-    - title: Organic Chemistry
-      url: /rc_orgchem.html
       output: web, pdf
 
   - title: Resources

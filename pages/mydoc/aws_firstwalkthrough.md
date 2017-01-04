@@ -11,19 +11,14 @@ folder: mydoc
 
 Download PDF [here](/documentation/pdf/First_cloud_walkthrough.pdf)
 
-## Useful links
-[this link](http://aws.amazon.com/ec2/pricing/on-demand)
-
 ## Introduction
-The purpose of this document -- available at http://cloudmaven.org -- is to narrate a common experience:  
-"First time using the AWS cloud" by making you the observer of a research graduate student, Pearl by name, 
-who goes through that process. Pearl's situation is a fairly common pattern: She has a large amount of 
-data processing in mind for her work and she has written some necessary software in Python. There is 
-more on this below. The point is she wants to get onto the cloud and get back to running her code on 
-the data as quickly as possible. She has taken on an additional task as well: Pearl will manage the 
-cloud account for the entire research group so she will need some additional skills. 
+The purpose of [this page](https://cloudmaven.github.io/documentation/aws_firstwalkthrough.html) is to provide you with useful 'get-started' information for using the Amazon Web Services (AWS) public cloud; in an informal 'walk-through' style of presentation. You're gonna love it! Or if you don't tell us why!
 
-(Note this document is under construction, incomplete, missing bits flagged with 'kilroy')
+## Links
+[cost and power of various AWS EC2 instances (cloud computers)](http://aws.amazon.com/ec2/pricing/on-demand)
+
+## Warnings
+No warnings at this time.
 
 ## Objectives
 
@@ -41,16 +36,33 @@ cloud account for the entire research group so she will need some additional ski
 * Figure out how much this should have    cost and how much it did cost 	
 * Calculate what a large processing    run will cost
 
-## Discover the AWS Console and decouple the account from a billing account
-The lead faculty member for this project is David; who some time ago received an AWS cloud account. This 
-account was linked to another account that acted as a Master Account for purposes of creating a single 
+## Preamble
+Let's observe a research graduate student, Pearl by name, 
+who gets Account Manager access to her team's AWS account. 
+Pearl's situation is a fairly common pattern: She has a large amount of 
+data processing in mind for her work and she has written some necessary software in Python. 
+She needs some computer power; and the cloud is ready to go, no waiting. 
+There is more on this below. She wants to get onto the cloud and get to running her code 
+against her data as quickly as possible. 
+She has taken on an additional task as well: Pearl will manage the 
+cloud account for the entire research group... so she will need some additional skills. 
+
+## Decouple the Account
+The lead faculty member for this project is David; who some time ago established an AWS cloud account. 
+This account was linked to another account that acted as a Master Account for purposes of creating a single 
 point of billing. To receive his research credits David will have to decouple his account from that 
-Master Account. We follow Pearl as she breaks this link. 
+Master Account. We follow Pearl as she breaks this linkage. 
 
+Go to the [AWS console login page](https://console.aws.amazon.com). Depending on your browser 
+history this might require you to click an additional small-font link that says 'Sign-in using root account
+credentials' under the blue sign-in button. You can use an anonymous browser session to get past
+this sort of confusing mis-direction.
 
-Log in as David: Given his account name and his password. The URL is kilroy. Kilroy screencap.
+Pearl will log in here using David's Account manager credentials: She needs his account name and password. 
 
-Notice that Pearl is now looking at the main AWS console featuring 50+ icons, each with a short text description. 
+(kilroy: screencap)
+
+Pearl is now looking at the main AWS console: Icons, short descriptions, a bit intimidating. 
 
 ![pic1](/documentation/images/aws_firstwalkthrough_pic1.png)
 
