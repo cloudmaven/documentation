@@ -53,7 +53,7 @@ This account was linked to another account that acted as a Master Account for pu
 point of billing. To receive his research credits David will have to decouple his account from that 
 Master Account. We follow Pearl as she breaks this linkage. 
 
-Go to the [AWS console login page](https://console.aws.amazon.com/console/home). Depending on your browser 
+Go to the [AWS console login page](https://console.aws.amazon.com). Depending on your browser 
 history this might require you to click an additional small-font link that says 'Sign-in using root account
 credentials' under the blue sign-in button. You can use an anonymous browser session to get past
 this sort of confusing mis-direction.
