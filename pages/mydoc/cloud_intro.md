@@ -32,8 +32,6 @@ and [on-demand rates](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-de
 your waiting time for intensive jobs to complete and enabling you to share your results with your colleagues and
 colleagues you have never even met. Proceed at your own risk.***
 
-## Cloud-based Research: The Theoretical Minimum Knowledge You Need
-
 ### Introduction
 This essay presents cloud computing for research in its essentials, a 'theoretical minimum' that you should know if you are interested in doing research computing on the cloud. (Term borrowed from Leonard Susskind.) The cloud is a powerful flexible computing environment that can change and particularly streamline how you do computing. We present the argument for this here along with caveats and qualifiers. Our goal is to give you a realistic picture of what a cloud transition involves.
 
@@ -41,12 +39,19 @@ This essay presents cloud computing for research in its essentials, a 'theoretic
 If your computing environment meets your needs then migrating to the cloud could very well be unnecesary. However if
 you see room for improvement in your computing then the cloud is worth understanding. Here is a short list of some of the major
 advantages of cloud migration.
+
 * You pay for the compute power that you use.
+
 * You do not have to purchase, maintain, update, and re-purchase equipment
+
 * You have access to computing at tremendous scale; from one core to tens of thousands depending on your needs
+
 * You do not have to wait for cloud computing resources to become available
+
 * You can run your computing jobs to completion without interruption
+
 * You can purchase services such as a database without having to install and maintain them
+
 * You can easily build a web presence and use that to share data and information: With collaborators or with the public
 
 ### The Case for the eScience Institute. 
