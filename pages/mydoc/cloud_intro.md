@@ -54,12 +54,17 @@ advantages of cloud migration.
 
 * You can easily build a web presence and use that to share data and information: With collaborators or with the public
 
-### eScience Institute. 
+### eScience Institute 
 The **eScience Institute** is our originating organization at the University of Washington. They can help you with
-computing challenges beyond the cloud. For more please visit [our website](http://escience.washington.edu/)!
+computing challenges beyond the cloud. For more please [visit](http://escience.washington.edu/)!
 
 ### Skills
-In order to successfully carry your computing to the cloud -- in addition to the transfer process -- you and your team will need to learn a new set of skills. Some of the terms are general and some are associated with a cloud vendor you might work with. In general terms you will need to understand account management, security, cost estimation, and computing scale; all in relation to your work. You will also benefit from an approach to research software development that keeps your project on track.  So in summary there is some learning and implementation overhead. We recommend setting aside time for training (either online or in person if this is possible) and setting aside more time for group discussions on how to migrate to the cloud. If your research group sees the benefits and are anxious to get going they/you are likely to find that the cloud learning curve is not as onerous as it might first seem; and it is even fun.
+In order to successfully carry your computing to the cloud you and your team will need to learn a new set of skills. 
+You will need to understand account management, security, cost estimation, and computing scale; all in relation to your 
+work which we tend to assume depends on data-driven research computing. 
+We recommend setting aside time for training (online or in person if possible) and setting aside more time for 
+discussions on how to migrate to the cloud. If you and your group see the benefits and are anxious to get going 
+the good news is that the cloud learning curve is not too bad; and is even pretty fun.
 
 ### Origins and Vendor Choice
 The public cloud came about as an excess of computing capacity at Amazon.  The company realized they could make available and monetize these compute resources; hence was born Amazon Web Services (AWS), the first large-scale public cloud. Other cloud vendors include Microsoft Azure and Google. We do not advocate any particular cloud vendor over the others. Each has its merits and we try and present some of those here at cloudmaven.org. 
