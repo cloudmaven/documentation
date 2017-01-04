@@ -20,7 +20,7 @@ to introduce you to cloud computing as a research platform.
 ## Some useful links
 * The University of Washington has introductory material 
 [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
-#* True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
+* True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
 that specifically in the AWS framework [here](https://awstcocalculator.com/).
 * If you are interested in using Python to control your AWS computing environment: 
 Look into the [boto SDK](http://boto3.readthedocs.io/en/latest/ "Boto 3")
@@ -99,7 +99,6 @@ The cloud is extremely secure provided that the research group learns and follow
 
 ### Alarms
 The cloud is elastic -- designed to expand to meet computing challenges -- but this expansion is frequently automated. Since automation can do things in error, by accident, it is important to know how to cope with an undesirable growth condition using other means, i.e. means outside of the machinery that is causing the growth. This leads to the notion of Alarms. An alarm is how the cloud can be configured to catch circumstances in which resources grow out of control. 
-
 ### Research Credit
 
 AWS and Microsoft Azure both have programs to grant cloud credits to approved research programs. The one-page application typically requires one to three months to process and can secure you in the neighborhood of $20,000 in cloud credits good for one year.
@@ -123,22 +122,28 @@ This section describes the part of the cloud that you don't know about; but can 
 Your access to the cloud depends on you having a *cloud account* like an email account. Your account ID gets you
 access through a web browser to a cloud console where you allocate and manage resources. Suppose you have both
 data and code on your Windows PC. You want to get a powerful machine to run some analysis; here are the steps:
+
 * Log in to your cloud account
+
 * Allocate a Linux machine (for which you will pay an hourly rate, for example 47 cents per hour
+
 * Download the login credentials for that machine
+
 * Use WinSCP to copy your code and data to that rented cloud computer 
+
 * Compile and run your code
+
 * Recover the results using WinSCP 
 
 There are many more details but this example covers the basic framework of getting something done on the cloud. To get started you will need an account. There are at least four approaches open to you:
 
-1. Cloud novice approach: Get a [$100 free credit account on AWS](https://aws.amazon.com/free/) or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
+* Cloud novice approach: Get a [$100 free credit account on AWS](https://aws.amazon.com/free/) or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
 
-2. You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will need to make sure you are 'good to go' managing resources; and we will ask that you do some reporting on your experience. This can be a short-term stop-gap if you're stuck. 
+* You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will need to make sure you are 'good to go' managing resources; and we will ask that you do some reporting on your experience. This can be a short-term stop-gap if you're stuck. 
 
-3. You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the [one-page application here](https://aws.amazon.com/research-credits/) for AWS or the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are excellent so we do not recommend one over the other. Come visit our office hours if you would like to disucss relative merits further.
+* You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the [one-page application here](https://aws.amazon.com/research-credits/) for AWS or the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are excellent so we do not recommend one over the other. Come visit our office hours if you would like to disucss relative merits further.
 
-4. You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
+* You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
 
 We also wish to emphasize that other public clouds, particularly Google, have fantastic features as well. We are working to 
 expand our representation of these other options. 
