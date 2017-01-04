@@ -18,7 +18,6 @@ The purpose of this document -- available [here](http://cloudmaven.org "Cloud Ma
 to introduce you to cloud computing as a research platform. 
 
 ## Some useful links
-
 * The University of Washington has introductory material 
 [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
 #* True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
@@ -72,7 +71,7 @@ using a utility model: You pay for what you use.
 
 Cost is managed by turning off resources when they are not in use; and by carefully managing how many machines are in use
 when running jobs. Both of these tasks can be associated with automatic alarms that can prevent cloud usage from getting
-#out of control and expensive.
+out of control and expensive.
 
 See also the section below on cloud research credits, a way to mitigate the cost of learning if the cloud works for you.
 
@@ -119,7 +118,29 @@ a support contract when you realize you need it.
 ### Services
 This section describes the part of the cloud that you don't know about; but can learn: Services that are often dissociated from machines.
 
-## Divider
+### Getting started
+
+Your access to the cloud proceeds based on having a *cloud account* which is like an email account. Your account ID gets you
+access (through a web browser) to a cloud console where you allocate and manage resources. For example suppose you have both
+some data and some processing code. You can log in to your cloud account, allocate a machine (for which you will pay an hourly
+rate, for example 3 cents per hour) and get login credentials for that machine; all from your browser. Once you have those
+credentials you can use WinSCP to copy both your code and your data to your rented cloud computer. You can compile your code
+and run an analysis on the data; and you can recover the results again using WinSCP back to your laptop. 
+
+Therefore to get started you will need an account. There are four approaches (at least!):
+
+1. Cloud novice approach: Get a [$100 free credit account on AWS](https://aws.amazon.com/free/) or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
+
+2. You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will need to make sure you are 'good to go' managing resources; and we will ask that you do some reporting on your experience. This can be a short-term stop-gap if you're stuck. 
+
+3. You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the [one-page application here](https://aws.amazon.com/research-credits/) for AWS or the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are excellent so we do not recommend one over the other. Come visit our office hours if you would like to disucss relative merits further.
+
+4. You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
+
+We also wish to emphasize that other public clouds, particularly Google, have fantastic features as well. We are working to 
+expand our representation of these other options. 
+
+# Divider
 From here down is resource material that Kilroy needs to integrate into this page. Also missing is the DSS path to
 spending time with solution architects. 
 
