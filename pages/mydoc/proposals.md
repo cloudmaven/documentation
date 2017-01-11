@@ -11,7 +11,7 @@ folder: mydoc
 
 ## Introduction
 
-The purpose of this page is to describe cloud ...
+UW Research Computing can help you with grant proposals: Either within your domain or directly to cloud vendors for cloud research credits, as in the two links provided just below. 
 
 
 
