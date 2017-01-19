@@ -34,11 +34,15 @@ You begin by following this recipe:
 
 1. Get an Azure account
 2. Install Visual Studio and link it to your Azure account
-3. Create a new Django solution in Visual Studio called streamdata. 
-4. Include an API in your solution and publish this to Azure.
-      - This might be a website called streamdata.azurewebsites.net
-5. Test your API; let us imagine that it works great
-6. Write a Python Client that automatically gets stream data from the website
+3. Create a new Django solution in Visual Studio - here it's called DjangoWebProject1 
+![](/images/azure_webframeworks_pic1.png)
+4. You will be asked where you want to install your external packages - choose Add A Virtual Environment (since you're publishing this)
+5. In order to use the API we have written - you will need to change your version of Django to Django1.9.2. To do this, right click on the name of your virtual environment and click 'Install Python Package', select install using pip and type django==1.9.2. 
+6. Include an API in your solution and publish this to Azure.
+      - This might be a website called geohackathon.azurewebsites.net
+7. You can download the API from [Github](https://github.com/amandalehr/araldif)     
+8. Test your API; let us imagine that it works great
+9. Write a Python Client that automatically gets stream data from the website
 
 "Write a Python Client" might sound intimidating but it is quite straightforward. 
 
