@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="You can integrate font icons through the Font Awesome and Glyphical Halflings libraries. These libraries allow you to embed icons through their libraries del...">
+<meta name="keywords" content="formatting,  font icons, buttons, images, vectors, font awesome, glyphicons">
+<title>Icons | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Icons page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Icons">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="proposals.html">Proposal Prep</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cloud_intro.html">What is the cloud</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_datasecurity.html">Data Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_cost.html">Cost Management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cloud_computepower.html">Compute Power</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Procedurals</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_firstwalkthrough.html">First Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_secondwalkthrough.html">Second Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_thirdwalkthrough.html">Third Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_fourthwalkthrough.html">Fourth Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Using the AWS Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_accountmanage.html">AWS Account Management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2instances.html">EC2 Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2resources.html">EC2 Resources</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cfncluster.html">CFN Cluster, SGE & Boto</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter Notebooks on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA Compliance on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark on AWS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spotmarket.html">Spot Market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_rds.html">RDS, DynamoDB & Other DBs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Procedurals</a>
+        <ul>
+            
+            
+            
+            <li><a href="azure_firstwalkthrough.html">First Day Cloud Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_portal.html">Using the Azure Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_vs.html">Visual Studio and Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_webframeworks.html">Web Frameworks on Azure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_api.html">Data API building</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_mls.html">Azure Machine Learning Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_spark.html">Spark on Azure</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azure_jupyter.html">Jupyter Notebooks on Azure</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google Procedurals</a>
+        <ul>
+            
+            
+            
+            <li><a href="google_earthengine.html">Google Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="google_appengine.html">Google App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research Computing Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_geoserver.html">Geoserver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_orgchem.html">Organic Chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Resources</a>
+        <ul>
+            
+            
+            
+            <li><a href="resources_docker.html">Docker Containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="resources_viz.html">Data Visualization</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="resources_github.html">Github</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Icons</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">You can integrate font icons through the Font Awesome and Glyphical Halflings libraries. These libraries allow you to embed icons through their libraries delivered as a link reference. You don't need any image libraries downloaded in your project.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/mydoc_icons.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h2 id="font-icon-options">Font icon options</h2>
+<p>The theme has two font icon sets integrated: Font Awesome and Glyphicons Halflings. The latter is part of Bootstrap, while the former is independent. Font icons allow you to insert icons drawn as vectors from a CDN (so you don’t have any local images on your own site).</p>
+
+<h2 id="see-font-awesome-icons-available">See Font Awesome icons available</h2>
+
+<p>Go to the <a href="http://fortawesome.github.io/Font-Awesome/icons/">Font Awesome library</a> to see the available icons.</p>
+
+<p>The Font Awesome icons allow you to adjust their size by simply adding <code class="highlighter-rouge">fa-2x</code>, <code class="highlighter-rouge">fa-3x</code> and so forth as a class to the icon to adjust their size to two times or three times the original size. As vector icons, they scale crisply at any size.</p>
+
+<p>Here’s an example of how to scale up a camera icon:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro"</span><span class="nt">&gt;&lt;/i&gt;</span> normal size (1x)
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro fa-lg"</span><span class="nt">&gt;&lt;/i&gt;</span> fa-lg
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro fa-2x"</span><span class="nt">&gt;&lt;/i&gt;</span> fa-2x
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro fa-3x"</span><span class="nt">&gt;&lt;/i&gt;</span> fa-3x
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro fa-4x"</span><span class="nt">&gt;&lt;/i&gt;</span> fa-4x
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-camera-retro fa-5x"</span><span class="nt">&gt;&lt;/i&gt;</span> fa-5x
+</code></pre>
+</div>
+
+<p>Here’s what they render to:</p>
+
+<p><i class="fa fa-camera-retro"></i> 1x
+<i class="fa fa-camera-retro fa-lg"></i> fa-lg
+<i class="fa fa-camera-retro fa-2x"></i> fa-2x
+<i class="fa fa-camera-retro fa-3x"></i> fa-3x
+<i class="fa fa-camera-retro fa-4x"></i> fa-4x
+<i class="fa fa-camera-retro fa-5x"></i> fa-5x</p>
+
+<p>With Font Awesome, you always use the <code class="highlighter-rouge">i</code> tag with the appropriate class. You also implement <code class="highlighter-rouge">fa</code> as a base class first. You can use font awesome icons inside other elements. Here I’m using a Font Awesome class inside a Bootstrap alert:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span> <span class="na">role=</span><span class="s">"alert"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-exclamation-circle"</span><span class="nt">&gt;&lt;/i&gt;</span> <span class="nt">&lt;b&gt;</span>Warning: <span class="nt">&lt;/b&gt;</span>This is a special warning message.
+</code></pre>
+</div>
+
+<p>Here’s the result:</p>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle fa-lg"></i> This is a special warning message.</div>
+
+<p>The notes, tips, warnings, etc., are pre-coded with Font Awesome and stored in the alerts.yml file. That file includes the following:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">tip</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="alert</span><span class="nv"> </span><span class="s">alert-success"</span><span class="nv"> </span><span class="s">role="alert"&gt;&lt;i</span><span class="nv"> </span><span class="s">class="fa</span><span class="nv"> </span><span class="s">fa-check-square-o"&gt;&lt;/i&gt;</span><span class="nv"> </span><span class="s">&lt;b&gt;Tip:</span><span class="nv"> </span><span class="s">&lt;/b&gt;'</span>
+<span class="s">note</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="alert</span><span class="nv"> </span><span class="s">alert-info"</span><span class="nv"> </span><span class="s">role="alert"&gt;&lt;i</span><span class="nv"> </span><span class="s">class="fa</span><span class="nv"> </span><span class="s">fa-info-circle"&gt;&lt;/i&gt;</span><span class="nv"> </span><span class="s">&lt;b&gt;Note:</span><span class="nv"> </span><span class="s">&lt;/b&gt;'</span>
+<span class="s">important</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="alert</span><span class="nv"> </span><span class="s">alert-warning"</span><span class="nv"> </span><span class="s">role="alert"&gt;&lt;i</span><span class="nv"> </span><span class="s">class="fa</span><span class="nv"> </span><span class="s">fa-warning"&gt;&lt;/i&gt;</span><span class="nv"> </span><span class="s">&lt;b&gt;Important:</span><span class="nv"> </span><span class="s">&lt;/b&gt;'</span>
+<span class="s">warning</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="alert</span><span class="nv"> </span><span class="s">alert-danger"</span><span class="nv"> </span><span class="s">role="alert"&gt;&lt;i</span><span class="nv"> </span><span class="s">class="fa</span><span class="nv"> </span><span class="s">fa-exclamation-circle"&gt;&lt;/i&gt;</span><span class="nv"> </span><span class="s">&lt;b&gt;Warning:</span><span class="nv"> </span><span class="s">&lt;/b&gt;'</span>
+<span class="s">end</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;/div&gt;'</span>
+
+<span class="s">callout_danger</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-danger"&gt;'</span>
+<span class="s">callout_default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-default"&gt;'</span>
+<span class="s">callout_primary</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-primary"&gt;'</span>
+<span class="s">callout_success</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-success"&gt;'</span>
+<span class="s">callout_info</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-info"&gt;'</span>
+<span class="s">callout_warning</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;div</span><span class="nv"> </span><span class="s">class="bs-callout</span><span class="nv"> </span><span class="s">bs-callout-warning"&gt;'</span>
+
+<span class="s">hr_faded</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;hr</span><span class="nv"> </span><span class="s">class="faded"/&gt;'</span>
+<span class="s">hr_shaded</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;hr</span><span class="nv"> </span><span class="s">class="shaded"/&gt;'</span>
+</code></pre>
+</div>
+
+<p>This means you can insert a tip, note, warning, or important alert simply by using these tags.</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">note</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">content</span><span class="o">=</span><span class="s2">"Add your note here."</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">tip</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">content</span><span class="o">=</span><span class="s2">"Add your tip here."</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">important</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">content</span><span class="o">=</span><span class="s2">"Add your important info here."</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="na">warning</span><span class="p">.</span><span class="na">html</span><span class="w"> </span><span class="na">content</span><span class="o">=</span><span class="s2">"Add your warning here."</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<p>Here’s the result:</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Add your note here.</div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Here’s my tip.</div>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> This information is very important.</div>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> If you overlook this, you may die.</div>
+
+<p>The color scheme is the default colors from Bootstrap. You can modify the icons or colors as needed.</p>
+
+<h2 id="creating-your-own-combinations">Creating your own combinations</h2>
+
+<p>You can innovate with your own combinations. Here’s a similar approach with a file download icon:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success"</span> <span class="na">role=</span><span class="s">"alert"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-download fa-lg"</span><span class="nt">&gt;&lt;/i&gt;</span> This is a special tip about some file to download....<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>And the result:</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-download fa-lg"></i> This is a special tip about some file to download....</div>
+
+<p>Grab the right class name from the <a href="http://fortawesome.github.io/Font-Awesome/icons/">Font Awesome library</a> and then implement it by following the pattern shown previously.</p>
+
+<p>If you want to make your fonts even larger than the 5x style, add a custom style to your stylesheet like this:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.fa-10x</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">1700%</span><span class="p">;}</span>
+</code></pre>
+</div>
+
+<p>Then any element with the attribute <code class="highlighter-rouge">fa-10x</code> will be enlarged 1700%.</p>
+
+<h2 id="glyphicon-icons-available">Glyphicon icons available</h2>
+
+<p>Glyphicons work similarly to Font Awesome. Go to the <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons library</a> to see the icons available.</p>
+
+<p>Although the Glyphicon Halflings library doesn’t provide the scalable classes like Font Awesome, there’s a <a href="http://stackoverflow.com/questions/24960201/how-do-i-make-glyphicons-bigger-change-size">StackOverflow trick</a>  to make the icons behave in a similar way. This theme’s stylesheet (customstyles.css) includes the following to the stylesheet:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.gi-2x</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="m">2em</span><span class="p">;}</span>
+<span class="nc">.gi-3x</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="m">3em</span><span class="p">;}</span>
+<span class="nc">.gi-4x</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="m">4em</span><span class="p">;}</span>
+<span class="nc">.gi-5x</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="m">5em</span><span class="p">;}</span>
+</code></pre>
+</div>
+
+<p>Now you just add <code class="highlighter-rouge">gi-5x</code> or whatever to change the size of the font icon:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-globe gi-5x"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<p>And here’s the result:</p>
+
+<p><span class="glyphicon glyphicon-globe gi-5x"></span></p>
+
+<p>Glypicons use the <code class="highlighter-rouge">span</code> element instead of <code class="highlighter-rouge">i</code> to attach their classes.</p>
+
+<p>Here’s another example:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-download"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<p><span class="glyphicon glyphicon-download"></span></p>
+
+<p>And magnified:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-download gi-3x"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<p><span class="glyphicon glyphicon-download gi-3x"></span></p>
+
+<p>You can also put glyphicons inside other elements:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span> <span class="na">role=</span><span class="s">"alert"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-exclamation-sign"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;b&gt;</span>Error:<span class="nt">&lt;/b&gt;</span> Enter a valid email address
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <b>Error:</b> Enter a valid email address
+</div>
+
+<h2 id="callouts">Callouts</h2>
+
+<p>The previously shown alerts might be fine for short messages, but with longer notes, the solid color takes up a bit of space. In this theme, you also have the option of using callouts, which are pretty common in Bootstrap’s documentation but surprisingly not offered as an explicit element. Their styles have been copied into this theme, in a way similar to the alerts:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bs-callout bs-callout-info"</span><span class="nt">&gt;</span>
+ This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. <span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-question-sign"></span> This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. This is a special info message. </div>
+
+<p>And here’s the shortcode:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">{site.data.alerts.callout_info</span><span class="p">}</span><span class="err">This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">special</span><span class="w"> </span><span class="err">callout</span><span class="w"> </span><span class="err">information</span><span class="w"> </span><span class="err">message.</span><span class="w">
+
+</span></code></pre>
+</div>
+
+<p>Here’s the result:</p>
+
+<div class="bs-callout bs-callout-info">This is a special callout information message.
+
+You can use any of the following:
+
+```
+{{site.data.alerts.callout_default}}
+{{site.data.alerts.callout_primary}}
+{{site.data.alerts.callout_success}}
+{{site.data.alerts.callout_info}}
+{{site.data.alerts.callout_warning}}
+```
+
+
+The only difference is the color of the left bar.
+
+Callouts are explained in a bit more detail in [Alerts][mydoc_alerts].
+
+
+
+
+
+
+
+
+[news]: news.html
+
+
+
+
+[mydoc_introduction]: mydoc_introduction.html
+
+
+
+
+[p1_landing_page]: p1_landing_page.html
+
+
+
+
+[p2_landing_page]: p2_landing_page.html
+
+
+
+
+
+
+
+
+
+
+[titlepage]: titlepage
+
+
+
+
+[tocpage]: tocpage
+
+
+
+
+
+
+[proposals]: proposals.html
+
+
+
+
+
+
+[cloud_intro]: cloud_intro.html
+
+
+
+
+[cloud_datasecurity]: cloud_datasecurity.html
+
+
+
+
+[cloud_cost]: cloud_cost.html
+
+
+
+
+[cloud_computepower]: cloud_computepower.html
+
+
+
+
+
+
+[aws_firstwalkthrough]: aws_firstwalkthrough.html
+
+
+
+
+[aws_secondwalkthrough]: aws_secondwalkthrough.html
+
+
+
+
+[aws_thirdwalkthrough]: aws_thirdwalkthrough.html
+
+
+
+
+[aws_fourthwalkthrough]: aws_fourthwalkthrough.html
+
+
+
+
+[aws_console]: aws_console.html
+
+
+
+
+[aws_accountmanage]: aws_accountmanage.html
+
+
+
+
+[aws_ec2instances]: aws_ec2instances.html
+
+
+
+
+[aws_ec2resources]: aws_ec2resources.html
+
+
+
+
+[aws_cfncluster]: aws_cfncluster.html
+
+
+
+
+[aws_jupyter]: aws_jupyter.html
+
+
+
+
+[aws_hipaa]: aws_hipaa.html
+
+
+
+
+[aws_iot]: aws_iot.html
+
+
+
+
+[aws_spark]: aws_spark.html
+
+
+
+
+[aws_spotmarket]: aws_spotmarket.html
+
+
+
+
+[aws_rds]: aws_rds.html
+
+
+
+
+
+
+[azure_firstwalkthrough]: azure_firstwalkthrough.html
+
+
+
+
+[azure_portal]: azure_portal.html
+
+
+
+
+[azure_vs]: azure_vs.html
+
+
+
+
+[azure_webframeworks]: azure_webframeworks.html
+
+
+
+
+[azure_api]: azure_api.html
+
+
+
+
+[azure_mls]: azure_mls.html
+
+
+
+
+[azure_spark]: azure_spark.html
+
+
+
+
+[azure_jupyter]: azure_jupyter.html
+
+
+
+
+
+
+[google_earthengine]: google_earthengine.html
+
+
+
+
+[google_appengine]: google_appengine.html
+
+
+
+
+
+
+[rc_geoserver]: rc_geoserver.html
+
+
+
+
+[rc_rosetta]: rc_rosetta.html
+
+
+
+
+[rc_orgchem]: rc_orgchem.html
+
+
+
+
+
+
+[resources_docker]: resources_docker.html
+
+
+
+
+[http:escience.washington.edu]: http:escience.washington.edu
+
+
+
+
+[resources_viz]: resources_viz.html
+
+
+
+
+[resources_github]: resources_github.html
+
+
+
+
+
+
+
+
+
+
+[titlepage]: titlepage
+
+
+
+
+[tocpage]: tocpage
+
+
+
+
+
+
+[p1_landing_page]: p1_landing_page.html
+
+
+
+
+[p1_sample1]: p1_sample1.html
+
+
+
+
+[p1_sample2]: p1_sample2.html
+
+
+
+
+[p1_sample3]: p1_sample3.html
+
+
+
+
+
+
+[p1_sample4]: p1_sample4.html
+
+
+
+
+[p1_sample5]: p1_sample5.html
+
+
+
+
+[p1_sample6]: p1_sample6.html
+
+
+
+
+[p1_sample7]: p1_sample7.html
+
+
+
+
+
+
+
+
+
+
+[titlepage]: titlepage
+
+
+
+
+[tocpage]: tocpage
+
+
+
+
+
+
+[p2_landing_page]: p2_landing_page.html
+
+
+
+
+
+
+[p2_sample1]: p2_sample1.html
+
+
+
+
+[p2_sample2]: p2_sample2.html
+
+
+
+
+[p2_sample3]: p2_sample3.html
+
+
+
+
+[p2_sample4]: p2_sample4.html
+
+
+
+
+[p2_sample5]: p2_sample5.html
+
+
+
+
+
+
+[p2_sample6]: p2_sample6.html
+
+
+
+
+[p2_sample7]: p2_sample7.html
+
+
+
+
+[p2_sample8]: p2_sample8.html
+
+
+
+
+[p2_sample9]: p2_sample9.html
+
+
+
+
+[p2_sample10]: p2_sample10.html
+
+
+
+
+[p2_sample11]: p2_sample11.html
+
+
+
+
+[p2_sample12]: p2_sample12.html
+
+
+
+
+[p2_sample13]: p2_sample13.html
+
+
+
+
+[p2_sample14]: p2_sample14.html
+
+
+
+
+
+
+
+
+
+
+[mydoc_hyperlinks.html#automatedlinks]: mydoc_hyperlinks.html#automatedlinks
+
+
+
+
+[mydoc_hyperlinks.html#bookmarklinks]: mydoc_hyperlinks.html#bookmarklinks
+
+
+
+
+[mydoc_pages.html#someIdTag]: mydoc_pages.html#someIdTag
+
+
+
+
+
+
+
+
+
+
+
+
+
+[calendar]: calendar.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_formatting.html" class="btn btn-default navbar-btn cursorNorm" role="button">formatting</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2016 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> July 16, 2016<br/> Site last generated: Dec 6, 2016 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

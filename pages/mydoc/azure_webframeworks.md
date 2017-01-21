@@ -35,7 +35,7 @@ You begin by following this recipe:
 1. Get an Azure account
 2. Install Visual Studio and link it to your Azure account
 3. Create a new Django solution in Visual Studio - here it's called DjangoWebProject1 
-![](/documentation/images/azure_webframeworks_pic1.png)
+![](/documentation/images/azure_procedurals/azure_webframeworks_pic1.png)
 4. You will be asked where you want to install your external packages - choose Add A Virtual Environment (since you're publishing this)
 ![](/documentation/images/azure_webframeworks_pic2.png)
 ![](/documentation/images/azure_webframeworks_pic3.png)
