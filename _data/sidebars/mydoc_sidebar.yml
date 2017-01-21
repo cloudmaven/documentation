@@ -52,20 +52,8 @@ entries:
     output: web, pdf
     folderitems:
     
-    - title: First Cloud Walkthrough
+    - title: Introductory Cloud Walkthrough
       url: /aws_firstwalkthrough.html
-      output: web, pdf
-
-    - title: Second Cloud Walkthrough
-      url: /aws_secondwalkthrough.html
-      output: web, pdf
-
-    - title: Third Cloud Walkthrough
-      url: /aws_thirdwalkthrough.html
-      output: web, pdf
-
-    - title: Fourth Cloud Walkthrough
-      url: /aws_fourthwalkthrough.html
       output: web, pdf
 
     - title: Using the AWS Console
@@ -132,7 +120,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: First Day Cloud Walkthrough
+    - title: Introductory Cloud Walkthrough
       url: /azure_firstwalkthrough.html
       output: web, pdf
 
