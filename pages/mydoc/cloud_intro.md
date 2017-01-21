@@ -9,7 +9,7 @@ permalink: cloud_intro.html
 folder: mydoc
 ---
 
-![pic1](/documentation/images/cloudcore_Alice_hallway.png)
+![pic1](/documentation/images/cloudcore/cloudcore_Alice_hallway.png)
 
 {% include links.html %}
 

@@ -44,11 +44,11 @@ Now this document is in preparation; so it does not cover everything in this top
 ## Making an AMI
 An EC2 instance: We take as a given. (Although we don't have down "Encrypted" but let's just flag that with kilroy. Notice I can create an AMI quite easily using the menu. Here is the configuration page: 
 
-![pic1](/documentation/images/aws_ec2instances_pic1.png)
+![pic1](/documentation/images/aws_procedurals/aws_ec2instances_pic1.png)
 
 ## Resource Overview
 Returning to the EC2 Resource summary: Let's take a look at what's what here term by term: 
-![pic2](/documentation/images/aws_ec2instances_pic2.png)
+![pic2](/documentation/images/aws_procedurals/aws_ec2instances_pic2.png)
 
 
 In this region I'm not (apparently) running any instances. 
@@ -76,7 +76,7 @@ You can "upgrade" a Snapshot to an AMI in Linux… but it is more complicated fo
 ## Understanding a Snapshot listing
 When you look at your Snapshot listing:
 
-![pic3](/documentation/images/aws_ec2instances_pic3.png)
+![pic3](/documentation/images/aws_procedurals/aws_ec2instances_pic3.png)
 
 …notice "Created by CreateImage(i-dc…) for ami-66…: Let's break this down. 
 	• CreateImage is a facility for building an AMI. Fine. 
@@ -88,33 +88,33 @@ Suppose you have an old Snapshot and you are not sure what is on it; and if noth
 
 Create the Volume from the Snapshot
 
-![pic4](/documentation/images/aws_ec2instances_pic4.png)
+![pic4](/documentation/images/aws_procedurals/aws_ec2instances_pic4.png)
 
-![pic5](/documentation/images/aws_ec2instances_pic5.png)
+![pic5](/documentation/images/aws_procedurals/aws_ec2instances_pic5.png)
 
 I will choose Magnetic because it is a bit cheaper… this is just an example. If I wish to have speed I would stay with SSD.
 
 The Volume is created very quickly.
  
-![pic6](/documentation/images/aws_ec2instances_pic6.png)
+![pic6](/documentation/images/aws_procedurals/aws_ec2instances_pic6.png)
 
 Here it is, now listed in the Volume table: 
 
-![pic7](/documentation/images/aws_ec2instances_pic7.png)
+![pic7](/documentation/images/aws_procedurals/aws_ec2instances_pic7.png)
 
 **PRO TIP: When you create a Volume from a Snapshot make sure it is in the same Availabilty Zone (AZ) as the Instance that you intend to attach it to. Failing to do so is a waste of time: You can't attach a Volume in Oregon to an EC2 in Virginia. In fact you can't attach a Volume in Virginia 1-a to an EC2 in Virginia 1-b.  Virginia is a Region, 1-a is the Availability Zone.**
 
-![pic8](/documentation/images/aws_ec2instances_pic8.png)
+![pic8](/documentation/images/aws_procedurals/aws_ec2instances_pic8.png)
 
 That's where my restored Volume is. Oh look I have a machine there also; though it is Stopped: Let us Start it.
 
-![pic9](/documentation/images/aws_ec2instances_pic9.png)
+![pic9](/documentation/images/aws_procedurals/aws_ec2instances_pic9.png)
 
 This finds a host, creates a VM, points to the associated storage… all of this takes a few minutes but you can be impatient and see if you can Attach the restored Snapshot Volume whenever you like. 
 
-![pic10](/documentation/images/aws_ec2instances_pic10.png)
+![pic10](/documentation/images/aws_procedurals/aws_ec2instances_pic10.png)
 
-![pic11](/documentation/images/aws_ec2instances_pic11.png)
+![pic11](/documentation/images/aws_procedurals/aws_ec2instances_pic11.png)
 
 
 ## Mounting the Attached Volume
@@ -148,7 +148,7 @@ That's it. Make sure your read and write permissions are set accordingly using c
 ## What is the Snapshot ID?
 Here is a screen capture of some volumes:
 
-![pic12](/documentation/images/aws_ec2instances_pic12.png)
+![pic12](/documentation/images/aws_procedurals/aws_ec2instances_pic12.png)
 
 Each is attached to an EC2 instance. Notice these have a snapshot ID. This means that these volumes were created from a snapshot, for example from an AMI = Snapshot + instructions. It does not mean that this snapshot still exists; or that if it did exist it would reflect what is actually in the restored volume. That volume probably has changed. So to explore these volumes:  Again we would ssh into the EC2 instance associated and go look at the file system.
 
