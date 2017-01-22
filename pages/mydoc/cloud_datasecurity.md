@@ -9,5 +9,11 @@ permalink: cloud_datasecurity.html
 folder: mydoc
 ---
 
-Placeholder. Page coming soon. 
+## Introduction
+The cloud is extremely secure provided that the research group learns and follows appropriate guidelines. Both AWS and Microsoft have HIPAA-aligned technology called out in respective Business Associate Agreements (BAAs). The burden of compliance is placed on the research team; and UW IT is working to make this progress feasible and straightforward
+
+## Access Control
+## Data Loss Prevention
+## Encryption 
+
 {% include links.html %}
