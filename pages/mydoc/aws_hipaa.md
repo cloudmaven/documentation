@@ -30,6 +30,16 @@ on the Microsoft Azure cloud.
 11. Review with management
 12. Review with researchers
 
+## Concerns
+
+* Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
+* Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
+* Include an encryption path for importing clinical data 
+* Include a full story on access key management
+* The IOT import will -- I think -- be a poll action: The secure VM is polling for new data
+* This system should include a very explicit writeup of how the human in the loop can break the system
+
+
 
 This is a resource PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) 
 This is yet to be inlined. 
