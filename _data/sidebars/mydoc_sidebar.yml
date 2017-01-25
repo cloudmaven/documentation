@@ -48,8 +48,8 @@ entries:
       url: /cc_internet_of_things.html
       output: web, pdf
 
-    - title: Cloud technical background
-      url: /cc_cloud_technical_background.html
+    - title: Cloud technical 
+      url: /cc_technical.html
       output: web, pdf
 
   - title: Proposals
@@ -64,7 +64,7 @@ entries:
       url: /p_costing.html
       output: web, pdf
 
-  - title: Research computing resources
+  - title: Research computing
     output: web, pdf
     folderitems:
 
@@ -73,23 +73,23 @@ entries:
       output: web, pdf
 
     - title: Data science
-      url: /rcr_data_science.html
+      url: /rc_data_science.html
       output: web, pdf
 
     - title: Research on the web
-      url: /rcr_research_on_the_web.html
+      url: /rc_research_on_the_web.html
       output: web, pdf
 
     - title: GitHub
-      url: /rcr_github.html
+      url: /rc_github.html
       output: web, pdf
 
     - title: Visualization Python
-      url: /rcr_visualization_python.html
+      url: /rc_visualization_python.html
       output: web, pdf
 
     - title: Visualization virtual globes
-      url: /rcr_visualization_virtual_globes.html
+      url: /rc_visualization_virtual_globes.html
       output: web, pdf
 
   - title: AWS
@@ -152,6 +152,10 @@ entries:
       url: /az_walkthrough.html
       output: web, pdf
 
+    - title: Training
+      url: /az_training.html
+      output: web, pdf
+
     - title: Portal
       url: /az_portal.html
       output: web, pdf
@@ -161,11 +165,11 @@ entries:
       output: web, pdf
 
     - title: Visual Studio
-      url: /az_vs.html
+      url: /az_visual_studio.html
       output: web, pdf
 
-    - title: Web Frameworks
-      url: /az_web_frameworks.html
+    - title: Web Framework
+      url: /az_web_framework.html
       output: web, pdf
 
     - title: Machine Learning
@@ -192,8 +196,8 @@ entries:
     output: web, pdf
     folderitems:
     
-    - title: Genome Association Study
-      url: /acs_genome_association_study.html
+    - title: Genome Association
+      url: /acs_genome_association.html
       output: web, pdf
       
     - title: Geospatial Data Sharing
@@ -201,15 +205,28 @@ entries:
       output: web, pdf
       
     - title: Rosetta
-      url: /acs.html
+      url: /acs_rosetta.html
       output: web, pdf
       
+    - title: Neurohackweek
+      url: /acs_neurohackweek.html
+      output: web, pdf
+      
+    - title: CFD
+      url: /acs_cfd.html
+      output: web, pdf
+      
+  - title: Azure Case Studies
   - title: Azure Case Studies
     output: web, pdf
     folderitems:
     
-    - title: API
-      url: /azcs_api.html
+    - title: Geospatial API
+      url: /azcs_geospatial_api.html
+      output: web, pdf
+  
+    - title: Organic chemistry
+      url: /azcs_organic_chemistry.html
       output: web, pdf
   
   - title: Google
@@ -221,9 +238,9 @@ entries:
       output: web, pdf
 
     - title: Earth Engine
-      url: /g_earthengine.html
+      url: /g_earth_engine.html
       output: web, pdf
 
     - title: App Engine
-      url: /g_appengine.html
+      url: /g_app_engine.html
       output: web, pdf
