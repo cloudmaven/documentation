@@ -84,11 +84,11 @@ entries:
       url: /rcr_github.html
       output: web, pdf
 
-    - title: Visualization: Python
+    - title: Visualization Python
       url: /rcr_visualization_python.html
       output: web, pdf
 
-    - title: Visualization: Virtual globes
+    - title: Visualization virtual globes
       url: /rcr_visualization_virtual_globes.html
       output: web, pdf
 
