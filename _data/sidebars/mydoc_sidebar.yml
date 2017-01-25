@@ -32,6 +32,10 @@ entries:
       url: /cc_data_security.html
       output: web, pdf
 
+    - title: Glossary
+      url: /cc_glossary.html
+      output: web, pdf
+
     - title: Cost management
       url: /cc_cost_management.html
       output: web, pdf
