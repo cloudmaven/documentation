@@ -2,7 +2,7 @@
 title: AWS HIPAA
 keywords: aws, hipaa, procedures
 last_updated: October 6, 2016
-tags: [AWS][HIPAA]
+tags: [AWS]
 summary: "A HIPAA-compliant research system on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
@@ -31,6 +31,7 @@ on the Microsoft Azure cloud.
 12. Review with researchers
 
 
-This is a resource PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) that is yet to be inlined into this page's markdown.
+This is a resource PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) 
+This is yet to be inlined. 
 
 {% include links.html %}

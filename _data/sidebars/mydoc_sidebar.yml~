@@ -212,6 +212,11 @@ entries:
       url: /acs_neurohackweek.html
       output: web, pdf
       
+    - title: CFD
+      url: /acs_cfd.html
+      output: web, pdf
+      
+  - title: Azure Case Studies
   - title: Azure Case Studies
     output: web, pdf
     folderitems:
