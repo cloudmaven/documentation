@@ -10,18 +10,28 @@ folder: mydoc
 ---
 
 ## Introduction
-The purpose of this document -- available at http://cloudmaven.org -- is to present a common experience:  "First day using the AWS cloud". 
-The idea is that by capturing a walkthrough and some of the related thoughts and goals you will have a guided path into the basics of using
-the cloud. This in turn gets you back to doing research as quickly as possible while still making sure that your cloud account is well-managed:
-It is secure, it is cost-effective, and it has scalable compute resources that become available when you need them and that go away whey you
-are done with them. 
-
-Our narrative follows a graduate student Pearl. She has a large amount of data processing in mind for her work and she has written some 
-necessary software in Python. There is more on this below. She wants to get going on the cloud; but she is also the default account 
-administrator for her research team.
+The purpose of this document -- available at http://cloudmaven.org -- is to present a procedural and a technical background
+for creating and operating a HIPAA-compliant research environment on the AWS public cloud. A corresponding effort is underway
+on the Microsoft Azure cloud. 
 
 
-Download PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) 
+## Program for building this page
+
+1. Create a diagram showing the EMR > PHI data pool > VM with corresponding IRB, researcher and patient
+2. Anticipate <new data to EMR> pipeline
+3. Anticipate <IOT to VM> pipeline
+4. Anticipate changes to <PHI > VM> process
+5. Implement Virtual Private Cloud
+6. Synthetic data: Generate
+7. Create an IOT signal
+8. Create IOT pass-through mechanism
+9. Establish software tools including Jupyter on VM
+10. Review with IT personnel 
+11. Review with management
+12. Review with researchers
+
+
+This is an outdated resource PDF [here](/documentation/pdf/Doc42_HIPAA_on_AWS.pdf) 
 
 
 {% include links.html %}
