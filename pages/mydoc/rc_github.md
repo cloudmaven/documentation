@@ -90,7 +90,7 @@ Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am 
 break 3
 
 
-Let's take care of updating the OS first…
+Let's take care of updating the Operating System first
 
 ![github0002](/documentation/images/rc/github0002.png)
 
