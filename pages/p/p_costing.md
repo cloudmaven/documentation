@@ -1,9 +1,9 @@
 ---
 title: Costing cloud in proposals
-keywords: visualization, resources
+keywords: aws
 last_updated: January 26, 2017
 tags: [research_computing]
-summary: "Costing your cloud usage in research grant proposals"
+summary: "Costing"
 sidebar: mydoc_sidebar
 permalink: p_costing.html
 folder: p
@@ -17,6 +17,5 @@ Not started.
 [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
 
 ## Federal research 
-
 
 {% include links.html %}
