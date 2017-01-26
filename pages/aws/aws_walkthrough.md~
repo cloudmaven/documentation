@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "Protease Inhibition Research: Cloud Migration Study"
 sidebar: mydoc_sidebar
 permalink: aws_walkthrough.html
-folder: mydoc
+folder: aws
 ---
 
 Download PDF [here](/documentation/pdf/First_cloud_walkthrough.pdf)

@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "A HIPAA-compliant research system on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
-folder: mydoc
+folder: aws
 ---
 
 ## Introduction
@@ -151,7 +151,9 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 Create a Virtual Private Cloud
 
-![pic000](/documentation/images/aws/hipaa000.png)
+![pic0001](/documentation/images/aws/hipaa0001.png)
+
+![hipaa0002](/documentation/images/aws/hipaa0002.png)
 
 We use the name 'czarhipaa'; this should be unique.
 
@@ -159,8 +161,9 @@ CIDR as shown is typical.
 
 Dedicated Instance means: Nobody else allowed here. 
 
-Now it exists; time to fill it with stuff.
+![hipaa0003](/documentation/images/aws/hipaa0003.png)
 
+Now it exists; time to fill it with stuff.
 
 ### Pro Tip
 You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
@@ -168,9 +171,15 @@ This is carte blanche Dedicated and so is more expensive. We do not consider thi
 the side of caution rather than cost. 
 
 
-Next: Create a subnet
+### Create a subnet
+
+![hipaa0004](/documentation/images/aws/hipaa0004.png)
+
+![hipaa0005](/documentation/images/aws/hipaa0005.png)
 
 Public subnet addresses will be of the form: 10.0.0.2, .3, .4, ... .254
+
+![hipaa0006](/documentation/images/aws/hipaa0006.png)
 
 Take note of the AZ: 
 

@@ -1,12 +1,12 @@
 ---
 title: EC2 Instances
 keywords: aws, instances, procedures
-last_updated: October 6, 2016
+last_updated: January 26, 2017
 tags: [AWS]
 summary: "Procedures for working with EC2 instances"
 sidebar: mydoc_sidebar
 permalink: aws_ec2instances.html
-folder: mydoc
+folder: aws
 ---
 
 ## Introduction

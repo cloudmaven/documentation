@@ -1,12 +1,12 @@
 ---
 title: Research Computing Case Studies
 keywords: research_computing
-last_updated: December 19, 2016
+last_updated: January 26, 2017
 tags: [research_computing,geospatial,case_studies]
 summary: "Use of Geospatial Tools for Research - Case Studies "
 sidebar: mydoc_sidebar
 permalink: aws_geoserver.html
-folder: mydoc
+folder: aws
 ---
 
 ## Installing Geoserver on Ubuntu 14.04 with Tomcat 7

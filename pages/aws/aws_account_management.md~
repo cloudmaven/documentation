@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "Getting started with AWS Management"
 sidebar: mydoc_sidebar
 permalink: aws_accountmanage.html
-folder: mydoc
+folder: aws
 ---
 ## Introduction
 The purpose of this page is to describe your core AWS account management tasks in brief and in detail. 

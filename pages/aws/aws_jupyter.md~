@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "Jupyter Notebook Troubleshooting on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_jupyter.html
-folder: mydoc
+folder: aws
 ---
 ## Setting up a public Jupyter Notebook server
 This describes how to run a Jupyter Notebook server on an AWS instance for access through a browser on a localhost. Cookbook recipe on:

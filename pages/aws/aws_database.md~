@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "Running the CFNCluster on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_cfncluster.html
-folder: mydoc
+folder: aws
 ---
 
 Download PDF [here](/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf) 

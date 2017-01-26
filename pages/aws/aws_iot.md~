@@ -6,7 +6,7 @@ tags: [AWS]
 summary: "IoT experiments"
 sidebar: mydoc_sidebar
 permalink: aws_iot.html
-folder: mydoc
+folder: aws
 ---
 
 IoT experiment with Arduino Yun

@@ -1,12 +1,12 @@
 ---
 title: AWS Spark
 keywords: aws, spark, procedures
-last_updated: October 6, 2016
+last_updated: January 26, 2017
 tags: [AWS]
 summary: "Procedures for working with AWS Spark"
 sidebar: mydoc_sidebar
 permalink: aws_spark.html
-folder: mydoc
+folder: aws
 ---
 
 Placeholder. Procedural coming soon. 
