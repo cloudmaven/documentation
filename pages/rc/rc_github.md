@@ -2,7 +2,7 @@
 title: GitHub for Research Computing
 keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [GitHub]
+tags: [research_computing]
 summary: "A set of commands and context for using GitHub in research"
 sidebar: mydoc_sidebar
 permalink: rc_github.html

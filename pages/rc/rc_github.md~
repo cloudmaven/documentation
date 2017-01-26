@@ -6,7 +6,7 @@ tags: [GitHub]
 summary: "A set of commands and context for using GitHub in research"
 sidebar: mydoc_sidebar
 permalink: rc_github.html
-folder: mydoc
+folder: rc
 ---
 
 # GitHub for Research Computing
@@ -29,20 +29,14 @@ Using a code repository (distinguish: not a data repository) like GitHub accompl
 ## Links
 [GitHub](http://github.com)
 
-
-break 1
-
-
-
-
 ## Warnings
-- For a Jekyll instance such as [this website](http://cloudmaven.org): Work from the gh-pages branch, not the master. 
+- ***For a Jekyll instance such as [this website](http://cloudmaven.org): Work from the gh-pages branch, not the master.***
   - You risk 'breaking' your GitHub implementation if you work on the wrong branch.
-- If GitHub is balking (throwing fail/error messages): Use 'git status' on the command line and diagnose the output. 
+- ***If GitHub is balking (throwing fail/error messages): Use 'git status' on the command line and diagnose the output.***
   - For example a 'rebase' in progress (unresolved) can be halted using 'git rebase abort' but be sure you know what you are doing. 
   - Once 'git status' is ok you can return to business as usual. 
-- GitHub can sometimes be mysterious. When in doubt: Make an independent local copy of the repo folder first.
-- While Jekyll renders markdown there does not appear to be a reliably good way of rendering LaTeX. 
+- ***GitHub can sometimes be mysterious. When in doubt: Make an independent local copy of the repo folder first.***
+- ***While Jekyll renders markdown there does not appear to be a reliably good way of rendering LaTeX.***
   - In research this is important. Until there is a fix we are obliged to render to pngs and embed them as images.
 
 ## What is Jekyll?
