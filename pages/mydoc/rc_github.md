@@ -71,6 +71,46 @@ push that will override anything on the GitHub repo.
     - This push may require login information: login name and password
 
 
+break 2
+
+
+
+## Jupyter GitHub repo on AWS EC2
+Suppose your EC2-based Jupyter Notebook is publicly visible. It might be password-protected (it is by default) but passwords have a 
+way of getting handed around and this is not a highly secure situation. Someone logs on to your Notebook and deletes a page or 
+makes some not-too-useful changes. You want to revert to the old version: This sounds like a job for GitHub.
+
+
+Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).
+
+![github0001](/documentation/images/rc/github0001.png)
+
+Let's take care of updating the OS first…
+
+![github0002](/documentation/images/rc/github0002.png)
+
+
+Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
+though I am on the cloud. (Kilroy wonders: Is this a necessary part of life?)
+
+Now I can run 
+
+% sudo apt-get install git
+
+however this may already be installed.
+
+![github0003](/documentation/images/rc/github0003.png)
+
+I want to make a repo from the Notebooks folder so
+
+```
+% cd Notebooks
+% git init
+% git add .
+% git commit -m "starting othermathclub git repo"
+```
+
+
 
 
 {% include links.html %}
