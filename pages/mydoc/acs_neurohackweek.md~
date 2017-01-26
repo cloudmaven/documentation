@@ -2,7 +2,7 @@
 title: Research Computing Neurohackweek
 keywords: research,computing,case,study,neuron,neurohack,hack,hackweek
 last_updated: January 25, 2017
-tags: [research,computing,neuro,neuron,case,study,studies,hackathon,hackweek,neurohackweek]
+tags: [research]
 summary: "Neurohackweek at the eScience Institute using AWS"
 sidebar: mydoc_sidebar
 permalink: acs_neurohackweek.html
@@ -27,22 +27,17 @@ UK and the Netherlands, from Psychology, Neuroscience, Computer Science and othe
 part summer school, and part hackathon. During the week, participants took part in workshops and tutorials, presented their work in talks, 
 and worked in small teams on projects or *hacks*, with results presented at the end of the week. 
 
-
 Video recordings of some of the presentations, including presentations of the final projects are available in 
 [this YouTube channel](https://www.youtube.com/playlist?list=PLEdFhTRBFLObkatJOX9wp3BCueH4wNSl7).
-
 
 On the second day of the workshop Cameron Craddock (Child Mind Institute, NY) presented a morning tutorial on using AWS for cloud computing 
 for neuroimaging applications. The materials used for this tutorial are available on the 
 [Neurohackweek GitHub account](https://github.com/neurohackweek/NI_cloud_computing).
 
-
 For this tutorial we provided participants with AWS credentials. They were thereby able to explore several options of neuroimaging compute 
 pipelines with AWS, primarily built on EC2 and S3 technologies. 
 
-
 ## Project outcomes
-
 Four of the team projects conducted during the week used AWS: 
 
 1. Developing a system for running BIDS apps -- docker containers of neuroimaging pipelines -- in the cloud. 
@@ -102,6 +97,5 @@ the participants Neurohackweek advanced the cultural shift in building and shari
 Finally of course Neurohackweek helped build awareness of the strengths of cloud computing. As noted we consider this an excellent 
 starting point with strong continuation efforts to follow. We encourage other research communities to contact us about following 
 the Neurohackweek model for community-building in other respective domains. 
-
 
 {% include links.html %}
