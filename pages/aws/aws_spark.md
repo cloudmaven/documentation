@@ -9,6 +9,6 @@ permalink: aws_spark.html
 folder: aws
 ---
 
-Placeholder. Procedural coming soon. 
+# Apache Spark
 
 {% include links.html %}

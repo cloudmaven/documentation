@@ -1,16 +1,13 @@
 ---
 title: AWS Procedural
-keywords: jupyter
+keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Jupyter Notebook on AWS"
+summary: "Jupyter Notebook Troubleshooting on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_jupyter.html
 folder: aws
 ---
-
-# Jupyter on AWS
-
 ## Setting up a public Jupyter Notebook server
 This describes how to run a Jupyter Notebook server on an AWS instance for access through a browser on a localhost. Cookbook recipe on:
 [http://jupyter-notebook.readthedocs.io/en/latest/public_server.html](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)

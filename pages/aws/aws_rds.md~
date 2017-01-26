@@ -1,11 +1,11 @@
 ---
-title: AWS Spot Market
+title: AWS Databases
 keywords: aws, spotmarket, procedures
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Working with Spot Market on AWS"
+summary: "Procedures for working with RDS, DynamoDB and other databases"
 sidebar: mydoc_sidebar
-permalink: aws_spot_market.html
+permalink: aws_rds.html
 folder: aws
 ---
 

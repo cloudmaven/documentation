@@ -1,11 +1,11 @@
 ---
-title: AWS Spark
-keywords: aws, spark, procedures
+title: Storage on AWS
+keywords: aws
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Procedures for working with AWS Spark"
+summary: "Storage on AWS"
 sidebar: mydoc_sidebar
-permalink: aws_spark.html
+permalink: aws_storage.html
 folder: aws
 ---
 
