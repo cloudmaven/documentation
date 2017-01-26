@@ -115,32 +115,5 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
   * Triggered by 'new object in bucket' in the S3 input bucket
   * This Lambda service is managed using a role
 * Set up database
-* Some entity pushes data to S3. 
-  * File names must not contain PHI 
-  * Uses a 3rd party app such as Cloudberry
-    * What is Cloudberry?
-  * Uses the AWS CLI
-  * Uses an API call (this is a programmatic way to keep PHI out of file names)
-    * Lambda notices this, appends the file names to DynamoDB and pings B 
-    * B tries to run a new processing job
-* Launch five W instances, dedicated
-* Assign them S3 access role
-* W have encrypted volumes
-* W have a pipeline pre-installed
-  * The pipeline may be update and the AMI could subsequently be updated as well
-* EBS volumes come pre-loaded with reference data (non-PHI) that the pipeline might use
-* Sheena notes
-  * Bastion Server Setup
-    * Get worker public key from S3 (which allows us to ssh from bastion into worker if need be) 
-    * Create SQS queue of all objects (samples) listed in S3 bucket 
-    * Kick off a worker instance for each message in the queue
-  * Setup and Execution
-    * Grab latest pipeline code, install
-    * Create EBS Genomes volume from snapshot
-    * Grab message from SQS which is really a file for analysis in S3
-    * Grab fastq files from S3
-    * Run analysis
-    * Write message to done queue
-    * If last instance running, grab certain analysis files from S3 to create run level output
 
 {% include links.html %}

@@ -93,6 +93,7 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 * EBS/EFS 
 
 ### Notes
+
 * Encryption software such as PGP produces a Key.
 * On AWS create a VPC
 * On the VPC create a public-facing Bastion Server B
@@ -112,8 +113,10 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 * S3 buckets have a VPC Endpoint included: Terminates inside the VPC.
 * Set up a DynamoDB table to track names of uploaded files.
 * Set up a Lambda service 
-  * Triggered by 'new object in bucket' in the S3 input bucket
+  * Triggered by new object in bucket in the S3 input bucket
   * This Lambda service is managed using a role
 * Set up database
+
+
 
 {% include links.html %}
