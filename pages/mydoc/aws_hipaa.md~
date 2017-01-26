@@ -117,9 +117,10 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
   * Triggered by new object in bucket in the S3 input bucket
   * This Lambda service is managed using a role
 * Set up database
-
-
-
+* Push data to S3
+  * No PHI in filenames
+  * Look into Cloudberry
+  * AWS CLI
 * Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
   * Update issue: Pipeline changes, etcetera
 * W can be pre-populated with reference data (Sheena scenario)
@@ -147,6 +148,9 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 
 ## Procedure
+
+Create a Virtual Private Cloud
+
 
 We use the name 'czarhipaa'; this should be unique.
 

@@ -149,6 +149,10 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 ## Procedure
 
+Create a Virtual Private Cloud
+
+![pic000](/documentation/images/aws/hipaa000.png)
+
 We use the name 'czarhipaa'; this should be unique.
 
 CIDR as shown is typical.
