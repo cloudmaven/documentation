@@ -120,10 +120,16 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 
 
-
-
-### Tail end of notes
-
+* Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
+  * Update issue: Pipeline changes, etcetera
+* W can be pre-populated with reference data (Sheena scenario)
+* Sheena redux
+  * B
+    * Create SQS queue of objects in S3
+    * Start a W for each message in queue...
+  * Go
+    * Latest pipeline... EBS Genomes... chew
+    * If last instance running: Consolidate / clean-up
 * SNS topic notifies me when last instance shuts down.
   * Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
   * Get Ws the Key from E
