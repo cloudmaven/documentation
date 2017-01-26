@@ -114,6 +114,17 @@ break 4
 
 
 
+```
+% cd Notebooks
+% git init
+% git add .
+% git commit -m "starting othermathclub git repo"
+```
+
+
+break 5
+
+
 
 
 

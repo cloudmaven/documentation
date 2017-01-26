@@ -122,10 +122,131 @@ break 4
 ```
 
 
+break 5
 
 
+In browser go to http://github.com/myname and Create a new Repo (with a README).
+
+![github0004](/documentation/images/rc/github0004.png)
 
 
+Grab the repo address to the clipboard; call that 'link'; back on the EC2 instance: 
+
+% git remote add origin 'link'
+% git push origin master
+
+(fails because the README file at the GitHub repo doesn't exist here)
+
+% git stash
+% git pull 'link' master
+
+This goes to some little text editor... ctrl-x to get out of it.
+
+% git push origin master
+
+Fails because the data folder contains a file larger than 100MB; so the lesson here is don't put large 
+files in a repo unless you pay for the extra storage account.
+
+I relocate the data folder outside the repo folder. 
+
+% mv data ..
+
+This proves to be a mistake, it would seem. Subsequent efforts to commit/push do not go well. 
+I could also have added the offending large file to .gitignore but I chose this method instead, just by-the-by.
+
+Finally we come up with a convoluted solution:
+
+% git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch data" -- --all
+
+This seems to convince (see screencap) git that the two large datafiles really are not part of the repo. 
+
+![github0005](/documentation/images/rc/github0005.png)
+
+We then proceed with add . (which adds the entire current directory to some entity) and commit (which I sorta get) and push origin master. 
+
+Intermediate Git
+Notes from a class offered at the WRF Data Science Studio by the eScience Institute, January 13 2017. 
+
+```
+> git add FILEPATH                 -> stages new material; up until this is done the stuff in FILEPATH is "untracked"
+> git commit -m "message"  -> commits those changes to the repo
+```
+
+This is local and (after iteration) produces a stack of changes. Git push and git pull will interact with a remote repo. 
+
+WARNING: Using stash is only advised for one stash. 
+
+```
+> git stash will only stash tracked files
+> git stash -u will also stash un-tracked files (they exist but have not been added)
+> git stash apply will re-instate the stash into its former state
+```
+
+Branches
+Let's try a great idea to see if it works out; if so we will bring it back in; the usual diverge / merge diagram.
+
+```
+> git branch feature1
+> git branch
+```
+
+```
+   feature1
+*  master
+```
+
+```
+> git branch -d feature1             deletes the branch
+```
+
+Let's ignore that delete and assume feature1 branch exists. 
+
+```
+> git checkout feature1                               'checkout' is the branch choice command
+> git checkout master              
+```
+
+So the actual chain of events would be (in git command sequence)
+
+```
+> git branch f1
+> git checkout f1
+> git branch                                  verify we are working on the f1 branch
+> vi file.txt                                    edit and save file we want to change
+> git add file.txt                          stage that file
+> git commit -m "msg"              commit that change (again this is to branch f1)
+> git checkout master
+> git merge f1                             merges f1 (including the new commit) with master
+> git branch                                 just to note that both branches still exist
+> git branch -d f1                       deletes the f1 branch; now only master exists
+```
+
+Notice that with the ability to create branches we can work on multiple versions of the same code base in parallel.
+
+WARNING The reason stash exists is to hang on to stuff without a commit. Otherwise: Commit is necessary.
+
+Now the GitHub website might have a public repo that I would like to work on. Fork to my own GitHub account and copy the URL 
+
+![github0006](/documentation/images/rc/github0006.png)
+
+
+```
+> cd GitHub                                                   that is: Go to the parent directory of where we want stuff
+> git clone <URL-from-above>
+
+We want a triangle of 3 repos: Local, my GitHub, and Valentinas. 
+We give the latter two informal names (although 'origin' is a default): origin and upstream. 
+
+upstream will be Valentina's. 
+origin will be our online repo at GitHub. 
+
+- We make local changes. 
+- We can pull from Valentina to stay up to date. 
+- We can push to 'origin'.
+- We can make requests to Valentia (pull request) to grab our changes from our 'origin' repo. 
+- We make these pull requests from the browser / GitHub repo; not from our command line.
+
+'git pull origin master' means I update my local copy from my GitHub repo (not the source repo)
 
 
 
