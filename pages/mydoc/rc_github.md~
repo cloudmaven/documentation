@@ -73,34 +73,36 @@ makes some not-too-useful changes. You want to revert to the old version: This s
 
 Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).
 
-github0001.png
+![github0001](/documentation/images/aws/github0001.png)
 
 Let's take care of updating the OS first…
 
-github0002.png
+![github0002](/documentation/images/aws/github0002.png)
 
 
-Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even though I am on the cloud. (Kilroy wonders: Is this a necessary part of life?)
+Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
+though I am on the cloud. (Kilroy wonders: Is this a necessary part of life?)
 
-Now I run 
+Now I can run 
 
 % sudo apt-get install git
 
-But it is already installed…
+however this may already be installed.
 
-github0003.png
+![github0003](/documentation/images/aws/github0003.png)
 
- 
 I want to make a repo from the Notebooks folder so
 
+```
 % cd Notebooks
 % git init
 % git add .
 % git commit -m "starting othermathclub git repo"
+```
 
 In browser go to http://github.com/myname and Create a new Repo (with a README).
 
-github0004.png
+![github0004](/documentation/images/aws/github0004.png)
 
 
 Grab the repo address to the clipboard… call that 'link'; back on the EC2 instance: 
@@ -108,12 +110,12 @@ Grab the repo address to the clipboard… call that 'link'; back on the EC2 instan
 % git remote add origin 'link'
 % git push origin master
 
-(fails because the README file at the GitHub repo doesn't exist here…)
+(fails because the README file at the GitHub repo doesn't exist here)
 
 % git stash
 % git pull 'link' master
 
-This goes to some little text editor… ctrl-x to get out of it.
+This goes to some little text editor... ctrl-x to get out of it.
 
 % git push origin master
 
@@ -132,43 +134,55 @@ Finally we come up with a convoluted solution:
 
 This seems to convince (see screencap) git that the two large datafiles really are not part of the repo. 
 
-github0005.png
-
+![github0005](/documentation/images/aws/github0005.png)
 
 We then proceed with add . (which adds the entire current directory to some entity) and commit (which I sorta get) and push origin master. 
 
 Intermediate Git
 Notes from a class offered at the WRF Data Science Studio by the eScience Institute, January 13 2017. 
 
+```
 > git add FILEPATH                 -> stages new material; up until this is done the stuff in FILEPATH is "untracked"
 > git commit -m "message"  -> commits those changes to the repo
+```
 
 This is local and (after iteration) produces a stack of changes. Git push and git pull will interact with a remote repo. 
 
 WARNING: Using stash is only advised for one stash. 
 
+```
 > git stash will only stash tracked files
 > git stash -u will also stash un-tracked files (they exist but have not been added)
 > git stash apply will re-instate the stash into its former state
+```
 
 Branches
 Let's try a great idea to see if it works out; if so we will bring it back in; the usual diverge / merge diagram.
 
+```
 > git branch feature1
 > git branch
+```
 
+```
     feature1
 *  master
+```
 
+```
 > git branch -d feature1             deletes the branch
+```
 
 Let's ignore that delete and assume feature1 branch exists. 
 
+```
 > git checkout feature1                               'checkout' is the branch choice command
 > git checkout master              
+```
 
 So the actual chain of events would be (in git command sequence)
 
+```
 > git branch f1
 > git checkout f1
 > git branch                                  verify we are working on the f1 branch
@@ -179,6 +193,7 @@ So the actual chain of events would be (in git command sequence)
 > git merge f1                             merges f1 (including the new commit) with master
 > git branch                                 just to note that both branches still exist
 > git branch -d f1                       deletes the f1 branch; now only master exists
+```
 
 Notice that with the ability to create branches we can work on multiple versions of the same code base in parallel.
 
@@ -186,22 +201,25 @@ WARNING The reason stash exists is to hang on to stuff without a commit. Otherwi
 
 Now the GitHub website might have a public repo that I would like to work on. Fork to my own GitHub account and copy the URL 
 
-github0006.png
+![github0006](/documentation/images/aws/github0006.png)
 
 
+```
 > cd GitHub                                                   that is: Go to the parent directory of where we want stuff
 > git clone <URL-from-above>
+```
 
-We want a triangle of 3 repos: Local, my GitHub, and Valentinas. We give the latter two informal names (although 'origin' is a default): origin and upstream. 
+We want a triangle of 3 repos: Local, my GitHub, and Valentinas. 
+We give the latter two informal names (although 'origin' is a default): origin and upstream. 
 
 upstream will be Valentina's. 
 origin will be our online repo at GitHub. 
 
-We make local changes. 
-We can pull from Valentina to stay up to date. 
-We can push to 'origin'.
-We can make requests to Valentia (pull request) to grab our changes from our 'origin' repo. 
-We make these pull requests from the browser / GitHub repo; not from our command line.
+- We make local changes. 
+- We can pull from Valentina to stay up to date. 
+- We can push to 'origin'.
+- We can make requests to Valentia (pull request) to grab our changes from our 'origin' repo. 
+- We make these pull requests from the browser / GitHub repo; not from our command line.
 
 'git pull origin master' means I update my local copy from my GitHub repo (not the source repo)
 

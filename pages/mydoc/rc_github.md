@@ -27,7 +27,7 @@ Using a code repository (distinguish: not a data repository) like GitHub accompl
 
 
 ## Links
-http://github.com
+[GitHub](http://github.com)
 
 ## Warnings
 - For a Jekyll instance such as [this website](http://cloudmaven.org): Work from the gh-pages branch, not the master. 
@@ -73,11 +73,11 @@ makes some not-too-useful changes. You want to revert to the old version: This s
 
 Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).
 
-![github0001](/documentation/images/aws/github0001.png)
+![github0001](/documentation/images/rc/github0001.png)
 
 Let's take care of updating the OS first…
 
-![github0002](/documentation/images/aws/github0002.png)
+![github0002](/documentation/images/rc/github0002.png)
 
 
 Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
@@ -89,7 +89,7 @@ Now I can run
 
 however this may already be installed.
 
-![github0003](/documentation/images/aws/github0003.png)
+![github0003](/documentation/images/rc/github0003.png)
 
 I want to make a repo from the Notebooks folder so
 
@@ -102,7 +102,7 @@ I want to make a repo from the Notebooks folder so
 
 In browser go to http://github.com/myname and Create a new Repo (with a README).
 
-![github0004](/documentation/images/aws/github0004.png)
+![github0004](/documentation/images/rc/github0004.png)
 
 
 Grab the repo address to the clipboard… call that 'link'; back on the EC2 instance: 
@@ -134,7 +134,7 @@ Finally we come up with a convoluted solution:
 
 This seems to convince (see screencap) git that the two large datafiles really are not part of the repo. 
 
-![github0005](/documentation/images/aws/github0005.png)
+![github0005](/documentation/images/rc/github0005.png)
 
 We then proceed with add . (which adds the entire current directory to some entity) and commit (which I sorta get) and push origin master. 
 
@@ -201,7 +201,7 @@ WARNING The reason stash exists is to hang on to stuff without a commit. Otherwi
 
 Now the GitHub website might have a public repo that I would like to work on. Fork to my own GitHub account and copy the URL 
 
-![github0006](/documentation/images/aws/github0006.png)
+![github0006](/documentation/images/rc/github0006.png)
 
 
 ```
