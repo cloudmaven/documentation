@@ -71,48 +71,33 @@ push that will override anything on the GitHub repo.
     - This push may require login information: login name and password
 
 
-break 2
-
-
-
 ## Jupyter GitHub repo on AWS EC2
 Suppose your EC2-based Jupyter Notebook is publicly visible. It might be password-protected (it is by default) but passwords have a 
 way of getting handed around and this is not a highly secure situation. Someone logs on to your Notebook and deletes a page or 
 makes some not-too-useful changes. You want to revert to the old version: This sounds like a job for GitHub.
 
-
-Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).
+Install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).
 
 ![github0001](/documentation/images/rc/github0001.png)
 
-
-
-break 3
-
-
-Let's take care of updating the Operating System first
+Take care of updating the Operating System first
 
 ![github0002](/documentation/images/rc/github0002.png)
 
-
 Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
-though I am on the cloud. (Kilroy wonders: Is this a necessary part of life?)
+though I am on the cloud. 
 
 Now I can run 
 
+```
 % sudo apt-get install git
+```
 
-however this may already be installed.
+however I find that 'git' is already installed; so that is actually not necessary in this case.
 
 ![github0003](/documentation/images/rc/github0003.png)
 
 I want to make a repo from the Notebooks folder so
-
-
-
-break 4
-
-
 
 ```
 % cd Notebooks
@@ -121,42 +106,47 @@ break 4
 % git commit -m "starting othermathclub git repo"
 ```
 
-
-break 5
-
-
 In browser go to http://github.com/myname and Create a new Repo (with a README).
 
 ![github0004](/documentation/images/rc/github0004.png)
 
-
 Grab the repo address to the clipboard; call that 'link'; back on the EC2 instance: 
 
+```
 % git remote add origin 'link'
 % git push origin master
+```
 
 (fails because the README file at the GitHub repo doesn't exist here)
 
+```
 % git stash
 % git pull 'link' master
+```
 
 This goes to some little text editor... ctrl-x to get out of it.
 
+```
 % git push origin master
+```
 
 Fails because the data folder contains a file larger than 100MB; so the lesson here is don't put large 
 files in a repo unless you pay for the extra storage account.
 
 I relocate the data folder outside the repo folder. 
 
+```
 % mv data ..
+```
 
 This proves to be a mistake, it would seem. Subsequent efforts to commit/push do not go well. 
 I could also have added the offending large file to .gitignore but I chose this method instead, just by-the-by.
 
 Finally we come up with a convoluted solution:
 
+```
 % git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch data" -- --all
+```
 
 This seems to convince (see screencap) git that the two large datafiles really are not part of the repo. 
 
@@ -164,8 +154,9 @@ This seems to convince (see screencap) git that the two large datafiles really a
 
 We then proceed with add . (which adds the entire current directory to some entity) and commit (which I sorta get) and push origin master. 
 
-Intermediate Git
-Notes from a class offered at the WRF Data Science Studio by the eScience Institute, January 13 2017. 
+## Git short-course notes
+
+Notes from a class offered at the WRF Data Science Studio by the eScience Institute, January 13 2017. (Bernease Herman is the instructor.) 
 
 ```
 > git add FILEPATH                 -> stages new material; up until this is done the stuff in FILEPATH is "untracked"
@@ -174,15 +165,16 @@ Notes from a class offered at the WRF Data Science Studio by the eScience Instit
 
 This is local and (after iteration) produces a stack of changes. Git push and git pull will interact with a remote repo. 
 
-WARNING: Using stash is only advised for one stash. 
+
+***WARNING: Using stash is only advised for one stash.***
 
 ```
-> git stash will only stash tracked files
-> git stash -u will also stash un-tracked files (they exist but have not been added)
-> git stash apply will re-instate the stash into its former state
+> git stash                    will only stash tracked files
+> git stash -u                 will also stash un-tracked files (they exist but have not been added)
+> git stash apply              will re-instate the stash into its former state
 ```
 
-Branches
+### Branches
 Let's try a great idea to see if it works out; if so we will bring it back in; the usual diverge / merge diagram.
 
 ```
@@ -223,7 +215,7 @@ So the actual chain of events would be (in git command sequence)
 
 Notice that with the ability to create branches we can work on multiple versions of the same code base in parallel.
 
-WARNING The reason stash exists is to hang on to stuff without a commit. Otherwise: Commit is necessary.
+***WARNING The reason stash exists is to hang on to stuff without a commit. Otherwise: Commit is necessary.***
 
 Now the GitHub website might have a public repo that I would like to work on. Fork to my own GitHub account and copy the URL 
 
@@ -233,21 +225,28 @@ Now the GitHub website might have a public repo that I would like to work on. Fo
 ```
 > cd GitHub                                                   that is: Go to the parent directory of where we want stuff
 > git clone <URL-from-above>
+```
 
-We want a triangle of 3 repos: Local, my GitHub, and Valentinas. 
-We give the latter two informal names (although 'origin' is a default): origin and upstream. 
+### Triangle concept
+
+Suppose we have a project leader Valentina and we want to work with her. She maintains her copy of the code; and there
+is our GitHub repo as well. We thirdly have our local repo creating a triangle. The process will be to generate changes and then 
+request that Valentina integrates them into her repo which is the main one. We work locally, integrate with our online GitHub.com
+repo, and then issue pull requests to Valentina from there.
+
+- We want a triangle of 3 repos: Local, my GitHub, and Valentinas. 
+- We give the latter two informal names (although 'origin' is a default): origin and upstream. 
 
 upstream will be Valentina's. 
 origin will be our online repo at GitHub. 
 
 - We make local changes. 
 - We can pull from Valentina to stay up to date. 
-- We can push to 'origin'.
-- We can make requests to Valentia (pull request) to grab our changes from our 'origin' repo. 
+- We can push to 'origin' (our GitHub.com repo)
+- We can make requests to Valentina (pull request) to grab our changes from our 'origin' repo. 
 - We make these pull requests from the browser / GitHub repo; not from our command line.
 
 'git pull origin master' means I update my local copy from my GitHub repo (not the source repo)
-
 
 
 {% include links.html %}
