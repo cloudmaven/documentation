@@ -29,29 +29,3 @@
 
 
 
-* SNS topic notifies me when last instance shuts down.
-  * Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
-  * Get Ws the Key from E
-  * The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
-    * Which uses something called SES to send an email 'system is working on PHI data'. 
-      * Ws pull data from S3 using VPC Endpoint; thanks to the Route table
-      * Ws decrypt data using HomerKey
-      * Ws process their data into result files: Encrypted EBS volume. 
-      * Optionally the result files are encrypted in place in the EBS volume.
-  * Through the VPC Endpoint the results are moved to S3.
-  * Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
-    * which uses something called SES to send another email: 'We're done now.'
-  * Ws evaporate completely leaving no trace. 
-  * B returns to quiescent state. 
-
-
-## Procedure
-
-We use the name 'czarhipaa'; this should be unique.
-
-CIDR as shown is typical.
-
-Dedicated Instance means: Nobody else allowed here. 
-
-Now it exists; time to fill it with stuff.
-

@@ -50,6 +50,7 @@ on the Microsoft Azure cloud.
 * Cloudberry
 * Dedicated Instance 
 * HIPAA [Health Insurance Portability and Accountability Act](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
+  * [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
 * Lambda Service
 * NAT Gateway
 * Worker
@@ -118,6 +119,38 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 * Set up database
 
 
+
+
+
+### Tail end of notes
+
+* SNS topic notifies me when last instance shuts down.
+  * Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
+  * Get Ws the Key from E
+  * The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+    * Which uses something called SES to send an email to the effect that the system is working with PHI data 
+      * Ws pull data from S3 using VPC Endpoint; thanks to the Route table
+      * Ws decrypt data using HomerKey
+      * Ws process their data into result files: Encrypted EBS volume. 
+      * Optionally the result files are encrypted in place in the EBS volume.
+  * Through the VPC Endpoint the results are moved to S3.
+  * Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+    * which uses something called SES to send another email: Done
+  * Ws evaporate completely leaving no trace
+  * B returns to quiescent state. 
+
+
+## Procedure
+
+We use the name 'czarhipaa'; this should be unique.
+
+CIDR as shown is typical.
+
+Dedicated Instance means: Nobody else allowed here. 
+
+Now it exists; time to fill it with stuff.
+
+
 ### Pro Tip
 You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
 This is carte blanche Dedicated and so is more expensive. We do not consider this option in this tutorial because we are erring on 
@@ -156,6 +189,5 @@ Now let us go back to the Route Table selector
 
 Subnet Associations tab: 
 
-[HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
 
 {% include links.html %}
