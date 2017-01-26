@@ -46,22 +46,22 @@ Log in as David: Given his account name and his password. The URL is kilroy. Kil
 
 Notice that Pearl is now looking at the main AWS console featuring 50+ icons, each with a short text description. 
 
-![pic1](/documentation/images/aws/aws_pic1.png)
+![pic1](/documentation/images/aws/walkthrough0001.png)
 
 Only a few of these icons come into play here; the rest can be ignored or explored at a future date. This console is like the factory floor where one starts to build. Pearl takes a minute to look at some of the icons and some of the text. 
 
 However: To un-link this account she needs to leave the factory floor -- the AWS Console -- and go into the 'office' where the account is managed. That is, we want to go to the **My Account** page, typically from the identity dropdown at the upper right. 
 
-![pic2](/documentation/images/aws/aws_pic2.png)
+![pic2](/documentation/images/aws/walkthrough0002.png)
 
 
 To see this left-side list of context pages:
 
-![pic3](/documentation/images/aws/aws_pic3.png)
+![pic3](/documentation/images/aws/walkthrough0003.png)
 
 Now that Pearl is on this page she notices the above, a recurring feature of the AWS console: In a given context on the AWS console website there will be a useful menu on the left side. Here we want to select Consolidated Billing. If this account is linked to a 'bigger' account there is a button here to Remove account. This is what Pearl will do so that David's account will be eligible to receive research credits.
 
-![pic4](/documentation/images/aws/aws_pic4.png)
+![pic4](/documentation/images/aws/walkthrough0004.png)
 
 
 ## Receive research credits for this account (and manage a 'gap' time interval)
@@ -77,23 +77,23 @@ At this point the AWS Solution Architect -- a person from Amazon who knows how e
 ## Look briefly at getting a machine
 Pearl returns to the AWS Console by clicking on the cube icon at the upper left. She notices the item called EC2; so she clicks on that. 
 
-![pic1](/documentation/images/aws/aws_pic5.png)
+![pic1](/documentation/images/aws/walkthrough0005.png)
 
 An **EC2 instance is the AWS term for a computer**. AWS has a large number of these available; they comprise the compute power of the Amazon cloud. Each EC2 instance will have associated memory (RAM) just like any other computer. EC2 instances also have some amount of disk space associated, large enough to host the machine's operating system. To attach additional disk space -- known as Elastic Block Storage (EBS) -- is a common task; but there is a fee that is proportional to the amount of disk space that you attach; so it is typical to get what you need and not more.   See http://www.rightscale.com/blog/cloud-industry-insights/amazons-elastic-block-store-explained.
 
 Pearl notices that she has no instances currently in operation; and that there is a button called 
 
-![pic1](/documentation/images/aws/aws_pic6.png)
+![pic1](/documentation/images/aws/walkthrough0006.png)
 
 She clicks on this and finds that the first choice in getting a machine is to choose the operating system. She chooses AWS Linux. 
 
-![pic1](/documentation/images/aws/aws_pic7.png)
+![pic1](/documentation/images/aws/walkthrough0007.png)
 
 This is a version of Linux that is aligned with other AWS technologies. The login username for this OS is **ec2-user**; and Pearl will use this account name but without a password. Rather she will be using an authentication certificate. 
 
 Pearl finds that the second choice she has is machine type. 
 
-![pic1](/documentation/images/aws/aws_pic8.png)
+![pic1](/documentation/images/aws/walkthrough0008.png)
 
 
 
@@ -102,7 +102,7 @@ There is a list provided of about 45 choices, from small 't-class' machines to l
 ## Do some initial account administration tasks
 In order to avoid logging in as Account Administrator (which has the highest level of control over the account) Pearl is now going to use the Identity and Access Management (IAM) page to create two new identities or IAM Users. The icon for IAM Management looks like a key.
 
-![pic1](/documentation/images/aws/aws_pic9.png)
+![pic1](/documentation/images/aws/walkthrough0009.png)
 
 
 
@@ -110,11 +110,11 @@ In order to avoid logging in as Account Administrator (which has the highest lev
 
 Now that she is in the IAM page Pearl notices again the left sidebar context menu. Pearl is now going to create an IAM User identity for herself and for David. She clicks on Users and selects
 
-![pic1](/documentation/images/aws/aws_pic10.png)
+![pic1](/documentation/images/aws/walkthrough0010.png)
 
 She adds account names 'pearl' and 'david'. 
 
-![pic1](/documentation/images/aws/aws_pic11.png)
+![pic1](/documentation/images/aws/walkthrough0011.png)
 
 These will be two new IAM Users under this account. Each User receives four additional points of attention to complete this task. 
 
@@ -158,7 +158,7 @@ David would do likewise to do work under this account; as would everyone else on
 ## Choose and spin up an EC2 instance (cloud computer); add some memory
 Pearl now decides to go back to EC2 and actually start up an EC2 instance. She returns to the EC2 page. At the top are listed a set of EC2 Resources, for example: 
 
-![pic1](/documentation/images/aws/aws_pic12.png)
+![pic1](/documentation/images/aws/walkthrough0012.png)
 
 We describe EC2 Resources in more detail under that subject heading. One of the most useful EC2 resources to be aware of is the Elastic IP.   This is a persistent ip address that you can associate with an EC2 instance even if you shut it down and start it up again. Without this feature an EC2 that you stop and re-start will be assigned a new IP address each time, making it a bit of a moving target if you need to ssh to that instance. 
 
