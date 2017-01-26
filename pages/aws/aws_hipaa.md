@@ -189,27 +189,80 @@ We could do multiple public sub-nets by creating more than one in multiple Azs; 
 
 Now the private one: 
 
+![hipaa0007](/documentation/images/aws/hipaa0007.png)
+
+![hipaa0008](/documentation/images/aws/hipaa0008.png)
+
+![hipaa0009](/documentation/images/aws/hipaa0009.png)
+
+![hipaa0010](/documentation/images/aws/hipaa0010.png)
+
 Attach it to the VPC: 
+
+![hipaa0011](/documentation/images/aws/hipaa0011.png)
+
+![hipaa0012](/documentation/images/aws/hipaa0012.png)
 
 Now for the NAT Gateway
 
+![hipaa0013](/documentation/images/aws/hipaa0013.png)
+
 Choose the public one in czarhipaa
+
+![hipaa0014](/documentation/images/aws/hipaa0014.png)
+
+![hipaa0015](/documentation/images/aws/hipaa0015.png)
 
 Notice we Created a New EIP
 
+![hipaa0016](/documentation/images/aws/hipaa0016.png)
+
 Now the Route Table
+
+![hipaa0017](/documentation/images/aws/hipaa0017.png)
+
+![hipaa0018](/documentation/images/aws/hipaa0018.png)
+
+![hipaa0019](/documentation/images/aws/hipaa0019.png)
 
 Here they are (including the default main one): 
 
+![hipaa0020](/documentation/images/aws/hipaa0020.png)
+
+![hipaa0021](/documentation/images/aws/hipaa0021.png)
+
 Edit and modify as shown:
+
+![hipaa0022](/documentation/images/aws/hipaa0022.png)
 
 Save
 
 And then under Subnet Associations tab: Edit: 
 
+![hipaa0023](/documentation/images/aws/hipaa0023.png)
+
 Now let us go back to the Route Table selector
+
+![hipaa0024](/documentation/images/aws/hipaa0024.png)
+
+![hipaa0025](/documentation/images/aws/hipaa0025.png)
+
+![hipaa0026](/documentation/images/aws/hipaa0026.png)
 
 Subnet Associations tab: 
 
+![hipaa0027](/documentation/images/aws/hipaa0027.png)
+
+![hipaa0028](/documentation/images/aws/hipaa0028.png)
+
+Now for the Endpoint
+
+![hipaa0029](/documentation/images/aws/hipaa0029.png)
+
+Notice that this has Full Access; we will restrict access at a later step.
+
+![hipaa0030](/documentation/images/aws/hipaa0030.png)
+
+end as of Jan 27 2017.
 
 {% include links.html %}

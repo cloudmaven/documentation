@@ -183,21 +183,53 @@ Public subnet addresses will be of the form: 10.0.0.2, .3, .4, ... .254
 
 Take note of the AZ: 
 
+![hipaa0007](/documentation/images/aws/hipaa0007.png)
+
 We could do multiple public sub-nets by creating more than one in multiple Azs; that is a big-time concept.
 
 Now the private one: 
 
+![hipaa0007](/documentation/images/aws/hipaa0007.png)
+
+![hipaa0008](/documentation/images/aws/hipaa0008.png)
+
+![hipaa0009](/documentation/images/aws/hipaa0009.png)
+
+![hipaa0010](/documentation/images/aws/hipaa0010.png)
+
 Attach it to the VPC: 
+
+![hipaa0011](/documentation/images/aws/hipaa0011.png)
+
+![hipaa0012](/documentation/images/aws/hipaa0012.png)
 
 Now for the NAT Gateway
 
+![hipaa0013](/documentation/images/aws/hipaa0013.png)
+
 Choose the public one in czarhipaa
+
+![hipaa0014](/documentation/images/aws/hipaa0014.png)
+
+![hipaa0015](/documentation/images/aws/hipaa0015.png)
 
 Notice we Created a New EIP
 
+![hipaa0016](/documentation/images/aws/hipaa0016.png)
+
 Now the Route Table
 
+![hipaa0017](/documentation/images/aws/hipaa0017.png)
+
+![hipaa0018](/documentation/images/aws/hipaa0018.png)
+
+![hipaa0019](/documentation/images/aws/hipaa0019.png)
+
 Here they are (including the default main one): 
+
+![hipaa0020](/documentation/images/aws/hipaa0020.png)
+
+![hipaa0021](/documentation/images/aws/hipaa0021.png)
 
 Edit and modify as shown:
 
