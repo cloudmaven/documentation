@@ -10,9 +10,10 @@ folder: mydoc
 ---
 
 # AWS at Neurohackweek 2016 
+
 #### University of Washington eScience Institute
+
 #### By Ariel Rokem and Rob Fatland
 
-abcdefg
 
 {% include links.html %}
