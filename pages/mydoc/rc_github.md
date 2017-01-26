@@ -110,6 +110,20 @@ I want to make a repo from the Notebooks folder so
 
 
 
+break 4
+
+
+
+```
+% cd Notebooks
+% git init
+% git add .
+% git commit -m "starting othermathclub git repo"
+```
+
+
+
+
 
 
 
