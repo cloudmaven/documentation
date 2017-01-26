@@ -1,18 +1,17 @@
 ---
 title: AWS Account Management
-keywords: aws, cfncluster, procedures
+keywords: aws
 last_updated: January 26, 2017
 tags: [AWS]
 summary: "Getting started with AWS Management"
 sidebar: mydoc_sidebar
-permalink: aws_accountmanage.html
+permalink: aws_account_management.html
 folder: aws
 ---
 ## Introduction
 The purpose of this page is to describe your core AWS account management tasks in brief and in detail. 
 
 ## Important Links
-Let's also see if $e^{i\pi}+1=0$ is actually true. 
 
 ## Warnings
 
