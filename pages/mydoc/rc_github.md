@@ -87,6 +87,30 @@ Let's install the git utility on the EC2 instance: First ssh via PuTTY (as I am 
 
 
 
+break 3
+
+
+Let's take care of updating the OS first…
+
+![github0002](/documentation/images/rc/github0002.png)
+
+
+Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
+though I am on the cloud. (Kilroy wonders: Is this a necessary part of life?)
+
+Now I can run 
+
+% sudo apt-get install git
+
+however this may already be installed.
+
+![github0003](/documentation/images/rc/github0003.png)
+
+I want to make a repo from the Notebooks folder so
+
+
+
+
 
 
 
