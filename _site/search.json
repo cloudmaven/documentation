@@ -4,11 +4,61 @@
 
 
 {
+"title": "Research Computing Case Studies",
+"tags": "research_computinghpcrosettacase_studies",
+"keywords": "research_computing",
+"url": "rc_rosetta.html",
+"summary": "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+},
+
+
+
+{
+"title": "Research Computing Case Studies",
+"tags": "research_computinghpcrosettacase_studies",
+"keywords": "research_computing",
+"url": "rc_rosetta.html",
+"summary": "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+},
+
+
+
+{
+"title": "Research Computing Case Studies",
+"tags": "research_computinghpcrosettacase_studies",
+"keywords": "research_computing",
+"url": "rc_rosetta.html",
+"summary": "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+},
+
+
+
+{
+"title": "Research Computing Neurohackweek",
+"tags": "researchcomputingcasestudyneuronneurohackhackhackweek",
+"keywords": "research,computing,case,study,neuron,neurohack,hack,hackweek",
+"url": "acs_neurohackweek.html",
+"summary": "Neurohackweek at the eScience Institute using AWS"
+},
+
+
+
+{
+"title": "Research Computing Case Studies",
+"tags": "research_computinghpcrosettacase_studies",
+"keywords": "research_computing",
+"url": "rc_rosetta.html",
+"summary": "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+},
+
+
+
+{
 "title": "AWS Account Management",
 "tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
-"url": "aws_accountmanage.html",
-"summary": "Getting started with AWS Management"
+"keywords": "aws",
+"url": "aws_account_management.html",
+"summary": "AWS account management"
 },
 
 
@@ -24,11 +74,21 @@
 
 
 {
-"title": "Using the AWS Console",
+"title": "AWS Console",
 "tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
+"keywords": "aws",
 "url": "aws_console.html",
-"summary": "Getting started with the AWS Console"
+"summary": "AWS Console"
+},
+
+
+
+{
+"title": "Databases on AWS",
+"tags": "AWS",
+"keywords": "aws",
+"url": "aws_database.html",
+"summary": "Databases on AWS"
 },
 
 
@@ -44,51 +104,31 @@
 
 
 {
-"title": "AWS Procedural",
-"tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
-"url": "aws_ec2resources.html",
-"summary": "Guides related to AWS EC2 instances"
+"title": "Geoserver on AWS",
+"tags": "research_computing",
+"keywords": "research_computing",
+"url": "aws_geoserver.html",
+"summary": "Geospatial Tools for Research - Case Study"
 },
 
 
 
 {
-"title": "First Cloud Walkthrough",
-"tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
-"url": "aws_firstwalkthrough.html",
-"summary": "Protease Inhibition Research: Cloud Migration Study"
-},
-
-
-
-{
-"title": "First Cloud Walkthrough",
-"tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
-"url": "aws_fourthwalkthrough.html",
-"summary": "Protease Inhibition Research: Cloud Migration Study"
-},
-
-
-
-{
-"title": "AWS Procedural",
+"title": "AWS HIPAA",
 "tags": "AWS",
 "keywords": "aws, hipaa, procedures",
 "url": "aws_hipaa.html",
-"summary": "Description of HIPAA-compliant data system built on AWS"
+"summary": "A HIPAA-compliant research system on AWS"
 },
 
 
 
 {
-"title": "AWS Procedural",
+"title": "IoT on AWS",
 "tags": "AWS",
 "keywords": "aws, iot, procedures",
 "url": "aws_iot.html",
-"summary": "IoT experiments"
+"summary": "IoT on AWS"
 },
 
 
@@ -96,29 +136,19 @@
 {
 "title": "AWS Procedural",
 "tags": "AWS",
-"keywords": "documentation theme, jekyll, technical writers, help authoring tools, hat replacements",
+"keywords": "jupyter",
 "url": "aws_jupyter.html",
-"summary": "Jupyter Notebook Troubleshooting on AWS"
+"summary": "Jupyter Notebook on AWS"
 },
 
 
 
 {
-"title": "AWS Databases",
+"title": "Databases on AWS",
 "tags": "AWS",
 "keywords": "aws, spotmarket, procedures",
-"url": "aws_rds.html",
+"url": "aws_database.html",
 "summary": "Procedures for working with RDS, DynamoDB and other databases"
-},
-
-
-
-{
-"title": "First Cloud Walkthrough",
-"tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
-"url": "aws_secondwalkthrough.html",
-"summary": "Protease Inhibition Research: Cloud Migration Study"
 },
 
 
@@ -137,48 +167,28 @@
 "title": "AWS Spot Market",
 "tags": "AWS",
 "keywords": "aws, spotmarket, procedures",
-"url": "aws_spotmarket.html",
-"summary": "Procedures for working with Spot Market on AWS"
+"url": "aws_spot_market.html",
+"summary": "Working with Spot Market on AWS"
 },
 
 
 
 {
-"title": "First Cloud Walkthrough",
+"title": "Storage on AWS",
 "tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
-"url": "aws_thirdwalkthrough.html",
-"summary": "Protease Inhibition Research: Cloud Migration Study"
+"keywords": "aws",
+"url": "aws_storage.html",
+"summary": "Storage on AWS"
 },
 
 
 
 {
-"title": "First Cloud Walkthrough",
+"title": "AWS cloud walkthrough",
 "tags": "AWS",
-"keywords": "aws, cfncluster, procedures",
+"keywords": "aws",
 "url": "aws_walkthrough.html",
 "summary": "Protease Inhibition Research: Cloud Migration Study"
-},
-
-
-
-{
-"title": "Azure Procedural",
-"tags": "Azure",
-"keywords": "azure, procedural",
-"url": "azure_api.html",
-"summary": "Data API Building on Azure"
-},
-
-
-
-{
-"title": "Azure Procedural",
-"tags": "Azureintroduction",
-"keywords": "azure, procedural",
-"url": "azure_firstwalkthrough.html",
-"summary": "Microsoft Azure First Walkthrough"
 },
 
 
@@ -188,6 +198,46 @@
 "tags": "Azurejupyter",
 "keywords": "azure, procedural",
 "url": "azure_jupyter.html",
+"summary": "Jupyter Notebooks on Azure"
+},
+
+
+
+{
+"title": "Azure Procedural",
+"tags": "Azurespark",
+"keywords": "azure, procedural",
+"url": "azure_spark.html",
+"summary": "Spark on Azure"
+},
+
+
+
+{
+"title": "Azure Procedural",
+"tags": "Azurespark",
+"keywords": "azure, procedural",
+"url": "azure_spark.html",
+"summary": "Spark on Azure"
+},
+
+
+
+{
+"title": "Azure Procedural",
+"tags": "Azurejupyter",
+"keywords": "azure, procedural",
+"url": "az_jupyter.html",
+"summary": "Jupyter Notebooks on Azure"
+},
+
+
+
+{
+"title": "Jupyter on Azure",
+"tags": "Jupyter",
+"keywords": "azure, procedural",
+"url": "az_jupyter.html",
 "summary": "Jupyter Notebooks on Azure"
 },
 
@@ -224,6 +274,16 @@
 
 
 {
+"title": "Azure Training Day",
+"tags": "azure",
+"keywords": "azure, training",
+"url": "azure_training.html",
+"summary": "Azure Training Day on January 19, 2017"
+},
+
+
+
+{
 "title": "Azure Procedural",
 "tags": "Azurevisual_studio",
 "keywords": "azure, procedural",
@@ -244,6 +304,26 @@
 
 
 {
+"title": "Research Computing Case Studies - Organic Chemistry",
+"tags": "research_computingcase_studies",
+"keywords": "BDS",
+"url": "rc_orgchem.html",
+"summary": "Documentation for the Biogeochemistry Data System"
+},
+
+
+
+{
+"title": "Research Computing Case Studies - Organic Chemistry",
+"tags": "research_computingcase_studies",
+"keywords": "BDS",
+"url": "rc_orgchem.html",
+"summary": "Documentation for the Biogeochemistry Data System"
+},
+
+
+
+{
 "title": "Research Computing Calendar",
 "tags": "",
 "keywords": "news, blog, updates, release notes, announcements",
@@ -255,40 +335,80 @@
 
 {
 "title": "Compute Power",
-"tags": "cloud_corecompute",
+"tags": "research_computing",
 "keywords": "cloud, introduction",
-"url": "cloud_computepower.html",
-"summary": "Understanding computing power on the cloud"
+"url": "cc_compute_power.html",
+"summary": "Compute power in the cloud"
 },
 
 
 
 {
-"title": "Cost Management",
-"tags": "cloud_corecost",
+"title": "Cloud Computing Cost Management",
+"tags": "research_computing",
 "keywords": "cloud, introduction",
-"url": "cloud_cost.html",
-"summary": "Calculating the cost of putting your project on the cloud"
+"url": "cc_cost_management.html",
+"summary": "Calculating the cost of moving your research computing to the cloud"
 },
 
 
 
 {
 "title": "Data Security on the Cloud",
-"tags": "cloud_coredata_security",
+"tags": "research_computing",
 "keywords": "cloud, introduction",
-"url": "cloud_datasecurity.html",
+"url": "cc_data_security.html",
 "summary": "Keeping your data secure on the cloud"
 },
 
 
 
 {
+"title": "Docker containers on the public cloud",
+"tags": "research_computing",
+"keywords": "cloud, docker",
+"url": "cc_docker_containers.html",
+"summary": "Using Docker containers on the public cloud"
+},
+
+
+
+{
+"title": "Cloud Computing Glossary",
+"tags": "research_computing",
+"keywords": "cloud, glossary",
+"url": "cc_glossary.html",
+"summary": "A glossary of terminology"
+},
+
+
+
+{
+"title": "Internet of Things",
+"tags": "research_computing",
+"keywords": "cloud, IOT",
+"url": "cc_internet_of_things.html",
+"summary": "Internet of things in relation to the public cloud"
+},
+
+
+
+{
+"title": "Cloud technical notes",
+"tags": "research_computing",
+"keywords": "cloud, introduction",
+"url": "cc_technical.html",
+"summary": "Cloud computing technical notes"
+},
+
+
+
+{
 "title": "Introduction to the Cloud",
-"tags": "cloud_corebasics",
+"tags": "research_computing",
 "keywords": "cloud, basics",
-"url": "cloud_intro.html",
-"summary": "What the cloud is"
+"url": "cc_what_is_the_cloud.html",
+"summary": "What the cloud is..."
 },
 
 
@@ -296,27 +416,37 @@
 
 
 {
-"title": "Google Procedural",
-"tags": "googleproceduralsapp_engine",
-"keywords": "google, procedural",
-"url": "google_appengine.html",
+"title": "Google App Engine",
+"tags": "research_computing",
+"keywords": "google, app, engine",
+"url": "g_app_engine.html",
 "summary": "Google App Engine"
 },
 
 
 
 {
-"title": "Google Procedural",
-"tags": "googleprocedurals",
-"keywords": "google, procedural",
-"url": "google_earthengine.html",
+"title": "Google Earth Engine",
+"tags": "googleearthengine",
+"keywords": "google, earth, engine",
+"url": "g_earth_engine.html",
 "summary": "Google Earth Engine"
 },
 
 
 
 {
-"title": "Don&#39;t Panic... Documentation for Cloud Computing and Data Science",
+"title": "Google Walkthrough",
+"tags": "research_computing",
+"keywords": "google",
+"url": "g_walkthrough.html",
+"summary": "Google Walkthrough"
+},
+
+
+
+{
+"title": "Documentation for Cloud Computing and Data Science",
 "tags": "getting_started",
 "keywords": "sample homepage",
 "url": "index.html",
@@ -689,7 +819,7 @@
 "title": "Scroll layout",
 "tags": "special_layouts",
 "keywords": "json, scrolling, scrollto, jquery plugin",
-"url": "jsmydoc_scroll.html",
+"url": "mydoc_scroll.html",
 "summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
 },
 
@@ -699,7 +829,7 @@
 "title": "Scroll layout",
 "tags": "special_layouts",
 "keywords": "json, scrolling, scrollto, jquery plugin",
-"url": "mydoc_scroll.html",
+"url": "jsmydoc_scroll.html",
 "summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
 },
 
@@ -1165,124 +1295,74 @@
 
 
 
-
-
 {
-"title": "Preparing Proposals",
-"tags": "resourcesvisualization",
-"keywords": "visualization, resources",
-"url": "proposals.html",
-"summary": "Tips for preparing your proposals"
+"title": "Consulting on proposal preparation",
+"tags": "research_computing",
+"keywords": "research",
+"url": "p_consulting.html",
+"summary": "Consulting"
 },
 
 
 
 {
-"title": "Miscellaneous Python Documentation",
-"tags": "python",
-"keywords": "research_computing",
-"url": "python_misc.html",
-"summary": "Python tools and tips"
+"title": "Costing cloud in proposals",
+"tags": "research_computing",
+"keywords": "aws",
+"url": "p_costing.html",
+"summary": "Costing"
+},
+
+
+
+
+
+{
+"title": "Data science",
+"tags": "research_computing",
+"keywords": "research, computing",
+"url": "rc_data_science.html",
+"summary": "Data science"
 },
 
 
 
 {
-"title": "Build-Test-Share",
+"title": "GitHub for Research Computing",
+"tags": "research_computing",
+"keywords": "research, computing",
+"url": "rc_github.html",
+"summary": "Github for research computing"
+},
+
+
+
+{
+"title": "Research on the web",
 "tags": "research_computing",
 "keywords": "research_computing",
-"url": "rc_buildtestshare.html",
-"summary": "Build-test-share -  An Agile Framework"
+"url": "rc_research_on_the_web.html",
+"summary": "Research on the web"
 },
 
 
 
 {
-"title": "Research Computing - DIF",
+"title": "Visualization using Python",
 "tags": "research_computing",
-"keywords": "research_computing",
-"url": "rc_dif.html",
-"summary": "Dynamic Information Framework - A Multi-sector, Geospatial Gateway for Decision Making"
+"keywords": "research, computing, python, visualization",
+"url": "rc_visualization_python.html",
+"summary": "Visualization using Python"
 },
 
 
 
 {
-"title": "Research Computing Case Studies",
-"tags": "research_computinggeospatialcase_studies",
-"keywords": "research_computing",
-"url": "rc_geoserver.html",
-"summary": "Use of Geospatial Tools for Research - Case Studies"
-},
-
-
-
-{
-"title": "Research Computing Case Studies",
-"tags": "research_computinggeospatialcase_studies",
-"keywords": "research_computing",
-"url": "rc_geoserver.html",
-"summary": "Use of Geospatial Tools for Research - Case Studies"
-},
-
-
-
-{
-"title": "Research Computing Case Studies - Organic Chemistry",
-"tags": "research_computingcase_studies",
-"keywords": "BDS",
-"url": "rc_orgchem.html",
-"summary": "Documentation for the Biogeochemistry Data System"
-},
-
-
-
-{
-"title": "Cloud in Research Proposals",
+"title": "Visualization on Virtual Globes",
 "tags": "research_computing",
-"keywords": "research_computing",
-"url": "rc_proposals.html",
-"summary": "Cloud Success Stories and upcoming work"
-},
-
-
-
-{
-"title": "Research Computing Case Studies",
-"tags": "research_computinghpcrosettacase_studies",
-"keywords": "research_computing",
-"url": "rc_rosetta.html",
-"summary": "Implementation of the Rosetta molecular engineering software on the AWS cloud"
-},
-
-
-
-{
-"title": "Docker Containers",
-"tags": "resourcesdocker",
-"keywords": "resources, docker",
-"url": "resources_docker.html",
-"summary": "Learn how to use Docker Containers to Package your Applications"
-},
-
-
-
-{
-"title": "Github",
-"tags": "resourcesgithub",
-"keywords": "resources, github",
-"url": "resources_github.html",
-"summary": "Using Github for collaboration and Open Science"
-},
-
-
-
-{
-"title": "Data Visualization",
-"tags": "resourcesvisualization",
-"keywords": "visualization, resources",
-"url": "resources_viz.html",
-"summary": "Tools for Data Visualization"
+"keywords": "visualization, virtual, globes",
+"url": "rc_visualization_virtual_globes.html",
+"summary": "Visualization on Virtual Globes"
 },
 
 

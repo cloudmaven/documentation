@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Github for research computing">
+<meta name="keywords" content="research_computing,  research, computing">
+<title>GitHub for Research Computing | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the GitHub for Research Computing page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="GitHub for Research Computing">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cc_what_is_the_cloud.html">What is the cloud?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_data_security.html">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_glossary.html">Glossary</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_cost_management.html">Cost management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_compute_power.html">Compute power</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_docker_containers.html">Docker containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_internet_of_things.html">Internet of things</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_technical.html">Cloud technical</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="p_consulting.html">Consulting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="p_costing.html">Costing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research computing</a>
+        <ul>
+            
+            
+            
+            <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_data_science.html">Data science</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_research_on_the_web.html">Research on the web</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_python.html">Visualization Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2.html">EC2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spot_market.html">Spot market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cluster.html">Cluster</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_rds.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure</a>
+        <ul>
+            
+            
+            
+            <li><a href="az_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_training.html">Training</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_visual_studio.html">Visual Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_web_framework.html">Web Framework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_machine_learning.html">Machine Learning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_neurohackweek.html">Neurohackweek</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_cfd.html">CFD</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+        
+    
+    <li>
+        <a href="#">Azure Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">GitHub for Research Computing</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Github for research computing</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/rc/rc_github.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    
+
+    
+
+  <h1 id="github-for-research-computing">GitHub for Research Computing</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The purpose of this page is to walk through GitHub procedures with two implementations in mind:</p>
+
+<ol>
+  <li>A Jekyll implementation (e.g. http://cloudmaven.org) that renders markdown (.md) properly.</li>
+  <li>A Jupyter Notebook: Both static rendering and as a backup of a dynamic instance.</li>
+</ol>
+
+<p>Using a code repository (distinguish: not a data repository) like GitHub accomplishes:</p>
+
+<ul>
+  <li>You have a safe back-up of your code base</li>
+  <li>You can work on your code with others simultaneously, managing versions</li>
+  <li>You can take advantage of interpreters like Jekyll that build documentation pages</li>
+  <li>You can maintain versions of your code for development, testing and deployment (use)</li>
+</ul>
+
+<h2 id="links">Links</h2>
+<p><a href="http://github.com">GitHub</a></p>
+
+<h2 id="warnings">Warnings</h2>
+<ul>
+  <li><strong><em>For a Jekyll instance such as <a href="http://cloudmaven.org">this website</a>: Work from the gh-pages branch, not the master.</em></strong>
+    <ul>
+      <li>You risk ‘breaking’ your GitHub implementation if you work on the wrong branch.</li>
+    </ul>
+  </li>
+  <li><strong><em>If GitHub is balking (throwing fail/error messages): Use ‘git status’ on the command line and diagnose the output.</em></strong>
+    <ul>
+      <li>For example a ‘rebase’ in progress (unresolved) can be halted using ‘git rebase abort’ but be sure you know what you are doing.</li>
+      <li>Once ‘git status’ is ok you can return to business as usual.</li>
+    </ul>
+  </li>
+  <li><strong><em>GitHub can sometimes be mysterious. When in doubt: Make an independent local copy of the repo folder first.</em></strong></li>
+  <li><strong><em>While Jekyll renders markdown there does not appear to be a reliably good way of rendering LaTeX.</em></strong>
+    <ul>
+      <li>In research this is important. Until there is a fix we are obliged to render to pngs and embed them as images.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="what-is-jekyll">What is Jekyll?</h2>
+<p>Jekyll is a GitHub repo that includes rendering software ‘for itself’. That is: If you make a copy of the Jekyll repo and rename it something else, 
+like ‘Hyde’, it will be visible on GitHub as both a normal repo (let’s call that the back door) and as a rendered website (the front door). The 
+way this works is your version will start out with some default files that have the markdown file extension ‘.md’. These you can modify to suit 
+your own purposes. When you hit the front door Jekyll manually creates from these markdown files some pretty html content which renders in your 
+browser. Follow the recipe provided by the Jekyll documentation and you can start building out content in Hyde. This is what we have done 
+with http://cloudmaven.org.</p>
+
+<p>Notice that there is a side comment (Kilroy) needed here about the distinction between the front door URL and the DNS entry.</p>
+
+<h2 id="github-commit-from-command-line-on-windows">GitHub Commit from Command Line on Windows</h2>
+<p>This assumes you already have a GitHub repo and a local copy. You have modified something in the local copy and you have permission to just execute a 
+push that will override anything on the GitHub repo.</p>
+
+<ul>
+  <li>Start the Power Shell on a Windows machine connected to the internet.</li>
+  <li>Navigate to the base directory of the repository.</li>
+  <li>Issue these in sequence; note I have paraphrased what they do
+    <ul>
+      <li>git status                             state the current status of the local repository
+        <ul>
+          <li>Is there a ‘rebase’ in the response? You may need to issue ‘git rebase abort’ but be sure this is safe to do</li>
+        </ul>
+      </li>
+      <li>git pull                               update my copy of the repo from GitHub to latest</li>
+      <li>git add .                              stage everything new recursively (this folder on down) for a commit</li>
+      <li>git commit -m “a comment”              creates a ‘commit’ of the current state of the local repo</li>
+      <li>git push origin master                 update the GitHub repo based on mine
+        <ul>
+          <li>This push may require login information: login name and password</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="jupyter-github-repo-on-aws-ec2">Jupyter GitHub repo on AWS EC2</h2>
+<p>Suppose your EC2-based Jupyter Notebook is publicly visible. It might be password-protected (it is by default) but passwords have a 
+way of getting handed around and this is not a highly secure situation. Someone logs on to your Notebook and deletes a page or 
+makes some not-too-useful changes. You want to revert to the old version: This sounds like a job for GitHub.</p>
+
+<p>Install the git utility on the EC2 instance: First ssh via PuTTY (as I am using a Windows machine).</p>
+
+<p><img src="/documentation/images/rc/github0001.png" alt="github0001" /></p>
+
+<p>Take care of updating the Operating System first</p>
+
+<p><img src="/documentation/images/rc/github0002.png" alt="github0002" /></p>
+
+<p>Interestingly this takes twenty minutes or so; and I have to babysit it; plus a reboot. It is an administrative task even 
+though I am on the cloud.</p>
+
+<p>Now I can run</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% sudo apt-get install git
+</code></pre>
+</div>
+
+<p>however I find that ‘git’ is already installed; so that is actually not necessary in this case.</p>
+
+<p><img src="/documentation/images/rc/github0003.png" alt="github0003" /></p>
+
+<p>I want to make a repo from the Notebooks folder so</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cd Notebooks
+% git init
+% git add .
+% git commit -m "starting othermathclub git repo"
+</code></pre>
+</div>
+
+<p>In browser go to http://github.com/myname and Create a new Repo (with a README).</p>
+
+<p><img src="/documentation/images/rc/github0004.png" alt="github0004" /></p>
+
+<p>Grab the repo address to the clipboard; call that ‘link’; back on the EC2 instance:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% git remote add origin 'link'
+% git push origin master
+</code></pre>
+</div>
+
+<p>(fails because the README file at the GitHub repo doesn’t exist here)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% git stash
+% git pull 'link' master
+</code></pre>
+</div>
+
+<p>This goes to some little text editor… ctrl-x to get out of it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% git push origin master
+</code></pre>
+</div>
+
+<p>Fails because the data folder contains a file larger than 100MB; so the lesson here is don’t put large 
+files in a repo unless you pay for the extra storage account.</p>
+
+<p>I relocate the data folder outside the repo folder.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% mv data ..
+</code></pre>
+</div>
+
+<p>This proves to be a mistake, it would seem. Subsequent efforts to commit/push do not go well. 
+I could also have added the offending large file to .gitignore but I chose this method instead, just by-the-by.</p>
+
+<p>Finally we come up with a convoluted solution:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch data" -- --all
+</code></pre>
+</div>
+
+<p>This seems to convince (see screencap) git that the two large datafiles really are not part of the repo.</p>
+
+<p><img src="/documentation/images/rc/github0005.png" alt="github0005" /></p>
+
+<p>We then proceed with add . (which adds the entire current directory to some entity) and commit (which I sorta get) and push origin master.</p>
+
+<h2 id="git-short-course-notes">Git short-course notes</h2>
+
+<p>Notes from a class offered at the WRF Data Science Studio by the eScience Institute, January 13 2017. (Bernease Herman is the instructor.)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git add FILEPATH                 -&gt; stages new material; up until this is done the stuff in FILEPATH is "untracked"
+&gt; git commit -m "message"  -&gt; commits those changes to the repo
+</code></pre>
+</div>
+
+<p>This is local and (after iteration) produces a stack of changes. Git push and git pull will interact with a remote repo.</p>
+
+<p><strong><em>WARNING: Using stash is only advised for one stash.</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git stash                    will only stash tracked files
+&gt; git stash -u                 will also stash un-tracked files (they exist but have not been added)
+&gt; git stash apply              will re-instate the stash into its former state
+</code></pre>
+</div>
+
+<h3 id="branches">Branches</h3>
+<p>Let’s try a great idea to see if it works out; if so we will bring it back in; the usual diverge / merge diagram.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git branch feature1
+&gt; git branch
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   feature1
+*  master
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git branch -d feature1             deletes the branch
+</code></pre>
+</div>
+
+<p>Let’s ignore that delete and assume feature1 branch exists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git checkout feature1                               'checkout' is the branch choice command
+&gt; git checkout master              
+</code></pre>
+</div>
+
+<p>So the actual chain of events would be (in git command sequence)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; git branch f1
+&gt; git checkout f1
+&gt; git branch                                  verify we are working on the f1 branch
+&gt; vi file.txt                                    edit and save file we want to change
+&gt; git add file.txt                          stage that file
+&gt; git commit -m "msg"              commit that change (again this is to branch f1)
+&gt; git checkout master
+&gt; git merge f1                             merges f1 (including the new commit) with master
+&gt; git branch                                 just to note that both branches still exist
+&gt; git branch -d f1                       deletes the f1 branch; now only master exists
+</code></pre>
+</div>
+
+<p>Notice that with the ability to create branches we can work on multiple versions of the same code base in parallel.</p>
+
+<p><strong><em>WARNING The reason stash exists is to hang on to stuff without a commit. Otherwise: Commit is necessary.</em></strong></p>
+
+<p>Now the GitHub website might have a public repo that I would like to work on. Fork to my own GitHub account and copy the URL</p>
+
+<p><img src="/documentation/images/rc/github0006.png" alt="github0006" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; cd GitHub                                                   that is: Go to the parent directory of where we want stuff
+&gt; git clone &lt;URL-from-above&gt;
+</code></pre>
+</div>
+
+<h3 id="triangle-concept">Triangle concept</h3>
+
+<p>Suppose we have a project leader Valentina and we want to work with her. She maintains her copy of the code; and there
+is our GitHub repo as well. We thirdly have our local repo creating a triangle. The process will be to generate changes and then 
+request that Valentina integrates them into her repo which is the main one. We work locally, integrate with our online GitHub.com
+repo, and then issue pull requests to Valentina from there.</p>
+
+<ul>
+  <li>We want a triangle of 3 repos: Local, my GitHub, and Valentinas.</li>
+  <li>We give the latter two informal names (although ‘origin’ is a default): origin and upstream.</li>
+</ul>
+
+<p>upstream will be Valentina’s. 
+origin will be our online repo at GitHub.</p>
+
+<ul>
+  <li>We make local changes.</li>
+  <li>We can pull from Valentina to stay up to date.</li>
+  <li>We can push to ‘origin’ (our GitHub.com repo)</li>
+  <li>We can make requests to Valentina (pull request) to grab our changes from our ‘origin’ repo.</li>
+  <li>We make these pull requests from the browser / GitHub repo; not from our command line.</li>
+</ul>
+
+<p>‘git pull origin master’ means I update my local copy from my GitHub repo (not the source repo)</p>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

@@ -187,12 +187,11 @@ To get started you will need an account. There are at least four approaches open
 or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). 
 Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
 
-* You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a few hours) 
-set you up with a temporary User account. You will need to coordinate your usage with us; we will need to make sure you 
-are 'good to go' managing resources; and we will ask that you do some reporting on your experience. This can be a 
+* You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will need to make sure you 
+are 'good to go' managing resources; and we will ask that you do some reporting on your experience. This can be a 
 short-term stop-gap if you're stuck.
 
-* You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the 
+* You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the 
 [one-page application here](https://aws.amazon.com/research-credits/) for AWS or 
 the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) 
 for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are 
@@ -229,7 +228,7 @@ We present this as Introduction, Framework, Jargon Dive and Closing; then WRYTYN
 
 * Cloud practice pillars are Build, Test, Share 
 
-## jargon
+## Jargon
 
 * Third Party
 * Stack Overflow
