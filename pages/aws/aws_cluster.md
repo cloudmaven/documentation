@@ -1,5 +1,5 @@
 ---
-title: AWS Procedural
+title: AWS Cluster
 keywords: aws, cfncluster, procedures
 last_updated: January 26, 2017
 tags: [AWS]
@@ -9,7 +9,6 @@ permalink: aws_cluster.html
 folder: aws
 ---
 
-Download PDF [here](/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf) 
-
+# Cluster
 
 {% include links.html %}
