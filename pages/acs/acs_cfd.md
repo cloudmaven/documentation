@@ -1,15 +1,14 @@
 ---
-title: Research Computing Case Studies
+title: Computational fluid dynamics on AWS
 keywords: research_computing
 last_updated: October 6, 2016
 tags: [research_computing]
-summary: "Rosetta molecular engineering software on the AWS cloud"
+summary: "Computational fluid dynamics on the AWS cloud"
 sidebar: mydoc_sidebar
-permalink: acs_rosetta.html
+permalink: acs_cfd.html
 folder: acs
 ---
 
-Download PDF [here](/documentation/pdf/Doc44_Rosetta_on_AWS.pdf) 
-
+# Start
 
 {% include links.html %}
