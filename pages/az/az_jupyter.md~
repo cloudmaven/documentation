@@ -1,14 +1,12 @@
 ---
-
----
-title: Azure HIPAA
-keywords: azure
+title: Jupyter on Azure
+keywords: azure, procedural
 last_updated: January 26, 2017
 tags: [Jupyter]
-summary: "Azure HIPAA"
+summary: "Jupyter Notebooks on Azure"
 sidebar: mydoc_sidebar
-permalink: az_hipaa.html
-folder: az
+permalink: az_jupyter.html
+folder: mydoc
 ---
 
 # Jupyter notebooks on Microsoft Azure

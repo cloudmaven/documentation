@@ -6,7 +6,7 @@ tags: [Jupyter]
 summary: "Jupyter Notebooks on Azure"
 sidebar: mydoc_sidebar
 permalink: az_jupyter.html
-folder: mydoc
+folder: az
 ---
 
 # Jupyter notebooks on Microsoft Azure
