@@ -1,17 +1,15 @@
 ---
-title: Databases on AWS
+title: AWS Database
 keywords: aws
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Databases on AWS"
+summary: "Database instances on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_database.html
 folder: aws
 ---
 
-# Database
-
-
+# Start
 
 
 {% include links.html %}
