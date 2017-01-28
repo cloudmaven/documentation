@@ -109,10 +109,10 @@ When you look at your Snapshot listing:
 
 ![pic3](/documentation/images/aws_procedurals/aws_ec2instances_pic3.png)
 
-Notice "Created by CreateImage(i-dc…) for ami-66…: Let's break this down. 
-	• CreateImage is a facility for building an AMI. Fine. 
-	• i-xxx… is an instance ID. 
-	• ami-yyy… is an AMI ID. 
+
+CreateImage is a facility for building an AMI. Fine. 
+...is an instance ID. 
+...is an AMI ID. 
 
 ## Snapshot Archaeology 
 Suppose you have an old Snapshot and you are not sure what is on it; and if nothing you might want to delete it. 
@@ -125,7 +125,7 @@ Create the Volume from the Snapshot
 
 ![pic5](/documentation/images/aws_procedurals/aws_ec2instances_pic5.png)
 
-I will choose Magnetic because it is a bit cheaper… this is just an example. If I wish to have speed I would stay with SSD.
+I will choose Magnetic because it is a bit cheaper... this is just an example. If I wish to have speed I would stay with SSD.
 
 The Volume is created very quickly.
  
@@ -145,7 +145,7 @@ That's where my restored Volume is. Oh look I have a machine there also; though 
 
 ![pic9](/documentation/images/aws_procedurals/aws_ec2instances_pic9.png)
 
-This finds a host, creates a VM, points to the associated storage… all of this takes a few minutes but you can be impatient and see if 
+This finds a host, creates a VM, points to the associated storage all of this takes a few minutes but you can be impatient and see if 
 you can Attach the restored Snapshot Volume whenever you like. 
 
 ![pic10](/documentation/images/aws_procedurals/aws_ec2instances_pic10.png)
@@ -157,7 +157,8 @@ you can Attach the restored Snapshot Volume whenever you like.
 To check if there is an attached volume, log on (ssh) onto your EC2 instance (Original recipe located [here](http://maplpro.blogspot
 .com/2012/05/how-to-mount-ebs-volume-into-ec2-ubuntu.html). 
 
-```First see if it is attached with:
+```
+First see if it is attached with:
 
 >> sudo fdisk -l
 Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
@@ -194,7 +195,7 @@ system.
 
 In the case above, by the way, as noted earlier: These are all tell-tale Linux OS root volumes because the default on AWS Linux EC2 instances is 8GB. 
 
-***Pro Tip: Returning to the snapshot table comment field ('Created by…' in our example above): This can have anything in there (User defined) when the snapshot is of an EBS without this AMI association business.*** 
+***Pro Tip: Returning to the snapshot table comment field ('Created by... in our example above): This can have anything in there (User defined) when the snapshot is of an EBS without this AMI association business.*** 
 
 This concludes the overview of Snapshots and AMIs and the archaeological process of figuring out what is preserved on an artifact Snapshot.
 

@@ -3,41 +3,58 @@ title: EC2 Instances
 keywords: aws, instances, procedures
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Procedures for working with EC2 instances"
+summary: "EC2 instances: AWS computers"
 sidebar: mydoc_sidebar
-permalink: aws_ec2instances.html
+permalink: aws_ec2.html
 folder: aws
 ---
 
 ## Introduction
-An EC2 (Elastic Cloud Compute) instance is essentially a virtual server; it is no different from having a Linux (or Windows) box sit under 
-your desk except that if you need to scale your applications i.e. increase computing capacity or expand storage, you don't have to run out 
-to Silicon Mechanics or Best Buy to purchase new machinery - you can essentially get a new CPU or multiple CPUs and hard drives with the 
-click of a button. Please read our Cloud Core pages on how [cloud compute service](/cloud_computepower.html) may be suitable for your 
-project, how to [cost](/cloud_cost.html) and where to [begin](/cloud_intro.html)!  
+The purpose of this page is to go into some detail about the provisioning and use of AWS EC2 (Elastic Cloud Compute) 
+virtual servers; which are just computers available for you to use. 
 
-The purpose of this page is to describe the terminology and relationships of Amazon Web Services (AWS) EC2 instances, AMIs, Elastic Block 
-Storage (EBS) and Snapshots of EBS volumes: Broadly EC2 Resources. EBS or Elastic Block Storage and EFS or Elastic File System are two ways 
-of managing operational memory in AWS EC2 instances and clusters.  In passing we also define / describe Elastic IPs and Key Pairs and sharing 
-access to S3. This document does not currently cover EFS, Elastic File System.
- 
-## Pricing
-EC2 Instance pricing: https://aws.amazon.com/ec2/pricing/on-demand/
+## Links
+
+[EC2 Instance pricing](https://aws.amazon.com/ec2/pricing/on-demand/)
 [AWS Calculator](http://calculator.s3.amazonaws.com/index.html)
+[Elastic Block Storage](https://aws.amazon.com/ebs/)
+[Elastic File System](https://aws.amazon.com/efs/)
+[AWS training fundamentals](https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/)
 
+## Warnings
+*** There are two really important things to understand before you start using EC2 instances:
+1. Never place your access keys in a public repository such as GitHub.
+2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down.
+***
+
+## Informal introduction
+
+An EC2 (Elastic Cloud Compute) instance is a computer; or you may prefer the term 'virtual server'. It runs the Linux or Windows 
+operating system just like a box under your desk might. However: If you need to increase your computing capacity or expand 
+your storage: There are many many such EC2 instances available at a moment's notice. 
+
+Please refer to our read our Cloud Core drop-down for more on how cloud computing may be suitable for your project, 
+
+## Details and terminology
+
+Amazon Web Services (AWS) EC2 instances come with a host of features and terminlogy. Briefly: 
+
+* AMIs
+* Elastic Block Storage (EBS) 
+* Snapshots of EBS volumes
+* EC2 Resources
+* Elastic File System (EFS)
+* Elastic IPs 
+* Access keys and 'Key Pairs'
+* S3 storage and access
+ 
 ## Setting up an EC2 Instance
 
-Links
-https://aws.amazon.com/ebs/
-https://aws.amazon.com/efs/
-https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/
-
-As noted the terminology here applies to AWS technology.
-
-The 'compute' part of the cloud begins with Virtual Machines that are called Elastic Cloud Compute = ECC = EC2 ***instances***. To get started 
-with EC2 instances you would log on to the AWS console, click on the EC2 icon and follow the buttons to create a new instance; which takes a 
-few minutes. And then you can log in to that machine and use it like any other computer. It has an operating system that you choose, it has 
-some amount of computing power that you choose, it has some amount of RAM that you choose and it has very little disk space. 
+The 'compute' part of the cloud begins with Virtual Machines that are called Elastic Cloud Compute = ECC = EC2 ***instances***. 
+To get started with EC2 instances you would log on to the AWS console, click on the EC2 icon and follow the buttons to create a 
+new instance; which takes a few minutes. And then you can log in to that machine and use it like any other computer. It has an 
+operating system that you choose, it has some amount of computing power that you choose, it has some amount of RAM that you 
+choose and it has very little disk space. 
 
 This is the big Aha: You also want to attach some disk space in the process as well. The generic term for disk space is a disk volume. You can 
 attach these volumes (more than one is fine) in the spin-up process or you can attach them later. This is Elastic Block Storage (EBS). A single 
@@ -69,9 +86,9 @@ quite easily using the menu. Here is the configuration page:
 ![pic1](/documentation/images/aws_procedurals/aws_ec2instances_pic1.png)
 
 ## Resource Overview
+
 Returning to the EC2 Resource summary: Let's take a look at what's what here term by term: 
 ![pic2](/documentation/images/aws_procedurals/aws_ec2instances_pic2.png)
-
 
 In this region I'm not (apparently) running any instances. 
 
@@ -92,19 +109,23 @@ A Dedicated Host is a physical computer which permits only me (my AWS account) t
 other accounts.  This is an important concept in HIPAA compliance.
 
 ## Snapshot
+
 A Snapshot is always drawn from, i.e. is an image of some Elastic Block Storage (EBS). An 8GB Snapshot is quite likely the root 
 volume of an AWS Linux EC2 instance. However if you attach more EBS -- like say 2TB -- to that instance you can make a separate larger Snapshot. 
 
 ## AMI 
+
 An AMI is a Snapshot together with some instructions for standing up an EC2 instance. Hence: When you create an AMI part of that process is a Snapshot 
 or Snapshots of all the EBS volumes associated with that instance.
 
 ## Snapshot to AMI Conversion in Linux
+
 You can "upgrade" a Snapshot to an AMI in Linux… but it is more complicated for Windows. And this is a little bit vague: Do 
 we mean that the snapshot is of the Root volume or an attached volume? The rebuilt AMI -- in the case where the original AMI instructions are unavailable -- 
 will be built out rather generically. This is one of these digressions that can drive one crazy so let's leave it there for now.
 
 ## Understanding a Snapshot listing
+
 When you look at your Snapshot listing:
 
 ![pic3](/documentation/images/aws_procedurals/aws_ec2instances_pic3.png)
@@ -154,36 +175,55 @@ you can Attach the restored Snapshot Volume whenever you like.
 
 
 ## Mounting the Attached Volume
+
 To check if there is an attached volume, log on (ssh) onto your EC2 instance (Original recipe located [here](http://maplpro.blogspot
 .com/2012/05/how-to-mount-ebs-volume-into-ec2-ubuntu.html). 
 
 ```
 First see if it is attached with:
 
+```
 >> sudo fdisk -l
 Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
+```
 
 Then format it (if you haven't already done it)
+```
 >> sudo mkfs -t ext4 /dev/xvdc
+```
 
 Create dir where it will be mounted:
+```
 >>mkdir /data
+```
 
 That's it you can mount it:
+```
 >>sudo mount /dev/xvdc /data
+```
 
 Check if it has been mounted correctly with:
+```
 >>mount -l
 /dev/xvdc on /data type ext4 (rw)
+```
 
 Make it to mount automatically on system start
+
+```
 >>sudo vim  /etc/fstab
+```
 
 and add this:
-/dev/xvdc       /data   auto    defaults,nobootwait     0       0```
+
+```
+/dev/xvdc /data auto defaults,nobootwait 0 0
+```
 
 That's it. Make sure your read and write permissions are set accordingly using chmod. 
+
 ## What is the Snapshot ID?
+
 Here is a screen capture of some volumes:
 
 ![pic12](/documentation/images/aws_procedurals/aws_ec2instances_pic12.png)
@@ -195,14 +235,16 @@ system.
 
 In the case above, by the way, as noted earlier: These are all tell-tale Linux OS root volumes because the default on AWS Linux EC2 instances is 8GB. 
 
-***Pro Tip: Returning to the snapshot table comment field ('Created by... in our example above): This can have anything in there (User defined) when the snapshot is of an EBS without this AMI association business.*** 
+***Pro Tip: Returning to the snapshot table comment field ('Created by... in our example above): This can have anything 
+in there (User defined) when the snapshot is of an EBS without this AMI association business.*** 
 
 This concludes the overview of Snapshots and AMIs and the archaeological process of figuring out what is preserved on an artifact Snapshot.
 
 ## Key Pairs
+
 In the Resource summary table there is an entry for Key Pairs. Let's cover what these are next. A Key Pair is both a public and 
-a private key; and we will be primarily discussing the use of the private key file to authenticate into an AWS EC2 instance using the secure shell (ssh
-) protocol.
+a private key; and we will be primarily discussing the use of the private key file to authenticate into an AWS EC2 instance 
+using the secure shell (ssh) protocol.
 
 Start up an EC2 instance. You need an initial way of getting in via ssh. Rather than use a password let's use Key Pair authentication. 
 I get the private Key file; and it contains JUST a private key: A long string of characters. Let's not publish this on Github. 
@@ -221,9 +263,11 @@ For example on an AWS-styled Linux machine the user name is ec2-user. On an AWS 
 Now I have logged in to the machine using ssh. I can sudo anything I want. Success.
 
 How do I log in in the future? How do others log in? Three options: 
-	1. I can use the key that I have and/or give that key to someone else. 
-	2. I can generate a new key on that machine and share that key. This has nothing to do with AWS. I could do it with a script for example, using Linux commands. 
-	3. I can enable logging in by username and password. 
+
+1. I can use the key that I have and/or give that key to someone else. 
+2. I can generate a new key on that machine and share that key. This has nothing to do with AWS. I could do 
+it with a script for example, using Linux commands. 
+3. I can enable logging in by username and password. 
 
 Notice that ssh is a secure (encrypted) tunnel through which these keys are passing.
 
@@ -232,10 +276,12 @@ https://en.wikipedia.org/wiki/Secure_Shell
 This security level is maintained as a separate effort by ssh / PuTTY. (PuTTY is the application and ssh is the cryptographic network protocol. 
 
 ## Ssh, PuTTY, scp and WinSCP
+
 Now that we have identified PuTTY as the ssh-using application let's go a bit further. Ssh is also a Linux command for logging into another 
 machine; so in a sense PuTTY is the Windows equivalent of the Linux ssh. Similarly there is a secure copy program in Linux called scp. The Windows analog is WinSCP. 
 
 ## More on Keys
+
 Keys are actually generated in pairs: The public and private key pair are associated; and the public key can be openly shared. For more on this see 
 https://en.wikipedia.org/wiki/Public-key_cryptography
 
@@ -244,70 +290,79 @@ I can start multiple instances using that same key. If I create an AMI and use t
 access to all of them. One key can map to many EC2 instances in the context of AWS. 
 
 ## Keys Versus S3 Access Sharing
+
 Let's take a moment to contrast Key-based access to an EC2 instance with the process of sharing files using S3 buckets. The latter is done 
 using IAM permissions, specifically using a Bucket Policy. 
 
 Sharing between AWS accounts is straightforward. If my friend has an AWS account then I just set that up in the S3 bucket policy by referring to his account 
 number. So he has to send me that. 
 
-Sharing with non-AWS-account holders is also easy and there are several options. If my collaborator has no AWS account I have three broad categories of approach: IAM User, Web Server and Signed URL.
-	• IAM User method: I get an Access Key and a Secret Key. I do not think this is the same thing as a Key Pair but I could be proven wrong. I receive these two keys for example when I create a User. They reside in a single credential file. I click "Download Credentials" and there it is in ASCII. The file is in CSV format and includes a user name, an access key and a secret key (all strings). 
-		○ There are three ways of getting to the S3 bucket now for that person. 
-			§ Third party tool: Cloudberry, Cyberduck, etcetera
-			§ AWS command line interface (CLI)
-			§ An API call
-		○ Notice this does NOT involve the Web Console. 
-			§ They can only use the AWS Web Console if I generate a password for them using IAM. 
-	• Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.
-	• Generate a signed URL
-		○ Gives access to one object during the time-to-live associated with that URL. 
-		○ This can be done on the CLI or in one of those applications (Cloudberry etc)
-			§ Look for the button that says 'Generate signed URL'
+Sharing with non-AWS-account holders is also easy and there are several options. If my collaborator has no AWS account 
+I have three broad categories of approach: IAM User, Web Server and Signed URL.
+
+IAM User method: I get an Access Key and a Secret Key. I do not think this is the same thing as a Key Pair but I could be 
+proven wrong. I receive these two keys for example when I create a User. They reside in a single credential file. 
+I click "Download Credentials" and there it is in ASCII. The file is in CSV format and includes a user name, an 
+access key and a secret key (all strings). 
+
+There are three ways of getting to the S3 bucket now for that person. 
+- Third party tool: Cloudberry, Cyberduck, etcetera
+- AWS command line interface (CLI)
+- An API call
+    - Notice this does NOT involve the Web Console. 
+      - They can only use the AWS Web Console if I generate a password for them using IAM. 
+
+Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.
+ - Generate a signed URL
+ - Gives access to one object during the time-to-live associated with that URL. 
+ - This can be done on the CLI or in one of those applications (Cloudberry etc)
+ - Look for the button that says 'Generate signed URL'
 
 So now we have covered Key Pairs and differentiated Key Pair use from S3 access. 
 
 ## Mounting an EBS to your Instance
 
-# Concatenating the Resources page to the EC2 page
+# The following is 'EC2 Resources' content
+
+Needs to get integrated here
 
 ## Introduction
-On the Amazon Web Services (AWS) public cloud we frequently rent computers; and these are called *EC2 instances*. EC2 instances are documented elsewhere at 
-[cloudmaven.org](http://cloudmaven.org). 
-The purpose of this page is to review some of the cloud resources that are associated with EC2 instances, things like persistent ip addresses and 
+
+The purpose of this page is to review some of the cloud resources that are associated with EC2 instances, 
+things like persistent ip addresses and 
 human-friendly names for websites called DNS entries. 
 
 ## FTP Setup and EC2 Instance
+
 Overview: Create a virtual machine, install the ftp server and setup user accounts. Bonus: Bind your EC2 instance to an Elastic IP so you can reuse the same 
 public IP even if your instance changes!
 
-1.  Sign up for a free AWS account [here](https://aws.amazon.com/free). Usage and free tier information available 
+1. Sign up for a free AWS account [here](https://aws.amazon.com/free). Usage and free tier information available 
 [here](https://aws.amazon.com/free/?sc_ichannel=ha&amp;sc_ipage=signin&amp;sc_iplace=body_link_text&amp;sc_icampaigntype=free_tier&amp;sc_icampaign=ha_en_free_tier_signin_2014_03). 
-You will need to provide credit card information, but won't be billed unless you exceed the free tier usage limits. Don't worry, you can set up 
-alarms to alert you when you're near the limit! More on that later. 
 
-2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
-step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.   
+2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
+step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.
 
     <iframe style="display: block; margin-left: auto; margin-right: auto;" src="//www.youtube.com/embed/wNr7YqjjzOY" width="425" height="350"></iframe>  
 
 3.  Once your virtual machine is setup, you can access your "computer in the cloud" by securely tunneling in via the Terminal on your macbook, 
-ssh on your Unix machines and Putty or other Unix environment emulator on Windows. 
+ssh on your Unix machines and Putty or other Unix environment emulator on Windows.
 
-4.  You can now set up an FTP server on your virtual machine. 
+4.  You can now set up an FTP server on your virtual machine.
 
-5.  The first solution [here on Stackoverflow](http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server) is 
+5.  The first�solution [here on Stackoverflow](http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server)�is 
 non-tortuous and really easy to follow. Thanks, clone45!
 
-6.  You should now be able to use an FTP client to connect to your ftpserver. 
+6.  You should now be able to use an FTP client to connect to your ftpserver.
 
-7.  If you can't connect, check your directory permissions on your virtual machine! 
+7.  If you can't connect, check your directory permissions on your virtual machine!
 
 8.  Again, follow instructions and don't skip a step!
 
 ## Elastic IPs
 
-The annoying thing I've experienced with AWS is that every time you stop and restart an instance, you get assigned a new public DNS for your instance 
-(e.g. public DNS = ec2-52-41-144-22.us-west-2.compute.amazonaws.com). 
+The annoying thing I've experienced with AWS is that every time you stop and restart an instance, you get assigned a new public DNS for 
+your instance (e.g. public DNS = ec2-52-41-144-22.us-west-2.compute.amazonaws.com). 
 You can get around this by associating ypur instance with an Elastic IP. Steps are outlined 
 [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html). 
 Once you've associated the Elastic IP with a running instance, you can ssh into the VM with the Elastic IP but using the previous public key generated 
@@ -318,6 +373,7 @@ for the instance. Don't forget to update the vsftpd.conf with your new Elastic I
     pasv_address=<Elastic IP address>
     > sudo /etc/init.d/vsftpd restart
 ```
+
 MS Azure on the other hand, let's you choose your on public DNS hostname which reduces the need for this workaround.
 
 ## DNS Hostnames
@@ -332,6 +388,7 @@ points to the elastic IP of your ftp server instance to allow ftp access into sa
 
 
 ## EC2 instance background
+
 Download PDF [here](/documentation/pdf/Doc46_EC2_Resources_on_AWS.pdf)
 
 {% include links.html %}
