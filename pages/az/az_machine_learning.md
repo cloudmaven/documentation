@@ -1,14 +1,14 @@
 ---
-title: Azure Procedural
+title: Azure Machine Learning
 keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [Azure, machine_learning]
-summary: "Azure Machine Learning Studio"
+tags: [Azure]
+summary: "Azure Machine Learning"
 sidebar: mydoc_sidebar
-permalink: azure_mls.html
-folder: mydoc
+permalink: az_machine_learning.html
+folder: az
 ---
 
-Placeholder. Documentation in the works.
+# yoiks
  
 {% include links.html %}

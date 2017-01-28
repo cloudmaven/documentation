@@ -1,14 +1,14 @@
 ---
-title: Azure Procedural
-keywords: azure, procedural
+title: Visual Studio
+keywords: azure
 last_updated: October 6, 2016
-tags: [Azure,visual_studio]
+tags: [Azure]
 summary: "Visual Studio and Python on Azure"
 sidebar: mydoc_sidebar
-permalink: azure_vs.html
-folder: mydoc
+permalink: az_visual_studio.html
+folder: az
 ---
 
-Placeholder. Documentation in progress. 
+# VS
 
 {% include links.html %}

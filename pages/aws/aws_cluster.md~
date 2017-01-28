@@ -3,9 +3,9 @@ title: AWS Procedural
 keywords: aws, cfncluster, procedures
 last_updated: January 26, 2017
 tags: [AWS]
-summary: "Clusters on AWS"
+summary: "Running the CFNCluster on AWS"
 sidebar: mydoc_sidebar
-permalink: aws_cluster.html
+permalink: aws_cfncluster.html
 folder: aws
 ---
 

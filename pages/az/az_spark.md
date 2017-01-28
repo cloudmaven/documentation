@@ -1,14 +1,14 @@
 ---
-title: Azure Procedural
-keywords: azure, procedural
+title: Spark on Azure
+keywords: azure, spark
 last_updated: October 6, 2016
-tags: [Azure,spark]
+tags: [Azure]
 summary: "Spark on Azure"
 sidebar: mydoc_sidebar
-permalink: azure_spark.html
-folder: mydoc
+permalink: az_spark.html
+folder: az
 ---
 
-Placeholder. Page in progress. 
+# Yikis
 
 {% include links.html %}

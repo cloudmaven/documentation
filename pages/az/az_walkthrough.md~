@@ -1,15 +1,15 @@
  ---
-title: Azure walkthrough
-keywords: azure
+title: Azure Procedural
+keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [Azure]
-summary: "Microsoft Azure walkthrough "
+tags: [Azure,introduction]
+summary: "Microsoft Azure First Walkthrough "
 sidebar: mydoc_sidebar
-permalink: az_walkthrough.html
-folder: az
+permalink: azure_firstwalkthrough.html
+folder: mydoc
 ---
 
-# Kilroy 
+## Kilroy was here
 
 ## Introduction
 This page is intended to give you--a researchers--an introductory *walkthrough* perspective upon entering the world of the Microsoft Azure cloud. We highly endorse using this cloud and its associated technology stack, particularly the Visual Studio development environment and the high level services such as the Azure Machine Learning Studio. 
