@@ -1,14 +1,14 @@
 ---
-title: Azure Procedural
+title: Azure account management
 keywords: azure, procedural
 last_updated: October 6, 2016
-tags: [Azure,jupyter]
-summary: "Jupyter Notebooks on Azure"
+tags: [research_computing]
+summary: "Azure account management"
 sidebar: mydoc_sidebar
-permalink: azure_jupyter.html
-folder: mydoc
+permalink: az_account_management.html
+folder: az
 ---
 
-Placeholder. Page in progress.
+# Azure
 
 {% include links.html %}

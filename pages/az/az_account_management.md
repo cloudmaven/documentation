@@ -9,6 +9,6 @@ permalink: az_account_management.html
 folder: az
 ---
 
-Placeholder. Page in progress.
+# Azure
 
 {% include links.html %}
