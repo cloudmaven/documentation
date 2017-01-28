@@ -1,15 +1,14 @@
 ---
-title: Research Computing Case Studies
+title: Geoserver on AWS
 keywords: research_computing
 last_updated: October 6, 2016
-tags: [research_computing,hpc,rosetta,case_studies]
-summary: "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+tags: [research_computing]
+summary: "Geoserver on the AWS cloud"
 sidebar: mydoc_sidebar
-permalink: rc_rosetta.html
-folder: mydoc
+permalink: acs_geoserver.html
+folder: acs
 ---
 
-Download PDF [here](/documentation/pdf/Doc44_Rosetta_on_AWS.pdf) 
-
+# Bal
 
 {% include links.html %}

@@ -2,11 +2,11 @@
 title: Research Computing Case Studies
 keywords: research_computing
 last_updated: October 6, 2016
-tags: [research_computing,hpc,rosetta,case_studies]
-summary: "Implementation of the Rosetta molecular engineering software on the AWS cloud"
+tags: [research_computing]
+summary: "Rosetta molecular engineering software on the AWS cloud"
 sidebar: mydoc_sidebar
-permalink: rc_rosetta.html
-folder: mydoc
+permalink: acs_rosetta.html
+folder: acs
 ---
 
 Download PDF [here](/documentation/pdf/Doc44_Rosetta_on_AWS.pdf) 
