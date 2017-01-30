@@ -1,11 +1,11 @@
 ---
-title: Azure case study geospatial
+title: Azure Geospatial API
 keywords: Azure
 last_updated: January 30, 2017
-tags: [research_computing]
-summary: "Azure geospatial API"
+tags: [Azure]
+summary: "Azure Geospatial API"
 sidebar: mydoc_sidebar
-permalink: rc_geospatial_api.html
+permalink: azcs_geospatial_api.html
 folder: azcs
 ---
 
