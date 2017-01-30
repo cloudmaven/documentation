@@ -1,14 +1,14 @@
- ---
+---
 title: Azure walkthrough
 keywords: azure
-last_updated: January 27, 2017
+last_updated: October 6, 2016
 tags: [Azure]
-summary: "Microsoft Azure walkthrough"
+summary: "Azure"
 sidebar: mydoc_sidebar
 permalink: az_walkthrough.html
 folder: az
 ---
 
-# Kilroy 
+# Kilroy
 
 {% include links.html %}

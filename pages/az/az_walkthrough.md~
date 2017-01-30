@@ -1,15 +1,14 @@
- ---
-title: Azure walkthrough
+---
+title: Visual Studio
 keywords: azure
-last_updated: January 27, 2017
+last_updated: October 6, 2016
 tags: [Azure]
-summary: "Microsoft Azure walkthrough "
+summary: "Visual Studio and Python on Azure"
 sidebar: mydoc_sidebar
-permalink: az_walkthrough.html
+permalink: az_visual_studio.html
 folder: az
 ---
 
-# Kilroy 
-
+# VS
 
 {% include links.html %}
