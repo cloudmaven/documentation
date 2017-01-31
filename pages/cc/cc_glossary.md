@@ -18,9 +18,13 @@ The purpose of this glossary is to provide you a research-oriented guide to some
 
 ## Warnings
 ***There are two listings here: Common terms followed by General glossary***
-***Terms that refer to a specific cloud or technology may include a reference to that context in [square brackets]***
-***All cost estimates are in US Dollars and should be independently verified. They have tended to decrease with time.
-Listings here may become out of date.***
+
+***Terms that refer to a specific cloud or technology may include a reference 
+to that context in [square brackets]***
+
+***All cost estimates are in US Dollars and should be independently 
+verified. They have tended to decrease with time.  Listings here may 
+become out of date.***
 
 ## Common Terms
 
