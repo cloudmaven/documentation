@@ -382,28 +382,16 @@ end part 5
 end part 6
 
 
+3. Once your VM is ok you can securely tunnel via Mac Terminal, Linux ssh or Windows PuTTY.
 
-3.  Once your virtual machine is setup, you can access your "computer in the cloud" by securely tunneling in via the 
-Terminal on your macbook, using ssh on your Unix machine or using Putty or other Unix environment emulator on Windows.
+4. You can set up an FTP server on your VM. Search stackoverflow for "setting up ftp server on amazon cloud".
 
-4.  You can now set up an FTP server on your virtual machine.
-
-5.  The first solution [here on Stackoverflow](http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server) is 
-non-tortuous and really easy to follow. Thanks, clone45!
-
-6.  You should now be able to use an FTP client to connect to your ftpserver.
-
-7.  If you can't connect, check your directory permissions on your virtual machine!
-
-8.  Again, follow instructions and don't skip a step!
+5. Test by connecting an FTP client to your FTP server. You may need to change directory permissions on the VM.
 
 ### Elastic IPs
 
-An annoying thing I've experienced with AWS is that every time you stop and restart an instance, you get assigned 
-a new public DNS for that instance (e.g. public DNS = ec2-52-41-144-22.us-west-2.compute.amazonaws.com). 
-You can get around this by associating the instance with an Elastic IP address. Steps are outlined 
-[here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html). 
-
+Stopping and re-starting EC2 instances can change the ip address. OVercome this using Elastic IP. You get a limited number
+of these with your account; and you can request more. See the AWS user guide (kilroy link needed).
 
 end part 7
 

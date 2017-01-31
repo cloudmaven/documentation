@@ -395,5 +395,31 @@ of these with your account; and you can request more. See the AWS user guide (ki
 
 end part 7
 
+Once you've associated the Elastic IP with a running instance, you can ssh into the VM with the Elastic IP but using 
+the previous public key generated for the instance. Don't forget to update the vsftpd.conf with your new Elastic IP 
+address which is now your public address.
+
+```
+> sudo vi /etc/vsftpd/vsftpd.conf
+pasv_address=<Elastic IP address>
+> sudo /etc/init.d/vsftpd restart
+```
+
+Microsoft Azure let's you choose your own public DNS hostname which reduces the need for this workaround.
+
+
+### DNS Hostnames
+
+If you have your own registered domain, you can set your A-Record to point to the Elastic IP address of your 
+instance. That gets rid of the unsightly public DNS that AWS assigns to you. Here's the example for 
+cloudmaven.org (our domain registrar is Namecheap.com): 
+
+![](https://raw.githubusercontent.com/amandalehr/cloudmaven/master/dns-eg.tiff)
+
+An A-record points the hostname (here "compute") to the AWS instance Elastic IP (here "52.41.144.22"). 
+I can then ssh into my compute instance using ec2-user@compute.cloudmaven.org. You can also set up 
+similarly an A record called ftp that points to the elastic IP of your ftp server instance to allow ftp 
+access into say ftp.cloudmaven.org.
+
 
 {% include links.html %}
