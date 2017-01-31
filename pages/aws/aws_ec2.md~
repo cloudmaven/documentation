@@ -306,6 +306,10 @@ This security level is maintained as a separate effort by ssh / PuTTY.
 
 end part 4
 
+
+
+
+
 ### Ssh, PuTTY, scp and WinSCP
 
 Now that we have identified PuTTY as the ssh-using application let's go a bit further. Ssh is also a Linux command for logging into another 
@@ -341,8 +345,8 @@ There are three ways of getting to the S3 bucket now for that person.
 - Third party tool: Cloudberry, Cyberduck, etcetera
 - AWS command line interface (CLI)
 - An API call
-    - Notice this does NOT involve the Web Console. 
-      - They can only use the AWS Web Console if I generate a password for them using IAM. 
+  - Notice this does NOT involve the Web Console. 
+    - They can only use the AWS Web Console if I generate a password for them using IAM. 
 
 Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.
 
@@ -367,5 +371,8 @@ Usage and free tier information available
 
 2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
 step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.
+
+end part 5
+
 
 {% include links.html %}
