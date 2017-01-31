@@ -88,10 +88,6 @@ can create an AMI quite easily using the menu. Here is the configuration page:
 
 ![ec20001](/documentation/images/aws/aws_ec20001.png)
 
-
-part 1 end
-
-
 ## Resource Overview
 
 Returning to the EC2 Resource summary: Let's take a look at what's what here term by term: 
@@ -131,9 +127,6 @@ You can "upgrade" a Snapshot to an AMI in Linux but it is more complicated for W
 we mean that the snapshot is of the Root volume or an attached volume? The rebuilt AMI -- in the case where the original AMI 
 instructions are unavailable -- will be built out rather generically. This is one of these digressions that can drive one 
 crazy so let's leave it there for now.
-
-part 2 end
-
 
 ### Understanding a Snapshot listing
 
@@ -183,9 +176,6 @@ you can Attach the restored Snapshot Volume whenever you like.
 ![ec20010](/documentation/images/aws/aws_ec20010.png)
 
 ![ec20011](/documentation/images/aws/aws_ec20011.png)
-
-
-part 3 end
 
 
 ## Mounting the Attached Volume
@@ -303,13 +293,6 @@ is a secure (encrypted) tunnel through which these keys are passing.
 This security level is maintained as a separate effort by ssh / PuTTY. 
 (PuTTY is the application and ssh is the cryptographic network protocol.)
 
-
-end part 4
-
-
-
-
-
 ### Ssh, PuTTY, scp and WinSCP
 
 Now that we have identified PuTTY as the ssh-using application let's go a bit further. Ssh is also a Linux command for logging into another 
@@ -372,15 +355,7 @@ Usage and free tier information available
 2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
 step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.
 
-end part 5
-
-
-
 <iframe style="display: block; margin-left: auto; margin-right: auto;" src="//www.youtube.com/embed/wNr7YqjjzOY" width="425" height="350"></iframe>  
-
-
-end part 6
-
 
 3. Once your VM is ok you can securely tunnel via Mac Terminal, Linux ssh or Windows PuTTY.
 
@@ -392,8 +367,6 @@ end part 6
 
 Stopping and re-starting EC2 instances can change the ip address. OVercome this using Elastic IP. You get a limited number
 of these with your account; and you can request more. See the AWS user guide (kilroy link needed).
-
-end part 7
 
 Once you've associated the Elastic IP with a running instance, you can ssh into the VM with the Elastic IP but using 
 the previous public key generated for the instance. Don't forget to update the vsftpd.conf with your new Elastic IP 
@@ -414,7 +387,7 @@ If you have your own registered domain, you can set your A-Record to point to th
 instance. That gets rid of the unsightly public DNS that AWS assigns to you. Here's the example for 
 cloudmaven.org (our domain registrar is Namecheap.com): 
 
-![](https://raw.githubusercontent.com/amandalehr/cloudmaven/master/dns-eg.tiff)
+(link was broken; image should be put in images/az and referenced directly)
 
 An A-record points the hostname (here "compute") to the AWS instance Elastic IP (here "52.41.144.22"). 
 I can then ssh into my compute instance using ec2-user@compute.cloudmaven.org. You can also set up 
