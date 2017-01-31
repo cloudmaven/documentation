@@ -306,6 +306,10 @@ This security level is maintained as a separate effort by ssh / PuTTY.
 
 end part 4
 
+
+
+
+
 ### Ssh, PuTTY, scp and WinSCP
 
 Now that we have identified PuTTY as the ssh-using application let's go a bit further. Ssh is also a Linux command for logging into another 
@@ -341,8 +345,8 @@ There are three ways of getting to the S3 bucket now for that person.
 - Third party tool: Cloudberry, Cyberduck, etcetera
 - AWS command line interface (CLI)
 - An API call
-    - Notice this does NOT involve the Web Console. 
-      - They can only use the AWS Web Console if I generate a password for them using IAM. 
+  - Notice this does NOT involve the Web Console. 
+    - They can only use the AWS Web Console if I generate a password for them using IAM. 
 
 Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.
 
@@ -368,48 +372,7 @@ Usage and free tier information available
 2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
 step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.
 
-    <iframe style="display: block; margin-left: auto; margin-right: auto;" src="//www.youtube.com/embed/wNr7YqjjzOY" width="425" height="350"></iframe>  
+end part 5
 
-3.  Once your virtual machine is setup, you can access your "computer in the cloud" by securely tunneling in via the Terminal on your macbook, 
-ssh on your Unix machines and Putty or other Unix environment emulator on Windows.
-
-4.  You can now set up an FTP server on your virtual machine.
-
-5.  The first solution [here on Stackoverflow](http://stackoverflow.com/questions/7052875/setting-up-ftp-on-amazon-cloud-server) is 
-non-tortuous and really easy to follow. Thanks, clone45!
-
-6.  You should now be able to use an FTP client to connect to your ftpserver.
-
-7.  If you can't connect, check your directory permissions on your virtual machine!
-
-8.  Again, follow instructions and don't skip a step!
-
-### Elastic IPs
-
-The annoying thing I've experienced with AWS is that every time you stop and restart an instance, you get assigned a new public DNS for 
-your instance (e.g. public DNS = ec2-52-41-144-22.us-west-2.compute.amazonaws.com). 
-You can get around this by associating ypur instance with an Elastic IP. Steps are outlined 
-[here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html). 
-Once you've associated the Elastic IP with a running instance, you can ssh into the VM with the Elastic IP but using the previous public key generated 
-for the instance. Don't forget to update the vsftpd.conf with your new Elastic IP address which is now your public address.
-
-```
-> sudo vi /etc/vsftpd/vsftpd.conf
-pasv_address=<Elastic IP address>
-> sudo /etc/init.d/vsftpd restart
-```
-
-MS Azure on the other hand, let's you choose your on public DNS hostname which reduces the need for this workaround.
-
-### DNS Hostnames
-
-If you have your own registered domain, you can set your A-Record to point to the Elastic IP address of your instance. That gets rid of 
-the unsightly public DNS that AWS assigns to you. Here's the example for cloudmaven.org (our domain registrar is Namecheap.com): 
-![](https://raw.githubusercontent.com/amandalehr/cloudmaven/master/dns-eg.tiff)
-
-An A-record points the hostname (here "compute") to the AWS instance Elastic IP (here "52.41.144.22"). I 
-can then ssh into my compute instance using ec2-user@compute.cloudmaven.org. You can also set up similarly 
-an A record called ftp that points to the elastic IP of your ftp server instance to allow ftp 
-access into say ftp.cloudmaven.org.
 
 {% include links.html %}

@@ -306,5 +306,66 @@ This security level is maintained as a separate effort by ssh / PuTTY.
 
 end part 4
 
+### Ssh, PuTTY, scp and WinSCP
+
+Now that we have identified PuTTY as the ssh-using application let's go a bit further. Ssh is also a Linux command for logging into another 
+machine; so in a sense PuTTY is the Windows equivalent of the Linux ssh. Similarly there is a secure copy program in Linux called scp. The Windows analog is WinSCP. 
+
+### More on Keys
+
+Keys are actually generated in pairs: The public and private key pair are associated; and the public key can be openly shared. For more on this see 
+[this](https://en.wikipedia.org/wiki/Public-key_cryptography).
+
+On AWS I can only generate one key pair per machine. The private key recognition machinery is injected into the instance when it launches the first time; and 
+I can start multiple instances using that same key. If I create an AMI and use that to generate many EC2 instances: Again just one private key provides 
+access to all of them. One key can map to many EC2 instances in the context of AWS. 
+
+### Keys Versus S3 Access Sharing
+
+Let's take a moment to contrast Key-based access to an EC2 instance with the process of sharing files using S3 buckets. The latter is done 
+using IAM permissions, specifically using a Bucket Policy. 
+
+Sharing between AWS accounts is straightforward. If my friend has an AWS account then I just set that up in the S3 bucket policy by referring to his account 
+number. So he has to send me that. 
+
+Sharing with non-AWS-account holders is also easy and there are several options. If my collaborator has no AWS account 
+I have three broad categories of approach: IAM User, Web Server and Signed URL.
+
+IAM User method: I get an Access Key and a Secret Key. I do not think this is the same thing as a Key Pair but I could be 
+proven wrong. I receive these two keys for example when I create a User. They reside in a single credential file. 
+I click "Download Credentials" and there it is in ASCII. The file is in CSV format and includes a user name, an 
+access key and a secret key (all strings). 
+
+There are three ways of getting to the S3 bucket now for that person. 
+
+- Third party tool: Cloudberry, Cyberduck, etcetera
+- AWS command line interface (CLI)
+- An API call
+    - Notice this does NOT involve the Web Console. 
+      - They can only use the AWS Web Console if I generate a password for them using IAM. 
+
+Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.
+
+ - Generate a signed URL
+ - Gives access to one object during the time-to-live associated with that URL. 
+ - This can be done on the CLI or in one of those applications (Cloudberry etc)
+ - Look for the button that says 'Generate signed URL'
+
+So now we have covered Key Pairs and differentiated Key Pair use from S3 access. 
+
+### Mounting an EBS to your Instance
+
+### FTP Setup and EC2 Instance
+
+Overview: Create a virtual machine, install the ftp server and setup user accounts. 
+
+Bonus: Bind your EC2 instance to an Elastic IP so you can reuse the same public IP even if your instance changes!
+
+1. Sign up for a free AWS account [here](https://aws.amazon.com/free). 
+Usage and free tier information available 
+[here](https://aws.amazon.com/free/?sc_ichannel=ha&amp;sc_ipage=signin&amp;sc_iplace=body_link_text&amp;sc_icampaigntype=free_tier&amp;sc_icampaign=ha_en_free_tier_signin_2014_03). 
+
+2.  [This recipe](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html) from AWS is straightforward. Print it out and don't skip a 
+step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.
 
 {% include links.html %}
