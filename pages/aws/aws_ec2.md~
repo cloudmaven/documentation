@@ -86,7 +86,7 @@ This includes AMIs, Snapshots, Key Pairs, and Elastic IPs.
 An EC2 instance: We take as a given. (Although we don't have down "Encrypted" but let's just flag that with kilroy. Notice I 
 can create an AMI quite easily using the menu. Here is the configuration page: 
 
-![pic1](/documentation/images/aws_procedurals/aws_ec2instances_pic1.png)
+![ec20001](/documentation/images/aws/aws_ec20001.png)
 
 
 {% include links.html %}

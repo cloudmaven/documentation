@@ -3,7 +3,7 @@
 ## Resource Overview
 
 Returning to the EC2 Resource summary: Let's take a look at what's what here term by term: 
-![pic2](/documentation/images/aws_procedurals/aws_ec2instances_pic2.png)
+![ec20002](/documentation/images/aws/aws_ec20002.png)
 
 In this region I'm not (apparently) running any instances. 
 
@@ -15,78 +15,79 @@ It is said to be 'publicly routable': It is visible/findable on the internet.
 AWS will hand us some number of these on demand for very little money. If we do not request this, however, then the default is a temporary public ip 
 address that is only good as long as the instance is up and running. Shut it down and that ip evaporates. 
 
-An Elastic IP is persistent on my account and could even be detached and re-attached to something else. This is like having a piece of public plumbing 
-at my disposal… to a resource that I want to share for example.  This ip stuff is distinct from a DNS entry. The latter is a person
--friendly string associated with an ip address (free or maybe for a nominal fee). 
+An Elastic IP is persistent on my account and could even be detached and re-attached to something else. This is like having a 
+piece of public plumbing at my dispoal to a resource that I want to share for example.  This ip stuff is distinct from a DNS 
+entry. The latter is a person-friendly string associated with an ip address (free or maybe for a nominal fee). 
 
-## Dedicated Host
+### Dedicated Host
 A Dedicated Host is a physical computer which permits only me (my AWS account) to be connected. It does not thread in other virtual operating systems or 
 other accounts.  This is an important concept in HIPAA compliance.
 
-## Snapshot
+### Snapshot
 
 A Snapshot is always drawn from, i.e. is an image of some Elastic Block Storage (EBS). An 8GB Snapshot is quite likely the root 
 volume of an AWS Linux EC2 instance. However if you attach more EBS -- like say 2TB -- to that instance you can make a separate larger Snapshot. 
 
-## AMI 
+### AMI 
 
 An AMI is a Snapshot together with some instructions for standing up an EC2 instance. Hence: When you create an AMI part of that process is a Snapshot 
 or Snapshots of all the EBS volumes associated with that instance.
 
-## Snapshot to AMI Conversion in Linux
+### Snapshot to AMI Conversion in Linux
 
-You can "upgrade" a Snapshot to an AMI in Linux… but it is more complicated for Windows. And this is a little bit vague: Do 
-we mean that the snapshot is of the Root volume or an attached volume? The rebuilt AMI -- in the case where the original AMI instructions are unavailable -- 
-will be built out rather generically. This is one of these digressions that can drive one crazy so let's leave it there for now.
+You can "upgrade" a Snapshot to an AMI in Linux but it is more complicated for Windows. And this is a little bit vague: Do 
+we mean that the snapshot is of the Root volume or an attached volume? The rebuilt AMI -- in the case where the original AMI 
+instructions are unavailable -- will be built out rather generically. This is one of these digressions that can drive one 
+crazy so let's leave it there for now.
 
-## Understanding a Snapshot listing
+### Understanding a Snapshot listing
 
 When you look at your Snapshot listing:
 
-![pic3](/documentation/images/aws_procedurals/aws_ec2instances_pic3.png)
+![ec20003](/documentation/images/aws/aws_ec20003.png)
 
 
 CreateImage is a facility for building an AMI. Fine. 
 ...is an instance ID. 
 ...is an AMI ID. 
 
-## Snapshot Archaeology 
+### Snapshot Archaeology 
 Suppose you have an old Snapshot and you are not sure what is on it; and if nothing you might want to delete it. 
 Now can you look at it? If the associated AMI is gone you can always create a Volume from the Snapshot, Attach the Volume to some other EC2 
 instance in the same Availability Zone, mount the Attached Volume and peruse the file system in the usual way.  Maybe your important data is still there! 
 
 Create the Volume from the Snapshot
 
-![pic4](/documentation/images/aws_procedurals/aws_ec2instances_pic4.png)
+![ec20004](/documentation/images/aws/aws_ec20004.png)
 
-![pic5](/documentation/images/aws_procedurals/aws_ec2instances_pic5.png)
+![ec20005](/documentation/images/aws/aws_ec20005.png)
 
 I will choose Magnetic because it is a bit cheaper... this is just an example. If I wish to have speed I would stay with SSD.
 
 The Volume is created very quickly.
  
-![pic6](/documentation/images/aws_procedurals/aws_ec2instances_pic6.png)
+![ec20006](/documentation/images/aws/aws_ec20006.png)
 
 Here it is, now listed in the Volume table: 
 
-![pic7](/documentation/images/aws_procedurals/aws_ec2instances_pic7.png)
+![ec20007](/documentation/images/aws/aws_ec20007.png)
 
 **PRO TIP: When you create a Volume from a Snapshot make sure it is in the same Availabilty Zone (AZ) as the Instance that you intend 
 to attach it to. Failing to do so is a waste of time: You can't attach a Volume in Oregon to an EC2 in Virginia. 
 In fact you can't attach a Volume in Virginia 1-a to an EC2 in Virginia 1-b.  Virginia is a Region, 1-a is the Availability Zone.**
 
-![pic8](/documentation/images/aws_procedurals/aws_ec2instances_pic8.png)
+![ec20008](/documentation/images/aws/aws_ec20008.png)
 
 That's where my restored Volume is. Oh look I have a machine there also; though it is Stopped: Let us Start it.
 
-![pic9](/documentation/images/aws_procedurals/aws_ec2instances_pic9.png)
+![ec20009](/documentation/images/aws/aws_ec20009.png)
 
 This finds a host, creates a VM, points to the associated storage all of this takes a few minutes but you can be impatient and see if 
 you can Attach the restored Snapshot Volume whenever you like. 
 
-![pic10](/documentation/images/aws_procedurals/aws_ec2instances_pic10.png)
+![ec20010](/documentation/images/aws/aws_ec20010.png)
 
-![pic11](/documentation/images/aws_procedurals/aws_ec2instances_pic11.png)
+![ec20011](/documentation/images/aws/aws_ec20011.png)
 
 
 ## Mounting the Attached Volume
@@ -141,7 +142,7 @@ That's it. Make sure your read and write permissions are set accordingly using c
 
 Here is a screen capture of some volumes:
 
-![pic12](/documentation/images/aws_procedurals/aws_ec2instances_pic12.png)
+![ec20012](/documentation/images/aws/aws_ec20012.png)
 
 Each is attached to an EC2 instance. Notice these have a snapshot ID. This means that these volumes were created from a snapshot, for example from an 
 AMI = Snapshot + instructions. It does not mean that this snapshot still exists; or that if it did exist it would reflect what is actually in the 
@@ -166,11 +167,12 @@ I get the private Key file; and it contains JUST a private key: A long string of
 
 When I authenticate using PuTTY I set it to use this private key. PuTTY uses the '.ppk' version of the key but AWS only gives out a 
 '.pem' version of that file. No problem: There is a separate application called PuTTYGen that does the conversion. So procedurally: 
-	1. Generate the EC2 instance
-	2. From the AWS Console: Get the key file associated.
-	3. Install both PuTTY and PuTTYGen (both will install in a PuTTY package)
-	4. Run PuTTYGen and convert the key file from .pem to .ppk format
-	5. Run PuTTY and use the .ppk file to log in to the instance.
+
+1. Generate the EC2 instance
+2. From the AWS Console: Get the key file associated.
+3. Install both PuTTY and PuTTYGen (both will install in a PuTTY package)
+4. Run PuTTYGen and convert the key file from .pem to .ppk format
+5. Run PuTTY and use the .ppk file to log in to the instance.
 
 To ssh to this EC2 instance I will need to know what username to enter.  This can vary from one EC2 instance type (OS) to another. 
 For example on an AWS-styled Linux machine the user name is ec2-user. On an AWS EC2 Ubuntu instance the username is ubuntu. 
