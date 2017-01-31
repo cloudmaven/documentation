@@ -17,11 +17,11 @@ virtual servers; which are just computers available for you to use.
 
 ## Links
 
-[EC2 Instance pricing](https://aws.amazon.com/ec2/pricing/on-demand/)
-[AWS Calculator](http://calculator.s3.amazonaws.com/index.html)
-[Elastic Block Storage](https://aws.amazon.com/ebs/)
-[Elastic File System](https://aws.amazon.com/efs/)
-[AWS training fundamentals](https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/)
+- [EC2 Instance pricing](https://aws.amazon.com/ec2/pricing/on-demand/)
+- [AWS Calculator](http://calculator.s3.amazonaws.com/index.html)
+- [Elastic Block Storage](https://aws.amazon.com/ebs/)
+- [Elastic File System](https://aws.amazon.com/efs/)
+- [AWS training fundamentals](https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/)
 
 ## Warnings
 *** There are two really important things to understand before you start using EC2 instances:

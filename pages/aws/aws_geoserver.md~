@@ -9,15 +9,7 @@ permalink: aws_geoserver.html
 folder: aws
 ---
 
-## Introduction
-The purpose of this page is to walk through the steps necessary to install a GeoServer on an AWS EC2 instance. 
-
-## Links
-
-## Warnings
-
 ## Installing Geoserver on Ubuntu 14.04 with Tomcat 7
-
 ** Note: This is also available as an [Amazon Machine Image (AMI)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) 
 if you don't want to go through the entire installation process - please contact us if you would like to access the AMI.
 
@@ -81,5 +73,4 @@ That's it. You may be prompted to install unzip in that case, just `sudo apt ins
 
 The next steps will involve attaching a disk drive to your EC2 instance and specifying the data folder location in 
 geoserver as a best practice to separate your data from your service deployment machine. 
-
 {% include links.html %}
