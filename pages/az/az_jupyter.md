@@ -13,16 +13,18 @@ folder: az
 
 ## Introduction
 
-The purpose of this page is to present the Microsoft Azure Jupyter notebook hosting service as an extremely valuable free asset
-for research.  In general we advocate using Jupyter notebooks to create research sandboxes, to develop paper content, to share
-reproducible results, and to generally communicate from a technical perspective. Jupyter notebooks support Python, R,
-F-Sharp and other programming languages. They also support markdown including mathematical formatting (LaTeX). Microsoft to their
-immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two advantages over 
-hosting a Jupyter notebook on a machine that you manage: First they take care of the basics of managing the notebook; you never
-have to worry about the host machine. (The service is free for now (January 2017); it may become a paid service in the future.)
-Second: The Azure Jupyter notebook is connected to other important technogies for you; so it is really part of a broader 
-technical ecosystem. These extensions include Azure Machine Learning Studio and GitHub, just to begin with. We believe this
-service has a great future and is well worth your time exploring.
+The purpose of this page is to present the Microsoft Azure Jupyter notebook hosting service as an extremely 
+valuable (currently free) tool for research.  
+
+In general we advocate using Jupyter notebooks to create research sandboxes, to develop paper content, 
+to share reproducible results, and to communicate on a technical level. Jupyter notebooks support 
+Python, R, F-Sharp, Julia and other programming languages. They also support markdown including LaTeX mathematical formatting.
+
+Microsoft to their immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two 
+advantages over hosting a Jupyter notebook on a machine that you manage: First Azure takes care of the basics of managing the 
+notebook and its host machine; so you don't.  Second the Azure Jupyter notebook is connected to other useful technogies;
+so it is already built into a broader technical context or ecosystem. These extensions include Azure Machine Learning Studio 
+and GitHub, just to begin with. We believe this service has a great future and is well worth your time exploring.
 
 ## Links
 
@@ -33,8 +35,10 @@ service has a great future and is well worth your time exploring.
 
 ## Warnings
 
-*** Some UW people have had difficulty accessing their Azure Jupyter notebooks. This is apparently due to a UW permission policy
-and it can be circumvented by using a non-UW-NetID Windows Live account.***
+***
+Some UW people have had difficulty accessing their Azure Jupyter notebooks. This is apparently due to a UW permission policy
+and it can be circumvented by using a non-UW-NetID Windows Live account.
+***
 
 
 {% include links.html %}

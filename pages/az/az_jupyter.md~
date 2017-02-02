@@ -11,11 +11,34 @@ folder: az
 
 # Jupyter notebooks on Microsoft Azure
 
-## Jupyter on Azure
-Microsoft Azure is hosting Jupyter notebooks. See http://notebooks.azure.com. You will create the source copy using a Windows Live ID.
-These you can share by URL where other people can clone what you have built (without affecting your copy). 
+## Introduction
+
+The purpose of this page is to present the Microsoft Azure Jupyter notebook hosting service as an extremely 
+valuable (currently free) tool for research.  
+
+In general we advocate using Jupyter notebooks to create research sandboxes, to develop paper content, to share
+reproducible results, and to generally communicate from a technical perspective. Jupyter notebooks support Python, R,
+F-Sharp and other programming languages. They also support markdown including mathematical formatting (LaTeX). Microsoft to their
+immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two advantages over 
+hosting a Jupyter notebook on a machine that you manage: First they take care of the basics of managing the notebook; you never
+have to worry about the host machine. (The service is free for now (January 2017); it may become a paid service in the future.)
+Second: The Azure Jupyter notebook is connected to other important technogies for you; so it is really part of a broader 
+technical ecosystem. These extensions include Azure Machine Learning Studio and GitHub, just to begin with. We believe this
+service has a great future and is well worth your time exploring.
+
+## Links
+
+- [Microsoft Azure Jupyter notebook hosting site](http://notebooks.azure.com)
+- [The Azure Notebook FAQ](http://notebooks.azure.com/faq) is an excellent overview.
+- [Gallery of notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
+- [Our example notebook](https://notebooks.azure.com/library/89FHPIGSGMs) is built for a middle school math club. 
 
 ## Warnings
-*** UW NetID identity may not have proper access so test this and if you encounter problems: Start the Jupyter notebook from an alternative ID.***
+
+***
+Some UW people have had difficulty accessing their Azure Jupyter notebooks. This is apparently due to a UW permission policy
+and it can be circumvented by using a non-UW-NetID Windows Live account.
+***
+
 
 {% include links.html %}
