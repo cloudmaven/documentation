@@ -40,26 +40,26 @@ without going to an ftp server... it just happens. As it should.
 
 You begin by following this recipe: 
 
-1. Get an Azure account
-2. Install Visual Studio and link it to your Azure account
-3. Create a new Django solution in Visual Studio - here it's called DjangoWebProject1 
+- Get an Azure account
+- Install Visual Studio and link it to your Azure account
+- Create a new Django solution in Visual Studio - here it's called DjangoWebProject1 
 
 ![awf01](/documentation/images/az/az_web_framework0001.png)
 
-4. You will be asked where you want to install your external packages - choose Add A Virtual Environment (since you're publishing this)
+- You will be asked where you want to install your external packages - choose Add A Virtual Environment (since you're publishing this)
 
 ![awf01](/documentation/images/az/az_web_framework0002.png)
 
 ![awf01](/documentation/images/az/az_web_framework0003.png)
 
-5. In order to use the API we have written - you will need to change your version of Django to Django1.9.2. To do this, 
+- In order to use the API we have written - you will need to change your version of Django to Django1.9.2. To do this, 
 right click on the name of your virtual environment and click 'Install Python Package', select install using pip and type django==1.9.2. 
 
 ![awf02](/documentation/images/az/az_web_framework0004.png)
 
 ![awf03](/documentation/images/az/az_web_framework0005.png)
 
-6. Include an API in your solution and publish this to Azure. You can download the API from [Github](https://github.com/amandalehr/araldif)  
+- Include an API in your solution and publish this to Azure. You can download the API from [Github](https://github.com/amandalehr/araldif)  
 
 This might be a website called geohack.azurewebsites.net
 
@@ -73,9 +73,9 @@ This might be a website called geohack.azurewebsites.net
 
 ![awf08](/documentation/images/az/az_web_framework0010.png)
 
-7. Test your API; let us imagine that it works great
+- Test your API; let us imagine that it works great
 
-8. Write a Python Client that automatically gets stream data from the website
+- Write a Python Client that automatically gets stream data from the website
 
 The phrase "Write a Python Client" may sound intimidating but it is quite straightforward. 
 Here in about 20 lines of code:
