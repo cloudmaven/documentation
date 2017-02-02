@@ -18,7 +18,7 @@ valuable (currently free) tool for research.
 
 In general we advocate using Jupyter notebooks to create research sandboxes, to develop paper content, 
 to share reproducible results, and to communicate on a technical level. Jupyter notebooks support 
-Python, R, F-Sharp, Julia and other programming languages. They also support markdown including LaTeX mathematical formatting.
+Python, R, F Sharp, Julia and other programming languages. They also support markdown including LaTeX mathematical formatting.
 
 Microsoft to their immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two 
 advantages over hosting a Jupyter notebook on a machine that you manage: First Azure takes care of the basics of managing the 
@@ -30,7 +30,7 @@ and GitHub, just to begin with. We believe this service has a great future and i
 
 - [Microsoft Azure Jupyter notebook hosting site](http://notebooks.azure.com)
 - [The Azure Notebook FAQ](http://notebooks.azure.com/faq) is an excellent overview.
-- [Gallery of notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
+- [Gallery of interesting notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-and-IPython-Notebooks)
 - [Our example notebook](https://notebooks.azure.com/library/89FHPIGSGMs) is built for a middle school math club. 
 
 ## Warnings
