@@ -177,7 +177,8 @@ for increasing the number of Workers. When there are jobs waiting and no Workers
 the SGE scheduler request that cfncluster spin up more instances. Cfncluster will do so until it 
 hits the maximum limit (300) that we specified in the *config* file. 
 
-These 300 Workers will each process multiple threads/tasks.  When the job queue is empty the Workers 
-will be terminated; but not until after they have streamed their results back to the Master. 
+These 302 Workers will each process multiple threads/tasks.  When the job queue is empty the Workers will be terminated; but not until they have streamed their results back to the Master. 
+
+
 
 {% include links.html %}
