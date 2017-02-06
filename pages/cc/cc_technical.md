@@ -13,6 +13,7 @@ folder: cc
 This purpose of this page is to present you with important technical details of cloud computing. 
 
 ## Links
+- [Example ssh usage/help](http://support.suso.com/supki/SSH_Tutorial_for_Linux)
 - [Computer networking port](https://en.wikipedia.org/wiki/Port_(computer_networking))
 - [Linux cURL command](http://www.computerhope.com/unix/curl.htm)
 - [Access to Jupyter notebooks via ssh](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh)
@@ -22,6 +23,42 @@ This purpose of this page is to present you with important technical details of 
 - ***The material on this page can be incredibly useful but out of context may appear a bit 'so what?'; 
 we suggest skimming through here to help build your cloud context web if these topics are new to you.***
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
+
+
+
+end part 1
+
+
+
+## Ports, sockets and tunneling
+
+Following a URL such as 123.213.101.102 you may see a colon followed by a number, as in: 123.213.101.102:8001. 
+This following number is a port, per wikipedia 'a networking endpoint in an operating system'. A port in 
+this context means a dedicated signal wire. By directing applications to a port you build a 
+dedicated send/receive connection. This is particularly useful in getting two computers to talk to one another.
+
+For completeness there is a related concept called a [socket](https://en.wikipedia.org/wiki/Network_socket) 
+which we do not need in this discussion. 
+
+We proceed with a particularly important cloud-oriented use of ports. Suppose you have a cloud VM instance 
+You wish to run some software that uses a Graphical User Interface (GUI). In this case let's consider the
+common example of a [Jupyter notebook](az_jupyter.html). Here a remote Jupyter notebook server is accustomed to
+talking to your machine via your local browser. 
+The commands below follow [this reference](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh).
+
+Let's assume you log in to the cloud VM at ip address 123.213.101.102 using ssh.  
+There you issue 
+
+```
+% jupyter notebook --no-browser --port=8889
+```
+
+This is directing the jupyter application to pay attention to port 8889.
+Next, on your local machine, say a laptop for example, you would issue: 
+
+```
+% ssh -N -f -i ~/.ssh/credential_filename.pem -L localhost:7005:localhost:8889 username@123.213.101.102
+```
 
 
 {% include links.html %}
