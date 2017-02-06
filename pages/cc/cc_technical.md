@@ -33,7 +33,7 @@ end part 1
 ## Ports, sockets and tunneling
 
 Following a URL such as 123.213.101.102 you may see a colon followed by a number, as in: 123.213.101.102:8001. 
-This following number is a port, per wikipedia 'a networking endpoint in an operating system'. A port in 
+This following number is a ***port***, per wikipedia 'a networking endpoint in an operating system'. A port in 
 this context means a dedicated signal wire. By directing applications to a port you build a 
 dedicated send/receive connection. This is particularly useful in getting two computers to talk to one another.
 
@@ -59,6 +59,51 @@ Next, on your local machine, say a laptop for example, you would issue:
 ```
 % ssh -N -f -i ~/.ssh/credential_filename.pem -L localhost:7005:localhost:8889 username@123.213.101.102
 ```
+
+
+end part 2
+
+
+
+
+This uses the ssh command. If you are using a Windows PC it is common to connect using PuTTY (see below).
+The point of the command is to create a tunnel from port 7005 on your local machine to port 8889 on the 
+cloud VM. 
+
+The **-i** switch specifies an identity file (key pair access to the cloud VM). 
+
+The **-L** switch in the command stands for **Local**.  As another example concerning 
+MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
+[http://support.suso.com/supki/SSH_Tutorial_for_Linux](http://support.suso.com/supki/SSH_Tutorial_for_Linux):
+
+> SSH can forward [communication across a] SSH session that you establish.  For example, you can 
+> set up a port forward for your connection from your home machine to [xyz.org] such that [...] 
+> connections to localhost port 3306 forward to the remote machine's 3306. Port 3306 is the port that 
+> the MySQL server listens on, so this would allow you to bypass the normal host checks that the MySQL 
+> server would make and allow you to run GUI MySQL programs on your local computer while using 
+> the database on your remote machine. Here is the command to accomplish this: 
+>
+> ssh -L 3306:mysql.suso.org:3306 username@arvo.suso.org
+>
+> The -L (which means Local port) takes one argument of the form 
+> <local-port>:<connect-to-host>:<connect-to-port>.
+> You specify what host and port the connection will go to on the other side of the SSH connection. 
+> When > you make a connection to the <local-port> port, it sends the data through the SSH connection 
+> and then connects to <connect-to-host>:<connect-to-port> on the other side. From the point of view 
+> of <connect-to-host>, it is as if the connection came from the SSH server that you login to. 
+
+Next, on your local machine you can open a browser and in the address bar enter:
+
+```
+localhost:7005
+```
+
+Now you should see the Jupyter notebook (from the cloud VM) on your browser. 
+
+Jupyter notebooks have associated passwords; and in the case above our colleague had to set this
+password to an empty string **""** in the Jupyter config file due to Jupyter permission 
+default settings.  
+
 
 
 {% include links.html %}
