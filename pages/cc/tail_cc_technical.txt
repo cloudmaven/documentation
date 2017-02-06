@@ -1,27 +1,3 @@
----
-title: Cloud technical notes
-keywords: cloud, introduction
-last_updated: October 6, 2016
-tags: [research_computing]
-summary: "Cloud computing technical notes"
-sidebar: mydoc_sidebar
-permalink: cc_technical.html
-folder: cc
----
-
-## Introduction
-This purpose of this page is to present you with important technical details of cloud computing. 
-
-## Links
-- [Computer networking port](https://en.wikipedia.org/wiki/Port_(computer_networking)))
-- [Linux curl command (note 'URL' is part of curl)](http://www.computerhope.com/unix/curl.htm)
-- [Access to Jupyter notebooks via ssh](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh)
-- [PuTTY on Wikipedia](https://en.wikipedia.org/wiki/PuTTY)
-
-## Warnings
-- ***The material on this page can be incredibly useful but out of context may appear a bit 'so what?'; 
-we suggest skimming through here to help build your cloud context web if these topics are new to you.***
-- ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 
 ## Ports, sockets and tunneling
 
@@ -29,6 +5,9 @@ Following a URL such as 123.213.101.102 you may see a colon followed by a number
 This following number is a port, per wikipedia 'a networking endpoint in an operating system'. A port in 
 this context means a dedicated signal wire. By directing applications to a port you build a 
 dedicated send/receive connection. This is particularly useful in getting two computers to talk to one another.
+
+For completeness there is a related concept called a [socket](https://en.wikipedia.org/wiki/Network_socket) 
+which we do not need in this discussion. 
 
 We proceed with a particularly important cloud-oriented use of ports. Suppose you have a cloud VM instance 
 You wish to run some software that uses a Graphical User Interface (GUI). In this case let's consider the
@@ -88,5 +67,3 @@ Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line 
 using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
 [See this link for Curl usage](http://www.computerhope.com/unix/curl.htm).
 
-
-{% include links.html %}
