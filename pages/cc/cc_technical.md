@@ -85,25 +85,65 @@ MySQL database connections: Here is a paraphrased quote from an online ssh tutor
 >
 > ssh -L 3306:mysql.suso.org:3306 username@arvo.suso.org
 >
-> The -L (which means Local port) takes one argument of the form 
-> <local-port>:<connect-to-host>:<connect-to-port>.
-> You specify what host and port the connection will go to on the other side of the SSH connection. 
-> When > you make a connection to the <local-port> port, it sends the data through the SSH connection 
-> and then connects to <connect-to-host>:<connect-to-port> on the other side. From the point of view 
-> of <connect-to-host>, it is as if the connection came from the SSH server that you login to. 
+> The -L (which means Local port) takes one argument: 
+>
+>   local-host:local-port:connect-to-host:connect-to-port 
+>
+> You specify what host and port the connection will go to on the other side of the SSH 
+> connection.  When you make a connection to the local-host:local-port port it sends the 
+> data through the SSH connection and then connects to connect-to-host:connect-to-port 
+> on the other side. From the point of view of connect-to-host it is as if the connection 
+> came from the SSH server that you login to. 
 
-Next, on your local machine you can open a browser and in the address bar enter:
+In our example **ssh** command for the Jupyter notebook connection we stipulated
+port 7005 on localhost. Hence on your local machine you can now open a browser and 
+in the address bar enter: 
 
 ```
 localhost:7005
 ```
 
-Now you should see the Jupyter notebook (from the cloud VM) on your browser. 
+If all is well you will see the Jupyter notebook (from the cloud VM) on your browser. 
 
-Jupyter notebooks have associated passwords; and in the case above our colleague had to set this
-password to an empty string **""** in the Jupyter config file due to Jupyter permission 
-default settings.  
+Jupyter notebooks have associated passwords; and in the case above our colleague had to set this password 
+to an empty string in the Jupyter config file due to Jupyter permission default settings.  
+
+The main point here is that the ssh protocol can be used to create tunnels into cloud VMs and 
+that this particularly applies when you want to see GUI content on your local machine. 
 
 
+end part 3
+
+
+## PuTTY
+
+The Windows PC environment does not yet support the **ssh** command and consequently cloud VM connections typically
+use the PuTTY application. (There are also 
+[alternative options](http://web.archive.org/web/20130806071308/http://huddledmasses.org/scriptable-ssh-from-powershell/) ). 
+PuTTY is a slightly circuitous but perfectly reliable means of connecting with a cloud VM, supporting as it does several
+communication protocols including ssh. 
+
+The main point here is that a VM credential file with a *.pem* extension does not work with PuTTY. You can use the companion
+application PuTTYgen to convert this file to an equivalent file with a .ppk file extension.  The PuTTY program can then use 
+this credential file to connect to a cloud VM. 
+
+kilroy need screencap of PuTTYgen in operation and the menu location for specifying a .ppk file.
+
+kilroy need text and screencap showing use of PuTTY to accomplish the Jupyter tunnel given above; and copy to the all Jupyter pages as well. 
+
+## Python connections
+
+### Exclam
+
+## Linux connections
+
+### curl 
+
+Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line tool for getting or sending files 
+using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
+[See this link for Curl usage](http://www.computerhope.com/unix/curl.htm).
+
+curl can be used in the context of an Azure-hosted Jupyter notebook to load a particular data resource (e.g. from GitHub) 
+as an initialization step every time the notebook is restarted. 
 
 {% include links.html %}
