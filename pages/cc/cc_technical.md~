@@ -84,9 +84,8 @@ kilroy need text and screencap showing use of PuTTY to accomplish the Jupyter tu
 
 ### curl 
 
-Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line tool for getting or sending files 
-using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
-[See this link for Curl usage](http://www.computerhope.com/unix/curl.htm).
-
+Per Wikipedia, [**curl**] is a command line tool for getting or sending files using [URL] syntax.
+- The [Linux curl command (note 'URL' is part of curl)](http://www.computerhope.com/unix/curl.htm) is commonly used to 
+conduct file transfers 
 
 {% include links.html %}
