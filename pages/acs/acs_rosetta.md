@@ -18,6 +18,28 @@ on the AWS public cloud using pre-built Amazon Machine Images (AMIs).
 
 ## Warnings
 
+## Roadmap
+
+- cfncluster: Cloud Formation Network cluster, an association of EC2 instances and software to carry out a parallel processing task in coordination with a Scheduler.
+- Sun Grid Engine (SGE): The Scheduler we use in coordination with cfncluster in this case study. 
+- Configuration Instance: A small AWS EC2 instance (T2) used to set up and run the cfncluster.
+- Master: An AWS EC2 instance with necessary EBS volume attached running as the Master node of a cfncluster under SGE.
+- Worker: An AWS EC2 Spot market instance of some type (e.g. c3.8xlarge is the powerful option) that is executing tasks on virtual CPUs / threads. 
+- Rosetta AMI: The machine image used to spin up one Master and many Worker nodes
+- Task: One run of Rosetta requiring (typically) 8 minutes on a fairly powerful machine; compute intensive, reports back (a small data volume of) results to the Master node. 
+- Small Test 1: 300 nodes running about 16 parallel tasks at 6 minutes each using a static random number seed, i.e. each task uses the same seed; identical calculations.
+- Small Test 2: Same as Small Test 1 but with unique random number seeds generated for each task. Tasks now require on average 8 minutes on c3.8xlarge and some may run much longer.
+- Big Test: Specifics to be determined; possibly several Small-Test-2 runs in parallel for example; must be scientifically useful; run time <= 2 hours; larger number of EC2 Worker instances.
+- Optimization benchmarking: Studying the consequences of choice of EC2 instance, task loading, other configuration settings. 
+- Time optimization: Analysis of instances and settings to complete a given Job in minimal time.
+- Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.
+
+Update
+- Implementation done, Small Test 1 concluding. 
+- Small Test 2 is pending. 
+- Big Test to follow. 
+
+
 ## Set up
 
 Log in to your IAM User account on AWS. 
@@ -78,7 +100,7 @@ cluster_template = rosetta_cfn_test
 
 [cluster rosetta_cfn_test]
 vpc_settings = public
-key_name = SHV_Instance_Key
+key_name = my_IAM_User_keypair_filename_with_no_extension
 compute_instance_type = c4.8xlarge
 master_instance_type = c4.8xlarge
 initial_queue_size = 2
@@ -101,6 +123,9 @@ vpc_id = vpc-5c891c3b
 [scaling custom]
 scaling_cooldown = 20
 ```
+
+Notice that for 'key_name' you must enter the key pair file name 
+associated with your IAM User identity without any extensions.
 
 Notice and check that max_queue_size is set to 300. (The original was a value of 2 
 which is not correct (but safe).) This is the maximum number of spot instances we will 

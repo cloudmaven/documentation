@@ -143,4 +143,7 @@ Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line 
 using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
 [See this link for Curl usage](http://www.computerhope.com/unix/curl.htm).
 
+curl can be used in the context of an Azure-hosted Jupyter notebook to load a particular data resource (e.g. from GitHub) 
+as an initialization step every time the notebook is restarted. 
+
 {% include links.html %}
