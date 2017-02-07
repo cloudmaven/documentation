@@ -1,3 +1,31 @@
+
+## Procedure
+
+The links we give above or a quick internet search are quite possibly better resources than our
+notes given here.
+
+- Spin up an AWS instance with Ubuntu AMI and install [Anaconda](https://docs.continuum.io/anaconda/install)
+- Install Jupyter Notebook 
+
+```
+% sudo apt-get install jupyter-notebook
+```
+
+Once you've installed Jupyter Notebook, follow the steps below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 % jupyter notebook --generate-config 
 ```
@@ -22,7 +50,6 @@ Generate a self-signed certificate using openssl so that your hashed password is
 $ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 ```
 
-end part 2
 
 
 

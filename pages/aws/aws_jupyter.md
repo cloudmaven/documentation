@@ -53,9 +53,9 @@ end part 1
 - [or here](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)
 - or in what follows here...
 
-This latter approach has two differences from Approach one: First your colleagues can edit the 
+Approach two has two differences from Approach one: First your colleagues can edit the 
 notebook files. (It may be wise to periodically back them up.) Second as of 2017 the connection
-seems to be non-secure and therefore a bit sketchy.  
+seems to be non-secure and a bit sketchy. 
 
 ### In either case
 
@@ -63,20 +63,6 @@ Sometimes EC2 instances reboot; and when they do they stop running the Jupyter s
 generally re-started manually. However the rc startup file structure can be configured to 
 re-launch Jupyter when your EC2 instance reboots. (kilroy is this documented here yet?)
 
-## Procedure
-
-The links we give above or a quick internet search are quite possibly better resources than our
-notes given here.
-
-- Spin up an AWS instance with Ubuntu AMI and install [Anaconda](https://docs.continuum.io/anaconda/install)
-- Install Jupyter Notebook 
-
-```
-% sudo apt-get install jupyter-notebook
-```
-
-Once you've installed Jupyter Notebook, follow the steps below:
-
-end part 2
+part 2
 
 {% include links.html %}
