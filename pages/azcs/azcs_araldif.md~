@@ -1,14 +1,25 @@
 ---
-title: Azure Geospatial API
+title: AralDIF on Azure
 keywords: Azure
 last_updated: January 30, 2017
 tags: [Azure]
-summary: "Azure Geospatial API"
+summary: "Azure-based Geospatial API for the Aral Sea DIF project"
 sidebar: mydoc_sidebar
-permalink: azcs_geospatial_api.html
+permalink: azcs_araldif.html
 folder: azcs
 ---
 
-# Kilroy
+## Introduction
+
+The purpose of this page is to provide a technical description of the 
+AralDIF program as implemented on the Microsoft Azure cloud platform.
+
+## Links
+
+- [AralDIF](http://araldif.azurewebsites.net)
+
+## Warnings
+
+## Project overview
 
 {% include links.html %}
