@@ -131,15 +131,29 @@ kilroy this part is not in place yet; see source nbk
 
 ## Jupyter notebook auto-restart
 
-This section describes how to set your Jupyter notebook server to start automatically on reboot so you do not 
-have to log in to your EC2 instance and type 
+This is how you manually start / stop a Jupyter server:
 
+```bash
+% sudo service jupyter start
+% sudo service jupyter stop
 ```
+
+You may also want to delve into the difference between these two commands: 
+
+```bash
 % jupyter notebook
+% nohup jupyter notebook
 ``` 
 
-whenever it restarts -- which might be once every couple days or so.  The example below assumes the Jupyter 
-notebook server is installed through Anaconda.  It also assumes that you have an EC2 instance running Ubuntu. 
+The first will halt when you log off the machine; the second uses 'nohup' to make the process 
+persist in the background so you can log out. ('nohup' is short for no hang-up; a holdover from
+phone modem days.)
+
+This manual starting and stopping can get tedious (tm Isabella Boom); so this section describes how to 
+set your Jupyter notebook server to start automatically on reboot.  As noted your EC2 instance may
+restart as often as every couple days or so.  The notes below assume the Jupyter 
+notebook server is installed through Anaconda.  It assumes that you have an 
+EC2 instance running Ubuntu. 
 
 Download [this script](https://gist.github.com/Doowon/38910829898a6624ce4ed554f082c4dd) and save it 
 on your EC2 instance as /etc/init.d/jupyter.  Edit this file to make this modification:
@@ -150,19 +164,14 @@ on your EC2 instance as /etc/init.d/jupyter.  Edit this file to make this modifi
 
 Make sure there is a /var/log/jupyter/ folder. If necessary create one using **sudo mkdir**.
 
-Issue the following sequence from the command line. Respectively these make the init.d file executable, 
-generate a Jupyter config file, start the jupyter service, update the rc process, and stop the jupyter 
-service. Once this is done you can reboot the instance and make sure the Jupyter service has started
-properly.
+Issue the following sequence from the command line: Respectively these make the init.d file executable, 
+generate a Jupyter config file, and update the rc process to include your Jupyter service.
+Once this is done you can reboot the instance and make sure the Jupyter service starts properly.
 
-kilroy the above text should be verified as correct. 
-
-```
+```bash
 % sudo chmod +x /etc/init.d/jupyter
 % sudo jupyter --generate-config -f /etc/jupyter/jupyter_config.py
-% sudo service jupyter start
 % sudo update-rc.d jupyter defaults
-% sudo service jupyterhub stop
 ```
 
 
