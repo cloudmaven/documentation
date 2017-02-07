@@ -76,19 +76,6 @@ notes given here.
 
 Once you've installed Jupyter Notebook, follow the steps below:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
 % jupyter notebook --generate-config 
 ```
@@ -113,50 +100,6 @@ Generate a self-signed certificate using openssl so that your hashed password is
 $ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The Windows PC environment does not yet support the **ssh** command and consequently cloud VM connections typically
-use the PuTTY application. (There are also 
-[alternative options](http://web.archive.org/web/20130806071308/http://huddledmasses.org/scriptable-ssh-from-powershell/) ). 
-PuTTY is a slightly circuitous but perfectly reliable means of connecting with a cloud VM, supporting as it does several
-communication protocols including ssh. 
-
-The main point here is that a VM credential file with a *.pem* extension does not work with PuTTY. You can use the companion
-application PuTTYgen to convert this file to an equivalent file with a .ppk file extension.  The PuTTY program can then use 
-this credential file to connect to a cloud VM. 
-
-kilroy need screencap of PuTTYgen in operation and the menu location for specifying a .ppk file.
-
-kilroy need text and screencap showing use of PuTTY to accomplish the Jupyter tunnel given above; and copy to the all Jupyter pages as well. 
-
-## Python connections
-
-### Exclam
-
-## Linux connections
-
-### curl 
-
-Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line tool for getting or sending files 
-using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
-[See this link for Curl usage](http://www.computerhope.com/unix/curl.htm).
-
 Set Jupyter Notebook to use the certificate when it starts: 
 
 ```
@@ -171,7 +114,7 @@ $ vi ~/.jupyter/jupyter_notebook_config.py
 
 You will want to add the following lines to the config file (or uncomment those lines -- remove the hashes): 
 
-```bash
+```
 # Set options for certfile, ip, password, and toggle off
 # browser auto-opening
 c.NotebookApp.certfile = u'/absolute/path/to/your/certificate/mycert.pem'
