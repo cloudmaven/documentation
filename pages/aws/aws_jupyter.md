@@ -47,6 +47,36 @@ The solution: **ssh tunneling** as described [here](cc_technical).
 Suppose that you would like to share access to a Jupyter notebook on an EC2 instance with a few colleagues
 via a URL and a simple password. Follow the directions given 
 
-end part 0
+end part 1
+
+- [here](http://chrisalbon.com/jupyter/run_project_jupyter_on_amazon_ec2.html)
+- [or here](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)
+- or in what follows here...
+
+This latter approach has two differences from Approach one: First your colleagues can edit the 
+notebook files. (It may be wise to periodically back them up.) Second as of 2017 the connection
+seems to be non-secure and therefore a bit sketchy.  
+
+### In either case
+
+Sometimes EC2 instances reboot; and when they do they stop running the Jupyter server. It is 
+generally re-started manually. However the rc startup file structure can be configured to 
+re-launch Jupyter when your EC2 instance reboots. (kilroy is this documented here yet?)
+
+## Procedure
+
+The links we give above or a quick internet search are quite possibly better resources than our
+notes given here.
+
+- Spin up an AWS instance with Ubuntu AMI and install [Anaconda](https://docs.continuum.io/anaconda/install)
+- Install Jupyter Notebook 
+
+```
+% sudo apt-get install jupyter-notebook
+```
+
+Once you've installed Jupyter Notebook, follow the steps below:
+
+end part 2
 
 {% include links.html %}
