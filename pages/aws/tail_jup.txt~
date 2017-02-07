@@ -1,3 +1,23 @@
+- [here](http://chrisalbon.com/jupyter/run_project_jupyter_on_amazon_ec2.html)
+- [or here](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)
+- or in what follows here...
+
+Approach two has two differences from Approach one: First your colleagues can edit the 
+notebook files. (It may be wise to periodically back them up.) Second as of 2017 the connection
+seems to be non-secure and a bit sketchy. 
+
+
+below to part 2 is now suspect...
+
+### In either case
+
+Sometimes EC2 instances reboot; and when they do they stop running the Jupyter server. It is 
+generally re-started manually. However the rc startup file structure can be configured to 
+re-launch Jupyter when your EC2 instance reboots. (kilroy is this documented here yet?)
+
+part 2
+
+
 
 ## Procedure
 
