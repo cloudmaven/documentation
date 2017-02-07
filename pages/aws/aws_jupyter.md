@@ -49,13 +49,10 @@ via a URL and a simple password. Follow the directions given
 
 end part 1
 
-- [here](http://chrisalbon.com/jupyter/run_project_jupyter_on_amazon_ec2.html)
-- [or here](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)
-- or in what follows here...
 
-Approach two has two differences from Approach one: First your colleagues can edit the 
-notebook files. (It may be wise to periodically back them up.) Second as of 2017 the connection
-seems to be non-secure and a bit sketchy. 
+1.5
+
+
 
 ### In either case
 
