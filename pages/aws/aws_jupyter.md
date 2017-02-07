@@ -1,5 +1,5 @@
 ---
-title: AWS Procedural
+title: Jupyter on AWS
 keywords: jupyter
 last_updated: January 26, 2017
 tags: [AWS]
@@ -47,22 +47,14 @@ The solution: **ssh tunneling** as described [here](cc_technical).
 Suppose that you would like to share access to a Jupyter notebook on an EC2 instance with a few colleagues
 via a URL and a simple password. Follow the directions given 
 
-end part 1
-
-
 - [here](http://chrisalbon.com/jupyter/run_project_jupyter_on_amazon_ec2.html)
 - [or here](http://jupyter-notebook.readthedocs.io/en/latest/public_server.html)
-- or in what follows here...
 
 Approach two has two differences from Approach one: First your colleagues can edit the 
 notebook files. (It may be wise to periodically back them up.) Second as of 2017 the connection
 seems to be non-secure and a bit sketchy. 
 
-
-missing part goes here part 2
-
-
-## Procedure
+## Our notes on Approach Two
 
 The links we give above or a quick internet search are quite possibly better resources than our
 notes given here.
