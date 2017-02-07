@@ -9,14 +9,7 @@ permalink: acs_geoserver.html
 folder: acs
 ---
 
-## Introduction
-
-## Links
-
-## Warnings
-
 ## Installing Geoserver on Ubuntu 14.04 with Tomcat 7
-
 ** Note: This is also available as an [Amazon Machine Image (AMI)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) 
 if you don't want to go through the entire installation process - please contact us if you would like to access the AMI.
 

@@ -196,6 +196,14 @@ entries:
       url: /az_database.html
       output: web, pdf
       
+  - title: Cloud Case Studies
+    output: web, pdf
+    folderitems:
+    
+    - title: High Mountain Asia (HiMAT/NASA)
+      url: /ccs_high_mountain_asia.html
+      output: web, pdf
+      
   - title: AWS Case Studies
     output: web, pdf
     folderitems:
@@ -204,8 +212,8 @@ entries:
       url: /acs_genome_association.html
       output: web, pdf
       
-    - title: Geospatial Data Sharing
-      url: /acs_geoserver.html
+    - title: NicaDIF
+      url: /acs_nicadif.html
       output: web, pdf
       
     - title: Rosetta
@@ -221,15 +229,14 @@ entries:
       output: web, pdf
       
   - title: Azure Case Studies
-  - title: Azure Case Studies
     output: web, pdf
     folderitems:
     
     - title: Geospatial API
-      url: /azcs_geospatial_api.html
+      url: /azcs_araldif.html
       output: web, pdf
   
-    - title: Organic chemistry
+    - title: organic chemistry
       url: /azcs_organic_chemistry.html
       output: web, pdf
   

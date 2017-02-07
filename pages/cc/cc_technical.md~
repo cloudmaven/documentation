@@ -24,12 +24,6 @@ This purpose of this page is to present you with important technical details of 
 we suggest skimming through here to help build your cloud context web if these topics are new to you.***
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 
-
-
-end part 1
-
-
-
 ## Ports, sockets and tunneling
 
 Following a URL such as 123.213.101.102 you may see a colon followed by a number, as in: 123.213.101.102:8001. 
@@ -60,12 +54,6 @@ Next, on your local machine, say a laptop for example, you would issue:
 % ssh -N -f -i ~/.ssh/credential_filename.pem -L localhost:7005:localhost:8889 username@123.213.101.102
 ```
 
-
-end part 2
-
-
-
-
 This uses the ssh command. If you are using a Windows PC it is common to connect using PuTTY (see below).
 The point of the command is to create a tunnel from port 7005 on your local machine to port 8889 on the 
 cloud VM. 
@@ -76,28 +64,27 @@ The **-L** switch in the command stands for **Local**.  As another example conce
 MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
 [http://support.suso.com/supki/SSH_Tutorial_for_Linux](http://support.suso.com/supki/SSH_Tutorial_for_Linux):
 
-> SSH can forward [communication across a] SSH session that you establish.  For example, you can 
-> set up a port forward for your connection from your home machine to [xyz.org] such that [...] 
-> connections to localhost port 3306 forward to the remote machine's 3306. Port 3306 is the port that 
-> the MySQL server listens on, so this would allow you to bypass the normal host checks that the MySQL 
-> server would make and allow you to run GUI MySQL programs on your local computer while using 
-> the database on your remote machine. Here is the command to accomplish this: 
+> SSH can forward communication across an SSH session that you establish.  For example, you can 
+> set up a port forward for your connection from your home machine to xyz.org such that connections to localhost 
+> port 3306 forward to the remote machine's port 3306. Port 3306 is the port that the MySQL server listens on, 
+> so this would allow you to bypass the normal host checks that the MySQL server would make and allow you to 
+> run GUI MySQL programs on your local computer while using the database on your remote machine. Here is the 
+> command to accomplish this: 
 >
-> ssh -L 3306:mysql.suso.org:3306 username@arvo.suso.org
+> ssh -L 3306:mysql.xyz.org:3306 username@kilroy.xyz.org
 >
-> The -L (which means Local port) takes one argument: 
+> The -L (which means Local port) takes one colon-delimeted argument. 
 >
 >   local-host:local-port:connect-to-host:connect-to-port 
 >
 > You specify what host and port the connection will go to on the other side of the SSH 
 > connection.  When you make a connection to the local-host:local-port port it sends the 
-> data through the SSH connection and then connects to connect-to-host:connect-to-port 
-> on the other side. From the point of view of connect-to-host it is as if the connection 
-> came from the SSH server that you login to. 
+> data through the SSH connection to the connect-to-host:connect-to-port port. From 
+> the point of view of connect-to-host it is as if the connection 
+> came from that machine.
 
-In our example **ssh** command for the Jupyter notebook connection we stipulated
-port 7005 on localhost. Hence on your local machine you can now open a browser and 
-in the address bar enter: 
+In our example the **ssh** command for the Jupyter notebook connection stipulated port 7005 on 
+localhost. Hence on your local machine you can now open a browser and enter in the address bar: 
 
 ```
 localhost:7005
@@ -110,10 +97,6 @@ to an empty string in the Jupyter config file due to Jupyter permission default 
 
 The main point here is that the ssh protocol can be used to create tunnels into cloud VMs and 
 that this particularly applies when you want to see GUI content on your local machine. 
-
-
-end part 3
-
 
 ## PuTTY
 
@@ -133,11 +116,17 @@ kilroy need text and screencap showing use of PuTTY to accomplish the Jupyter tu
 
 ## Python connections
 
-### Exclam
+This section reviews a very simple Python web client for an API. kilroy to be based on the simple Client cf omc Jupyter listing i think.
+
+## Exclam
+
+This section describes using exclam in front of a Linux command from a Jupyter frame.
 
 ## Linux connections
 
-### curl 
+This section describes ssh / ftp stuff and may be kilroy redundant
+
+## curl 
 
 Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line tool for getting or sending files 
 using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
