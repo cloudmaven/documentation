@@ -32,7 +32,7 @@ and GitHub, just to begin with. We believe this service has a great future and i
 - [The Azure Notebook FAQ](http://notebooks.azure.com/faq) is an excellent overview.
 - [Gallery of interesting notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-and-IPython-Notebooks)
 - [Our example notebook](https://notebooks.azure.com/library/89FHPIGSGMs) is built for a middle school math club. 
-- [Data loading > Jupyter instructions](https://notebooks.azure.com/n/3eimTpdM7Ac/notebooks/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)
+- [Data loading > Jupyter instructions](https://notebooks.azure.com/run/Microsoft/samples?dest=/notebooks/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)
 
 ## Warnings
 
