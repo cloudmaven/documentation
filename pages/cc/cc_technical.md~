@@ -23,7 +23,6 @@ This purpose of this page is to present you with important technical details of 
 - ***The material on this page can be incredibly useful but out of context may appear a bit 'so what?'; 
 we suggest skimming through here to help build your cloud context web if these topics are new to you.***
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
-- ***Be warned! We have placed -- where appropriate -- smaller "Warnings" sections below with each sub-topic.***
 
 ## Ports, sockets and tunneling
 
@@ -174,20 +173,9 @@ This section describes using exclam in front of a Linux command from a Jupyter f
 
 ## Linux connections
 
-### Warnings
+This section describes ssh / ftp stuff and may be kilroy redundant
 
-- *** Using curl requires a proper URL and -- when hitting GitHub -- this can be tricky to figure out. 
-Please see our dedicated GitHub page and the Azure Jupyter page for more deatails. ***
-
-This section describes ssh / ftp / wget / curl stuff 
-
-### ssh 
-
-### ftp 
-
-### wget 
-
-### curl 
+## curl 
 
 Per Wikipedia, [**curl**](https://en.wikipedia.org/wiki/CURL) is a command line tool for getting or sending files 
 using [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) syntax. 
