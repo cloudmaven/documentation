@@ -2,7 +2,7 @@
 title: Geoserver on AWS
 keywords: research_computing
 last_updated: January 26, 2017
-tags: [research_computing]
+tags: [research_computing, case_studies]
 summary: "Geospatial tools on AWS: A GeoServer case study"
 sidebar: mydoc_sidebar
 permalink: acs_geoserver.html
@@ -10,18 +10,22 @@ folder: acs
 ---
 
 ## Introduction
+This page describes an example Geoserver deployment for hosting and visualizing Lidar (satellite) data. This prototype was developed for the University of Washington Library Data Services. 
 
+ 
 ## Links
+[Webmap created using Leaflet.js](http://lidarwebmap.cloudmaven.org)
+[Geoserver backend with hosted Lidar data](http://geoserver.cloudmaven.org)
 
 ## Warnings
 
-## Installing Geoserver on Ubuntu 14.04 with Tomcat 7
+## Installing Geoserver on Ubuntu 16.04 with Tomcat 7
 
 ** Note: This is also available as an [Amazon Machine Image (AMI)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) 
 if you don't want to go through the entire installation process - please contact us if you would like to access the AMI.
 
 Spin-up an instance or virtual machine with Ubuntu 16.04 as the operating system. 
-  * Make sure to open port 8080 when configuring your security settings during the VM setup
+* Make sure to also open port 8080 when configuring your security group settings during the VM setup
 
 Update the OS and install Tomcat 7
 
@@ -51,7 +55,7 @@ $ sudo vi /etc/tomcat7/tomcat-users.xml
 </tomcat-users>
 ```
 
-Increase java heap memory to improve startup speed. Modify the first instance of JAVA_OPTS to read as belo. 
+Increase java heap memory to improve startup speed. Modify the first instance of JAVA_OPTS to read as below. 
 
 ```bash
 $sudo vi /etc/default/tomcat7
@@ -79,5 +83,14 @@ $ sudo service tomcat7 restart
 That's it. You may be prompted to install unzip in that case, just `sudo apt install unzip` and proceed accordingly. 
 
 The next steps will involve attaching a disk drive to your EC2 instance and specifying the data folder location in 
-geoserver as a best practice to separate your data from your service deployment machine. 
+geoserver as a best practice to separate your data from your service deployment machine.
+
+## Geoserver Setup
+In the previous step, Tomcat and Geoserver were deployed. Now you're ready to load your data into Geoserver. For the development of the Lidar portal, I used Lidar data obtained from the Puget Sound Lidar Consortium which were then generated into GeoTIFF mosaics by Harvey Greenberg at the UW Earth and Space Sciences Department. 
+
+![](/documentation/images/acs/acs_geoserver_img0001.jpg)
+![](/documentation/images/acs/acs_geoserver_img0002.jpg)  
+
+
+## Creating a Webmap 
 {% include links.html %}
