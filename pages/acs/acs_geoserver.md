@@ -88,8 +88,8 @@ geoserver as a best practice to separate your data from your service deployment 
 ## Geoserver Setup
 In the previous step, Tomcat and Geoserver were deployed. Now you're ready to load your data into Geoserver. For the development of the Lidar portal, I used Lidar data obtained from the Puget Sound Lidar Consortium which were then generated into GeoTIFF mosaics by Harvey Greenberg at the UW Earth and Space Sciences Department. 
 
-![](/documentation/images/acs/acs_geoserver_img0001.jpg)
-![](/documentation/images/acs/acs_geoserver_img0002.jpg)  
+![](/documentation/images/acs/acs_geoserver_img0001.png)
+![](/documentation/images/acs/acs_geoserver_img0002.png)  
 
 
 ## Creating a Webmap 
