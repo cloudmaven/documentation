@@ -21,7 +21,6 @@ virtual servers; which are just computers available for you to use.
 - [AWS Calculator](http://calculator.s3.amazonaws.com/index.html)
 - [Elastic Block Storage](https://aws.amazon.com/ebs/)
 - [Elastic File System](https://aws.amazon.com/efs/)
-- [AWS Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
 - [AWS training fundamentals](https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/)
 
 ## Warnings
