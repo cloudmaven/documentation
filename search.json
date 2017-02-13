@@ -29,4 +29,7 @@ search: exclude
 {% unless forloop.last %},{% endunless %}
 {% endfor %}
 
+```json
+      "body": "{{ page.content | strip_html | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' | replace: '^t', '    '  }}",
+```
 ]
