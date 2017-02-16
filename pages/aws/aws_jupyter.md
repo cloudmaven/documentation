@@ -46,11 +46,13 @@ You may encounter errors where the port on your local machine had previously bee
 
 ```bash
 
-sudo lsof -i :(port number)
+sudo lsof -i :port number
 
 ``` 
 
 You must close the port before you can reuse it. 
+
+
 ### Approach two: A shared Jupyter notebook
 
 Suppose that you would like to share access to a Jupyter notebook on an EC2 instance with a few colleagues
