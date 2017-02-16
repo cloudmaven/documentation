@@ -42,6 +42,17 @@ and that's it, you are ready to go... except that you don't have an obvious way 
 Jupyter notebook to appear in a browser (because it the Jupyter server is running remotely). 
 The solution: **ssh tunneling** as described [here](cc_technical). 
 
+You may encounter errors where the port on your local machine had previously been opened and you cannot reuse the port. In this case, you can check opened ports on local machine by using this command:
+
+```bash
+
+sudo lsof -i :port number
+
+``` 
+
+You must close the port before you can reuse it. 
+
+
 ### Approach two: A shared Jupyter notebook
 
 Suppose that you would like to share access to a Jupyter notebook on an EC2 instance with a few colleagues
