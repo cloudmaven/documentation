@@ -9,15 +9,14 @@ permalink: cc_what_is_the_cloud.html
 folder: cc
 ---
 
-![pic1](/documentation/images/cc/cc_Alice.png)
-
-{% include links.html %}
+![cc_intro0001](/documentation/images/cc/cc_intro0001.png)
 
 ## Introduction
 The purpose of this document -- available [here](http://cloudmaven.org "Cloud Maven technical website") -- is 
-to introduce you to cloud computing as a research platform. 
+to introduce you to the public cloud as a research computing platform: Capable of powerful computation, secure,
+cost-effective, and potentially broadening your team's capabilities. 
 
-## Some useful links
+## Links
 * The University of Washington has introductory material 
 [here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
 * True Cost of Ownership (TCO) is an important (kilroy: add spreadsheet info) factor and you can explore 
@@ -32,14 +31,14 @@ and [on-demand rates](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-de
 your waiting time for intensive jobs to complete and enabling you to share your results with your colleagues and
 colleagues you have never even met. Proceed at your own risk.***
 
-### Introduction
+## Overview
 This essay presents cloud computing for research in its essentials, a 'theoretical minimum' that you should know if you 
 are interested in doing research computing on the cloud. (Term borrowed from Leonard Susskind.) The cloud is a 
 powerful flexible computing environment that can change and particularly streamline how you do computing. We present 
 the argument for this here along with caveats and qualifiers. Our goal is to give you a realistic picture of what 
 a cloud transition involves.
 
-### The Case for Cloud
+## The Case for Cloud
 If your computing environment meets your needs then migrating to the cloud could very well be unnecesary. However if
 you see room for improvement in your computing then the cloud is worth understanding. Here is a short list of some of the major
 advantages of cloud migration.
@@ -58,11 +57,11 @@ advantages of cloud migration.
 
 * You can easily build a web presence and use that to share data and information: With collaborators or with the public
 
-### eScience Institute 
+## The eScience Institute 
 The **eScience Institute** is our originating organization at the University of Washington. They can help you with
 computing challenges beyond the cloud. For more please [visit](http://escience.washington.edu/)!
 
-### Skills
+## Skills
 In order to successfully carry your computing to the cloud you and your team will need to learn a new set of skills. 
 You will need to understand account management, security, cost estimation, and computing scale; all in relation to your 
 work which we tend to assume depends on data-driven research computing. 
@@ -70,13 +69,13 @@ We recommend setting aside time for training (online or in person if possible) a
 discussions on how to migrate to the cloud. If you and your group see the benefits and are anxious to get going 
 the good news is that the cloud learning curve is not too bad; and is even pretty fun.
 
-### Origins and Vendor Choice
+## Vendors
 The public cloud came about as an excess of computing capacity at Amazon.  The company realized they could make 
 available and monetize these compute resources; hence was born Amazon Web Services (AWS), the first large-scale 
 public cloud. Other cloud vendors include Microsoft Azure and Google. We do not advocate any particular cloud vendor 
 over the others. Each has its merits and we try and present some of those here at cloudmaven.org. 
 
-### Cost
+## Cost
 How much does the cloud cost? The fast answer is "3 cents per GB-month of storage and 3 cents for an hour of CPU time". 
 That is an answer we will qualify and expand on; but just to get you started... 
 
@@ -93,17 +92,24 @@ out of control and expensive.
 
 See also the section below on cloud research credits, a way to mitigate the cost of learning if the cloud works for you.
 
-### Machines
+## Machines
 Cloud computers typically run a version of Linux or a version of Windows. Furthermore you can choose from among dozens of 
 machine types with varying amounts of memory and computing power. Cloud computers are accessed from (say) your laptop 
 using various Client Applications, starting with **ssh** or **PuTTY**. As a rule you would develop your code locally, test 
 it, and then deploy it to cloud machines where it runs. 
 
-### Development and Testing
+### Clusters
+
+When you need compute power the cloud is a great resource. Cluster and Schedulers technologies are in place that enable you
+to grab hundreds to thousands of machines as needed, run your compute task to completion, and then just as quickly release
+those resources back into the general pool. Inter-node connection speed on the cloud is catching up to on-premise compute
+cluster solutions via technologies like Infiniband. 
+
+## Development and Testing
 The cloud is not necessarily a great place to write code.  Typically we write and test code locally and then test again on the cloud
 to verify that everything is working as expected, *before* going to large-scale processing tasks.
 
-### A Success Story
+## A Success Story
 Tim Durham works in genomics at UW and has an analytical pipeline that operates on segments of the human genome; up to 3 billion base 
 pairs. He is working to interpolate information linking human cell types to proteins.  Using the "server room at the end of the hall" 
 Tim can complete small data subset processing runs in a matter of a week or two; in the process possibly restricting other 
@@ -121,46 +127,49 @@ build this out on a Web Framework such as Django and build an API that provides 
 results or to selected subsets. 'Programmatic access' means that other researchers can pull the results of interest into their 
 workspace using a computer program rather than using a manual approach.
 
-### Research Software Development
+## Research Software Development
 Software repositories such as GitHub are enabling research collaborations to better manage software development. This is 
 something of a developing art form (in research) with practices that can be quickly learned and readily implemented; and 
 which will make software more robust, secure, and easier to build. It is highly likely that taking any steps to formalize 
-software development within a research group will be beneficial, particularly as software typically has a half-life of a small number of years. 
+software development within a research group will be beneficial, particularly as software typically has a half-life 
+of a small number of years. 
 
 In cloud computing software is often written on local computers -- possibly tested there as well -- and then migrated 
 to cloud instances where the actual processing of data, modeling, etcetera takes place in earnest. The manner of 
 development has a direct impact on security and is commensurately more important. 
 
-### Security
+## Security
 The cloud is extremely secure provided that the research group learns and follows appropriate guidelines. Both AWS and Microsoft have 
 HIPAA-aligned technology called out in respective Business Associate Agreements (BAAs). The burden of compliance is placed on the 
 research team; and UW IT is working to make this progress feasible and straightforward.
 
-### Alarms
+## Alarms
 The cloud is elastic -- designed to expand to meet computing challenges -- but this expansion is frequently automated. Since 
 automation can do things in error, by accident, it is important to know how to cope with an undesirable growth condition using 
 other means, i.e. means outside of the machinery that is causing the growth. This leads to the notion of Alarms. An alarm is 
 how the cloud can be configured to catch circumstances in which resources grow out of control. 
 
-### Research Credit
+## Research Credit
 AWS and Microsoft Azure both have programs to grant cloud credits to approved research programs. The one-page application 
 typically requires one to three months to process and can secure you in the neighborhood of $20,000 in cloud credits good for one year.
 
-https://aws.amazon.com/research-credits/ 
-http://azure4research.com
+[Amazon cloud research credit page](https://aws.amazon.com/research-credits/)
+[Azure cloud research credit page](http://azure4research.com)
 
 The idea of these programs is to remove the cost risk of learning how to use the cloud. We anticipate that in the course
 of a successful cloud adoption process you will learn to cost and budget for cloud computing after the grant is expired.
 
-### Support contracts
+## Support contracts
 You may very well want to pay a surcharge for technical support on your cloud account. You can pay for this using your research 
 credits. It costs you $100 / month on AWS for "Business Level support" (or ten percent of your monthly budget if that is 
 larger). You will 
 be connected with skilled cloud professionals who will be able to help you overcome technical obstacles. You can also opt in to
 a support contract when you realize you need it.
 
-### Services
-This section describes the part of the cloud that you don't know about; but can learn: Services that are often dissociated from machines.
+## Services
+
+'Services' is a pretty general term; but here it means specifically things you 
+This section describes a part of the cloud that you may not know about; but can learn: Services that are often dissociated from machines.
 
 ### Getting started
 
@@ -187,50 +196,49 @@ To get started you will need an account. There are at least four approaches open
 or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). 
 Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
 
-* You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a 
+- You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a 
 few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will 
 need to make sure you are 'good to go' managing resources; and we will ask that you do some reporting 
 on your experience. This can be a short-term stop-gap if you're stuck.
 
-* You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the 
+- You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the 
 [one-page application here](https://aws.amazon.com/research-credits/) for AWS or 
 the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) 
 for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are 
 excellent so we do not recommend one over the other. Come visit our office hours if you would like to disucss relative merits further.
 
-* You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
+- You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
 
 We also wish to emphasize that other public clouds, particularly Google, have fantastic features as well. We are working to 
 expand our representation of these other options. 
 
-
 ## [Glossary](cc_glossary.html)
 
-* Third Party: A company -- not a cloud provider -- that builds or provides something useful (like the PuTTY application for example)
-* Stack Overflow: A website building a knowledge base of answers to common questions. Excellent resource.
-* YouTube: A website replete with instructional videos related to building solutions on the cloud. Excellent resource.
-* AWS: Amazon Web Services, the public cloud provided by Amazon.
-* Azure: The public cloud provided by Microsoft.
-* S3: Bulk storage service on AWS.
-* Blob: Bulk storage service on Azure.
-* EC2: A cloud Virtual Machine or cloud VM on AWS.
-* IAM: Identity and Access Management; umbrella term for managing your cloud account resources including Users and their permissions.
-* EBS: Elastic Block Storage (AWS), a file system mounted on an EC2 instance typically used for data and software.
-* RDS: Relational Database Service (AWS), a database that you make use of without having to maintain an underlying cloud VM. 
-* AMI: Amazon Machine Image, a stored copy of a cloud VM that can be used to create an actual cloud VM.
-* HTC: High Throughput Computing, often indicates compute work that is highly parallel with little requirement for inter-process communication.
-* HPC: High Performance Computing, often indicates parallelized compute work that *does* require considerable communication between processes and computers.
-* CFD: Computational Fluid Dynamics, a common computational task in research that is very HPC-oriented.
-* IOT: Internet of Things, the distribution of embedded devices that typically communicate across a network to a central location which is in turn often implemented on the cloud. 
-* Servers: Computers that act as information resources: dispensing and archiving in relation to one or more Clients.
-* Clients: Computers that consume information from Servers and/or provide information to Servers. 
-* API: Application Program Interface, an automated mechanism for exchanging information between two computers. 
+- Third Party: A company -- not a cloud provider -- that builds or provides something useful (like the PuTTY application for example)
+- Stack Overflow: A website building a knowledge base of answers to common questions. Excellent resource.
+- YouTube: A website replete with instructional videos related to building solutions on the cloud. Excellent resource.
+- AWS: Amazon Web Services, the public cloud provided by Amazon.
+- Azure: The public cloud provided by Microsoft.
+- S3: Bulk storage service on AWS.
+- Blob: Bulk storage service on Azure.
+- EC2: A cloud Virtual Machine or cloud VM on AWS.
+- IAM: Identity and Access Management; umbrella term for managing your cloud account resources including Users and their permissions.
+- EBS: Elastic Block Storage (AWS), a file system mounted on an EC2 instance typically used for data and software.
+- RDS: Relational Database Service (AWS), a database that you make use of without having to maintain an underlying cloud VM. 
+- AMI: Amazon Machine Image, a stored copy of a cloud VM that can be used to create an actual cloud VM.
+- HTC: High Throughput Computing, often indicates compute work that is highly parallel with little requirement for inter-process communication.
+- HPC: High Performance Computing, often indicates parallelized compute work that *does* require considerable communication between processes and computers.
+- CFD: Computational Fluid Dynamics, a common computational task in research that is very HPC-oriented.
+- IOT: Internet of Things, the distribution of embedded devices that typically communicate across a network to a central location which is in turn often implemented on the cloud. 
+- Servers: Computers that act as information resources: dispensing and archiving in relation to one or more Clients.
+- Clients: Computers that consume information from Servers and/or provide information to Servers. 
+- API: Application Program Interface, an automated mechanism for exchanging information between two computers. 
 
 ## Final Remarks
 
-* The cloud takes some work to learn.
-* Our motto 'Build ~ Test ~ Share' is about the new way of doing research computing; cloud computing is just one element of this shift.
-* Don't hesitate to get in touch with us to find out more.
+- The cloud takes some work to learn.
+- Our motto 'Build ~ Test ~ Share' is about the new way of doing research computing; cloud computing is just one element of this shift.
+- Don't hesitate to get in touch with us to find out more.
 
 
 {% include links.html %}

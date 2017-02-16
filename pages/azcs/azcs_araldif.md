@@ -22,4 +22,7 @@ AralDIF program as implemented on the Microsoft Azure cloud platform.
 
 ## Project overview
 
+The purpose of this project is to implement computational models that predict earth surface 
+conditions across an extended region. 
+
 {% include links.html %}

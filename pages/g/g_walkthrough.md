@@ -10,7 +10,8 @@ folder: g
 ---
 
 ## Introduction
-The Google cloud is 
+The purpose of this page is to provide an overview / walkthrough of the **Google Cloud Platform**, which is
+of course the Google public cloud. 
 
 ## Links
 - [Google Cloud Platform](http://cloud.google.com)

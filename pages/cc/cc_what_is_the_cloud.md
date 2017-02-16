@@ -212,7 +212,7 @@ excellent so we do not recommend one over the other. Come visit our office hours
 We also wish to emphasize that other public clouds, particularly Google, have fantastic features as well. We are working to 
 expand our representation of these other options. 
 
-## [Glossary](cc_glossary.html)
+## Abbreviated Glossary (See our [more complete glossary](cc_glossary.html) as well.)
 
 - Third Party: A company -- not a cloud provider -- that builds or provides something useful (like the PuTTY application for example)
 - Stack Overflow: A website building a knowledge base of answers to common questions. Excellent resource.

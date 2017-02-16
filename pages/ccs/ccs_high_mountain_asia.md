@@ -11,10 +11,10 @@ folder: ccs
 
 ## Introduction 
 
-The purpose of this page is to describe a general (cloud-aligned) research
-project sponsored by NASA to study and describe the hydrology and future 
-evolution of the mountain ranges of central Asia. The project lead is 
-Dr. Anthony Arendt at the University of Washington.
+The purpose of this page is to describe a cloud-aligned research project called HiMAT which is 
+sponsored by NASA with the purposes of advancing scientific understanding of the hydrology of
+the mountain ranges of central Asia. The project lead is Dr. Anthony Arendt from the University of 
+Washington Applied Physics Laboratory.
 
 ![himat0001](/documentation/images/ccs/ccs_himat0001.png)
 
@@ -25,10 +25,7 @@ Dr. Anthony Arendt at the University of Washington.
 
 ## Warnings
 
-- ***Izzie do you have a jacket? Did you bring a jacket???***
+- ***Izzie do you have a jacket? Do you think it might get cold on Mount Meru??***
 
-## ftp site
-
-You will need a user-name and password to use the ftp site; please contact the project administrator.
 
 {% include links.html %}

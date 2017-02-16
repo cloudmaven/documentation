@@ -1,0 +1,40 @@
+---
+title: Research Computing Neurohackweek
+keywords: research,computing,case,study,neuron,neurohack,hack,hackweek
+last_updated: January 25, 2017
+tags: [research,computing,case,study,neuron,neurohack,hack,hackweek]
+summary: "Neurohackweek at the eScience Institute using AWS"
+sidebar: mydoc_sidebar
+permalink: acs_neurohackweek.html
+folder: acs
+---
+
+## Introduction
+
+The purpose of this page is to describe a particular **hackathon** event -- one concerned with neuroscience -- in relation to
+cloud computing. We describe provisioning of accounts, providing participant access, monitoring resources and evaluating total
+cost. The underlying idea is a reversal of the usual cloud scalability model, to wit: The public cloud is a natural environment 
+for supporting a burst in the number of available scientists.
+
+## Links
+
+## Warnings
+
+## **Neurohackweek** presented by Ariel Rokem and Rob Fatland
+
+### Background
+
+Neurohackweek is an annual 5-day workshop held at the University of Washington eScience Institute.
+The workshop convened more than 40 participants: graduate students, post-docs, faculty and research staff from all over the US and from the 
+UK and the Netherlands, from Psychology, Neuroscience, Computer Science and other fields. The workshop was structured as part conference, 
+part summer school and part hackathon. During the week participants took part in workshops and tutorials, presented their work in talks, 
+and worked in small teams on projects or *hacks* where results were presented at the end of the week. 
+
+### Future plans 
+
+UW IT Research Computing will continue to work with the event organizer Ariel Rokem and with this community to expand and solidify 
+the contribution of cloud computing to this important research. This continuation will include provision of compute resources, hosting 
+training sessions and supporting consultation with AWS solution architects. 
+
+
+{% include links.html %}

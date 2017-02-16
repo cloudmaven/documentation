@@ -36,16 +36,44 @@ and GitHub, just to begin with. We believe this service has a great future and i
 
 ## Warnings
 
+- *** Some UW people have had difficulty accessing their Azure Jupyter notebooks. This is apparently due 
+to a UW permission policy and it can be circumvented by using a non-UW-NetID Windows Live account.
 ***
-Some UW people have had difficulty accessing their Azure Jupyter notebooks. This is apparently due to a UW permission policy
-and it can be circumvented by using a non-UW-NetID Windows Live account.
-***
-*** 
-Azure hosting of Jupyter is under development so be prepared to shoot them a 'help!' email. The other important
+- *** Azure hosting of Jupyter is under development so be prepared to shoot them a 'help!' email. The other important
 thing to realize is that from a Python cell you can issue a Linux command using '!command'. In particular the
 link above on data loading tells you how to use !curl to load data from GitHub; and you may also want to
-avail yourself of '!conda install' at the top of a particular notebook to make sure your added libraries are in place.
-***
+avail yourself of '!conda install' at the top of a particular notebook to make sure your added libraries are in place.  ***
+- *** When your notebook shuts down any data you have uploaded will evaporate. It does not persist. We have an entire
+section below called 'Rehydration' on how to deal with this by parking the necessary files on GitHub. Please note: 
+GitHub does have file size restrictions so you may need to resort to other means.***
+
+
+## Rehydration
+
+As of spring 2017 Azure Jupyter notebooks do not persist data that you upload when the Notebook shuts down. 
+This means that you have to "rehydrate" your data supply when you re-start; but this can be done with an 
+initialization cell running Python as follows: 
+
+An Azure Jupyter notebook cell executing Python can run Linux commands by prefacing them with
+an exclamation mark '!'. In particular you can use the Linux curl command to inhale files (particularly 
+in our case: Smallish data files and important figures, say .png files)  
+to the current Notebook session from GitHub. The GitHub URL to use is not necessarily easy to find; 
+so let's place it right here.
+
+The key information is as follows: 
+
+``` 
+My github account is 'my_username'
+My repository is called 'my_reponame'
+My branch is 'my_branchname'
+My file is 'my_filename.png'
+```
+
+The curl command to retrieve this to /nbuser/home (where it will be called file0001.png) is: 
+
+```
+!curl https://raw.githubusercontent.com/my_username/my_reponame/my_branchname/my_filename.png -o file0001.png
+```
 
 
 {% include links.html %}
