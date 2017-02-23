@@ -2,7 +2,7 @@
 title: Geoserver on AWS
 keywords: research_computing
 last_updated: January 26, 2017
-tags: [research_computing, case_studies]
+tags: [research_computing, case_studies, visualization, data_api, AWS, collaboration, cloud_service, storage, database]
 summary: "Geospatial tools on AWS: A GeoServer case study"
 sidebar: mydoc_sidebar
 permalink: acs_geoserver.html

@@ -2,7 +2,7 @@
 title: Rosetta scale computing case study
 keywords: research_computing
 last_updated: October 6, 2016
-tags: [research_computing]
+tags: [Rosetta, scale, research_computing, AWS, organic_chemistry,data_science,research_credits, case_studies]
 summary: "Rosetta molecular engineering software on the AWS cloud"
 sidebar: mydoc_sidebar
 permalink: acs_rosetta.html
