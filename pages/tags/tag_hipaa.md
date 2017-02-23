@@ -2,7 +2,7 @@
 title: "HIPAA on the cloud"
 tagName: HIPAA
 search: exclude
-permalink: tag_hipaa.html
+permalink: tag_HIPAA.html
 sidebar: mydoc_sidebar
 folder: tags
 ---
