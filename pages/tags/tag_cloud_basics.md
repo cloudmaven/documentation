@@ -1,8 +1,8 @@
 ---
-title: "HIPAA on the cloud"
-tagName: HIPAA
+title: "Cloud basics"
+tagName: cloud_basics
 search: exclude
-permalink: tag_hipaa.html
+permalink: tag_cloud_basics.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

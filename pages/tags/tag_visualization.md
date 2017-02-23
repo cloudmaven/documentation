@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Visualization in data science"
+tagName: visualization
 search: exclude
-permalink: tag_python.html
+permalink: tag_visualization.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

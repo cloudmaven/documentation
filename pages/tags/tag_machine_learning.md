@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Machine learning"
+tagName: Azure
 search: exclude
-permalink: tag_python.html
+permalink: tag_machine_learning.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

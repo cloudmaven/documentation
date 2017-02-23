@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Proposal writing using the public cloud"
+tagName: proposals
 search: exclude
-permalink: tag_python.html
+permalink: tag_proposals.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

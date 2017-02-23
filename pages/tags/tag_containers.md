@@ -1,8 +1,8 @@
 ---
-title: "Biogeochemistry Data System"
-tagName: BDS
+title: "Docker containers"
+tagName: containers
 search: exclude
-permalink: tag_bds.html
+permalink: tag_containers.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

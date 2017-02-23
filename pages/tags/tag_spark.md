@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "The Apache Spark engine for large-scale data processing"
+tagName: spark
 search: exclude
-permalink: tag_python.html
+permalink: tag_spark.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

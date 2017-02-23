@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Rosetta: molecular engineering at cloud scale"
+tagName: Rosetta
 search: exclude
-permalink: tag_python.html
+permalink: tag_Rosetta.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

@@ -1,5 +1,5 @@
 ---
-title: "A data system for dissolved organic matter (DOM)"
+title: "An organic chemistry data system: For dissolved organic matter (DOM)"
 tagName: organic_chemistry
 search: exclude
 permalink: tag_organic_chemistry.html

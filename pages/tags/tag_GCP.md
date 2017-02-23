@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "The Google Cloud Platform"
+tagName: GCP
 search: exclude
-permalink: tag_python.html
+permalink: tag_GCP.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

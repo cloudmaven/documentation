@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Internet of Things (IOT): Attaching embedded devices to the cloud"
+tagName: IOT
 search: exclude
-permalink: tag_python.html
+permalink: tag_IOT.html
 sidebar: mydoc_sidebar
 folder: tags
 ---

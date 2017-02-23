@@ -1,8 +1,8 @@
 ---
-title: "Python-related content"
-tagName: python
+title: "Storage on the public cloud"
+tagName: storage
 search: exclude
-permalink: tag_python.html
+permalink: tag_storage.html
 sidebar: mydoc_sidebar
 folder: tags
 ---
