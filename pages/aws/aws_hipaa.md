@@ -10,14 +10,34 @@ folder: aws
 ---
 
 ## Introduction
-The purpose of this document -- available at http://cloudmaven.org -- is to present a procedural and a technical background
-for creating and operating a HIPAA-compliant research environment on the AWS public cloud. A corresponding effort is underway
-on the Microsoft Azure cloud. 
+The purpose of this document -- available at http://cloudmaven.org -- is to present a hypothetical data management system
+for Private Health Information (PHI) on the AWS public cloud that is compliant with HIPAA regulations. These regulations 
+in particular require data be encrypted both at rest (i.e. on a storage device) and in transit (i.e. moving from one storage
+device to another).  Our hypothetical situation is described in further detail below. Please note that we are also building
+out this construct on the Microsoft Azure public cloud. 
 
 ## Links
 - [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
 
 ## Warnings
+- This web page represents our best attempt at designing a HIPAA-compliant data management solution but at no point do we state or 
+imply that if you follow these procedures you are HIPAA-compliant.***
+- ***AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can come into contact
+with Private Health Information.  One may certainly use other technologies in such a system provided they do not touch PHI.***
+- ***HIPAA compliance is an obligation placed on both data system builders and on health researchers as system users.  It is our
+contention that failure to comply and/or data compromise is most likely be caused by human error. The public cloud is not 'more vulnerable'
+than on-premise systems; on the contrary it is less vulnerable both physically and in terms of robust secure technologies.***
+
+## User story
+
+A scientist *K* receives approval from an IRB to work with PHI data. The intent is to analyze these data for patterns
+in a secure, HIPAA-compliant environment, abbreviated HCDS for 'HIPAA-compliant data system'. 
+*K* contacts a technology expert *J* and a research data provider *S* with a request for the data and the HCDS. 
+After due diligence both are provided and *K* is given an ssh key. *K* logs on to the HCDS through a secure gateway 
+and carries out the data analysis over a period of time. During this period IOT devices distributed among patients 
+report anonymized health data to the HCDS where they are used to supplement the research analysis. When the study 
+concludes any sensitive data are stored to a secure archive external to the provided system; and the system itself 
+is dismantled. Log files are retained and archived that contain the complete record of operation of the HCDS. 
 
 ## Program 
 

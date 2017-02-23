@@ -2,7 +2,7 @@
 title: AWS HIPAA
 keywords: aws, hipaa, procedures
 last_updated: January 25, 2017
-tags: [AWS]
+tags: [AWS, HIPAA]
 summary: "A HIPAA-compliant research system on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
@@ -14,6 +14,10 @@ The purpose of this document -- available at http://cloudmaven.org -- is to pres
 for creating and operating a HIPAA-compliant research environment on the AWS public cloud. A corresponding effort is underway
 on the Microsoft Azure cloud. 
 
+## Links
+- [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
+
+## Warnings
 
 ## Program 
 
