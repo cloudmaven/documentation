@@ -2,7 +2,7 @@
 title: AWS HIPAA
 keywords: aws, hipaa, procedures
 last_updated: January 25, 2017
-tags: [AWS, HIPAA]
+tags: [AWS, HIPAA, medicine, case_studies, storage, research_computing, data_science]
 summary: "A HIPAA-compliant research system on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
