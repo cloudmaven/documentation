@@ -1,9 +1,9 @@
 ---
-title: GitHub for Research Computing
+title: Cloud 101 Hands-on Immersion Day
 keywords: research, computing
 last_updated: January 26, 2017
 tags: [research_computing]
-summary: "Github for research computing"
+summary: "Cloud computing basics hands-on training by UW Research Computing"
 sidebar: mydoc_sidebar
 permalink: cloud101_immersion.html
 folder: rc
@@ -18,7 +18,9 @@ folder: rc
 
 
 Date: Tuesday, Apr. 4, 2017
+
 Location: University of Washington WRF Data Science Studio (6th floor of the Physics Astronomy tower) 
+
 Website : http://cloudmaven.org/cloud101_immersion.html 
  
  
