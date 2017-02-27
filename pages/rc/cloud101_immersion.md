@@ -3,15 +3,12 @@ title: Cloud 101 Hands-on Immersion Day
 keywords: research, computing
 last_updated: January 26, 2017
 tags: [research_computing]
-summary: "Cloud computing basics hands-on training by UW Research Computing"
+summary: "Cloud computing basics hands-on training by UW Research Computing and the UW eScience Institute"
 sidebar: mydoc_sidebar
 permalink: cloud101_immersion.html
 folder: rc
 ---
 
-# Cloud 101 Hands-on Immersion Day 
-## Presented by UW Research Computing and the UW eScience Institute 
- 
 **Registration closes on March 20, 2017 at 11.59pm PST**
 
 [Registration form](https://goo.gl/forms/R3cyk7UbtWViulxm2)
