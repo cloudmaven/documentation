@@ -15,6 +15,7 @@ This page describes an example Geoserver deployment for hosting and visualizing 
  
 ## Links
 [Webmap created using Leaflet.js](http://lidarwebmap.cloudmaven.org)
+
 [Geoserver backend with hosted Lidar data](http://geoserver.cloudmaven.org)
 
 ## Warnings
@@ -83,14 +84,18 @@ $ sudo service tomcat7 restart
 That's it. You may be prompted to install unzip in that case, just `sudo apt install unzip` and proceed accordingly. 
 
 The next steps will involve attaching a disk drive to your EC2 instance and specifying the data folder location in 
-geoserver as a best practice to separate your data from your service deployment machine.
+Geoserver as a best practice to separate your data from your service deployment machine.
 
 ## Geoserver Setup
 In the previous step, Tomcat and Geoserver were deployed. Now you're ready to load your data into Geoserver. For the development of the Lidar portal, I used Lidar data obtained from the Puget Sound Lidar Consortium which were then generated into GeoTIFF mosaics by Harvey Greenberg at the UW Earth and Space Sciences Department. 
 
 ![](/documentation/images/acs/acs_geoserver_img0001.png)
+You will need to log in to Geoserver. The default username and password is admin:geoserver. Select Stores > Add New Store > GeoTIFF and enter the na
+
 ![](/documentation/images/acs/acs_geoserver_img0002.png)  
 
+![](/documentation/images/acs/acs_geoserver_img0003.png)
 
 ## Creating a Webmap 
+The webmap was created using Leaflet.js.  
 {% include links.html %}
