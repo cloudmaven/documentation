@@ -2,7 +2,7 @@
 title: Google Earth Engine
 keywords: google, earth, engine
 last_updated: January 26, 2017
-tags: [google,earth,engine]
+tags: [Google,earth engine]
 summary: "Google Earth Engine"
 sidebar: mydoc_sidebar
 permalink: g_earth_engine.html
