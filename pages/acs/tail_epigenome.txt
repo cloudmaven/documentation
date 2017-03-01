@@ -1,6 +1,5 @@
-## Overview
-
-This project is called 'PREDICTD': Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition. 
+## ***PREDICTD*** 
+- Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition. 
 
 - Epigenome Imputation: Epigenome is all of the machinery associated with the genome: Protein manufacture, gene regulation, and so on.
 - The method used here is called Stochastic Gradient Descent Optimization.

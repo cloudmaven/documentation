@@ -54,26 +54,3 @@ This project is called 'PREDICTD': Parallel Epigenomics Data Imputation with Clo
 
 
 
-
-
-
-
-Q: Have you done the full genome yet? Or if not when do you estimate you'll do that?
-
-See my original message. We hope to still do that, but it won't be all at once; we will train the cell 
-type and assay parameters (the smaller dimensions) on a small subset of genomic positions and then apply those 
-cell type/assay parameters across the genome in a way that we can work with batches of genomic 
-positions instead of all at once. 
-
-When you do or have done the entire genome: You will make your results publicly available to other researchers.
-
-Yes, we will certainly make any imputed data available, and I hope to make my code and a tutorial available 
-to anyone who wants to impute their own data. 
-
-- Of the 100 x 100 experiments (I mean protein versus cell type) about how many are actually done?
-  - I'm using set of 127 cell types and 24 assays, of which 1014 (33.27%) experiments have experimental data. 
-    The full project with more cell types and assays has collected only ~2% of the possible data.
-
-
-
-

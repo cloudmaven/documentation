@@ -25,13 +25,64 @@ Apache Spark computation framework.
 bit of additional effort to configure.***
 
 
-end part 1
+
+## ***PREDICTD*** 
+- Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition. 
+- Epigenome = all of the machinery associated with the genome: Protein manufacture, gene regulation, etc
+- Stochastic Gradient Descent Optimization 
 
 
-middle bit
+- A prior study used for comparatives is called CHROMIMPUTE. 
+  - The paper for this was published by Ernst and Kellis in 2015 in Nature Biotechnology.
 
+
+- The researcher for this study is Tim Durham, a graduate student in Bill Noble's genomics lab at the University of Washington.
+  - The results improve over the CHROMIMPUTE study for global mean squared error.
+  - CHROMIMPUTE does better by comparison on the other metrics; but the methods are still close. 
+  - The computation is a form of machine learning (modeling) and is built on the Apache Spark engine
+  - The data volume is a three-dimensional tensor with axes: Human cell types, human proteins, and the human genome
+    - The cell type axis is 120 or so cell types
+    - The protein axis is similarly 150 or so proteins
+    - The genome axis is three billion nucleotides
+  - The model is trained and one important result is that two of the model components can be locally optimized using only 1% of the genome
+  - The entire genome would take some time... 24-48 hours depending on the cluster size
+  - Today 1% of the genome requires five hours on 64 cores: That is an X1.16xlarge 
+    - More memory than needed; but still cheap per core
+    - optimized data structures to use compressed-format matrices
+    - cell type and assay matrix training used 1% of 1% of the data; so that all fit on one machine
+    - 500GB required; 1.4TB available
+
+## Next steps
+
+- Write the paper
+- publish the software and tutorial on GitHub and cloudmaven will point to this
+  - Add some interpretability to the code
+  - HDInsight or EMR on AWS: Is fine.
+  - Tim ran Spark EC2 which bootstraps an EC2 cluster... but you need to be root
+    - Spark EC2 is from AmpLab on GitHub.com/amplab/spark-ec2
+    - AWS makes it hard for you to log in as root...
+  - EMR now permits some spot market access (although the X1.16xlarge may or may not be part of that)
+- Entire genome
+  - Publish the results "whole genome imputed tracks through the Encyclopedia of DNA Elements 'ENCODE'
+    - Hopefully by start of summer
+    - There are three obstacles in the way of imputing the whole genome right now. 
+      - The first (and much bigger) issue is that this will take more time and money than I currently have
+      - It's proving harder than I thought it would to get Spark to swallow the full data set, so I will have to do 
+some additional software engineering to process the full genome in batches. 
+      - The third reason that we have de-prioritized training on the whole genome is that we've found that the model performs 
+essentially as well on 0.01% of the data as it does on 1% of the data, so we don't expect to get much of a performance 
+boost by training on everything. 
+
+- Tim will turn next to some wet lab work: Studying tissue development in a nematode C.elegans
+
+## Speed up for cloud implementation
+
+- From weeks to order of hours 
+  - ChromImpute led to training the model on 127 cell types and 24 assays for comparison purposes 
 - This imputes hypothetical results in silico in place of wet lab experiments.
 
+
+## Computation and cost details
 - How much does one such physical wet lab experiment cost (i.e. one cell type, one protein assay, 3 billion base pairs)?
 
 A typical run that I'm doing now takes about 8 hrs with 1 x m4.xlarge instance (4 cores, 16 GB memory) 
@@ -53,7 +104,6 @@ $20/month, so I guess the total imputation cost is about $100. This compares pre
 cost of collecting the data in the lab -- a quick search for services that will perform these assays 
 show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do 
 the assay in-house.
-
 
 Model training at the 1% scale takes ten to 24 hours wall clock time.
 

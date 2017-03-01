@@ -25,10 +25,12 @@ Apache Spark computation framework.
 bit of additional effort to configure.***
 
 
-end part 1
 
 
-middle bit
+
+
+
+
 
 - This imputes hypothetical results in silico in place of wet lab experiments.
 
@@ -54,14 +56,19 @@ cost of collecting the data in the lab -- a quick search for services that will 
 show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do 
 the assay in-house.
 
-
 Model training at the 1% scale takes ten to 24 hours wall clock time.
 
 You could make the run time pretty reasonable but the whole genome has proven problematic for other
 reasons; see above.
 
 
+## Full genome 
 
-
+- Pending
+- Train cell type and assay parameters (the smaller dimensions) on a small subset of genomic positions
+  - Then apply those across the genome in batches
+- ...to publish imputed results plus code plus tutorial for use by others
+- Of 127 cell types x 24 assays there are 1014 (33%) experimental datasets 
+- The full project with additional cell types and protein assays has only 2% of the possible data
 
 {% include links.html %}
