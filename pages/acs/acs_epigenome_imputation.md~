@@ -48,6 +48,11 @@ because I have been keeping results from all the preliminary experiments I've do
 year trying to tune the model, but I'll clean those up soon once the paper comes together. 
 
 
+Anyway, storage costs for a single imputation run (as I'm currently running it) are on the order of 
+$20/month, so I guess the total imputation cost is about $100. This compares pretty favorably to the 
+cost of collecting the data in the lab -- a quick search for services that will perform these assays 
+show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do 
+the assay in-house.
 
 
 {% include links.html %}

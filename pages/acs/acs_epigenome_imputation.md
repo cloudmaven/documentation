@@ -54,17 +54,5 @@ cost of collecting the data in the lab -- a quick search for services that will 
 show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do 
 the assay in-house.
 
-Fourth when you went up to running 1% of the genome it still took 1 hour.
-
-This might be true for some version of the model and for some cluster configuration, but unfortunately I can't 
-tell you exactly which one. Lately my models take longer to train than an hour; they are more on the order of 
-10 hours, and some of my attempts for things I was trying this fall took more like 12-24 hours to train.
-
-Fifth when you do the entire genome it will take... wait for it... 1 hour. (these are wall clock times)
-
-I think you'd be hard-pressed to get the run time down to an hour, at least with my current implementation. 
-The run time is highly dependent on model settings and the size of the cluster you're willing to allocate, 
-so I'm sure you could make the run time pretty reasonable, but the whole genome has proven problematic (see above).
-
 
 {% include links.html %}
