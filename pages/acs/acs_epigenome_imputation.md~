@@ -9,4 +9,19 @@ permalink: acs_epigenome_imputation.html
 folder: acs
 ---
 
+## Introduction
+This page describes a methodology study in genomics to impute (computationally infer) information linking 
+cell types, proteins and locations along the human genome. The study is currently in preparation as a 
+research paper. The computation is done on the public cloud (both AWS and Azure platforms) using the 
+Apache Spark computation framework.
+
+## Links
+
+- Link to the code
+
+## Warnings
+- ***You can use cloud-provider support for Apache Spark: e.g. Elastic Map Reduce on AWS. However AmpLab 
+(the originators of Spark) also provide more direct solutions that can save you some money but require a 
+bit of additional effort to configure.***
+
 {% include links.html %}
