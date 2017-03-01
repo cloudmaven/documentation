@@ -34,7 +34,18 @@ middle bit
 
 - How much does one such physical wet lab experiment cost (i.e. one cell type, one protein assay, 3 billion base pairs)?
 
-end of middle
+A typical run that I'm doing now takes about 8 hrs with 1 x m4.xlarge instance (4 cores, 16 GB memory) 
+and 1 x x1.16xlarge instance (64 cores, 976 GB memory). The head node (m4.xlarge) is a normal EC2 
+instance, while the worker (x1.16xlarge) is a spot instance, so the price isn't consistent, but it 
+stays at around $1.22/hr. So a single training run costs ~$10; we tend to do a cross-validation 
+scheme with 4-8 folds, so the total cost of processing a model runs about $80 and takes two to three 
+days. Data storage is the other big component of the cost. With the subset of the experiments and 
+genomic positions that I am working with the output of one of these cross-validation runs is about 
+750 GB stored on S3. Loading the entire genome into memory for all training examples takes about 
+1.5 TB, so training on the whole genome will produce at least 4.5 TB considering that the 1.5 TB 
+does not include 2/3 of the data. My total S3 usage right now is significantly higher even than that 
+because I have been keeping results from all the preliminary experiments I've done over the past 
+year trying to tune the model, but I'll clean those up soon once the paper comes together. 
 
 
 
