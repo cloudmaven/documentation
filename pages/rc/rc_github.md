@@ -2,14 +2,12 @@
 title: GitHub for Research Computing
 keywords: research, computing
 last_updated: January 26, 2017
-tags: [research_computing]
+tags: [research_computing, github, reproducibility, Jupyter, data_science, cloud_basics, web_framework]
 summary: "Github for research computing"
 sidebar: mydoc_sidebar
 permalink: rc_github.html
 folder: rc
 ---
-
-# GitHub for Research Computing
 
 ## Introduction
 

@@ -2,7 +2,7 @@
 title: GitHub for Research Computing
 keywords: research, computing
 last_updated: January 26, 2017
-tags: [research_computing]
+tags: [research_computing, github, reproducibility, Jupyter, data_science, cloud_basics, web_framework]
 summary: "Github for research computing"
 sidebar: mydoc_sidebar
 permalink: rc_github.html
@@ -39,16 +39,12 @@ Using a code repository (distinguish: not a data repository) like GitHub accompl
 - ***While Jekyll renders markdown there does not appear to be a reliably good way of rendering LaTeX.***
   - In research this is important. Until there is a fix we are obliged to render to pngs and embed them as images.
 
-## What is Jekyll?
-Jekyll is a GitHub repo that includes rendering software 'for itself'. That is: If you make a copy of the Jekyll repo and rename it something else, 
-like 'Hyde', it will be visible on GitHub as both a normal repo (let's call that the back door) and as a rendered website (the front door). The 
-way this works is your version will start out with some default files that have the markdown file extension '.md'. These you can modify to suit 
-your own purposes. When you hit the front door Jekyll manually creates from these markdown files some pretty html content which renders in your 
-browser. Follow the recipe provided by the Jekyll documentation and you can start building out content in Hyde. This is what we have done 
-with http://cloudmaven.org. 
+## GitHub Basics
 
-Notice that there is a side comment (Kilroy) needed here about the distinction between the front door URL and the DNS entry. 
-  
+## GitHub API
+
+## GitHub raw file recovery
+
 ## GitHub Commit from Command Line on Windows
 This assumes you already have a GitHub repo and a local copy. You have modified something in the local copy and you have permission to just execute a 
 push that will override anything on the GitHub repo.  
@@ -64,8 +60,19 @@ push that will override anything on the GitHub repo.
   - git push origin master                 update the GitHub repo based on mine
     - This push may require login information: login name and password
 
+## Jekyll on GitHub
+
+Jekyll is a GitHub repo that includes rendering software 'for itself'. That is: If you make a copy of the Jekyll repo and rename it something else, 
+like 'Hyde', it will be visible on GitHub as both a normal repo (let's call that the back door) and as a rendered website (the front door). The 
+way this works is your version will start out with some default files that have the markdown file extension '.md'. These you can modify to suit 
+your own purposes. When you hit the front door Jekyll manually creates from these markdown files some pretty html content which renders in your 
+browser. Follow the recipe provided by the Jekyll documentation and you can start building out content in Hyde. This is what we have done 
+with http://cloudmaven.org. 
+
+Notice that there is a side comment (Kilroy) needed here about the distinction between the front door URL and the DNS entry. 
 
 ## Jupyter GitHub repo on AWS EC2
+
 Suppose your EC2-based Jupyter Notebook is publicly visible. It might be password-protected (it is by default) but passwords have a 
 way of getting handed around and this is not a highly secure situation. Someone logs on to your Notebook and deletes a page or 
 makes some not-too-useful changes. You want to revert to the old version: This sounds like a job for GitHub.

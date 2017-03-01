@@ -73,51 +73,31 @@ This project is called 'PREDICTD': Parallel Epigenomics Data Imputation with Clo
 
 - How much does one such physical wet lab experiment cost (i.e. one cell type, one protein assay, 3 billion base pairs)?
 
-A typical run that I'm doing now takes about 8 hrs with 1 x m4.xlarge instance (4 cores, 16 GB memory) 
-and 1 x x1.16xlarge instance (64 cores, 976 GB memory). The head node (m4.xlarge) is a normal EC2 
-instance, while the worker (x1.16xlarge) is a spot instance, so the price isn't consistent, but it 
-stays at around $1.22/hr. So a single training run costs ~$10; we tend to do a cross-validation 
-scheme with 4-8 folds, so the total cost of processing a model runs about $80 and takes two to three 
-days. Data storage is the other big component of the cost. With the subset of the experiments and 
-genomic positions that I am working with the output of one of these cross-validation runs is about 
-750 GB stored on S3. Loading the entire genome into memory for all training examples takes about 
-1.5 TB, so training on the whole genome will produce at least 4.5 TB considering that the 1.5 TB 
-does not include 2/3 of the data. My total S3 usage right now is significantly higher even than that 
-because I have been keeping results from all the preliminary experiments I've done over the past 
-year trying to tune the model, but I'll clean those up soon once the paper comes together. 
-
-Anyway, storage costs for a single imputation run (as I'm currently running it) are on the order of 
-$20/month, so I guess the total imputation cost is about $100. This compares pretty favorably to the 
-cost of collecting the data in the lab -- a quick search for services that will perform these assays 
-show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do 
-the assay in-house.
+A typical run that I'm doing now takes about 8 hrs with 1 x m4.xlarge instance (4 cores, 16 GB memory) and 1 x x1.16xlarge instance (64 cores, 976 GB memory). The head node (m4.xlarge) is a normal EC2 instance, while the worker (x1.16xlarge) is a spot instance, so the price isn't consistent, but it stays at around $1.22/hr. So a single training run costs ~$10; we tend to do a cross-validation scheme with 4-8 folds, so the total cost of processing a model runs about $80 and takes two to three days. Data storage is the other big component of the cost. With the subset of the experiments and genomic positions that I am working with the output of one of these cross-validation runs is about 750 GB stored on S3. Loading the entire genome into memory for all training examples takes about 1.5 TB, so training on the whole genome will produce at least 4.5 TB considering that the 1.5 TB does not include 2/3 of the data. My total S3 usage right now is significantly higher even than that because I have been keeping results from all the preliminary experiments I've done over the past year trying to tune the model, but I'll clean those up soon once the paper comes together. Anyway, storage costs for a single imputation run (as I'm currently running it) are on the order of $20/month, so I guess the total imputation cost is about $100. This compares pretty favorably to the cost of collecting the data in the lab -- a quick search for services that will perform these assays show prices as high as $1000/sample, but I'm not sure how much it would cost a lab equipped to do the assay in-house.
 
 Fourth when you went up to running 1% of the genome it still took 1 hour.
 
-This might be true for some version of the model and for some cluster configuration, but unfortunately I can't 
-tell you exactly which one. Lately my models take longer to train than an hour; they are more on the order of 
-10 hours, and some of my attempts for things I was trying this fall took more like 12-24 hours to train.
+This might be true for some version of the model and for some cluster configuration, but unfortunately I can't tell you exactly which one. Lately my models take longer to train than an hour; they are more on the order of 10 hours, and some of my attempts for things I was trying this fall took more like 12-24 hours to train.
 
 Fifth when you do the entire genome it will take... wait for it... 1 hour. (these are wall clock times)
 
-I think you'd be hard-pressed to get the run time down to an hour, at least with my current implementation. 
-The run time is highly dependent on model settings and the size of the cluster you're willing to allocate, 
-so I'm sure you could make the run time pretty reasonable, but the whole genome has proven problematic (see above).
+I think you'd be hard-pressed to get the run time down to an hour, at least with my current implementation. The run time is highly dependent on model settings and the size of the cluster you're willing to allocate, so I'm sure you could make the run time pretty reasonable, but the whole genome has proven problematic (see above).
 
 Q: Have you done the full genome yet? Or if not when do you estimate you'll do that?
 
-See my original message. We hope to still do that, but it won't be all at once; we will train the cell 
-type and assay parameters (the smaller dimensions) on a small subset of genomic positions and then apply those 
-cell type/assay parameters across the genome in a way that we can work with batches of genomic 
-positions instead of all at once. 
+See my original message. We hope to still do that, but it won't be all at once; we will train the cell type and assay parameters (the smaller dimensions) on a small subset of genomic positions and then apply those cell type/assay parameters across the genome in a way that we can work with batches of genomic positions instead of all at once. 
+
+
+Q: Are you set on cloud credits and stuff?  
+
+I'm out of cloud credits, and based on our previous talks with Lori it doesn't seem like Amazon wants to give us more. If you are still willing to help with some of the cost, perhaps I'll start another thread with you and Bill and let you know what the AWS billing situation looks like once I'm a bit farther along on the paper.
 
 When you do or have done the entire genome: You will make your results publicly available to other researchers.
 
-Yes, we will certainly make any imputed data available, and I hope to make my code and a tutorial available 
-to anyone who wants to impute their own data. 
+Yes, we will certainly make any imputed data available, and I hope to make my code and a tutorial available to anyone who wants to impute their own data. 
 
-- Of the 100 x 100 experiments (I mean protein versus cell type) about how many are actually done?
-  - I'm using set of 127 cell types and 24 assays, of which 1014 (33.27%) experiments have experimental data. 
-    The full project with more cell types and assays has collected only ~2% of the possible data.
+- Q: Of the 100 x 100 experiments (I mean protein versus cell type) about how many are actually done?
+
+- I'm using set of 127 cell types and 24 assays, of which 1014 (33.27%) experiments have experimental data. The full project with more cell types and assays has collected only ~2% of the possible data.
 
 {% include links.html %}
