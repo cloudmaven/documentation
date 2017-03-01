@@ -24,4 +24,15 @@ Apache Spark computation framework.
 (the originators of Spark) also provide more direct solutions that can save you some money but require a 
 bit of additional effort to configure.***
 
+
+end part 1
+
+
+- This imputes hypothetical results in silico in place of wet lab experiments.
+
+- How much does one such physical wet lab experiment cost (i.e. one cell type, one protein assay, 3 billion base pairs)?
+
+
+
+
 {% include links.html %}
