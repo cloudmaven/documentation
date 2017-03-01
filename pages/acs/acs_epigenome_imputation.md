@@ -61,7 +61,13 @@ You could make the run time pretty reasonable but the whole genome has proven pr
 reasons; see above.
 
 
+## Full genome 
 
-
+- Pending
+- Train cell type and assay parameters (the smaller dimensions) on a small subset of genomic positions
+  - Then apply those across the genome in batches
+- ...to publish imputed results plus code plus tutorial for use by others
+- Of 127 cell types x 24 assays there are 1014 (33%) experimental datasets 
+- The full project with additional cell types and protein assays has only 2% of the possible data
 
 {% include links.html %}

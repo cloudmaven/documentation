@@ -55,4 +55,13 @@ show prices as high as $1000/sample, but I'm not sure how much it would cost a l
 the assay in-house.
 
 
+Model training at the 1% scale takes ten to 24 hours wall clock time.
+
+You could make the run time pretty reasonable but the whole genome has proven problematic for other
+reasons; see above.
+
+
+
+
+
 {% include links.html %}
