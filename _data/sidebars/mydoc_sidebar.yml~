@@ -208,8 +208,8 @@ entries:
     output: web, pdf
     folderitems:
     
-    - title: Epigenome Imputation
-      url: /acs_epigenome_imputation.html
+    - title: Genome Association
+      url: /acs_genome_association.html
       output: web, pdf
       
     - title: NicaDIF
