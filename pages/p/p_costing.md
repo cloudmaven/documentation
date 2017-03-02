@@ -14,12 +14,13 @@ The purpose of this page is to provide guidelines for proposals that incorporate
 towards helping you (the proposal author) estimate costs for your project. 
 
 ## Links
-[AWS Grants](https://aws.amazon.com/grants/)
-[Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
+- [AWS Grants](https://aws.amazon.com/grants/)
+- [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
 
 ## Warnings
 
 ## Overview
+
 - Review your status and options with regard to cloud research credit grants. 
 - Verify with the funding agency that cloud computing will be a welcome component of your proposal.
 - Remember that the authors of this website have office hours and are happy to consult with you.
@@ -58,5 +59,21 @@ Those accounts have legal terms associated with them (see respective overview pa
 ## Federally funded research 
 
 ## FAQ
+
+Q: How fast/powerful is a given instance?  
+
+A: You can read about instance types on the vendor's cloud console 
+and/or information pages. For example AWS EC2 instances are 
+written up [here](https://aws.amazon.com/ec2/instance-types/).  
+From the Linux command line you can issue commands such as:
+
+```
+% lscpu
+% cat /proc/cpuinfo
+```
+
+It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce 
+*on the order of* 10% performance variation. 
+
 
 {% include links.html %}
