@@ -1,0 +1,37 @@
+---
+title: Costing cloud in proposals
+keywords: aws
+last_updated: January 26, 2017
+tags: [research_computing]
+summary: "Costing"
+sidebar: mydoc_sidebar
+permalink: p_costing.html
+folder: p
+---
+
+## Introduction
+The purpose of this page is to provide guidelines for proposals that include cloud computing, specifically 
+including estimating cost. 
+
+## Links
+[AWS Grants](https://aws.amazon.com/grants/)
+[Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
+
+## Warnings
+
+## Overview
+- Review your status and options with regard to cloud research credit grants. These are provided by (at least) 
+Microsoft Azure and AWS. They can have a value of as much as $20,000 and a duration of 12 months. They are
+considered non-renewable after that time. Having a research credit grant of this type is independent of writing
+a grant proposal to a funding agency such as NIH or NSF. If such a grant is secured you may wish to reference
+it in a proposal as a means of defraying computing costs in year one of the proposed effort. 
+
+Research credit cloud accounts are distinct from paid accounts secured under the UW BAA with AWS and Azure. 
+Those accounts have legal terms associated with them (see respective overview pages herein: 
+[Azure overview](az_overiew) and [AWS overview](aws_overview.html).
+
+## Cloud Research Credits
+
+## Federal research 
+
+{% include links.html %}

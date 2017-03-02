@@ -100,6 +100,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Overview
+      url: /aws_overview.html
+      output: web, pdf
+
     - title: Walkthrough
       url: /aws_walkthrough.html
       output: web, pdf
@@ -152,6 +156,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Overview
+      url: /az_overview.html
+      output: web, pdf
+
     - title: Walkthrough
       url: /az_walkthrough.html
       output: web, pdf
@@ -196,9 +204,41 @@ entries:
       url: /az_database.html
       output: web, pdf
 
+  - title: Google
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /g_overview.html
+      output: web, pdf
+
+    - title: Walkthrough
+      url: /g_walkthrough.html
+      output: web, pdf
+
+    - title: Compute Engine
+      url: /g_compute_engine.html
+      output: web, pdf
+
+    - title: Preemptible Instances
+      url: /g_preemptible_instances.html
+      output: web, pdf
+
+    - title: Earth Engine
+      url: /g_earth_engine.html
+      output: web, pdf
+
+    - title: App Engine
+      url: /g_app_engine.html
+      output: web, pdf
+
   - title: Cloud Case Studies
     output: web, pdf
     folderitems:
+
+    - title: Precis
+      url: /ccs_precis.html
+      output: web, pdf
 
     - title: High Mountain Asia (HiMAT/NASA)
       url: /ccs_high_mountain_asia.html
@@ -244,26 +284,3 @@ entries:
       url: /azcs_organic_chemistry.html
       output: web, pdf
 
-  - title: Google
-    output: web, pdf
-    folderitems:
-
-    - title: Walkthrough
-      url: /g_walkthrough.html
-      output: web, pdf
-
-    - title: Compute Engine
-      url: /g_compute_engine.html
-      output: web, pdf
-
-    - title: Preemptible Instances
-      url: /g_preemptible_instances.html
-      output: web, pdf
-
-    - title: Earth Engine
-      url: /g_earth_engine.html
-      output: web, pdf
-
-    - title: App Engine
-      url: /g_app_engine.html
-      output: web, pdf

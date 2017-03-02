@@ -1,8 +1,8 @@
 ---
-title: Azure Walkthrough
-keywords: azure, 
+title: Azure walkthrough
+keywords: azure
 last_updated: October 6, 2016
-tags: [Azure, cloud_basics]
+tags: [Azure]
 summary: "Azure"
 sidebar: mydoc_sidebar
 permalink: az_walkthrough.html
@@ -16,7 +16,6 @@ We highly endorse using this cloud and its associated technology stack, particul
 Studio development environment and the high level services Azure provides such as the Machine Learning Studio. 
 
 ## Links
-- [Azure](http://azure.microsoft.com)
 - [Azure porta](http://portal.azure.com)
 
 ## Warnings
