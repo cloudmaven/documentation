@@ -110,6 +110,19 @@ Model training at the 1% scale takes ten to 24 hours wall clock time.
 You could make the run time pretty reasonable but the whole genome has proven problematic for other
 reasons; see above.
 
+### Tim details on cost
+
+- $300 EMR with no spot instances
+- $88 EMR with spot
+- $1.25 for X1.16xlarge when Tim last checked but this instance may not work
+- ... so we go to another (allowed) 2 x R3.8xlarge instance and that gives us the above costs
+  - (EMR does not permit R4 as far as we know at the moment)
+- 1% of the genome, requiring 48 hours
+- 100% of genome scales linearly and this (with a bit of coding) should scale sideways
+  - so the entire genome would require some testing: Spin up 100 3-node clusters? Bigger dataset? 
+- Without EMR: $90 becomes $60
+  - large instances are $.27 / hour / instance
+
 
 ## Full genome 
 
