@@ -13,6 +13,8 @@ folder: cc
 This purpose of this page is to present you with important technical details of cloud computing. 
 
 ## Links
+- [AWS EC2 instance type details](https://aws.amazon.com/ec2/instance-types/)
+- [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 - [Example ssh usage/help](http://support.suso.com/supki/SSH_Tutorial_for_Linux)
 - [Computer networking port](https://en.wikipedia.org/wiki/Port_(computer_networking))
 - [Linux cURL command](http://www.computerhope.com/unix/curl.htm)
@@ -25,16 +27,35 @@ we suggest skimming through here to help build your cloud context web if these t
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 - ***Be warned! We have placed -- where appropriate -- smaller "Warnings" sections below with each sub-topic.***
 
+## Virtual Machines
+
+How fast is a given instance?  You can read about instance types on the vendor's cloud console and/or information 
+pages. For example AWS EC2 instances are written up [here](https://aws.amazon.com/ec2/instance-types/).  Here 
+are a couple ways to look at CPU details from the command line of a Linux machine:
+
+```
+% lscpu
+% cat /proc/cpuinfo
+```
+
+It is possible that (from evidence circa 20112) a certain degree of CPU type heterogeneity can introduce *on 
+the order of* 10% performance variation. 
+
 ## Data transfer to cloud storage
 
 ### To AWS S3
 
-- Run the transfer in parallel
-- Use a physical wire; no WiFi
-- A good strategy is to be peered with Internet2 for a fast connection. Science DMZ would be faster still. 
-- If your ultimate destination is Oregon: Don't make the larynx error and bounce from Portland to Seattle to Portland.
-- Use the AWS command line: cp; or failing that use chunking via the AWS CLI. 
-- A GUI example would be Cyberduck. 
+Run the ingress (local to S3) transfer in parallel on a wired connection (not WiFi). Being peered with a high
+speed netwokr like Internet2 helps; or being in a *Science DMZ* environment is better still. If the data is 
+going to the Oregon region of AWS: It might not save any time to go from Portland to Seattle and back to
+Portland again. Finally: You can use the console (browser) but the risk is that this will be slow.  On the other
+hand you can use the AWS command line; e.g. the **cp** command. There are GUI-based interfaces like Cyberduck
+as well. 
+
+- Note the AWS CLI installation page; this includes making sure the cli is in your path.
+
+
+
 
 ## Ports, sockets and tunneling
 

@@ -13,6 +13,7 @@ folder: cc
 This purpose of this page is to present you with important technical details of cloud computing. 
 
 ## Links
+- [AWS EC2 instance type details](https://aws.amazon.com/ec2/instance-types/)
 - [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 - [Example ssh usage/help](http://support.suso.com/supki/SSH_Tutorial_for_Linux)
 - [Computer networking port](https://en.wikipedia.org/wiki/Port_(computer_networking))
@@ -25,6 +26,20 @@ This purpose of this page is to present you with important technical details of 
 we suggest skimming through here to help build your cloud context web if these topics are new to you.***
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 - ***Be warned! We have placed -- where appropriate -- smaller "Warnings" sections below with each sub-topic.***
+
+## Virtual Machines
+
+How fast is a given instance?  You can read about instance types on the vendor's cloud console and/or information 
+pages. For example AWS EC2 instances are written up [here](https://aws.amazon.com/ec2/instance-types/).  Here 
+are a couple ways to look at CPU details from the command line of a Linux machine:
+
+```
+% lscpu
+% cat /proc/cpuinfo
+```
+
+It is possible that (from evidence circa 20112) a certain degree of CPU type heterogeneity can introduce *on 
+the order of* 10% performance variation. 
 
 ## Data transfer to cloud storage
 
