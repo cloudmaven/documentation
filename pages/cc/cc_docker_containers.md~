@@ -2,7 +2,7 @@
 title: Docker containers on the public cloud
 keywords: cloud, docker
 last_updated: October 6, 2016
-tags: [research_computing, Jupyter, containers, reproducibility, account_management, data_science, cloud_basics]
+tags: [research_computing]
 summary: "Using Docker containers on the public cloud"
 sidebar: mydoc_sidebar
 permalink: cc_docker_containers.html
@@ -32,14 +32,12 @@ with intrinsic portability for your computing environment and reproducibility of
 an urban myth. In any event: Docker containers are often presented as an antidote to vendor lock-in; so this remark is
 just a bit of (dubious!) folk wisdom.***
 
-## Additional remarks
+## Tutorials
 
 The [configuration](https://github.com/geohackweek/geohackweek.github.io/wiki/Docker-steps-to-run-containers) 
 and [tutorial](https://geohackweek.github.io/Introductory/01-docker-tutorial/) entries 
 at the Geohackweek web pages are together a tutorial for getting
 started with Docker containers. It is tailored to the event (November 2016); an update would be appreciated to
 generalize the solution away from geohackweek. 
-
-The above material also indicates how Docker containers can be integrated with Jupyter notebooks. 
 
 {% include links.html %}
