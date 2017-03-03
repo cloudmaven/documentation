@@ -38,7 +38,7 @@ are a couple ways to look at CPU details from the command line of a Linux machin
 % cat /proc/cpuinfo
 ```
 
-It is possible that (from evidence circa 20112) a certain degree of CPU type heterogeneity can introduce *on 
+It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce *on 
 the order of* 10% performance variation. 
 
 ## Data transfer to cloud storage
