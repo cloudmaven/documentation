@@ -11,10 +11,12 @@ entries:
     output: pdf
     type: frontmatter
     folderitems:
+
     - title:
       url: /titlepage
       output: pdf
       type: frontmatter
+
     - title:
       url: /tocpage
       output: pdf
@@ -71,6 +73,10 @@ entries:
   - title: Research computing
     output: web, pdf
     folderitems:
+
+    - title: Cloud 101 Immersion
+      url: /rc_cloud101_immersion.html
+      output: web, pdf
 
     - title: WRF Data Science Studio
       url: http://escience.washington.edu

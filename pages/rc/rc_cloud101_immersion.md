@@ -5,7 +5,7 @@ last_updated: January 26, 2017
 tags: [research_computing]
 summary: "Cloud computing basics hands-on training by UW Research Computing and the UW eScience Institute"
 sidebar: mydoc_sidebar
-permalink: cloud101_immersion.html
+permalink: rc_cloud101_immersion.html
 folder: rc
 ---
 
@@ -35,11 +35,11 @@ Objective: This one-day, hands-on immersion course will introduce participants t
  
 ## Course Outline 
  
-* Introduction to cloud computing (9am – 9.45am) 
+* Introduction to cloud computing (9am -- 9.45am) 
   - What is the cloud? Why use it?  
   - Choosing a cloud provider: Available services, ease of migration, cost, pervasiveness in your field, etc 
 
-* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am – 12.15pm; 15 minute break at 10.30am) 
+* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 12.15pm; 15 minute break at 10.30am) 
   - Introduction to the consoles 
   - Build a virtual machine on all three platforms; compare costs 
   - View available compute options 
@@ -51,13 +51,13 @@ Objective: This one-day, hands-on immersion course will introduce participants t
 
 * Lunch provided (signing up: Please indicate any dietary restrictions) 
 
-* Build a web framework for collaborative data sharing (1.15pm – 2:45pm + coffee break) 
+* Build a web framework for collaborative data sharing (1.15pm -- 2:45pm + coffee break) 
   - Overview: Wiring up a Django web framework to a data resource 
   - Deploy a Django instance on AWS Elastic Beanstalk 
   - Deploy a Django web framework on Azure using Visual Studio (Can be demo only; Visual studio not required) 
   - Build a simple API that will display results hosted on a virtual machine to the website you just created  
 
-* AWS CFN cluster (3.15pm – 4.30pm) 
+* AWS CFN cluster (3.15pm -- 4.30pm) 
   - Introduction to the AWS spot market 
   - Provisioning virtual machines for cfncluster; Master - Worker model 
 

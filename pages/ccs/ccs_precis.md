@@ -18,11 +18,11 @@ The purpose of this page is to describe cloud compputing case studies at UW: Ver
 ## Warnings
 
 - ***This page is not regularly updated and may contain much that is wildly inaccurate. Contact us for updates.***
-- ***We stay with topics and avoid names to maintain a degree of anonymity here. Contents on this 
-page will be modified on request, usually within an hour or two during business hours. In some 
-cases we do provide parenthetical salient project details such as funding agencies. ***
-- ***Projects described may be in *any* degree of completion from 'twinkle in someone's eye' to
-'published paper'.
+- ***We stay with topics and avoid names to maintain a degree of anonymity here. Contents on this***
+***page will be modified on request, usually within an hour or two during business hours. In some***
+***cases we do provide parenthetical salient project details such as funding agencies. ***
+- ***Projects described may be in *any* degree of completion from 'twinkle in someone's eye' to***
+***'published paper'.***
 
 ## General Systems and Tools
 
