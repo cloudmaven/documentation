@@ -2,46 +2,22 @@
 title: Cloud Computing Cost Management
 keywords: cloud, introduction
 last_updated: October 6, 2016
-tags: [account_management, cost, proposals, cloud_basics, research_computing]
-summary: "Cost of moving research computing to the cloud"
+tags: [research_computing]
+summary: "Calculating the cost of moving your research computing to the cloud"
 sidebar: mydoc_sidebar
 permalink: cc_cost_management.html
 folder: cc
 ---
 
 ## Introduction
-This page describes the cost of putting research computing on the public cloud. In the **Proposals** section of 
-[cloudmaven](http://cloudmaven.org) we have [a more tactical page](p_costing.html) which may also be of interest.
-
-## Links
-- [The cloudmaven page on cost estimation for research proposal writing](p_costing.html)
-
-## Warnings
-- ***It is commonly asserted that the cloud does not compare in cost to purchasing your own hardware. We make the case here that this assertion is false.***
+This page will expand on the cost of putting your research on the cloud, how you can leverage existing cloud resources and credits 
+for benchmark and sandbox and other tips and tools for managing costs. 
  
 ## How much does the cloud cost?
+The fast answer is 3 cents per GB-month of storage and 3 cents for an hour of CPU. That is an answer we will qualify and expand on; but just to get you going. 
+As an example of the qualifiers: A powerful multi-core machine will run more like 30 cents per hour. 
 
-A quick answer is "3 cents per GB-month of storage, 3 cents for an hour of CPU time". This is something we will qualify and expand upon here;
-but for the sake of getting started those are useful numbers to keep in mind.  
-
-### Qualifiers 
-- A powerful multi-core machine costs between 30 cents to one dollar per hour (with further qualifiers)
-- The storage cost for archival is currently 0.4 cents per GB-month at AWS.
-
-### Total cost of ownership (TCO)
-
-If you purchase a computer you are done paying for the hardware; so we present three tiers of effective cost that factor in your time. 
-
-- You bought it; you (or someone) maintains the system by installing patches and upgrades. You (or someone) provides space, power and does back-ups. 
-- You pay for it on the cloud: The cloud provider does the care and maintenance. You just use the system.
-- You pay for a service on the cloud: You don't even use the system; you just use the service.
-
-To elaborate further: A VM on the cloud is not something you ... kilroy left off here
-
-
-
-
- and you can use it until it fails; hopefully for 2 or more years. Then you need to purchase 
+When you purchase a computer you are (apparently) done paying for it and you can use it until it fails; hopefully for 2 or more years. Then you need to purchase 
 another computer. This is the traditional computing model and it makes sense if your machines are adequate to your computing needs provided that someone can 
 pay for the electricity and cooling and someone has the time to maintain the operating system; and provided you have a good back-up strategy in case something 
 bad happens. Cloud computing costs money but eliminates a lot of these ongoing maintenance tasks. Cloud computing resources are billed using a utility model: You pay for what you use.
