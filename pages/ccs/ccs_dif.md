@@ -26,7 +26,8 @@ management and related impacts on human communities.
 
 ## Overview
 
-![DIF_VIC_component](/documentation/images/ccs/ccs_VIC_DIF_component.png)
+![dif0001](/documentation/images/ccs/ccs_VIC0001.png)
+![himat0001](/documentation/images/ccs/ccs_himat0001.png)
 
 
 {% include links.html %}
