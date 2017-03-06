@@ -12,7 +12,9 @@ folder: ccs
 ## Introduction 
 
 This page describes the translation of scientific skill to public value, specifically in water resource
-management and related impacts on human communities. 
+management and related impacts on human communities. We are building a Dynamic Information Framework (DIF) 
+that is implemented on a region-by-region basis to provide both data and machinery in a transparent
+manner that contributes to the process of resource management and planning.
 
 ## Links
 
@@ -22,12 +24,22 @@ management and related impacts on human communities.
 
 ## Warnings
 
-- ***No concerns to report here***
+- ***No concerns at this time.***
 
 ## Overview
 
-![dif0001](/documentation/images/ccs/ccs_VIC0001.png)
-![himat0001](/documentation/images/ccs/ccs_himat0001.png)
+![DIF0001](/documentation/images/ccs/ccs_DIF0001.png)
+
+This figure shows a simplified version of the DIF vision with one modeling component, the VIC hydrological model.
+The overall program for DIF can be summarized on a per-geographical-region basis:
+
+- Begin with A hydrological model that incorporates observed data; train it to produce accurate results.
+- Run the model into the future based on climate-change based extrapolation.
+- Provide the source data through an open web interface
+- Provide the results / output data through an open web interface
+- Provide the software via an open repository like GitHub
+- Provide documentation
+- Repeat
 
 
 {% include links.html %}
