@@ -246,7 +246,7 @@ entries:
       url: /ccs_precis.html
       output: web, pdf
 
-    - title: Dynamic Information Framework (DIF)
+    - title: High Mountain Asia (HiMAT/NASA)
       url: /ccs_DIF.html
       output: web, pdf
 
