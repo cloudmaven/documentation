@@ -10,165 +10,191 @@ folder: aws
 ---
 
 ## Introduction
-The purpose of this document -- available at http://cloudmaven.org -- is to present a hypothetical data management system
-for Private Health Information (PHI) on the AWS public cloud that is compliant with HIPAA regulations. These regulations 
-in particular require data be encrypted both at rest (i.e. on a storage device) and in transit (i.e. moving from one storage
-device to another).  Our hypothetical situation is described in further detail below. Please note that we are also building
-out this construct on the Microsoft Azure public cloud. 
+
+[This document](aws_hipaa.html) presents a secure data management system, specifically using the 
+motivation of managing Private Health Information (PHI) under HIPAA regulations on the public cloud. 
+This template applies more generally to secure data management in research computing.
+
+HIPAA regulations require data be encrypted both at rest (e.g. on a storage device) and in 
+transit (e.g. moving from one storage device to another).  Our hypothetical situation is described 
+in further detail below; it is well to keep these rest/transit encryption notions in mind. 
+
+Please note that while this study uses AWS we are also building out the construct on the 
+Microsoft Azure public cloud. 
 
 ## Links
+
+- [HIPAA home page](https://www.hhs.gov/hipaa/index.html/)
+- [HIPAA on Wikipedia](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
+- [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
 - [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
 
+
 ## Warnings
-- This web page represents our best attempt at designing a HIPAA-compliant data management solution but at no point do we state or 
-imply that if you follow these procedures you are HIPAA-compliant.***
-- ***AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can come into contact
-with Private Health Information.  One may certainly use other technologies in such a system provided they do not touch PHI.***
-- ***HIPAA compliance is an obligation placed on both data system builders and on health researchers as system users.  It is our
-contention that failure to comply and/or data compromise is most likely be caused by human error. The public cloud is not 'more vulnerable'
-than on-premise systems; on the contrary it is less vulnerable both physically and in terms of robust secure technologies.***
+
+- ***AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can 
+come into contact with PHI.  Other technologies can be used in an ancillary capacity provided they do not interact
+directly with PHI data.***
+- ***HIPAA compliance is an obligation placed on the data system builder and the medical researcher.
+The public cloud is very secure: physically and technologically. 
+We contend that data system failure or compromise is most likely to be caused by human error.***
 
 ## User story
 
-A scientist *K* receives approval from an IRB to work with PHI data. The intent is to analyze these data for patterns
-in a secure, HIPAA-compliant environment, abbreviated HCDS for 'HIPAA-compliant data system'. 
-*K* contacts a technology expert *J* and a research data provider *S* with a request for the data and the HCDS. 
-After due diligence both are provided and *K* is given an ssh key. *K* logs on to the HCDS through a secure gateway 
-and carries out the data analysis over a period of time. During this period IOT devices distributed among patients 
-report anonymized health data to the HCDS where they are used to supplement the research analysis. When the study 
-concludes any sensitive data are stored to a secure archive external to the provided system; and the system itself 
-is dismantled. Log files are retained and archived that contain the complete record of operation of the HCDS. 
+- A scientist *K* receives approval from an IRB to work with PHI data. 
+  - The intent is to analyze these data in a secure, HIPAA-compliant data system (herein HCDS) 
+- *K* contacts a technology expert *J* and a research data provider *S* 
+  - Presenting a request for the approved data and a request for a cloud-based HCDS 
+- Some due diligence and preparation ensue
+- *K* is given an ssh key to her HCDS
+  - *K* logs on to the HCDS through a secure gateway 
+  - *K* carries out the data analysis over a period of time
+    - The system logs all activity 
+  - IOT devices distributed to patients report health data to the HCDS 
+    - These data supplement the research
+- The study concludes 
+  - Sensitive data are stored to a secure archive 
+  - The HCDS is deleted 
+  - Log files are archived to preserve a complete record of operation for the HCDS
 
-## Program 
+## Plan of action for this HCDS Proof of Concept
 
-1. Create a diagram showing the EMR > PHI data pool > VM with corresponding IRB, researcher and patient
-2. Anticipate <new data to EMR> pipeline
-3. Anticipate <IOT to VM> pipeline
-4. Anticipate changes to <PHI > VM> process
-5. Implement Virtual Private Cloud
-6. Synthetic data: Generate
-7. Create an IOT signal
-8. Create IOT pass-through mechanism
-9. Establish software tools including Jupyter on VM
-10. Review with IT personnel 
-11. Review with management
-12. Review with researchers
+0. Follow the existing notes/guidelines and translate into this document
+1. Create a system architecture and diagram  
+  - Anticipate <new data to EMR> pipeline
+  - Anticipate <IOT to VM> pipeline
+  - Anticipate changes to <PHI > VM> process
+2. Create artificial data 
+  - data manufacturing software 
+  - generate source artificial data (from EMR)
+  - generate IOT stream
+  - anticipate study-to-clinical pipeline
+3. Complete system including analytical tools
+  - include R, Python, Jupyter 
+4. Review with IT personnel (J first)
+5. Review with management
+6. Review with researchers
 
-## Concerns
+## Details to incorporate
 
-* Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
-* Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
-* Include an encryption path for importing clinical data 
-* Include a full story on access key management
-* The IOT import will -- I think -- be a poll action: The secure VM is polling for new data
-* This system should include a very explicit writeup of how the human in the loop can break the system
-* Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? To clarify: Must the data be further encrypted at rest first? 
-* Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.
-* CISO approval hinges on IT, Admin and Research approvals. 
+- Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
+- Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
+- Include an encryption path for importing clinical data 
+- Include a full story on access key management
+- The IOT import will -- I think -- be a poll action: The secure VM is polling for new data
+- This system should include a very explicit writeup of how the human in the loop can break the system
+- Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? 
+To clarify: Must the data be further encrypted at rest first? 
+- Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.
+- CISO approval hinges on IT, Admin and Research approvals. 
 
 ## Terminology and Concepts
 * Ansible
-* Availability Zone
-* Bastion Server (abbreviated **B**)
+* Regions and Availability Zones on AWS
+* Bastion Server 
+* Siricata / Snort
 * CIDR
-* Cloudberry
+* Direct tools like **ssh** and third party apps like Cloudberry 
 * Dedicated Instance 
-* HIPAA [Health Insurance Portability and Accountability Act](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-  * [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
 * Lambda Service
 * NAT Gateway
-* Worker
 
-### Conceptual distinction on PHI contact
+## PHI contact model
 
-Herein we identify tools and technologies that do / do not interface directly with Private Health Information:
-* Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
-* Services that may come in contact with PHI can be described as 'data and compute'
+We identify tools and technologies that do / do not interface directly with PHI.
+
+- Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
+- Services that may come in contact with PHI can be described as 'data and compute'
 
 ### HIPAA-aligned technologies
+
 Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
-* S3
-* EC2
-* RDS
-* EBS
-* DynamoDB
-* EMR
-* ELB
-* Glacier
-* Redshift
+
+- S3 storage
+- EC2 compute instances (VMs)
+- EBS elastic block storage: Attached filesystem
+- RDS relational database service
+- DynamoDB database
+- EMR elastic map reduce: Hadoop/Spark engine support
+- ELB elastic load balancer
+- Glacier archival storage
+- Redshift data warehouse
 
 ### Useful Trigger/Orchestration Tools
-* Lambda
-* Virtual Private Cloud (VPC)
+
+- Lambda
+- Virtual Private Cloud (VPC)
 
 ### Encryption
-* HIPAA requires data be encrypted at rest, i.e. on a storage device
-* HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
+
+- HIPAA requires data be encrypted at rest, i.e. on a storage device
+- HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 
 ## Aggregated Notes
 
 ### Multiple sources of data
-* Electronic Medical Records (EMR)
-* A Data Warehouse (tables) 
-* A Clinician 
-* Sensors stream data from patient
+
+- Electronic Medical Records (EMR)
+- A Data Warehouse (tables) 
+- A Clinician 
+- Sensors stream data from patient
 
 ### Destinations
-* S3 bucket
-* EBS/EFS 
+- S3 bucket
+- EBS/EFS 
 
 ### Notes
 
-* Encryption software such as PGP produces a Key.
-* On AWS create a VPC
-* On the VPC create a public-facing Bastion Server B
-* B has an Elastic IP address: This will persist
-* Inside the VPC create public and private subnets using a Routing Table. 
-  * NAT Gateway with Routing Table.
-* On private subnet place a small Dedicated EC2 instance E.
-  * B has only port 22 open (ssh) 
-  * B uses Secure Groups on AWS to limit access to certain URLs. 
-* Using ssh / WinSCP copy Key to BS. From there move Key to E. 
-* Create an AMI to do processing. Call this W.
-* Create Role that allows a W to read from and write to S3.
-* Set up Ansible-assisted process for configuring and running jobs on EC2 instances
-  * What is Ansible?
-* Set up S3 buckets for input and output 
-* Input buckets only accept http PUT. No GET or LIST.
-* S3 buckets have a VPC Endpoint included: Terminates inside the VPC.
-* Set up a DynamoDB table to track names of uploaded files.
-* Set up a Lambda service 
-  * Triggered by new object in bucket in the S3 input bucket
-  * This Lambda service is managed using a role
-* Set up database
-* Push data to S3
-  * No PHI in filenames
-  * Look into Cloudberry
-  * AWS CLI
-* Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
-  * Update issue: Pipeline changes, etcetera
-* W can be pre-populated with reference data (Sheena scenario)
-* Sheena redux
-  * B
-    * Create SQS queue of objects in S3
-    * Start a W for each message in queue...
-  * Go
-    * Latest pipeline... EBS Genomes... chew
-    * If last instance running: Consolidate / clean-up
-* SNS topic notifies me when last instance shuts down.
-  * Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
-  * Get Ws the Key from E
-  * The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
-    * Which uses something called SES to send an email to the effect that the system is working with PHI data 
-      * Ws pull data from S3 using VPC Endpoint; thanks to the Route table
-      * Ws decrypt data using HomerKey
-      * Ws process their data into result files: Encrypted EBS volume. 
-      * Optionally the result files are encrypted in place in the EBS volume.
-  * Through the VPC Endpoint the results are moved to S3.
-  * Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
-    * which uses something called SES to send another email: Done
-  * Ws evaporate completely leaving no trace
-  * B returns to quiescent state. 
+- Encryption software such as PGP produces a Key.
+- On AWS create a VPC
+- On the VPC create a public-facing Bastion Server B
+- B has an Elastic IP address: This will persist
+- Inside the VPC create public and private subnets using a Routing Table. 
+  - NAT Gateway with Routing Table.
+- On private subnet place a small Dedicated EC2 instance E.
+  - B has only port 22 open (ssh) 
+  - B uses Secure Groups on AWS to limit access to certain URLs. 
+- Using ssh / WinSCP copy Key to BS. From there move Key to E. 
+- Create an AMI to do processing. Call this W.
+- Create Role that allows a W to read from and write to S3.
+- Set up Ansible-assisted process for configuring and running jobs on EC2 instances
+  - What is Ansible?
+- Set up S3 buckets for input and output 
+- Input buckets only accept http PUT. No GET or LIST.
+- S3 buckets have a VPC Endpoint included: Terminates inside the VPC.
+- Set up a DynamoDB table to track names of uploaded files.
+- Set up a Lambda service 
+  - Triggered by new object in bucket in the S3 input bucket
+  - This Lambda service is managed using a role
+- Set up database
+- Push data to S3
+  - No PHI in filenames
+  - Look into Cloudberry
+  - AWS CLI
+- Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
+  - Update issue: Pipeline changes, etcetera
+- W can be pre-populated with reference data (Sheena scenario)
+- Sheena redux
+  - B
+    - Create SQS queue of objects in S3
+    - Start a W for each message in queue...
+  - Go
+    - Latest pipeline... EBS Genomes... chew
+    - If last instance running: Consolidate / clean-up
+- SNS topic notifies me when last instance shuts down.
+  - Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
+  - Get Ws the Key from E
+  - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+    - Which uses something called SES to send an email to the effect that the system is working with PHI data 
+      - Ws pull data from S3 using VPC Endpoint; thanks to the Route table
+      - Ws decrypt data using HomerKey
+      - Ws process their data into result files: Encrypted EBS volume. 
+      - Optionally the result files are encrypted in place in the EBS volume.
+  - Through the VPC Endpoint the results are moved to S3.
+  - Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+    - which uses something called SES to send another email: Done
+  - Ws evaporate completely leaving no trace
+  - B returns to quiescent state. 
 
 
 ## Procedure

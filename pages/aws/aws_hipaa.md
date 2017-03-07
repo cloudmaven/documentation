@@ -35,10 +35,9 @@ Microsoft Azure public cloud.
 - ***AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can 
 come into contact with PHI.  Other technologies can be used in an ancillary capacity provided they do not interact
 directly with PHI data.***
-- ***HIPAA compliance is an obligation placed on both data system builders and on health researchers as system 
-users.  It is our contention that compromise is most likely to be caused by human error. The public cloud is 
-not 'more vulnerable' than on-premise systems; on the contrary it is less vulnerable both physically and in 
-terms of robust secure technologies.***
+- ***HIPAA compliance is an obligation placed on the data system builder and the medical researcher.
+The public cloud is very secure: physically and technologically. 
+We contend that data system failure or compromise is most likely to be caused by human error.***
 
 ## User story
 
@@ -131,7 +130,10 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 - HIPAA requires data be encrypted at rest, i.e. on a storage device
 - HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 
-## Aggregated Notes
+## Architecture
+
+- Placeholder
+- Diagrams
 
 ### Multiple sources of data
 
