@@ -18,9 +18,6 @@ Apache Spark computation framework.
 ## Links
 
 - Link to the code
-- Citation for Chromimpute: Ernst, Jason, and Manolis Kellis. *Large-Scale Imputation of Epigenomic Datasets 
-for Systematic Annotation of Diverse Human Tissues.* **Nature Biotechnology advance online publication (February 18, 2015)**. 
-doi:10.1038/nbt.3157.
 
 ## Warnings
 - ***You can use cloud-provider support for Apache Spark: e.g. Elastic Map Reduce on AWS. However AmpLab 
