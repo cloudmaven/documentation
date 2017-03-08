@@ -130,7 +130,10 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 - HIPAA requires data be encrypted at rest, i.e. on a storage device
 - HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 
-## Aggregated Notes
+## Architecture
+
+- Placeholder
+- Diagrams
 
 ### Multiple sources of data
 
@@ -145,18 +148,33 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 ### Notes
 
-- Encryption software such as PGP produces a Key.
-- On AWS create a VPC
-- On the VPC create a public-facing Bastion Server B
-- B has an Elastic IP address: This will persist
-- Inside the VPC create public and private subnets using a Routing Table. 
-  - NAT Gateway with Routing Table.
-- On private subnet place a small Dedicated EC2 instance E.
-  - B has only port 22 open (ssh) 
-  - B uses Secure Groups on AWS to limit access to certain URLs. 
-- Using ssh / WinSCP copy Key to BS. From there move Key to E. 
-- Create an AMI to do processing. Call this W.
-- Create Role that allows a W to read from and write to S3.
+- Identify a starting-point machine "in a coffee shop" as **L** for 'local-to-me'
+  - kilroy identify due diligence to ensure **L** is safe for the following...
+- On **L** install some encryption software
+- On **L** use encryption software such as PGP to produce a key **K**
+- On AWS create a VPC **V**
+- On **V** create a public-facing Bastion Server **B**
+  - **B** has only port 22 open (ssh) 
+  - **B** uses Secure Groups on AWS to limit access to only a subset of URLs
+  - kilroy establish that a second key **K2** provides secure access to **B**
+  - kilroy establish the chain of custody of **K2**
+  - might **B** be from an AMI?
+- Assign **B** an Elastic IP address that will persist, assumed public
+- Establish a **V**-associated NAT Gateway **N** with routing table
+- Inside **V** create public and private subnets using this routing table
+- On the private subnet place a small Dedicated EC2 instance **E**
+  - kilroy establish that **E** has an access key **K3** 
+  - kilroy follow the chain of custody of **K3** to **B**
+  - kilroy might **E** be from an AMI?
+- Move **K** to **B**
+  - kilroy how? Using scp / ssh? 
+- Log in to **B** and move **K** to **E** 
+  - Observe that material encrypted 
+- Use NAT Gateway to install encryption s/w on **E**
+- Use an AMI to create a processing EC2 **W**
+- Create an S3 Endpoint **EP** in **V**
+- kilroy create role **R** allowing **W** to read data off **EP** from **S3**
+
 - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
   - What is Ansible?
 - Set up S3 buckets for input and output 
@@ -205,15 +223,14 @@ Create a Virtual Private Cloud
 
 ![hipaa0002](/documentation/images/aws/hipaa0002.png)
 
-We use the name 'czarhipaa'; this should be unique.
-
-CIDR as shown is typical.
-
-Dedicated Instance means: Nobody else allowed here. 
+- Use the name 'hipaa'; should be unique.
+- CIDR as shown is typical.
+- Dedicated Instance means: Nobody else allowed here. 
 
 ![hipaa0003](/documentation/images/aws/hipaa0003.png)
 
-Now it exists; time to fill it with stuff.
+- I added a tag indicating that I originated the VPC.
+- I do not yet have a Flow Log (kilroy) associated with the VPC
 
 ### Pro Tip
 You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
