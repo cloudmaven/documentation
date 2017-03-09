@@ -38,6 +38,7 @@ directly with PHI data.***
 - ***HIPAA compliance is an obligation placed on the data system builder and the medical researcher.
 The public cloud is very secure: physically and technologically. 
 We contend that data system failure or compromise is most likely to be caused by human error.***
+- ***File names may not include PHI. They may include identifier strings that would be indexed in a secure table.***
 
 ## User story
 
@@ -146,13 +147,20 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 - S3 bucket
 - EBS/EFS 
 
-### Notes
+## Configuring the system
 
+#### Initial steps
+
+- Create a Project Identifier Token to use in naming and tagging everything
+  - This is simply a string that makes clear which project is involved here
+  - Each subsequent resource is named begins with the PIT
 - Identify a starting-point machine "in a coffee shop" as **L** for 'local-to-me'
   - kilroy identify due diligence to ensure **L** is safe for the following...
-- On **L** install some encryption software
+  - **L** does not have a PIT name of course
+- On **L** install some encryption software **ENC**
 - On **L** use encryption software such as PGP to produce a key **K**
 - On AWS create a VPC **V**
+- On **B** create a NAT Gateway **G** with a routing table **RT**
 - On **V** create a public-facing Bastion Server **B**
   - **B** has only port 22 open (ssh) 
   - **B** uses Secure Groups on AWS to limit access to only a subset of URLs
@@ -160,9 +168,9 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
   - kilroy establish the chain of custody of **K2**
   - might **B** be from an AMI?
 - Assign **B** an Elastic IP address that will persist, assumed public
-- Establish a **V**-associated NAT Gateway **N** with routing table
-- Inside **V** create public and private subnets using this routing table
-- On the private subnet place a small Dedicated EC2 instance **E**
+- Inside **V** create public and private subnets **Su** and **Sp** respectively
+  - Use **RT** for this
+- On **Sp** install a small Dedicated EC2 instance **E**
   - kilroy establish that **E** has an access key **K3** 
   - kilroy follow the chain of custody of **K3** to **B**
   - kilroy might **E** be from an AMI?
@@ -170,55 +178,84 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
   - kilroy how? Using scp / ssh? 
 - Log in to **B** and move **K** to **E** 
   - Observe that material encrypted 
-- Use NAT Gateway to install encryption s/w on **E**
+  - Maybe instead we should be tunneling directly to **E** from **L**
+- Use NAT Gateway to install encryption s/w **ENC** on **E**
+  - Or should this already exist kilroy via AMI?
 - Use an AMI to create a processing EC2 **W**
-- Create an S3 Endpoint **EP** in **V**
-- kilroy create role **R** allowing **W** to read data off **EP** from **S3**
+  - Also with **ENC**
+- Create S3 buckets 
+  - **S3D** for data
+  - **S3O** for output
+  - **S3L** for logging
+  - **S3A** for ancillary purposes (non-PHI is the intention)
+  - Such S3 buckets only accept http PUT; not GET or LIST
+- Create an S3 bucke **S3O** for output
+- Create an S3 bucke **S3L** for logging
+- Create an S3 Endpoint **S3EP_D** in **V**
+- Create an S3 Endpoint **S3EP_O** in **V**
+- Create an S3 Endpoint **S3EP_L** in **V**
+  - "S3 buckets have a VPC Endpoint included... ensure this terminates inside the VPC"
+- Create role **R** allowing **W** to read data at **S3EP** from **S3**
 
+#### Advanced steps
 
-- Set up Ansible-assisted process for configuring and running jobs on EC2 instances
-  - What is Ansible?
-- Set up S3 buckets for input and output 
-- Input buckets only accept http PUT. No GET or LIST.
-- S3 buckets have a VPC Endpoint included: Terminates inside the VPC.
-- Set up a DynamoDB table to track names of uploaded files.
+- Set up a DynamoDB table to track names of uploaded files
 - Set up a Lambda service 
   - Triggered by new object in bucket in the S3 input bucket
   - This Lambda service is managed using a role
-- Set up database
-- Push data to S3
-  - No PHI in filenames
-  - Look into Cloudberry
-  - AWS CLI
-- Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
-  - Update issue: Pipeline changes, etcetera
-- W can be pre-populated with reference data (Sheena scenario)
-- Sheena redux
-  - B
+- Set up an SQS Simple Queue Service **Q** (kilroy... ?)
+- Create an SNS to notify me when interesting things happen
+
+
+#### Logging 
+
+- Configure everything above to log to **S3L** using CloudWatch/CloudFront
+
+#### Creating Pseudo Data
+
+#### Transition to operation
+
+#### Residual notes
+
+- Set up Ansible-assisted process for configuring and running jobs on EC2 instances
+  - kilroy what is Ansible?
+- Pushing data to S3
+  - Console does not seem like a good mechanism
+  - Third party apps such as Cloudberry are possible...
+  - AWS CLI with scripts: Probably the most direct method
+- Compute scale test: Involves setting up some substantial processing power
+  - Implication is that the HCDS can intrinsically fire up EC2 instances as needed
+  - Launch **W** x 5 Dedicated instances, call these **Wi**
+  - Assign S3 access role 
+  - Encrypted volumes 
+  - S/w pre-installed (e.g. genomics pipelines)
+  - Update issue: Pipeline changes, etcetera; kilroy NAT Gateway to pull updates from GitHub? 
+- **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
+  - Assumes that a HCDS exists in perpetuity to perform some perfunctory pipeline processing
+  - On **B**
     - Create SQS queue of objects in S3
-    - Start a W for each message in queue...
+    - Start a **Wi** for each message in queue...
   - Go
     - Latest pipeline... EBS Genomes... chew
     - If last instance running: Consolidate / clean-up
-- SNS topic notifies me when last instance shuts down.
-  - Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)
-  - Get Ws the Key from E
-  - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+  - SNS topic notifies me when last instance shuts down.
+    - What is the difference between SNS and SQS? kilroy
+    - Run Ansible script to configure **Wi** (patch, get data file names from DynamoDB table, etcetera)
+    - Get Ws the Key from E
+    - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
     - Which uses something called SES to send an email to the effect that the system is working with PHI data 
       - Ws pull data from S3 using VPC Endpoint; thanks to the Route table
       - Ws decrypt data using HomerKey
       - Ws process their data into result files: Encrypted EBS volume. 
       - Optionally the result files are encrypted in place in the EBS volume.
-  - Through the VPC Endpoint the results are moved to S3.
-  - Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+  - Through **S3EP_O** the results are moved to S3.
+  - **Wi** sends an Alert through the NAT gateway to SNS 
     - which uses something called SES to send another email: Done
-  - Ws evaporate completely leaving no trace
-  - B returns to quiescent state. 
+  - **Wi** evaporates completely leaving no trace
 
+## Procedure Log
 
-## Procedure
-
-Create a Virtual Private Cloud
+Create a VPC **V**
 
 ![pic0001](/documentation/images/aws/hipaa0001.png)
 
