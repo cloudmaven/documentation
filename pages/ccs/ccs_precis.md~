@@ -11,19 +11,9 @@ folder: ccs
 
 ## Introduction 
 
-The purpose of this page is to concisely describe cloud computing / data science case studies at UW. 
-
-We are currently tracking over 75 projects/groups migrating their research computing to the public cloud. 
-Below is a selected subset, organized roughly by domain. We emphasize that much of our work goes beyond 
-simple migration to cloud platforms: It extends to data management techniques, reproducibility, 
-implementing data services for collaboration and public distribution, and much more. All of this is 
-in turn made possible by the UW eScience Institute.
+The purpose of this page is to describe cloud compputing case studies at UW: Very briefly.
 
 ## Links
-
-- [eScience Institute](http://escience.washington.edu)
-- [genome sciences at UW](http://www.gs.washington.edu)
-- [medical science at UW](http://www.uwmedicine.org)
 
 ## Warnings
 
@@ -35,7 +25,7 @@ in turn made possible by the UW eScience Institute.
 
 - [SQL Share](https://sqlshare.uw.edu): A system for managing, sharing and manipulating research data.
 - [Myria](http://myria.cs.washington.edu/): A distributed, shared-nothing Big Data management system and Cloud service from the University of Washington
-- IOT based on Arduino Yun leaf technology and cloud IOT endpoint services
+- IOT based on Arduino Yun leaf tech and cloud IOT endpoint services
 - Geohackweek and Neurohackweek: Hosting intensive workshops for learning and developing cloud-based tools and methods at UW
 
 ## Medical research

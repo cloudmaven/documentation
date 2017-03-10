@@ -151,29 +151,169 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 
 #### Initial steps
 
+- Zeroth step: I must designate to AWS that my account has HIPAA data in it. 
+  - Is my account currently so-designated? How do I find out / confirm? 
+  - kilroy action to Aaron: How to do this
+
 - Create a Project Identifier Token to use in naming and tagging everything
   - This is simply a string that makes clear which project is involved here
   - Each subsequent resource is named begins with the PIT
+  - Rob is using PIT = 'hipaa'; everything will be called hipaa_something
 - Identify a starting-point machine "in a coffee shop" as **L** for 'local-to-me'
   - kilroy identify due diligence to ensure **L** is safe for the following...
   - **L** does not have a PIT name of course
-- On **L** install some encryption software **ENC**
-- On **L** use encryption software such as PGP to produce a key **K**
+  - **L** could also be a resource operated by Med Research / IRB / data warehouse
+
+- kilroy encryption stuff unresolved; ideas are: 
+  - On **L** install some encryption software **ENC**
+  - On **L** use encryption software such as PGP to produce a key **K**
+
 - On AWS create a VPC **V**
-- On **B** create a NAT Gateway **G** with a routing table **RT**
+
+- Inside the VPC we place a public subnet and a private subnet, in a diagram these are boxes
+  - We use the private subnet for PHI work firewalled behind a NAT gateway
+  - We use the public subnet for internet access
+    - It will involve an Internet Gateway
+    - It will be home to the Bastion server **B** (for log in to private subnet EC2s)
+    - It will be home to the NAT Gateway **NG**
+      - **B** and **N** are on the public subnet but also have private subnet ip addresses 
+      - That is: Everthing on the public subnet also has a private ip address in the VPC. 
+      - This will chew up the private ip address range capacity
+      - Public names will resolve to private addresses within the VPS at need.
+
+- IPv6v is NOT INVOLVED in this procedure. This makes matters simpler.
+
+- How CIDR block syntax works: 10.0.0.0/16 means a subnet that begins 10.x.y.z
+  - the 16 gives number of addresses as 2**(32 - N) bigger N: fewer addresses
+  - This can not be changed for the VPC after the fact; it is immutable
+  - Any subnets we create will be limited by this address space
+  - Suppose a subnet gets 10.0.1.0/24: This is 256 addresses 
+    - Actually AWS grabs .0, .1, .2, .3, .255 so we only get 250 of them
+    - So an EC2 on this subnet could be at 10.0.1.43 or 10.0.5.219. 
+
+- A new VPC is given a default Security Group **SG** 
+  - After creating the VPC: Select Security Groups, sort by VPC, give the SG a PIT name
+  - I used hipaa_securitygroup
+
+
+Note on creating VPC create a Flow Log 
+  - Click the button to do so 
+  - Hypertext: Set up permissions (because we don't have the correct Role)
+    - This jumps to a Role creation page...
+    - name it and include the PIT; create new; Allow
+  - I just created an IAM Role for FlowLogs: Gives me the necessary AWS permissions to work with flow logs
+  - But in so doing we fell out of the Create Flow Log dialog so..
+    - Return to VPC in the console
+    - Click on Create Flow Log
+    - Filter = All is required (not "accepted" and not "rejected" traffic)
+    - Role: Select the role we made above
+    - Destination log group: again use the PIT: hipaa_loggroup
+
+
+
+- On **V** create subnets... 
+
+- Note that Create VPC does give us the option of creating a VPC with a pre-built pub/priv... so that would be a faster template-driven approach
+
+Note: The console column for subnets shows "Auto-assign Public IP" and this should be Yes for our public subnet, duh, and No for the Private subnet. Change this using "Subnet Actions" button. But hte template ref'd above lets you do this on setup. 
+
+Note: Subnet actions: We should be able to make new instances exist on the private subnet by default so that we do not accidentally expose a **Wi** so this important. How do we do it? 
+
+  - Notice in subnet table is a "Default Subnet" column: Both pub and priv are No so 
+  - This happens in the RT which comes with the VPC
+
+- Give the RT a PIT-name hipaa_routingtable
+
+Note: There is this VPC RT which is the "main" RT. 
+10.0.0.0/16 points to the VPC "local" stuf
+0.0.0.0/0 points to the NAT gateway and to the Internet
+
+Now we need a Public subnet RT which has 
+10.0.0.0/16 
+0.0.0.0/0 Internet gateway
+
+Before creating more RTs we need an Internet Gateway IG
+This is easily done and also attach hipaa_internetgateway to hipaa the VPC
+
+
+so Create Route Table: hipaa_publicsubnet on the hipaa VPC
+Go to Subnet Associations tab for this RT
+edit this to do subnet association with the public subnet. Obviously. So RT > Subnet > VPC
+  call this hipaa_publicroutes 
+Go to Routes tab for this RT
+  For this RT Edit (under Routes) and add 0.0.0.0/0 pointing to the IG
+
+Now add the NAT Gateway; and then we will modify the main RT to point to this
+  - There may be some Elastic IP assignment voodoo 
+
+WE now have two RTs. VPC and Public. VPC 0-entry points at the NAT Gateway: All internet-traffic
+will route through the NAT. 
+
+Public subnet has a custom RT which says "all non-local traffic goes out to the IG." = The Internet. 
+
+This has precedence over the main table which sends to NAT. 
+
+By default the Private subnet will use the VPC RT to go to the NAT. Like one's Router at home. 
+This allows the private network to talk to the Internet and the Internet can't talk to my private subnet. 
+
+
+
+
+  
+
+
+- Create an Internet Gateway **IG**
+
+- Create a NAT Gateway **NG**
+
 - On **V** create a public-facing Bastion Server **B**
   - **B** has only port 22 open (ssh) 
   - **B** uses Secure Groups on AWS to limit access to only a subset of URLs
   - kilroy establish that a second key **K2** provides secure access to **B**
   - kilroy establish the chain of custody of **K2**
   - might **B** be from an AMI?
+
+
+r4.large running AWS Linux: Created. DO NOT USE T instances because they are not going to connect to our Dedicated Tenancy VPC: Not supported.
+
+Go through all the config steps: Memory, tags, etc etc; Security group is important
+
+Create a new security group with title hipaa_bastion_ssh_securitygroup
+Description = allow ssh from anywhere
+Notice in the config table "Source" is 0.0.0.0/0 which is "anywhere"; but best practice is to restrict...
+
+IF we allowed only UW but included the UW-VPN then someone could log in from anywhere VIA the UW VPN... 
+
+
+Key pair: hipaa_bastion_keypair: Generate new, download to someplace safe on **L** and Launch
+
 - Assign **B** an Elastic IP address that will persist, assumed public
-- Inside **V** create public and private subnets **Su** and **Sp** respectively
-  - Use **RT** for this
-- On **Sp** install a small Dedicated EC2 instance **E**
+  - kilroy we did not do this but it needs doing; so must free one up from account
+
+
+**Su** is subnet public **Si** is subnet private
+
+
+- On **Si** install a small Dedicated EC2 instance **E**
   - kilroy establish that **E** has an access key **K3** 
   - kilroy follow the chain of custody of **K3** to **B**
   - kilroy might **E** be from an AMI?
+
+
+We are now configuring the S3 Endpoint. 
+  In so doing we selected the VPC RT (not the public subnet RT; could use that)
+  We are concerned about S3 traffic
+  S3 Endpoint is a new type of Gateway that gives S3 access from Private subnet direct into S3 without any traverse of the internet.
+  
+
+WARNING: Kilroy: After I added the S3 Endpoint the NAT gateway entry had vanished from my VPC routing table. 
+This is bad. Right now the procedure is going to be: After S3 EP go examine RT and re-add NAT gateway if it 
+is not properly present. holy cow!!!!!!!!!!!!!!!
+
+
+
+
+
 - Move **K** to **B**
   - kilroy how? Using scp / ssh? 
 - Log in to **B** and move **K** to **E** 
