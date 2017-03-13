@@ -147,88 +147,148 @@ Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
 - S3 bucket
 - EBS/EFS 
 
-## Configuring the system
+### Configuring the system
+
+#### Overview
+
+- Initial steps: Build out the VPC and demonstrate dropping a file into S3 from the outside
+and then manually going inside the VPC to pull that file through onto a private EC2 instance.
+- Next steps: Around services, encryption, ...
+- Logging
+- Pseudo Data
+- Transition to operation
+- VPC from Template
+- Bastion from AMI 
+- EC2 Master from AMI
+- EC2 Workers from AMI
+
+We punctuate the procedural steps needed to build the HIPAA-Compliant Data System (HCDS) 
+with short notes on rationale, how things fit together. We also make extensive use of 
+very short abbreviations (just about every entity gets one, indicated by **boldface** 
+and obsessive re-naming of everything using the Project Identifier Tag (PIT)
 
 #### Initial steps
 
-- Zeroth step: I must designate to AWS that my account has HIPAA data in it. 
-  - Is my account currently so-designated? How do I find out / confirm? 
-  - kilroy action to Aaron: How to do this
+- Absolute First Priority Step 0: Designate to AWS that this account involves PHI/HIPAA data
+  - kilroy action to Aaron: How to do find this out?!
 
-- Create a Project Identifier Token to use in naming and tagging everything
-  - This is simply a string that makes clear which project is involved here
-  - Each subsequent resource is named begins with the PIT
-  - Rob is using PIT = 'hipaa'; everything will be called hipaa_something
-- Identify a starting-point machine "in a coffee shop" as **L** for 'local-to-me'
-  - kilroy identify due diligence to ensure **L** is safe for the following...
-  - **L** does not have a PIT name of course
-  - **L** could also be a resource operated by Med Research / IRB / data warehouse
+- Keep in mind: Suppose this is a multi-day effort: Shut down instances to save money
 
-- kilroy encryption stuff unresolved; ideas are: 
-  - On **L** install some encryption software **ENC**
-  - On **L** use encryption software such as PGP to produce a key **K**
+Our objective is (see Figure below kilroy) to use a Laptop or other cloud-external data source
+to feed data into a HIPAA-Compliant Data System (**HCDS**) wherein we operate on that data. The 
+data are assumed to be Private Health Information (PHI).
+
+- Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything
+  - In our example here PIT = 'hipaa'. Short, easy to read = better
+
+- Identify our source computer as **L**, a Laptop sitting in a coffee shop 
+  - This is intentionally a *non-secure* source
+  - We return to this issue later (kilroy make sure we do please)
+  - **L** does *not* have a PIT
+  - **L** could also be a secure resource operated by Med Research / IRB / data warehouse
+
+We are starting with a data source and will return to encryption later. The first burst 
+of activity will be the creation of a Virtual Private Cloud (VPC) on AWS per the diagram
+above (kilroy). We assume you have done Step 0 above and are acting in the capacity of a
+system builder; but you may not be an experienced IT professional. You are building this 
+environment, you may or may not necessarily be doing research.
+
+The easiest way to create a VPC is using the console Wizard. That method is covered in a 
+section below.  The method we use here is manual to help illuminate the components.
+
+#### Diagram notes
+
+- AWS is the big box
+- VPC is inside
+- Public and Private subnets are inside VPC
+- NAT gateway inside the Public subnet box
+- Internet Gateway on boundary of VPC
+- S3 Endpoint on boundary of VPC
+
+#### To continue on first steps
+
+CIDR block syntax: The specification 10.0.0.0/16 has two parts: w.x.y.z and /N. 
+The first part defines an ip address with three wildcards, the zeros.  N indicates 
+number of addresses available: 2**(32 - N). When N = 16 this is 2**16 or 65536. 
+This is two bytes so y and z are usable to cover.  Hence 10.0.0.0/16 means 
+"addresses of the form 10.0.y.z". Any subnets we place within the VPC will be limited 
+by this address space.  We will define two subnets within the VPC each with respective 
+CIDR ranges: Subranges of the VPC CIDR block.  A subnet with CIDR = 10.0.1.0/24 has 256 
+addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: .0, .1, 
+.2, .3, .255; so on a /24 only 251 addresses remain; for example 10.0.1.4, 10.0.1.5,
+10.0.1.6, ..., 10.0.1.254.  
 
 - On AWS create a VPC **V**
+  - Give **V** a PIT name 
+  - **V** will not use IPv6v.  This makes matters simpler.
+  - **V** will have a CIDR block defining an ip address space
+    - We use 10.0.0.0/16
+  - **V** automatically has a routing table **RT**
+    - After creating **V**: Select Routing Tables, sort by VPC and give **RT** a PIT name
+      - Here: 'hipaa_routingtable'
+      - The routing table is a logical mapping of ip addresses to destinations
+  - **V** automatically has a security group **SG**
+    - After creating **V**: Select Security Groups, sort by VPC and give **SG** a PIT name
+      - Here: 'hipaa_securitygroup'
+  - **V** will have both public and private subnets 
+    - The private subnet **Si** is where work on PHI proceeds
+      - CIDR block 10.0.1.0/24
+      - **Si** will be firewalled behind a NAT gateway
+    - The public subnet **Su** is for internet access
+      - CIDR block 10.0.0.0/24
+      - **Su** will connect with the internet via an Internet Gateway
+      - **Su** will be home to the Bastion server **B** 
+      - **Su** will be home to the NAT Gateway **NG**
+        - **B** and **NG** are on the public subnet but also have private subnet ip addresses 
+          - That is: Everthing on the public subnet also has a private ip address in the VPC. 
+          - This will obviously chew up the private ip address range capacity
+          - Public names will resolve to private addresses within the VPS at need.
+          - kilroy need a remark on how this works, collision avoidance
+  - After creating **V** create an associated Flow Log **FL**
+    - As of March 2017 the UI is a little tetchy so be prepared to go around twice
+    - Click the Create Flow Log button
+      - Assuming permissions are not set: Note the Hypertext to set up permissions 
+        - This is because we need to define the proper Role
+        - So click on this hypertext
+        - On the Role creation page: Give the Role a PIT name; Create new; Allow
+        - You now have an IAM Role for FlowLogs
+          - This gives the account the necessary AWS permissions to work with Flow Logs
+          - In so doing we fell out of the Create Flow Log dialog so... back around
+      - Return to the VPC in the console
+      - Click on Create Flow Log
+        - Filter = All is required (not "accepted" and not "rejected" traffic)
+        - Role: Select the role we just created above
+        - Destination log group: Give it a PIT name 
+          - We use hipaa_loggroup
 
-- Inside the VPC we place a public subnet and a private subnet, in a diagram these are boxes
-  - We use the private subnet for PHI work firewalled behind a NAT gateway
-  - We use the public subnet for internet access
-    - It will involve an Internet Gateway
-    - It will be home to the Bastion server **B** (for log in to private subnet EC2s)
-    - It will be home to the NAT Gateway **NG**
-      - **B** and **N** are on the public subnet but also have private subnet ip addresses 
-      - That is: Everthing on the public subnet also has a private ip address in the VPC. 
-      - This will chew up the private ip address range capacity
-      - Public names will resolve to private addresses within the VPS at need.
 
-- IPv6v is NOT INVOLVED in this procedure. This makes matters simpler.
+![kilroy figures]()
 
-- How CIDR block syntax works: 10.0.0.0/16 means a subnet that begins 10.x.y.z
-  - the 16 gives number of addresses as 2**(32 - N) bigger N: fewer addresses
-  - This can not be changed for the VPC after the fact; it is immutable
-  - Any subnets we create will be limited by this address space
-  - Suppose a subnet gets 10.0.1.0/24: This is 256 addresses 
-    - Actually AWS grabs .0, .1, .2, .3, .255 so we only get 250 of them
-    - So an EC2 on this subnet could be at 10.0.1.43 or 10.0.5.219. 
+- On **V** create subnets **Su** and **Si**
+  - Note that Create VPC does give us the option of creating a VPC with a pre-built pub/priv... 
+    - See below for more on this faster template-driven approach
 
-- A new VPC is given a default Security Group **SG** 
-  - After creating the VPC: Select Security Groups, sort by VPC, give the SG a PIT name
-  - I used hipaa_securitygroup
+Note: The console column for subnets shows "Auto-assign Public IP" and this should be Yes for our 
+public subnet (note column name includes *Public IP*). The Private subnet should have this set
+to No. If necessary change these entries using the "Subnet Actions" button. 
 
+Note: We must be able to make new EC2 instances on the private subnet that *by default* do not have
+a public IP address. In this way we do not accidentally expose a **Wi** instance (worker) to public
+access; so this tremendously important. kilroy need a link to where we come back to this and solve.
+In the subnet table there is a "Default Subnet" column which is a boolean. In this example both
+**Su** and **Si**  have this set to No so there is no default subnet. We fix this later.
+The fix happens in the routing table **RT** which is built into the VPC.
 
-Note on creating VPC create a Flow Log 
-  - Click the button to do so 
-  - Hypertext: Set up permissions (because we don't have the correct Role)
-    - This jumps to a Role creation page...
-    - name it and include the PIT; create new; Allow
-  - I just created an IAM Role for FlowLogs: Gives me the necessary AWS permissions to work with flow logs
-  - But in so doing we fell out of the Create Flow Log dialog so..
-    - Return to VPC in the console
-    - Click on Create Flow Log
-    - Filter = All is required (not "accepted" and not "rejected" traffic)
-    - Role: Select the role we made above
-    - Destination log group: again use the PIT: hipaa_loggroup
+- Give **RT** a PIT-name hipaa_routingtable
+  - This is a global VPC-wide routing table; it can be superseded by a subnet's routing table
 
-
-
-- On **V** create subnets... 
-
-- Note that Create VPC does give us the option of creating a VPC with a pre-built pub/priv... so that would be a faster template-driven approach
-
-Note: The console column for subnets shows "Auto-assign Public IP" and this should be Yes for our public subnet, duh, and No for the Private subnet. Change this using "Subnet Actions" button. But hte template ref'd above lets you do this on setup. 
-
-Note: Subnet actions: We should be able to make new instances exist on the private subnet by default so that we do not accidentally expose a **Wi** so this important. How do we do it? 
-
-  - Notice in subnet table is a "Default Subnet" column: Both pub and priv are No so 
-  - This happens in the RT which comes with the VPC
-
-- Give the RT a PIT-name hipaa_routingtable
-
-Note: There is this VPC RT which is the "main" RT. 
+The VPC routing table **RT** reads:  
+```
 10.0.0.0/16 points to the VPC "local" stuf
 0.0.0.0/0 points to the NAT gateway and to the Internet
+```
 
-Now we need a Public subnet RT which has 
+**Su** has a routing table (PIT name is hipaa_public_routingtable)  which has 
 10.0.0.0/16 
 0.0.0.0/0 Internet gateway
 
