@@ -1,19 +1,4 @@
 
-
-- When: January 19th, 2017
-- Where: University of Washington WRF Data Science Studio 
-
-Follow on: You are invited to apply for 12 months of significant Azure access through the Azure for Research Awards 
-program.  Apply at the [Azure for Research website](http://www.azure4research.com).
-
-For the training: You do not need to have the Microsoft Windows operating system installed on your laptop. 
-Microsoft Azure is accessed via Internet browser, via Linux/Mac/Windows command-line or via programming language 
-APIs. 
-
-This course is for Faculty, researchers, and students using any language, framework, or platform. This includes Linux, 
-Python, R, MATLAB, Java, Hadoop, STORM, SPARK, and Microsoft technologies such as C#, F#, Microsoft .NET, Microsoft 
-Azure SQL Database, and various Microsoft Azure services. 
-
 ## Agenda 
 
 - 08:30 - 09:00 Coffee and Check-in 
