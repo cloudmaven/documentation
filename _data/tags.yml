@@ -12,7 +12,38 @@ allowed-tags:
   - mobile
   - AWS
   - Azure
+  - GCP
+  - Google
+  - python
+  - HIPAA
+  - Rosetta
+  - IOT
+  - web_framework
+  - cloud_basics
+  - scale
+  - containers
+  - proposals
+  - research_credits
+  - machine_learning
+  - data_science
   - research_computing
   - data_api
-  - python
-  - BDS
+  - github
+  - visualization
+  - console
+  - api
+  - storage
+  - spark
+  - database
+  - Jupyter
+  - cloud_services
+  - organic_chemistry
+  - case_studies
+  - reproducibility
+  - genomics
+  - medicine
+  - geoscience
+  - account_management
+  - cost
+  - data_management
+  - network_access

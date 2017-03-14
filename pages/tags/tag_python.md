@@ -1,5 +1,5 @@
 ---
-title: "Python Tools"
+title: "Python-related content"
 tagName: python
 search: exclude
 permalink: tag_python.html
