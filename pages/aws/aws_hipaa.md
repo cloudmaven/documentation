@@ -334,7 +334,8 @@ This allows the private network to talk to the Internet and the Internet can't t
   - might **B** be from an AMI?
 
 
-r4.large running AWS Linux: Created. DO NOT USE T instances because they are not going to connect to our Dedicated Tenancy VPC: Not supported.
+m4.large running AWS Linux: Created. DO NOT USE T instances because they are not going to connect to our 
+Dedicated Tenancy VPC: Not supported.
 
 Go through all the config steps: Memory, tags, etc etc; Security group is important
 
@@ -371,6 +372,100 @@ This is bad. Right now the procedure is going to be: After S3 EP go examine RT a
 is not properly present. holy cow!!!!!!!!!!!!!!!
 
 
+Created S3 bucket
+
+## Encryption
+Suppose on EC2 we create an EBS volume for the PHI
+So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
+Volume type = General Pupose and the size does affect IOPS; I went for 64GB
+
+For costing and performance include this link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+
+This gets back into optimization; it does not affect our HIPAA story 
+
+Notice the EBS volume has an AZ which **must match** the target EC2 where it is going 
+
+Notice the volume can by encrypted with a check box; and then there is a Master Key issue. 
+
+kilroy use the default which has some Key Details listed (can these be shown publicly???) or...
+
+Using the default key technically encrypts this data at rest. So that's done. 
+
+Working with your own set of keys would be part of risk management: Should the keys be compromised etcetera.
+So there is some additional hassle and so on but some potential risk management. 
+Due diligence: kilroy check the DLT account T&C; and generally "who is responsible for the risk?" 
+
+The question is: Do we want to use one key across multiple environments (the default) or created new keys for 
+each new envvironment? How much hassle, etc.
+
+ok done: hipaa_ebs_ec2_private 
+
+Next log in to EC2 on the private subnet:
+- log in to the bastion server
+- used copy-paste to edit a file on the bastion called ec2_private_keypair.pem
+  - I did a bad paste and was missing the -----BEGI
+  - on this file we ran chmod 600 on the pem file
+  - ssh -i <this file> 10.0.1.248
+    - notice this ip address is in the console Description tab when highlighting the private subnet EC2 instance
+  - Notice that the pem file on the bastion would immediately compromise the EC2 on the private subnet
+    - That sure sucks for you
+
+Using (sudo) fdisk to create the partition on the raw block device (fast: writing the partition table) will blow 
+away anything already there. 
+
+Now we did the simple
+
+% aws s3 cp s3://bucket-name/keyname .
+
+The keyname that I used was the filename that I uploaded to this S3 bucket from **L**. 
+That file was pushed from **L** using the console but can also be done using the CLI. 
+
+We are intentionally not going to encrypt the boot volume. It can be done; goes on the DD pile. 
+  - related: kilroy action: How to think about swap space; as part of encryption; 
+
+We implement server side encryption on S3 next. 
+- The file may be unencrypted on **L**
+- We upload it to S3 and stipulate "encrypt this when it comes to rest in S3"
+- S3 manages this
+- We create an associated policy that *only* allows this type of upload
+  - Therefore a not-encrypted-at-rest request will be denied
+
+Best way is follow "S3 AWS encryption" links to http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
+Click Server-Side Encryption
+Click on Amazon S3-Managed Encryption keys in the left bar to get to 
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+Copy the code box contents
+Go to console
+S3 bucket
+Permissions tab
+Bucket Policy button
+Paste
+Replace in two places: actual bucket name
+
+PutObject command: must have server-side-encryption set to AES256 (that is the name of the encryption algorithm) 
+  AND
+must have server-side-encryption set to true
+
+What about the inbound files: They must be "encrypted in transit" so we get that with an https endpoint to S3: Done. 
+
+Transferring to the instance: scp 
+
+Last encryption note: SSL is used by the CLI be default; so our EC2-private command 'aws s3 ... etc': Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. The EBS /hipaa is encrypted at rest. Done. 
+
+
+
+ 
+
+
+
+## Auditing
+
+DR
+Indicate awareness; up to CISO to provide hurdles
+
+
+
 
 
 
@@ -382,12 +477,14 @@ is not properly present. holy cow!!!!!!!!!!!!!!!
 - Use NAT Gateway to install encryption s/w **ENC** on **E**
   - Or should this already exist kilroy via AMI?
 - Use an AMI to create a processing EC2 **W**
+
   - Also with **ENC**
 - Create S3 buckets 
   - **S3D** for data
   - **S3O** for output
   - **S3L** for logging
   - **S3A** for ancillary purposes (non-PHI is the intention)
+
   - Such S3 buckets only accept http PUT; not GET or LIST
 - Create an S3 bucke **S3O** for output
 - Create an S3 bucke **S3L** for logging
