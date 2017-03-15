@@ -27,7 +27,7 @@ A core feature of the HiMAT project is the construction and utilization of data 
 
 To address these challenges we are designing a multi-tiered approach to data handling:
 
-![himat0002](https://github.com/geohackweek/himat-data/blob/gh-pages/fig/himatDataDiagram.png?raw=true)
+![himat0002](https://github.com/geohackweek/himat-data/raw/gh-pages/fig/himatDataDiagram.png?raw=true)
 
 
 {% include links.html %}
