@@ -36,7 +36,7 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 - Desirable: Attend Software Carpentry at UW eScience, March 27th-28th, 2017 to learn Linux, Git and Python.  
 - Desirable: Install a version of Visual Studio 
  
-### Please let us know ahead of time if you have exhausted your free education credits so we can get more for you! We will not be providing these credits on the day of the workshop.
+** Please let us know ahead of time if you have exhausted your free education credits so we can get more for you! We will not be providing these credits on the day of the workshop. **
 
 ## Course Outline 
 * Welcome and logistics, breakfast provided (8.30am -- 9am)
