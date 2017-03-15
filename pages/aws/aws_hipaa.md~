@@ -1,8 +1,8 @@
 ---
 title: AWS HIPAA
-keywords: aws, hipaa, procedures
+keywords: aws, hipaa
 last_updated: January 25, 2017
-tags: [AWS, HIPAA, medicine, case_studies, storage, research_computing, data_science]
+tags: [AWS, HIPAA, medicine, data_management, case_studies, storage, research_computing, data_science]
 summary: "A HIPAA-compliant research system on AWS"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
@@ -39,6 +39,39 @@ directly with PHI data.***
 The public cloud is very secure: physically and technologically. 
 We contend that data system failure or compromise is most likely to be caused by human error.***
 - ***File names may not include PHI. They may include identifier strings that would be indexed in a secure table.***
+
+## Kilroy stack
+- Add K's remarks and J's remarks in here
+- AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
+- Generate and incorporate a scientist workflow diagram with extensive caption per User Story
+- Generate and incorporate a complete HCDS architecture diagram near the top of this 
+- Create a sub-topic around **L**: In coffee shop, in a data center (out of Med Research), etcetera
+  - The 'in transit / at rest' component leaves a sparking wire in **L**: Section on risk added
+- Need explanation of public/private subnet collision avoidance
+  - Public subnet elements also have private subnet addresses.
+  - Verify protocol is that new resources auto-generated will be on the private subnet
+    - AB How is this done? We got as far as 'no default' for public and private both
+  - Verify automated allocation will choose free ip addresses on the private subnet
+  - Verify protocol is to *not* create new resources on the public subnet
+  - This is tremendously important so that a new **Wi** is not publicly visible
+  - Look at the VPC Routing Table "default subnet" column (verify this is correct)
+- Key management story
+  - Rename **K2** as **K_Bastion** and describe where it lives on **L**, add to Risk
+    - It may make sense to describe chain of custody of **KBastion**
+- Free up and assign **B** an Elastic IP address that will persist
+  - Verify that this is publicly discoverable and place this fact in Risk
+  - Rename **K3** as **K_EC2**
+  - Chain of custody of **K_EC2**
+  - How do keys work in view of an AMI source?
+- EBS Encryption Keys should be a Risk sub-section
+  - EBS encryption select has an account default key: Details are listed below
+  - Notice that publishing these details is not technically bad for pedagogy... 
+    - but I have a bit of a nagging doubt here: Are these "Details" global/permanent?
+    - The screencap redacts to be on the safe side; stay with that for now
+- Risk due diligence: Check the DLT account T&C; "who is responsible for the risk?" 
+- Risk entry: We do not encrypt the boot volume  
+- Risk entry: EC2 swap space: How does this touch on PHI?
+
 
 ## User story
 
@@ -170,11 +203,10 @@ and obsessive re-naming of everything using the Project Identifier Tag (PIT)
 #### Initial steps
 
 - Absolute First Priority Step 0: Designate to AWS that this account involves PHI/HIPAA data
-  - kilroy action to Aaron: How to do find this out?!
 
 - Keep in mind: Suppose this is a multi-day effort: Shut down instances to save money
 
-Our objective is (see Figure below kilroy) to use a Laptop or other cloud-external data source
+Our objective is (see Figure below) to use a Laptop or other cloud-external data source
 to feed data into a HIPAA-Compliant Data System (**HCDS**) wherein we operate on that data. The 
 data are assumed to be Private Health Information (PHI).
 
@@ -183,13 +215,12 @@ data are assumed to be Private Health Information (PHI).
 
 - Identify our source computer as **L**, a Laptop sitting in a coffee shop 
   - This is intentionally a *non-secure* source
-  - We return to this issue later (kilroy make sure we do please)
   - **L** does *not* have a PIT
   - **L** could also be a secure resource operated by Med Research / IRB / data warehouse
 
 We are starting with a data source and will return to encryption later. The first burst 
 of activity will be the creation of a Virtual Private Cloud (VPC) on AWS per the diagram
-above (kilroy). We assume you have done Step 0 above and are acting in the capacity of a
+above. We assume you have done Step 0 above and are acting in the capacity of a
 system builder; but you may not be an experienced IT professional. You are building this 
 environment, you may or may not necessarily be doing research.
 
@@ -243,7 +274,6 @@ addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: 
           - That is: Everthing on the public subnet also has a private ip address in the VPC. 
           - This will obviously chew up the private ip address range capacity
           - Public names will resolve to private addresses within the VPS at need.
-          - kilroy need a remark on how this works, collision avoidance
   - After creating **V** create an associated Flow Log **FL**
     - As of March 2017 the UI is a little tetchy so be prepared to go around twice
     - Click the Create Flow Log button
@@ -262,8 +292,6 @@ addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: 
           - We use hipaa_loggroup
 
 
-![kilroy figures]()
-
 - On **V** create subnets **Su** and **Si**
   - Note that Create VPC does give us the option of creating a VPC with a pre-built pub/priv... 
     - See below for more on this faster template-driven approach
@@ -272,9 +300,6 @@ Note: The console column for subnets shows "Auto-assign Public IP" and this shou
 public subnet (note column name includes *Public IP*). The Private subnet should have this set
 to No. If necessary change these entries using the "Subnet Actions" button. 
 
-Note: We must be able to make new EC2 instances on the private subnet that *by default* do not have
-a public IP address. In this way we do not accidentally expose a **Wi** instance (worker) to public
-access; so this tremendously important. kilroy need a link to where we come back to this and solve.
 In the subnet table there is a "Default Subnet" column which is a boolean. In this example both
 **Su** and **Si**  have this set to No so there is no default subnet. We fix this later.
 The fix happens in the routing table **RT** which is built into the VPC.
@@ -329,8 +354,6 @@ This allows the private network to talk to the Internet and the Internet can't t
 - On **V** create a public-facing Bastion Server **B**
   - **B** has only port 22 open (ssh) 
   - **B** uses Secure Groups on AWS to limit access to only a subset of URLs
-  - kilroy establish that a second key **K2** provides secure access to **B**
-  - kilroy establish the chain of custody of **K2**
   - might **B** be from an AMI?
 
 
@@ -348,17 +371,12 @@ IF we allowed only UW but included the UW-VPN then someone could log in from any
 
 Key pair: hipaa_bastion_keypair: Generate new, download to someplace safe on **L** and Launch
 
-- Assign **B** an Elastic IP address that will persist, assumed public
-  - kilroy we did not do this but it needs doing; so must free one up from account
 
 
 **Su** is subnet public **Si** is subnet private
 
 
 - On **Si** install a small Dedicated EC2 instance **E**
-  - kilroy establish that **E** has an access key **K3** 
-  - kilroy follow the chain of custody of **K3** to **B**
-  - kilroy might **E** be from an AMI?
 
 
 We are now configuring the S3 Endpoint. 
@@ -387,13 +405,11 @@ Notice the EBS volume has an AZ which **must match** the target EC2 where it is 
 
 Notice the volume can by encrypted with a check box; and then there is a Master Key issue. 
 
-kilroy use the default which has some Key Details listed (can these be shown publicly???) or...
 
 Using the default key technically encrypts this data at rest. So that's done. 
 
 Working with your own set of keys would be part of risk management: Should the keys be compromised etcetera.
 So there is some additional hassle and so on but some potential risk management. 
-Due diligence: kilroy check the DLT account T&C; and generally "who is responsible for the risk?" 
 
 The question is: Do we want to use one key across multiple environments (the default) or created new keys for 
 each new envvironment? How much hassle, etc.
@@ -421,7 +437,6 @@ The keyname that I used was the filename that I uploaded to this S3 bucket from 
 That file was pushed from **L** using the console but can also be done using the CLI. 
 
 We are intentionally not going to encrypt the boot volume. It can be done; goes on the DD pile. 
-  - related: kilroy action: How to think about swap space; as part of encryption; 
 
 We implement server side encryption on S3 next. 
 - The file may be unencrypted on **L**
@@ -447,28 +462,84 @@ PutObject command: must have server-side-encryption set to AES256 (that is the n
   AND
 must have server-side-encryption set to true
 
+What about the inbound files: They must be "encrypted in transit" so we get that with an https endpoint to S3: Done. 
 
- 
+Transferring to the instance: scp 
+
+Last encryption note: SSL is used by the CLI be default; so our EC2-private command 'aws s3 ... etc': Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. The EBS /hipaa is encrypted at rest. Done. 
+
 
 
 
 ## Auditing
 
-DR
+CloudTrail is logging the API calls to my account. Whether through the console, the CLI, the APIs directly: All logged in 
+cloud trail once it is enabled. They all use the same APIs; so we log on the API calls. Logs to S3. 
+
+**Here is the key thing: Enable cloud trail which creates a destination S3 bucket where all of the logging will go.**
+
+Best practice is to turn on Cloud Trail in all of your regions; so you are not blind. "Either you are logging or it is gone."
+
+Cloud Watch is more for monitoring: Performance metrics. 
+
+In both cases there is never PHI data in the log: PRovided ss#s are not in the filenames (for example) 
+
+
+And S3 has its own internal logging mechanism as well. 
+- Create a new bucket hipaa-s3-access-logs with vanilla settings
+- Locate the existing inbound data bucket > Properties > Logging > enable > stipulate the access logs bucket; add a tag...
+
+This will have http traffic details; where stuff was coming from for example
+
+### AWS Config
+
+Cloud trail tells you what's happening in terms of the API
+AWS Config tells you what changed
+
+Use them together to see if something is happening / happened of concern
+
+High level set up and then more detailed is possible
+
+Console > MAnagement > Config
+
+Think of Config (like Cloud Trail) as account-wide, not "per resource" so tagging with the PIT is not correct.
+
+My process was pretty default.
+
+
+So now we have Cloud Trail, S3 logging and Config operating on this account. 
+So as we get more sophisticated we could dig in to Cloud Watch. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## DR
 Indicate awareness; up to CISO to provide hurdles
 
 
 
+## Risk
+
+This section identifies points if risk and their estimated severity. Severity is described with 
+two values: 'When protocol is observed' and 'When protocol is not observed'. We try to provide
+examples. Furthermore there is a notion of diminishing returns: A tremendous amount of additional
+effort can be incorporated in building an HCDS that provides comparatively small risk reduction.
 
 
-
-- Move **K** to **B**
-  - kilroy how? Using scp / ssh? 
 - Log in to **B** and move **K** to **E** 
   - Observe that material encrypted 
   - Maybe instead we should be tunneling directly to **E** from **L**
-- Use NAT Gateway to install encryption s/w **ENC** on **E**
-  - Or should this already exist kilroy via AMI?
 - Use an AMI to create a processing EC2 **W**
 
   - Also with **ENC**
