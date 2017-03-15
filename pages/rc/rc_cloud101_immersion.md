@@ -9,21 +9,20 @@ permalink: rc_cloud101_immersion.html
 folder: rc
 ---
 
-**Registration closes on March 20, 2017 at 11.59pm PST**
+**Registration is now closed**
 
-[Registration form](https://goo.gl/forms/R3cyk7UbtWViulxm2)
+**Date:** Tuesday, Apr. 4, 2017
+**Location:** University of Washington Husky Union Building, Room 250. [Parking information](http://depts.washington.edu/thehub/home/directions/)
+**Time:** 8.30am to 5pm 
 
 
-Date: Tuesday, Apr. 4, 2017
-
-Location: University of Washington Husky Union Buildin, Room 250
-Time: 8.30am to 5pm 
-
-Website : http://cloudmaven.org/cloud101_immersion.html 
+---
  
- 
-Objective: This one-day, hands-on immersion course will introduce participants to  three major cloud providers (Amazon Web Services, Microsoft Azure and Google Cloud Platform) with two focused 'get stuff done' activities. First: Web framework building: Participants will learn to provision compute resources and build a lightweight system to encourage collaboration and data sharing. Second: Scale computing: Participants will be introduced to configuring and running tasks on the high performance computing (HPC) service on AWS. In this process participants will also learn to compare costs between different cloud providers and on-site computing infrastructure.  
- 
+## Objective
+This one-day, hands-on immersion course will introduce participants to  three major cloud providers (Amazon Web Services, Microsoft Azure and Google Cloud Platform) with two focused 'get stuff done' activities. First: Web framework building: Participants will learn to provision compute resources and build a lightweight system to encourage collaboration and data sharing. Second: Scale computing: Participants will be introduced to configuring and running tasks on the high performance computing (HPC) service on AWS. In this process participants will also learn to compare costs between different cloud providers and on-site computing infrastructure.  
+
+---
+
 ## Pre-requisites 
  
 - Know the basics of Linux 
