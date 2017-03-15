@@ -7,6 +7,8 @@ permalink: index.html
 toc: false
 summary: Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington. We offer solutions to help streamline your research analysis, processing, collaboration, and publication pathways. 
 ---
+## Announcement
+The first UW-IT Research Computing Cloud 101 Immersion Day will be held on April 4, 2017. Find out [more](https://cloudmaven.github.io/documentation/rc_cloud101_immersion.html). 
 
 ## Don't Panic!
 
