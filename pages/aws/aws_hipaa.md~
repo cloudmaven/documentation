@@ -41,6 +41,7 @@ We contend that data system failure or compromise is most likely to be caused by
 - ***File names may not include PHI. They may include identifier strings that would be indexed in a secure table.***
 
 ## Kilroy stack
+
 - Add K's remarks and J's remarks in here
 - AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
 - Generate and incorporate a scientist workflow diagram with extensive caption per User Story
@@ -71,16 +72,25 @@ We contend that data system failure or compromise is most likely to be caused by
 - Risk due diligence: Check the DLT account T&C; "who is responsible for the risk?" 
 - Risk entry: We do not encrypt the boot volume  
 - Risk entry: EC2 swap space: How does this touch on PHI?
+- How are keys / Roles managed when spinning up / shutting down **Wi**? 
+  - For now we allow that **EC2** is the only game in town
+- Look at the *JS* *SK* scenario and build out the IAM component for *SK*
+  - e.g. turning machines on and off
+  - do with console? do with CLI?
+  - AB: Help needed!
 
 
 ## User story
 
-- A scientist *K* receives approval from an IRB to work with PHI data. 
-  - The intent is to analyze these data in a secure, HIPAA-compliant data system (herein HCDS) 
-- *K* contacts a technology expert *J* and a research data provider *S* 
-  - Presenting a request for the approved data and a request for a cloud-based HCDS 
-- Some due diligence and preparation ensue
-- *K* is given an ssh key to her HCDS
+- A scientist *SK* receives approval from an IRB to work with PHI data. 
+  - Intent: Analyze these data in a secure, HIPAA-compliant data system (herein HCDS) 
+- *SK* contacts *JS* to build the HCDS as a working environment
+  - IRB approval review
+  - System **H** is built by *JS*; includes an S3 bucket for inbound PHI data **SDI**
+  - Data uploaded to **SDI**
+- *SK* is provided with access
+  - Keys: **K_Bastion** and **K_EC2**
+  - IAM User account with 
   - *K* logs on to the HCDS through a secure gateway 
   - *K* carries out the data analysis over a period of time
     - The system logs all activity 
