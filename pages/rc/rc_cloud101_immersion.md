@@ -16,7 +16,8 @@ folder: rc
 
 Date: Tuesday, Apr. 4, 2017
 
-Location: University of Washington WRF Data Science Studio (6th floor of the Physics Astronomy tower) 
+Location: University of Washington Husky Union Buildin, Room 250
+Time: 8.30am to 5pm 
 
 Website : http://cloudmaven.org/cloud101_immersion.html 
  
@@ -29,12 +30,17 @@ Objective: This one-day, hands-on immersion course will introduce participants t
 - Get temporary "education" accounts on AWS, Azure and Google Cloud Platform 
 - https://aws.amazon.com/education/awseducate/ 
 - https://azure.microsoft.com/en-us/community/education/ 
- 
+- https://cloud.google.com/
+- Install [PyCharm](https://www.jetbrains.com/pycharm/), a Python IDE (free Professional version for UW students/faculty, or use the free community version)
+
+---
 - Desirable: Attend Software Carpentry at UW eScience, March 27th-28th, 2017 to learn Linux, Git and Python.  
 - Desirable: Install a version of Visual Studio 
  
+### Please let us know ahead of time if you have exhausted your free education credits so we can get more for you! We will not be providing these credits on the day of the workshop.
+
 ## Course Outline 
- 
+* Welcome and logistics, breakfast provided (8.30am -- 9am)
 * Introduction to cloud computing (9am -- 9.45am) 
   - What is the cloud? Why use it?  
   - Choosing a cloud provider: Available services, ease of migration, cost, pervasiveness in your field, etc 
