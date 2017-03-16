@@ -78,6 +78,8 @@ We contend that data system failure or compromise is most likely to be caused by
   - e.g. turning machines on and off
   - do with console? do with CLI?
   - AB: Help needed!
+- Differentiate SQS and SNS
+- What is Ansible and what does it get us?
 
 
 ## User story
@@ -574,7 +576,7 @@ effort can be incorporated in building an HCDS that provides comparatively small
 - Set up a Lambda service 
   - Triggered by new object in bucket in the S3 input bucket
   - This Lambda service is managed using a role
-- Set up an SQS Simple Queue Service **Q** (kilroy... ?)
+- Set up an SQS Simple Queue Service **Q** 
 - Create an SNS to notify me when interesting things happen
 
 
@@ -589,7 +591,6 @@ effort can be incorporated in building an HCDS that provides comparatively small
 #### Residual notes
 
 - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
-  - kilroy what is Ansible?
 - Pushing data to S3
   - Console does not seem like a good mechanism
   - Third party apps such as Cloudberry are possible...

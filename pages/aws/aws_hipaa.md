@@ -78,7 +78,9 @@ We contend that data system failure or compromise is most likely to be caused by
   - e.g. turning machines on and off
   - do with console? do with CLI?
   - AB: Help needed!
-
+- Differentiate SQS and SNS
+- What is Ansible and what does it get us?
+- Can/should the NAT Gateway be used to pull updates from GitHub?  Generalize.
 
 ## User story
 
@@ -248,9 +250,21 @@ section below.  The method we use here is manual to help illuminate the componen
 
 #### To continue on first steps
 
-CIDR block syntax: The specification 10.0.0.0/16 has two parts: w.x.y.z and /N. 
-The first part defines an ip address with three wildcards, the zeros.  N indicates 
-number of addresses available: 2**(32 - N). When N = 16 this is 2**16 or 65536. 
+CIDR block syntax: The specification **10.0.0.0/16** has two parts: **w.x.y.z** and **/N**. 
+w, x, y and z are integers from 0 to 255. **w.x.y.z** defines a default ip address which
+is subject to modification as follows: **N** determines an addressable space of size 
+s = 2^(32 - N). For example N = 16 produces s = 2^16 or s = 65536 available addresses.
+These addresses are right-justified in the **w.x.y.z** string. An example may help 
+make this clear. Suppose N = 24. The s = 2^8 = 256 in decimal, i.e 0, 1, 2, ..., 255. 
+These decimal values precisely correspond to the right-most field in **w.x.y.z**, 
+namely the **z** value. So this CIDR block defines a set of ip addresses **w.x.y.0**, 
+**w.x.y.1**, **w.x.y.2**, ..., **w.x.y.255**. 
+
+These ip addresses are defined with respect to the VPC. They are local ip addresses, 
+in contrast with the global ip addresses that are mapped to the entire internet. 
+Communication protocols establish the context. Clearly for operations within the VPC 
+the local context is what is in use. 
+
 This is two bytes so y and z are usable to cover.  Hence 10.0.0.0/16 means 
 "addresses of the form 10.0.y.z". Any subnets we place within the VPC will be limited 
 by this address space.  We will define two subnets within the VPC each with respective 
@@ -260,6 +274,7 @@ addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: 
 10.0.1.6, ..., 10.0.1.254.  
 
 - On AWS create a VPC **V**
+
   - Give **V** a PIT name 
   - **V** will not use IPv6v.  This makes matters simpler.
   - **V** will have a CIDR block defining an ip address space
@@ -284,6 +299,7 @@ addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: 
           - That is: Everthing on the public subnet also has a private ip address in the VPC. 
           - This will obviously chew up the private ip address range capacity
           - Public names will resolve to private addresses within the VPS at need.
+
   - After creating **V** create an associated Flow Log **FL**
     - As of March 2017 the UI is a little tetchy so be prepared to go around twice
     - Click the Create Flow Log button
@@ -574,7 +590,7 @@ effort can be incorporated in building an HCDS that provides comparatively small
 - Set up a Lambda service 
   - Triggered by new object in bucket in the S3 input bucket
   - This Lambda service is managed using a role
-- Set up an SQS Simple Queue Service **Q** (kilroy... ?)
+- Set up an SQS Simple Queue Service **Q** 
 - Create an SNS to notify me when interesting things happen
 
 
@@ -589,7 +605,6 @@ effort can be incorporated in building an HCDS that provides comparatively small
 #### Residual notes
 
 - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
-  - kilroy what is Ansible?
 - Pushing data to S3
   - Console does not seem like a good mechanism
   - Third party apps such as Cloudberry are possible...
@@ -600,7 +615,7 @@ effort can be incorporated in building an HCDS that provides comparatively small
   - Assign S3 access role 
   - Encrypted volumes 
   - S/w pre-installed (e.g. genomics pipelines)
-  - Update issue: Pipeline changes, etcetera; kilroy NAT Gateway to pull updates from GitHub? 
+  - Update issue: Pipeline changes, etcetera; 
 - **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
   - Assumes that a HCDS exists in perpetuity to perform some perfunctory pipeline processing
   - On **B**
@@ -610,7 +625,6 @@ effort can be incorporated in building an HCDS that provides comparatively small
     - Latest pipeline... EBS Genomes... chew
     - If last instance running: Consolidate / clean-up
   - SNS topic notifies me when last instance shuts down.
-    - What is the difference between SNS and SQS? kilroy
     - Run Ansible script to configure **Wi** (patch, get data file names from DynamoDB table, etcetera)
     - Get Ws the Key from E
     - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
@@ -639,7 +653,6 @@ Create a VPC **V**
 ![hipaa0003](/documentation/images/aws/hipaa0003.png)
 
 - I added a tag indicating that I originated the VPC.
-- I do not yet have a Flow Log (kilroy) associated with the VPC
 
 ### Pro Tip
 You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
