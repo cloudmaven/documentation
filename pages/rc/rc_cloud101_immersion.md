@@ -61,8 +61,9 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 
 * Web frameworks (12.00pm -- 12.30pm)
   [Tutorial](https://cloudmaven.github.io/cloud101_webframeworks/)
-  - Overview: Wiring up a Django web framework to a data resource 
-
+  - Wiring up a Django web framework to a data resource
+  - Work with Leaflet to create a webmap
+  
 * Lunch provided (12.30pm -- 1.30pm)
 
 * Build a web framework for collaborative data sharing (1.30pm -- 2:45pm + coffee break) 
