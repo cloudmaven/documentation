@@ -1,7 +1,7 @@
 ---
 title: Cloud 101 Hands-on Immersion Day
 keywords: research, computing
-last_updated: January 26, 2017
+last_updated: March 16, 2017
 tags: [research_computing]
 summary: "Cloud computing basics hands-on training by UW Research Computing and the UW eScience Institute"
 sidebar: mydoc_sidebar
@@ -44,14 +44,15 @@ This one-day, hands-on immersion course will introduce participants to  three ma
   - What is the cloud? Why use it?  
   - Choosing a cloud provider: Available services, ease of migration, cost, pervasiveness in your field, etc 
 
-* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 10.45am; 15 minute break at 10.45am) 
+* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 11.30am; 15 minute break at 10.45am) 
   - Introduction to the consoles 
-  - Build a virtual machine on all three platforms; compare costs 
+  - Build a virtual machine on all three platforms
   - View available compute options 
-  - Learn costing of core elements and extras including services 
-
-* Basics of cloud storage and how to get data in and out of your virtual machine (11am -- 12.00pm)
-  - To include the AWS and Azure CLI and the GCP SDK/Cloud Shell 
+  - Basics of getting data in and out of your virtual machine
+  - Includes the AWS and Azure CLI and the GCP SDK/Cloud Shell 
+  
+ * Basics of costing (11.30am -- 12.00pm)
+  - Learn costing of core elements and extras including services
   - Cloud storage, ingress and egress costing 
 
 * Web frameworks (12.00pm -- 12.30pm)
