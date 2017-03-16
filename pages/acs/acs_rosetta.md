@@ -42,15 +42,15 @@ across AWS availability zones (AZs).***
 - Means: The Rosetta peptide design software implemented on the AWS public cloud
 - Key numbers from the main compute task
   - 53: wall clock hours required to complete calculations
+    - 391: Hours needed to complete the same compute task on the Researcher's available HPC resources (Hyak)
+    - $800,000: Cost for on-premise hardware capable of producing this result in 53 hours
+    - 230: The number of these analysis tasks that could be run on AWS for $800,000
   - 164: Number of C4.8xlarge EC2 instances allocated on average from the AWS Spot market (max 200)
-  - 5904: Equivalent number of vCPUs (virtual processors)
-  - $0.40: Spot market cost per instance-hour
-    - showed no significant cost variation over the task duration, nor impact on market price
-  - $3400: Task compute cost (covered by an AWS research credit grant)
+    - 5904: Equivalent number of vCPUs (virtual processors)
+    - $0.40: Spot market cost per instance-hour
+      - showed no significant cost variation over the task duration, nor impact on market price
+    - $3400: Task compute cost (covered by an AWS research credit grant)
   - 5.2 million: Number of positive results
-  - 391: Hours needed to complete the same compute task on the Researcher's available HPC resources (Hyak)
-  - $800,000: Cost for on-premise hardware capable of producing this result in 53 hours
-  - 230: The number of these analysis tasks that could be run on AWS for $800,000
 
 ## Science background
 

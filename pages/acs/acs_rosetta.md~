@@ -115,7 +115,8 @@ under the SGE Scheduler
 
 - AMI story
 - The cfncluster terminology is heavy; Batch is light
-
+- Elaborate on IAM User account permissions as key for cfncluster operations
+  - blanket 'admin' is over-sufficient and backing off of this should be stated
 
 ## (fossil) cfncluster / Rosetta configuration steps
 
@@ -168,8 +169,8 @@ Next we build a *config* file in the .cfncluster directory with the following co
 ```
 [aws]
 aws_region_name = us-west-2
-aws_access_key_id = ### REDACTED ###
-aws_secret_access_key =  ### REDACTED ###
+aws_access_key_id = ...etc
+aws_secret_access_key = ...etc
 
 [global]
 update_check = true
@@ -202,16 +203,17 @@ vpc_id = vpc-5c891c3b
 scaling_cooldown = 20
 ```
 
-Notice that for 'key_name' you must enter the key pair file name 
-associated with your IAM User identity without any extensions.
+For 'key_name' enter the key pair file name associated with an IAM User identity 
+without any extensions.
 
-Notice and check that max_queue_size is set to 300. (The original was a value of 2 
-which is not correct (but safe).) This is the maximum number of spot instances we will 
-be spinning up in the subsequent processing. 
+Check that max_queue_size is set to 300. (The original was a value of 2 which is too small 
+but a safe starting value.) This is the maximum number of Spot market instances that may
+be allocated. 
 
-Notice that the access keys are redacted. These are IAM User credentials. You must supply these 
-from an IAM User account (perhaps your own). This IAM User must have adequate permissions. 
-kilroy these should be stated. kilroy whether blanket 'admin' is sufficient should be made clear.
+The access keys above are redacted for reasons of form: Although they could be included we
+blank out such information to encourage awareness of security issues. These access keys are
+IAM User credentials supplied from an IAM User account. The IAM User must in turn have adequate 
+permissions to carry out cfncluster operations. 
 
 Look at the file **job_submission.sh**. There is a command argument *-nstruct* with a subsequent
 integer value such as 1000. This file will not be put to use on this machine; but will be copied to
@@ -245,7 +247,7 @@ Here is the general outline of what is happening:
 
 The **cfncluster create** command is building three EC2 instances from one existing AMI with some 
 additional configuration to follow. The first EC2 instance will be a Master instance and the
-other two are Worker instances. All three machines will be on standby once they start; they have 
+other two are Worker instances. All three machines will be on standby once they start; they have
 no work to do yet. 
 
 cfncluster builds all three instances according to the rules we set up in the config file; and 
@@ -260,15 +262,17 @@ Rosetta software and the Rosetta configuration files pre-installed.
 
 ### Starting Rosetta
 
-After **cfncluster create** finishes we will log in to the Master and use the qsub command to submit 
-the Rosetta job. This will in turn create a job queue: A long list of processing tasks (perhaps 
-100,000 of them). These jobs will be schedule one by one, that is: Assigned to the Worker nodes. 
+After **cfncluster create** finishes log in to Master and use **qsub** to submit 
+the Rosetta job. This creates a job queue: A long list of processing tasks (for example
+100,000) which are to be executed. These jobs will be scheduled one by one: Assigned to 
+Worker nodes. 
 
-Each Worker node will have some number of 'virtual CPUs' available for running Rosetta jobs in 
-parallel. These are compute-intensive jobs and each may complete in a matter of a few minutes. 
-The number of jobs is given as 100,000 as this (for our initial implementation) is due to a 
-sufficient sample density in a Monte Carlo simulation. 
+Each Worker node has a number of 'virtual CPUs' available for running Rosetta jobs in 
+parallel. These are compute-intensive jobs. Each may complete in a matter of a few 
+minutes.  The large number of jobs is typical from required sample density in a 
+Monte Carlo task. 
 
+kilroy left off here
 While we may run 100,000 jobs these may be distributed across perhaps only 300 Workers. These 
 Workers will (for this example) be powerful machines, each with the capacity to run 36 jobs 
 simultaneously. The jobs we expect to take about 8 minutes each; so in the course of an hour we 
