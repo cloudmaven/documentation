@@ -51,7 +51,7 @@ This one-day, hands-on immersion course will introduce participants to  three ma
   - Basics of getting data in and out of your virtual machine
   - Includes the AWS and Azure CLI and the GCP SDK/Cloud Shell 
   
- * Basics of costing (11.30am -- 12.00pm)
+* Basics of costing (11.30am -- 12.00pm)
   - Learn costing of core elements and extras including services
   - Cloud storage, ingress and egress costing 
 
