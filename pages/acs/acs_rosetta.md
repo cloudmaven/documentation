@@ -49,6 +49,7 @@ across AWS availability zones (AZs).***
     - 5904: Equivalent number of vCPUs (virtual processors)
     - $0.40: Spot market cost per instance-hour
       - showed no significant cost variation over the task duration, nor impact on market price
+      - $0.012 per vCPU-hour. Optimization saved > $600 over other instance choices
     - $3400: Task compute cost (covered by an AWS research credit grant)
   - 5.2 million: Number of positive results
 
