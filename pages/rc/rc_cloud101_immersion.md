@@ -41,10 +41,12 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 ## Course Outline 
 * Welcome and logistics, breakfast provided (8.30am -- 9am)
 * Introduction to cloud computing (9am -- 9.45am) 
+  [Tutorial](https://cloudmaven.github.io/cloud101_intro/)
   - What is the cloud? Why use it?  
   - Choosing a cloud provider: Available services, ease of migration, cost, pervasiveness in your field, etc 
 
 * Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 11.30am; 15 minute break at 10.45am) 
+  [Tutorial](https://cloudmaven.github.io/cloud101_cloudproviders/)
   - Introduction to the consoles 
   - Build a virtual machine on all three platforms
   - View available compute options 
@@ -52,21 +54,25 @@ This one-day, hands-on immersion course will introduce participants to  three ma
   - Includes the AWS and Azure CLI and the GCP SDK/Cloud Shell 
   
 * Basics of costing (11.30am -- 12.00pm)
+  [Tutorial](https://cloudmaven.github.io/cloud101_costing/)
   - Learn costing of core elements and extras including services
   - Cloud storage, ingress and egress costing 
 
 * Web frameworks (12.00pm -- 12.30pm)
+  [Tutorial](https://cloudmaven.github.io/cloud101_webframeworks/)
   - Overview: Wiring up a Django web framework to a data resource 
 
 * Lunch provided (12.30pm -- 1.30pm)
 
 * Build a web framework for collaborative data sharing (1.30pm -- 2:45pm + coffee break) 
+  [Tutorial](https://cloudmaven.github.io/cloud101_cloudproviders/)
   - Deploy a Django web app on AWS Elastic Beanstalk using the Beanstalk CLI
   - Deploy a Django web app on AWS Elastic Beanstalk using PyCharm
   - Deploy a Django web app on Azure using Visual Studio (can be demo only; Visual Studio not necessary)
   - Build a simple API that will display results hosted on a virtual machine to the website you just created  
 
-* AWS CFN cluster (3.15pm -- 4.30pm) 
+* AWS CFN cluster (3.15pm -- 4.30pm)
+  [Tutorial](https://cloudmaven.github.io/cloud101_cfncluster/)
   - Introduction to the AWS spot market 
   - Provisioning virtual machines for cfncluster; Master - Worker model 
 
