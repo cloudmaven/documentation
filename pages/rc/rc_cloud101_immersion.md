@@ -44,22 +44,25 @@ This one-day, hands-on immersion course will introduce participants to  three ma
   - What is the cloud? Why use it?  
   - Choosing a cloud provider: Available services, ease of migration, cost, pervasiveness in your field, etc 
 
-* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 12.15pm; 15 minute break at 10.30am) 
+* Introduction to the 3 primary cloud providers: AWS, Azure & GCP (9.45am -- 10.45am; 15 minute break at 10.45am) 
   - Introduction to the consoles 
   - Build a virtual machine on all three platforms; compare costs 
   - View available compute options 
   - Learn costing of core elements and extras including services 
 
-* Basics of cloud storage and how to get data in and out of your virtual machine 
+* Basics of cloud storage and how to get data in and out of your virtual machine (11am -- 12.00pm)
   - To include the AWS and Azure CLI and the GCP SDK/Cloud Shell 
   - Cloud storage, ingress and egress costing 
 
-* Lunch provided (signing up: Please indicate any dietary restrictions) 
-
-* Build a web framework for collaborative data sharing (1.15pm -- 2:45pm + coffee break) 
+* Web frameworks (12.00pm -- 12.30pm)
   - Overview: Wiring up a Django web framework to a data resource 
-  - Deploy a Django instance on AWS Elastic Beanstalk 
-  - Deploy a Django web framework on Azure using Visual Studio (Can be demo only; Visual studio not required) 
+
+* Lunch provided (12.30pm -- 1.30pm)
+
+* Build a web framework for collaborative data sharing (1.30pm -- 2:45pm + coffee break) 
+  - Deploy a Django web app on AWS Elastic Beanstalk using the Beanstalk CLI
+  - Deploy a Django web app on AWS Elastic Beanstalk using PyCharm
+  - Deploy a Django web app on Azure using Visual Studio (can be demo only; Visual Studio not necessary)
   - Build a simple API that will display results hosted on a virtual machine to the website you just created  
 
 * AWS CFN cluster (3.15pm -- 4.30pm) 
