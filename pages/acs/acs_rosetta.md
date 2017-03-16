@@ -11,91 +11,112 @@ folder: acs
 
 ## Introduction
 
-This page is a case study on the implentation and execution of the Rosetta peptide design software
-on the AWS public cloud. The study includes use of the [AWS Spot market](aws_spot_market.html), 
-[EC2](aws_ec2.html) instance optimization and the comparison of the **cfncluster** and **batch** 
-services offered by AWS.
+This page describes a cloud adoption research case study implementing the Rosetta peptide 
+design software on AWS. The study shows that a *moderately large* compute task runs quickly
+and cost-effectively on the public cloud. We contrast this result with the time-consuming 
+process of purchasing, configuring, operating, maintaining and updating a compute cluster.  
+
+This work makes use of the [AWS Spot market](aws_spot_market.html), optimization
+analysis of [EC2](aws_ec2.html) instances and the AWS [**Batch**](https://aws.amazon.com/batch/)
+service. The analysis is asynchronously parallel meaning that individual compute nodes 
+proceed independently.
 
 ## Links
 
-- [Rosetta (from COMOTION)](https://els.comotion.uw.edu/express_license_technologies/rosetta)
+- [Peptide design paper published by the Researcher](http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html)
 - [AWS Batch service](https://aws.amazon.com/batch/)
 - [Baker Lab Rosetta software suite](https://www.bakerlab.org)
-- [A previous paper on peptide design by the research team](http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html)
+- [Rosetta (from COMOTION)](https://els.comotion.uw.edu/express_license_technologies/rosetta)
 
 ## Warnings
 
 - ***This study involves large-scale and highly parallel computing using the AWS Spot 
 market.  The Spot instance pool is significantly smaller than the On Demand pool which can 
 limit computation scale and/or affect Spot market instance pricing. We overcome these 
-constraints with a change in region and by adopting the Batch service which can allocate
-tasks across AWS availability zones (AZs).***
+constraints with choice of region and by adopting the Batch service to allocate tasks 
+across AWS availability zones (AZs).***
 
 ## Overview
 
-- objective: Examine structure of proteins built from a small number of amino acids
-- means: The Rosetta peptide design software
-- main compute task
-  - 53: wall clock hours required to complete
-  - 164: C4.8xlarge EC2 instances on the AWS Spot market (max 200)
+- Objective: Examine structure of proteins built from a small number of amino acids
+- Means: The Rosetta peptide design software implemented on the AWS public cloud
+- Key numbers from the main compute task
+  - 53: wall clock hours required to complete calculations
+  - 164: Number of C4.8xlarge EC2 instances allocated on average from the AWS Spot market (max 200)
   - 5904: Equivalent number of vCPUs (virtual processors)
   - $0.40: Spot market cost per instance-hour
-    - showed no significant cost variation over the task duration
-    - That is: The task did not appear to affect Spot market pricing
-  - $3400: Task cost, covered by an AWS research credit grant
+    - showed no significant cost variation over the task duration, nor impact on market price
+  - $3400: Task compute cost (covered by an AWS research credit grant)
   - 5.2 million: Number of positive results
-  - 391: Equivalent time in hours needed for this task on Researcher's available UW HPC resources
+  - 391: Hours needed to complete the same compute task on the Researcher's available HPC resources (Hyak)
   - $800,000: Cost for on-premise hardware capable of producing this result in 53 hours
-  - 230: The number of these analysis tasks that could be run on AWS for $800k
+  - 230: The number of these analysis tasks that could be run on AWS for $800,000
 
-The research task samples the space of possible peptide structures. These structures must prove to
-be feasible and stable before they can be subjected to subsequent analysis. Ultimately a successful
-design may be constructed in the laboratory and subjected to validation analysis.
+## Science background
+
+Common to all life on earth there are 20 naturally occurring amino acids that are the building 
+blocks of proteins. Smaller chains of such amino acids are called peptides. Once a particular sequence
+of amino acids is bonded together end-to-end and released its rotational degrees of freedom may 
+permit it to fold up into an energetically favorable structure which may in turn serve some biological 
+function. The Rosetta software can analyze the manner of folding thereby connecting a hypothetical 
+amino acid chain to a peptide structure.
+
+The compute task described here samples the space of possible peptide structures. These structures 
+must prove to be feasible and stable before they can be subjected to subsequent analysis. Ultimately 
+a successful design may be constructed in the laboratory (using actual molecules) and subjected to 
+validation analysis.
 
 ## Cost tradeoffs
 
-Purchasing and maintaining dedicated hardware is the traditional approach to HPC. The cloud represents an
-alternative where falling costs, increasing convenience and outsourcing system administration are factors
-that are making the cloud increasingly competitive. At what point is cloud computing cost-equivalent to
-on premise? We suggest two types of break-even point.
+Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
+(HPC) such as the work described here. The public cloud represents an alternative approach wherein 
+falling costs, increasing convenience, read-to-use services and outsourced system administration 
+are factors in its favor. At what point is cloud computing cost-equivalent to on-premise computing? 
+We suggest two views of the break-even point.
 
 ### Hard Break-even
 
-In this case study the compute task ran for 53 hours on the AWS cloud and cost $3400. When an equivalent 
-single computer costing $3400 requires 3 years to complete the same task we could say that cloud cost has
-reached parity with on-premise cost, 3 years being the lifespan of the computer. It is worth noting
-however that the on-premise solution takes 500 times longer to finish.  Today we calculate the time to
-complete is 246 days, short of the hard break-even by 849 days.
+Take the lifespan of a purchased computer to be three years.  In this case study the compute task ran 
+for 53 hours on the AWS cloud and cost $3400. When an equivalent single computer costing $3400 requires 
+3 years to complete the same task we could say that cloud cost has reached parity with on-premise 
+cost. It is worth noting however that the on-premise solution takes 500 times longer to finish the 
+computation.  We calculate that the time to complete the compute task would be 246 days today, 
+849 days sooner than the hard break-even of three years. 
 
 ### Soft Break-even
 
 Soft break-even brings wall-clock time into consideration. At what point does waiting for compute tasks
-hinder the researcher's progress? In this case study the Researcher is fortunate to have available an
-on-premise cluster that would complete the same task in something like two weeks. However the time to
-complete scales linearly on this local resource: A larger, say 4X task the size would require two months; 
-whereas on the AWS Spot market the time to complete is still on the order of a weekend. The matter of
-personal time is *prima facia* a strong argument for working when possible on a cloud platform. We
-note that cloud vendor 'research credits' enable the Researcher to explore this benefit with relatively
-low financial risk. 
+hinder the researcher's progress? In this case study the Researcher is fortunate to have access to an
+on-premise cluster that would complete the same task in two weeks. On that cluster the completion time 
+scales with the size of the computation: A four-times-larger compute task would require two months
+whereas on the public cloud time to complete is unchanged: The larger task will still only require 
+wall clock time on the order of 48 hours. 
 
-## Terminology 
+This matter of personal or wall-clock time is *prima facia* a strong argument for working when 
+possible on a cloud platform. We note that cloud vendor [*research credits*](p_research_credits.html) 
+enable a Researcher to explore this benefit with relatively low financial entry risk. 
 
-- cfncluster: Cloud Formation Network cluster, an association of EC2 instances and software for parallel processing tasks 
-in coordination with a Scheduler.
-- Sun Grid Engine (SGE): A Scheduler commonly used on AWS in coordination with cfncluster
-- Configuration Instance: A small EC2 instance used to configure and run cfncluster 
-- Master: An AWS EC2 instance with necessary EBS volume attached running as the Master node of a cfncluster under SGE 
-- Worker: An AWS EC2 Spot market instance executing tasks on virtual CPUs
+## Key Terminology 
+
+- Batch service: An AWS service suited to larger-scale resource allocation on the AWS Spot market
+- cfncluster service: Abbreviated term for *Cloud Formation Network cluster*, an association of technologies
+that facilitate engaging many EC2 instances for parallel processing tasks in coordination with a Scheduler.
+- Sun Grid Engine (SGE): A Scheduler commonly used on AWS that coordinates with *cfncluster*
+- Configuration Instance: A small EC2 instance used to configure and run *cfncluster*
+- Master: An AWS EC2 instance (with EBS volume attached) running as the Master node of a *cfncluster* 
+under the SGE Scheduler
+- Worker: An AWS EC2 instance (for example from the Spot market pool) executing a large compute task
 
 - Optimization benchmarking: Studying the consequences of choice of EC2 instance, task loading, other configuration settings. 
 - Time optimization: Analysis of instances and settings to complete a given Job in minimal time.
 - Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.
 
-
 ## kilroy stack : open issues
 
 - AMI story
-
+- The cfncluster terminology is heavy; Batch is light
+- Elaborate on IAM User account permissions as key for cfncluster operations
+  - blanket 'admin' is over-sufficient and backing off of this should be stated
 
 ## (fossil) cfncluster / Rosetta configuration steps
 
@@ -148,8 +169,8 @@ Next we build a *config* file in the .cfncluster directory with the following co
 ```
 [aws]
 aws_region_name = us-west-2
-aws_access_key_id = ### REDACTED ###
-aws_secret_access_key =  ### REDACTED ###
+aws_access_key_id = ...etc
+aws_secret_access_key = ...etc
 
 [global]
 update_check = true
@@ -182,16 +203,17 @@ vpc_id = vpc-5c891c3b
 scaling_cooldown = 20
 ```
 
-Notice that for 'key_name' you must enter the key pair file name 
-associated with your IAM User identity without any extensions.
+For 'key_name' enter the key pair file name associated with an IAM User identity 
+without any extensions.
 
-Notice and check that max_queue_size is set to 300. (The original was a value of 2 
-which is not correct (but safe).) This is the maximum number of spot instances we will 
-be spinning up in the subsequent processing. 
+Check that max_queue_size is set to 300. (The original was a value of 2 which is too small 
+but a safe starting value.) This is the maximum number of Spot market instances that may
+be allocated. 
 
-Notice that the access keys are redacted. These are IAM User credentials. You must supply these 
-from an IAM User account (perhaps your own). This IAM User must have adequate permissions. 
-kilroy these should be stated. kilroy whether blanket 'admin' is sufficient should be made clear.
+The access keys above are redacted for reasons of form: Although they could be included we
+blank out such information to encourage awareness of security issues. These access keys are
+IAM User credentials supplied from an IAM User account. The IAM User must in turn have adequate 
+permissions to carry out cfncluster operations. 
 
 Look at the file **job_submission.sh**. There is a command argument *-nstruct* with a subsequent
 integer value such as 1000. This file will not be put to use on this machine; but will be copied to
@@ -225,7 +247,7 @@ Here is the general outline of what is happening:
 
 The **cfncluster create** command is building three EC2 instances from one existing AMI with some 
 additional configuration to follow. The first EC2 instance will be a Master instance and the
-other two are Worker instances. All three machines will be on standby once they start; they have 
+other two are Worker instances. All three machines will be on standby once they start; they have
 no work to do yet. 
 
 cfncluster builds all three instances according to the rules we set up in the config file; and 
@@ -240,15 +262,17 @@ Rosetta software and the Rosetta configuration files pre-installed.
 
 ### Starting Rosetta
 
-After **cfncluster create** finishes we will log in to the Master and use the qsub command to submit 
-the Rosetta job. This will in turn create a job queue: A long list of processing tasks (perhaps 
-100,000 of them). These jobs will be schedule one by one, that is: Assigned to the Worker nodes. 
+After **cfncluster create** finishes log in to Master and use **qsub** to submit 
+the Rosetta job. This creates a job queue: A long list of processing tasks (for example
+100,000) which are to be executed. These jobs will be scheduled one by one: Assigned to 
+Worker nodes. 
 
-Each Worker node will have some number of 'virtual CPUs' available for running Rosetta jobs in 
-parallel. These are compute-intensive jobs and each may complete in a matter of a few minutes. 
-The number of jobs is given as 100,000 as this (for our initial implementation) is due to a 
-sufficient sample density in a Monte Carlo simulation. 
+Each Worker node has a number of 'virtual CPUs' available for running Rosetta jobs in 
+parallel. These are compute-intensive jobs. Each may complete in a matter of a few 
+minutes.  The large number of jobs is typical from required sample density in a 
+Monte Carlo task. 
 
+kilroy left off here
 While we may run 100,000 jobs these may be distributed across perhaps only 300 Workers. These 
 Workers will (for this example) be powerful machines, each with the capacity to run 36 jobs 
 simultaneously. The jobs we expect to take about 8 minutes each; so in the course of an hour we 
