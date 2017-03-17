@@ -49,6 +49,7 @@ across AWS availability zones (AZs).***
     - 5904: Equivalent number of vCPUs (virtual processors)
     - $0.40: Spot market cost per instance-hour
       - showed no significant cost variation over the task duration, nor impact on market price
+      - $0.012 per vCPU-hour. Optimization saved > $600 over other instance choices
     - $3400: Task compute cost (covered by an AWS research credit grant)
   - 5.2 million: Number of positive results
 
@@ -117,8 +118,18 @@ under the SGE Scheduler
 - The cfncluster terminology is heavy; Batch is light
 - Elaborate on IAM User account permissions as key for cfncluster operations
   - blanket 'admin' is over-sufficient and backing off of this should be stated
+- Remarks on the wiki
+  - S3 region = US Standard (there is no N. Virginia) should be called out
 
 ## (fossil) cfncluster / Rosetta configuration steps
+
+The Rosetta work by Srihari Vignesh is currently captured 
+at [this wiki](https://github.com/Sriharivignesh/Rosetta-Protein-Folding-Project/wiki).
+
+The remarks on tracing the wiki steps are up above in the kilroy stack section.
+
+The following content is from earlier, i.e. it is residual from earlier progress focused
+on using cfncluster.
 
 See [this page](acs_rosetta.html) for the screen captures: All from console and terminal.
 
