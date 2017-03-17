@@ -81,6 +81,7 @@ We contend that data system failure or compromise is most likely to be caused by
 - Differentiate SQS and SNS
 - What is Ansible and what does it get us?
 - Can/should the NAT Gateway be used to pull updates from GitHub?  Generalize.
+- DDil on elastic IP: NAT Gateway? Bastion? IG? 
 
 ## User story
 
@@ -214,15 +215,18 @@ and obsessive re-naming of everything using the Project Identifier Tag (PIT)
 
 #### Initial steps
 
-- Absolute First Priority Step 0: Designate to AWS that this account involves PHI/HIPAA data
+- Absolute First Priority Step 0: Designate to AWS that this account involves PII/PHI/HIPAA data
 
-- Keep in mind: Suppose this is a multi-day effort: Shut down instances to save money
+- Keep in mind: This will be a multi-day effort. Shut down instances to save money at the end 
+of the day.
 
 Our objective is (see Figure below) to use a Laptop or other cloud-external data source
-to feed data into a HIPAA-Compliant Data System (**HCDS**) wherein we operate on that data. The 
-data are assumed to be Private Health Information (PHI).
+to feed data into a HIPAA-Compliant Data System **HCDS** wherein we operate on that data. 
+The data are assumed to be Private Health Information (PHI) or Personally Identifiable 
+Information (PII) as described in HIPAA regulations.
 
 - Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything
+  - This is simply a handy string of characters
   - In our example here PIT = 'hipaa'. Short, easy to read = better
 
 - Identify our source computer as **L**, a Laptop sitting in a coffee shop 
@@ -233,11 +237,13 @@ data are assumed to be Private Health Information (PHI).
 We are starting with a data source and will return to encryption later. The first burst 
 of activity will be the creation of a Virtual Private Cloud (VPC) on AWS per the diagram
 above. We assume you have done Step 0 above and are acting in the capacity of a
-system builder; but you may not be an experienced IT professional. You are building this 
-environment, you may or may not necessarily be doing research.
+system builder; but you may not be an experienced IT professional. That is: We assume
+that you are building this environment and that you may or may not be doing research
+once it is built; but someone will.
 
 The easiest way to create a VPC is using the console Wizard. That method is covered in a 
-section below.  The method we use here is manual to help illuminate the components.
+section below and it can automate many of the steps we describe manually.  We describe 
+the manual method to illuminate the components.
 
 #### Diagram notes
 
@@ -250,62 +256,61 @@ section below.  The method we use here is manual to help illuminate the componen
 
 #### To continue on first steps
 
-CIDR block syntax: The specification **10.0.0.0/16** has two parts: **w.x.y.z** and **/N**. 
+##### CIDR block specification
+
+The CIDR block syntax uses a specification like **10.0.0.0/16**. This has two 
+components: **w.x.y.z** and **/N**. 
 w, x, y and z are integers from 0 to 255. **w.x.y.z** defines a default ip address which
 is subject to modification as follows: **N** determines an addressable space of size 
 s = 2^(32 - N). For example N = 16 produces s = 2^16 or s = 65536 available addresses.
 These addresses are right-justified in the **w.x.y.z** string. An example may help 
-make this clear. Suppose N = 24. The s = 2^8 = 256 in decimal, i.e 0, 1, 2, ..., 255. 
-These decimal values precisely correspond to the right-most field in **w.x.y.z**, 
-namely the **z** value. So this CIDR block defines a set of ip addresses **w.x.y.0**, 
-**w.x.y.1**, **w.x.y.2**, ..., **w.x.y.255**. 
+make this clear. Suppose N = 24. Then s = 2^8 = 256 and 256 addresses are available:
+0, 1, 2, ..., 255.  These decimal values precisely correspond to the right-most field 
+in **w.x.y.z**, specifically the **z** value. So this CIDR block defines a set of ip 
+addresses **w.x.y.0**, **w.x.y.1**, **w.x.y.2**, ..., **w.x.y.255**. 
 
 These ip addresses are defined with respect to the VPC. They are local ip addresses, 
 in contrast with the global ip addresses that are mapped to the entire internet. 
 Communication protocols establish the context. Clearly for operations within the VPC 
 the local context is what is in use. 
 
-This is two bytes so y and z are usable to cover.  Hence 10.0.0.0/16 means 
-"addresses of the form 10.0.y.z". Any subnets we place within the VPC will be limited 
-by this address space.  We will define two subnets within the VPC each with respective 
-CIDR ranges: Subranges of the VPC CIDR block.  A subnet with CIDR = 10.0.1.0/24 has 256 
-addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: .0, .1, 
-.2, .3, .255; so on a /24 only 251 addresses remain; for example 10.0.1.4, 10.0.1.5,
-10.0.1.6, ..., 10.0.1.254.  
+In the case of our first example **10.0.0.0/16** two bytes (y and z) are available
+for the ip address space.  The addresses will be in the form 10.0.y.z". 
+Any subnets we place within the VPC will be limited by this address space.  
+We will continue by defining two subnets within the VPC each with respective 
+CIDR ranges. These will be subranges of the VPC CIDR block.  
+The first subnet will have CIDR = 10.0.0.0/24 has 256 
+where the ip addresses will be of the form 10.0.0.z.  
+The second subnet will have CIDR = 10.0.1.0/24 where 
+the ip addresses will be of the form 10.0.1.z.  
 
-- On AWS create a VPC **V**
+From each subnet AWS appropriates a few ip addresses for internal use: 
+.0, .1, .2, .3, and .255.  On a /24 subnet, therefore, only 251 addresses 
+remain; for example 10.0.1.4, 10.0.1.5, 10.0.1.6, ..., 10.0.1.254.  
+
+#### Create a VPC **V**
 
   - Give **V** a PIT name 
-  - **V** will not use IPv6v.  This makes matters simpler.
-  - **V** will have a CIDR block defining an ip address space
-    - We use 10.0.0.0/16
-  - **V** automatically has a routing table **RT**
-    - After creating **V**: Select Routing Tables, sort by VPC and give **RT** a PIT name
-      - Here: 'hipaa_routingtable'
-      - The routing table is a logical mapping of ip addresses to destinations
-  - **V** automatically has a security group **SG**
-    - After creating **V**: Select Security Groups, sort by VPC and give **SG** a PIT name
-      - Here: 'hipaa_securitygroup'
-  - **V** will have both public and private subnets 
-    - The private subnet **Si** is where work on PHI proceeds
-      - CIDR block 10.0.1.0/24
-      - **Si** will be firewalled behind a NAT gateway
-    - The public subnet **Su** is for internet access
-      - CIDR block 10.0.0.0/24
-      - **Su** will connect with the internet via an Internet Gateway
-      - **Su** will be home to the Bastion server **B** 
-      - **Su** will be home to the NAT Gateway **NG**
-        - **B** and **NG** are on the public subnet but also have private subnet ip addresses 
-          - That is: Everthing on the public subnet also has a private ip address in the VPC. 
-          - This will obviously chew up the private ip address range capacity
-          - Public names will resolve to private addresses within the VPS at need.
 
-  - After creating **V** create an associated Flow Log **FL**
-    - As of March 2017 the UI is a little tetchy so be prepared to go around twice
+  - **V** will not use IPv6v.  This makes matters simpler.
+
+  - **V** will have a CIDR block defining an ip address space
+    - We use 10.0.0.0/16: The last two fields are available for ip addresses.
+
+  - **V** is given a routing table **RT**
+    - Select Routing Tables, sort by VPC and give **RT** a PIT name
+      - 'hipaa_routingtable'
+      - The routing table is a logical mapping of ip addresses to destinations
+
+  - **V** is given a security group **SG**
+    - Select Security Groups, sort by VPC and give **SG** a PIT name
+      - 'hipaa_securitygroup'
+
+  - Create an associated Flow Log **FL**
+    - In March 2017 the AWS console UI was a little tetchy so be prepared to go around twice
     - Click the Create Flow Log button
-      - Assuming permissions are not set: Note the Hypertext to set up permissions 
-        - This is because we need to define the proper Role
-        - So click on this hypertext
+      - Assuming permissions are not set: Click on the Hypertext to **Set up permissions**
+        - Because: We need to define the proper Role
         - On the Role creation page: Give the Role a PIT name; Create new; Allow
         - You now have an IAM Role for FlowLogs
           - This gives the account the necessary AWS permissions to work with Flow Logs
@@ -315,47 +320,65 @@ addresses of the form 10.0.1.z.  From each subnet AWS grabs a few ip addresses: 
         - Filter = All is required (not "accepted" and not "rejected" traffic)
         - Role: Select the role we just created above
         - Destination log group: Give it a PIT name 
-          - We use hipaa_loggroup
+          - Example: hipaa_loggroup
+
+  - Create subnets **Spublic** and **Sprivate**
+    - The private subnet **Sprivate** is where work on PHI proceeds
+      - CIDR block 10.0.1.0/24
+      - **Si** will be firewalled behind a NAT gateway
+    - The public subnet **Spublic** is for internet access
+      - CIDR block 10.0.0.0/24
+      - **Spublic** connects with the internet via an Internet Gateway
+      - **Spublic** will be home to a Bastion server **B** 
+      - **Spublic** will be home to a NAT Gateway **NG**
+        - **B** and **NG** are on the public subnet but also have private subnet ip addresses 
+          - That is: Everthing on the public subnet also has a private ip address in the VPC. 
+          - This will use the private ip address space 
+          - Public names will resolve to private addresses within the VPS at need.
+    - Create an an Internet Gateway **IG**
+      - Give a PIT name as in 'hipaa_internetgateway'
+      - Attach hipaa_internetgateway to **V**
+    - Create a NAT Gateway
+      - PIT name
+      - Elastic IP assignment may come into play here
+    - Create a routing table **RTpublic** 
+      - This will supersede the **V** routing table **RT**
+        - 
+      - Assign PIT names (hipaa_publicroutes, hipaa_privateroutes)
+      - For **RTpublic**
+        - Select the Subnet Associations tab 
+          - Edit subnet association for this public subnet. RT > Subnet > VPC
+        - Select the Routes tab 
+          - Edit (under Routes) and add 0.0.0.0/0 pointing to **IG**
+      - For **RTprivate**
+        - Select the Subnet Associations tab 
+          - Edit subnet association for this public subnet. RT > Subnet > VPC
+        - Select the Routes tab 
+          - Edit (under Routes) and add 0.0.0.0/0 pointing to **IG**
+
+Note: The console column for subnets shows "Auto-assign Public IP" and this should be set to
+*Yes* for Spublic. Note the column title includes the term *Public IP*. The Private subnet 
+should have this set to *No*. If necessary change these entries using the *Subnet Actions* 
+button. 
+
+Note: In the table of subnets there is a "Default Subnet" column. In this example both **Spublic** 
+and **Sprivate**  have this set to *No* so there is no default subnet. We will change this later.  
+The change is made in the routing table **RT** in **V**.
+
+Note: In a routing table an entry reading 0.0.0.0/0 refers to the address space of the internet.
 
 
-- On **V** create subnets **Su** and **Si**
-  - Note that Create VPC does give us the option of creating a VPC with a pre-built pub/priv... 
-    - See below for more on this faster template-driven approach
-
-Note: The console column for subnets shows "Auto-assign Public IP" and this should be Yes for our 
-public subnet (note column name includes *Public IP*). The Private subnet should have this set
-to No. If necessary change these entries using the "Subnet Actions" button. 
-
-In the subnet table there is a "Default Subnet" column which is a boolean. In this example both
-**Su** and **Si**  have this set to No so there is no default subnet. We fix this later.
-The fix happens in the routing table **RT** which is built into the VPC.
-
-- Give **RT** a PIT-name hipaa_routingtable
-  - This is a global VPC-wide routing table; it can be superseded by a subnet's routing table
-
-The VPC routing table **RT** reads:  
+**RT** reads:  
 ```
-10.0.0.0/16 points to the VPC "local" stuf
-0.0.0.0/0 points to the NAT gateway and to the Internet
+10.0.0.0/16         VPC "local" 
+0.0.0.0/0           NAT gateway 
 ```
 
-**Su** has a routing table (PIT name is hipaa_public_routingtable)  which has 
+**RTpublic** (hipaa_public_routingtable) has
+```
 10.0.0.0/16 
-0.0.0.0/0 Internet gateway
-
-Before creating more RTs we need an Internet Gateway IG
-This is easily done and also attach hipaa_internetgateway to hipaa the VPC
-
-
-so Create Route Table: hipaa_publicsubnet on the hipaa VPC
-Go to Subnet Associations tab for this RT
-edit this to do subnet association with the public subnet. Obviously. So RT > Subnet > VPC
-  call this hipaa_publicroutes 
-Go to Routes tab for this RT
-  For this RT Edit (under Routes) and add 0.0.0.0/0 pointing to the IG
-
-Now add the NAT Gateway; and then we will modify the main RT to point to this
-  - There may be some Elastic IP assignment voodoo 
+0.0.0.0/0      Internet gateway
+```
 
 WE now have two RTs. VPC and Public. VPC 0-entry points at the NAT Gateway: All internet-traffic
 will route through the NAT. 
