@@ -15,7 +15,7 @@ This page describes an example Geoserver deployment for hosting and visualizing 
 ## Links
 [Webmap created using Leaflet.js](http://lidarwebmap.cloudmaven.org)
 
-[Geoserver backend with hosted Lidar data](http://geoserver.cloudmaven.org)
+[Geoserver backend with hosted Lidar data](http://lidargeoserver.cloudmaven.org)
 
 ## Warnings
 
