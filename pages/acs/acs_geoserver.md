@@ -10,9 +10,8 @@ folder: acs
 ---
 
 ## Introduction
-This page describes an example Geoserver deployment for hosting and visualizing Lidar (satellite) data. This prototype was developed for the University of Washington Library Data Services. 
+This page describes an example Geoserver deployment for hosting and visualizing Lidar (satellite) data. This prototype was developed for the University of Washington Library Data Services. Geoserver is an open-source map server and leaflet.js is an open-source javacript library for creating interactive maps. The steps outlined here will show you that creating your own map server for geospatial data collaboration is easily achievable. 
 
- 
 ## Links
 [Webmap created using Leaflet.js](http://lidarwebmap.cloudmaven.org)
 
@@ -96,12 +95,32 @@ You will need to log in to Geoserver. The default username and password is admin
 
 > Remember to change your password as soon as possible for security reasons!!! 
 
-Select Stores > Add New Store > GeoTIFF and enter the na
+Select Stores > Add New Store > GeoTIFF (Under Raster data source) and enter the data source name. 
 
 ![](/documentation/images/acs/acs_geoserver_img0002.png)  
 
+Under Connection Parameters, you can browse to the location of your Geotiff file.
+
 ![](/documentation/images/acs/acs_geoserver_img0003.png)
 
+That's it. Now the GeoTiff is loaded. Visitors or collaborators will use the Layer Preview to view the available geospatial layers. 
+
+![](/documentation/images/acs/acs_geoserver_img0004.png) 
+
 ## Creating a Webmap 
-The webmap was created using Leaflet.js.  
+
+To create a front end where you can browse the available geospatial data stored on Geoserver, you need to install the Apache server and we use Leaflet.js to render the web map. 
+
+```
+$ sudo apt-get update
+$ sudo apt-get install apache2
+
+```
+
+A sample leaflet.js code can be found on https://github.com/cloudmaven/webmap
+
+You will need to copy the code into /var/www/html/ which is a folder generated when you installed Apache
+
+To use our leaflet code as it to generate your own webmap you only need to change the map center latitude and longitude so it matches the center of your domain, and the URL of your geoserver. 
+ 
 {% include links.html %}
