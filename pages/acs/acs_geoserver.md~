@@ -10,31 +10,14 @@ folder: acs
 ---
 
 ## Introduction
-
-This page describes a Geoserver deployment for hosting and visualizing LIDAR (remote sensing) data. 
-This prototype was developed for the University of Washington Library Data Services. We use two complementary
-technologies in this prototype: Geoserver and Leaflet.  Geoserver is an open-source map server that can
-provide geospatial data in a number of possible formats via query/retrieval from an internal database.
-Leaflet is more properly 'leaflet.js', an open-source javacript library for creating interactive maps
-where content is provided on the fly by OpenStreetMap, an online map tile resource.  
-
-The steps outlined here show that creating your own map server for geospatial data collaboration 
-is quite feasible using pre-existing tools. 
+This page describes an example Geoserver deployment for hosting and visualizing Lidar (satellite) data. This prototype was developed for the University of Washington Library Data Services. Geoserver is an open-source map server and leaflet.js is an open-source javacript library for creating interactive maps. The steps outlined here will show you that creating your own map server for geospatial data collaboration is easily achievable. 
 
 ## Links
+[Webmap created using Leaflet.js](http://lidarwebmap.cloudmaven.org)
 
-- [Information about leaflet.js](http://leafletjs.com/)
-- [Information about Geoserver](http://geoserver.org/)
-- [Information about OpenStreetMap](http://www.openstreetmap.org/)
-
-
-- [LIDAR Demo: Map interface (using Leaflet.js)](http://lidarwebmap.cloudmaven.org)
-- [LIDAR Demo: Data access via a Geoserver instance hosting Lidar data](http://lidargeoserver.cloudmaven.org)
-
+[Geoserver backend with hosted Lidar data](http://lidargeoserver.cloudmaven.org)
 
 ## Warnings
-
-- ***The UI alpha release is scheduled for June 2017***
 
 ## Installing Geoserver on Ubuntu 16.04 with Tomcat 7
 
