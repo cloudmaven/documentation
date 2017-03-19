@@ -266,7 +266,7 @@ entries:
       url: /acs_nicadif.html
       output: web, pdf
 
-    - title: Geoserver
+    - title: Geoserver and LIDAR
       url: /acs_geoserver.html
       output: web, pdf
 
