@@ -142,7 +142,7 @@ under the SGE Scheduler
       such as a c4.8xlarge. This is ok: The scaling to machine power is automated.
   - Page 4: Selection is Ubuntu and Docker 16.04; other features like Kubernetes does not factor in
   - The EC2 launch key pair section should be beefed up with references to the GitHub warning and so on
-  - Emph on the prefix ubuntu at
+  - Emph 'ubuntu@'
 
 ## (fossil) cfncluster / Rosetta configuration steps
 
