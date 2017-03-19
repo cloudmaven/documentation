@@ -119,7 +119,20 @@ under the SGE Scheduler
 - Elaborate on IAM User account permissions as key for cfncluster operations
   - blanket 'admin' is over-sufficient and backing off of this should be stated
 - Remarks on the wiki
+  - "In what follows we try to emphasize what you *do* need to change on the forms; hence 
+    if there is no comment you should leave the default value as-is."
   - S3 region = US Standard (there is no N. Virginia) should be called out
+  - Elastic ip: 34.205.126.203
+  - On create VPC page: On Wizard setup: Do not click "Add Endpoint"
+  - Must modify the CIDR block description in HIPAA and link to that (actually it belongs elsewhere...)
+  - Page 4: At top: Motivate "what kind of EC2 do we start with?"
+    - Point out that the Community AMI describes capabilities, not EC2 instance type: Separate concepts
+    - In particular we must carefully elaborate: The EC2 instance in the next step (c4.4xlarge) is a
+      model for building an AMI; and this AMI may subsequently be pulled into a *different* EC2 type
+      such as a c4.8xlarge. This is ok: The scaling to machine power is automated.
+  - Page 4: Selection is Ubuntu and Docker 16.04; other features like Kubernetes does not factor in
+  - The EC2 launch key pair section should be beefed up with references to the GitHub warning and so on
+  - Emph 'ubuntu@'
 
 ## (fossil) cfncluster / Rosetta configuration steps
 

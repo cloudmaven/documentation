@@ -246,7 +246,7 @@ entries:
       url: /ccs_precis.html
       output: web, pdf
 
-    - title: High Mountain Asia (HiMAT/NASA)
+    - title: Dynamic Information Framework (DIF)
       url: /ccs_DIF.html
       output: web, pdf
 
@@ -266,7 +266,7 @@ entries:
       url: /acs_nicadif.html
       output: web, pdf
 
-    - title: Geoserver
+    - title: Geoserver and LIDAR
       url: /acs_geoserver.html
       output: web, pdf
 
