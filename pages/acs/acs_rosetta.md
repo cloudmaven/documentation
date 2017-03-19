@@ -62,6 +62,16 @@ permit it to fold up into an energetically favorable structure which may in turn
 function. The Rosetta software can analyze the manner of folding thereby connecting a hypothetical 
 amino acid chain to a peptide structure.
 
+The AWS research credits provided for this work have contributed significantly to the challenge of 
+large scale sampling of peptide scaffolds -- stable structures that would be the basis for 
+developing new therapeutics. The practical challenge is the matching of such structures to 
+naturally occuring geometries of interest within the organism's molecular landscape, often 
+described using a 'lock and key' analogy: A given therapeutic molecule could be designed to 
+fit a particular binding site either enhancing or restricting some metabolic process. 
+One ultimate aim then would be to comprehensively sample all possible shapes such that 
+a large number of highly stable 'keys' are ready to be molded or slightly re-configured into 
+any desired shape.
+
 The compute task described here samples the space of possible peptide structures. These structures 
 must prove to be feasible and stable before they can be subjected to subsequent analysis. Ultimately 
 a successful design may be constructed in the laboratory (using actual molecules) and subjected to 
