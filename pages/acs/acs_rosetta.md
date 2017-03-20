@@ -41,6 +41,10 @@ Components include:
 - [Baker Lab Rosetta software suite](https://www.bakerlab.org)
 - [Rosetta (from COMOTION)](https://els.comotion.uw.edu/express_license_technologies/rosetta)
 
+
+- [Procedural Documentation (temporary wiki)](https://github.com/robfatland/Rosetta/wiki)
+
+
 ## Preliminary Remarks
 
 - The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
