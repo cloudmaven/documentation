@@ -11,15 +11,28 @@ folder: acs
 
 ## Introduction
 
-This page describes a cloud adoption research case study implementing the Rosetta peptide 
-design software on AWS. The study shows that a *moderately large* compute task runs quickly
-and cost-effectively on the public cloud. We contrast this result with the time-consuming 
-process of purchasing, configuring, operating, maintaining and updating a compute cluster.  
+This page presents a research-to-cloud success: a case study in which powerful 
+molecular design software is run at large scale on the AWS public cloud to explore
+the possible scaffolding-like structures of small proteins called peptides.  This new 
+approach to protein design rapidly generates encyclopedic results that could be used 
+to create new therapeutic medicines.
 
-This work makes use of the [AWS Spot market](aws_spot_market.html), optimization
-analysis of [EC2](aws_ec2.html) instances and the AWS [**Batch**](https://aws.amazon.com/batch/)
-service. The analysis is asynchronously parallel meaning that individual compute nodes 
-proceed independently.
+The study shows that a *moderately large* compute task runs quickly and cost-effectively 
+on the public cloud. This result contrasts with the traditional time-consuming process 
+of purchasing, configuring, operating, maintaining and updating a compute cluster which
+in turn would compute more slowly.
+
+This success on the AWS public cloud uses key technologies and methods that we describe
+in further detail below. The methods described are applicable to any research computing 
+task that can be broken into many independent parallel computational threads. 
+Components include:
+
+- The [Baker Lab Rosetta software suite](https://www.bakerlab.org)
+- Powerful [EC2 compute instances](https://aws.amazon.com/ec2)
+- The [AWS Spot market](aws_spot_market.html)i
+- [Optimization analysis](https://aws.amazon.com/ec2/pricing/on-demand/) of cloud computing instance types
+- The AWS [**Batch**](https://aws.amazon.com/batch/) service
+- The [AWS Research Credit Grant program](https://aws.amazon.com/grants/)
 
 ## Links
 
@@ -28,17 +41,25 @@ proceed independently.
 - [Baker Lab Rosetta software suite](https://www.bakerlab.org)
 - [Rosetta (from COMOTION)](https://els.comotion.uw.edu/express_license_technologies/rosetta)
 
-## Warnings
+## Preliminary Remarks
 
-- ***This study involves large-scale and highly parallel computing using the AWS Spot 
-market.  The Spot instance pool is significantly smaller than the On Demand pool which can 
-limit computation scale and/or affect Spot market instance pricing. We overcome these 
-constraints with choice of region and by adopting the Batch service to allocate tasks 
-across AWS availability zones (AZs).***
+- The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
+features much better cost-per-hour rates.  We found that this smaller pool can constrain compute 
+scale in default usage patterns; so a major part of this effort was determining how to overcome 
+these constraints. We did so via choice of region combined with adoption of the Batch service 
+to allocate tasks across AWS availability zones (AZs) within that region. 
+This procedure is described in detail below. 
+
+- This work was directed by the first author of the above-cited
+[paper on peptide design](http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html),
+Gaurav Bhardwaj.  He is herein referred to as **The Researcher**.
 
 ## Overview
 
-- Objective: Examine structure of proteins built from a small number of amino acids
+- Objectives 
+  - Explore possible structures of proteins built from a small number of amino acids
+  - Paralellize the analysis software on the public cloud
+  - Begin to demonstrate the compute power of the public cloud
 - Means: The Rosetta peptide design software implemented on the AWS public cloud
 - Key numbers from the main compute task
   - 53: wall clock hours required to complete calculations
@@ -55,22 +76,38 @@ across AWS availability zones (AZs).***
 
 ## Science background
 
+AWS research credits provided for this work have contributed significantly to the challenge 
+of large scale sampling of peptide scaffolds -- stable structures that would be the basis for 
+developing new therapeutics. This section is a brief sketch of the scientific basis. 
+
 Common to all life on earth there are 20 naturally occurring amino acids that are the building 
 blocks of proteins. Smaller chains of such amino acids are called peptides. Once a particular sequence
 of amino acids is bonded together end-to-end and released its rotational degrees of freedom may 
-permit it to fold up into an energetically favorable structure which may in turn serve some biological 
-function. The Rosetta software can analyze the manner of folding thereby connecting a hypothetical 
-amino acid chain to a peptide structure.
+permit it to fold up into an energetically favorable structure. This structure may in turn serve 
+some chemical/biological function. The Rosetta software can analyze the manner of folding thereby 
+connecting a hypothetical amino acid sequence to a protein structure, also called a *scaffold*.
+
+The practical challenge is the matching of such structures to naturally occuring geometries of 
+interest within the organism's molecular landscape, often described using a 'lock and key' 
+analogy: A given therapeutic molecule could be designed to fit a particular binding site 
+for example on a cell wall, thereby either enhancing or restricting some metabolic process
+at that location.  One ultimate aim then would be to comprehensively sample all possible shapes 
+such that a large number of highly stable 'keys' are ready to be molded or slightly re-configured 
+into any desired shape.
 
 The compute task described here samples the space of possible peptide structures. These structures 
-must prove to be feasible and stable before they can be subjected to subsequent analysis. Ultimately 
-a successful design may be constructed in the laboratory (using actual molecules) and subjected to 
-validation analysis.
+must prove to be feasible and stable before they can be subjected to further analysis. Ultimately 
+a design of interest (from the computation) may be synthesized as an actual physical protein in 
+the laboratory (a fascinating process) which would then be subjected to chemical analysis to 
+validate that its structure is indeed as predicted by the software.
 
 ## Cost tradeoffs
 
 Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
-(HPC) such as the work described here. The public cloud represents an alternative approach wherein 
+(HPC) such as the work described here. This approach suffers from two limitations
+
+
+The public cloud represents an alternative approach wherein 
 falling costs, increasing convenience, read-to-use services and outsourced system administration 
 are factors in its favor. At what point is cloud computing cost-equivalent to on-premise computing? 
 We suggest two views of the break-even point.
