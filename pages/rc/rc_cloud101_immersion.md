@@ -67,7 +67,7 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 * Lunch provided (12.30pm -- 1.30pm)
 
 * Build a web framework for collaborative data sharing (1.30pm -- 2:45pm + coffee break) 
-  [Tutorial](https://cloudmaven.github.io/cloud101_cloudproviders/)
+  [Tutorial](https://cloudmaven.github.io/cloud101_webframework/)
   - Deploy a Django web app on AWS Elastic Beanstalk using the Beanstalk CLI
   - Deploy a Django web app on AWS Elastic Beanstalk using PyCharm
   - Deploy a Django web app on Azure using Visual Studio (can be demo only; Visual Studio not necessary)
