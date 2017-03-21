@@ -60,7 +60,7 @@ This one-day, hands-on immersion course will introduce participants to  three ma
   - Cloud storage, ingress and egress costing 
 
 * Web frameworks (12.00pm -- 12.30pm)
-  [Tutorial](https://cloudmaven.github.io/cloud101_webframeworks/)
+  [Tutorial](https://cloudmaven.github.io/cloud101_webframework/)
   - Wiring up a Django web framework to a data resource
   - Work with Leaflet to create a webmap
   
