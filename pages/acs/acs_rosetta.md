@@ -110,11 +110,10 @@ validate that its structure is indeed as predicted by the software.
 Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
 (HPC) such as the work described here. This approach suffers from two limitations
 
-
-The public cloud represents an alternative approach wherein 
-falling costs, increasing convenience, read-to-use services and outsourced system administration 
-are factors in its favor. At what point is cloud computing cost-equivalent to on-premise computing? 
-We suggest two views of the break-even point.
+The public cloud represents an alternative approach wherein falling costs, increasing convenience, 
+read-to-use services and outsourced system administration are factors in its favor. At what point 
+is cloud computing cost-equivalent to on-premise computing?  We suggest two views of the 
+break-even point.
 
 ### Hard Break-even
 
@@ -153,7 +152,7 @@ under the SGE Scheduler
 - Time optimization: Analysis of instances and settings to complete a given Job in minimal time.
 - Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.
 
-## kilroy stack : open issues
+## kilroy stack (open issues)
 
 - AMI story
 - The cfncluster terminology is heavy; Batch is light
