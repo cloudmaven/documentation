@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Neurohackweek at the eScience Institute using AWS">
-<meta name="keywords" content="researchcomputingcasestudyneuronneurohackhackhackweek,  research,computing,case,study,neuron,neurohack,hack,hackweek">
+<meta name="keywords" content="research_computingcase_studiesAWSgithub,  research,computing,case,study,neuron,neurohack,hack,hackweek">
 <title>Research Computing Neurohackweek | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,30 +731,26 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/acs_neurohackweek.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-    
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/acs/acs_neurohackweek.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
 
     
 
-  <h1 id="aws-at-neurohackweek-2016">AWS at Neurohackweek 2016</h1>
+    
 
-<h3 id="university-of-washington-escience-institute">University of Washington eScience Institute</h3>
+  <h2 id="introduction">Introduction</h2>
 
-<h3 id="by-ariel-rokem-and-rob-fatland">By Ariel Rokem and Rob Fatland</h3>
+<p>The purpose of this page is to describe a particular <strong>hackathon</strong> event – one concerned with neuroscience – in relation to
+cloud computing. We describe provisioning of accounts, providing participant access, monitoring resources and evaluating total
+cost. The underlying idea is a reversal of the usual cloud scalability model, to wit: The public cloud is a natural environment 
+for supporting a burst in the number of available scientists.</p>
 
-<h2 id="summary">Summary</h2>
-<p>Neurohackweek ran September 5–9 2016 at the UW eScience Institute with 40+ attendees; with a strong emphasis on team projects built into the agenda. 
-Four of these team projects made use of cloud computing resources provided by UW IT to great effect as described below. UW IT Research Computing will 
-continue to work with the event organizer Ariel Rokem and with this community to expand and solidify the contribution of cloud computing to this 
-important research. This continuation will include provision of compute resources, hosting training sessions and supporting consultation with AWS solution 
-architects.</p>
+<h2 id="links">Links</h2>
 
-<h2 id="background">Background</h2>
-<p>Neurohackweek is an annual 5-day workshop held at the University of Washington eScience Institute held this year on September 5th-9th (2016). 
-The workshop convened more than 40 participants: graduate students, post-docs, faculty and research staff from all over the US and from the 
-UK and the Netherlands, from Psychology, Neuroscience, Computer Science and other fields. The workshop was structured as part conference, 
-part summer school, and part hackathon. During the week, participants took part in workshops and tutorials, presented their work in talks, 
-and worked in small teams on projects or <em>hacks</em>, with results presented at the end of the week.</p>
+<h2 id="warnings">Warnings</h2>
+
+<h2 id="neurohackweek-presented-by-ariel-rokem-and-rob-fatland"><strong>Neurohackweek</strong> presented by Ariel Rokem and Rob Fatland</h2>
+
+<h3 id="background">Background</h3>
 
 
 
@@ -688,19 +760,19 @@ and worked in small teams on projects or <em>hacks</em>, with results presented 
         
         
         
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
         
         
         
+        <a href="tag_case_studies.html" class="btn btn-default navbar-btn cursorNorm" role="button">case_studies</a>
         
         
         
+        <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
         
         
         
-        
-        
-        
-        
+        <a href="tag_github.html" class="btn btn-default navbar-btn cursorNorm" role="button">github</a>
         
         
         
@@ -716,7 +788,7 @@ and worked in small teams on projects or <em>hacks</em>, with results presented 
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Mar 22, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

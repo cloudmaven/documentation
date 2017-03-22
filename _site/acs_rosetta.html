@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rosetta peptide design studies on the AWS cloud">
+<meta name="keywords" content="Rosettascaleresearch_computingAWSorganic_chemistrydata_scienceresearch_creditscase_studies,  research_computing, data_science">
+<title>Rosetta scale computing case study | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Rosetta scale computing case study page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Rosetta scale computing case study">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cc_what_is_the_cloud.html">What is the cloud?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_data_security.html">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_glossary.html">Glossary</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_cost_management.html">Cost management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_compute_power.html">Compute power</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_docker_containers.html">Docker containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_internet_of_things.html">Internet of things</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_technical.html">Cloud technical</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="p_consulting.html">Consulting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="p_costing.html">Costing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research computing</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_data_science.html">Data science</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_research_on_the_web.html">Research on the web</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_python.html">Visualization Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2.html">EC2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spot_market.html">Spot market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cluster.html">Cluster</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure</a>
+        <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_training.html">Training</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_visual_studio.html">Visual Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_web_framework.html">Web Framework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_machine_learning.html">Machine Learning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="acs_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_neurohackweek.html">Neurohackweek</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_cfd.html">CFD</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Rosetta scale computing case study</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Rosetta peptide design studies on the AWS cloud</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/acs/acs_rosetta.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+    
+
+  <h2 id="introduction">Introduction</h2>
+
+<p>This page presents a research-to-cloud success: a case study in which powerful 
+molecular design software is run at large scale on the AWS public cloud to explore
+the possible scaffolding-like structures of small proteins called peptides.  This new 
+approach to protein design rapidly generates encyclopedic results that could be used 
+to create new therapeutic medicines.</p>
+
+<p>The study shows that a <em>moderately large</em> compute task runs quickly and cost-effectively 
+on the public cloud. This result contrasts with the traditional time-consuming process 
+of purchasing, configuring, operating, maintaining and updating a compute cluster which
+in turn would compute more slowly.</p>
+
+<p>This success on the AWS public cloud uses key technologies and methods that we describe
+in further detail below. The methods described are applicable to any research computing 
+task that can be broken into many independent parallel computational threads. 
+Components include:</p>
+
+<ul>
+  <li>The <a href="https://www.bakerlab.org">Baker Lab Rosetta software suite</a></li>
+  <li>Powerful <a href="https://aws.amazon.com/ec2">EC2 compute instances</a></li>
+  <li>The <a href="aws_spot_market.html">AWS Spot market</a>i</li>
+  <li><a href="https://aws.amazon.com/ec2/pricing/on-demand/">Optimization analysis</a> of cloud computing instance types</li>
+  <li>The AWS <a href="https://aws.amazon.com/batch/"><strong>Batch</strong></a> service</li>
+  <li>The <a href="https://aws.amazon.com/grants/">AWS Research Credit Grant program</a></li>
+</ul>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html">Peptide design paper published by the Researcher</a></li>
+  <li><a href="https://aws.amazon.com/batch/">AWS Batch service</a></li>
+  <li><a href="https://www.bakerlab.org">Baker Lab Rosetta software suite</a></li>
+  <li>
+    <p><a href="https://els.comotion.uw.edu/express_license_technologies/rosetta">Rosetta (from COMOTION)</a></p>
+  </li>
+  <li><a href="https://github.com/robfatland/Rosetta/wiki">Procedural Documentation (temporary wiki)</a></li>
+</ul>
+
+<h2 id="preliminary-remarks">Preliminary Remarks</h2>
+
+<ul>
+  <li>
+    <p>The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
+features much better cost-per-hour rates.  We found that this smaller pool can constrain compute 
+scale in default usage patterns; so a major part of this effort was determining how to overcome 
+these constraints. We did so via choice of region combined with adoption of the Batch service 
+to allocate tasks across AWS availability zones (AZs) within that region. 
+This procedure is described in detail below.</p>
+  </li>
+  <li>
+    <p>This work was directed by the first author of the above-cited
+<a href="http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html">paper on peptide design</a>,
+Gaurav Bhardwaj.  He is herein referred to as <strong>The Researcher</strong>.</p>
+  </li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<ul>
+  <li>Objectives
+    <ul>
+      <li>Explore possible structures of proteins built from a small number of amino acids</li>
+      <li>Paralellize the analysis software on the public cloud</li>
+      <li>Begin to demonstrate the compute power of the public cloud</li>
+    </ul>
+  </li>
+  <li>Means: The Rosetta peptide design software implemented on the AWS public cloud</li>
+  <li>Key numbers from the main compute task
+    <ul>
+      <li>53: wall clock hours required to complete calculations
+        <ul>
+          <li>391: Hours needed to complete the same compute task on the Researcher’s available HPC resources (Hyak)</li>
+          <li>$800,000: Cost for on-premise hardware capable of producing this result in 53 hours</li>
+          <li>230: The number of these analysis tasks that could be run on AWS for $800,000</li>
+        </ul>
+      </li>
+      <li>164: Number of C4.8xlarge EC2 instances allocated on average from the AWS Spot market (max 200)
+        <ul>
+          <li>5904: Equivalent number of vCPUs (virtual processors)</li>
+          <li>$0.40: Spot market cost per instance-hour
+            <ul>
+              <li>showed no significant cost variation over the task duration, nor impact on market price</li>
+              <li>$0.012 per vCPU-hour. Optimization saved &gt; $600 over other instance choices</li>
+            </ul>
+          </li>
+          <li>$3400: Task compute cost (covered by an AWS research credit grant)</li>
+        </ul>
+      </li>
+      <li>5.2 million: Number of positive results</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="science-background">Science background</h2>
+
+<p>AWS research credits provided for this work have contributed significantly to the challenge 
+of large scale sampling of peptide scaffolds – stable structures that would be the basis for 
+developing new therapeutics. This section is a brief sketch of the scientific basis.</p>
+
+<p>Common to all life on earth there are 20 naturally occurring amino acids that are the building 
+blocks of proteins. Smaller chains of such amino acids are called peptides. Once a particular sequence
+of amino acids is bonded together end-to-end and released its rotational degrees of freedom may 
+permit it to fold up into an energetically favorable structure. This structure may in turn serve 
+some chemical/biological function. The Rosetta software can analyze the manner of folding thereby 
+connecting a hypothetical amino acid sequence to a protein structure, also called a <em>scaffold</em>.</p>
+
+<p>The practical challenge is the matching of such structures to naturally occuring geometries of 
+interest within the organism’s molecular landscape, often described using a ‘lock and key’ 
+analogy: A given therapeutic molecule could be designed to fit a particular binding site 
+for example on a cell wall, thereby either enhancing or restricting some metabolic process
+at that location.  One ultimate aim then would be to comprehensively sample all possible shapes 
+such that a large number of highly stable ‘keys’ are ready to be molded or slightly re-configured 
+into any desired shape.</p>
+
+<p>The compute task described here samples the space of possible peptide structures. These structures 
+must prove to be feasible and stable before they can be subjected to further analysis. Ultimately 
+a design of interest (from the computation) may be synthesized as an actual physical protein in 
+the laboratory (a fascinating process) which would then be subjected to chemical analysis to 
+validate that its structure is indeed as predicted by the software.</p>
+
+<h2 id="cost-tradeoffs">Cost tradeoffs</h2>
+
+<p>Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
+(HPC) such as the work described here. This approach suffers from two limitations</p>
+
+<p>The public cloud represents an alternative approach wherein falling costs, increasing convenience, 
+read-to-use services and outsourced system administration are factors in its favor. At what point 
+is cloud computing cost-equivalent to on-premise computing?  We suggest two views of the 
+break-even point.</p>
+
+<h3 id="hard-break-even">Hard Break-even</h3>
+
+<p>Take the lifespan of a purchased computer to be three years.  In this case study the compute task ran 
+for 53 hours on the AWS cloud and cost $3400. When an equivalent single computer costing $3400 requires 
+3 years to complete the same task we could say that cloud cost has reached parity with on-premise 
+cost. It is worth noting however that the on-premise solution takes 500 times longer to finish the 
+computation.  We calculate that the time to complete the compute task would be 246 days today, 
+849 days sooner than the hard break-even of three years.</p>
+
+<h3 id="soft-break-even">Soft Break-even</h3>
+
+<p>Soft break-even brings wall-clock time into consideration. At what point does waiting for compute tasks
+hinder the researcher’s progress? In this case study the Researcher is fortunate to have access to an
+on-premise cluster that would complete the same task in two weeks. On that cluster the completion time 
+scales with the size of the computation: A four-times-larger compute task would require two months
+whereas on the public cloud time to complete is unchanged: The larger task will still only require 
+wall clock time on the order of 48 hours.</p>
+
+<p>This matter of personal or wall-clock time is <em>prima facia</em> a strong argument for working when 
+possible on a cloud platform. We note that cloud vendor <a href="p_research_credits.html"><em>research credits</em></a> 
+enable a Researcher to explore this benefit with relatively low financial entry risk.</p>
+
+<h2 id="key-terminology">Key Terminology</h2>
+
+<ul>
+  <li>Batch service: An AWS service suited to larger-scale resource allocation on the AWS Spot market</li>
+  <li>cfncluster service: Abbreviated term for <em>Cloud Formation Network cluster</em>, an association of technologies
+that facilitate engaging many EC2 instances for parallel processing tasks in coordination with a Scheduler.</li>
+  <li>Sun Grid Engine (SGE): A Scheduler commonly used on AWS that coordinates with <em>cfncluster</em></li>
+  <li>Configuration Instance: A small EC2 instance used to configure and run <em>cfncluster</em></li>
+  <li>Master: An AWS EC2 instance (with EBS volume attached) running as the Master node of a <em>cfncluster</em> 
+under the SGE Scheduler</li>
+  <li>
+    <p>Worker: An AWS EC2 instance (for example from the Spot market pool) executing a large compute task</p>
+  </li>
+  <li>Optimization benchmarking: Studying the consequences of choice of EC2 instance, task loading, other configuration settings.</li>
+  <li>Time optimization: Analysis of instances and settings to complete a given Job in minimal time.</li>
+  <li>Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.</li>
+</ul>
+
+<h2 id="kilroy-stack-open-issues">kilroy stack (open issues)</h2>
+
+<ul>
+  <li>AMI story</li>
+  <li>The cfncluster terminology is heavy; Batch is light</li>
+  <li>Elaborate on IAM User account permissions as key for cfncluster operations
+    <ul>
+      <li>blanket ‘admin’ is over-sufficient and backing off of this should be stated</li>
+    </ul>
+  </li>
+  <li>Remarks on the wiki
+    <ul>
+      <li>“In what follows we try to emphasize what you <em>do</em> need to change on the forms; hence 
+if there is no comment you should leave the default value as-is.”</li>
+      <li>S3 region = US Standard (there is no N. Virginia) should be called out</li>
+      <li>Elastic ip: 34.205.126.203</li>
+      <li>On create VPC page: On Wizard setup: Do not click “Add Endpoint”</li>
+      <li>Must modify the CIDR block description in HIPAA and link to that (actually it belongs elsewhere…)</li>
+      <li>Page 4: At top: Motivate “what kind of EC2 do we start with?”
+        <ul>
+          <li>Point out that the Community AMI describes capabilities, not EC2 instance type: Separate concepts</li>
+          <li>In particular we must carefully elaborate: The EC2 instance in the next step (c4.4xlarge) is a
+model for building an AMI; and this AMI may subsequently be pulled into a <em>different</em> EC2 type
+such as a c4.8xlarge. This is ok: The scaling to machine power is automated.</li>
+        </ul>
+      </li>
+      <li>Page 4: Selection is Ubuntu and Docker 16.04; other features like Kubernetes does not factor in</li>
+      <li>The EC2 launch key pair section should be beefed up with references to the GitHub warning and so on</li>
+      <li>Emph on the prefix ubuntu at</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="fossil-cfncluster--rosetta-configuration-steps">(fossil) cfncluster / Rosetta configuration steps</h2>
+
+<p>The Rosetta work by Srihari Vignesh is currently captured 
+at <a href="https://github.com/Sriharivignesh/Rosetta-Protein-Folding-Project/wiki">this wiki</a>.</p>
+
+<p>The remarks on tracing the wiki steps are up above in the kilroy stack section.</p>
+
+<p>The following content is from earlier, i.e. it is residual from earlier progress focused
+on using cfncluster.</p>
+
+<p>See <a href="acs_rosetta.html">this page</a> for the screen captures: All from console and terminal.</p>
+
+<p>Log in to your IAM User account on AWS.</p>
+
+<p>Start an EC2 instance; using a T2 Micro will work well; they cost very little and this instance will
+be used to configure the heavy processing so it does not need processing power.</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0001.png" alt="acs_rosetta0001" /></p>
+
+<p>Now let’s suppose someone has come here in advance and set up the AMI that I wish to use. 
+That is the case for now; and we will generalize to an arbitrary AWS User in the future. Here we go.</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0002.png" alt="acs_rosetta0002" />
+<img src="/documentation/images/acs/acs_rosetta0003.png" alt="acs_rosetta0003" /></p>
+
+<p>When I hit Launch I have a conversation about choice of Key Pair</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0004.png" alt="acs_rosetta0004" /></p>
+
+<p>Rather than use something existing I’m going to simply create and download a new key pair.</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0005.png" alt="acs_rosetta0005" />
+<img src="/documentation/images/acs/acs_rosetta0006.png" alt="acs_rosetta0006" /></p>
+
+<p>Following the usual procedure to log in using PuTTY we quickly arrive at</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0007.png" alt="acs_rosetta0007" /></p>
+
+<p>We now proceed in the Linux operating system on this cfncluster control instance. It will 
+be used to create the execution environment on other EC2 instances, specifically instances running on the AWS Spot market.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% sudo pip install cfncluster
+</code></pre>
+</div>
+
+<p>This creates (in my home directory) a directory called .cfncluster. 
+I can verify that this installed by running</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cfncluster
+</code></pre>
+</div>
+
+<p>The output confirms that the command is present (installed).</p>
+
+<p>Next we build a <em>config</em> file in the .cfncluster directory with the following contents:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[aws]
+aws_region_name = us-west-2
+aws_access_key_id = ...etc
+aws_secret_access_key = ...etc
+
+[global]
+update_check = true
+sanity_check = true
+cluster_template = rosetta_cfn_test
+
+[cluster rosetta_cfn_test]
+vpc_settings = public
+key_name = my_IAM_User_keypair_filename_with_no_extension
+compute_instance_type = c4.8xlarge
+master_instance_type = c4.8xlarge
+initial_queue_size = 2
+max_queue_size = 300
+maintain_initial_size = false
+scheduler = sge
+base_os = ubuntu1604
+custom_ami = ami-11df6571
+master_root_volume_size = 30
+compute_root_volume_size = 30
+cluster_type = spot
+spot_price = 0.72
+scaling_settings = custom
+
+[vpc public]
+master_subnet_id = subnet-4a37992d
+compute_subnet_id = subnet-4b37992c
+vpc_id = vpc-5c891c3b
+
+[scaling custom]
+scaling_cooldown = 20
+</code></pre>
+</div>
+
+<p>For ‘key_name’ enter the key pair file name associated with an IAM User identity 
+without any extensions.</p>
+
+<p>Check that max_queue_size is set to 300. (The original was a value of 2 which is too small 
+but a safe starting value.) This is the maximum number of Spot market instances that may
+be allocated.</p>
+
+<p>The access keys above are redacted for reasons of form: Although they could be included we
+blank out such information to encourage awareness of security issues. These access keys are
+IAM User credentials supplied from an IAM User account. The IAM User must in turn have adequate 
+permissions to carry out cfncluster operations.</p>
+
+<p>Look at the file <strong>job_submission.sh</strong>. There is a command argument <em>-nstruct</em> with a subsequent
+integer value such as 1000. This file will not be put to use on this machine; but will be copied to
+the Master machine shortly. Once there the <em>nstruct</em> parameter will have important implications 
+for the Rosetta processing task; so we will revisit this before starting that task.</p>
+
+<p>(The <em>nstruct</em> number is a number of random seeds that the Rosetta job will create. 
+Kilroy this needs further elaboration. We want to ensure that the nstruct value is large enough 
+that the number of jobs we launch (number of instances x jobs per instance) does not exceed the 
+number of random seeds we have available. Perhaps this number could be set to 1 million?</p>
+
+<p>Next we will use the cfncluster meta-command to ‘create’ a cfncluster: Three AWS instances
+that act as the starting point for the Rosetta processing run.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cfncluster create rosetta-identifier
+</code></pre>
+</div>
+
+<p>Note that ‘rosetta-identifier’ can be any recognizable indentification string.</p>
+
+<p>We expect the <em>create</em> task to take a few minutes.</p>
+
+<h3 id="what-is-cfncluster-create-doing">What is <strong>cfncluster create</strong> doing?</h3>
+
+<p>First it is going to create a trackable presence on the AWS console under Cloud Formation. 
+Let’s take a look at that by finding Cloud Formation on the AWS Console.</p>
+
+<p><img src="/documentation/images/acs/acs_rosetta0008.png" alt="acs_rosetta0008" /></p>
+
+<p>Here is the general outline of what is happening:</p>
+
+<p>The <strong>cfncluster create</strong> command is building three EC2 instances from one existing AMI with some 
+additional configuration to follow. The first EC2 instance will be a Master instance and the
+other two are Worker instances. All three machines will be on standby once they start; they have
+no work to do yet.</p>
+
+<p>cfncluster builds all three instances according to the rules we set up in the config file; and 
+the build will also include the job_submission.sh file that we noted above has an ‘nstruct’ 
+parameter.</p>
+
+<p><strong>cfncluster create</strong> will install Sun Grid Engine on the Master Server. It will run some 
+other boilerplate scripts taken from S3 storage.  The Rosetta configuration files are pre-loaded 
+on the AMI.  The Workers, while they are not doing any work yet, are ready to go as they have the 
+Rosetta software and the Rosetta configuration files pre-installed.</p>
+
+<h3 id="starting-rosetta">Starting Rosetta</h3>
+
+<p>After <strong>cfncluster create</strong> finishes log in to Master and use <strong>qsub</strong> to submit 
+the Rosetta job. This creates a job queue: A long list of processing tasks (for example
+100,000) which are to be executed. These jobs will be scheduled one by one: Assigned to 
+Worker nodes.</p>
+
+<p>Each Worker node has a number of ‘virtual CPUs’ available for running Rosetta jobs in 
+parallel. These are compute-intensive jobs. Each may complete in a matter of a few 
+minutes.  The large number of jobs is typical from required sample density in a 
+Monte Carlo task.</p>
+
+<p>kilroy left off here
+While we may run 100,000 jobs these may be distributed across perhaps only 300 Workers. These 
+Workers will (for this example) be powerful machines, each with the capacity to run 36 jobs 
+simultaneously. The jobs we expect to take about 8 minutes each; so in the course of an hour we 
+expect about 7 x 36 or 252 jobs to run. Multiplying this by 300 we expect 75600 jobs to complete
+in an hour.</p>
+
+<p>Since the two initial Workers will be insufficient to process the job list we have a mechanism
+for increasing the number of Workers. When there are jobs waiting and no Workers available 
+the SGE scheduler request that cfncluster spin up more instances. Cfncluster will do so until it 
+hits the maximum limit (300) that we specified in the <em>config</em> file.</p>
+
+<p>These 300 Workers will each process multiple threads/tasks.  When the job queue is empty the Workers 
+will be terminated; but not until after they have streamed their results back to the Master.</p>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_Rosetta.html" class="btn btn-default navbar-btn cursorNorm" role="button">Rosetta</a>
+        
+        
+        
+        <a href="tag_scale.html" class="btn btn-default navbar-btn cursorNorm" role="button">scale</a>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
+        
+        
+        
+        <a href="tag_organic_chemistry.html" class="btn btn-default navbar-btn cursorNorm" role="button">organic_chemistry</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
+        
+        
+        
+        <a href="tag_research_credits.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_credits</a>
+        
+        
+        
+        <a href="tag_case_studies.html" class="btn btn-default navbar-btn cursorNorm" role="button">case_studies</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Mar 22, 2017 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

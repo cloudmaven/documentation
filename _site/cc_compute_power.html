@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,19 +731,101 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/cc/cc_compute_power.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-    
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/cc/cc_compute_power.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
 
     
 
-  <h1 id="compute-power-in-the-cloud">Compute power in the cloud</h1>
+    
 
-<h2 id="introduction">Introduction</h2>
+  <h2 id="introduction">Introduction</h2>
+<p>The purpose of this page is to describe in some depth the available processing power on the public cloud.</p>
 
-<h2 id="machine-types">Machine Types</h2>
+<p><strong>There is an ‘effectively unlimited’ pool of computers available on the public cloud, a reservoir you can
+tap to address your computing tasks.</strong></p>
 
+<h2 id="links">Links</h2>
 <p><a href="https://aws.amazon.com/ec2/instance-types/">AWS Instance Types</a>
 [Azure Virtual Machine types] (https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)</p>
+
+<h2 id="warnings">Warnings</h2>
+
+<ul>
+  <li><strong><em>Cloud accounts initially limit the number of virtual machines you can allocate to prevent you
+from accidentally running up a huge bill. Only ask for this limit to be raised when you are certain
+you know what you are doing.</em></strong></li>
+</ul>
+
+<h2 id="basic-thesis">Basic Thesis</h2>
+
+<p>We develop here a framework for describing and tackling large computing tasks on the cloud. 
+This includes drawing a distinction between available instance types or <code class="highlighter-rouge">cloud VMs</code> (Virtual Machines). 
+(See the cloudmaven <a href="cc_what_is_the_cloud">overview page</a> and the <a href="cc_glossary">glossary</a> for the basic 
+terminology.) In general the more powerful the cloud VM the more it costs per hour. At the same time
+it will complete a given task more quickly; so there is the potential to benchmark different instance
+types to find an optimal solution. To first order you can probably skip this, however, in favor of 
+simply understanding how to match your instance choice to your compute task.</p>
+
+<p>Incidentally: On the AWS cloud you may cut your costs using the <a href="aws_spot_market.html">Spot market</a>; 
+this detail is not discussed further on this page.</p>
+
+<p>Your cloud account may have a native limit to how many VMs you can engage at one time. If this
+is insufficient for your work you can contact the cloud vendor and request a limit increase. This
+should be granted fairly quickly but be warned: The reason that limit is in place to begin with is
+to prevent you from accidentally allocating a large number of cloud VMs and thereby running up a 
+large bill. If your objective is to run a large number of VMs at once you should proceed in powers 
+of ten (3 to 30 to 300 to 3000) to make sure that your ensemble is behaving as you expect.</p>
+
+<p>There are two extremes of large compute task, roughly speaking; which we call HPC and HTC. 
+HPC stands for High Performance Computing and in a narrow definition it refers to tasks spread 
+across many VMs which require inter-VM communication. The classic example is a solution to a 
+computational fluid dynamics problem in which a volume is subdivided among VMs or ‘nodes’. 
+In this case a particular cell may evolve over one time step and must share its new boundary
+conditions with another node concerned with an adjacent cell. This requires all of the nodes
+to proceed in lockstep as the system evolves in time, where each tick of the clock requires a
+period of inter-node communication. This is typically done using special purpose hardware such 
+as <em>Infiniband</em>. (kilroy citation needed)</p>
+
+<p>On the cloud this kind of inter-node communication speed is an emerging technology. The state of the 
+art is rapidly changing and (kilroy need more here) you will want to look at the cloud vendor
+websites to see what is currently available.</p>
+
+<p>The other extreme for large compute tasks are those in which inter-node communication is not a
+bottleneck. This is referred to as High Throughput Computing or HTC. It is also sometimes called
+<em>embarrassingly parallel</em> computing, and by other euphemistic names. The positive feature of this
+type of computing is that multiple tasks can be started on multiple nodes. These can run to 
+completion and report back their end results. These results are ultimately collated into some
+synthesis process to arrive at an end result. As an example see our 
+<a href="acs_rosetta.html">AWS case study on Rosetta</a>.</p>
+
+<p>This spectrum of <strong>HPC</strong> to <strong>HTC</strong> gives an important element of our large compute task framework. 
+In the HTC case we can manage large numbers of parallel jobs using a <strong>Scheduler</strong> such as 
+Sun Grid Engine. In principle any compute task can be completed in roughly the same amount of time
+by simply allocating more nodes.  In the HPC case we have a more complex situation and therefore 
+more work to do to ensure thata inter-node communication is not creating a bottleneck.</p>
+
+<h2 id="threads-vcpus-hyperthreading-blades-and-all-that-jazz">Threads, vCPUs, hyperthreading, blades and all that jazz</h2>
+
+<h2 id="machine-characteristics">Machine characteristics</h2>
+
+<h3 id="distinction-between-metal-and-various-vm-configurations">Distinction between metal and various VM configurations</h3>
+
+<h3 id="aws-view-general-purpose-compute-intensive-memory-intensive-burst-others">AWS view: General purpose, compute-intensive, memory-intensive, burst, others</h3>
+
+<h3 id="azure-view-of-things">Azure view of things</h3>
+
+<h3 id="gpu-centric">GPU-centric</h3>
+
+<h3 id="top-of-the-line-vms">Top of the line VMs</h3>
+
+<h2 id="attached-drive-strategies">Attached drive strategies</h2>
+
+<h3 id="ebs">EBS</h3>
+
+<h3 id="efs">EFS</h3>
+
+<h3 id="buckets-and-blobs">Buckets and blobs</h3>
+
+<h2 id="hpc-and-interconnection-speed">HPC and interconnection speed</h2>
 
 
 
@@ -693,7 +851,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Mar 22, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

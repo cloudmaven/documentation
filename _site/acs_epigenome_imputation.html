@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition (PREDICTD)">
+<meta name="keywords" content="research_computinggenomicssparkcase_studiesAWSAzureorganic_chemistrydata_sciencescale,  research_computing, genomics, spark">
+<title>Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cc_what_is_the_cloud.html">What is the cloud?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_data_security.html">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_glossary.html">Glossary</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_cost_management.html">Cost management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_compute_power.html">Compute power</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_docker_containers.html">Docker containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_internet_of_things.html">Internet of things</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_technical.html">Cloud technical</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="p_consulting.html">Consulting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="p_costing.html">Costing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research computing</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_data_science.html">Data science</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_research_on_the_web.html">Research on the web</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_python.html">Visualization Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2.html">EC2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spot_market.html">Spot market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cluster.html">Cluster</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure</a>
+        <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_training.html">Training</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_visual_studio.html">Visual Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_web_framework.html">Web Framework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_machine_learning.html">Machine Learning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Case Studies</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_neurohackweek.html">Neurohackweek</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_cfd.html">CFD</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition (PREDICTD)</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/acs/acs_epigenome_imputation.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+    
+
+  <h2 id="introduction">Introduction</h2>
+<p>This page describes a methodology study in genomics to impute (computationally infer) information linking 
+cell types, proteins and locations along the human genome. The study is currently in preparation as a 
+research paper. The computation is done on the public cloud (both AWS and Azure platforms) using the 
+Apache Spark computation framework.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li>Link to the code</li>
+  <li>Citation for Chromimpute: Ernst, Jason, and Manolis Kellis. <em>Large-Scale Imputation of Epigenomic Datasets 
+for Systematic Annotation of Diverse Human Tissues.</em> <strong>Nature Biotechnology advance online publication (February 18, 2015)</strong>. 
+doi:10.1038/nbt.3157.</li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+<ul>
+  <li><strong><em>You can use cloud-provider support for Apache Spark: e.g. Elastic Map Reduce on AWS. However AmpLab 
+(the originators of Spark) also provide more direct solutions that can save you some money but require a 
+bit of additional effort to configure.</em></strong></li>
+</ul>
+
+<h2 id="predictd"><strong><em>PREDICTD</em></strong></h2>
+<ul>
+  <li>Parallel Epigenomics Data Imputation with Cloud-based Tensor Decomposition.</li>
+  <li>Epigenome = all of the machinery associated with the genome: Protein manufacture, gene regulation, etc</li>
+  <li>
+    <p>Stochastic Gradient Descent Optimization</p>
+  </li>
+  <li>A prior study used for comparatives is called CHROMIMPUTE.
+    <ul>
+      <li>The paper for this was published by Ernst and Kellis in 2015 in Nature Biotechnology.</li>
+    </ul>
+  </li>
+  <li>The researcher for this study is Tim Durham, a graduate student in Bill Noble’s genomics lab at the University of Washington.
+    <ul>
+      <li>The results improve over the CHROMIMPUTE study for global mean squared error.</li>
+      <li>CHROMIMPUTE does better by comparison on the other metrics; but the methods are still close.</li>
+      <li>The computation is a form of machine learning (modeling) and is built on the Apache Spark engine</li>
+      <li>The data volume is a three-dimensional tensor with axes: Human cell types, human proteins, and the human genome
+        <ul>
+          <li>The cell type axis is 120 or so cell types</li>
+          <li>The protein axis is similarly 150 or so proteins</li>
+          <li>The genome axis is three billion nucleotides</li>
+        </ul>
+      </li>
+      <li>The model is trained and one important result is that two of the model components can be locally optimized using only 1% of the genome</li>
+      <li>The entire genome would take some time… 24-48 hours depending on the cluster size</li>
+      <li>Today 1% of the genome requires five hours on 64 cores: That is an X1.16xlarge
+        <ul>
+          <li>More memory than needed; but still cheap per core</li>
+          <li>optimized data structures to use compressed-format matrices</li>
+          <li>cell type and assay matrix training used 1% of 1% of the data; so that all fit on one machine</li>
+          <li>500GB required; 1.4TB available</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="next-steps">Next steps</h2>
+
+<ul>
+  <li>Write the paper</li>
+  <li>publish the software and tutorial on GitHub and cloudmaven will point to this
+    <ul>
+      <li>Add some interpretability to the code</li>
+      <li>HDInsight or EMR on AWS: Is fine.</li>
+      <li>Tim ran Spark EC2 which bootstraps an EC2 cluster… but you need to be root
+        <ul>
+          <li>Spark EC2 is from AmpLab on GitHub.com/amplab/spark-ec2</li>
+          <li>AWS makes it hard for you to log in as root…</li>
+        </ul>
+      </li>
+      <li>EMR now permits some spot market access (although the X1.16xlarge may or may not be part of that)</li>
+    </ul>
+  </li>
+  <li>Entire genome
+    <ul>
+      <li>Publish the results “whole genome imputed tracks through the Encyclopedia of DNA Elements ‘ENCODE’
+        <ul>
+          <li>Hopefully by start of summer</li>
+          <li>There are three obstacles in the way of imputing the whole genome right now.
+            <ul>
+              <li>The first (and much bigger) issue is that this will take more time and money than I currently have</li>
+              <li>It’s proving harder than I thought it would to get Spark to swallow the full data set, so I will have to do 
+some additional software engineering to process the full genome in batches.</li>
+              <li>The third reason that we have de-prioritized training on the whole genome is that we’ve found that the model performs 
+essentially as well on 0.01% of the data as it does on 1% of the data, so we don’t expect to get much of a performance 
+boost by training on everything.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Tim will turn next to some wet lab work: Studying tissue development in a nematode C.elegans</li>
+</ul>
+
+<h2 id="speed-up-for-cloud-implementation">Speed up for cloud implementation</h2>
+
+<ul>
+  <li>From weeks to order of hours
+    <ul>
+      <li>ChromImpute led to training the model on 127 cell types and 24 assays for comparison purposes</li>
+    </ul>
+  </li>
+  <li>This imputes hypothetical results in silico in place of wet lab experiments.</li>
+</ul>
+
+<h2 id="computation-and-cost-details">Computation and cost details</h2>
+<ul>
+  <li>How much does one such physical wet lab experiment cost (i.e. one cell type, one protein assay, 3 billion base pairs)?</li>
+</ul>
+
+<p>A typical run that I’m doing now takes about 8 hrs with 1 x m4.xlarge instance (4 cores, 16 GB memory) 
+and 1 x x1.16xlarge instance (64 cores, 976 GB memory). The head node (m4.xlarge) is a normal EC2 
+instance, while the worker (x1.16xlarge) is a spot instance, so the price isn’t consistent, but it 
+stays at around $1.22/hr. So a single training run costs ~$10; we tend to do a cross-validation 
+scheme with 4-8 folds, so the total cost of processing a model runs about $80 and takes two to three 
+days. Data storage is the other big component of the cost. With the subset of the experiments and 
+genomic positions that I am working with the output of one of these cross-validation runs is about 
+750 GB stored on S3. Loading the entire genome into memory for all training examples takes about 
+1.5 TB, so training on the whole genome will produce at least 4.5 TB considering that the 1.5 TB 
+does not include 2/3 of the data. My total S3 usage right now is significantly higher even than that 
+because I have been keeping results from all the preliminary experiments I’ve done over the past 
+year trying to tune the model, but I’ll clean those up soon once the paper comes together.</p>
+
+<p>Anyway, storage costs for a single imputation run (as I’m currently running it) are on the order of 
+$20/month, so I guess the total imputation cost is about $100. This compares pretty favorably to the 
+cost of collecting the data in the lab – a quick search for services that will perform these assays 
+show prices as high as $1000/sample, but I’m not sure how much it would cost a lab equipped to do 
+the assay in-house.</p>
+
+<p>Model training at the 1% scale takes ten to 24 hours wall clock time.</p>
+
+<p>You could make the run time pretty reasonable but the whole genome has proven problematic for other
+reasons; see above.</p>
+
+<h3 id="tim-details-on-cost">Tim details on cost</h3>
+
+<ul>
+  <li>$300 EMR with no spot instances</li>
+  <li>$88 EMR with spot</li>
+  <li>$1.25 for X1.16xlarge when Tim last checked but this instance may not work</li>
+  <li>… so we go to another (allowed) 2 x R3.8xlarge instance and that gives us the above costs
+    <ul>
+      <li>(EMR does not permit R4 as far as we know at the moment)</li>
+    </ul>
+  </li>
+  <li>1% of the genome, requiring 48 hours</li>
+  <li>100% of genome scales linearly and this (with a bit of coding) should scale sideways
+    <ul>
+      <li>so the entire genome would require some testing: Spin up 100 3-node clusters? Bigger dataset?</li>
+    </ul>
+  </li>
+  <li>Without EMR: $90 becomes $60
+    <ul>
+      <li>large instances are $.27 / hour / instance</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="full-genome">Full genome</h2>
+
+<ul>
+  <li>Pending</li>
+  <li>Train cell type and assay parameters (the smaller dimensions) on a small subset of genomic positions
+    <ul>
+      <li>Then apply those across the genome in batches</li>
+    </ul>
+  </li>
+  <li>…to publish imputed results plus code plus tutorial for use by others</li>
+  <li>Of 127 cell types x 24 assays there are 1014 (33%) experimental datasets</li>
+  <li>The full project with additional cell types and protein assays has only 2% of the possible data</li>
+</ul>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_genomics.html" class="btn btn-default navbar-btn cursorNorm" role="button">genomics</a>
+        
+        
+        
+        <a href="tag_spark.html" class="btn btn-default navbar-btn cursorNorm" role="button">spark</a>
+        
+        
+        
+        <a href="tag_case_studies.html" class="btn btn-default navbar-btn cursorNorm" role="button">case_studies</a>
+        
+        
+        
+        <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
+        
+        
+        
+        <a href="tag_Azure.html" class="btn btn-default navbar-btn cursorNorm" role="button">Azure</a>
+        
+        
+        
+        <a href="tag_organic_chemistry.html" class="btn btn-default navbar-btn cursorNorm" role="button">organic_chemistry</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
+        
+        
+        
+        <a href="tag_scale.html" class="btn btn-default navbar-btn cursorNorm" role="button">scale</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Mar 22, 2017 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

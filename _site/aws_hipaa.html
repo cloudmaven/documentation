@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A HIPAA-compliant research system on AWS">
-<meta name="keywords" content="AWS,  aws, hipaa, procedures">
+<meta name="keywords" content="AWSHIPAAmedicinedata_managementcase_studiesstorageresearch_computingdata_science,  aws, hipaa">
 <title>AWS HIPAA | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,34 +731,200 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/aws/aws_hipaa.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/aws/aws_hipaa.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
     
 
     
 
   <h2 id="introduction">Introduction</h2>
-<p>The purpose of this document – available at http://cloudmaven.org – is to present a procedural and a technical background
-for creating and operating a HIPAA-compliant research environment on the AWS public cloud. A corresponding effort is underway
-on the Microsoft Azure cloud.</p>
 
-<h2 id="program">Program</h2>
+<p><a href="aws_hipaa.html">This document</a> presents a secure data management system, specifically using the 
+motivation of managing Private Health Information (PHI) under HIPAA regulations on the public cloud. 
+This template applies more generally to secure data management in research computing.</p>
+
+<p>HIPAA regulations require data be encrypted both at rest (e.g. on a storage device) and in 
+transit (e.g. moving from one storage device to another).  Our hypothetical situation is described 
+in further detail below; it is well to keep these rest/transit encryption notions in mind.</p>
+
+<p>Please note that while this study uses AWS we are also building out the construct on the 
+Microsoft Azure public cloud.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="https://www.hhs.gov/hipaa/index.html/">HIPAA home page</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act">HIPAA on Wikipedia</a></li>
+  <li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html">HIPAA Privacy Rule Summary</a></li>
+  <li><a href="https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/">AWS HIPAA template</a></li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+
+<ul>
+  <li><strong><em>AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can 
+come into contact with PHI.  Other technologies can be used in an ancillary capacity provided they do not interact
+directly with PHI data.</em></strong></li>
+  <li><strong><em>HIPAA compliance is an obligation placed on the data system builder and the medical researcher.
+The public cloud is very secure: physically and technologically. 
+We contend that data system failure or compromise is most likely to be caused by human error.</em></strong></li>
+  <li><strong><em>File names may not include PHI. They may include identifier strings that would be indexed in a secure table.</em></strong></li>
+</ul>
+
+<h3 id="preliminary-work">Preliminary Work</h3>
+
+<h4 id="kilroy-stack">Kilroy stack</h4>
+
+<ul>
+  <li>Add K’s remarks and J’s remarks in here</li>
+  <li>AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?</li>
+  <li>Generate and incorporate a scientist workflow diagram with extensive caption per User Story</li>
+  <li>Generate and incorporate a complete HCDS architecture diagram near the top of this</li>
+  <li>Create a sub-topic around <strong>L</strong>: In coffee shop, in a data center (out of Med Research), etcetera
+    <ul>
+      <li>The ‘in transit / at rest’ component leaves a sparking wire in <strong>L</strong>: Section on risk added</li>
+    </ul>
+  </li>
+  <li>Need explanation of public/private subnet collision avoidance
+    <ul>
+      <li>Public subnet elements also have private subnet addresses.</li>
+      <li>Verify protocol is that new resources auto-generated will be on the private subnet
+        <ul>
+          <li>AB How is this done? We got as far as ‘no default’ for public and private both</li>
+        </ul>
+      </li>
+      <li>Verify automated allocation will choose free ip addresses on the private subnet</li>
+      <li>Verify protocol is to <em>not</em> create new resources on the public subnet</li>
+      <li>This is tremendously important so that a new <strong>Wi</strong> is not publicly visible</li>
+      <li>Look at the VPC Routing Table “default subnet” column (verify this is correct)</li>
+    </ul>
+  </li>
+  <li>Key management story
+    <ul>
+      <li>Rename <strong>K2</strong> as <strong>K_Bastion</strong> and describe where it lives on <strong>L</strong>, add to Risk
+        <ul>
+          <li>It may make sense to describe chain of custody of <strong>KBastion</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Free up and assign <strong>B</strong> an Elastic IP address that will persist
+    <ul>
+      <li>Verify that this is publicly discoverable and place this fact in Risk</li>
+      <li>Rename <strong>K3</strong> as <strong>K_EC2</strong></li>
+      <li>Chain of custody of <strong>K_EC2</strong></li>
+      <li>How do keys work in view of an AMI source?</li>
+    </ul>
+  </li>
+  <li>EBS Encryption Keys should be a Risk sub-section
+    <ul>
+      <li>EBS encryption select has an account default key: Details are listed below</li>
+      <li>Notice that publishing these details is not technically bad for pedagogy…
+        <ul>
+          <li>but I have a bit of a nagging doubt here: Are these “Details” global/permanent?</li>
+          <li>The screencap redacts to be on the safe side; stay with that for now</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Risk due diligence: Check the DLT account T&amp;C; “who is responsible for the risk?”</li>
+  <li>Risk entry: We do not encrypt the boot volume</li>
+  <li>Risk entry: EC2 swap space: How does this touch on PHI?</li>
+  <li>How are keys / Roles managed when spinning up / shutting down <strong>Wi</strong>?
+    <ul>
+      <li>For now we allow that <strong>EC2</strong> is the only game in town</li>
+    </ul>
+  </li>
+  <li>Look at the <em>JS</em> <em>SK</em> scenario and build out the IAM component for <em>SK</em>
+    <ul>
+      <li>e.g. turning machines on and off</li>
+      <li>do with console? do with CLI?</li>
+      <li>AB: Help needed!</li>
+    </ul>
+  </li>
+  <li>Differentiate SQS and SNS</li>
+  <li>What is Ansible and what does it get us?</li>
+  <li>Can/should the NAT Gateway be used to pull updates from GitHub?  Generalize.</li>
+  <li>DDil on elastic IP: NAT Gateway? Bastion? IG?</li>
+  <li>Fix the RT / subnet editing section… gotta get that right</li>
+  <li>What are the tradeoffs in building <strong>B</strong> and <strong>M</strong> and <strong>Wi</strong> from AMIs?</li>
+</ul>
+
+<h4 id="user-story">User story</h4>
+
+<ul>
+  <li>A scientist <em>SK</em> receives approval from an IRB to work with PHI data.
+    <ul>
+      <li>Intent: Analyze these data in a secure, HIPAA-compliant data system (herein HCDS)</li>
+    </ul>
+  </li>
+  <li><em>SK</em> contacts <em>JS</em> to build the HCDS as a working environment
+    <ul>
+      <li>IRB approval review</li>
+      <li>System <strong>H</strong> is built by <em>JS</em>; includes an S3 bucket for inbound PHI data <strong>SDI</strong></li>
+      <li>Data uploaded to <strong>SDI</strong></li>
+    </ul>
+  </li>
+  <li><em>SK</em> is provided with access
+    <ul>
+      <li>Keys: <strong>K_Bastion</strong> and <strong>K_EC2</strong></li>
+      <li>IAM User account with</li>
+      <li><em>K</em> logs on to the HCDS through a secure gateway</li>
+      <li><em>K</em> carries out the data analysis over a period of time
+        <ul>
+          <li>The system logs all activity</li>
+        </ul>
+      </li>
+      <li>IOT devices distributed to patients report health data to the HCDS
+        <ul>
+          <li>These data supplement the research</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The study concludes
+    <ul>
+      <li>Sensitive data are stored to a secure archive</li>
+      <li>The HCDS is deleted</li>
+      <li>Log files are archived to preserve a complete record of operation for the HCDS</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="plan-of-action-for-this-hcds-proof-of-concept">Plan of action for this HCDS Proof of Concept</h4>
 
 <ol>
-  <li>Create a diagram showing the EMR &gt; PHI data pool &gt; VM with corresponding IRB, researcher and patient</li>
-  <li>Anticipate <new data="" to="" EMR=""> pipeline</new></li>
-  <li>Anticipate <IOT to="" VM=""> pipeline</IOT></li>
-  <li>Anticipate changes to <PHI> VM&gt; process</PHI></li>
-  <li>Implement Virtual Private Cloud</li>
-  <li>Synthetic data: Generate</li>
-  <li>Create an IOT signal</li>
-  <li>Create IOT pass-through mechanism</li>
-  <li>Establish software tools including Jupyter on VM</li>
-  <li>Review with IT personnel</li>
-  <li>Review with management</li>
-  <li>Review with researchers</li>
+  <li>Write up the procedural</li>
+  <li>Create a system architecture and diagram
+    <ul>
+      <li>Anticipate <new data="" to="" EMR=""> pipeline</new></li>
+      <li>Anticipate <IOT to="" VM=""> pipeline</IOT></li>
+      <li>Anticipate changes to <PHI> VM&gt; process</PHI></li>
+      <li>AWS is the big box</li>
+      <li>VPC is inside</li>
+      <li>Public and Private subnets are inside VPC</li>
+      <li>NAT gateway inside the Public subnet box</li>
+      <li>Internet Gateway on boundary of VPC</li>
+      <li>S3 Endpoint on boundary of VPC</li>
+    </ul>
+  </li>
+  <li>Create artificial data
+    <ul>
+      <li>data manufacturing software</li>
+      <li>generate source artificial data (from EMR)</li>
+      <li>generate IOT stream</li>
+      <li>anticipate study-to-clinical pipeline</li>
+    </ul>
+  </li>
+  <li>Complete system including analytical tools
+    <ul>
+      <li>include R, Python, Jupyter</li>
+    </ul>
+  </li>
+  <li>Review with IT personnel (JP first), mgmt, researchers</li>
 </ol>
 
-<h2 id="concerns">Concerns</h2>
+<h4 id="details-to-incorporate">Details to incorporate</h4>
 
 <ul>
   <li>Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk</li>
@@ -691,62 +933,69 @@ on the Microsoft Azure cloud.</p>
   <li>Include a full story on access key management</li>
   <li>The IOT import will – I think – be a poll action: The secure VM is polling for new data</li>
   <li>This system should include a very explicit writeup of how the human in the loop can break the system</li>
-  <li>Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? To clarify: Must the data be further encrypted at rest first?</li>
+  <li>Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? 
+To clarify: Must the data be further encrypted at rest first?</li>
   <li>Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.</li>
   <li>CISO approval hinges on IT, Admin and Research approvals.</li>
 </ul>
 
-<h2 id="terminology-and-concepts">Terminology and Concepts</h2>
+<h4 id="partial-list-of-terminology-and-concepts">Partial list of terminology and concepts</h4>
+
 <ul>
   <li>Ansible</li>
-  <li>Availability Zone</li>
-  <li>Bastion Server (abbreviated <strong>B</strong>)</li>
+  <li>Regions and Availability Zones on AWS</li>
+  <li>Bastion Server</li>
+  <li>Siricata / Snort</li>
   <li>CIDR</li>
-  <li>Cloudberry</li>
+  <li>Direct tools like <strong>ssh</strong> and third party apps like Cloudberry</li>
   <li>Dedicated Instance</li>
-  <li>HIPAA <a href="https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act">Health Insurance Portability and Accountability Act</a>
-    <ul>
-      <li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html">HIPAA Privacy Rule Summary</a></li>
-    </ul>
-  </li>
   <li>Lambda Service</li>
   <li>NAT Gateway</li>
-  <li>Worker</li>
 </ul>
 
-<h3 id="conceptual-distinction-on-phi-contact">Conceptual distinction on PHI contact</h3>
+<h4 id="phi-contact-model">PHI contact model</h4>
 
-<p>Herein we identify tools and technologies that do / do not interface directly with Private Health Information:
-* Tools that do not come in contact with PHI can be thought of as ‘triggers and orchestration’.
-* Services that may come in contact with PHI can be described as ‘data and compute’</p>
+<p>“How can your system be an HCDS if you are using Lambda?” We identify tools and 
+technologies that do / do not interface directly with PHI.</p>
 
-<h3 id="hipaa-aligned-technologies">HIPAA-aligned technologies</h3>
-<p>Nine AWS Technologies under the AWS BAA that are HIPAA-aligned:
-* S3
-* EC2
-* RDS
-* EBS
-* DynamoDB
-* EMR
-* ELB
-* Glacier
-* Redshift</p>
+<ul>
+  <li>Tools that do not come in contact with PHI can be thought of as ‘triggers and orchestration’.</li>
+  <li>Services that may come in contact with PHI can be described as ‘data and compute’</li>
+</ul>
 
-<h3 id="useful-triggerorchestration-tools">Useful Trigger/Orchestration Tools</h3>
+<h4 id="hipaa-aligned-technologies">HIPAA-aligned technologies</h4>
+
+<p>Nine AWS Technologies under the AWS BAA that are HIPAA-aligned. Actually more now and the
+accrue ‘automatically’ as AWS makes progress.</p>
+
+<ul>
+  <li>S3 storage</li>
+  <li>EC2 compute instances (VMs)</li>
+  <li>EBS elastic block storage: Attached filesystem</li>
+  <li>RDS relational database service</li>
+  <li>DynamoDB database</li>
+  <li>EMR elastic map reduce: Hadoop/Spark engine support</li>
+  <li>ELB elastic load balancer</li>
+  <li>Glacier archival storage</li>
+  <li>Redshift data warehouse</li>
+</ul>
+
+<h4 id="useful-triggerorchestration-tools">Useful Trigger/Orchestration Tools</h4>
+
 <ul>
   <li>Lambda</li>
   <li>Virtual Private Cloud (VPC)</li>
 </ul>
 
-<h3 id="encryption">Encryption</h3>
+<h4 id="encryption">Encryption</h4>
+
 <ul>
   <li>HIPAA requires data be encrypted at rest, i.e. on a storage device</li>
   <li>HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another</li>
 </ul>
 
-<h2 id="aggregated-notes">Aggregated Notes</h2>
+<h4 id="multiple-sources-of-data">Multiple sources of data</h4>
 
-<h3 id="multiple-sources-of-data">Multiple sources of data</h3>
 <ul>
   <li>Electronic Medical Records (EMR)</li>
   <li>A Data Warehouse (tables)</li>
@@ -754,68 +1003,480 @@ on the Microsoft Azure cloud.</p>
   <li>Sensors stream data from patient</li>
 </ul>
 
-<h3 id="destinations">Destinations</h3>
+<h4 id="destinations">Destinations</h4>
+
 <ul>
   <li>S3 bucket</li>
   <li>EBS/EFS</li>
 </ul>
 
-<h3 id="notes">Notes</h3>
+<h4 id="procedural-format">Procedural format</h4>
+
+<p>We punctuate the procedural steps needed to build the HIPAA-Compliant Data System (HCDS) 
+with short notes on rationale, how things fit together. We also make extensive use of 
+very short abbreviations (just about every entity gets one, indicated by <strong>boldface</strong> 
+and obsessive re-naming of everything using the Project Identifier Tag (PIT)</p>
+
+<h3 id="part-1-getting-started">Part 1: Getting started</h3>
+
+<h4 id="activity-zero">Activity Zero</h4>
+
+<p>Your absolute First Priority Step 0 is to designate to AWS that the account you are using
+involves PII/PHI/HIPAA data.</p>
+
+<h4 id="saving-money">Saving money</h4>
+
+<p>This will be a multi-day effort. Shut down instances to save money at the end of the day.</p>
+
+<h4 id="review-objectives">Review objectives</h4>
+
+<p>Our main objective is (see Figure below) to use a Laptop or other cloud-external data source
+to feed data into a HIPAA-Compliant Data System <strong>HCDS</strong> wherein we operate on that data. 
+The data are assumed to be Private Health Information (PHI) or Personally Identifiable 
+Information (PII) as described in HIPAA regulations.</p>
+
+<h4 id="pit-means-project-identifier-tag-an-informal-term">PIT means Project Identifier Tag (an informal term)</h4>
 
 <ul>
-  <li>Encryption software such as PGP produces a Key.</li>
-  <li>On AWS create a VPC</li>
-  <li>On the VPC create a public-facing Bastion Server B</li>
-  <li>B has an Elastic IP address: This will persist</li>
-  <li>Inside the VPC create public and private subnets using a Routing Table.
+  <li>Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything
     <ul>
-      <li>NAT Gateway with Routing Table.</li>
+      <li>This is a handy string of characters</li>
+      <li>In our example here PIT = ‘hipaa’. Short, easy to read = better</li>
     </ul>
   </li>
-  <li>On private subnet place a small Dedicated EC2 instance E.
+</ul>
+
+<h4 id="source-computer">Source computer</h4>
+
+<ul>
+  <li>Identify our source computer as <strong>L</strong>, a Laptop sitting in a coffee shop
     <ul>
-      <li>B has only port 22 open (ssh)</li>
-      <li>B uses Secure Groups on AWS to limit access to certain URLs.</li>
+      <li>This is intentionally a <em>non-secure</em> source</li>
+      <li><strong>L</strong> does <em>not</em> have a PIT</li>
+      <li><strong>L</strong> could also be a secure resource operated by Med Research / IRB / data warehouse</li>
     </ul>
   </li>
-  <li>Using ssh / WinSCP copy Key to BS. From there move Key to E.</li>
-  <li>Create an AMI to do processing. Call this W.</li>
-  <li>Create Role that allows a W to read from and write to S3.</li>
-  <li>Set up Ansible-assisted process for configuring and running jobs on EC2 instances
+</ul>
+
+<p>We are starting with a data source and will return to encryption later. The first burst 
+of activity will be the creation of a Virtual Private Cloud (VPC) on AWS per the diagram
+above. We assume you have done Step 0 above and are acting in the capacity of a
+system builder; but you may not be an experienced IT professional. That is: We assume
+that you are building this environment and that you may or may not be doing research
+once it is built; but someone will.</p>
+
+<h4 id="vpc-via-wizard-versus-manual-build">VPC via Wizard versus manual build</h4>
+
+<p>The easiest way to create a VPC is using the console Wizard. That method is covered in a 
+section below and it can automate many of the steps we describe manually.  We describe 
+the manual method to illuminate the components.</p>
+
+<h4 id="cidr-block-specification">CIDR block specification</h4>
+
+<p>The CIDR block syntax uses a specification like <strong>10.0.0.0/16</strong>. This has two 
+components: A ‘low end of range’ ip address <strong>w.x.y.z</strong> and a width parameter <strong>/N</strong>. 
+w, x, y and z are integers from 0 to 255, in total 32 bits of address space.</p>
+
+<p><strong>N</strong> determines an addressable space of size s = 2^(32 - N). For example 
+N = 16 produces s = 2^16 or s = 65536 available addresses, starting at w.x.y.z.</p>
+
+<p>An example: Suppose we specify 10.0.0.0/16.
+Then s = 2^16 so 65536 addresses are available: 10.0.0.0, 10.0.0.1, 10.0.0.2, …,
+10.0.1.0, 10.0.1.0, …, 10.0.255.255. <strong>y</strong> and <strong>z</strong> together span the address 
+space.</p>
+
+<p>These ip addresses are defined in the VPC, contextually <em>local</em> within the VPC.</p>
+
+<p>Any subnets we place within the VPC will be limited by this address space.<br />
+In fact we proceed  by defining subnets within the VPC with respective 
+CIDR ranges, subranges of the VPC CIDR block.  The first subnet will have 
+CIDR = 10.0.0.0/24 with 256 addresses available: 10.0.0.0, 10.0.0.1, …, 
+10.0.0.255. Five of these will be appropriated by AWS machinery, incidentally.
+The second subnet will be non-overlapping with CIDR range = 10.0.1.0/24.</p>
+
+<p>Since AWS appropriates five ip addresses for internal use
+(.0, .1, .2, .3, and .255) we should look for ways of making 
+ip address assignment automatic.</p>
+
+<h3 id="part-2-creating-and-populating-a-virtual-private-cloud">Part 2 Creating and populating a Virtual Private Cloud</h3>
+
+<h4 id="building-the-vpc">Building the VPC</h4>
+
+<p>Here we abbreviate elements with boldface type. In most cases the entity we create
+can be named so to remind you: For consistency we have come up with a Project
+Identifier Tag like ‘hipaa’ so that each entity can be given a PIT name: ‘hipaa_vpc’
+and so on.</p>
+
+<ul>
+  <li>
+    <p>From the console create a new VPC <strong>V</strong></p>
+
     <ul>
-      <li>What is Ansible?</li>
+      <li>
+        <p>Give <strong>V</strong> a PIT name</p>
+      </li>
+      <li>
+        <p><strong>V</strong> will not use IPv6v.</p>
+      </li>
+      <li><strong>V</strong> will have a CIDR block defining an ip address space
+        <ul>
+          <li>We use 10.0.0.0/16: 65536 (minus a few) available addresses</li>
+        </ul>
+      </li>
+      <li><strong>V</strong> automatically has a routing table <strong>RT</strong>
+        <ul>
+          <li>Select Routing Tables, sort by VPC and give <strong>RT</strong> a PIT name
+            <ul>
+              <li>‘hipaa_routingtable’</li>
+              <li>The routing table is a logical mapping of ip addresses to destinations</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>V</strong> is automatically given a security group <strong>SG</strong>
+        <ul>
+          <li>Select Security Groups, sort by VPC and give <strong>SG</strong> a PIT name
+            <ul>
+              <li>‘hipaa_securitygroup’</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Create an associated Flow Log <strong>FL</strong>
+        <ul>
+          <li>In March 2017 the AWS console UI was a little tetchy so be prepared to go around twice</li>
+          <li>On the console view of the VPC: Click the Create Flow Log button
+            <ul>
+              <li>Assuming permissions are not set: Click on the Hypertext to <strong>Set up permissions</strong>
+                <ul>
+                  <li>Because: We need to define the proper Role</li>
+                  <li>On the Role creation page: Give the Role a PIT name; Create new; Allow</li>
+                  <li>You now have an IAM Role for FlowLogs
+                    <ul>
+                      <li>This gives the account the necessary AWS permissions to work with Flow Logs</li>
+                      <li>In so doing we fell out of the Create Flow Log dialog so… back around</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Return to the VPC in the console</li>
+              <li>Click on Create Flow Log
+                <ul>
+                  <li>Filter = All is required (not “accepted” and not “rejected” traffic)</li>
+                  <li>Role: Select the role we just created above</li>
+                  <li>Destination log group: Give it a PIT name
+                    <ul>
+                      <li>Example: hipaa_loggroup</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Create subnets <strong>Spublic</strong> and <strong>Sprivate</strong>
+        <ul>
+          <li>The private subnet <strong>Sprivate</strong> is where work on PHI proceeds
+            <ul>
+              <li>CIDR block 10.0.1.0/24</li>
+              <li><strong>Sprivate</strong> will be firewalled behind a NAT gateway
+                <ul>
+                  <li>This prevents traffic in (such as ssh)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>The public subnet <strong>Spublic</strong> is for internet access
+            <ul>
+              <li>CIDR block 10.0.0.0/24</li>
+              <li><strong>Spublic</strong> connects with the internet via an Internet Gateway</li>
+              <li><strong>Spublic</strong> will be home to a Bastion server <strong>B</strong></li>
+              <li><strong>Spublic</strong> will be home to the NAT Gateway <strong>NG</strong> mentioned above
+                <ul>
+                  <li><strong>B</strong> and <strong>NG</strong> are on the public subnet but also have private subnet ip addresses
+                    <ul>
+                      <li>That is: Everthing on the public subnet also has a private ip address in the VPC.</li>
+                      <li>This will use the private ip address space</li>
+                      <li>Public names will resolve to private addresses within the VPC at need.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Create an an Internet Gateway <strong>IG</strong>
+        <ul>
+          <li>Give a PIT name as in ‘hipaa_internetgateway’</li>
+          <li>Attach hipaa_internetgateway to <strong>V</strong></li>
+        </ul>
+      </li>
+      <li>Create a NAT Gateway <strong>NG</strong>
+        <ul>
+          <li>Give it a PIT name</li>
+          <li>Elastic IP assignment may come into play here</li>
+        </ul>
+      </li>
+      <li>Create a routing table <strong>RTpublic</strong>
+        <ul>
+          <li>This will supersede the <strong>V</strong> routing table <strong>RT</strong>
+            <ul>
+              <li>Give it a PIT name: ‘hipaa_publicroutes’</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>Set up S3 buckets for input and output</li>
-  <li>Input buckets only accept http PUT. No GET or LIST.</li>
-  <li>S3 buckets have a VPC Endpoint included: Terminates inside the VPC.</li>
-  <li>Set up a DynamoDB table to track names of uploaded files.</li>
-  <li>Set up a Lambda service
+</ul>
+
+<p>————-walled off needs repair—————-</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- For **RTpublic**
+  - Select the Subnet Associations tab 
+    - Edit subnet association for this public subnet. RT &gt; Subnet &gt; VPC
+  - Select the Routes tab 
+    - Edit (under Routes) and add 0.0.0.0/0 pointing to **IG**
+</code></pre>
+</div>
+
+<p>————-walled off needs repair—————-</p>
+
+<p>Note: The console column for subnets shows “Auto-assign Public IP” and this should be set to
+<em>Yes</em> for Spublic. Note the column title includes the term <em>Public IP</em>. The Private subnet 
+should have this set to <em>No</em>. If necessary change these entries using the <em>Subnet Actions</em> 
+button.</p>
+
+<p>Note: In the table of subnets there is a “Default Subnet” column. In this example both <strong>Spublic</strong> 
+and <strong>Sprivate</strong>  have this set to <em>No</em> so there is no default subnet. We will change this later.<br />
+The change is made in the routing table <strong>RT</strong> in <strong>V</strong>.</p>
+
+<p>Note: In a routing table an entry reading 0.0.0.0/0 refers to the address space of the internet.</p>
+
+<p><strong>RT</strong> reads:<br />
+<code class="highlighter-rouge">
+10.0.0.0/16         VPC "local" 
+0.0.0.0/0           NAT gateway 
+</code></p>
+
+<p><strong>RTpublic</strong> (hipaa_publicroutes) has
+<code class="highlighter-rouge">
+10.0.0.0/16 
+0.0.0.0/0      Internet Gateway
+</code></p>
+
+<p>We now have two RTs. hipaa_routingtable (default for the VPC in general) and for 
+Spublic (hipaa_publicroutes). Notice that <strong>RT</strong> operates by default and <strong>RTpublic</strong>
+supersedes this on <strong>Spublic</strong>. This means that new resources on <strong>Sprivate</strong> will
+by default use <strong>NG</strong> which is what we want.</p>
+
+<p>VPC 0-entry points at the NAT Gateway: All internet-traffic
+will route through the NAT.</p>
+
+<p>Public subnet has a custom RT which says “all non-local traffic goes out to the IG.” = The Internet.</p>
+
+<p>This has precedence over the main table which sends to NAT.
+By default the Private subnet will use the VPC RT to go to the NAT. 
+Like one’s Router at home.  This allows the private network to talk to 
+the Internet and the Internet can’t talk to my private subnet.</p>
+
+<h3 id="part-3-adding-ec2-and-s3-resources-to-the-vpc">Part 3: Adding EC2 and S3 resources to the VPC</h3>
+
+<h4 id="building-a-bastion-server">Building a Bastion Server</h4>
+
+<ul>
+  <li>On <strong>V</strong> create a public-facing Bastion Server <strong>B</strong>
     <ul>
-      <li>Triggered by new object in bucket in the S3 input bucket</li>
-      <li>This Lambda service is managed using a role</li>
+      <li><strong>B</strong> has only port 22 open (to support ssh)</li>
+      <li><strong>B</strong> uses Secure Groups on AWS to limit access to only a subset of URLs</li>
+      <li><strong>B</strong> would be built from an AMI</li>
     </ul>
   </li>
-  <li>Set up database</li>
-  <li>Push data to S3
+</ul>
+
+<p>m4.large running AWS Linux: Created. DO NOT USE T instances because they are not going to connect to our 
+Dedicated Tenancy VPC: Not supported.</p>
+
+<p>Go through all the config steps: Memory, tags, etc etc; Security group is important</p>
+
+<p>Create a new security group with title hipaa_bastion_ssh_securitygroup
+Description = allow ssh from anywhere
+Notice in the config table “Source” is 0.0.0.0/0 which is “anywhere”; but best practice is to restrict…</p>
+
+<p>IF we allowed only UW but included the UW-VPN then someone could log in from anywhere VIA the UW VPN…</p>
+
+<p>Key pair: hipaa_bastion_keypair: Generate new, download to someplace safe on <strong>L</strong> and Launch</p>
+
+<ul>
+  <li>On <strong>Sprivate</strong> install a small Dedicated EC2 instance <strong>E</strong></li>
+</ul>
+
+<p>We are now configuring the S3 Endpoint. 
+  In so doing we selected the VPC RT (not the public subnet RT; could use that)
+  We are concerned about S3 traffic
+  S3 Endpoint is a new type of Gateway that gives S3 access from Private subnet direct into S3 without any traverse of the internet.</p>
+
+<p>WARNING: Kilroy: After I added the S3 Endpoint the NAT gateway entry had vanished from my VPC routing table. 
+This is bad. Right now the procedure is going to be: After S3 EP go examine RT and re-add NAT gateway if it 
+is not properly present. holy cow!!!!!!!!!!!!!!!</p>
+
+<p>Created S3 bucket</p>
+
+<h3 id="part-4-encryption">Part 4: Encryption</h3>
+
+<p>Suppose on EC2 we create an EBS volume for the PHI
+So is the “comes with” EBS volume encrypted? No. Therefore: Keep data on /hipaa
+Volume type = General Pupose and the size does affect IOPS; I went for 64GB</p>
+
+<p>For costing and performance include this link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html</p>
+
+<p>This gets back into optimization; it does not affect our HIPAA story</p>
+
+<p>Notice the EBS volume has an AZ which <strong>must match</strong> the target EC2 where it is going</p>
+
+<p>Notice the volume can by encrypted with a check box; and then there is a Master Key issue.</p>
+
+<p>Using the default key technically encrypts this data at rest. So that’s done.</p>
+
+<p>Working with your own set of keys would be part of risk management: Should the keys be compromised etcetera.
+So there is some additional hassle and so on but some potential risk management.</p>
+
+<p>The question is: Do we want to use one key across multiple environments (the default) or created new keys for 
+each new envvironment? How much hassle, etc.</p>
+
+<p>ok done: hipaa_ebs_ec2_private</p>
+
+<p>Next log in to EC2 on the private subnet:
+- log in to the bastion server
+- used copy-paste to edit a file on the bastion called ec2_private_keypair.pem
+  - I did a bad paste and was missing the —–BEGI
+  - on this file we ran chmod 600 on the pem file
+  - ssh -i <this file=""> 10.0.1.248
+    - notice this ip address is in the console Description tab when highlighting the private subnet EC2 instance
+  - Notice that the pem file on the bastion would immediately compromise the EC2 on the private subnet
+    - That sure sucks for you</this></p>
+
+<p>Using (sudo) fdisk to create the partition on the raw block device (fast: writing the partition table) will blow 
+away anything already there.</p>
+
+<p>Now we did the simple</p>
+
+<p>% aws s3 cp s3://bucket-name/keyname .</p>
+
+<p>The keyname that I used was the filename that I uploaded to this S3 bucket from <strong>L</strong>. 
+That file was pushed from <strong>L</strong> using the console but can also be done using the CLI.</p>
+
+<p>We are intentionally not going to encrypt the boot volume. It can be done; goes on the DD pile.</p>
+
+<p>We implement server side encryption on S3 next. 
+- The file may be unencrypted on <strong>L</strong>
+- We upload it to S3 and stipulate “encrypt this when it comes to rest in S3”
+- S3 manages this
+- We create an associated policy that <em>only</em> allows this type of upload
+  - Therefore a not-encrypted-at-rest request will be denied</p>
+
+<p>Best way is follow “S3 AWS encryption” links to http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
+Click Server-Side Encryption
+Click on Amazon S3-Managed Encryption keys in the left bar to get to 
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html</p>
+
+<p>Copy the code box contents
+Go to console
+S3 bucket
+Permissions tab
+Bucket Policy button
+Paste
+Replace in two places: actual bucket name</p>
+
+<p>PutObject command: must have server-side-encryption set to AES256 (that is the name of the encryption algorithm) 
+  AND
+must have server-side-encryption set to true</p>
+
+<p>What about the inbound files: They must be “encrypted in transit” so we get that with an https endpoint to S3: Done.</p>
+
+<p>Transferring to the instance: scp</p>
+
+<p>Last encryption note: SSL is used by the CLI be default; so our EC2-private command ‘aws s3 … etc’: 
+Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. 
+The EBS /hipaa is encrypted at rest. Done.</p>
+
+<h3 id="part-5-auditing">Part 5: Auditing</h3>
+
+<h4 id="cloudtrail-and-cloudwatch">CloudTrail and CloudWatch</h4>
+
+<p>CloudTrail is logging the API calls to my account. Whether through the console, the CLI, the APIs directly: All logged in 
+cloud trail once it is enabled. They all use the same APIs; so we log on the API calls. Logs to S3.</p>
+
+<p><strong>Here is the key thing: Enable cloud trail which creates a destination S3 bucket where all of the logging will go.</strong></p>
+
+<p>Best practice is to turn on Cloud Trail in all of your regions; so you are not blind. “Either you are logging or it is gone.”</p>
+
+<p>Cloud Watch is more for monitoring: Performance metrics.</p>
+
+<p>In both cases there is never PHI data in the log: PRovided ss#s are not in the filenames (for example)</p>
+
+<p>And S3 has its own internal logging mechanism as well. 
+- Create a new bucket hipaa-s3-access-logs with vanilla settings
+- Locate the existing inbound data bucket &gt; Properties &gt; Logging &gt; enable &gt; stipulate the access logs bucket; add a tag…</p>
+
+<p>This will have http traffic details; where stuff was coming from for example</p>
+
+<h4 id="aws-config">AWS Config</h4>
+
+<p>Cloud trail tells you what’s happening in terms of the API
+AWS Config tells you what changed</p>
+
+<p>Use them together to see if something is happening / happened of concern</p>
+
+<p>High level set up and then more detailed is possible</p>
+
+<p>Console &gt; MAnagement &gt; Config</p>
+
+<p>Think of Config (like Cloud Trail) as account-wide, not “per resource” so tagging with the PIT is not correct.</p>
+
+<p>My process was pretty default.</p>
+
+<p>So now we have Cloud Trail, S3 logging and Config operating on this account. 
+So as we get more sophisticated we could dig in to Cloud Watch.</p>
+
+<h3 id="part-6-disaster-recovery">Part 6: Disaster Recovery</h3>
+
+<p>Indicate awareness; up to CISO to provide hurdles</p>
+
+<h3 id="part-7-generating-pseudo-data">Part 7: Generating Pseudo-Data</h3>
+
+<h3 id="part-8-system-operation">Part 8: System operation</h3>
+
+<h3 id="part-9-concluding-remarks">Part 9: Concluding remarks</h3>
+
+<ul>
+  <li>Set up Ansible-assisted process for configuring and running jobs on EC2 instances</li>
+  <li>Pushing data to S3
     <ul>
-      <li>No PHI in filenames</li>
-      <li>Look into Cloudberry</li>
-      <li>AWS CLI</li>
+      <li>Console does not seem like a good mechanism</li>
+      <li>Third party apps such as Cloudberry are possible…</li>
+      <li>AWS CLI with scripts: Probably the most direct method</li>
     </ul>
   </li>
-  <li>Launch W x 5 Dedicated; assign S3 access role; encrypted volumes, s/w pre-installed (pipelines)
+  <li>Compute scale test: Involves setting up some substantial processing power
     <ul>
-      <li>Update issue: Pipeline changes, etcetera</li>
+      <li>Implication is that the HCDS can intrinsically fire up EC2 instances as needed</li>
+      <li>Launch <strong>W</strong> x 5 Dedicated instances, call these <strong>Wi</strong></li>
+      <li>Assign S3 access role</li>
+      <li>Encrypted volumes</li>
+      <li>S/w pre-installed (e.g. genomics pipelines)</li>
+      <li>Update issue: Pipeline changes, etcetera;</li>
     </ul>
   </li>
-  <li>W can be pre-populated with reference data (Sheena scenario)</li>
-  <li>Sheena redux
+  <li><strong>Wi</strong> can be pre-populated with reference data: Sheena Todhunter operational scenario
     <ul>
-      <li>B
+      <li>Assumes that a HCDS exists in perpetuity to perform some perfunctory pipeline processing</li>
+      <li>On <strong>B</strong>
         <ul>
           <li>Create SQS queue of objects in S3</li>
-          <li>Start a W for each message in queue…</li>
+          <li>Start a <strong>Wi</strong> for each message in queue…</li>
         </ul>
       </li>
       <li>Go
@@ -824,14 +1485,11 @@ on the Microsoft Azure cloud.</p>
           <li>If last instance running: Consolidate / clean-up</li>
         </ul>
       </li>
-    </ul>
-  </li>
-  <li>SNS topic notifies me when last instance shuts down.
-    <ul>
-      <li>Run Ansible script to configure Ws (patch, get data file names from DynamoDB table, etcetera)</li>
-      <li>Get Ws the Key from E</li>
-      <li>The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS)
+      <li>SNS topic notifies me when last instance shuts down.
         <ul>
+          <li>Run Ansible script to configure <strong>Wi</strong> (patch, get data file names from DynamoDB table, etcetera)</li>
+          <li>Get Ws the Key from E</li>
+          <li>The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS)</li>
           <li>Which uses something called SES to send an email to the effect that the system is working with PHI data
             <ul>
               <li>Ws pull data from S3 using VPC Endpoint; thanks to the Route table</li>
@@ -842,40 +1500,36 @@ on the Microsoft Azure cloud.</p>
           </li>
         </ul>
       </li>
-      <li>Through the VPC Endpoint the results are moved to S3.</li>
-      <li>Ws send an Alert through the NAT gateway to Simple Notification Service (SNS)
+      <li>Through <strong>S3EP_O</strong> the results are moved to S3.</li>
+      <li><strong>Wi</strong> sends an Alert through the NAT gateway to SNS
         <ul>
           <li>which uses something called SES to send another email: Done</li>
         </ul>
       </li>
-      <li>Ws evaporate completely leaving no trace</li>
-      <li>B returns to quiescent state.</li>
+      <li><strong>Wi</strong> evaporates completely leaving no trace</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="procedure">Procedure</h2>
+<h2 id="procedure-log">Procedure Log</h2>
 
-<p>Create a Virtual Private Cloud</p>
+<p>Create a VPC <strong>V</strong></p>
 
 <p><img src="/documentation/images/aws/hipaa0001.png" alt="pic0001" /></p>
 
 <p><img src="/documentation/images/aws/hipaa0002.png" alt="hipaa0002" /></p>
 
-<p>We use the name ‘czarhipaa’; this should be unique.</p>
-
-<p>CIDR as shown is typical.</p>
-
-<p>Dedicated Instance means: Nobody else allowed here.</p>
+<ul>
+  <li>Use the name ‘hipaa’; should be unique.</li>
+  <li>CIDR as shown is typical.</li>
+  <li>Dedicated Instance means: Nobody else allowed here.</li>
+</ul>
 
 <p><img src="/documentation/images/aws/hipaa0003.png" alt="hipaa0003" /></p>
 
-<p>Now it exists; time to fill it with stuff.</p>
-
-<h3 id="pro-tip">Pro Tip</h3>
-<p>You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
-This is carte blanche Dedicated and so is more expensive. We do not consider this option in this tutorial because we are erring on 
-the side of caution rather than cost.</p>
+<ul>
+  <li>I added a tag indicating that I originated the VPC.</li>
+</ul>
 
 <h3 id="create-a-subnet">Create a subnet</h3>
 
@@ -971,6 +1625,66 @@ the side of caution rather than cost.</p>
 
 <p>end as of Jan 27 2017.</p>
 
+<h2 id="risk">Risk</h2>
+
+<p>This section identifies points of risk and their severity. Severity is described both
+‘when protocol is properly observed’ and ‘when protocol is not observed’. That is: We 
+provide examples of how failure to follow protocols could result in the compromise of 
+PHI. There is in all of this a notion of diminishing returns: A tremendous amount of 
+additional effort might be incorporated in building an HCDS that provides only small 
+reduction of risk.</p>
+
+<ul>
+  <li>Log in to <strong>B</strong> and move <strong>K</strong> to <strong>E</strong>
+    <ul>
+      <li>Observe that material encrypted</li>
+      <li>Maybe instead we should be tunneling directly to <strong>E</strong> from <strong>L</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Use an AMI to create a processing EC2 <strong>W</strong></p>
+
+    <ul>
+      <li>Also with <strong>ENC</strong></li>
+    </ul>
+  </li>
+  <li>Create S3 buckets
+    <ul>
+      <li><strong>S3D</strong> for data</li>
+      <li><strong>S3O</strong> for output</li>
+      <li><strong>S3L</strong> for logging</li>
+      <li>
+        <p><strong>S3A</strong> for ancillary purposes (non-PHI is the intention)</p>
+      </li>
+      <li>Such S3 buckets only accept http PUT; not GET or LIST</li>
+    </ul>
+  </li>
+  <li>Create an S3 bucke <strong>S3O</strong> for output</li>
+  <li>Create an S3 bucke <strong>S3L</strong> for logging</li>
+  <li>Create an S3 Endpoint <strong>S3EP_D</strong> in <strong>V</strong></li>
+  <li>Create an S3 Endpoint <strong>S3EP_O</strong> in <strong>V</strong></li>
+  <li>Create an S3 Endpoint <strong>S3EP_L</strong> in <strong>V</strong>
+    <ul>
+      <li>“S3 buckets have a VPC Endpoint included… ensure this terminates inside the VPC”</li>
+    </ul>
+  </li>
+  <li>Create role <strong>R</strong> allowing <strong>W</strong> to read data at <strong>S3EP</strong> from <strong>S3</strong></li>
+</ul>
+
+<h4 id="advanced-steps">Advanced steps</h4>
+
+<ul>
+  <li>Set up a DynamoDB table to track names of uploaded files</li>
+  <li>Set up a Lambda service
+    <ul>
+      <li>Triggered by new object in bucket in the S3 input bucket</li>
+      <li>This Lambda service is managed using a role</li>
+    </ul>
+  </li>
+  <li>Set up an SQS Simple Queue Service <strong>Q</strong></li>
+  <li>Create an SNS to notify me when interesting things happen</li>
+</ul>
+
 
 
     <div class="tags">
@@ -980,6 +1694,34 @@ the side of caution rather than cost.</p>
         
         
         <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
+        
+        
+        
+        <a href="tag_HIPAA.html" class="btn btn-default navbar-btn cursorNorm" role="button">HIPAA</a>
+        
+        
+        
+        <a href="tag_medicine.html" class="btn btn-default navbar-btn cursorNorm" role="button">medicine</a>
+        
+        
+        
+        <a href="tag_data_management.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_management</a>
+        
+        
+        
+        <a href="tag_case_studies.html" class="btn btn-default navbar-btn cursorNorm" role="button">case_studies</a>
+        
+        
+        
+        <a href="tag_storage.html" class="btn btn-default navbar-btn cursorNorm" role="button">storage</a>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
         
         
         
@@ -995,7 +1737,7 @@ the side of caution rather than cost.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Mar 22, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

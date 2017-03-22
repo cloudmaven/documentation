@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,12 +731,237 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/cc/cc_technical.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/cc/cc_technical.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
     
 
     
 
   <h2 id="introduction">Introduction</h2>
+<p>This purpose of this page is to present you with important technical details of cloud computing.</p>
+
+<h2 id="links">Links</h2>
+<ul>
+  <li><a href="https://aws.amazon.com/ec2/instance-types/">AWS EC2 instance type details</a></li>
+  <li><a href="http://docs.aws.amazon.com/cli/latest/userguide/installing.html">Install the AWS CLI</a></li>
+  <li><a href="http://support.suso.com/supki/SSH_Tutorial_for_Linux">Example ssh usage/help</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">Computer networking port</a></li>
+  <li><a href="http://www.computerhope.com/unix/curl.htm">Linux cURL command</a></li>
+  <li><a href="https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh">Access to Jupyter notebooks via ssh</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/PuTTY">PuTTY on Wikipedia</a></li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+<ul>
+  <li><strong><em>The material on this page can be incredibly useful but out of context may appear a bit ‘so what?’; 
+we suggest skimming through here to help build your cloud context web if these topics are new to you.</em></strong></li>
+  <li><strong><em>Our <a href="cc_glossary.html">glossary</a> may help with unfamiliar terms.</em></strong></li>
+  <li><strong><em>Be warned! We have placed – where appropriate – smaller “Warnings” sections below with each sub-topic.</em></strong></li>
+</ul>
+
+<h2 id="virtual-machines">Virtual Machines</h2>
+
+<p>How fast is a given instance?  You can read about instance types on the vendor’s cloud console and/or information 
+pages. For example AWS EC2 instances are written up <a href="https://aws.amazon.com/ec2/instance-types/">here</a>.  Here 
+are a couple ways to look at CPU details from the command line of a Linux machine:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% lscpu
+% cat /proc/cpuinfo
+</code></pre>
+</div>
+
+<p>It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce <em>on 
+the order of</em> 10% performance variation.</p>
+
+<h2 id="data-transfer-to-cloud-storage">Data transfer to cloud storage</h2>
+
+<h3 id="to-aws-s3">To AWS S3</h3>
+
+<p>Run the ingress (local to S3) transfer in parallel on a wired connection (not WiFi). Being peered with a high
+speed netwokr like Internet2 helps; or being in a <em>Science DMZ</em> environment is better still. If the data is 
+going to the Oregon region of AWS: It might not save any time to go from Portland to Seattle and back to
+Portland again. Finally: You can use the console (browser) but the risk is that this will be slow.  On the other
+hand you can use the AWS command line; e.g. the <strong>cp</strong> command. There are GUI-based interfaces like Cyberduck
+as well.</p>
+
+<ul>
+  <li>Note the AWS CLI installation page; this includes making sure the cli is in your path.</li>
+</ul>
+
+<h2 id="ports-sockets-and-tunneling">Ports, sockets and tunneling</h2>
+
+<p>Following a URL such as 123.213.101.102 you may see a colon followed by a number, as in: 123.213.101.102:8001. 
+This following number is a <strong><em>port</em></strong>, per wikipedia ‘a networking endpoint in an operating system’. A port in 
+this context means a dedicated signal wire. By directing applications to a port you build a 
+dedicated send/receive connection. This is particularly useful in getting two computers to talk to one another.</p>
+
+<p>For completeness there is a related concept called a <a href="https://en.wikipedia.org/wiki/Network_socket">socket</a> 
+which we do not need in this discussion.</p>
+
+<p>We proceed with a particularly important cloud-oriented use of ports. Suppose you have a cloud VM instance 
+You wish to run some software that uses a Graphical User Interface (GUI). In this case let’s consider the
+common example of a <a href="az_jupyter.html">Jupyter notebook</a>. Here a remote Jupyter notebook server is accustomed to
+talking to your machine via your local browser. 
+The commands below follow <a href="https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh">this reference</a>.</p>
+
+<p>Let’s assume you log in to the cloud VM at ip address 123.213.101.102 using ssh.<br />
+There you issue</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% jupyter notebook --no-browser --port=8889
+</code></pre>
+</div>
+
+<p>This is directing the jupyter application to pay attention to port 8889.
+Next, on your local machine, say a laptop for example, you would issue:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% ssh -N -f -i ~/.ssh/credential_filename.pem -L localhost:7005:localhost:8889 username@123.213.101.102
+</code></pre>
+</div>
+
+<p>This uses the ssh command. If you are using a Windows PC it is common to connect using PuTTY (see below).
+The point of the command is to create a tunnel from port 7005 on your local machine to port 8889 on the 
+cloud VM.</p>
+
+<p>The <strong>-i</strong> switch specifies an identity file (key pair access to the cloud VM).</p>
+
+<p>The <strong>-L</strong> switch in the command stands for <strong>Local</strong>.  As another example concerning 
+MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
+<a href="http://support.suso.com/supki/SSH_Tutorial_for_Linux">http://support.suso.com/supki/SSH_Tutorial_for_Linux</a>:</p>
+
+<blockquote>
+  <p>SSH can forward communication across an SSH session that you establish.  For example, you can 
+set up a port forward for your connection from your home machine to xyz.org such that connections to localhost 
+port 3306 forward to the remote machine’s port 3306. Port 3306 is the port that the MySQL server listens on, 
+so this would allow you to bypass the normal host checks that the MySQL server would make and allow you to 
+run GUI MySQL programs on your local computer while using the database on your remote machine. Here is the 
+command to accomplish this:</p>
+
+  <p>ssh -L 3306:mysql.xyz.org:3306 username@kilroy.xyz.org</p>
+
+  <p>The -L (which means Local port) takes one colon-delimeted argument.</p>
+
+  <p>local-host:local-port:connect-to-host:connect-to-port</p>
+
+  <p>You specify what host and port the connection will go to on the other side of the SSH 
+connection.  When you make a connection to the local-host:local-port port it sends the 
+data through the SSH connection to the connect-to-host:connect-to-port port. From 
+the point of view of connect-to-host it is as if the connection 
+came from that machine.</p>
+</blockquote>
+
+<p>In our example the <strong>ssh</strong> command for the Jupyter notebook connection stipulated port 7005 on 
+localhost. Hence on your local machine you can now open a browser and enter in the address bar:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>localhost:7005
+</code></pre>
+</div>
+
+<p>If all is well you will see the Jupyter notebook (from the cloud VM) on your browser.</p>
+
+<p>Jupyter notebooks have associated passwords; and in the case above our colleague had to set this password 
+to an empty string in the Jupyter config file due to Jupyter permission default settings.</p>
+
+<p>The main point here is that the ssh protocol can be used to create tunnels into cloud VMs and 
+that this particularly applies when you want to see GUI content on your local machine.</p>
+
+<h2 id="putty">PuTTY</h2>
+
+<p>The Windows PC environment does not yet support the <strong>ssh</strong> command and consequently cloud VM connections typically
+use the PuTTY application. (There are also 
+<a href="http://web.archive.org/web/20130806071308/http://huddledmasses.org/scriptable-ssh-from-powershell/">alternative options</a> ). 
+PuTTY is a slightly circuitous but perfectly reliable means of connecting with a cloud VM, supporting as it does several
+communication protocols including ssh.</p>
+
+<p>The main point here is that a VM credential file with a <em>.pem</em> extension does not work with PuTTY. You can use the companion
+application PuTTYgen to convert this file to an equivalent file with a .ppk file extension.  The PuTTY program can then use 
+this credential file to connect to a cloud VM.</p>
+
+<p>kilroy need screencap of PuTTYgen in operation and the menu location for specifying a .ppk file.</p>
+
+<p>kilroy need text and screencap showing use of PuTTY to accomplish the Jupyter tunnel given above; and copy to the all Jupyter pages as well.</p>
+
+<h2 id="python-connections">Python connections</h2>
+
+<p>Python has a Library to help simplify connecting to a URL. The following code is a simple program that demonstrates
+an API call to our <a href="AralDIF.html">AralDIF</a> project:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import urllib2
+import time
+
+def dif(calltype, date1, date2, station):
+    baseAPI = 'https://araldif.azurewebsites.net/api/'
+    apiExtension = calltype + '?' + 'start=' + date1 + '&amp;' + 'end=' + date2 + '&amp;' + 'station=' + station + '&amp;'
+    api_call = baseAPI + apiExtension
+    print api_call
+    t1 = time.time()
+    u = urllib2.urlopen(api_call)
+    t2 = time.time()
+    data = u.read()
+    t3 = time.time()
+    print 'URL open required', t2 - t1, 'seconds; read() required', t3 - t2, 'seconds'
+    return data
+
+data = dif('gethydrograph', '1995-01-01', '2000-12-31', 'UCHKU')
+print data[0:198]
+</code></pre>
+</div>
+
+<p>The output of this program (the first 198 characters returned) is as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>https://araldif.azurewebsites.net/api/gethydrograph?start=1995-01-01&amp;end=2000-12-31&amp;station=UCHKU&amp;
+URL open required 9.09429216385 seconds; read() required 0.0734670162201 seconds
+DATE,FLOW
+1995-01-01,93.787209
+1995-01-02,90.740631
+1995-01-03,87.948059
+1995-01-04,85.219681
+1995-01-05,82.500687
+1995-01-06,79.934334
+1995-01-07,77.52166
+1995-01-08,75.218941
+1995-01-09,73.028778
+</code></pre>
+</div>
+
+<p>Note that establishing the connection required about 9 seconds and the data transfer less than one tenth of a second.</p>
+
+<p>The importance of being able to write this code is high and can be understood as follows:</p>
+
+<p>If your research requires you to regularly go to an external data resource to make new data queries 
+(updates, new ideas for looking at existing data and so on) then you traditionally carry this out by manual 
+methods: Lots of clicking and dragging and waiting. The above Web Client demonstrates that this process can be 
+automated; provided that the person maintaining the data service (in our example ‘araldif.azurewebsites.net’) 
+has built and maintained their side of the automation contract.</p>
+
+<h2 id="exclam">Exclam</h2>
+
+<p>This section describes using exclam in front of a Linux command from a Jupyter frame.</p>
+
+<h2 id="linux-connections">Linux connections</h2>
+
+<h3 id="warnings-1">Warnings</h3>
+
+<ul>
+  <li><em>** Using curl requires a proper URL and – when hitting GitHub – this can be tricky to figure out. 
+Please see our dedicated GitHub page and the Azure Jupyter page for more deatails. **</em></li>
+</ul>
+
+<p>This section describes ssh / ftp / wget / curl stuff</p>
+
+<h3 id="ssh">ssh</h3>
+
+<h3 id="ftp">ftp</h3>
+
+<h3 id="wget">wget</h3>
+
+<h3 id="curl">curl</h3>
+
+<p>Per Wikipedia, <a href="https://en.wikipedia.org/wiki/CURL"><strong>curl</strong></a> is a command line tool for getting or sending files 
+using <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator">URL</a> syntax. 
+<a href="http://www.computerhope.com/unix/curl.htm">See this link for Curl usage</a>.</p>
+
+<p>curl can be used in the context of an Azure-hosted Jupyter notebook to load a particular data resource (e.g. from GitHub) 
+as an initialization step every time the notebook is restarted.</p>
 
 
 
@@ -686,7 +987,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Mar 22, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

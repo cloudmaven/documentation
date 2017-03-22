@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Github for research computing">
-<meta name="keywords" content="research_computing,  research, computing">
+<meta name="keywords" content="research_computinggithubreproducibilityJupyterdata_sciencecloud_basicsweb_framework,  research, computing">
 <title>GitHub for Research Computing | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,14 +731,13 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/rc/rc_github.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-    
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/rc/rc_github.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
 
     
 
-  <h1 id="github-for-research-computing">GitHub for Research Computing</h1>
+    
 
-<h2 id="introduction">Introduction</h2>
+  <h2 id="introduction">Introduction</h2>
 
 <p>The purpose of this page is to walk through GitHub procedures with two implementations in mind:</p>
 
@@ -704,15 +779,11 @@ $('#toc').on('click', 'a', function() {
   </li>
 </ul>
 
-<h2 id="what-is-jekyll">What is Jekyll?</h2>
-<p>Jekyll is a GitHub repo that includes rendering software ‘for itself’. That is: If you make a copy of the Jekyll repo and rename it something else, 
-like ‘Hyde’, it will be visible on GitHub as both a normal repo (let’s call that the back door) and as a rendered website (the front door). The 
-way this works is your version will start out with some default files that have the markdown file extension ‘.md’. These you can modify to suit 
-your own purposes. When you hit the front door Jekyll manually creates from these markdown files some pretty html content which renders in your 
-browser. Follow the recipe provided by the Jekyll documentation and you can start building out content in Hyde. This is what we have done 
-with http://cloudmaven.org.</p>
+<h2 id="github-basics">GitHub Basics</h2>
 
-<p>Notice that there is a side comment (Kilroy) needed here about the distinction between the front door URL and the DNS entry.</p>
+<h2 id="github-api">GitHub API</h2>
+
+<h2 id="github-raw-file-recovery">GitHub raw file recovery</h2>
 
 <h2 id="github-commit-from-command-line-on-windows">GitHub Commit from Command Line on Windows</h2>
 <p>This assumes you already have a GitHub repo and a local copy. You have modified something in the local copy and you have permission to just execute a 
@@ -740,7 +811,19 @@ push that will override anything on the GitHub repo.</p>
   </li>
 </ul>
 
+<h2 id="jekyll-on-github">Jekyll on GitHub</h2>
+
+<p>Jekyll is a GitHub repo that includes rendering software ‘for itself’. That is: If you make a copy of the Jekyll repo and rename it something else, 
+like ‘Hyde’, it will be visible on GitHub as both a normal repo (let’s call that the back door) and as a rendered website (the front door). The 
+way this works is your version will start out with some default files that have the markdown file extension ‘.md’. These you can modify to suit 
+your own purposes. When you hit the front door Jekyll manually creates from these markdown files some pretty html content which renders in your 
+browser. Follow the recipe provided by the Jekyll documentation and you can start building out content in Hyde. This is what we have done 
+with http://cloudmaven.org.</p>
+
+<p>Notice that there is a side comment (Kilroy) needed here about the distinction between the front door URL and the DNS entry.</p>
+
 <h2 id="jupyter-github-repo-on-aws-ec2">Jupyter GitHub repo on AWS EC2</h2>
+
 <p>Suppose your EC2-based Jupyter Notebook is publicly visible. It might be password-protected (it is by default) but passwords have a 
 way of getting handed around and this is not a highly secure situation. Someone logs on to your Notebook and deletes a page or 
 makes some not-too-useful changes. You want to revert to the old version: This sounds like a job for GitHub.</p>
@@ -931,6 +1014,30 @@ origin will be our online repo at GitHub.</p>
         
         
         
+        <a href="tag_github.html" class="btn btn-default navbar-btn cursorNorm" role="button">github</a>
+        
+        
+        
+        <a href="tag_reproducibility.html" class="btn btn-default navbar-btn cursorNorm" role="button">reproducibility</a>
+        
+        
+        
+        <a href="tag_Jupyter.html" class="btn btn-default navbar-btn cursorNorm" role="button">Jupyter</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
+        
+        
+        
+        <a href="tag_cloud_basics.html" class="btn btn-default navbar-btn cursorNorm" role="button">cloud_basics</a>
+        
+        
+        
+        <a href="tag_web_framework.html" class="btn btn-default navbar-btn cursorNorm" role="button">web_framework</a>
+        
+        
+        
     </div>
 
     
@@ -943,7 +1050,7 @@ origin will be our online repo at GitHub.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Mar 22, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

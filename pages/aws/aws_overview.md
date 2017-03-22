@@ -10,12 +10,20 @@ folder: aws
 ---
 
 ## Introduction
-This document -- available at http://cloudmaven.org -- provides an overview of the AWS public cloud
-platform and the AWS relationship with the University of Washington.
+This document is an overview of the AWS public cloud platform and the AWS relationship with the 
+University of Washington.
 
 ## Links
 
+- [Amazon Web Services](http://aws.amazon.com)
+
+
+
 ## Warnings
+
+## Interesting technologies at AWS
+
+- [Integrating the Athena query service with R (data science blog post)](https://aws.amazon.com/blogs/big-data/)
 
 ## Business Associates Agreement summary
 	

@@ -442,7 +442,22 @@ is not properly present. holy cow!!!!!!!!!!!!!!!
 
 Created S3 bucket
 
-### Part 4: Encryption
+### Part 4: Ancillary components
+
+This section describes the use of automated services, data bases tables, IOT endpoints and other 
+AWS features to augment the HCDS. Such ancillary components may or may not touch directly on PHI,
+an important differentiator as only HIPAA-aligned technologies are permitted to do so. 
+
+
+- Set up a DynamoDB table to track names of uploaded files
+- Set up a Lambda service 
+  - Triggered by new object in bucket in the S3 input bucket
+  - This Lambda service is managed using a role
+- Set up an SQS Simple Queue Service **Q** 
+- Create an SNS to notify me when interesting things happen
+
+
+### Part 5: Encryption
 
 Suppose on EC2 we create an EBS volume for the PHI
 So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
@@ -522,9 +537,12 @@ Look at cli/latest/reference for the link on this. This means that S3 to EC2priv
 The EBS /hipaa is encrypted at rest. Done. 
 
 
+### Part 6: Auditing
 
+HCDS activity must be logged in such a manner as to permit subsequent tracing of PHI data 
+access and ongoing monitoring of the security state of the system. 
 
-### Part 5: Auditing
+#### CloudTrail and CloudWatch
 
 CloudTrail is logging the API calls to my account. Whether through the console, the CLI, the APIs directly: All logged in 
 cloud trail once it is enabled. They all use the same APIs; so we log on the API calls. Logs to S3. 
@@ -577,59 +595,15 @@ So as we get more sophisticated we could dig in to Cloud Watch.
 
 
 
-## DR
+### Part 7: Disaster Recovery
+
 Indicate awareness; up to CISO to provide hurdles
 
+### Part 8: Generating Pseudo-Data
 
+### Part 9: System operation
 
-## Risk
-
-This section identifies points if risk and their estimated severity. Severity is described with 
-two values: 'When protocol is observed' and 'When protocol is not observed'. We try to provide
-examples. Furthermore there is a notion of diminishing returns: A tremendous amount of additional
-effort can be incorporated in building an HCDS that provides comparatively small risk reduction.
-
-
-- Log in to **B** and move **K** to **E** 
-  - Observe that material encrypted 
-  - Maybe instead we should be tunneling directly to **E** from **L**
-- Use an AMI to create a processing EC2 **W**
-
-  - Also with **ENC**
-- Create S3 buckets 
-  - **S3D** for data
-  - **S3O** for output
-  - **S3L** for logging
-  - **S3A** for ancillary purposes (non-PHI is the intention)
-
-  - Such S3 buckets only accept http PUT; not GET or LIST
-- Create an S3 bucke **S3O** for output
-- Create an S3 bucke **S3L** for logging
-- Create an S3 Endpoint **S3EP_D** in **V**
-- Create an S3 Endpoint **S3EP_O** in **V**
-- Create an S3 Endpoint **S3EP_L** in **V**
-  - "S3 buckets have a VPC Endpoint included... ensure this terminates inside the VPC"
-- Create role **R** allowing **W** to read data at **S3EP** from **S3**
-
-#### Advanced steps
-
-- Set up a DynamoDB table to track names of uploaded files
-- Set up a Lambda service 
-  - Triggered by new object in bucket in the S3 input bucket
-  - This Lambda service is managed using a role
-- Set up an SQS Simple Queue Service **Q** 
-- Create an SNS to notify me when interesting things happen
-
-
-#### Logging 
-
-- Configure everything above to log to **S3L** using CloudWatch/CloudFront
-
-#### Creating Pseudo Data
-
-#### Transition to operation
-
-#### Residual notes
+### Part 10: Concluding remarks
 
 - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
 - Pushing data to S3
@@ -681,10 +655,6 @@ Create a VPC **V**
 
 - I added a tag indicating that I originated the VPC.
 
-### Pro Tip
-You can be more cost-effective by not making this Dedicated but then your PHI-Using instances will have to be launched Dedicated. 
-This is carte blanche Dedicated and so is more expensive. We do not consider this option in this tutorial because we are erring on 
-the side of caution rather than cost. 
 
 
 ### Create a subnet
@@ -780,5 +750,63 @@ Notice that this has Full Access; we will restrict access at a later step.
 ![hipaa0030](/documentation/images/aws/hipaa0030.png)
 
 end as of Jan 27 2017.
+
+
+## Risk
+
+This section identifies points of risk and their severity. Severity is described both
+'when protocol is properly observed' and 'when protocol is not observed'. That is: We 
+provide examples of how failure to follow protocols could result in the compromise of 
+PHI. There is in all of this a notion of diminishing returns: A tremendous amount of 
+additional effort might be incorporated in building an HCDS that provides only small 
+reduction of risk.
+
+### Protocols described in this document
+
+#### VPC creation: Manual versus Wizard
+
+### Options outside the purview of this document
+
+#### Dedicated instances
+
+We drive cost up using dedicated instances on **Sprivate**. It is technically feasible
+to not do this but there is an attendant cost in time and risk.
+
+#### Extended key management strategy
+
+Encryption keys here are taken to be default keys associated with the AWS account. 
+It is possible on setting up the HCDS to create an entire structure around management 
+of newly-generated keys. This is a diminishing-returns risk mitigation procedure:
+It may create a profusion of complexity that is itself a risk. 
+
+One open question is whether a single AWS account should / could / will be used to
+provision multiple independent research projects, each with one or more respective 
+data systems. 
+
+
+
+- Log in to **B** and move **K** to **E** 
+  - Observe that material encrypted 
+  - Maybe instead we should be tunneling directly to **E** from **L**
+- Use an AMI to create a processing EC2 **W**
+
+  - Also with **ENC**
+- Create S3 buckets 
+  - **S3D** for data
+  - **S3O** for output
+  - **S3L** for logging
+  - **S3A** for ancillary purposes (non-PHI is the intention)
+
+  - Such S3 buckets only accept http PUT; not GET or LIST
+- Create an S3 bucke **S3O** for output
+- Create an S3 bucke **S3L** for logging
+- Create an S3 Endpoint **S3EP_D** in **V**
+- Create an S3 Endpoint **S3EP_O** in **V**
+- Create an S3 Endpoint **S3EP_L** in **V**
+  - "S3 buckets have a VPC Endpoint included... ensure this terminates inside the VPC"
+- Create role **R** allowing **W** to read data at **S3EP** from **S3**
+
+
+
 
 {% include links.html %}

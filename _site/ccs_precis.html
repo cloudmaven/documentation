@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cloud Case Study Precis">
+<meta name="keywords" content="research_computingdata_sciencecase_studiesgenomics,  summary, overview, case, study">
+<title>Cloud Case Study Precis | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the Cloud Case Study Precis page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Cloud Case Study Precis">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cc_what_is_the_cloud.html">What is the cloud?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_data_security.html">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_glossary.html">Glossary</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_cost_management.html">Cost management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_compute_power.html">Compute power</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_docker_containers.html">Docker containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_internet_of_things.html">Internet of things</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_technical.html">Cloud technical</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="p_consulting.html">Consulting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="p_costing.html">Costing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research computing</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_data_science.html">Data science</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_research_on_the_web.html">Research on the web</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_python.html">Visualization Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_ec2.html">EC2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spot_market.html">Spot market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cluster.html">Cluster</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure</a>
+        <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_training.html">Training</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_visual_studio.html">Visual Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_web_framework.html">Web Framework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_machine_learning.html">Machine Learning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver and LIDAR</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_neurohackweek.html">Neurohackweek</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_cfd.html">CFD</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Cloud Case Study Precis</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Cloud Case Study Precis</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/ccs/ccs_precis.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+    
+
+  <h2 id="introduction">Introduction</h2>
+
+<p>The purpose of this page is to concisely describe cloud computing / data science case studies at UW.</p>
+
+<p>We are currently tracking over 75 projects/groups migrating their research computing to the public cloud. 
+Below is a selected subset, organized roughly by domain. We emphasize that much of our work goes beyond 
+simple migration to cloud platforms: It extends to data management techniques, reproducibility, 
+implementing data services for collaboration and public distribution, and much more. All of this is 
+in turn made possible by the UW eScience Institute.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="http://escience.washington.edu">eScience Institute</a></li>
+  <li><a href="http://www.gs.washington.edu">genome sciences at UW</a></li>
+  <li><a href="http://www.uwmedicine.org">medical science at UW</a></li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+
+<ul>
+  <li><strong><em>Contact us for updates to this material</em></strong></li>
+  <li><strong><em>Focus here is topics for a degree of anonymity</em></strong></li>
+  <li><strong><em>Projects are in *various</em> stages of completion</strong>*</li>
+</ul>
+
+<h2 id="general-systems-and-tools">General Systems and Tools</h2>
+
+<ul>
+  <li><a href="https://sqlshare.uw.edu">SQL Share</a>: A system for managing, sharing and manipulating research data.</li>
+  <li><a href="http://myria.cs.washington.edu/">Myria</a>: A distributed, shared-nothing Big Data management system and Cloud service from the University of Washington</li>
+  <li>IOT based on Arduino Yun leaf technology and cloud IOT endpoint services</li>
+  <li>Geohackweek and Neurohackweek: Hosting intensive workshops for learning and developing cloud-based tools and methods at UW</li>
+</ul>
+
+<h2 id="medical-research">Medical research</h2>
+
+<ul>
+  <li>Laboratory Medicine: Cloud-based system for genome analysis: (oncology and related) clinical annotation</li>
+  <li>Crossing the clinical-to-research data barrier</li>
+  <li>Data access and tool access for MRI- and EEG-based research</li>
+  <li>Gut biome metagenomics (Children’s Hospital)</li>
+  <li>Patterns in unexpected in-hospital mortality</li>
+  <li>Deep learning for patient behavior prediction: EEG data in relation to A/V transcripts of patient behavior</li>
+  <li>Canine longitudinal aging studies</li>
+  <li>Cyberinfrastructure in support of research laboratory groups</li>
+  <li>Biostatistics</li>
+</ul>
+
+<h2 id="hydrology-and-geochemistry">Hydrology and Geochemistry</h2>
+
+<ul>
+  <li>GDS: Geometabolomic Data System, a contribution-driven collaborative library for Dissolved Organic Matter (DOM) spectral data from the global hydrosphere.</li>
+  <li>HiMAT (NASA)</li>
+  <li>Dynamic Infomation Framework (DIF)(World Bank): Converting scientific modeling skill into actionable information in 
+the public domain: Central and southeast Asia, central and south America</li>
+</ul>
+
+<h2 id="genomics">Genomics</h2>
+
+<ul>
+  <li>Epigenome imputation: From existing wet lab experiments <em>infer</em> relationships between 
+particular proteins and cell types as a function of location on the human genome</li>
+  <li>Genetic architecture of autism</li>
+  <li>Metagenomics of methane-consuming microbial communities</li>
+</ul>
+
+<h2 id="library-science">Library science</h2>
+
+<ul>
+  <li>With Suzzallo library: A pilot study for providing geospatial LIDAR data as a curated digital resource</li>
+  <li>The curation and provision of cloud-based resources for data analysis in specialized research domain communities</li>
+</ul>
+
+<h2 id="molecular-engineering-and-science">Molecular Engineering and Science</h2>
+
+<ul>
+  <li>Peptide therapeutics research: Cloud-based scale computing using the Rosetta molecular folding analysis toolkit</li>
+</ul>
+
+<h2 id="ocean-science">Ocean science</h2>
+
+<ul>
+  <li>LiveOcean: Ocean modeling forecast</li>
+  <li>Marine microbial ecology</li>
+  <li>Mesoscale eddie structure and correlation to marine life</li>
+</ul>
+
+<h2 id="computer-science">Computer Science</h2>
+
+<ul>
+  <li>Analysis of code fault detection: Student project</li>
+  <li>IOT: A design pattern and tutorial for using cloud-based support of <strong>Internet of Things</strong> implementations 
+(NSF: Campus Cyberinfrastructure)</li>
+  <li>Data security on the cloud: A generic data system with automated and human protocols for working on sensitive
+data including elements of compliance with oversight regulations 
+(NSF: Campus Cyberinfrastructure)</li>
+  <li>Scale on the cloud: See under Molecular Engineering and Science the protein folding case study
+(NSF: Campus Cyberinfrastructure)</li>
+  <li>Collaboration on the cloud: See case studies herein on GeoServer/THREDDS, on LIDAR, on Dynamic Information 
+Frameworks and on HiMAT; thematically lightweight geospatial data system with the underlying theme of ‘access 
+to data through pre-built frameworks, data APIs and minimal (non-redundant) software engineering.
+(NSF: Campus Cyberinfrastructure)</li>
+</ul>
+
+<h2 id="mechanical-and-civil-engineering">Mechanical and Civil Engineering</h2>
+
+<ul>
+  <li>Computational fluid dynamics of hydrogen and methane combustion</li>
+</ul>
+
+<h2 id="astronomy">Astronomy</h2>
+
+<ul>
+  <li>Identifying stellar composition through spectral model superposition in nearby galaxies</li>
+  <li>Large Scale Synoptic Telescope (LSST) toolchain development</li>
+</ul>
+
+<h2 id="geospatial">Geospatial</h2>
+
+<ul>
+  <li>Implementation of GeoServer and a THREDDS server on the public cloud</li>
+  <li>Various data archival projects: Using the cloud for many 9s of reliability</li>
+</ul>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
+        
+        
+        
+        <a href="tag_case_studies.html" class="btn btn-default navbar-btn cursorNorm" role="button">case_studies</a>
+        
+        
+        
+        <a href="tag_genomics.html" class="btn btn-default navbar-btn cursorNorm" role="button">genomics</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> March 2, 2017<br/> Site last generated: Mar 22, 2017 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>
