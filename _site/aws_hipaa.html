@@ -1324,7 +1324,25 @@ is not properly present. holy cow!!!!!!!!!!!!!!!</p>
 
 <p>Created S3 bucket</p>
 
-<h3 id="part-4-encryption">Part 4: Encryption</h3>
+<h3 id="part-4-ancillary-components">Part 4: Ancillary components</h3>
+
+<p>This section describes the use of automated services, data bases tables, IOT endpoints and other 
+AWS features to augment the HCDS. Such ancillary components may or may not touch directly on PHI,
+an important differentiator as only HIPAA-aligned technologies are permitted to do so.</p>
+
+<ul>
+  <li>Set up a DynamoDB table to track names of uploaded files</li>
+  <li>Set up a Lambda service
+    <ul>
+      <li>Triggered by new object in bucket in the S3 input bucket</li>
+      <li>This Lambda service is managed using a role</li>
+    </ul>
+  </li>
+  <li>Set up an SQS Simple Queue Service <strong>Q</strong></li>
+  <li>Create an SNS to notify me when interesting things happen</li>
+</ul>
+
+<h3 id="part-5-encryption">Part 5: Encryption</h3>
 
 <p>Suppose on EC2 we create an EBS volume for the PHI
 So is the “comes with” EBS volume encrypted? No. Therefore: Keep data on /hipaa
@@ -1402,7 +1420,10 @@ must have server-side-encryption set to true</p>
 Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. 
 The EBS /hipaa is encrypted at rest. Done.</p>
 
-<h3 id="part-5-auditing">Part 5: Auditing</h3>
+<h3 id="part-6-auditing">Part 6: Auditing</h3>
+
+<p>HCDS activity must be logged in such a manner as to permit subsequent tracing of PHI data 
+access and ongoing monitoring of the security state of the system.</p>
 
 <h4 id="cloudtrail-and-cloudwatch">CloudTrail and CloudWatch</h4>
 
@@ -1441,15 +1462,15 @@ AWS Config tells you what changed</p>
 <p>So now we have Cloud Trail, S3 logging and Config operating on this account. 
 So as we get more sophisticated we could dig in to Cloud Watch.</p>
 
-<h3 id="part-6-disaster-recovery">Part 6: Disaster Recovery</h3>
+<h3 id="part-7-disaster-recovery">Part 7: Disaster Recovery</h3>
 
 <p>Indicate awareness; up to CISO to provide hurdles</p>
 
-<h3 id="part-7-generating-pseudo-data">Part 7: Generating Pseudo-Data</h3>
+<h3 id="part-8-generating-pseudo-data">Part 8: Generating Pseudo-Data</h3>
 
-<h3 id="part-8-system-operation">Part 8: System operation</h3>
+<h3 id="part-9-system-operation">Part 9: System operation</h3>
 
-<h3 id="part-9-concluding-remarks">Part 9: Concluding remarks</h3>
+<h3 id="part-10-concluding-remarks">Part 10: Concluding remarks</h3>
 
 <ul>
   <li>Set up Ansible-assisted process for configuring and running jobs on EC2 instances</li>
@@ -1634,6 +1655,28 @@ PHI. There is in all of this a notion of diminishing returns: A tremendous amoun
 additional effort might be incorporated in building an HCDS that provides only small 
 reduction of risk.</p>
 
+<h3 id="protocols-described-in-this-document">Protocols described in this document</h3>
+
+<h4 id="vpc-creation-manual-versus-wizard">VPC creation: Manual versus Wizard</h4>
+
+<h3 id="options-outside-the-purview-of-this-document">Options outside the purview of this document</h3>
+
+<h4 id="dedicated-instances">Dedicated instances</h4>
+
+<p>We drive cost up using dedicated instances on <strong>Sprivate</strong>. It is technically feasible
+to not do this but there is an attendant cost in time and risk.</p>
+
+<h4 id="extended-key-management-strategy">Extended key management strategy</h4>
+
+<p>Encryption keys here are taken to be default keys associated with the AWS account. 
+It is possible on setting up the HCDS to create an entire structure around management 
+of newly-generated keys. This is a diminishing-returns risk mitigation procedure:
+It may create a profusion of complexity that is itself a risk.</p>
+
+<p>One open question is whether a single AWS account should / could / will be used to
+provision multiple independent research projects, each with one or more respective 
+data systems.</p>
+
 <ul>
   <li>Log in to <strong>B</strong> and move <strong>K</strong> to <strong>E</strong>
     <ul>
@@ -1669,20 +1712,6 @@ reduction of risk.</p>
     </ul>
   </li>
   <li>Create role <strong>R</strong> allowing <strong>W</strong> to read data at <strong>S3EP</strong> from <strong>S3</strong></li>
-</ul>
-
-<h4 id="advanced-steps">Advanced steps</h4>
-
-<ul>
-  <li>Set up a DynamoDB table to track names of uploaded files</li>
-  <li>Set up a Lambda service
-    <ul>
-      <li>Triggered by new object in bucket in the S3 input bucket</li>
-      <li>This Lambda service is managed using a role</li>
-    </ul>
-  </li>
-  <li>Set up an SQS Simple Queue Service <strong>Q</strong></li>
-  <li>Create an SNS to notify me when interesting things happen</li>
 </ul>
 
 
