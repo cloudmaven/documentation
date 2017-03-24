@@ -111,6 +111,8 @@ Tenancy VPC (simply not supported)
 - In a route table does 0.0.0.0/0 refer to the public internet? Where does this come up??? 
   - It would be excellent to explain how the smaller CIDR block does not conflict 
   - with the "wide open internet" sense of the second CIDR block
+- Bastion server inbound ip range should match UW / UW Med / etcetera
+  - Also differentiate the UW VPN CIDR block 
 
 #### User story
 
@@ -300,19 +302,24 @@ and so on.
 
   - Give **V** a PIT name 
 
+
   - **V** will not use IPv6v.  
+
 
   - **V** will have a CIDR block defining an ip address space
     - We use 10.0.0.0/16: 65536 (minus a few) available addresses
+
 
   - **V** automatically has a routing table **RT**
     - Select Routing Tables, sort by VPC and give **RT** a PIT name
       - 'hipaa_routingtable'
       - The routing table is a logical mapping of ip addresses to destinations
 
+
   - **V** is automatically given a security group **SG**
     - Select Security Groups, sort by VPC and give **SG** a PIT name
       - 'hipaa_securitygroup'
+
 
   - Create an associated Flow Log **FL**
     - In March 2017 the AWS console UI was a little tetchy so be prepared to go around twice
@@ -330,6 +337,7 @@ and so on.
         - Destination log group: Give it a PIT name 
           - Example: hipaa_loggroup
 
+
   - Create subnets **Spublic** and **Sprivate**
     - The private subnet **Sprivate** is where work on PHI proceeds
       - CIDR block 10.0.1.0/24
@@ -345,13 +353,16 @@ and so on.
           - This will use the private ip address space 
           - Public names will resolve to private addresses within the VPC at need.
 
+
   - Create an an Internet Gateway **IG**
     - Give a PIT name as in 'hipaa_internetgateway'
     - Attach hipaa_internetgateway to **V**
 
+
   - Create a NAT Gateway **NG**
     - Give it a PIT name
     - Elastic IP assignment may come into play here
+
 
   - Create a route table **RTpublic** 
     - Give it a PIT name: 'hipaa_publicroutes'
@@ -367,15 +378,18 @@ Note: The console column for subnets shows "Auto-assign Public IP" and this shou
 should have this set to *No*. If necessary change these entries using the *Subnet Actions* 
 button. 
 
+
 Note: In the subnet table find a "Default Subnet" column. In this work-through both **Spublic** 
 and **Sprivate**  have this set to *No*:  There is no default subnet.  This will be modified
 later via the route table **RT** in **V**.
+
 
 **RT** reads:  
 ```
 10.0.0.0/16         VPC "local" 
 0.0.0.0/0           NAT gateway 
 ```
+
 
 **RTpublic** (hipaa_publicroutes) has
 ```
@@ -388,8 +402,10 @@ Spublic (hipaa_publicroutes). Notice that **RT** operates by default and **RTpub
 supersedes this on **Spublic**. This means that new resources on **Sprivate** will
 by default use **NG** which is what we want. 
 
+
 The **V** **RT** 0-entry points at **NG**: All internet-traffic will route through **NG**. 
 **NG** does not accept inbound traffic. This is by default. (Analogy: Home router)
+
 
 **Spublic** has the custom **RTpublic** which routes non-local traffic to the IG, i.e. 
 the internet. This *does* accept inbound traffic allowing us to ssh in. This is an exception
@@ -398,33 +414,31 @@ to the default.
 
 ### Part 3: Adding EC2 and S3 resources to the VPC
   
+
 #### Building a Bastion Server **B**
+
 
 - On **V** create a public-facing Bastion Server **B**
   - **B** has only port 22 open (to support ssh) 
   - **B** uses Secure Groups on AWS to limit access to only a subset of URLs
-
-
-
-
-
-kilroy clear this up: The m4 is the bastion 
-
-- On **V** create a dedicated EC2 instance and assign it to **Sprivate**
-  - In this example we choose an m4.large running AWS Linux 
-  - DO NOT USE T instances 
-    - They will not connect to our Dedicated Tenancy VPC: This is not supported.
+  - **B** can be a modest general-purpose machine such as a m4.large
+    - In this example we choose an m4.large running AWS Linux 
+    - DO NOT USE T instances 
+      - They will not connect to our Dedicated Tenancy VPC: This is not supported.
   - Go through all config steps: Memory, tags; 
-  - Security group is important
-    - Create a new security group 
-    - PIT name: hipaa_bastion_ssh_securitygroup
-Description = allow ssh from anywhere
-Notice in the config table "Source" is 0.0.0.0/0 which is "anywhere"; but best practice is to restrict...
+    - Security group is important
+      - Create a new security group 
+      - PIT name: hipaa_bastion_ssh_securitygroup
+      - Description = allow ssh from anywhere
+      - Notice that in the config table "Source" is 0.0.0.0/0 which is "anywhere"
+        - Best practice is to restrict the inbound range
+        - Consider differentiating UW from the UW-VPN 
+          - This would allow someone to log in from anywhere VIA the UW VPN
 
-IF we allowed only UW but included the UW-VPN then someone could log in from anywhere VIA the UW VPN... 
 
-
-Key pair: hipaa_bastion_keypair: Generate new, download to someplace safe on **L** and Launch
+    - Key pair use a PIT as 'hipaa_bastion_keypair' 
+      - Generate new, download to someplace safe on **L** 
+    - Launch instance
 
 
 ##### Building a work environment EC2 instance on **Sprivate**
