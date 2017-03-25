@@ -113,6 +113,10 @@ Tenancy VPC (simply not supported)
   - with the "wide open internet" sense of the second CIDR block
 - Bastion server inbound ip range should match UW / UW Med / etcetera
   - Also differentiate the UW VPN CIDR block 
+- Could not give my dog **NG** a PIT name!!!
+- Bastion and **Sprivate** worker: Need more details on the configuration steps!
+  - Enable cloudwatch checkbox?
+- Missing instructions on setting up S3 buckets: For FlowLog and for DataIn
 
 #### User story
 
