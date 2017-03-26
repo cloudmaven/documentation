@@ -762,13 +762,16 @@ Microsoft Azure public cloud.</p>
 <h2 id="warnings">Warnings</h2>
 
 <ul>
-  <li><strong><em>AWS has nine HIPAA-aligned technologies. A HIPAA-compliant system on AWS means that only these technologies can 
-come into contact with PHI.  Other technologies can be used in an ancillary capacity provided they do not interact
-directly with PHI data.</em></strong></li>
-  <li><strong><em>HIPAA compliance is an obligation placed on the data system builder and the medical researcher.
-The public cloud is very secure: physically and technologically. 
-We contend that data system failure or compromise is most likely to be caused by human error.</em></strong></li>
-  <li><strong><em>File names may not include PHI. They may include identifier strings that would be indexed in a secure table.</em></strong></li>
+  <li><strong><em>AWS has more than nine HIPAA-aligned technologies. A HIPAA-compliant system allows only
+these technologies to come into direct contact with PHI.  Other technologies can be used in 
+an ancillary capacity only.</em></strong></li>
+  <li><strong><em>HIPAA compliance is an obligation of the data system builder, the medical researcher
+and the parent organization(s).  The public cloud is very secure: physically and technologically. 
+Compromise is most likely to be caused by human error either in design or in operation.</em></strong></li>
+  <li><strong><em>File names may not include PHI. They may include identifier strings that could be indexed 
+in a secure table.</em></strong></li>
+  <li>Do not use T EC2 instance types when building a HCDS. These will not connect to a Dedicated 
+Tenancy VPC (simply not supported)</li>
 </ul>
 
 <h3 id="preliminary-work">Preliminary Work</h3>
@@ -776,6 +779,18 @@ We contend that data system failure or compromise is most likely to be caused by
 <h4 id="kilroy-stack">Kilroy stack</h4>
 
 <ul>
+  <li>Questions from Dogfooding on March 23 2017
+    <ul>
+      <li>Create VPC…
+        <ul>
+          <li>Does my VPC need a CIDR that doesn’t overlap other ones in my account? 10.0.0.0 is very popular…</li>
+          <li>This is for Aaron</li>
+          <li>Stipulate ‘Default Tenancy’</li>
+          <li>Creating subnets: AZ: No preference?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
   <li>Add K’s remarks and J’s remarks in here</li>
   <li>AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?</li>
   <li>Generate and incorporate a scientist workflow diagram with extensive caption per User Story</li>
@@ -848,6 +863,43 @@ We contend that data system failure or compromise is most likely to be caused by
   <li>DDil on elastic IP: NAT Gateway? Bastion? IG?</li>
   <li>Fix the RT / subnet editing section… gotta get that right</li>
   <li>What are the tradeoffs in building <strong>B</strong> and <strong>M</strong> and <strong>Wi</strong> from AMIs?</li>
+  <li>Vestigial details from earlier notes to incorporate
+    <ul>
+      <li>Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk</li>
+      <li>Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions ‘Snort’ also)</li>
+      <li>Include an encryption path for importing clinical data</li>
+      <li>Include a full story on access key management</li>
+      <li>The IOT import will – I think – be a poll action: The secure VM is polling for new data</li>
+      <li>This system should include a very explicit writeup of how the human in the loop can break the system</li>
+      <li>Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive?
+        <ul>
+          <li>To clarify: Must the data be further encrypted at rest first?</li>
+        </ul>
+      </li>
+      <li>Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.</li>
+      <li>CISO approval hinges on IT, Admin and Research approvals.</li>
+      <li>Lambda</li>
+    </ul>
+  </li>
+  <li>Make sure we return to ‘Default subnet’ referred to in the text</li>
+  <li>In a route table does 0.0.0.0/0 refer to the public internet? Where does this come up???
+    <ul>
+      <li>It would be excellent to explain how the smaller CIDR block does not conflict</li>
+      <li>with the “wide open internet” sense of the second CIDR block</li>
+    </ul>
+  </li>
+  <li>Bastion server inbound ip range should match UW / UW Med / etcetera
+    <ul>
+      <li>Also differentiate the UW VPN CIDR block</li>
+    </ul>
+  </li>
+  <li>Could not give my dog <strong>NG</strong> a PIT name!!!</li>
+  <li>Bastion and <strong>Sprivate</strong> worker: Need more details on the configuration steps!
+    <ul>
+      <li>Enable cloudwatch checkbox?</li>
+    </ul>
+  </li>
+  <li>Missing instructions on setting up S3 buckets: For FlowLog and for DataIn</li>
 </ul>
 
 <h4 id="user-story">User story</h4>
@@ -889,12 +941,55 @@ We contend that data system failure or compromise is most likely to be caused by
       <li>Log files are archived to preserve a complete record of operation for the HCDS</li>
     </ul>
   </li>
+  <li>Scientist writes, anticipating a HCDS:
+    <ul>
+      <li>Early use cases will involve external devices (phones, sensors)
+        <ul>
+          <li>Data direct to cloud: Authenticate, validate data, match to patient</li>
+          <li>Standard format (HL7? CCD?)</li>
+        </ul>
+      </li>
+      <li>Subsequent
+        <ul>
+          <li>Bidirectional data sharing
+            <ul>
+              <li>Device, cloud, EHR</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>End result: Allowed persons (care / research) can get to all of this data
+        <ul>
+          <li>progress in stages</li>
+          <li>On the cloud: tools for analysis
+            <ul>
+              <li>ML, visualizations out, comparative w/r/t analytic datasets etc</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The IT professional writes:
+    <ul>
+      <li>Constraints? AWS Services available within the VPC? VPC required?
+        <ul>
+          <li>Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3</li>
+          <li>Yes? Expanded how often? Yearly? Extend to entire service platform?
+            <ul>
+              <li>SA “essentially yes” (je crois BAA expands as the list automatically)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h4 id="plan-of-action-for-this-hcds-proof-of-concept">Plan of action for this HCDS Proof of Concept</h4>
 
 <ol>
-  <li>Write up the procedural</li>
+  <li>Write up procedure</li>
   <li>Create a system architecture and diagram
     <ul>
       <li>Anticipate <new data="" to="" EMR=""> pipeline</new></li>
@@ -924,21 +1019,6 @@ We contend that data system failure or compromise is most likely to be caused by
   <li>Review with IT personnel (JP first), mgmt, researchers</li>
 </ol>
 
-<h4 id="details-to-incorporate">Details to incorporate</h4>
-
-<ul>
-  <li>Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk</li>
-  <li>Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions ‘Snort’ also)</li>
-  <li>Include an encryption path for importing clinical data</li>
-  <li>Include a full story on access key management</li>
-  <li>The IOT import will – I think – be a poll action: The secure VM is polling for new data</li>
-  <li>This system should include a very explicit writeup of how the human in the loop can break the system</li>
-  <li>Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? 
-To clarify: Must the data be further encrypted at rest first?</li>
-  <li>Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.</li>
-  <li>CISO approval hinges on IT, Admin and Research approvals.</li>
-</ul>
-
 <h4 id="partial-list-of-terminology-and-concepts">Partial list of terminology and concepts</h4>
 
 <ul>
@@ -953,7 +1033,7 @@ To clarify: Must the data be further encrypted at rest first?</li>
   <li>NAT Gateway</li>
 </ul>
 
-<h4 id="phi-contact-model">PHI contact model</h4>
+<h4 id="phi-contact-framework">PHI contact framework</h4>
 
 <p>“How can your system be an HCDS if you are using Lambda?” We identify tools and 
 technologies that do / do not interface directly with PHI.</p>
@@ -965,8 +1045,8 @@ technologies that do / do not interface directly with PHI.</p>
 
 <h4 id="hipaa-aligned-technologies">HIPAA-aligned technologies</h4>
 
-<p>Nine AWS Technologies under the AWS BAA that are HIPAA-aligned. Actually more now and the
-accrue ‘automatically’ as AWS makes progress.</p>
+<p>Here is a partial list of AWS Technologies that are HIPAA-aligned. New 
+services accrue automatically to the <em>allowed</em> category as AWS adds them.</p>
 
 <ul>
   <li>S3 storage</li>
@@ -978,13 +1058,6 @@ accrue ‘automatically’ as AWS makes progress.</p>
   <li>ELB elastic load balancer</li>
   <li>Glacier archival storage</li>
   <li>Redshift data warehouse</li>
-</ul>
-
-<h4 id="useful-triggerorchestration-tools">Useful Trigger/Orchestration Tools</h4>
-
-<ul>
-  <li>Lambda</li>
-  <li>Virtual Private Cloud (VPC)</li>
 </ul>
 
 <h4 id="encryption">Encryption</h4>
@@ -1219,11 +1292,18 @@ and so on.</p>
           <li>Elastic IP assignment may come into play here</li>
         </ul>
       </li>
-      <li>Create a routing table <strong>RTpublic</strong>
+      <li>Create a route table <strong>RTpublic</strong>
         <ul>
-          <li>This will supersede the <strong>V</strong> routing table <strong>RT</strong>
+          <li>Give it a PIT name: ‘hipaa_publicroutes’</li>
+          <li>This will supersede the <strong>V</strong> routing table <strong>RT</strong></li>
+          <li>Select the Subnet Associations tab
             <ul>
-              <li>Give it a PIT name: ‘hipaa_publicroutes’</li>
+              <li>Edit subnet association to be <strong>Spublic</strong></li>
+            </ul>
+          </li>
+          <li>Select the Routes tab
+            <ul>
+              <li>Edit (under Routes) and add 0.0.0.0/0 pointing to <strong>IG</strong></li>
             </ul>
           </li>
         </ul>
@@ -1232,28 +1312,14 @@ and so on.</p>
   </li>
 </ul>
 
-<p>————-walled off needs repair—————-</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>- For **RTpublic**
-  - Select the Subnet Associations tab 
-    - Edit subnet association for this public subnet. RT &gt; Subnet &gt; VPC
-  - Select the Routes tab 
-    - Edit (under Routes) and add 0.0.0.0/0 pointing to **IG**
-</code></pre>
-</div>
-
-<p>————-walled off needs repair—————-</p>
-
 <p>Note: The console column for subnets shows “Auto-assign Public IP” and this should be set to
-<em>Yes</em> for Spublic. Note the column title includes the term <em>Public IP</em>. The Private subnet 
+<em>Yes</em> for <strong>Spublic</strong>. Note the column title includes the term <em>Public IP</em>. The Private subnet 
 should have this set to <em>No</em>. If necessary change these entries using the <em>Subnet Actions</em> 
 button.</p>
 
-<p>Note: In the table of subnets there is a “Default Subnet” column. In this example both <strong>Spublic</strong> 
-and <strong>Sprivate</strong>  have this set to <em>No</em> so there is no default subnet. We will change this later.<br />
-The change is made in the routing table <strong>RT</strong> in <strong>V</strong>.</p>
-
-<p>Note: In a routing table an entry reading 0.0.0.0/0 refers to the address space of the internet.</p>
+<p>Note: In the subnet table find a “Default Subnet” column. In this work-through both <strong>Spublic</strong> 
+and <strong>Sprivate</strong>  have this set to <em>No</em>:  There is no default subnet.  This will be modified
+later via the route table <strong>RT</strong> in <strong>V</strong>.</p>
 
 <p><strong>RT</strong> reads:<br />
 <code class="highlighter-rouge">
@@ -1272,42 +1338,64 @@ Spublic (hipaa_publicroutes). Notice that <strong>RT</strong> operates by defaul
 supersedes this on <strong>Spublic</strong>. This means that new resources on <strong>Sprivate</strong> will
 by default use <strong>NG</strong> which is what we want.</p>
 
-<p>VPC 0-entry points at the NAT Gateway: All internet-traffic
-will route through the NAT.</p>
+<p>The <strong>V</strong> <strong>RT</strong> 0-entry points at <strong>NG</strong>: All internet-traffic will route through <strong>NG</strong>. 
+<strong>NG</strong> does not accept inbound traffic. This is by default. (Analogy: Home router)</p>
 
-<p>Public subnet has a custom RT which says “all non-local traffic goes out to the IG.” = The Internet.</p>
-
-<p>This has precedence over the main table which sends to NAT.
-By default the Private subnet will use the VPC RT to go to the NAT. 
-Like one’s Router at home.  This allows the private network to talk to 
-the Internet and the Internet can’t talk to my private subnet.</p>
+<p><strong>Spublic</strong> has the custom <strong>RTpublic</strong> which routes non-local traffic to the IG, i.e. 
+the internet. This <em>does</em> accept inbound traffic allowing us to ssh in. This is an exception
+to the default.</p>
 
 <h3 id="part-3-adding-ec2-and-s3-resources-to-the-vpc">Part 3: Adding EC2 and S3 resources to the VPC</h3>
 
-<h4 id="building-a-bastion-server">Building a Bastion Server</h4>
+<h4 id="building-a-bastion-server-b">Building a Bastion Server <strong>B</strong></h4>
 
 <ul>
   <li>On <strong>V</strong> create a public-facing Bastion Server <strong>B</strong>
     <ul>
       <li><strong>B</strong> has only port 22 open (to support ssh)</li>
       <li><strong>B</strong> uses Secure Groups on AWS to limit access to only a subset of URLs</li>
-      <li><strong>B</strong> would be built from an AMI</li>
+      <li><strong>B</strong> can be a modest general-purpose machine such as a m4.large
+        <ul>
+          <li>In this example we choose an m4.large running AWS Linux</li>
+          <li>DO NOT USE T instances
+            <ul>
+              <li>They will not connect to our Dedicated Tenancy VPC: This is not supported.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Go through all config steps: Memory, tags;
+        <ul>
+          <li>Security group is important
+            <ul>
+              <li>Create a new security group</li>
+              <li>PIT name: hipaa_bastion_ssh_securitygroup</li>
+              <li>Description = allow ssh from anywhere</li>
+              <li>Notice that in the config table “Source” is 0.0.0.0/0 which is “anywhere”
+                <ul>
+                  <li>Best practice is to restrict the inbound range</li>
+                  <li>Consider differentiating UW from the UW-VPN
+                    <ul>
+                      <li>This would allow someone to log in from anywhere VIA the UW VPN</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Key pair use a PIT as ‘hipaa_bastion_keypair’
+            <ul>
+              <li>Generate new, download to someplace safe on <strong>L</strong></li>
+            </ul>
+          </li>
+          <li>Launch instance</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
 
-<p>m4.large running AWS Linux: Created. DO NOT USE T instances because they are not going to connect to our 
-Dedicated Tenancy VPC: Not supported.</p>
-
-<p>Go through all the config steps: Memory, tags, etc etc; Security group is important</p>
-
-<p>Create a new security group with title hipaa_bastion_ssh_securitygroup
-Description = allow ssh from anywhere
-Notice in the config table “Source” is 0.0.0.0/0 which is “anywhere”; but best practice is to restrict…</p>
-
-<p>IF we allowed only UW but included the UW-VPN then someone could log in from anywhere VIA the UW VPN…</p>
-
-<p>Key pair: hipaa_bastion_keypair: Generate new, download to someplace safe on <strong>L</strong> and Launch</p>
+<h5 id="building-a-work-environment-ec2-instance-on-sprivate">Building a work environment EC2 instance on <strong>Sprivate</strong></h5>
 
 <ul>
   <li>On <strong>Sprivate</strong> install a small Dedicated EC2 instance <strong>E</strong></li>
@@ -1766,7 +1854,7 @@ data systems.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Mar 22, 2017 <br />
+<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Mar 26, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

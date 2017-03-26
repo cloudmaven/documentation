@@ -140,30 +140,23 @@ Tenancy VPC (simply not supported)
   - Log files are archived to preserve a complete record of operation for the HCDS
 
 
-- The scientists writes, anticipating a HCDS:
-  - Early use cases will likely involve an external device (i.e., mobile app/sensor) 
-    - This will pass data directly to the cloud environment
-    - We will need to validate the device is legit, it's data is allowed
-    - We will need the ability to set some kind of standard format 
-      - e.g. HL7 or CCD or some other widely adopted industry standard 
-    - Take in those data and correctly associate this with a Patient ID
-  - Subsequent evolution
+- Scientist writes, anticipating a HCDS:
+  - Early use cases will involve external devices (phones, sensors)
+    - Data direct to cloud: Authenticate, validate data, match to patient
+    - Standard format (HL7? CCD?) 
+  - Subsequent 
     - Bidirectional data sharing
-      - Passing data between device and cloud (PHI issues as per) that inform the patient
-      - Pass through of device / cloud data to the EHR environment 
-  - End result: Allowed individuals (care / research) can access all of this data out of the cloud
-    - Staged progress; not all at the outset
-    - Subset the PHI data to the cloud research environment (herein HCDS)
-      - ML, visualizations out, comparative to analytic datasets etc
+      - Device, cloud, EHR
+  - End result: Allowed persons (care / research) can get to all of this data 
+    - progress in stages
+    - On the cloud: tools for analysis
+      - ML, visualizations out, comparative w/r/t analytic datasets etc
 
 - The IT professional writes: 
-  - What are my constraints?  
-  - Which AWS services are available within the VPC (assuming VPC required?) when striving for HIPAA compliance?  
-  - I think the current list is: 
-    - API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, Amazon Elastic MapReduce (EMR), ELB, Glacier, RDS, Aurora, Redshift, S3
-    - Total = 13
-  - Correct? How often is this list expanded, yearly review?  Is the goal all services eventually?
-    - SA says "essentially yes" and our understanding is the BAA expands as the list grows: Automatically, no "re-negotiate"
+  - Constraints? AWS Services available within the VPC? VPC required? 
+    - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
+    - Yes? Expanded how often? Yearly? Extend to entire service platform?
+      - SA "essentially yes" (je crois BAA expands as the list automatically)
 
 #### Plan of action for this HCDS Proof of Concept
 
