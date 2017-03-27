@@ -52,10 +52,14 @@ Tenancy VPC (simply not supported)
 - Questions from Dogfooding on March 23 2017
   - Create VPC...
     - Does my VPC need a CIDR that doesn't overlap other ones in my account? 10.0.0.0 is very popular...
-    - This is for Aaron
-    - Stipulate 'Default Tenancy'
-    - Creating subnets: AZ: No preference? 
-- Add K's remarks and J's remarks in here
+      - Peered VPCs must not have collisions; otherwise fine
+    - Stipulate 'Default Tenancy': 
+      - Shared versus dedicated: Shared not allowed; so this must be Dedicated Tenancy, not Default
+    - Creating subnets: AZ: VPC is regional
+      - Subnets are associated with AZs and should be intentionally designated
+      - Using multiple AZs (multiple subnets across AZs) will make the VPC "present" in those AZs
+        - for HCDS it is more controlled to be in just one AZ
+      - Going multi-AZ would be a high availability strategy which is a compute-heavy idea 
 - AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
   - Email aws-hipaa@amazon.com and include the account number
   - Is there a DLT component? 
@@ -63,19 +67,31 @@ Tenancy VPC (simply not supported)
 - Generate and incorporate a complete HCDS architecture diagram near the top of this 
 - Create a sub-topic around **L**: In coffee shop, in a data center (out of Med Research), etcetera
   - The 'in transit / at rest' component leaves a sparking wire in **L**: Section on risk added
+  - While a coffee shop to S3 encrypted is not a foul on AWS it is a foul on me and my organization
 - Need explanation of public/private subnet collision avoidance
-  - Public subnet elements also have private subnet addresses.
+  - Public subnet elements also have private subnet addresses
+    - 10.0.0.x as the **Spublic** address space means that we get two bonus things for the bastion at 10.0.0.9:
+      - That is: 10.0.0.x is actually a private ip address for a public-facing instance
+      - We get a public ip address 52.x.y.z etc whatever
+      - We get a DNS entry ec2-blahblahblah
+        - Inside the VPC the latter always resolves to the private 10.0.0.9 so that traffic stays inside the VPC
+        - But do not hard code an ec2-blah DNS entry because this can change when the machine bounces
   - Verify protocol is that new resources auto-generated will be on the private subnet
     - AB How is this done? We got as far as 'no default' for public and private both
-  - Verify automated allocation will choose free ip addresses on the private subnet
-  - Verify protocol is to *not* create new resources on the public subnet
+  - Verify automated allocation will choose free ip addresses on the private subnet: Correct
+  - Verify protocol is to *not* create new resources on the public subnet: Yes, as policy
   - This is tremendously important so that a new **Wi** is not publicly visible
   - Look at the VPC Routing Table "default subnet" column (verify this is correct)
 - Key management story
   - Rename **K2** as **K_Bastion** and describe where it lives on **L**, add to Risk
     - It may make sense to describe chain of custody of **KBastion**
+  - J needs to give K a pem file and an ip address: To get to **B** plus creds to the **Sprivate** from the bastion
+    - Risk kilroy: This makes **B** a single point of failure if the private EC2 keys are left on the Bastion: It gets compromised, game over
+    - Password-protected is a way forward
+  - Scale up to her group: Giving everyone the same login is not really an option
 - Free up and assign **B** an Elastic IP address that will persist
-  - Verify that this is publicly discoverable and place this fact in Risk
+  - Verify that this is publicly discoverable and place this fact in Risk: True
+    - Lock down the SG to restrict network access
   - Rename **K3** as **K_EC2**
   - Chain of custody of **K_EC2**
   - How do keys work in view of an AMI source?
@@ -95,10 +111,15 @@ Tenancy VPC (simply not supported)
   - AB: Help needed!
 - Differentiate SQS and SNS
 - What is Ansible and what does it get us?
+  - Configuration management
+  - cf Chef and Puppet
 - Can/should the NAT Gateway be used to pull updates from GitHub?  Generalize.
 - DDil on elastic IP: NAT Gateway? Bastion? IG? 
 - Fix the RT / subnet editing section... gotta get that right
 - What are the tradeoffs in building **B** and **M** and **Wi** from AMIs?
+  - Config management tool: Option 1 (Ansible Chef Puppet)
+  - Manually take a stale AMI and update it and re-save it (and update the hot machine)
+    - "You still have to manage the OS" is part of Shared Responsibility
 - Vestigial details from earlier notes to incorporate
   - Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
   - Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
