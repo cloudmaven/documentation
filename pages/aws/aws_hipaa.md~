@@ -24,6 +24,8 @@ Microsoft Azure public cloud.
 
 ## Links
 
+- Start with the [NIST 800-66 HIPAA Compliance](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-66r1.pdf) documents
+  - Note that this cross-links to NIST 800-53 in Appendix D
 - [HIPAA home page](https://www.hhs.gov/hipaa/index.html/)
 - [HIPAA on Wikipedia](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 - [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
@@ -55,6 +57,8 @@ Tenancy VPC (simply not supported)
     - Creating subnets: AZ: No preference? 
 - Add K's remarks and J's remarks in here
 - AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
+  - Email aws-hipaa@amazon.com and include the account number
+  - Is there a DLT component? 
 - Generate and incorporate a scientist workflow diagram with extensive caption per User Story
 - Generate and incorporate a complete HCDS architecture diagram near the top of this 
 - Create a sub-topic around **L**: In coffee shop, in a data center (out of Med Research), etcetera
