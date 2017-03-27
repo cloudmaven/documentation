@@ -26,11 +26,12 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 ## Pre-requisites 
  
 - Know the basics of Linux 
+- Programming basics: Python
 - Get temporary "education" accounts on AWS, Azure and Google Cloud Platform 
 - https://aws.amazon.com/education/awseducate/ 
 - https://azure.microsoft.com/en-us/community/education/ 
 - https://cloud.google.com/
-- Install [Anaconda](https://docs.continuum.io/anaconda/install), a free environment and package install manager. 
+- Install [Miniconda](https://conda.io/miniconda.html), a free Python environment and package install manager. 
 - Install [PyCharm](https://www.jetbrains.com/pycharm/), a Python IDE (free Professional version for UW students/faculty, or use the free community version)
 
 ---
