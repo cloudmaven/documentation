@@ -45,6 +45,11 @@ Components include:
 - [Procedural Documentation (temporary wiki)](https://github.com/robfatland/Rosetta/wiki)
 
 
+- [Rosetta Commons website](https://www.rosettacommons.org/docs/latest/Home)
+- [Rosetta Commons 'Scripts'](https://www.rosettacommons.org/docs/latest/scripting_documentation/RosettaScripts/RosettaScripts)
+- [Compiling Rosetta](https://www.rosettacommons.org/docs/latest/build_documentation/Build-Documentation)
+
+
 ## Preliminary Remarks
 
 - The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
@@ -84,7 +89,14 @@ AWS research credits provided for this work have contributed significantly to th
 of large scale sampling of peptide scaffolds -- stable structures that would be the basis for 
 developing new therapeutics. This section is a brief sketch of the scientific basis. 
 
-Common to all life on earth there are 20 naturally occurring amino acids that are the building 
+On DNA: Human DNA consists of 3 billion base molecules arranged in pairs as rungs of a helical ladder. 
+The base pair sequence records how to construct proteins in the following manner:  Each base (nucleotide) 
+can have one of four values abbreviated A, C, G, or T.  Three bases in a row can be thought of as three 
+digits in base-4; for example AAG or TCA. That is, this triple is a number from 0 to 63.  These 
+triples map to one of 20 left-handed amino acids (with some values degenerate and others 
+'not assigned'.)
+
+On amino acides: Common to all life on earth these 20 naturally occurring molecules are the building 
 blocks of proteins. Smaller chains of such amino acids are called peptides. Once a particular sequence
 of amino acids is bonded together end-to-end and released its rotational degrees of freedom may 
 permit it to fold up into an energetically favorable structure. This structure may in turn serve 
