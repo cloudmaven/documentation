@@ -25,9 +25,16 @@ The important vocabulary:
 - host: List Worker nodes
 
 ## Links
-Download the original instructional PDF [here](/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf).
 
 ## Warnings
 
+- ***Assumed: You have an AWS account - sanitized***
+
+## Let's Go!
+
+- Start an EC2 instance 
+  - It will be a 'base of operations'
+  - It can therefore be small and cheap, for example a **T2.micro**.
+  - Give it the Amazon Linux operating system e.g. Amazon Linux AMI
 
 {% include links.html %}
