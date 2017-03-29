@@ -13,48 +13,138 @@ folder: aws
 
 This page runs through a build of a compute cluster on the AWS public cloud. 
 
-The important vocabulary:
+## Links
+
+## Warnings
+
+- ***Some content here presumes use of other pages, e.g. [EC2 instances on AWS](aws_ec2.html)***
+- ***Assumed: You have a properly sanitized AWS account***
+
+## Let's Begin
+
+### important vocabulary
 
 - PIT: Project Identifier Tag, a unique string you designate like 'himat'
 - queue: A stack of jobs
 - Master: A VM charged with managing a cluster
 - Worker: A VM charged with executing sub-processes
 - Scheduler: Software that starts sub-processes within a compute task
+  - Includes SLURM, Torque, OpenLava and SGE (which we use here)
 - qsub: (Linux) submit a job to a processing queue
 - qstat: (Linux) get queue status
 - qdel: (Linux) delete a job from the queue
 - host: List Worker nodes
 
-## Links
 
-## Warnings
+### Strategy
 
-- ***Assumed: You have an AWS account - sanitized***
+These steps depend upon some pre-configuration, already done for you prior to the class. 
+Specifically we created a Virtual Private Cloud with a public subnet for this exercise. 
+We created an associated Internet Gateway and a Security Group. The latter permits ssh 
+in from *any* location on the internet, so in passing this is not best practice because 
+your work is visible from anywhere. 
 
-## Let's Go!
+In what follows you will want to have a Project Identifer Tag or PIT handy. This is just 
+a short ID string that you will use to tag everything you create. Mine for example might 
+be 'Basie' because I like the music of Count Basie. In what follows when you see either 
+'PIT' or possibly 'Basie' you should substitute your own string. In this way everyone 
+can proceed on parallel tracks.
 
-- Start an EC2 instance 
-  - It will be a 'base of operations' for this project
-    - Therefore give it a PIT name like 'himat_config_EC2'
-  - Refer to the [EC2 page here](aws_ec2.html)
-  - This instance can be small and cheap, for example a **T2.micro**.
-  - Give it the Amazon Linux operating system e.g. Amazon Linux AMI
-  - Provide it with some default EBS
-  - Place it on the cloud101 VPC and on the cloud101_public_subnet
-  - Include it in the cloud101_securitygroup 
-    - Notice *ssh* is allowed 'from anywhere' (security risk!)
-  - Review and launch; and in the process download a new key pair 
-    - You can use an existing key pair as well; but you must be sure you have it on hand
-    - This will be a '.pem' file extension. 
-      - If you are Windows using PuTTY you will need to convert to a .ppk file format
-      - This is done using the PuTTYGen application
+Our strategy is fairly simple here:
+
+1. Start up a manager machine on AWS 
+2. Log in to this machine as 'ec2-user' using ssh
+3. Update this machine, install cfncluster software and create a cluster called PIT0
+4. Turn to the CloudFormation service on the AWS console to monitor your progress
+5. 
+
+### Creating an EC2 instance to act as a cfncluster anchor
+
+- Refer to the [EC2 page here](aws_ec2.html)
+- It will be a 'base of operations' for this project
+  - Therefore give it a PIT name like 'himat_config_EC2'
+  - And therefore it can be small and cheap to operate, for example a **T2.micro**.
+- Choose the Amazon Linux operating system e.g. Amazon Linux AMI
+  - This will have AWS tools already installed
+- Default EBS volume is fine; you don't need more disk memory
+- Place it on the cloud101 VPC, on the cloud101_public_subnet
+- Include it in the cloud101_securitygroup 
+  - Notice *ssh* is allowed 'from anywhere' (security risk!)
+- Review and launch; and in the process download a new key pair 
+  - You can use an existing key pair as well; but you must be sure you have it on hand
+  - This will be a '.pem' file extension. 
+    - If you are Windows using PuTTY you will need to convert to a .ppk file format
+    - This is done using the PuTTYGen application
 
 As an aside: When I set this up I did some background work as well: I created a VPC, placed
 inside of that a public subnet, created and attached an Internet Gateway, added an entry in
 the Route Table and so forth.
 
+### Log in and update the anchor
+
+You should be able to log in to your cfncluster anchor machine using ssh (or PuTTY on Windows)
+where your login name is 'ec2-user'. You do not enter a password as you are using your .pem
+(or .ppk) file to authenticate. 
+
+Once logged in you will update your machine, install the cfncluster tools, configure 
+the cfncluster tools and create a new cluster called *c0*.
 
 
+```
+sudo yum update'
+sudo pip install kilroy http://s3-us-west-2.amazonaws.com/cfncluster-us-west-2/sdist/cfncluster-1.0.0b3.tar.gz
+cfncluster configure
+cfncluster create PIT0
+```
+
+The cluster you create includes a head node. By default this will be a small EC2 instance (T2). 
+On the AWS console in your browser you can monitor your progress 
+
+
+
+#### A Worker program
+
+This C code performs part of a Fourier transform on a simple dataset. In ensemble 
+
+```
+// fourier.c performs a simple Fourier transform of a small data vector
+//   This is intended as a fast but non-trivial compute task.
+//     Signal = a Gaussian envelope x sine wave with about 10 cycles
+//     FT: i is the i'th term of the FT; a_i is the coefficient, complex 
+//     a_i = Sum over n running 0 to N-1 of x_n * CE
+//     CE is a complex exponential e^{ -2 * pi * i * k * n / N }
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define MAX_N 32768
+void main(int argc, char **argv)
+{
+    if (argc < 3) { printf("\nfourier N i: i'th coeff of an N-element signal\n\n\n"); exit(0); }
+    int N = atoi(argv[1]); 
+    int i = atoi(argv[2]);          printf("\nSignal length %d, term %d.\n\n", N, i);
+    if (N < 0 || N > MAX_N || i < 0 || i >= N) { exit(0); }
+    double s[MAX_N], ar = 0.0, ai = 0.0, pi = acos(-1.0), dN = (double)N, di = (double)i;
+    double dShft = (double)(N/2), dScl = (2.0*pi*5.0)/dShft, dGScl = 2.0/dShft;
+    for (int n = 0; n < N; n++) {             // signal generator block
+        double dn = (double)n;                  // convert index to a floating point value
+	double x = (dn - dShft) * dScl;         // ... to a number on [-5 * 2pi, 5 * 2pi]
+	double xg = (dn - dShft) * dGScl;       // ... also to a number on [-2, 2]
+	double g = exp(-xg*xg);                 // ... and get the Gaussian of the latter
+	double m = sin(x);                      // ... and the sine of the former
+	s[n] = g*m;                             // ... and compile their product into the signal vector s[]
+	// printf ("%d,%lf\n"n, s[n]);
+    }
+    for (int n = 0; n < N; n++) {             // FT block
+        double dn = (double)n;                //   dn is the sum index
+        double exp_arg = -2.0*pi*(dn/dN)*di;  //   argument of the exponential
+	double real_n = cos(exp_arg);         //   real component of the exponential
+	double imag_n = sin(exp_arg);         //   imag component of the exponential
+        ar += s[n]*real_n;                    //   accumulate
+	ai += s[n]*imag_n;                    //      "
+    }
+    printf ("\n\ncoefficient %d = (%lf, %lf).\n\n\n"), i, ar, ai); exit(0);
+}
+```
   
 
 {% include links.html %}
