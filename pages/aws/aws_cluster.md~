@@ -13,18 +13,6 @@ folder: aws
 
 This page runs through a build of a compute cluster on the AWS public cloud. 
 
-The important vocabulary:
-
-- PIT: Project Identifier Tag, a unique string you designate like 'himat'
-- queue: A stack of jobs
-- Master: A VM charged with managing a cluster
-- Worker: A VM charged with executing sub-processes
-- Scheduler: Software that starts sub-processes within a compute task
-- qsub: (Linux) submit a job to a processing queue
-- qstat: (Linux) get queue status
-- qdel: (Linux) delete a job from the queue
-- host: List Worker nodes
-
 ## Links
 
 ## Warnings
@@ -33,6 +21,23 @@ The important vocabulary:
 - ***Assumed: You have a properly sanitized AWS account***
 
 ## Let's Begin
+
+### important vocabulary
+
+- PIT: Project Identifier Tag, a unique string you designate like 'himat'
+- queue: A stack of jobs
+- Master: A VM charged with managing a cluster
+- Worker: A VM charged with executing sub-processes
+- Scheduler: Software that starts sub-processes within a compute task
+  - Includes SLURM, Torque, OpenLava and SGE (which we use here)
+- qsub: (Linux) submit a job to a processing queue
+- qstat: (Linux) get queue status
+- qdel: (Linux) delete a job from the queue
+- host: List Worker nodes
+- IAM User Keys: AWS Access Key ID, AWS Secret Access Key ID
+
+
+### Strategy
 
 These steps depend upon some pre-configuration, already done for you prior to the class. 
 Specifically we created a Virtual Private Cloud with a public subnet for this exercise. 
@@ -54,42 +59,72 @@ Our strategy is fairly simple here:
 4. Turn to the CloudFormation service on the AWS console to monitor your progress
 5. 
 
-### Creating an EC2 instance to act as a cfncluster anchor
+- Autoscale group
+- Cloud Formation service
+- Cloud Watch service
+- Simple Notification Service
+- EC2 instance: Launcher with *cfncluster* installed
+- cfncluster creates a cluster that includes...
+  - An EC2 Master instance
+    - Recognizes Worker EC2 instances as they are *added* to the resource pool
+    - Has some memory
+    - Includes task software
+    - Shell script to launch multiple jobs to the SGE processing queue
+
+
+### Create an EC2 instance cfncluster Launcher
 
 - Refer to the [EC2 page here](aws_ec2.html)
-- It will be a 'base of operations' for this project
-  - Therefore give it a PIT name like 'himat_config_EC2'
-  - And therefore it can be small and cheap to operate, for example a **T2.micro**.
-- Choose the Amazon Linux operating system e.g. Amazon Linux AMI
-  - This will have AWS tools already installed
-- Default EBS volume is fine; you don't need more disk memory
-- Place it on the cloud101 VPC, on the cloud101_public_subnet
-- Include it in the cloud101_securitygroup 
-  - Notice *ssh* is allowed 'from anywhere' (security risk!)
-- Review and launch; and in the process download a new key pair 
-  - You can use an existing key pair as well; but you must be sure you have it on hand
-  - This will be a '.pem' file extension. 
-    - If you are Windows using PuTTY you will need to convert to a .ppk file format
-    - This is done using the PuTTYGen application
+- It will be the 'base of operations' for the compute task
+  - Give it a PIT name like 'rob101_Launcher'
+  - It can be small and cheap to operate, for example a **T2.micro**.
+- Choose the Amazon Linux AMI 
+  - This has AWS tools already installed; but we will update and install cfncluster
+- The default EBS volume is fine but could be expanded as needed per data 
+- We will place everything in a single Region/AZ/etceter
+    - Region = us-west-2 (Oregon)
+    - AZ = Zone C
+    - VPC = Virtual Private Cloud cloud101_vpc
+    - Subnet = cloud101_public_subnet
+    - Internet Gateway = ... kilroy
+    - Route Table entries ... kilroy
+    - Security Group = cloud101_securitygroup (ssh allowed from anywhere: 'hi risk')
+- Review and launch
+  - Download a new key pair
+  - You can use an existing key pair as well; be sure you have it on hand
+    - This will be a '.pem' file extension. 
+      - If you are Windows using PuTTY you will need to convert to a .ppk file format
+      - This is done using the PuTTYGen application
+- Once it spins up (green dot, ip address present) ssh to this EC2 as ec2-user
 
-As an aside: When I set this up I did some background work as well: I created a VPC, placed
-inside of that a public subnet, created and attached an Internet Gateway, added an entry in
-the Route Table and so forth.
+Notice that the VPC and so on already exist: Preliminary spadework we are sparing you in this
+course. 
 
-### Log in and update the anchor
+### Log in and configure the Launcher
 
-You should be able to log in to your cfncluster anchor machine using ssh (or PuTTY on Windows)
+You should now be able to log in to your cfncluster Launcher using ssh (or PuTTY on Windows)
 where your login name is 'ec2-user'. You do not enter a password as you are using your .pem
 (or .ppk) file to authenticate. 
 
 Once logged in you will update your machine, install the cfncluster tools, configure 
-the cfncluster tools and create a new cluster called *c0*.
+cfncluster and create a new named cluster. This in turn will lead to the last steps to 
+run a large-scale compute task.
 
+On your EC2 Launcher:
 
 ```
-sudo yum update'
-sudo pip install kilroy http://s3-us-west-2.amazonaws.com/cfncluster-us-west-2/sdist/cfncluster-1.0.0b3.tar.gz
+sudo yum update
+sudo pip install cfncluster
+sudo pip install --upgrade cfncluster
 cfncluster configure
+```
+
+Running *configure* will produce a config file within the .cfncluster directory in your home
+directory. (Use 'ls -al' to see that this exists.) A good way to get the configure steps 
+correct is to follow the details at 
+a web page like [this one](http://cfncluster.readthedocs.io/en/latest/getting_started.html).
+
+```
 cfncluster create PIT0
 ```
 
