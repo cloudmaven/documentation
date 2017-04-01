@@ -27,10 +27,8 @@ This one-day, hands-on immersion course will introduce participants to  three ma
  
 - Know the basics of Linux 
 - Programming basics: Python
-- Get temporary "education" accounts on AWS, Azure and Google Cloud Platform 
-- https://aws.amazon.com/education/awseducate/ 
-- https://azure.microsoft.com/en-us/community/education/ 
-- https://cloud.google.com/
+- Get temporary "education" accounts on [Google Cloud Platform](https://cloud.google.com/)
+- We will be creating accounts for you on AWS and Azure using your UW Net ID
 - Install [Miniconda](https://conda.io/miniconda.html), a free Python environment and package install manager. 
 - Install [PyCharm](https://www.jetbrains.com/pycharm/), a Python IDE (free Professional version for UW students/faculty, or use the free community version)
 
@@ -69,10 +67,10 @@ This one-day, hands-on immersion course will introduce participants to  three ma
 
 * Build a web framework for collaborative data sharing (1.30pm -- 2:45pm + coffee break) 
   [Tutorial](https://cloudmaven.github.io/cloud101_webframework/)
-  - Deploy a Django web app on AWS Elastic Beanstalk using the Beanstalk CLI
   - Deploy a Django web app on AWS Elastic Beanstalk using PyCharm
-  - Deploy a Django web app on Azure using Visual Studio (can be demo only; Visual Studio not necessary)
-  - Build a simple API that will display results hosted on a virtual machine to the website you just created  
+  - Deploy a Django web app on Azure using Pycharm and Azure CLI
+  - Deploy a Django web app on Google App Engine using the CLI
+  - Build a simple API that will display results hosted on a cloud storage device to the website you just created  
 
 * AWS CFN cluster (3.15pm -- 4.30pm)
   [Tutorial](https://cloudmaven.github.io/cloud101_cfncluster/)
