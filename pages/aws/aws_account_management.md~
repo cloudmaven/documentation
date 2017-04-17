@@ -11,22 +11,19 @@ folder: aws
 
 ## Introduction
 
-This page describes core AWS account management tasks in brief and then again in further detail. We assume that either
-you are operating a research-credit based account provided directly from AWS or you are using a paid account established 
-through the DLT third party provider. It is also possible for you to establish an account directly with AWS but this is
-not recommended practice since DLT-based accounts provide some additional benefits.
+The purpose of this page is to describe your core AWS account management 
+tasks in brief and then again in further detail.  
 
 ## Links
 - [AWS](http://aws.amazon.com)
 - [DLT portal for new AWS accounts](https://customerportal.dlt.com/internet2/)
-- [Rotating access keys: Documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html?icmpid=docs_iam_console#Using_RotateAccessKey)
+
 
 ## Warnings
 
 ## Task overview
 
 - Set up your account to have "all green checkmarks". This means you are logged out and back in as an **admin**.
-  - After a year or so you may be encouraged to 'rotate your access keys'; see the link provided above
 - Start and Stop an EC2 instance: Know what it costs, what EBS is, and log in to it before you Stop it.
 - Study up on cloud tech, enough to understand cost, security and capacity; and then make a plan. 
 
