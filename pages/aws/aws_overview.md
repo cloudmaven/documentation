@@ -28,6 +28,19 @@ respect to *Internet2* and *DLT*.
 ## Warnings
 
 
+## Setting up a research credit account
+
+
+## Setting up a paid AWS account
+
+
+Assuming you are at the University of Washington or are an affiliate:
+
+
+- Set up a Blanket Purchase Order through your local financial office
+- Send email to help at uw dot edu with subject **AWS Account** requesting help setting up the account 
+
+
 ## Interesting technologies at AWS
 
 
