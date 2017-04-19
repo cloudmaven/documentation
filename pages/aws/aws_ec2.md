@@ -23,11 +23,13 @@ virtual servers; which are just computers available for you to use.
 - [Elastic File System](https://aws.amazon.com/efs/)
 - [AWS Security Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
 - [AWS training fundamentals](https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/)
+- [AWS tagging strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
 
 ## Warnings
-*** There are two really important things to understand before you start using EC2 instances:
+*** There are three really important things to understand before you start using EC2 instances:
 1. Never place your access keys in a public repository such as GitHub.
-2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down.
+2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down. Even stopped EC2 instances with attached EBS volumes will cost you money!
+3. Learn to tag your resources to help cost management. 
 ***
 
 ## Informal introduction
@@ -82,6 +84,14 @@ save money by using the Spot Market and it does not cover turning EC2 instances 
 when they are possibly doing something expensive. We'll build all of this into these documentation pages; but the main point 
 of this page at the moment is Resources: The short list of items that you tend to build and associate with EC2 instances. 
 This includes AMIs, Snapshots, Key Pairs, and Elastic IPs. 
+
+## Tagging
+Tagging helps to manage and organize your AWS resources. [This page](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/) contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to *always* set the following tags when spinning up a new EC2 instance: 
+
+- name: Name of your resource (e.g. cloudmavencompute) 
+- owner: Owner of the resource or who provisioned the resource
+- project: For billing purposes or which project the resource belongs to
+- confidentiality: For data security reasons if necessary
 
 ## Making an AMI
 An EC2 instance: We take as a given. (Although we don't have down "Encrypted" but let's just flag that with kilroy. Notice I 
