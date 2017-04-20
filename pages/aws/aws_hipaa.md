@@ -353,6 +353,41 @@ can be named so to remind you: For consistency we have come up with a Project
 Identifier Tag like 'hipaa' so that each entity can be given a PIT name: 'hipaa_vpc'
 and so on.
 
+#### Intermezzo: Screencaps from 0 to 30: Need to be placed by kilroy
+
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0001.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0002.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0003.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0004.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0005.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0006.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0007.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0008.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0009.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0010.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0011.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0012.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0013.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0014.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0015.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0016.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0017.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0018.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0019.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0020.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0021.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0022.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0023.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0024.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0025.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0026.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0027.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0028.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png))
+
+#### And now we continue
+
 - From the console create a new VPC **V**
 
   - Give **V** a PIT name 
@@ -481,7 +516,7 @@ data will be encrypted when it comes to rest in the bucket.
 [AWS link for S3 server-side encryption policy for copy-paste](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html)
 
 
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/aws_hipaa0031.png))
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0031.png))
 
 ##### S3 Endpoints
 
