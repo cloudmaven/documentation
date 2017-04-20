@@ -110,6 +110,11 @@ Tenancy VPC (simply not supported)
   - do with console? do with CLI?
   - AB: Help needed!
 - Differentiate SQS and SNS
+  - https://aws.amazon.com/blogs/aws/s3-event-notification/
+  - http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
+  - PubSub concept
+  - SQS: Things sit in a queue and that queue is polled to trigger processes
+    - e.g. CANVAS the LMS: As events happen 
 - What is Ansible and what does it get us?
   - Configuration management
   - cf Chef and Puppet
@@ -140,29 +145,28 @@ Tenancy VPC (simply not supported)
   - Also differentiate the UW VPN CIDR block 
 - Could not give my dog **NG** a PIT name!!!
 - Bastion and **Sprivate** worker: Need more details on the configuration steps!
-  - Enable cloudwatch checkbox?
+  - Enable cloudwatch checkbox? Yes
 - Missing instructions on setting up S3 buckets: For FlowLog and for DataIn
 
 #### User story
 
-- A scientist *SK* receives approval from an IRB to work with PHI data. 
-  - Intent: Analyze these data in a secure, HIPAA-compliant data system (herein HCDS) 
-- *SK* contacts *JS* to build the HCDS as a working environment
-  - IRB approval review
-  - System **H** is built by *JS*; includes an S3 bucket for inbound PHI data **SDI**
-  - Data uploaded to **SDI**
-- *SK* is provided with access
-  - Keys: **K_Bastion** and **K_EC2**
-  - IAM User account with 
-  - *K* logs on to the HCDS through a secure gateway 
-  - *K* carries out the data analysis over a period of time
+- A scientist *K* receives approval from the IRB to work with PHI data. 
+  - Intent: Analyze these data in a secure, HIPAA-compliant data system (HCDS) 
+- *K* contacts IT professional *J* for the HCDS as a working environment
+  - HCDS built by *J* as described below
+  - Data uploaded from a secure data warehouse to an encrypted S3 bucket
+- *K* provided with access
+  - pem file and ip address of a bastion server **B**
+  - login and password to a private subnet EC2 instance
+  - Notice no IAM User account: Console access not needed
+  - *K* logs on to the HCDS, carries out analysis over time
     - The system logs all activity 
-  - IOT devices distributed to patients report health data to the HCDS 
+  - Patient-held devices contribute ongoing data via phone app using the API Gateway 
     - These data supplement the research
-- The study concludes 
-  - Sensitive data are stored to a secure archive 
-  - The HCDS is deleted 
-  - Log files are archived to preserve a complete record of operation for the HCDS
+- The study concludes, data preserved, log files preserved, HCDS deleted 
+
+
+Supplemental ideas from the researcher
 
 
 - Scientist writes, anticipating a HCDS:
@@ -177,11 +181,14 @@ Tenancy VPC (simply not supported)
     - On the cloud: tools for analysis
       - ML, visualizations out, comparative w/r/t analytic datasets etc
 
-- The IT professional writes: 
-  - Constraints? AWS Services available within the VPC? VPC required? 
-    - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
-    - Yes? Expanded how often? Yearly? Extend to entire service platform?
-      - SA "essentially yes" (je crois BAA expands as the list automatically)
+Supplemental ideas from the IT professional
+
+- Constraints? AWS Services available within the VPC? VPC required? 
+  - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
+    - API Gateway would be the mechanism for having a phone report my bp or something
+  - Yes? Expanded how often? Yearly? Extend to entire service platform?
+    - SA "essentially yes" (je crois BAA expands as the list automatically)
+
 
 #### Plan of action for this HCDS Proof of Concept
 
@@ -461,6 +468,31 @@ to the default.
 
 
 ### Part 3: Adding EC2 and S3 resources to the VPC
+
+#### S3 buckets
+
+##### S3 Encryption policy
+
+We create new S3 buckets associated with projects and assign them a Policy to ensure that
+Server-side encryption is requested by anyone attempting to upload data. This ensures the 
+data will be encrypted when it comes to rest in the bucket. 
+
+
+[AWS link for S3 server-side encryption policy for copy-paste](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html)
+
+
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/aws_hipaa0031.png))
+
+##### S3 Endpoints
+
+An S3 Endpoint is routing information associated with the VPC.  S3 access from the VPC should not go through 
+the public internet; and this routing information ensures that. The S3 Endpoint is not subsequently invoked; 
+it is simply infrastructure. For example an EC2 instance might access an S3 bucket via the AWS CLI as in
+
+```
+% aws s3 cp s3://any-bucket-name/content local_filename 
+```
+
   
 
 #### Building a Bastion Server **B**
