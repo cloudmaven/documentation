@@ -3,24 +3,53 @@ title: AWS HIPAA
 keywords: aws, hipaa
 last_updated: January 25, 2017
 tags: [AWS, HIPAA, medicine, data_management, case_studies, storage, research_computing, data_science]
-summary: "A HIPAA-compliant research system on AWS"
+summary: "Building a secure compute environment; with examples"
 sidebar: mydoc_sidebar
 permalink: aws_hipaa.html
 folder: aws
 ---
 
+
 ## Introduction
+
 
 [This document](aws_hipaa.html) presents a secure data management system, specifically using the 
 motivation of managing Private Health Information (PHI) under HIPAA regulations on the public cloud. 
 This template applies more generally to secure data management in research computing.
 
-HIPAA regulations require data be encrypted both at rest (e.g. on a storage device) and in 
-transit (e.g. moving from one storage device to another).  Our hypothetical situation is described 
-in further detail below; it is well to keep these rest/transit encryption notions in mind. 
 
-Please note that while this study uses AWS we are also building out the construct on the 
-Microsoft Azure public cloud. 
+## Framework
+
+
+In a simple view HIPAA regulations require that data be encrypted both at rest (on a storage device) 
+and in transit (moving from one location to another).  In addition all transactions around PHI data
+should be logged in a traceable manner to validate the assertion that only authorized individuals
+have had access to PHI. 
+
+
+Putting a conforming technical system in place is straightforward. The steps are given here 
+although this resource is not exhaustive. Our objective is to provide the technical basis for
+a scalable research solution under HIPAA guidelines. The social component of this process
+is called a *Shared Responsibility* model. In this model AWS provides necessary security 
+measures and the practitioners build and operate the environment according to established
+practices. Hence using HIPAA-aligned technologies from AWS is not equivalent to complying
+with HIPAA. 
+
+
+We proceed along the following program.
+
+
+- Define some User Stories to motivate the structure of what follows
+- Provide instructions for building a secure compute environment (SCE) on the AWS cloud
+  - Constructing a Virtual Private Cloud
+  - Constructing storage, compute and data management elements
+- Describe implementation 1 of the SCE: Simple, includes a very small synthetic dataset
+- Describe implementation 2 of the SCE: OMOP
+
+
+While this study uses AWS our group is also building comparable structures on other cloud platforms, 
+notably on the Microsoft Azure public cloud. 
+
 
 ## Links
 
@@ -32,22 +61,67 @@ Microsoft Azure public cloud.
 - [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
 
 
-## Warnings
+## Admonitions
 
-- ***AWS has more than nine HIPAA-aligned technologies. A HIPAA-compliant system allows only
-these technologies to come into direct contact with PHI.  Other technologies can be used in 
-an ancillary capacity only.***
+
+- ***AWS has more than twelve HIPAA-aligned technologies. Only these technologies may come into contact 
+with PHI.  Other technologies can be used provided there is no such contact.***
 - ***HIPAA compliance is an obligation of the data system builder, the medical researcher
-and the parent organization(s).  The public cloud is very secure: physically and technologically. 
+and the parent organization(s).***
+- ***The public cloud is very secure: physically and technologically. 
 Compromise is most likely to be caused by human error either in design or in operation.***
 - ***File names may not include PHI. They may include identifier strings that could be indexed 
 in a secure table.***
-- Do not use T EC2 instance types when building a HCDS. These will not connect to a Dedicated 
-Tenancy VPC (simply not supported)
+- ***AWS has many virtual machine / instance / EC2 *types* including general purpose computers that 
+are **m**-type. These are fine to use in an SCE. There is another lightweight type called a **t**-type.
+Do not use these. The **t** instance type by its nature will not connect to a Dedicated Tenancy VPC. 
+That is, this technical detail is simply not supported. It is no loss, just a guideline to follow.***
 
-### Preliminary Work
 
-#### Kilroy stack
+## User story
+
+- A scientist *K* receives approval from the IRB to work with PHI data. 
+  - Intent: Analyze these data in a Secure Compute Environment (SCE) 
+- *K* contacts IT professional *J* for the SCE as a working environment
+  - SCE built by *J* as described below
+  - Data uploaded from a secure data warehouse to an encrypted S3 bucket
+- *K* provided with access
+  - pem file and ip address of a bastion server **B**
+  - login and password to a private subnet EC2 instance
+  - Notice no IAM User account: Console access not needed
+  - *K* logs on to the SCE, carries out analysis over time
+    - The system logs all activity 
+  - Patient-held devices contribute ongoing data via phone app using the API Gateway 
+    - These data supplement the research
+- The study concludes, data preserved, log files preserved, SCE deleted 
+
+
+### Supplemental ideas from the researcher
+
+
+- Scientist writes, anticipating a SCE:
+  - Early use cases will involve external devices (phones, sensors)
+    - Data direct to cloud: Authenticate, validate data, match to patient
+    - Standard format (HL7? CCD?) 
+  - Subsequent 
+    - Bidirectional data sharing
+      - Device, cloud, EHR
+  - End result: Allowed persons (care / research) can get to all of this data 
+    - progress in stages
+    - On the cloud: tools for analysis
+      - ML, visualizations out, comparative w/r/t analytic datasets etc
+
+### Supplemental ideas from the IT professional
+
+- Constraints? AWS Services available within the VPC? VPC required? 
+  - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
+    - API Gateway would be the mechanism for having a phone report my bp or something
+  - Yes? Expanded how often? Yearly? Extend to entire service platform?
+    - SA "essentially yes" (je crois BAA expands as the list automatically)
+
+
+
+# Intermezzo Kilroy stack (a list of must-fix details)
 
 - Questions from Dogfooding on March 23 2017
   - Create VPC...
@@ -58,13 +132,13 @@ Tenancy VPC (simply not supported)
     - Creating subnets: AZ: VPC is regional
       - Subnets are associated with AZs and should be intentionally designated
       - Using multiple AZs (multiple subnets across AZs) will make the VPC "present" in those AZs
-        - for HCDS it is more controlled to be in just one AZ
+        - for SCE it is more controlled to be in just one AZ
       - Going multi-AZ would be a high availability strategy which is a compute-heavy idea 
 - AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
   - Email aws-hipaa@amazon.com and include the account number
   - Is there a DLT component? 
 - Generate and incorporate a scientist workflow diagram with extensive caption per User Story
-- Generate and incorporate a complete HCDS architecture diagram near the top of this 
+- Generate and incorporate a complete SCE architecture diagram near the top of this 
 - Create a sub-topic around **L**: In coffee shop, in a data center (out of Med Research), etcetera
   - The 'in transit / at rest' component leaves a sparking wire in **L**: Section on risk added
   - While a coffee shop to S3 encrypted is not a foul on AWS it is a foul on me and my organization
@@ -86,7 +160,7 @@ Tenancy VPC (simply not supported)
   - Rename **K2** as **K_Bastion** and describe where it lives on **L**, add to Risk
     - It may make sense to describe chain of custody of **KBastion**
   - J needs to give K a pem file and an ip address: To get to **B** plus creds to the **Sprivate** from the bastion
-    - Risk kilroy: This makes **B** a single point of failure if the private EC2 keys are left on the Bastion: It gets compromised, game over
+    - Risk: This makes **B** a single point of failure if the private EC2 keys are left on the Bastion: It gets compromised, game over
     - Password-protected is a way forward
   - Scale up to her group: Giving everyone the same login is not really an option
 - Free up and assign **B** an Elastic IP address that will persist
@@ -147,162 +221,113 @@ Tenancy VPC (simply not supported)
 - Bastion and **Sprivate** worker: Need more details on the configuration steps!
   - Enable cloudwatch checkbox? Yes
 - Missing instructions on setting up S3 buckets: For FlowLog and for DataIn
-
-#### User story
-
-- A scientist *K* receives approval from the IRB to work with PHI data. 
-  - Intent: Analyze these data in a secure, HIPAA-compliant data system (HCDS) 
-- *K* contacts IT professional *J* for the HCDS as a working environment
-  - HCDS built by *J* as described below
-  - Data uploaded from a secure data warehouse to an encrypted S3 bucket
-- *K* provided with access
-  - pem file and ip address of a bastion server **B**
-  - login and password to a private subnet EC2 instance
-  - Notice no IAM User account: Console access not needed
-  - *K* logs on to the HCDS, carries out analysis over time
-    - The system logs all activity 
-  - Patient-held devices contribute ongoing data via phone app using the API Gateway 
-    - These data supplement the research
-- The study concludes, data preserved, log files preserved, HCDS deleted 
-
-
-Supplemental ideas from the researcher
-
-
-- Scientist writes, anticipating a HCDS:
-  - Early use cases will involve external devices (phones, sensors)
-    - Data direct to cloud: Authenticate, validate data, match to patient
-    - Standard format (HL7? CCD?) 
-  - Subsequent 
-    - Bidirectional data sharing
-      - Device, cloud, EHR
-  - End result: Allowed persons (care / research) can get to all of this data 
-    - progress in stages
-    - On the cloud: tools for analysis
-      - ML, visualizations out, comparative w/r/t analytic datasets etc
-
-Supplemental ideas from the IT professional
-
-- Constraints? AWS Services available within the VPC? VPC required? 
-  - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
-    - API Gateway would be the mechanism for having a phone report my bp or something
-  - Yes? Expanded how often? Yearly? Extend to entire service platform?
-    - SA "essentially yes" (je crois BAA expands as the list automatically)
+- Let's be clear that subnet CIDR blocks are *always* for the private subnet component. Making the subnet
+  a *public* subnet means that there is a second set of (public: on the internet) ip addresses that map
+  to those private subnet resources. I still have a hard time with how this doesn't use up the internet.
+  2^32 is a mere 4 billion.
+- Hit these terms in a glossary
+  - Ansible
+  - Regions and Availability Zones on AWS
+  - Bastion Server 
+  - Siricata / Snort
+  - Direct tools like **ssh** and third party apps like Cloudberry 
+  - Dedicated Instance 
+  - Lambda Service
+  - NAT Gateway
+  - HIPAA-aligned tech at AWS (original 9; need to add with link the new ones)
+    - S3 storage
+    - EC2 compute instances (VMs)
+    - EBS elastic block storage: Attached filesystem
+    - RDS relational database service
+    - DynamoDB database
+    - EMR elastic map reduce: Hadoop/Spark engine support
+    - ELB elastic load balancer
+    - Glacier archival storage
+    - Redshift data warehouse
+- "How can you be using Lambda? It is not on the list...?"
+  - Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
+  - Services that may come in contact with PHI can be described as 'data and compute'
+- Encryption
+  - HIPAA requires data be encrypted at rest, i.e. on a storage device
+  - HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 
 
-#### Plan of action for this HCDS Proof of Concept
 
-0. Write up procedure
-1. Create a system architecture and diagram  
-  - Anticipate <new data to EMR> pipeline
-  - Anticipate <IOT to VM> pipeline
-  - Anticipate changes to <PHI > VM> process
-  - AWS is the big box
-  - VPC is inside
-  - Public and Private subnets are inside VPC
+## Plan of action for this SCE Proof of Concept
+
+
+1. System architecture and diagram  
+  - Anticipate <new data to EMR> pipeline, <IOT to VM> pipeline
+  - EMR / data warehouse / Red Cap survey system / new clinical data / sensors
+  - Destinations are RDS, S3, EBS
+  - AWS big box, VPC inside, Public and Private subnets inside VPC
   - NAT gateway inside the Public subnet box
   - Internet Gateway on boundary of VPC
   - S3 Endpoint on boundary of VPC
-2. Create artificial data 
-  - data manufacturing software 
-  - generate source artificial data (from EMR)
-  - generate IOT stream
+2. Artificial data 1
+  - static historical synthetic data (from EMR)
+  - IOT stream
   - anticipate study-to-clinical pipeline
 3. Complete system including analytical tools
   - include R, Python, Jupyter 
-4. Review with IT personnel (JP first), mgmt, researchers
+4. Artificial data 2 see KS
 
 
-#### Partial list of terminology and concepts
 
-* Ansible
-* Regions and Availability Zones on AWS
-* Bastion Server 
-* Siricata / Snort
-* CIDR
-* Direct tools like **ssh** and third party apps like Cloudberry 
-* Dedicated Instance 
-* Lambda Service
-* NAT Gateway
-
-#### PHI contact framework
-
-"How can your system be an HCDS if you are using Lambda?" We identify tools and 
-technologies that do / do not interface directly with PHI.
-
-- Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
-- Services that may come in contact with PHI can be described as 'data and compute'
-
-#### HIPAA-aligned technologies
-
-Here is a partial list of AWS Technologies that are HIPAA-aligned. New 
-services accrue automatically to the *allowed* category as AWS adds them.
-
-- S3 storage
-- EC2 compute instances (VMs)
-- EBS elastic block storage: Attached filesystem
-- RDS relational database service
-- DynamoDB database
-- EMR elastic map reduce: Hadoop/Spark engine support
-- ELB elastic load balancer
-- Glacier archival storage
-- Redshift data warehouse
+## Build the SCE
 
 
-#### Encryption
+### Notes on format and preliminary steps
 
-- HIPAA requires data be encrypted at rest, i.e. on a storage device
-- HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 
-#### Multiple sources of data
+#### Notes in passing 
 
-- Electronic Medical Records (EMR)
-- A Data Warehouse (tables) 
-- A Clinician 
-- Sensors stream data from patient
 
-#### Destinations
-
-- S3 bucket
-- EBS/EFS 
-
-#### Procedural format
-
-We punctuate the procedural steps needed to build the HIPAA-Compliant Data System (HCDS) 
+We punctuate the procedural steps needed to build the Secure Compute Environment (SCE) 
 with short notes on rationale, how things fit together. We also make extensive use of 
 very short abbreviations (just about every entity gets one, indicated by **boldface** 
 and obsessive re-naming of everything using the Project Identifier Tag (PIT)
-
 ### Part 1: Getting started
 
-#### Activity Zero
 
-Your absolute First Priority Step 0 is to designate to AWS that the account you are using
-involves PII/PHI/HIPAA data.
+#### Zero'th Required Action
 
-#### Saving money
 
-This will be a multi-day effort. Shut down instances to save money at the end of the day.
+As SCE builder your absolute First Priority Step 0 Must Do is to designate to AWS and DLT 
+that the account you are using involves PII/PHI/HIPAA data.
 
-#### Review objectives
 
-Our main objective is (see Figure below) to use a Laptop or other cloud-external data source
-to feed data into a HIPAA-Compliant Data System **HCDS** wherein we operate on that data. 
-The data are assumed to be Private Health Information (PHI) or Personally Identifiable 
-Information (PII) as described in HIPAA regulations.
+#### Cost tracking and cost reduction
+
+
+- This will be a multi-day effort. Shut down instances to save money at the end of the day.
+- Tags... kilroy
+
+
+#### Objectives
+
+
+Our main objective (see Figure below) is to use a Laptop or other cloud-external data source
+to feed data into a **SCE** wherein we operate on that data.  The data are assumed to be Private 
+Health Information (PHI) or Personally Identifiable Information (PII).
+
 
 #### PIT means Project Identifier Tag (an informal term) 
+
 
 - Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything
   - This is a handy string of characters
   - In our example here PIT = 'hipaa'. Short, easy to read = better
 
+
 #### Source computer 
+
 
 - Identify our source computer as **L**, a Laptop sitting in a coffee shop 
   - This is intentionally a *non-secure* source
   - **L** does *not* have a PIT
   - **L** could also be a secure resource operated by Med Research / IRB / data warehouse
+
 
 We are starting with a data source and will return to encryption later. The first burst 
 of activity will be the creation of a Virtual Private Cloud (VPC) on AWS per the diagram
@@ -311,49 +336,65 @@ system builder; but you may not be an experienced IT professional. That is: We a
 that you are building this environment and that you may or may not be doing research
 once it is built; but someone will.
 
+
 #### VPC via Wizard versus manual build
+
 
 The easiest way to create a VPC is using the console Wizard. That method is covered in a 
 section below and it can automate many of the steps we describe manually.  We describe 
 the manual method to illuminate the components.
 
+
 #### CIDR block specification
+
 
 The CIDR block syntax uses a specification like **10.0.0.0/16**. This has two 
 components: A 'low end of range' ip address **w.x.y.z** and a width parameter **/N**. 
-w, x, y and z are integers from 0 to 255, in total 32 bits of address space.  
+w, x, y and z are integers from 0 to 255, in total providing 32 bits of address space.  
+
 
 **N** determines an addressable space of size s = 2^(32 - N). For example 
-N = 16 produces s = 2^16 or s = 65536 available addresses, starting at w.x.y.z.
+N = 24 produces s = 2^8 or s = 256 available addresses, starting at w.x.y.z.
+Hence z (and possibly y) would increase to span the available address space.
 
-An example: Suppose we specify 10.0.0.0/16.
-Then s = 2^16 so 65536 addresses are available: 10.0.0.0, 10.0.0.1, 10.0.0.2, ...,
-10.0.1.0, 10.0.1.0, ..., 10.0.255.255. **y** and **z** together span the address 
-space.
+
+Another example: Suppose we specify 10.0.0.0/16.  Then s = 2^16 so 65536 addresses 
+are available: 10.0.0.0, 10.0.0.1, 10.0.0.2, ..., 10.0.1.0, 10.0.1.0, ..., 
+10.0.255.255. **y** and **z** together span the address space.
+
 
 These ip addresses are defined in the VPC, contextually *local* within the VPC.
 
+
 Any subnets we place within the VPC will be limited by this address space.  
 In fact we proceed  by defining subnets within the VPC with respective 
-CIDR ranges, subranges of the VPC CIDR block.  The first subnet will have 
-CIDR = 10.0.0.0/24 with 256 addresses available: 10.0.0.0, 10.0.0.1, ..., 
-10.0.0.255. Five of these will be appropriated by AWS machinery, incidentally.
+CIDR ranges, subranges of the VPC CIDR block.  In our case the first subnet will 
+have CIDR = 10.0.0.0/24 with 256 addresses available: 10.0.0.0, 10.0.0.1, ..., 
+10.0.0.255. Five of these are *appropriated* by AWS machinery.
 The second subnet will be non-overlapping with CIDR range = 10.0.1.0/24.
+
 
 Since AWS appropriates five ip addresses for internal use
 (.0, .1, .2, .3, and .255) we should look for ways of making 
 ip address assignment automatic.  
 
-### Part 2 Creating and populating a Virtual Private Cloud
 
-#### Building the VPC 
+### Creating a Virtual Private Cloud
+
+
+#### Build the VPC 
+
 
 Here we abbreviate elements with boldface type. In most cases the entity we create
 can be named so to remind you: For consistency we have come up with a Project
 Identifier Tag like 'hipaa' so that each entity can be given a PIT name: 'hipaa_vpc'
-and so on.
+and so on. In naming associated S3 buckets: The name may be harder to produce because
+it must be an allowed DNS name that does not conflict with any existing S3 buckets
+across the entire AWS cloud.
 
-#### Intermezzo: Screencaps from 0 to 30: Need to be placed by kilroy
+
+#### Intermezzo: 30 Screencaps: Need to be interspersed (kilroy)
+
 
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0001.png))
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0002.png))
@@ -386,9 +427,12 @@ and so on.
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png))
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png))
 
-#### And now we continue
+
+#### To continue...
+
 
 - From the console create a new VPC **V**
+
 
   - Give **V** a PIT name 
 
@@ -577,7 +621,7 @@ Created S3 bucket
 ### Part 4: Ancillary components
 
 This section describes the use of automated services, data bases tables, IOT endpoints and other 
-AWS features to augment the HCDS. Such ancillary components may or may not touch directly on PHI,
+AWS features to augment the SCE. Such ancillary components may or may not touch directly on PHI,
 an important differentiator as only HIPAA-aligned technologies are permitted to do so. 
 
 
@@ -671,7 +715,7 @@ The EBS /hipaa is encrypted at rest. Done.
 
 ### Part 6: Auditing
 
-HCDS activity must be logged in such a manner as to permit subsequent tracing of PHI data 
+SCE activity must be logged in such a manner as to permit subsequent tracing of PHI data 
 access and ongoing monitoring of the security state of the system. 
 
 #### CloudTrail and CloudWatch
@@ -1012,14 +1056,14 @@ with open(ppName,'wb') as patientParameterFile:
   - Third party apps such as Cloudberry are possible...
   - AWS CLI with scripts: Probably the most direct method
 - Compute scale test: Involves setting up some substantial processing power
-  - Implication is that the HCDS can intrinsically fire up EC2 instances as needed
+  - Implication is that the SCE can intrinsically fire up EC2 instances as needed
   - Launch **W** x 5 Dedicated instances, call these **Wi**
   - Assign S3 access role 
   - Encrypted volumes 
   - S/w pre-installed (e.g. genomics pipelines)
   - Update issue: Pipeline changes, etcetera; 
 - **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
-  - Assumes that a HCDS exists in perpetuity to perform some perfunctory pipeline processing
+  - Assumes that a SCE exists in perpetuity to perform some perfunctory pipeline processing
   - On **B**
     - Create SQS queue of objects in S3
     - Start a **Wi** for each message in queue...
@@ -1159,7 +1203,7 @@ This section identifies points of risk and their severity. Severity is described
 'when protocol is properly observed' and 'when protocol is not observed'. That is: We 
 provide examples of how failure to follow protocols could result in the compromise of 
 PHI. There is in all of this a notion of diminishing returns: A tremendous amount of 
-additional effort might be incorporated in building an HCDS that provides only small 
+additional effort might be incorporated in building an SCE that provides only small 
 reduction of risk.
 
 ### Protocols described in this document
@@ -1176,7 +1220,7 @@ to not do this but there is an attendant cost in time and risk.
 #### Extended key management strategy
 
 Encryption keys here are taken to be default keys associated with the AWS account. 
-It is possible on setting up the HCDS to create an entire structure around management 
+It is possible on setting up the SCE to create an entire structure around management 
 of newly-generated keys. This is a diminishing-returns risk mitigation procedure:
 It may create a profusion of complexity that is itself a risk. 
 
