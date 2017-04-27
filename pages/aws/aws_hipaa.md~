@@ -27,13 +27,20 @@ should be logged in a traceable manner to validate the assertion that only autho
 have had access to PHI. 
 
 
-Putting a conforming technical system in place is straightforward. The steps are given here 
-although this resource is not exhaustive. Our objective is to provide the technical basis for
-a scalable research solution under HIPAA guidelines. The social component of this process
-is called a *Shared Responsibility* model. In this model AWS provides necessary security 
-measures and the practitioners build and operate the environment according to established
-practices. Hence using HIPAA-aligned technologies from AWS is not equivalent to complying
-with HIPAA. 
+HIPAA regulations are also viewable through the lens of NIST; we find for example the 
+[NIST HIPAA Security Rule](https://www.nist.gov/healthcare/security/hipaa-security-rule) 
+which is also called Special Publication 800-66 Revision 1. This document discusses 
+HIPAA=compliant implementations in practice, in some detail. 
+
+
+Putting a conforming technical system in place is fairly straightforward though rather 
+detailed. Steps are provided on this page although we are by no means exhaustive. 
+Our objective is to provide an initial technical basis for a scalable research solution 
+under HIPAA guidelines. Real implementations operate under a *Shared Responsibility* 
+model: AWS provides necessary security measures and practitioners build and operate the 
+environment according to established practices; including documentation and logging 
+access. **Making use of HIPAA-aligned technologies from AWS** is not equivalent to 
+being HIPAA compliant.**
 
 
 We proceed along the following program.
@@ -53,47 +60,55 @@ notably on the Microsoft Azure public cloud.
 
 ## Links
 
-- Start with the [NIST 800-66 HIPAA Compliance](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-66r1.pdf) documents
-  - Note that this cross-links to NIST 800-53 in Appendix D
+- The [NIST 800-66 HIPAA Compliance](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-66r1.pdf) documents
+  - Note that this cross-links to NIST 800-53 in Appendix D: A supporting document
 - [HIPAA home page](https://www.hhs.gov/hipaa/index.html/)
 - [HIPAA on Wikipedia](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 - [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
-- [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
+- [AWS Accelerator: NIST broad spectrum](https://aws.amazon.com/quickstart/architecture/accelerator-nist/)
+  - [Related Excel 'security matrix'](https://s3.amazonaws.com/quickstart-reference/enterprise-accelerator/nist/latest/assets/NIST-800-53-Security-Controls-Mapping.xlsx)
 
 
 ## Admonitions
 
 
+- ***The acronym SCE is used extensively on this page to denote a Secure Computing Environment.***
 - ***AWS has more than twelve HIPAA-aligned technologies. Only these technologies may come into contact 
 with PHI.  Other technologies can be used provided there is no such contact.***
 - ***HIPAA compliance is an obligation of the data system builder, the medical researcher
 and the parent organization(s).***
 - ***The public cloud is very secure: physically and technologically. 
-Compromise is most likely to be caused by human error either in design or in operation.***
-- ***File names may not include PHI. They may include identifier strings that could be indexed 
-in a secure table.***
-- ***AWS has many virtual machine / instance / EC2 *types* including general purpose computers that 
-are **m**-type. These are fine to use in an SCE. There is another lightweight type called a **t**-type.
-Do not use these. The **t** instance type by its nature will not connect to a Dedicated Tenancy VPC. 
-That is, this technical detail is simply not supported. It is no loss, just a guideline to follow.***
+Compromise is most likely to be caused by human error.***
+- ***File names may not include PHI.***
+- ***AWS has many virtual machine / instance / EC2 *types* including general purpose computers 
+called **m**-type. These are fine to use in an SCE. There is also a lightweight instance type called 
+a **t**-type.  The **t** instance type by its nature will not connect to a Dedicated Tenancy VPC. 
+Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
 ## User story
 
+
 - A scientist *K* receives approval from the IRB to work with PHI data. 
   - Intent: Analyze these data in a Secure Compute Environment (SCE) 
 - *K* contacts IT professional *J* for the SCE as a working environment
-  - SCE built by *J* as described below
-  - Data uploaded from a secure data warehouse to an encrypted S3 bucket
-- *K* provided with access
-  - pem file and ip address of a bastion server **B**
-  - login and password to a private subnet EC2 instance
-  - Notice no IAM User account: Console access not needed
-  - *K* logs on to the SCE, carries out analysis over time
-    - The system logs all activity 
-  - Patient-held devices contribute ongoing data via phone app using the API Gateway 
+  - Some initial steps align *K* and *J* to build an SCE
+  - The SCE is set up by *J* with *K* helping as described below
+  - Data are uploaded to S3 storage on AWS from a secure device
+- *K* is provided with access to the SCE
+  - Specifically 
+    - A pem file and ip address of a bastion server **B**
+    - A login and password to a private subnet EC2 instance
+  - Notice there is no IAM User account involved 
+    - Console access not needed
+  - *K* logs on to the SCE
+    - There is some potential initial configuration, e.g. installing software
+    - *K* carries out data analysis over time; system activity is automatically logged
+  - There are a number of stretch goals to call out
+    - Patient-held devices could contribute data streams e.g. via phone app using the API Gateway 
     - These data supplement the research
-- The study concludes, data preserved, log files preserved, SCE deleted 
+  - The study concludes, data and results are preserved, log files preserved, the SCE is deleted
+    - No trace remains
 
 
 ### Supplemental ideas from the researcher
