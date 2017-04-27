@@ -58,7 +58,8 @@ notably on the Microsoft Azure public cloud.
 - [HIPAA home page](https://www.hhs.gov/hipaa/index.html/)
 - [HIPAA on Wikipedia](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 - [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
-- [AWS HIPAA template](https://aws.amazon.com/quickstart/architecture/accelerator-hipaa/)
+- [AWS Accelerator: NIST broad spectrum](https://aws.amazon.com/quickstart/architecture/accelerator-nist/)
+  - [Related Excel 'security matrix'](https://s3.amazonaws.com/quickstart-reference/enterprise-accelerator/nist/latest/assets/NIST-800-53-Security-Controls-Mapping.xlsx)
 
 
 ## Admonitions
