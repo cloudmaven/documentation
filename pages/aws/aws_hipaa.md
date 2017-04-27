@@ -10,7 +10,10 @@ folder: aws
 ---
 
 
-## Introduction
+## Part 0: Preamble material
+
+
+### Introduction
 
 
 [This document](aws_hipaa.html) presents a secure data management system, specifically using the 
@@ -18,7 +21,12 @@ motivation of managing Private Health Information (PHI) under HIPAA regulations 
 This template applies more generally to secure data management in research computing.
 
 
-## Framework
+### Framework
+
+
+We present here a framework for what follows in three parts: A system build, a first example with
+a very small synthetic dataset as CSV file, and a second example building on the Observational
+Medical Outcomes Partnership (OMOM) unrestricted vocabulary dataset. 
 
 
 In a simple view HIPAA regulations require that data be encrypted both at rest (on a storage device) 
@@ -58,7 +66,8 @@ While this study uses AWS our group is also building comparable structures on ot
 notably on the Microsoft Azure public cloud. 
 
 
-## Links
+### Links
+
 
 - The [NIST 800-66 HIPAA Compliance](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-66r1.pdf) documents
   - Note that this cross-links to NIST 800-53 in Appendix D: A supporting document
@@ -67,9 +76,10 @@ notably on the Microsoft Azure public cloud.
 - [HIPAA Privacy Rule Summary](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html)
 - [AWS Accelerator: NIST broad spectrum](https://aws.amazon.com/quickstart/architecture/accelerator-nist/)
   - [Related Excel 'security matrix'](https://s3.amazonaws.com/quickstart-reference/enterprise-accelerator/nist/latest/assets/NIST-800-53-Security-Controls-Mapping.xlsx)
+- [Observational Medical Outcomes Partnership (OMOP)](http://omop.org/)
 
 
-## Admonitions
+### Admonitions
 
 
 - ***The acronym SCE is used extensively on this page to denote a Secure Computing Environment.***
@@ -86,7 +96,7 @@ a t-type.  The t instance type by its nature will not connect to a Dedicated Ten
 Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
-## User story
+### User story
 
 
 - A scientist *K* receives approval from the IRB to work with PHI data. 
@@ -111,32 +121,41 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
     - No trace remains
 
 
-### Supplemental ideas from the researcher
+### Supplemental SCE ideas 
 
 
-- Scientist writes, anticipating a SCE:
-  - Early use cases will involve external devices (phones, sensors)
-    - Data direct to cloud: Authenticate, validate data, match to patient
-    - Standard format (HL7? CCD?) 
-  - Subsequent 
+- Simplest use case is the static scenario given above
+- Expansion use cases will involve external devices (phones, sensors)
+  - Data direct to cloud: Authenticate, validate data, match to patient
+  - Standard format (HL7? CCD?) 
+- Further expansion
     - Bidirectional data sharing
       - Device, cloud, EHR
   - End result: Allowed persons (care / research) can get to all of this data 
-    - progress in stages
-    - On the cloud: tools for analysis
-      - ML, visualizations out, comparative w/r/t analytic datasets etc
+- On the cloud: How do we manage installing / updating tools for analysis?
+  - Include Machine Learning; Visualization, Comparatives w/r/t analytic datasets (reference genome for example)
+- This cloud story will progress in stages
+- From an IT view: What are the SCE constraints? 
+  - Are AWS Services available within a VPC? IS a VPC required? 
+  - Currently there are 13 HIPAA-aligned technologies
+    - API Gateway
+      - Would be the mechanism for allowing a phone to report blood pressure
+    - Direct Connect
+    - Snowball
+    - DynamoDB
+    - EBS
+    - EC2
+    - EMR
+    - ELB
+    - Glacier
+    - RDS
+    - Aurora
+    - Redshift
+    - S3
+  - This number is growing; and new contributions accrue automatically to the BAA
 
-### Supplemental ideas from the IT professional
 
-- Constraints? AWS Services available within the VPC? VPC required? 
-  - Currently 13: API Gateway, Direct Connect, Snowball, DynamoDB, EBS, EC2, EMR, ELB, Glacier, RDS, Aurora, Redshift, S3
-    - API Gateway would be the mechanism for having a phone report my bp or something
-  - Yes? Expanded how often? Yearly? Extend to entire service platform?
-    - SA "essentially yes" (je crois BAA expands as the list automatically)
-
-
-
-# Intermezzo Kilroy stack (a list of must-fix details)
+### Intermezzo Kilroy stack (a list of must-fix details)
 
 - Questions from Dogfooding on March 23 2017
   - Create VPC...
@@ -265,13 +284,47 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 - Encryption
   - HIPAA requires data be encrypted at rest, i.e. on a storage device
   - HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
+- This block of text was formerly the close-out plan for the POC; please review
+  - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
+  - Pushing data to S3
+    - Console does not seem like a good mechanism
+    - Third party apps such as Cloudberry are possible...
+    - AWS CLI with scripts: Probably the most direct method
+  - Compute scale test: Involves setting up some substantial processing power
+    - Implication is that the SCE can intrinsically fire up EC2 instances as needed
+    - Launch **W** x 5 Dedicated instances, call these **Wi**
+    - Assign S3 access role 
+    - Encrypted volumes 
+    - S/w pre-installed (e.g. genomics pipelines)
+    - Update issue: Pipeline changes, etcetera; 
+  - **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
+    - Assumes that a SCE exists in perpetuity to perform some perfunctory pipeline processing
+    - On **B**
+      - Create SQS queue of objects in S3
+      - Start a **Wi** for each message in queue...
+    - Go
+      - Latest pipeline... EBS Genomes... chew
+      - If last instance running: Consolidate / clean-up
+      - SNS topic notifies me when last instance shuts down.
+      - Run Ansible script to configure **Wi** (patch, get data file names from DynamoDB table, etcetera)
+      - Get Ws the Key from E
+      - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
+      - Which uses something called SES to send an email to the effect that the system is working with PHI data 
+        - Ws pull data from S3 using VPC Endpoint; thanks to the Route table
+        - Ws decrypt data using HomerKey
+        - Ws process their data into result files: Encrypted EBS volume. 
+        - Optionally the result files are encrypted in place in the EBS volume.
+    - Through **S3EP_O** the results are moved to S3.
+    - **Wi** sends an Alert through the NAT gateway to SNS 
+      - which uses something called SES to send another email: Done
+    - **Wi** evaporates completely leaving no trace
 
 
 
-## Plan of action for this SCE Proof of Concept
+### Plan for the SCE POCs A and B
 
 
-1. System architecture and diagram  
+1. Build a system architecture and diagram  
   - Anticipate <new data to EMR> pipeline, <IOT to VM> pipeline
   - EMR / data warehouse / Red Cap survey system / new clinical data / sensors
   - Destinations are RDS, S3, EBS
@@ -289,7 +342,7 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
 
-## Build the SCE
+## Part 1. Build the SCE
 
 
 ### Notes on format and preliminary steps
@@ -305,7 +358,7 @@ and obsessive re-naming of everything using the Project Identifier Tag (PIT)
 ### Part 1: Getting started
 
 
-#### Zero'th Required Action
+#### Initial Required Action
 
 
 As SCE builder your absolute First Priority Step 0 Must Do is to designate to AWS and DLT 
@@ -394,7 +447,7 @@ Since AWS appropriates five ip addresses for internal use
 ip address assignment automatic.  
 
 
-### Creating a Virtual Private Cloud
+### Part 1A. Creating a Virtual Private Cloud
 
 
 #### Build the VPC 
@@ -589,7 +642,7 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
 
   
 
-#### Building a Bastion Server **B**
+### Part 1B. Building a Bastion Server **B**
 
 
 - On **V** create a public-facing Bastion Server **B**
@@ -633,7 +686,7 @@ is not properly present. holy cow!!!!!!!!!!!!!!!
 
 Created S3 bucket
 
-### Part 4: Ancillary components
+### Part 1C. Ancillary components
 
 This section describes the use of automated services, data bases tables, IOT endpoints and other 
 AWS features to augment the SCE. Such ancillary components may or may not touch directly on PHI,
@@ -648,7 +701,7 @@ an important differentiator as only HIPAA-aligned technologies are permitted to 
 - Create an SNS to notify me when interesting things happen
 
 
-### Part 5: Encryption
+### Part 1D. Encryption
 
 Suppose on EC2 we create an EBS volume for the PHI
 So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
@@ -728,7 +781,7 @@ Look at cli/latest/reference for the link on this. This means that S3 to EC2priv
 The EBS /hipaa is encrypted at rest. Done. 
 
 
-### Part 6: Auditing
+### Part 1E. Auditing
 
 SCE activity must be logged in such a manner as to permit subsequent tracing of PHI data 
 access and ongoing monitoring of the security state of the system. 
@@ -773,27 +826,24 @@ So now we have Cloud Trail, S3 logging and Config operating on this account.
 So as we get more sophisticated we could dig in to Cloud Watch. 
 
 
+### Part 1F. Disaster Recovery
 
-
-
-
-
-
-
-
-
-
-
-
-
-### Part 7: Disaster Recovery
 
 Indicate awareness; up to CISO to provide hurdles
 
-### Part 8: Generating Pseudo-Data
+
+## Part 2. POC A, a SCE with a small synthetic dataset
+
+
+### Part 2A. Documenting the creation of the environment
+
+
+### Part 2B. Creating the synthetic dataset 
+
 
 The following is a snapshot of some Python code that generates two CSV files with imaginary health
 data. The data are non-trivial insofar as three of the measured values are related to vitals. 
+
 
 ```
 # 100 people (all named John) live in a small town with one doctor. They appeared in this town
@@ -1061,45 +1111,33 @@ with open(ppName,'wb') as patientParameterFile:
     csvWriter.writerows(pp)
 ```
 
-### Part 9: System operation
 
-### Part 10: Concluding remarks
+### Part 2C. Operating POC A
 
-- Set up Ansible-assisted process for configuring and running jobs on EC2 instances
-- Pushing data to S3
-  - Console does not seem like a good mechanism
-  - Third party apps such as Cloudberry are possible...
-  - AWS CLI with scripts: Probably the most direct method
-- Compute scale test: Involves setting up some substantial processing power
-  - Implication is that the SCE can intrinsically fire up EC2 instances as needed
-  - Launch **W** x 5 Dedicated instances, call these **Wi**
-  - Assign S3 access role 
-  - Encrypted volumes 
-  - S/w pre-installed (e.g. genomics pipelines)
-  - Update issue: Pipeline changes, etcetera; 
-- **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
-  - Assumes that a SCE exists in perpetuity to perform some perfunctory pipeline processing
-  - On **B**
-    - Create SQS queue of objects in S3
-    - Start a **Wi** for each message in queue...
-  - Go
-    - Latest pipeline... EBS Genomes... chew
-    - If last instance running: Consolidate / clean-up
-  - SNS topic notifies me when last instance shuts down.
-    - Run Ansible script to configure **Wi** (patch, get data file names from DynamoDB table, etcetera)
-    - Get Ws the Key from E
-    - The Ws send an Alert through the NAT gateway to Simple Notification Service (SNS) 
-    - Which uses something called SES to send an email to the effect that the system is working with PHI data 
-      - Ws pull data from S3 using VPC Endpoint; thanks to the Route table
-      - Ws decrypt data using HomerKey
-      - Ws process their data into result files: Encrypted EBS volume. 
-      - Optionally the result files are encrypted in place in the EBS volume.
-  - Through **S3EP_O** the results are moved to S3.
-  - **Wi** sends an Alert through the NAT gateway to SNS 
-    - which uses something called SES to send another email: Done
-  - **Wi** evaporates completely leaving no trace
 
-## Procedure Log
+### Part 2D. Concluding remarks on POC A
+
+
+## Part 3 POC B [OMOP](http://omop.org) unrestricted dataset to AWS Redshift
+
+
+From the website is a Quick Link to an Unrestricted Vocabulary.
+From the README here are the steps to load the vocabulary data.
+
+
+```
+- Download vocabulary files to local drive and unzip them or (Redshift)
+- Upload gzipped files to S3 storage
+- Create target tables
+- Transfer data from files to tables
+  - Redshift
+    - copy vocabulary.vocabulary from 's3://.../vocabulary.txt.gz' credentials 'aws_access_key_id=;aws_secret_access_key=' delimiter '\362' ACCEPTINVCHARS GZIP emptyasnull dateformat 'auto'; 
+```
+
+
+## Fossil residual please refactor back into the above
+
+### Procedure Log
 
 Create a VPC **V**
 
@@ -1114,8 +1152,6 @@ Create a VPC **V**
 ![hipaa0003](/documentation/images/aws/hipaa0003.png)
 
 - I added a tag indicating that I originated the VPC.
-
-
 
 ### Create a subnet
 
@@ -1212,7 +1248,7 @@ Notice that this has Full Access; we will restrict access at a later step.
 end as of Jan 27 2017.
 
 
-## Risk
+### Risk
 
 This section identifies points of risk and their severity. Severity is described both
 'when protocol is properly observed' and 'when protocol is not observed'. That is: We 
@@ -1221,11 +1257,7 @@ PHI. There is in all of this a notion of diminishing returns: A tremendous amoun
 additional effort might be incorporated in building an SCE that provides only small 
 reduction of risk.
 
-### Protocols described in this document
-
 #### VPC creation: Manual versus Wizard
-
-### Options outside the purview of this document
 
 #### Dedicated instances
 
@@ -1242,8 +1274,6 @@ It may create a profusion of complexity that is itself a risk.
 One open question is whether a single AWS account should / could / will be used to
 provision multiple independent research projects, each with one or more respective 
 data systems. 
-
-
 
 - Log in to **B** and move **K** to **E** 
   - Observe that material encrypted 
