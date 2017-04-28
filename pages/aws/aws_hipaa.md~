@@ -1118,11 +1118,17 @@ with open(ppName,'wb') as patientParameterFile:
 ### Part 2D. Concluding remarks on POC A
 
 
-## Part 3 POC B [OMOP](http://omop.org) unrestricted dataset to AWS Redshift
+## Part 3 POC B including [OMOP](http://omop.org) unrestricted dataset ported to AWS Redshift
 
+
+### OMOP to Redshift
+
+This POC is a good direction for a number of reasons; including the fact that 
+UW Med has an initiative underway to create an OMOP warehouse from clinical data. 
 
 From the website is a Quick Link to an Unrestricted Vocabulary.
 From the README here are the steps to load the vocabulary data.
+
 
 
 ```
@@ -1134,8 +1140,21 @@ From the README here are the steps to load the vocabulary data.
     - copy vocabulary.vocabulary from 's3://.../vocabulary.txt.gz' credentials 'aws_access_key_id=;aws_secret_access_key=' delimiter '\362' ACCEPTINVCHARS GZIP emptyasnull dateformat 'auto'; 
 ```
 
+### Visualization
 
-## Fossil residual please refactor back into the above
+
+OHDSI has several open source tools that have data visualization, specifically Atlas. 
+Challenge then becomes: Configure a website for us to view the Atlas output operating on the 
+synpuf dataset (OMOP; must agree this is apples/apples). This gets us to a dataset in omop, 
+a data viz tool, hosted on the cloud with a web GUI. 
+
+
+(Looking ahead: What other data viz and analytic tools does the cloud environment give us access to and can 
+we prototype some use case there? From there a notionally short jump to get live data and a 'real' demo (not
+synthetic.)) 
+
+
+## Appendix A Fossil residual please refactor back into the above
 
 ### Procedure Log
 
