@@ -345,34 +345,13 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 ## Part 1. Build the SCE
 
 
-### Notes on format and preliminary steps
-
-
-#### Notes in passing 
+### Notes in passing 
 
 
 We punctuate the procedural steps needed to build the Secure Compute Environment (SCE) 
 with short notes on rationale, how things fit together. We also make extensive use of 
 very short abbreviations (just about every entity gets one, indicated by **boldface** 
 and obsessive re-naming of everything using the Project Identifier Tag (PIT)
-### Part 1: Getting started
-
-
-#### Initial Required Action
-
-
-As SCE builder your absolute First Priority Step 0 Must Do is to designate to AWS and DLT 
-that the account you are using involves PII/PHI/HIPAA data.
-
-
-#### Cost tracking and cost reduction
-
-
-- This will be a multi-day effort. Shut down instances to save money at the end of the day.
-- Tags... kilroy
-
-
-#### Objectives
 
 
 Our main objective (see Figure below) is to use a Laptop or other cloud-external data source
@@ -380,15 +359,9 @@ to feed data into a **SCE** wherein we operate on that data.  The data are assum
 Health Information (PHI) or Personally Identifiable Information (PII).
 
 
-#### PIT means Project Identifier Tag (an informal term) 
-
-
 - Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything
   - This is a handy string of characters
   - In our example here PIT = 'hipaa'. Short, easy to read = better
-
-
-#### Source computer 
 
 
 - Identify our source computer as **L**, a Laptop sitting in a coffee shop 
@@ -411,6 +384,23 @@ once it is built; but someone will.
 The easiest way to create a VPC is using the console Wizard. That method is covered in a 
 section below and it can automate many of the steps we describe manually.  We describe 
 the manual method to illuminate the components.
+
+
+### 1A: Start
+
+
+#### Initial Required Action
+
+
+As SCE builder your absolute First Priority Step 0 Must Do is to designate to AWS and DLT 
+that the account you are using involves PII/PHI/HIPAA data.
+
+
+#### Cost tracking and cost reduction
+
+
+- This will be a multi-day effort. Shut down instances to save money at the end of the day.
+- Tags... kilroy
 
 
 #### CIDR block specification
@@ -447,7 +437,7 @@ Since AWS appropriates five ip addresses for internal use
 ip address assignment automatic.  
 
 
-### Part 1A. Creating a Virtual Private Cloud
+### 1B. Create a Virtual Private Cloud
 
 
 #### Build the VPC 
@@ -614,7 +604,7 @@ the internet. This *does* accept inbound traffic allowing us to ssh in. This is 
 to the default.
 
 
-### Part 3: Adding EC2 and S3 resources to the VPC
+### 1C: Adding EC2 and S3 resources to the VPC
 
 #### S3 buckets
 
@@ -642,7 +632,7 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
 
   
 
-### Part 1B. Building a Bastion Server **B**
+### 1D. Building a Bastion Server **B**
 
 
 - On **V** create a public-facing Bastion Server **B**
@@ -686,7 +676,7 @@ is not properly present. holy cow!!!!!!!!!!!!!!!
 
 Created S3 bucket
 
-### Part 1C. Ancillary components
+### 1E. Ancillary components
 
 This section describes the use of automated services, data bases tables, IOT endpoints and other 
 AWS features to augment the SCE. Such ancillary components may or may not touch directly on PHI,
@@ -701,7 +691,7 @@ an important differentiator as only HIPAA-aligned technologies are permitted to 
 - Create an SNS to notify me when interesting things happen
 
 
-### Part 1D. Encryption
+### 1F. Encryption
 
 Suppose on EC2 we create an EBS volume for the PHI
 So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
@@ -781,7 +771,7 @@ Look at cli/latest/reference for the link on this. This means that S3 to EC2priv
 The EBS /hipaa is encrypted at rest. Done. 
 
 
-### Part 1E. Auditing
+### 1G. Auditing
 
 SCE activity must be logged in such a manner as to permit subsequent tracing of PHI data 
 access and ongoing monitoring of the security state of the system. 
@@ -826,19 +816,68 @@ So now we have Cloud Trail, S3 logging and Config operating on this account.
 So as we get more sophisticated we could dig in to Cloud Watch. 
 
 
-### Part 1F. Disaster Recovery
+### 1H. Disaster Recovery
 
 
 Indicate awareness; up to CISO to provide hurdles
 
 
+### 1I. Operating within the environment
+
+
+I begin by starting a windows laptop connected to the internet and run PuTTYGen. I use this to convert
+my .pem access file to the bastion server to a .ppk file. This is just a necessary formality. I then
+start PuTTY and use the Connection / SSH / Auth panel to Browse to my .ppk key file. 
+
+
+I look on the AWS Console at my EC2 instance, the bastion server for this VPC, and note the current
+ip address. If this is an elastic ip then it will not change over time; which is useful. I enter 
+into the PuTTY Session main window the Host Name ec2-user@'ip-address' (Note that ec2-user is the
+verbatim string; ip-address you must substitute, for example 35.27.93.105. Port is 22. 
+
+
+Before clicking the Open button in PuTTY I first give this session a name and Save it. This can be 
+loaded next time to make the process faster. Now click Open and after confirming in a dialog if all
+went well I see a Linux command prompt.  I immediately update my instance using 
+
+
+```
+% sudo yum update 
+```
+
+
+I have obtained a .pem keypair file for access to my private subnet EC2 instance.  I use scp (actually
+the application **WinSCP**) to copy this pem file (no need to translate to .ppk) to the bastion server. 
+It should appear in my ec2-user home directory. Now I log in to the private EC2 instance using
+
+
+```
+ssh -i ec2_private_keypair.pem ec2-user@10.0.1.248 
+```
+
+
+Notice that this uses the private subnet ip address 10.0.1.248. This ip address can be seen in the 
+AWS console by highlighting the private EC2 instance and reading the Description tab found below the 
+instance table.  Again I have a command prompt and I issue
+
+
+```
+% sudo yum update 
+```
+
+
+This is obtaining updates via the NAT Gateway; so while this machine is able to obtain and use PHI
+it is also able to safely get updates and install other software from the web.
+
+
+
 ## Part 2. POC A, a SCE with a small synthetic dataset
 
 
-### Part 2A. Documenting the creation of the environment
+### 2A. Documenting the creation of the environment
 
 
-### Part 2B. Creating the synthetic dataset 
+### 2B. Creating the synthetic dataset 
 
 
 The following is a snapshot of some Python code that generates two CSV files with imaginary health
@@ -1112,16 +1151,22 @@ with open(ppName,'wb') as patientParameterFile:
 ```
 
 
-### Part 2C. Operating POC A
+### 2C. Installing software and operating POC A
 
 
-### Part 2D. Concluding remarks on POC A
+### 2D. Concluding remarks on POC A
 
 
 ## Part 3 POC B including [OMOP](http://omop.org) unrestricted dataset ported to AWS Redshift
 
 
-### OMOP to Redshift
+### 3A: New SCE
+
+
+Follow the instructions using a new PIT. I will use **omop**.
+
+
+### 3B: OMOP to Redshift
 
 This POC is a good direction for a number of reasons; including the fact that 
 UW Med has an initiative underway to create an OMOP warehouse from clinical data. 
@@ -1140,7 +1185,7 @@ From the README here are the steps to load the vocabulary data.
     - copy vocabulary.vocabulary from 's3://.../vocabulary.txt.gz' credentials 'aws_access_key_id=;aws_secret_access_key=' delimiter '\362' ACCEPTINVCHARS GZIP emptyasnull dateformat 'auto'; 
 ```
 
-### Visualization
+### 3C: Visualization
 
 
 OHDSI has several open source tools that have data visualization, specifically Atlas. 
@@ -1154,120 +1199,193 @@ we prototype some use case there? From there a notionally short jump to get live
 synthetic.)) 
 
 
-## Appendix A Fossil residual please refactor back into the above
+#### Installing ATLAS
+
+
+See [this page](http://www.ohdsi.org/web/wiki/doku.php?id=documentation:software:atlas:setup).
+
+
+The challenge is going to be installing the DB and then the web server components on the right parts of the VPC. 
+
+
+Step 1 is Install the OHDSI WebAPI and configure the appropriate sources. 
+
+
+... and so on ...
+
+
+
+
+## Appendix: Fossil residual please refactor back into the above
+
 
 ### Procedure Log
 
+
 Create a VPC **V**
+
 
 ![pic0001](/documentation/images/aws/hipaa0001.png)
 
+
 ![hipaa0002](/documentation/images/aws/hipaa0002.png)
+
 
 - Use the name 'hipaa'; should be unique.
 - CIDR as shown is typical.
 - Dedicated Instance means: Nobody else allowed here. 
 
+
 ![hipaa0003](/documentation/images/aws/hipaa0003.png)
+
 
 - I added a tag indicating that I originated the VPC.
 
+
 ### Create a subnet
+
 
 ![hipaa0004](/documentation/images/aws/hipaa0004.png)
 
+
 ![hipaa0005](/documentation/images/aws/hipaa0005.png)
+
 
 Public subnet addresses will be of the form: 10.0.0.2, .3, .4, ... .254
 
+
 ![hipaa0006](/documentation/images/aws/hipaa0006.png)
+
 
 Take note of the AZ: 
 
+
 ![hipaa0007](/documentation/images/aws/hipaa0007.png)
+
 
 We could do multiple public sub-nets by creating more than one in multiple Azs; that is a big-time concept.
 
+
 Now the private one: 
+
 
 ![hipaa0007](/documentation/images/aws/hipaa0007.png)
 
+
 ![hipaa0008](/documentation/images/aws/hipaa0008.png)
+
 
 ![hipaa0009](/documentation/images/aws/hipaa0009.png)
 
+
 ![hipaa0010](/documentation/images/aws/hipaa0010.png)
+
 
 Attach it to the VPC: 
 
+
 ![hipaa0011](/documentation/images/aws/hipaa0011.png)
+
 
 ![hipaa0012](/documentation/images/aws/hipaa0012.png)
 
+
 Now for the NAT Gateway
+
 
 ![hipaa0013](/documentation/images/aws/hipaa0013.png)
 
+
 Choose the public one in czarhipaa
+
 
 ![hipaa0014](/documentation/images/aws/hipaa0014.png)
 
+
 ![hipaa0015](/documentation/images/aws/hipaa0015.png)
+
 
 Notice we Created a New EIP
 
+
 ![hipaa0016](/documentation/images/aws/hipaa0016.png)
+
 
 Now the Route Table
 
+
 ![hipaa0017](/documentation/images/aws/hipaa0017.png)
+
 
 ![hipaa0018](/documentation/images/aws/hipaa0018.png)
 
+
 ![hipaa0019](/documentation/images/aws/hipaa0019.png)
+
 
 Here they are (including the default main one): 
 
+
 ![hipaa0020](/documentation/images/aws/hipaa0020.png)
+
 
 ![hipaa0021](/documentation/images/aws/hipaa0021.png)
 
+
 Edit and modify as shown:
+
 
 ![hipaa0022](/documentation/images/aws/hipaa0022.png)
 
+
 Save
+
 
 And then under Subnet Associations tab: Edit: 
 
+
 ![hipaa0023](/documentation/images/aws/hipaa0023.png)
+
 
 Now let us go back to the Route Table selector
 
+
 ![hipaa0024](/documentation/images/aws/hipaa0024.png)
+
 
 ![hipaa0025](/documentation/images/aws/hipaa0025.png)
 
+
 ![hipaa0026](/documentation/images/aws/hipaa0026.png)
+
 
 Subnet Associations tab: 
 
+
 ![hipaa0027](/documentation/images/aws/hipaa0027.png)
+
 
 ![hipaa0028](/documentation/images/aws/hipaa0028.png)
 
+
 Now for the Endpoint
+
 
 ![hipaa0029](/documentation/images/aws/hipaa0029.png)
 
+
 Notice that this has Full Access; we will restrict access at a later step.
 
+
 ![hipaa0030](/documentation/images/aws/hipaa0030.png)
+
 
 end as of Jan 27 2017.
 
 
+
 ### Risk
+
 
 This section identifies points of risk and their severity. Severity is described both
 'when protocol is properly observed' and 'when protocol is not observed'. That is: We 
@@ -1276,28 +1394,36 @@ PHI. There is in all of this a notion of diminishing returns: A tremendous amoun
 additional effort might be incorporated in building an SCE that provides only small 
 reduction of risk.
 
+
 #### VPC creation: Manual versus Wizard
 
+
 #### Dedicated instances
+
 
 We drive cost up using dedicated instances on **Sprivate**. It is technically feasible
 to not do this but there is an attendant cost in time and risk.
 
+
 #### Extended key management strategy
+
 
 Encryption keys here are taken to be default keys associated with the AWS account. 
 It is possible on setting up the SCE to create an entire structure around management 
 of newly-generated keys. This is a diminishing-returns risk mitigation procedure:
 It may create a profusion of complexity that is itself a risk. 
 
+
 One open question is whether a single AWS account should / could / will be used to
 provision multiple independent research projects, each with one or more respective 
 data systems. 
+
 
 - Log in to **B** and move **K** to **E** 
   - Observe that material encrypted 
   - Maybe instead we should be tunneling directly to **E** from **L**
 - Use an AMI to create a processing EC2 **W**
+
 
   - Also with **ENC**
 - Create S3 buckets 
@@ -1305,6 +1431,7 @@ data systems.
   - **S3O** for output
   - **S3L** for logging
   - **S3A** for ancillary purposes (non-PHI is the intention)
+
 
   - Such S3 buckets only accept http PUT; not GET or LIST
 - Create an S3 bucke **S3O** for output
