@@ -26,7 +26,7 @@ This template applies more generally to secure data management in research compu
 
 We present here a framework for what follows in three parts: A system build, a first example with
 a very small synthetic dataset as CSV file, and a second example building on the Observational
-Medical Outcomes Partnership (OMOM) unrestricted vocabulary dataset. 
+Medical Outcomes Partnership (OMOM) unrestricted SynPUF dataset. 
 
 
 In a simple view HIPAA regulations require that data be encrypted both at rest (on a storage device) 
@@ -37,32 +37,42 @@ have had access to PHI.
 
 HIPAA regulations are also viewable through the lens of NIST; we find for example the 
 [NIST HIPAA Security Rule](https://www.nist.gov/healthcare/security/hipaa-security-rule) 
-which is also called Special Publication 800-66 Revision 1. This document discusses 
-HIPAA=compliant implementations in practice, in some detail. 
+which is detailed in NIST Special Publication 800-66 Revision 1. This document discusses 
+HIPAA=compliant implementations in practice. 
 
 
-Putting a conforming technical system in place is fairly straightforward though rather 
+Putting a conforming technical system in place is fairly straightforward though 
 detailed. Steps are provided on this page although we are by no means exhaustive. 
 Our objective is to provide an initial technical basis for a scalable research solution 
-under HIPAA guidelines. Real implementations operate under a *Shared Responsibility* 
-model: AWS provides necessary security measures and practitioners build and operate the 
-environment according to established practices; including documentation and logging 
-access. **Making use of HIPAA-aligned technologies from AWS** is not equivalent to 
-being HIPAA compliant.**
+under HIPAA guidelines. The counter-point to this technical task is the task of
+actually satisying conditions for HIPAA compliance in a real implementation. 
+
+
+Such real implementations operate under a *Shared Responsibility* model: AWS provides 
+necessary security measures and practitioners build and operate the environment according 
+to established practices; including documentation and logging access. Thus making use of 
+HIPAA-aligned technologies from AWS** is not equivalent to being HIPAA compliant.
 
 
 We proceed along the following program.
 
 
-- Define some User Stories to motivate the structure of what follows
+- Complete this preamble section
+ - This includes defining User Story elements that motivate what follows
 - Provide instructions for building a secure compute environment (SCE) on the AWS cloud
   - Constructing a Virtual Private Cloud
-  - Constructing storage, compute and data management elements
-- Describe implementation 1 of the SCE: Simple, includes a very small synthetic dataset
-- Describe implementation 2 of the SCE: OMOP
+  - Constructing storage, compute and data management elements; and so forth
+- Describe Proof-of-Concept "A" (POC A) of the SCE
+  - Simple; but it includes a small synthetic dataset
+  - Obtaining and operating up this data
+  - Examining logs
+- Describe POC "B" of an SCE
+  - To include a substantial synthetic dataset
+  - ...a queryable Redshift database
+  - ...a Web application supporting data visualization
 
 
-While this study uses AWS our group is also building comparable structures on other cloud platforms, 
+While this study uses AWS our team is also building comparable structures on other cloud platforms, 
 notably on the Microsoft Azure public cloud. 
 
 
@@ -77,11 +87,13 @@ notably on the Microsoft Azure public cloud.
 - [AWS Accelerator: NIST broad spectrum](https://aws.amazon.com/quickstart/architecture/accelerator-nist/)
   - [Related Excel 'security matrix'](https://s3.amazonaws.com/quickstart-reference/enterprise-accelerator/nist/latest/assets/NIST-800-53-Security-Controls-Mapping.xlsx)
 - [Observational Medical Outcomes Partnership (OMOP)](http://omop.org/)
+- [Email contact at DLT to advise of HIPAA use](cloud@dlt.com)
 
 
 ### Admonitions
 
 
+- ***When using a DLT-provided AWS account for PHI you must notify DLT of this in advance: cloud@dlt.com***
 - ***The acronym SCE is used extensively on this page to denote a Secure Computing Environment.***
 - ***AWS has more than twelve HIPAA-aligned technologies. Only these technologies may come into contact 
 with PHI.  Other technologies can be used provided there is no such contact.***
@@ -157,6 +169,7 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 ### Intermezzo Kilroy stack (a list of must-fix details)
 
+
 - Questions from Dogfooding on March 23 2017
   - Create VPC...
     - Does my VPC need a CIDR that doesn't overlap other ones in my account? 10.0.0.0 is very popular...
@@ -174,65 +187,60 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 - Generate and incorporate a scientist workflow diagram with extensive caption per User Story
 - Generate and incorporate a complete SCE architecture diagram near the top of this 
 - Create a sub-topic around **L**: In coffee shop, in a data center (out of Med Research), etcetera
-  - The 'in transit / at rest' component leaves a sparking wire in **L**: Section on risk added
-  - While a coffee shop to S3 encrypted is not a foul on AWS it is a foul on me and my organization
-- Need explanation of public/private subnet collision avoidance
-  - Public subnet elements also have private subnet addresses
-    - 10.0.0.x as the **Spublic** address space means that we get two bonus things for the bastion at 10.0.0.9:
+  - **Risk**
+  - coffee shop 
+- Verify correct: There is one private address space per VPC: All VPC resources map to this
+  - ...and Public elements also have world-facing ip addresses
+  - ...and all private addresses are stable; no bounce problem
+  - 10.0.0.x as the address space of **Spublic** is its private VPC address space
       - That is: 10.0.0.x is actually a private ip address for a public-facing instance
-      - We get a public ip address 52.x.y.z etc whatever
-      - We get a DNS entry ec2-blahblahblah
-        - Inside the VPC the latter always resolves to the private 10.0.0.9 so that traffic stays inside the VPC
-        - But do not hard code an ec2-blah DNS entry because this can change when the machine bounces
-  - Verify protocol is that new resources auto-generated will be on the private subnet
-    - AB How is this done? We got as far as 'no default' for public and private both
-  - Verify automated allocation will choose free ip addresses on the private subnet: Correct
-  - Verify protocol is to *not* create new resources on the public subnet: Yes, as policy
-  - This is tremendously important so that a new **Wi** is not publicly visible
-  - Look at the VPC Routing Table "default subnet" column (verify this is correct)
+      - We get both public ip address x.y.z.w and a DNS entry ec2-etcetera
+        - Inside the VPC a public ip always resolves to a private '10.0.0.9' to keep traffic inside the VPC
+        - ec2-etcetera DNS entries change when the machine bounces; as do ip addresses
+  - How does one verify that auto-generated resources are not public?
+    - Equivalent: How are auto-generated resources assigned to subnets? 
+    - How are private subnet addresses determined? "Pick one"?
+    - This is tremendously important so that a new **Wi** is not publicly visible
+    - Look at the VPC Routing Table "default subnet" column (verify this is correct)
 - Key management story
-  - Rename **K2** as **K_Bastion** and describe where it lives on **L**, add to Risk
-    - It may make sense to describe chain of custody of **KBastion**
-  - J needs to give K a pem file and an ip address: To get to **B** plus creds to the **Sprivate** from the bastion
-    - Risk: This makes **B** a single point of failure if the private EC2 keys are left on the Bastion: It gets compromised, game over
-    - Password-protected is a way forward
-  - Scale up to her group: Giving everyone the same login is not really an option
-- Free up and assign **B** an Elastic IP address that will persist
-  - Verify that this is publicly discoverable and place this fact in Risk: True
-    - Lock down the SG to restrict network access
-  - Rename **K3** as **K_EC2**
-  - Chain of custody of **K_EC2**
+  - **K_Bastion** must reside on **L**. How is this considered secure? Chain of custody from origination?
+  - **K_EC2private** same; and must be carried via scp to **B**
+  - **B** is a single point of failure compromising **EC2private** 
+    - Password-protection on **B**
+  - Group access: one login is not an option. Now we have Users.
+  - For that matter should ec2-user be logging on to **EC2private** to do work?
   - How do keys work in view of an AMI source?
-- EBS Encryption Keys should be a Risk sub-section
+- Is the public **B** ip (Elastic or not) address vulnerable?  Risk++ How to use SG and/or CIDR? 
+- EBS Encryption Keys: Risk++
   - EBS encryption select has an account default key: Details are listed below
-  - Notice that publishing these details is not technically bad for pedagogy... 
-    - but I have a bit of a nagging doubt here: Are these "Details" global/permanent?
-    - The screencap redacts to be on the safe side; stay with that for now
-- Risk due diligence: Check the DLT account T&C; "who is responsible for the risk?" 
-- Risk entry: We do not encrypt the boot volume  
-- Risk entry: EC2 swap space: How does this touch on PHI?
-- How are keys / Roles managed when spinning up / shutting down **Wi**? 
-  - For now we allow that **EC2** is the only game in town
-- Look at the *JS* *SK* scenario and build out the IAM component for *SK*
-  - e.g. turning machines on and off
-  - do with console? do with CLI?
-  - AB: Help needed!
-- Differentiate SQS and SNS
-  - https://aws.amazon.com/blogs/aws/s3-event-notification/
-  - http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
-  - PubSub concept
-  - SQS: Things sit in a queue and that queue is polled to trigger processes
-    - e.g. CANVAS the LMS: As events happen 
+- Risk: Check DLT T&C; "who is responsible for the risk?" 
+- Risk: Boot volume is not encrypted
+- Risk: EC2 swap space and PHI
+- Scale problem: Manage **Wi** keys and roles
+- If *K* and her team are not IAM Users how do they cut cost by stopping machines?
+  - CLI from **L** works but requires authentication
+- For the learner we must differentiate SQS and SNS
+  - [S3 event notification link](https://aws.amazon.com/blogs/aws/s3-event-notification/)
+  - [AWS notification how-to[(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+  - Describe the PubSub concept
+  - Try this: SQS is a queue where *things* sit; polling it triggers processes
+    - CANVAS LMS is apparently a good example since students are interacting with it frequently
 - What is Ansible and what does it get us?
   - Configuration management
   - cf Chef and Puppet
-- Can/should the NAT Gateway be used to pull updates from GitHub?  Generalize.
-- DDil on elastic IP: NAT Gateway? Bastion? IG? 
-- Fix the RT / subnet editing section... gotta get that right
-- What are the tradeoffs in building **B** and **M** and **Wi** from AMIs?
+- In what sense does the NAT Gateway prevent or not prevent us from poisoning ourselves? 
+- The RT / subnet section needs review
+- What are the tradeoffs in building **B**, **M** and **Wi** from AMIs?
   - Config management tool: Option 1 (Ansible Chef Puppet)
+  - How does 'sudo yum update -y' happen?
   - Manually take a stale AMI and update it and re-save it (and update the hot machine)
     - "You still have to manage the OS" is part of Shared Responsibility
+
+
+Left off here 
+
+
+- Tags: If this is not covered already: How do we shut down instances over the weekend if we are not IAM Users?
 - Vestigial details from earlier notes to incorporate
   - Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
   - Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
@@ -345,13 +353,9 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 ## Part 1. Build the SCE
 
 
-### Notes in passing 
-
-
-We punctuate the procedural steps needed to build the Secure Compute Environment (SCE) 
-with short notes on rationale, how things fit together. We also make extensive use of 
-very short abbreviations (just about every entity gets one, indicated by **boldface** 
-and obsessive re-naming of everything using the Project Identifier Tag (PIT)
+We make extensive use here of short **boldface** abbreviations for system components.
+We also present *tagging* of resources and *naming* resources using a short identifier
+string unique to each project: The Project Identifier Tag (abbreviated PIT). 
 
 
 Our main objective (see Figure below) is to use a Laptop or other cloud-external data source
@@ -393,14 +397,15 @@ the manual method to illuminate the components.
 
 
 As SCE builder your absolute First Priority Step 0 Must Do is to designate to AWS and DLT 
-that the account you are using involves PII/PHI/HIPAA data.
+that the account you are using involves PII/PHI/HIPAA data. Contact DLT (the AWS account
+provider) with your account number using email address *cloud@dlt.com*. Your message 
+should be to the effect that this account will work with PHI. 
 
 
 #### Cost tracking and cost reduction
 
 
 - This will be a multi-day effort. Shut down instances to save money at the end of the day.
-- Tags... kilroy
 
 
 #### CIDR block specification
@@ -658,9 +663,43 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
     - Launch instance
 
 
-##### Building a work environment EC2 instance on **Sprivate**
+#### Building a work environment EC2 instance on **Sprivate**
 
 - On **Sprivate** install a small Dedicated EC2 instance **E**
+
+### 1E. Server side encryption S3 bucket
+
+
+- The file must be encrypted on **L**
+- We upload this file to S3 and stipulate "encrypt this when it comes to rest in S3"
+- S3 manages this
+- We create an associated policy that *only* allows this type of upload
+  - Therefore a not-encrypted-at-rest request will be denied
+
+
+As a guide see the [S3 AWS encryption link](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+
+
+- Click Server-Side Encryption
+- Click on Amazon S3-Managed Encryption keys in the left sidebar to arrive at
+[this documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
+
+
+Copy the code box contents
+Go to console
+S3 bucket
+Permissions tab
+Bucket Policy button
+Paste
+Replace in two places: actual bucket name
+
+PutObject command: must have server-side-encryption set to AES256 
+(that is the name of the encryption algorithm) AND must have server-side-encryption set to true.
+
+
+"Encrypted in transit" is done via the https endpoint to S3.
+
+
 
 
 We are now configuring the S3 Endpoint. 
@@ -693,28 +732,29 @@ an important differentiator as only HIPAA-aligned technologies are permitted to 
 
 ### 1F. Encryption
 
-Suppose on EC2 we create an EBS volume for the PHI
-So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
-Volume type = General Pupose and the size does affect IOPS; I went for 64GB
 
-For costing and performance include this link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
-
-This gets back into optimization; it does not affect our HIPAA story 
-
-Notice the EBS volume has an AZ which **must match** the target EC2 where it is going 
-
-Notice the volume can by encrypted with a check box; and then there is a Master Key issue. 
+Our EC2 instance will maintain encrypted PHI on an Elastic Block Storage (EBS) 
+volume by requiring that this EBS volume be encrypted.  That is, this volume must be 
+created with the 'encryption' check-box checked. Once this is done we mount a file 
+partition on the EBS. This procedure is described on the [EC2 page](aws_ec2.html).
 
 
-Using the default key technically encrypts this data at rest. So that's done. 
+In creating the EBS: Volume type can be *General Pupose*.
+For EBS costing and performance refer to 
+[this link](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+Notice the EBS volume has a Region and an Availability Zone which **must match** the target 
+EC2 where it will be attached.
 
-Working with your own set of keys would be part of risk management: Should the keys be compromised etcetera.
-So there is some additional hassle and so on but some potential risk management. 
 
-The question is: Do we want to use one key across multiple environments (the default) or created new keys for 
-each new envvironment? How much hassle, etc.
+The Master Key issue is ignored here; we assert that the default Key is simplest and secure. 
+Using the default Key encrypts this data at rest. So that's done. 
+(Working with your own set of keys would be part of risk management: Should the keys be compromised?
+etcetera.  There is some associated hassle.)
+We intentionally do not encrypt the root volume. This is another risk mitigation choice.
+
 
 ok done: hipaa_ebs_ec2_private 
+
 
 Next log in to EC2 on the private subnet:
 - log in to the bastion server
@@ -726,45 +766,31 @@ Next log in to EC2 on the private subnet:
   - Notice that the pem file on the bastion would immediately compromise the EC2 on the private subnet
     - That sure sucks for you
 
+
 Using (sudo) fdisk to create the partition on the raw block device (fast: writing the partition table) will blow 
 away anything already there. 
 
-Now we did the simple
 
+```
 % aws s3 cp s3://bucket-name/keyname .
+```
 
-The keyname that I used was the filename that I uploaded to this S3 bucket from **L**. 
-That file was pushed from **L** using the console but can also be done using the CLI. 
+Kilroy that should probably be compared to using 'scp'.
 
-We are intentionally not going to encrypt the boot volume. It can be done; goes on the DD pile. 
 
-We implement server side encryption on S3 next. 
-- The file may be unencrypted on **L**
-- We upload it to S3 and stipulate "encrypt this when it comes to rest in S3"
-- S3 manages this
-- We create an associated policy that *only* allows this type of upload
-  - Therefore a not-encrypted-at-rest request will be denied
+#### S3 key names versus file names
 
-Best way is follow "S3 AWS encryption" links to http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
-Click Server-Side Encryption
-Click on Amazon S3-Managed Encryption keys in the left bar to get to 
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
 
-Copy the code box contents
-Go to console
-S3 bucket
-Permissions tab
-Bucket Policy button
-Paste
-Replace in two places: actual bucket name
+In the above copy command I knew in advance the *keyname* that I wanted to copy to the EBS volume. 
+This is because it was identical to the filename that I uploaded to this S3 bucket from **L**. 
+That file was pushed from **L** using the AWS browser console but it could also be pushed using CLI
+or using a utility program. The important point is that *filename* and *keyname* are the same thing.
 
-PutObject command: must have server-side-encryption set to AES256 (that is the name of the encryption algorithm) 
-  AND
-must have server-side-encryption set to true
+ 
 
-What about the inbound files: They must be "encrypted in transit" so we get that with an https endpoint to S3: Done. 
 
 Transferring to the instance: scp 
+
 
 Last encryption note: SSL is used by the CLI be default; so our EC2-private command 'aws s3 ... etc': 
 Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. 
