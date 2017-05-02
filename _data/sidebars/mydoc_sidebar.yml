@@ -58,7 +58,7 @@ entries:
       url: /cc_technical.html
       output: web, pdf
 
-    - title: Networking
+    - title: Network
       url: /cc_network.html
       output: web, pdf
 
