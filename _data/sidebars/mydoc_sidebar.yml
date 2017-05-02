@@ -58,6 +58,10 @@ entries:
       url: /cc_technical.html
       output: web, pdf
 
+    - title: Networking
+      url: /cc_networking.html
+      output: web, pdf
+
   - title: Proposals
     output: web, pdf
     folderitems:
