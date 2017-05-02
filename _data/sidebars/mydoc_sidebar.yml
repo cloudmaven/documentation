@@ -59,7 +59,7 @@ entries:
       output: web, pdf
 
     - title: Networking
-      url: /cc_networking.html
+      url: /cc_network.html
       output: web, pdf
 
   - title: Proposals
