@@ -38,21 +38,17 @@ require installing some hardware and we indicate cost on the order of magnitude 
 ## AWS Case Study
 
 
-This case study involves two light-sheet microscopes that generate several GB of data in 15 minutes. 
+This case study supports two light-sheet microscopes that generate several GB of data in 15 minutes. 
 We need to get that data onto the AWS cloud in near-real-time. We have two locations: UW Health
 Sciences D-Wing (HSD) and the Aeronautical Engineering Building AER.
 
 
-Health Sciences D wing (HSD) is already close to supporting a 10gig, as D528 is cabled to our 
-newest IDF (telco closet) in that area.  The longest lead time item here is station cabling to D528. 
-We need to know if it will be copper or fiber; then the Communications Infrastructure team can work up 
-an estimate and timeline.  With the station cable in we can implement the necessary hardware.  
- 
+Health Sciences D Wing (HSD) is ready to support 10gig: D528 is cabled to the telco closet / IDF in 
+that area. Needed: Station cabling to D528 (longest lead-time item); and will this be copper or fiber?
+With this information the Communications Infrastructure team works up an estimate and timeline. With
+the cable in place the hardware follows quickly.  AER is more complex: A site visit is necessary to
+determine whether there is room for the necessary hardware; again in an IDF / telco closet. 
 
-AER is more complex, as new riser fiber is required in addition to the station cabling.  We will do
-a walk-through of that space to ensure that the necessary hardware fits in the IDF (telco closet) 
-to support a microscope in AER323.  
- 
 
 Kilroy: Need a rough cost estimate for the necessary switch hardware, understanding the price 
 may vary depending on fiber versus cat6a copper is to be used for the station cabling.  
@@ -68,8 +64,9 @@ i.e. at a much higher level than basic network connectivity. For more on this pl
 ## Network poster
 
 
-![cc_network image 1](/documentation/images/cc/cc_network001.png)
-![cc_network image 2](/documentation/images/cc/cc_network002.png)
+![cc_network_image_1](/documentation/images/cc/cc_network001.png)
+
+![cc_network_image_2](/documentation/images/cc/cc_network002.png)
 
 
 {% include links.html %}
