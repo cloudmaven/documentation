@@ -25,17 +25,51 @@ Start here.
 require installing some hardware and we indicate cost on the order of magnitude scale.***
 
 
-## AWS
+## Glossary
 
 
-This page is a stub.  Our first case study involves a microscope that generates a few GB of data in 15 minutes. 
-We need to get that data onto the AWS cloud quickly. 
+- 10gig
+- D528
+- IDF
+- fiber
+- Cat6A copper
+
+
+## AWS Case Study
+
+
+This case study involves two light-sheet microscopes that generate several GB of data in 15 minutes. 
+We need to get that data onto the AWS cloud in near-real-time. We have two locations: UW Health
+Sciences D-Wing (HSD) and the Aeronautical Engineering Building AER.
+
+
+Health Sciences D wing (HSD) is already close to supporting a 10gig, as D528 is cabled to our 
+newest IDF (telco closet) in that area.  The longest lead time item here is station cabling to D528. 
+We need to know if it will be copper or fiber; then the Communications Infrastructure team can work up 
+an estimate and timeline.  With the station cable in we can implement the necessary hardware.  
+ 
+
+AER is more complex, as new riser fiber is required in addition to the station cabling.  We will do
+a walk-through of that space to ensure that the necessary hardware fits in the IDF (telco closet) 
+to support a microscope in AER323.  
+ 
+
+Kilroy: Need a rough cost estimate for the necessary switch hardware, understanding the price 
+may vary depending on fiber versus cat6a copper is to be used for the station cabling.  
 
 
 ## Ports, sockets and tunneling
 
 
-See [this page](cc_technical.html).
+This topic is related but does not belong on this page: It refers to access to instances inside the cloud; 
+i.e. at a much higher level than basic network connectivity. For more on this please see [this page](cc_technical.html).
+
+
+## Network poster
+
+
+![cc_network image 1](/documentation/images/cc/cc_network001.png)
+![cc_network image 2](/documentation/images/cc/cc_network002.png)
 
 
 {% include links.html %}
