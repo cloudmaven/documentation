@@ -9,6 +9,7 @@ permalink: cc_network.html
 folder: cc
 ---
 
+
 ## Introduction
 This page documents network connection process, speed, details and benchmarks between our parent organization 
 and public cloud vendors. That is: If you are a Researcher at UW and you need speed to connect to the cloud:
@@ -52,6 +53,17 @@ determine whether there is room for the necessary hardware; again in an IDF / te
 
 Kilroy: Need a rough cost estimate for the necessary switch hardware, understanding the price 
 may vary depending on fiber versus cat6a copper is to be used for the station cabling.  
+
+
+Scientist report on preparation:
+
+
+```
+Our ethernet cables connect to a port above the the lab table located in [etcetera]; label reads '321.3 V/1V/2'.
+Confirmed: Copper ports in lab desktops; may need to upgrade ethernet network cards to 10 gigabit capable. We 
+will purchase 4 SATA3 SSDs. Our camera uses a data format parallelized to all 4 hard drives; so theoretical speed 
+of the hard drives should be 24 gigabits/s.  This should cover a 10 gigabit/s connection.
+```
 
 
 ## Ports, sockets and tunneling

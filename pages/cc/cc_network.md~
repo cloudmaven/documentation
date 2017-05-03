@@ -43,19 +43,26 @@ We need to get that data onto the AWS cloud in near-real-time. We have two locat
 Sciences D-Wing (HSD) and the Aeronautical Engineering Building AER.
 
 
-Health Sciences D wing (HSD) is already close to supporting a 10gig, as D528 is cabled to our 
-newest IDF (telco closet) in that area.  The longest lead time item here is station cabling to D528. 
-We need to know if it will be copper or fiber; then the Communications Infrastructure team can work up 
-an estimate and timeline.  With the station cable in we can implement the necessary hardware.
- 
+Health Sciences D Wing (HSD) is ready to support 10gig: D528 is cabled to the telco closet / IDF in 
+that area. Needed: Station cabling to D528 (longest lead-time item); and will this be copper or fiber?
+With this information the Communications Infrastructure team works up an estimate and timeline. With
+the cable in place the hardware follows quickly.  AER is more complex: A site visit is necessary to
+determine whether there is room for the necessary hardware; again in an IDF / telco closet. 
 
-AER is more complex, as new riser fiber is required in addition to the station cabling.  We will do
-a walk-through of that space to ensure that the necessary hardware fits in the IDF (telco closet) 
-to support a microscope in AER323.  
- 
 
 Kilroy: Need a rough cost estimate for the necessary switch hardware, understanding the price 
 may vary depending on fiber versus cat6a copper is to be used for the station cabling.  
+
+
+Scientist report on preparation:
+
+
+```
+Our ethernet cables connect to a port above the the lab table located in [etcetera]; label reads '321.3 V/1V/2'.
+Confirmed: Copper ports in lab desktops; may need to upgrade ethernet network cards to 10 gigabit capable. We 
+will purchase 4 SATA3 SSDs. Our camera uses a data format parallelized to all 4 hard drives; so theoretical speed 
+of the hard drives should be 24 gigabits/s.  This should cover a 10 gigabit/s connection.
+```
 
 
 ## Ports, sockets and tunneling
