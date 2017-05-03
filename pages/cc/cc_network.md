@@ -61,8 +61,9 @@ Scientist report on preparation:
 ```
 Our ethernet cables connect to a port above the the lab table located in [etcetera]; label reads '321.3 V/1V/2'.
 Confirmed: Copper ports in lab desktops; may need to upgrade ethernet network cards to 10 gigabit capable. We 
-will purchase 4 SATA3 SSDs. Our camera uses a data format parallelized to all 4 hard drives; so theoretical speed 
-of the hard drives should be 24 gigabits/s.  This should cover a 10 gigabit/s connection.
+will purchase 4 SATA3 SSDs. Our Hamamatsu camera writes in parallel to all 4 hard drives; so theoretical speed 
+to the hard drives should be 24 gigabits/s so they will not be a bottleneck. This should cover a 10 gigabit/s 
+connection.
 ```
 
 
