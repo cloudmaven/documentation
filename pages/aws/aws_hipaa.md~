@@ -663,9 +663,43 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
     - Launch instance
 
 
-##### Building a work environment EC2 instance on **Sprivate**
+#### Building a work environment EC2 instance on **Sprivate**
 
 - On **Sprivate** install a small Dedicated EC2 instance **E**
+
+### 1E. Server side encryption S3 bucket
+
+
+- The file must be encrypted on **L**
+- We upload this file to S3 and stipulate "encrypt this when it comes to rest in S3"
+- S3 manages this
+- We create an associated policy that *only* allows this type of upload
+  - Therefore a not-encrypted-at-rest request will be denied
+
+
+As a guide see the [S3 AWS encryption link](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+
+
+- Click Server-Side Encryption
+- Click on Amazon S3-Managed Encryption keys in the left sidebar to arrive at
+[this documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html).
+
+
+Copy the code box contents
+Go to console
+S3 bucket
+Permissions tab
+Bucket Policy button
+Paste
+Replace in two places: actual bucket name
+
+PutObject command: must have server-side-encryption set to AES256 
+(that is the name of the encryption algorithm) AND must have server-side-encryption set to true.
+
+
+"Encrypted in transit" is done via the https endpoint to S3.
+
+
 
 
 We are now configuring the S3 Endpoint. 
@@ -699,35 +733,28 @@ an important differentiator as only HIPAA-aligned technologies are permitted to 
 ### 1F. Encryption
 
 
-Our EC2 instance will maintain PHI on an Elastic Block Storage (EBS) volume. 
-This volume must be created with the 'encryption' check-box checked. Once this is 
-done we must create a file partition on the EBS. This procedure is described on
-the [EC2 page](http:
-So is the "comes with" EBS volume encrypted? No. Therefore: Keep data on /hipaa
-Volume type = General Pupose and the size does affect IOPS; I went for 64GB
+Our EC2 instance will maintain encrypted PHI on an Elastic Block Storage (EBS) 
+volume by requiring that this EBS volume be encrypted.  That is, this volume must be 
+created with the 'encryption' check-box checked. Once this is done we mount a file 
+partition on the EBS. This procedure is described on the [EC2 page](aws_ec2.html).
 
 
-For costing and performance include this link: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+In creating the EBS: Volume type can be *General Pupose*.
+For EBS costing and performance refer to 
+[this link](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
+Notice the EBS volume has a Region and an Availability Zone which **must match** the target 
+EC2 where it will be attached.
 
 
-This gets back into optimization; it does not affect our HIPAA story 
+The Master Key issue is ignored here; we assert that the default Key is simplest and secure. 
+Using the default Key encrypts this data at rest. So that's done. 
+(Working with your own set of keys would be part of risk management: Should the keys be compromised?
+etcetera.  There is some associated hassle.)
+We intentionally do not encrypt the root volume. This is another risk mitigation choice.
 
-
-Notice the EBS volume has an AZ which **must match** the target EC2 where it is going 
-
-
-Notice the volume can by encrypted with a check box; and then there is a Master Key issue. 
-
-
-Using the default key technically encrypts this data at rest. So that's done. 
-
-Working with your own set of keys would be part of risk management: Should the keys be compromised etcetera.
-So there is some additional hassle and so on but some potential risk management. 
-
-The question is: Do we want to use one key across multiple environments (the default) or created new keys for 
-each new envvironment? How much hassle, etc.
 
 ok done: hipaa_ebs_ec2_private 
+
 
 Next log in to EC2 on the private subnet:
 - log in to the bastion server
@@ -739,45 +766,31 @@ Next log in to EC2 on the private subnet:
   - Notice that the pem file on the bastion would immediately compromise the EC2 on the private subnet
     - That sure sucks for you
 
+
 Using (sudo) fdisk to create the partition on the raw block device (fast: writing the partition table) will blow 
 away anything already there. 
 
-Now we did the simple
 
+```
 % aws s3 cp s3://bucket-name/keyname .
+```
 
-The keyname that I used was the filename that I uploaded to this S3 bucket from **L**. 
-That file was pushed from **L** using the console but can also be done using the CLI. 
+Kilroy that should probably be compared to using 'scp'.
 
-We are intentionally not going to encrypt the boot volume. It can be done; goes on the DD pile. 
 
-We implement server side encryption on S3 next. 
-- The file may be unencrypted on **L**
-- We upload it to S3 and stipulate "encrypt this when it comes to rest in S3"
-- S3 manages this
-- We create an associated policy that *only* allows this type of upload
-  - Therefore a not-encrypted-at-rest request will be denied
+#### S3 key names versus file names
 
-Best way is follow "S3 AWS encryption" links to http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
-Click Server-Side Encryption
-Click on Amazon S3-Managed Encryption keys in the left bar to get to 
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
 
-Copy the code box contents
-Go to console
-S3 bucket
-Permissions tab
-Bucket Policy button
-Paste
-Replace in two places: actual bucket name
+In the above copy command I knew in advance the *keyname* that I wanted to copy to the EBS volume. 
+This is because it was identical to the filename that I uploaded to this S3 bucket from **L**. 
+That file was pushed from **L** using the AWS browser console but it could also be pushed using CLI
+or using a utility program. The important point is that *filename* and *keyname* are the same thing.
 
-PutObject command: must have server-side-encryption set to AES256 (that is the name of the encryption algorithm) 
-  AND
-must have server-side-encryption set to true
+ 
 
-What about the inbound files: They must be "encrypted in transit" so we get that with an https endpoint to S3: Done. 
 
 Transferring to the instance: scp 
+
 
 Last encryption note: SSL is used by the CLI be default; so our EC2-private command 'aws s3 ... etc': 
 Look at cli/latest/reference for the link on this. This means that S3 to EC2private is encrypted in transit. 
