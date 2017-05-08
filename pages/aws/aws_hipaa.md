@@ -10,23 +10,24 @@ folder: aws
 ---
 
 
-## Part 0: Preamble material
+## Part 0. Preamble 
 
 
 ### Introduction
 
 
-[This document](aws_hipaa.html) presents a secure data management system, specifically using the 
-motivation of managing Private Health Information (PHI) under HIPAA regulations on the public cloud. 
-This template applies more generally to secure data management in research computing.
+[This document](aws_hipaa.html) presents a secure data management system motivated in general
+by the need to manage data securely in the public cloud. We take more specific motivation 
+from management of Private Health Information (PHI) under HIPAA regulations.
 
 
 ### Framework
 
 
-We present here a framework for what follows in three parts: A system build, a first example with
-a very small synthetic dataset as CSV file, and a second example building on the Observational
-Medical Outcomes Partnership (OMOM) unrestricted SynPUF dataset. 
+We provide three Parts to follow this preamble:  Details for building a secure system on AWS, 
+a first example system and a second example system. Both of these examples include synthetic 
+data; the latter built upon the Observational Medical Outcomes Partnership (OMOP) unrestricted 
+SynPUF dataset. 
 
 
 In a simple view HIPAA regulations require that data be encrypted both at rest (on a storage device) 
@@ -35,41 +36,38 @@ should be logged in a traceable manner to validate the assertion that only autho
 have had access to PHI. 
 
 
-HIPAA regulations are also viewable through the lens of NIST; we find for example the 
+HIPAA regulations may be seen through the lens of NIST; we find for example the 
 [NIST HIPAA Security Rule](https://www.nist.gov/healthcare/security/hipaa-security-rule) 
 which is detailed in NIST Special Publication 800-66 Revision 1. This document discusses 
 HIPAA=compliant implementations in practice. 
 
 
 Putting a conforming technical system in place is fairly straightforward though 
-detailed. Steps are provided on this page although we are by no means exhaustive. 
-Our objective is to provide an initial technical basis for a scalable research solution 
-under HIPAA guidelines. The counter-point to this technical task is the task of
-actually satisying conditions for HIPAA compliance in a real implementation. 
-
-
-Such real implementations operate under a *Shared Responsibility* model: AWS provides 
-necessary security measures and practitioners build and operate the environment according 
-to established practices; including documentation and logging access. Thus making use of 
-HIPAA-aligned technologies from AWS** is not equivalent to being HIPAA compliant.
+detailed (Part 1).  Satisying conditions for HIPAA compliance in a 
+real implementation also involves sociological elements.  Real implementations 
+operate under a *Shared Responsibility* model: AWS provides 
+necessary security measures while practitioners build and operate the environment 
+according to established practices; including documentation and logging access. 
+HIPAA compliance is *more* than using HIPAA-aligned technologies from AWS.
 
 
 We proceed along the following program.
 
 
-- Complete this preamble section
- - This includes defining User Story elements that motivate what follows
-- Provide instructions for building a secure compute environment (SCE) on the AWS cloud
+- Complete the preamble with a User Story and an open question list
+- Part 1 is instructions for building a secure compute environment (SCE) on the AWS cloud
   - Constructing a Virtual Private Cloud
   - Constructing storage, compute and data management elements; and so forth
-- Describe Proof-of-Concept "A" (POC A) of the SCE
-  - Simple; but it includes a small synthetic dataset
+- Describe Proof-of-Concept **A** 
+  - Simple; including a small synthetic dataset
   - Obtaining and operating up this data
   - Examining logs
-- Describe POC "B" of an SCE
-  - To include a substantial synthetic dataset
-  - ...a queryable Redshift database
-  - ...a Web application supporting data visualization
+  - Cost estimate
+- Describe POC **B** 
+  - Substantial synthetic dataset
+  - Queryable Redshift database
+  - Web application supporting data visualization
+  - Cost estimate
 
 
 While this study uses AWS our team is also building comparable structures on other cloud platforms, 
@@ -235,39 +233,24 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
   - How does 'sudo yum update -y' happen?
   - Manually take a stale AMI and update it and re-save it (and update the hot machine)
     - "You still have to manage the OS" is part of Shared Responsibility
-
-
-Left off here 
-
-
-- Tags: If this is not covered already: How do we shut down instances over the weekend if we are not IAM Users?
-- Vestigial details from earlier notes to incorporate
-  - Logging: CloudWatch and CloudXXXXX are AWS logging services; and this is frequently parsed using Splunk
-  - Intrusion detection! Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
-  - Include an encryption path for importing clinical data 
-  - Include a full story on access key management
-  - The IOT import will -- I think -- be a poll action: The secure VM is polling for new data
-  - This system should include a very explicit writeup of how the human in the loop can break the system
-  - Acceptable for data on an encrypted drive to moves through an encrypted link to another encrypted drive? 
-    - To clarify: Must the data be further encrypted at rest first? 
-  - Filenames may not include PHI. Hence there is an obligation on the MRs to follow this and/or build it into file generation.
-  - CISO approval hinges on IT, Admin and Research approvals. 
-  - Lambda
-- Make sure we return to 'Default subnet' referred to in the text
-- In a route table does 0.0.0.0/0 refer to the public internet? Where does this come up??? 
-  - It would be excellent to explain how the smaller CIDR block does not conflict 
-  - with the "wide open internet" sense of the second CIDR block
-- Bastion server inbound ip range should match UW / UW Med / etcetera
+- Cost: Shut down instances over the weekend when not IAM Users...
+- Logging: CloudWatch and CloudTrail are AWS logging services; frequently parsed using Splunk
+  - Intrusion detection! 
+    - Jon Skelton (Berkeley AWS Working Group) reviewed use of Siricata (mentions 'Snort' also) 
+- Filenames may not include PHI. 
+- 'IT, Admin and Research approvals.'
+- Figure out 'Default subnet' for new resources: Not accidentally public when auto-generated
+- Explain how small CIDR block ranges do not conflict with the internet
+- Bastion server inbound ip range should be modified to match UW / UW Med / etcetera
+  - Unless you want people able to wfh
   - Also differentiate the UW VPN CIDR block 
-- Could not give my dog **NG** a PIT name!!!
-- Bastion and **Sprivate** worker: Need more details on the configuration steps!
+- Bastion and **Sprivate** **W**: More details on the configuration steps!
   - Enable cloudwatch checkbox? Yes
 - Missing instructions on setting up S3 buckets: For FlowLog and for DataIn
-- Let's be clear that subnet CIDR blocks are *always* for the private subnet component. Making the subnet
-  a *public* subnet means that there is a second set of (public: on the internet) ip addresses that map
-  to those private subnet resources. I still have a hard time with how this doesn't use up the internet.
-  2^32 is a mere 4 billion.
-- Hit these terms in a glossary
+- Be clear that subnet CIDR blocks are *always* for the private subnet component. 
+  = Subnet *public* means a second set of (public: on the internet) ip addresses 
+  - These map to the private subnet addresses. 
+- Glossary
   - Ansible
   - Regions and Availability Zones on AWS
   - Bastion Server 
@@ -276,36 +259,23 @@ Left off here
   - Dedicated Instance 
   - Lambda Service
   - NAT Gateway
-  - HIPAA-aligned tech at AWS (original 9; need to add with link the new ones)
-    - S3 storage
-    - EC2 compute instances (VMs)
-    - EBS elastic block storage: Attached filesystem
-    - RDS relational database service
-    - DynamoDB database
-    - EMR elastic map reduce: Hadoop/Spark engine support
-    - ELB elastic load balancer
-    - Glacier archival storage
-    - Redshift data warehouse
+  - HIPAA-aligned tech at AWS: 13+
 - "How can you be using Lambda? It is not on the list...?"
   - Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
   - Services that may come in contact with PHI can be described as 'data and compute'
-- Encryption
-  - HIPAA requires data be encrypted at rest, i.e. on a storage device
-  - HIPAA requires data be encrypted in transit, e.g. moving from one storage device to another
 - This block of text was formerly the close-out plan for the POC; please review
   - Set up Ansible-assisted process for configuring and running jobs on EC2 instances
   - Pushing data to S3
     - Console does not seem like a good mechanism
     - Third party apps such as Cloudberry are possible...
     - AWS CLI with scripts: Probably the most direct method
-  - Compute scale test: Involves setting up some substantial processing power
-    - Implication is that the SCE can intrinsically fire up EC2 instances as needed
-    - Launch **W** x 5 Dedicated instances, call these **Wi**
-    - Assign S3 access role 
-    - Encrypted volumes 
-    - S/w pre-installed (e.g. genomics pipelines)
-    - Update issue: Pipeline changes, etcetera; 
-  - **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
+- How does the SCE fire up arbitrary EC2 instances as needed?
+  - Launch **W** x 5 Dedicated instances, call these **Wi**
+  - Assign S3 access role 
+  - Encrypted EBS volumes 
+  - S/w pre-installed (e.g. genomics pipelines)
+  - Update issue: Pipeline changes, etcetera; 
+- **Wi** can be pre-populated with reference data: Sheena Todhunter operational scenario
     - Assumes that a SCE exists in perpetuity to perform some perfunctory pipeline processing
     - On **B**
       - Create SQS queue of objects in S3
@@ -353,14 +323,14 @@ Left off here
 ## Part 1. Build the SCE
 
 
-We make extensive use here of short **boldface** abbreviations for system components.
-We also present *tagging* of resources and *naming* resources using a short identifier
+We use **boldface** abbreviations for system components.
+We also present *tagging* and *naming* resources using a short identifier
 string unique to each project: The Project Identifier Tag (abbreviated PIT). 
 
 
-Our main objective (see Figure below) is to use a Laptop or other cloud-external data source
-to feed data into a **SCE** wherein we operate on that data.  The data are assumed to be Private 
-Health Information (PHI) or Personally Identifiable Information (PII).
+Our main objective is to use a Laptop **L** or other cloud-external data source
+to feed data into an **SCE** wherein we operate on that data.  The data are assumed 
+to be Private Health Information (PHI) / Personally Identifiable Information (PII).
 
 
 - Write down or obtain a Project Identifier Tag (PIT) to use in naming/tagging everything

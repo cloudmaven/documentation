@@ -25,6 +25,7 @@ DLT-based accounts first as they provide some particular benefits such as egress
 - [AWS](http://aws.amazon.com)
 - [DLT portal for new AWS accounts](https://customerportal.dlt.com/internet2/)
 - [Rotating access keys: Documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html?icmpid=docs_iam_console#Using_RotateAccessKey)
+- [Confederate a UW NetID with AWS (wiki)](https://wiki.cac.washington.edu/pages/viewpage.action?pageId=78712235)
 
 
 ## Warnings

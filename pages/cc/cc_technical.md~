@@ -73,9 +73,6 @@ common example of a [Jupyter notebook](az_jupyter.html). Here a remote Jupyter n
 talking to your machine via your local browser. 
 The commands below follow [this reference](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh).
 
-
-
-
 Let's assume you log in to the cloud VM at ip address 123.213.101.102 using ssh.  
 There you issue 
 
@@ -85,7 +82,6 @@ There you issue
 
 This is directing the jupyter application to pay attention to port 8889.
 Next, on your local machine, say a laptop for example, you would issue: 
-
 
 ```
 % ssh -N -f -i ~/.ssh/credential_filename.pem -L localhost:7005:localhost:8889 username@123.213.101.102
@@ -97,29 +93,7 @@ cloud VM.
 
 The **-i** switch specifies an identity file (key pair access to the cloud VM). 
 
-
-The **-L** switch in the command stands for **Local**.  
-
-
-Suppose we want to work on an EC2 on a private subnet (only) in a VPC. Let's try:
-
-
-```
-ec2_private% jupyter notebook --no-browser --port=7777
-```
-
-```
-laptop% host1=user@ip [first_machine]
-laptop% echo $host1
-user@ip
-laptop% host2=user@ip [second_machine]
-laptop% ssh -i first_machine.pem -L 7777:localhost:7777 $host1 ssh -i second_machine.pem -L 7777:localhost:7777 -N $host2
-```
-
-
-Then go to browser http://localhost:7777
-
-As another example concerning 
+The **-L** switch in the command stands for **Local**.  As another example concerning 
 MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
 [http://support.suso.com/supki/SSH_Tutorial_for_Linux](http://support.suso.com/supki/SSH_Tutorial_for_Linux):
 
