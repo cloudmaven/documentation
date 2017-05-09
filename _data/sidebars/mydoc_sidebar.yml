@@ -246,6 +246,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Student Research
+      url: /ccs_student_research.html
+      output: web, pdf
+
     - title: Precis
       url: /ccs_precis.html
       output: web, pdf
