@@ -12,9 +12,9 @@ folder: aws
 ## Introduction
 
 ## Links
-- AWS
-- Spot Market
-- Pricing
+- [AWS Spot Market](https://aws.amazon.com/echttps://aws.amazon.com/ec2/spot/pricing/2/spot/details/)
+- [AWS Spot Market Pricing](https://aws.amazon.com/ec2/spot/pricing/)
+- [Autoscaling Groups and Spot Instances](http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html)
 
 ## Warnings
 - ***The spot market is a key element of being cost effective on the AWS public
@@ -28,5 +28,7 @@ market pool. The latter is considerably smaller; so there are commensurate
 'constrained resource' patterns to be aware of.***
 
 ## The AWS Spot Market
+The main takeaway points are heavily adapted from [here](https://aws.amazon.com/ec2/spot/)
+
 
 {% include links.html %}
