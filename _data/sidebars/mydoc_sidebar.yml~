@@ -82,6 +82,10 @@ entries:
       url: /rc_cloud101_immersion.html
       output: web, pdf
 
+    - title: Foster 101 
+      url: /rc_foster101.html
+      output: web, pdf
+
     - title: WRF Data Science Studio
       url: http://escience.washington.edu
       output: web, pdf
@@ -245,6 +249,10 @@ entries:
   - title: Cloud Case Studies
     output: web, pdf
     folderitems:
+
+    - title: Student Research
+      url: /ccs_student_research.html
+      output: web, pdf
 
     - title: Precis
       url: /ccs_precis.html

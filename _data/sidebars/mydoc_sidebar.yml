@@ -82,6 +82,10 @@ entries:
       url: /rc_cloud101_immersion.html
       output: web, pdf
 
+    - title: Foster 101 
+      url: /rc_Foster101.html
+      output: web, pdf
+
     - title: WRF Data Science Studio
       url: http://escience.washington.edu
       output: web, pdf
