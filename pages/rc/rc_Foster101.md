@@ -28,17 +28,39 @@ collaborative tools and elements of project management.
 
 ## Pre-requisites 
  
-- none yet
+- No pre-requisites as such; however attendees are invited to do survey http://cloudmaven.org in advance
+  - In particular left sidebar drop-down may be of interest
 
 ---
 
 ## Course Outline 
-* Welcome and logistics
-* Introduction to cloud computing
-* Introduction to the 3 primary cloud providers: AWS, Azure & GCP 
-* Basics of costing 
-* Web frameworks 
-* Cluster computing
-* ...and so forth
+
+- Welcome and logistics
+- Introduction to cloud computing
+  - What is the pbulic cloud?
+  - What are the alternatives?
+  - Who are the cloud providers?
+  - What is the difference between cloud use in research and cloud use in the commercial sector?
+- Cloud security: What is it? How does it fail?
+- Cost of the cloud: How does one generate a budget? 
+- Pillars of cloud
+  - Compute
+    - Instances, scale, clusters, HPC/HTC, 
+  - Storage
+    - Buckets and Drives
+  - Data management
+  - Web applications
+    - Web frameworks and the 99% principle
+  - Services
+    - AWS Lambda
+    - Azure Machine Learning Studio
+    - Google Android Studio
+- Portability and cloud hopping
+- Costing II: The dollar-time tradeoff
+- Closing remarks
+  - The only constant is change
+  - How technology succeeds by vanishing
+  - How eScience uses Jupyter, GitHub and CS skills to impact research at UW
+
 
 {% include links.html %}

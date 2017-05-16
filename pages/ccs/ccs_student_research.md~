@@ -16,11 +16,23 @@ The project was initiated from the High Performance Computing Club with initial 
 and with a generous research credit grant from Amazon Web Services.
 
 
+## Links
+
+- [Configuring the account to allow IAM Users to track billing](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html?icmpid=docs_iam_console#tutorial-billing-step2)
+
+
+
 ## Account management guidelines
 
 
-- Tag all of your resources with (key, value) = (Project, your UW NetID). **Do not include the email extension '@uw.edu'.**
-- Once per month email the student administrator a two sentence summary of your status. More frequent is fine.
+- Tag all of your resources with these tags:
+  - (key, value) = (Project, your UW NetID) 
+    - **Do not include the email extension '@uw.edu'.**
+    - **Do not include anything else in the Value part of the tag.**
+  - (key, value) = (End_date, your expected finished-by date) 
+  - (key, value) = (Name, netid_short_description) 
+    - Suppose my email address is kilroy@etc.edu. I might give my EC2 instance the name *kilroy_heavycompute_A*.
+- Once per month (or more!) email the student administrator a two sentence summary of your status. More frequent is fine.
   - Include your projected cost estimate so we can see how good we are at that!
 - Contact the student administrator and/or the cloud computing staff with any questions.
 - Stop your instances and other services when you are not using them. 
@@ -28,6 +40,22 @@ and with a generous research credit grant from Amazon Web Services.
   - This is your primary deliverable for participating and we will use these to further promote the program.
 - Have fun, do incredible work.
 
+
+## Tracking spending
+
+
+IAM Users are given admin access as well as IAM access via Role/Policy actions on the console. There are two more
+steps needed. 
+
+First [enable access to billing data](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html#tutorial-billing-step1).
+
+
+Second: Create and assign a Policy to IAM admin Users granting them billing access. 
+[Here](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html?icmpid=docs_iam_console#tutorial-billing-step2)
+is the link for how to do this; it is a little involved. 
+
+
+kilroy here is the segment on how to use the cost tool
 
 
 {% include links.html %}

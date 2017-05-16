@@ -9,38 +9,54 @@ permalink: ccs_precis.html
 folder: ccs
 ---
 
+
 ## Introduction 
 
-The purpose of this page is to concisely describe cloud computing / data science case studies at UW. 
 
-We are currently tracking over 75 projects/groups migrating their research computing to the public cloud. 
-Below is a selected subset, organized roughly by domain. We emphasize that much of our work goes beyond 
-simple migration to cloud platforms: It extends to data management techniques, reproducibility, 
-implementing data services for collaboration and public distribution, and much more. All of this is 
-in turn made possible by the UW eScience Institute.
+This page concisely describes public cloud use for research computing and data science at the University of Washington. 
+
+
+We track close to 100 research projects using the public cloud for computing across issues of access, time, compute
+power, storage, data management, cost and other issues.  The summary below is organized by domain. 
+Our work in consulting and advocating for use of the public cloud is integrated with the mission and operation of
+the UW eScience Institute.
+
 
 ## Links
+
 
 - [eScience Institute](http://escience.washington.edu)
 - [genome sciences at UW](http://www.gs.washington.edu)
 - [medical science at UW](http://www.uwmedicine.org)
 
-## Warnings
 
-- ***Contact us for updates to this material***
-- ***Focus here is topics for a degree of anonymity***
-- ***Projects are in *various* stages of completion***
+## Admonitions	
+
+
+- ***Contact us regarding updates to this material***
+- ***Focus here is topics; we try to preserve a degree of anonymity***
+
 
 ## General Systems and Tools
+
 
 - [SQL Share](https://sqlshare.uw.edu): A system for managing, sharing and manipulating research data.
 - [Myria](http://myria.cs.washington.edu/): A distributed, shared-nothing Big Data management system and Cloud service from the University of Washington
 - IOT based on Arduino Yun leaf technology and cloud IOT endpoint services
 - Geohackweek and Neurohackweek: Hosting intensive workshops for learning and developing cloud-based tools and methods at UW
 
+
+## Student-driven research
+
+
+- Improved liquid cooling towards reduction of data center energy consumption
+- Epigenome imputation across a nucleotide-protein-cell tensor
+- Characterizing the progression of three pathologies in electronic medical records associated with Emergency Room operation
+
+
 ## Medical research
 
-- [BrainInfo](http://braininfo.org/) including [NeuroNames](https://en.wikipedia.org/wiki/NeuroNames): Pending POC relocation of a cool website to cloud hosting.
+
 - Laboratory Medicine: Cloud-based system for genome analysis: (oncology and related) clinical annotation
 - Crossing the clinical-to-research data barrier
 - Data access and tool access for MRI- and EEG-based research
@@ -48,39 +64,50 @@ in turn made possible by the UW eScience Institute.
 - Patterns in unexpected in-hospital mortality
 - Deep learning for patient behavior prediction: EEG data in relation to A/V transcripts of patient behavior
 - Canine longitudinal aging studies
-- Cyberinfrastructure in support of research laboratory groups
 - Biostatistics
+- Light-sheet microscope for rapid-turnaround biopsy analysis 
+- Neuroimaging: Functional MRI
+- Neuroimaging: Visual cortex studies
+
 
 ## Hydrology and Geochemistry
 
-- GDS: Geometabolomic Data System, a contribution-driven collaborative library for Dissolved Organic Matter (DOM) spectral data from the global hydrosphere.
-- HiMAT (NASA)
-- Dynamic Infomation Framework (DIF)(World Bank): Converting scientific modeling skill into actionable information in 
-the public domain: Central and southeast Asia, central and south America
 
-## Genomics
+- GDS: Geometabolomics Data System, a community library and reproducible workflow environment for molecular spectral 
+analysis applied to naturally occurring Dissolved Organic Matter (DOM).
+- HiMAT (NASA): Atmosphere-land coupled analysis of the hydrological state and future of high mountain Asia
+  - Hydrological studies and human impacts drawing from *in situ*, remote sensing, model, re-analysis and assimilation data and methods.
+- Dynamic Infomation Framework (DIF) (World Bank): Scientific hydrological expertise transferred into public information
+   - In resource management and public safety domains the incorporation of scientific modeling is not well developed.
+   - This program provides localized information building from a reproducible model of free and open access
 
-- Epigenome imputation: From existing wet lab experiments *infer* relationships between 
-particular proteins and cell types as a function of location on the human genome
+
+## Genomics and Biochemistry
+
+
 - Genetic architecture of autism
 - Metagenomics of methane-consuming microbial communities
+- Enzyme inhibition by molecular structure
+- Peptide scaffolding enumeration and design: Large-scale computing using the Rosetta protein folding toolkit
 
-## Library science
 
-- With Suzzallo library: A pilot study for providing geospatial LIDAR data as a curated digital resource
-- The curation and provision of cloud-based resources for data analysis in specialized research domain communities 
+## Library science: With Suzallo Library
 
-## Molecular Engineering and Science
 
-- Peptide therapeutics research: Cloud-based scale computing using the Rosetta molecular folding analysis toolkit
+- LIDARY: A pilot study providing geospatial LIDAR data as an open, curated digital resource
+- Proof-of-concept curation of an epigenome imputation engine (see above: student projects)
+- Migration to the cloud of [BrainInfo.org](http://braininfo.org/) including [NeuroNames](https://en.wikipedia.org/wiki/NeuroNames)
+
 
 ## Ocean science
+
 
 - LiveOcean: Ocean modeling forecast
 - Marine microbial ecology
 - Mesoscale eddie structure and correlation to marine life
 
 ## Computer Science
+
 
 - Analysis of code fault detection: Student project
 - IOT: A design pattern and tutorial for using cloud-based support of **Internet of Things** implementations 
@@ -95,18 +122,33 @@ Frameworks and on HiMAT; thematically lightweight geospatial data system with th
 to data through pre-built frameworks, data APIs and minimal (non-redundant) software engineering.
 (NSF: Campus Cyberinfrastructure)
 
+
 ## Mechanical and Civil Engineering
+
 
 - Computational fluid dynamics of hydrogen and methane combustion
 
+
 ## Astronomy
+
 
 - Identifying stellar composition through spectral model superposition in nearby galaxies
 - Large Scale Synoptic Telescope (LSST) toolchain development
 
+
 ## Geospatial 
+
 
 - Implementation of GeoServer and a THREDDS server on the public cloud
 - Various data archival projects: Using the cloud for many 9s of reliability
+
+
+## Stubs and pending
+
+
+- IOT
+- Power consumption
+
+
 
 {% include links.html %}
