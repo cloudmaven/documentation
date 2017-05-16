@@ -28,8 +28,13 @@ collaborative tools and elements of project management.
 
 ## Pre-requisites 
  
-- No pre-requisites as such; however attendees are invited to do survey http://cloudmaven.org in advance
-  - In particular left sidebar drop-down may be of interest
+- No pre-requisites; however attendees are encouraged to investigate the cloud in advance
+- [Cloud Maven technical website](http://cloudmaven.org)
+  - Left sidebar drop-down for site navigation 
+- [Google Android Studio](https://cloud.google.com/android-studio/)
+- [Microsoft Azure Machine Learning Studio](https://studio.azureml.net/)
+- [Amazon Web Services Lambda serverless computing](https://aws.amazon.com/lambda/)
+
 
 ---
 
