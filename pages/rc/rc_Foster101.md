@@ -17,7 +17,9 @@ folder: rc
 
 
 ---
- 
+
+![picture cloud bridge](/documentation/images/rc/foster101_001.png)
+
 ## Objective
 
 This two hour course will introduce participants to the public cloud computing environment. 
