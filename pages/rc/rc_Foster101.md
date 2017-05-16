@@ -18,7 +18,7 @@ folder: rc
 
 ---
 
-![picture cloud bridge](/documentation/images/rc/foster101_001.png)
+![picture cloud bridge](/documentation/images/rc/foster101_001.jpg)
 
 ## Objective
 
