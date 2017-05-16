@@ -36,6 +36,7 @@ collaborative tools and elements of project management.
 - [Google Android Studio](https://cloud.google.com/android-studio/)
 - [Microsoft Azure Machine Learning Studio](https://studio.azureml.net/)
 - [Amazon Web Services Lambda serverless computing](https://aws.amazon.com/lambda/)
+- [World bank via F# type provider](http://www.tryfsharp.org/Learn/data-science)
 
 
 ---
@@ -58,6 +59,7 @@ collaborative tools and elements of project management.
   - Data management
   - Web applications
     - Web frameworks and the 99% principle
+    - Hands on: Using an API to access openly available data
   - Services
     - AWS Lambda
     - Azure Machine Learning Studio
@@ -65,6 +67,8 @@ collaborative tools and elements of project management.
 - Portability and cloud hopping
 - Costing II: The dollar-time tradeoff
 - Closing remarks
+  - Collaboration 
+  - Hands on: Using a Jupyter notebook to collaborate
   - The only constant is change
   - How technology succeeds by vanishing
   - How eScience uses Jupyter, GitHub and CS skills to impact research at UW
