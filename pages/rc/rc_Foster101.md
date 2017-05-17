@@ -11,28 +11,32 @@ folder: rc
 
 **Date:** Thursday May 25, 2017 
 
-**Location:** University of Washington Husky Union Building, Room 250. [Parking information](http://depts.washington.edu/thehub/home/directions/)
+**Location:** TBD...
 
 **Time:** 4:00 to 6:00 pm 
 
 
 ---
 
+
 ![picture cloud bridge](/documentation/images/rc/foster101_001.jpg)
 
 ## Objective
 
-This two hour course will introduce participants to the public cloud computing environment. 
+This two hour overview will introduce participants to the public cloud computing environment.
 Participants will learn about cloud pillars, cost management, data security, web frameworks,
-collaborative tools and elements of project management. 
+collaborative tools and cloud-related elements of project management. 
+
 
 ---
 
+
 ## Pre-requisites 
  
-- No pre-requisites; however attendees are encouraged to investigate the cloud in advance
-- [Cloud Maven technical website](http://cloudmaven.org)
-  - Left sidebar drop-down for site navigation 
+- Optional for hands-on activities: Bring a laptop or tablet
+- Attendees are encouraged to investigate the cloud in advance, bring questions
+- [Our Cloud Maven technical website is at this link](http://cloudmaven.org)
+  - Use the left sidebar drop-down for site navigation 
 - [Google Android Studio](https://cloud.google.com/android-studio/)
 - [Microsoft Azure Machine Learning Studio](https://studio.azureml.net/)
 - [Amazon Web Services Lambda serverless computing](https://aws.amazon.com/lambda/)
@@ -64,6 +68,7 @@ collaborative tools and elements of project management.
     - AWS Lambda
     - Azure Machine Learning Studio
     - Google Android Studio
+      - Digression: Why is IOT a cloud story?
 - Portability and cloud hopping
 - Costing II: The dollar-time tradeoff
 - Closing remarks
