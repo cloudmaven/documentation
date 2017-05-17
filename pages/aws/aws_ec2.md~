@@ -211,14 +211,14 @@ can be impatient and see if you can Attach the restored Snapshot Volume whenever
 ## Mounting the Attached Volume
 
 
-To check if there is an attached volume, log on (ssh) onto your EC2 instance (Original recipe located 
-[here](http://maplpro.blogspot.com/2012/05/how-to-mount-ebs-volume-into-ec2-ubuntu.html). 
+To check if there is an attached volume, log on (ssh) onto your EC2 instance. More information is [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)
 
 
 First see if it is attached with:
 
 ```
->> sudo fdisk -l
+>> lsblk
+
 Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
 ```
 
@@ -247,16 +247,32 @@ Check if it has been mounted correctly with:
 /dev/xvdc on /data type ext4 (rw)
 ```
 
-Make it mount automatically on system start
+Next, you will want to edit the fstab configuration file to have it mount automatically on reboot. Get the disk UUID. For example, for */dev/xvdb*,
+
+```
+$ sudo file -s /dev/xvdb
+
+/dev/xvdb: Linux rev 1.0 ext4 filesystem data, UUID=07273928-caa9-4822-98b7-912e6eea4494 (needs journal recovery) (extents) (large files) (huge files)
+```
+
+Next, edit the fstab configuration file. You will want to change the label of the root disk (usually called cloudimg-rootfs)
 
 ```
 >>sudo vim  /etc/fstab
 ```
 
-Add:
+Modify to read for example:
 
 ```
-/dev/xvdc /data auto defaults,nobootwait 0 0
+UUID=4573eb39-57f3-439b-9a73-8aef508afd3f       /        ext4   defaults,discard        0 0
+UUID=07273928-caa9-4822-98b7-912e6eea4494       /data   ext4    defaults,nofail         0 2
+```
+Note the the UUID for my /data drive is the same as the UUID we obtained the *sudo file -s /dev/xvdb* command above!
+
+Check if there are errors in your /etc/fstab file:
+
+```
+sudo mount -a
 ```
 
 That's it. Make sure your read and write permissions are set accordingly using chmod. 

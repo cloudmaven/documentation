@@ -49,9 +49,23 @@ the UW eScience Institute.
 ## Student-driven research
 
 
-- Improved liquid cooling towards reduction of data center energy consumption
-- Epigenome imputation across a nucleotide-protein-cell tensor
-- Characterizing the progression of three pathologies in electronic medical records associated with Emergency Room operation
+The UW Student High Performance Computing Club has begun making cloud computing available to its members. This includes 
+training and consulting on implementation as well as careful cost management and tracking. The following is a partial list
+of projects undertaken by students during the pilot phase of this program, spring 2017.
+
+
+- Epigenome imputation across a nucleotide-protein-cell tensor (Status: Successful completion)
+- Design of a high-reliability micropump for cooling high-heat semiconductors (In progress)
+- Novel peptide characterization of marine organic matter: insights into carbon cycling (In progress)
+- Characterizing the progression of three pathologies in ER electronic medical records (In progress)
+- Quora question pair intent comparison (In progress)
+- Novel peptide characterization of marine organic matter: insights into carbon cycling (In progress)
+- Schedular development and benchmarking for containerized bioinformatics workflows (UW Tacoma; in progress)
+- Empirical Studies of Docker Orchestration Tools for The Analyses of Big Biomedical Data (UW Tacoma; in progress)
+- Predictive models to optimize cloud computing using genomics data (UW Tacoma; in progress)
+- A Dynamic Scaling Engine in the Cloud (CSE; in progress)
+- LaraDB Experiments for the DARPA Graph Challenge (CSE; in progress)
+- Learning multiple outcomes with predictive coding (CSE; in progress)
 
 
 ## Medical research
