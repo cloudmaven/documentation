@@ -10,24 +10,61 @@ folder: aws
 ---
 
 
-## Part 0. Preamble 
+## Introduction
 
 
-### Introduction
-
-
-[This document](aws_hipaa.html) presents a secure data management system motivated in general
+[This document](aws_hipaa.html) presents a secure data management system motivated 
 by the need to manage data securely in the public cloud. We take more specific motivation 
 from management of Private Health Information (PHI) under HIPAA regulations.
 
 
-### Framework
+### Use Case Outline
 
 
-We provide three Parts to follow this preamble:  Details for building a secure system on AWS, 
-a first example system and a second example system. Both of these examples include synthetic 
-data; the latter built upon the Observational Medical Outcomes Partnership (OMOP) unrestricted 
-SynPUF dataset. 
+The objective of this project is to accelerate research by taking advantage of the HIPAA-aligned nature
+of the AWS public cloud platform to create a Secure Computing Environment (abbreviated **SCE** herein).  
+This objective implicitly means 'the cloud disappears'; the Researcher is simply focused on their data, 
+their analysis.  Before proceeding into technical details of the implementation we briefly describe a typical 
+use case and list some of the related considerations. This is done again in more detail below.
+
+
+#### Use Case
+
+- Researcher awareness: Service catalog, word-of-mouth etc
+- Project approved: IRB 
+- Request for Secure Computing Environment, billing mechanism (e.g. ITHS; Red Cap form)
+- Research proceeds!
+- Close out
+
+
+
+#### Relevant Issues 
+
+
+- Logging/reporting: How the Researcher can report to a CRO 'these data were used' at the table row level
+- Does this work differentiate a bespoke versus a multi-team / shared data project?
+- Access constrained to certain IP addresses only (CIDR block)
+- NetID authentication
+- Technical support from within UW
+- If data are breeched: What is the response plan, how does the vendor participate?
+- Is a 'third party solution' path worth exploring?
+
+
+### Secure Computing Environment Framework
+
+
+The *framework* for an SCE is a set of guiding ideas and concepts, particularly with the idea of establishing
+a common vocabulary.  We develop this framework here in the introduction and follow this with three following
+sections:  
+
+
+- Technical details for building a secure computing environment (SCE) on AWS 
+- A first example system with synthetic data 
+- A second example system using OMOP data 
+
+
+Both example SCEs incorporate synthetic data; the second being built upon the Observational Medical Outcomes 
+Partnership (OMOP) unrestricted SynPUF dataset. 
 
 
 In a simple view HIPAA regulations require that data be encrypted both at rest (on a storage device) 
@@ -51,19 +88,20 @@ according to established practices; including documentation and logging access.
 HIPAA compliance is *more* than using HIPAA-aligned technologies from AWS.
 
 
-We proceed along the following program.
+We proceed with the following program:
 
 
-- Complete the preamble with a User Story and an open question list
-- Part 1 is instructions for building a secure compute environment (SCE) on the AWS cloud
+- Complete the preamble with an expanded version of the User Story and open question list
+- Part 1: Instructions for building a secure compute environment (SCE) on the AWS cloud
   - Constructing a Virtual Private Cloud
-  - Constructing storage, compute and data management elements; and so forth
+  - Constructing storage, compute and data management elements
+  - Logging and tracking activity
 - Describe Proof-of-Concept **A** 
   - Simple; including a small synthetic dataset
   - Obtaining and operating up this data
   - Examining logs
   - Cost estimate
-- Describe POC **B** 
+- Describe Proof-of-Concept **B** 
   - Substantial synthetic dataset
   - Queryable Redshift database
   - Web application supporting data visualization
@@ -106,21 +144,22 @@ a t-type.  The t instance type by its nature will not connect to a Dedicated Ten
 Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
-### User story
+### Extended User Story
 
 
 - A scientist *K* receives approval from the IRB to work with PHI data. 
   - Intent: Analyze these data in a Secure Compute Environment (SCE) 
-- *K* contacts IT professional *J* for the SCE as a working environment
-  - Some initial steps align *K* and *J* to build an SCE
-  - The SCE is set up by *J* with *K* helping as described below
-  - Data are uploaded to S3 storage on AWS from a secure device
+- *K* initiates a cloud solution project that includes a billing mechanism
+- *K* contacts IT professional *J* to build an SCE as a working environment
+  - Initial steps align *K* and *J* to build the SCE
+  - The SCE is set up by *J* with *K*'s help as described below
+  - Data are uploaded to storage on AWS from a secure device
 - *K* is provided with access to the SCE
   - Specifically 
     - A pem file and ip address of a bastion server **B**
     - A login and password to a private subnet EC2 instance
-  - Notice there is no IAM User account involved 
-    - Console access not needed
+    - Notice there is no IAM User account involved 
+      - Console access not needed
   - *K* logs on to the SCE
     - There is some potential initial configuration, e.g. installing software
     - *K* carries out data analysis over time; system activity is automatically logged
@@ -320,7 +359,7 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
 
-## Part 1. Build the SCE
+## Part 1. Building an SCE
 
 
 We use **boldface** abbreviations for system components.
@@ -429,36 +468,36 @@ across the entire AWS cloud.
 #### Intermezzo: 30 Screencaps: Need to be interspersed (kilroy)
 
 
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0001.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0002.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0003.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0004.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0005.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0006.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0007.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0008.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0009.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0010.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0011.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0012.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0013.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0014.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0015.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0016.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0017.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0018.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0019.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0020.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0021.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0022.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0023.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0024.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0025.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0026.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0027.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0028.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png))
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png))
+![Create VPC](/documentation/images/aws/hipaa0001.png)1
+![Dedicated tenancy Create VPC](/documentation/images/aws/hipaa0002.png)2
+![VPC listing](/documentation/images/aws/hipaa0003.png)3
+![Create Subnet](/documentation/images/aws/hipaa0004.png)4
+![Create Subnet CIDR public](/documentation/images/aws/hipaa0005.png)5
+![Create Subnet CIDR private](/documentation/images/aws/hipaa0006.png)6
+![Create Internet Gateway](/documentation/images/aws/hipaa0007.png)7
+![Create IGW detail](/documentation/images/aws/hipaa0008.png)8
+![Create IGW attached](/documentation/images/aws/hipaa0009.png)9
+![Create NAT Gateway](/documentation/images/aws/hipaa0010.png)10
+![Create NAT Subnet detail](/documentation/images/aws/hipaa0011.png)11
+![Create NAT Elastic IP detail](/documentation/images/aws/hipaa0012.png)12
+![NAT confirmation](/documentation/images/aws/hipaa0013.png)13
+![Create public Route Table](/documentation/images/aws/hipaa0014.png)14
+![Create private Route Table](/documentation/images/aws/hipaa0015.png)15
+![route table listing](/documentation/images/aws/hipaa0016.png)16
+![Public route table Edit](/documentation/images/aws/hipaa0017.png)17
+![Public route table Add entry](/documentation/images/aws/hipaa0018.png)18
+![Public route table Subnet associations](/documentation/images/aws/hipaa0019.png)19
+![Private route table 0 Subnets shown](/documentation/images/aws/hipaa0020.png)20
+![Private route table add NAT](/documentation/images/aws/hipaa0021.png)21
+![Private route table NAT added](/documentation/images/aws/hipaa0022.png)22
+![Private route tabel subnet associations](/documentation/images/aws/hipaa0023.png)23
+![Private subnet showing Main as route table](/documentation/images/aws/hipaa0024.png)24
+![Create S3 endpoint](/documentation/images/aws/hipaa0025.png)25
+![Configure S3 endpoint](/documentation/images/aws/hipaa0026.png)26
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0027.png)27
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0028.png)28
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png)29
+![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png)30
 
 
 #### To continue...
