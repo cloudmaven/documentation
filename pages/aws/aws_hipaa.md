@@ -465,41 +465,6 @@ it must be an allowed DNS name that does not conflict with any existing S3 bucke
 across the entire AWS cloud.
 
 
-#### Intermezzo: 30 Screencaps: Need to be interspersed (kilroy)
-
-
-![Create Subnet](/documentation/images/aws/hipaa0004.png)4
-![Create Subnet CIDR public](/documentation/images/aws/hipaa0005.png)5
-![Create Subnet CIDR private](/documentation/images/aws/hipaa0006.png)6
-![Create Internet Gateway](/documentation/images/aws/hipaa0007.png)7
-![Create IGW detail](/documentation/images/aws/hipaa0008.png)8
-![Create IGW attached](/documentation/images/aws/hipaa0009.png)9
-![Create NAT Gateway](/documentation/images/aws/hipaa0010.png)10
-![Create NAT Subnet detail](/documentation/images/aws/hipaa0011.png)11
-![Create NAT Elastic IP detail](/documentation/images/aws/hipaa0012.png)12
-![NAT confirmation](/documentation/images/aws/hipaa0013.png)13
-![Create public Route Table](/documentation/images/aws/hipaa0014.png)14
-![Create private Route Table](/documentation/images/aws/hipaa0015.png)15
-![route table listing](/documentation/images/aws/hipaa0016.png)16
-![Public route table Edit](/documentation/images/aws/hipaa0017.png)17
-![Public route table Add entry](/documentation/images/aws/hipaa0018.png)18
-![Public route table Subnet associations](/documentation/images/aws/hipaa0019.png)19
-![Private route table 0 Subnets shown](/documentation/images/aws/hipaa0020.png)20
-![Private route table add NAT](/documentation/images/aws/hipaa0021.png)21
-![Private route table NAT added](/documentation/images/aws/hipaa0022.png)22
-![Private route tabel subnet associations](/documentation/images/aws/hipaa0023.png)23
-![Private subnet showing Main as route table](/documentation/images/aws/hipaa0024.png)24
-![Create S3 endpoint](/documentation/images/aws/hipaa0025.png)25
-![Configure S3 endpoint](/documentation/images/aws/hipaa0026.png)26
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0027.png)27
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0028.png)28
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png)29
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png)30
-
-
-#### To continue...
-
-
 - From the console create a new VPC **V**
 
 
@@ -547,6 +512,15 @@ across the entire AWS cloud.
 
 
   - Create subnets **Spublic** and **Sprivate**
+
+
+![Create Subnet 1 of 5](/documentation/images/aws/hipaa0004.png)4
+![Create Subnet 2 of 5](/documentation/images/aws/hipaa0005.png)5
+![Create Subnet 3 of 5](/documentation/images/aws/hipaa0006.png)6
+![Create Subnet 4 of 5](/documentation/images/aws/hipaa0007.png)7
+![Create Subnet 5 of 5](/documentation/images/aws/hipaa0008.png)8
+
+
     - The private subnet **Sprivate** is where work on PHI proceeds
       - CIDR block 10.0.1.0/24
       - **Sprivate** will be firewalled behind a NAT gateway
@@ -563,22 +537,59 @@ across the entire AWS cloud.
 
 
   - Create an an Internet Gateway **IG**
+
+
+![Create IGW 1 of 4](/documentation/images/aws/hipaa0009.png)9
+![Create IGW 2 of 4](/documentation/images/aws/hipaa0010.png)10
+![Create IGW 3 of 4](/documentation/images/aws/hipaa0011.png)11
+![Create IGW 4 of 4](/documentation/images/aws/hipaa0012.png)12
+
+
     - Give a PIT name as in 'hipaa_internetgateway'
     - Attach hipaa_internetgateway to **V**
 
 
   - Create a NAT Gateway **NG**
+
+
+![NAT 1 of 4](/documentation/images/aws/hipaa0013.png)13
+![NAT 2 of 4](/documentation/images/aws/hipaa0014.png)14
+![NAT 3 of 4](/documentation/images/aws/hipaa0015.png)15
+![NAT 4 of 4](/documentation/images/aws/hipaa0016.png)16
+
+
     - Give it a PIT name
     - Elastic IP assignment may come into play here
 
 
   - Create a route table **RTpublic** 
+
+
+![public route table 1 of 7](/documentation/images/aws/hipaa0017.png)17
+![public route table 2 of 7](/documentation/images/aws/hipaa0018.png)18
+![public route table 3 of 7](/documentation/images/aws/hipaa0019.png)19
+![public route table 4 of 7](/documentation/images/aws/hipaa0020.png)20
+![public route table 5 of 7](/documentation/images/aws/hipaa0021.png)21
+![public route table 6 of 7](/documentation/images/aws/hipaa0022.png)22
+![public route table 7 of 7](/documentation/images/aws/hipaa0023.png)23
+
+
     - Give it a PIT name: 'hipaa_publicroutes'
     - This will supersede the **V** routing table **RT**
     - Select the Subnet Associations tab 
       - Edit subnet association to be **Spublic**
     - Select the Routes tab 
       - Edit (under Routes) and add 0.0.0.0/0 pointing to **IG**
+
+
+  - public route table **RTpublic** 
+
+
+![private route table 1 of 5](/documentation/images/aws/hipaa0024.png)24
+![private route table 2 of 5](/documentation/images/aws/hipaa0025.png)25
+![private route table 3 of 5](/documentation/images/aws/hipaa0026.png)26
+![private route table 4 of 5](/documentation/images/aws/hipaa0027.png)27
+![private route table 5 of 5](/documentation/images/aws/hipaa0028.png)28
 
 
 Note: The console column for subnets shows "Auto-assign Public IP" and this should be set to
@@ -620,11 +631,9 @@ the internet. This *does* accept inbound traffic allowing us to ssh in. This is 
 to the default.
 
 
-### 1C: Adding EC2 and S3 resources to the VPC
+### 1C S3 buckets and EC2 
 
-#### S3 buckets
-
-##### S3 Encryption policy
+#### S3 Encryption policy
 
 We create new S3 buckets associated with projects and assign them a Policy to ensure that
 Server-side encryption is requested by anyone attempting to upload data. This ensures the 
@@ -636,7 +645,12 @@ data will be encrypted when it comes to rest in the bucket.
 
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0031.png))
 
-##### S3 Endpoints
+
+#### S3 Endpoints
+
+
+![S3 endpoint 1 of 2](/documentation/images/aws/hipaa0029.png)29
+![S3 endpoint 2 of 2](/documentation/images/aws/hipaa0030.png)30
 
 An S3 Endpoint is routing information associated with the VPC.  S3 access from the VPC should not go through 
 the public internet; and this routing information ensures that. The S3 Endpoint is not subsequently invoked; 
