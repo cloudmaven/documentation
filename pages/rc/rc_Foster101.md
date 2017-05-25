@@ -75,7 +75,7 @@ collaborative tools and cloud-related elements of project management.
       - Fine art of learning to insist and persist without being a threat
       - [Enterprise Architecture video...](https://www.youtube.com/watch?v=qDI2oF1bASk)
 
-![hairball architecture](/documentation/images/rc/foster101_001.jpg)
+![hairball architecture](/documentation/images/rc/foster101_002.png)
 
   - What is the pbulic cloud?
     - What are the alternatives?
@@ -85,11 +85,11 @@ collaborative tools and cloud-related elements of project management.
 
 - From UW research a case study
 
-![HMA](/documentation/images/rc/foster101_003.jpg)
+![HMA](/documentation/images/rc/foster101_003.png)
 
-![remote sensing example](/documentation/images/rc/foster101_004.jpg)
+![remote sensing example](/documentation/images/rc/foster101_004.png)
 
-![planning hydropower](/documentation/images/rc/foster101_005.jpg)
+![planning hydropower](/documentation/images/rc/foster101_005.png)
 
 
 - Cloud security: What is it? How does it fail?
