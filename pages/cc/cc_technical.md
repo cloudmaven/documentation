@@ -104,12 +104,37 @@ The **-L** switch in the command stands for **Local**.
 ### Double hop into a private subnet
 
 
-Suppose we want to work on an EC2 instance on a private subnet in a VPC. On that machine we have two tasks: Pull in
-data from an S3 bucket and start a jupyter notebook (with browser disabled). We assume the files are already in place
-on the S3 bucket.
+(kilroy this migrates to HIPAA)
+
+
+Suppose we want to work on an EC2 instance on a private subnet in a VPC. On that machine we have three tasks: 
+
+
+- Make sure any updates are installed
+- Pull in data from an S3 bucket 
+- Start a jupyter notebook (with browser disabled). 
+
+
+We assume the files are already in place on the S3 bucket.
+
+
+From a starting point 'laptop' run PuTTY or ssh to reach the bastion server. From the bastion server: 
 
 
 ```
+bastion% sudo yum update
+bastion% ssh -i ec2_private_keypair.pem ec2-user@10.0.1.248
+```
+
+
+This gets us to the command line on the private subnet EC2 instance. We proceed with the three steps given above.
+
+
+```
+ec2_private% sudo yum update
+
+<diagnostic print outs>
+
 ec2_private% aws configure
 
 (enter both public and private IAM User access keys; nothing else required)

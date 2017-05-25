@@ -101,26 +101,78 @@ The **-i** switch specifies an identity file (key pair access to the cloud VM).
 The **-L** switch in the command stands for **Local**.  
 
 
-Suppose we want to work on an EC2 on a private subnet (only) in a VPC. Let's try:
+### Double hop into a private subnet
+
+
+(kilroy this migrates to HIPAA)
+
+
+Suppose we want to work on an EC2 instance on a private subnet in a VPC. On that machine we have three tasks: 
+
+
+- Make sure any updates are installed
+- Pull in data from an S3 bucket 
+- Start a jupyter notebook (with browser disabled). 
+
+
+We assume the files are already in place on the S3 bucket.
+
+
+From a starting point 'laptop' run PuTTY or ssh to reach the bastion server. From the bastion server: 
 
 
 ```
+bastion% sudo yum update
+bastion% ssh -i ec2_private_keypair.pem ec2-user@10.0.1.248
+```
+
+
+This gets us to the command line on the private subnet EC2 instance. We proceed with the three steps given above.
+
+
+```
+ec2_private% sudo yum update
+
+<diagnostic print outs>
+
+ec2_private% aws configure
+
+(enter both public and private IAM User access keys; nothing else required)
+
+ec2_private% aws s3 cp s3://s3-bucket-name/filename1 .
+ec2_private% aws s3 cp s3://s3-bucket-name/filename2 .
+ec2_private% aws s3 cp s3://s3-bucket-name/filename3 .
+
 ec2_private% jupyter notebook --no-browser --port=7777
 ```
 
+
+On our local machine:
+
+
 ```
-laptop% host1=user@ip [first_machine]
-laptop% echo $host1
-user@ip
-laptop% host2=user@ip [second_machine]
-laptop% ssh -i first_machine.pem -L 7777:localhost:7777 $host1 ssh -i second_machine.pem -L 7777:localhost:7777 -N $host2
+laptop% cd /mnt/c/Users/Rob/OneDrive/auth/czar/AWS/creds
+laptop% host1=ec2-user@34.208.221.24
+laptop% host2=ec2-user@10.0.1.248
+laptop% ssh -i hipaa_bastion_keypair.pem -L 7777:localhost:7777 $host1 ssh -i hipaa_ec2_private_keypair.pem -L 7777:localhost:7777 -N $host2
 ```
 
 
-Then go to browser http://localhost:7777
+In our local browser address bar:
 
-As another example concerning 
-MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
+
+```
+http://localhost:7777
+```
+
+
+This brings up the Jupyter notebook view from the machine on the private subnet.
+
+
+### MySQL connection
+
+
+As another example concerning MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
 [http://support.suso.com/supki/SSH_Tutorial_for_Linux](http://support.suso.com/supki/SSH_Tutorial_for_Linux):
 
 > SSH can forward communication across an SSH session that you establish.  For example, you can 
