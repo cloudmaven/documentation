@@ -80,7 +80,11 @@ collaborative tools and cloud-related elements of project management.
   - What is the pbulic cloud?
     - What are the alternatives?
     - Who are the cloud providers?
-    - What is the difference between cloud use in research and cloud use in the commercial sector?
+    - Similarities/differences: Cloud in research versus cloud in the commercial sector?
+      - Cattle not pets
+      - Storage is not memory
+      - In research: sharing, collaboration, repro, student access, scale, security, IOT, cost management, institutional policy, ...
+      - In commercial: scale, security, IOT, cost management
 
 
 - From UW research a case study
@@ -93,7 +97,18 @@ collaborative tools and cloud-related elements of project management.
 
 
 - Cloud security: What is it? How does it fail?
+
+
+![VPC](/documentation/images/rc/foster101_006.png)
+
+
 - Cost of the cloud: How does one generate a budget? 
+  - Logging, Alarms, segue to Amanda
+
+
+- Amanda on databases, cost, AralDIF, API
+
+
 - Pillars of cloud
   - Compute
     - Instances, scale, clusters, HPC/HTC, 
@@ -108,14 +123,21 @@ collaborative tools and cloud-related elements of project management.
     - Azure Machine Learning Studio
     - Google Android Studio
       - Digression: Why is IOT a cloud story?
+
+
 - Portability and cloud hopping
+
+
 - Costing II: The dollar-time tradeoff
+
+
 - Closing remarks
   - Collaboration 
   - Hands on: Using a Jupyter notebook to collaborate
+    - https://notebooks.azure.com/library/89FHPIGSGMs/dashboard
   - The only constant is change
   - How technology succeeds by vanishing
-  - How eScience uses Jupyter, GitHub and CS skills to impact research at UW
+  - Data science: How eScience uses Jupyter, GitHub and CS skills to impact research at UW
 
 
 {% include links.html %}
