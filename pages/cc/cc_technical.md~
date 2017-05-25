@@ -151,7 +151,6 @@ On our local machine:
 
 
 ```
-laptop% cd /mnt/c/Users/Rob/OneDrive/auth/czar/AWS/creds
 laptop% host1=ec2-user@34.208.221.24
 laptop% host2=ec2-user@10.0.1.248
 laptop% ssh -i hipaa_bastion_keypair.pem -L 7777:localhost:7777 $host1 ssh -i hipaa_ec2_private_keypair.pem -L 7777:localhost:7777 -N $host2
