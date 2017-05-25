@@ -50,12 +50,48 @@ collaborative tools and cloud-related elements of project management.
 
 ## Course Outline 
 
-- Welcome and logistics
+- Welcome and logistics: You may wish to use a browser
+
+- Under cloud cover we are really here to advocate for the broader field of data science
+
 - Introduction to cloud computing
+  - Why does the cloud matter to you (as a person in a business)?
+    - You are NOT guessing capacity
+    - You are NOT waiting for infrastructure arrival / config 
+    - Faster time to market
+    - Experiment with different solutions; scrap / keep (A/B at Amazon.com example)
+    - You have an instantaneous global presence without buying data centers around the world 
+    - Start-up? You have the same access to resources that Netflix has
+  - What are some strategies for thinking about the cloud?
+    - Once there was a PC. Once there was a search engine. Once there was cloud computing.
+    - "Culture Eats Strategy"...  
+    - The more you know technically the more your perspective will matter 
+      - Jargon makes you crazier but also saner... 
+      - Developers are *interesting* and may present language bridging challenges
+    - The flip side: It can be helpful to describe end results rather than *How* solutions
+    - Be ready to learn about and evaluate trends
+      - Agile, Test-Driven Development, the 12 Factor App, etc etc etc etc etc
+    - Implementing organizational structure (like EA) can make you a hero
+      - Fine art of learning to insist and persist without being a threat
+      - [Enterprise Architecture video...](https://www.youtube.com/watch?v=qDI2oF1bASk)
+
+![hairball architecture](/documentation/images/rc/foster101_001.jpg)
+
   - What is the pbulic cloud?
-  - What are the alternatives?
-  - Who are the cloud providers?
-  - What is the difference between cloud use in research and cloud use in the commercial sector?
+    - What are the alternatives?
+    - Who are the cloud providers?
+    - What is the difference between cloud use in research and cloud use in the commercial sector?
+
+
+- From UW research a case study
+
+![HMA](/documentation/images/rc/foster101_003.jpg)
+
+![remote sensing example](/documentation/images/rc/foster101_004.jpg)
+
+![planning hydropower](/documentation/images/rc/foster101_005.jpg)
+
+
 - Cloud security: What is it? How does it fail?
 - Cost of the cloud: How does one generate a budget? 
 - Pillars of cloud

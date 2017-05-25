@@ -11,7 +11,7 @@ folder: rc
 
 **Date:** Thursday May 25, 2017 
 
-**Location:** TBD...
+**Location:** Paccar 390
 
 **Time:** 4:00 to 6:00 pm 
 
@@ -21,7 +21,9 @@ folder: rc
 
 ![picture cloud bridge](/documentation/images/rc/foster101_001.jpg)
 
+
 ## Objective
+
 
 This two hour overview will introduce participants to the public cloud computing environment.
 Participants will learn about cloud pillars, cost management, data security, web frameworks,
@@ -32,6 +34,7 @@ collaborative tools and cloud-related elements of project management.
 
 
 ## Pre-requisites 
+
  
 - Optional for hands-on activities: Bring a laptop or tablet
 - Attendees are encouraged to investigate the cloud in advance, bring questions
@@ -49,6 +52,19 @@ collaborative tools and cloud-related elements of project management.
 
 - Welcome and logistics
 - Introduction to cloud computing
+  - Why does this matter to you (as a person in a business)
+    - Not guessing capacity
+    - Not waiting for infrastructure arrival / config
+    - Faster time to market
+    - Can experiment with different solutions; scrap / keep
+    - You immediately have a global presence: Without buying data centers around the world 
+    - If you are doing a start-up: You have the same access to resources that Netflix has
+    - "Culture Eats Strategy" (people on board)
+    - Be patient with Developers; consider as challenge in language bridging
+    - The more you know technically the more your perspective will impact the process
+    - Be aware that you can learn and evaluate trends: Agile, Test-Driven Development, the 12 Factor App, etc etc etc etc etc
+    - The more jargon you learn... the crazier you will be (but also the saner)
+    - [Enterprise Architecture video...](https://www.youtube.com/watch?v=qDI2oF1bASk)
   - What is the pbulic cloud?
   - What are the alternatives?
   - Who are the cloud providers?
