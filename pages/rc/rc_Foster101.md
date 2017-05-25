@@ -110,6 +110,7 @@ collaborative tools and cloud-related elements of project management.
       - Digression: Why is IOT a cloud story?
 - Portability and cloud hopping
 - Costing II: The dollar-time tradeoff
+- Other cloud services to make your life easier: Managed databases, logging/billing management
 - Closing remarks
   - Collaboration 
   - Hands on: Using a Jupyter notebook to collaborate
