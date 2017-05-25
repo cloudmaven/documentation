@@ -129,8 +129,12 @@ collaborative tools and cloud-related elements of project management.
 
 
 - Costing II: The dollar-time tradeoff
+<<<<<<< HEAD
 
 
+=======
+- Other cloud services to make your life easier: Managed databases, logging/billing management
+>>>>>>> bd02e359b9accb7d305fcc4a5eb28e9464d08c6f
 - Closing remarks
   - Collaboration 
   - Hands on: Using a Jupyter notebook to collaborate
