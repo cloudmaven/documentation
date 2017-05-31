@@ -21,7 +21,7 @@ Research-centric mission; where we pivot to address cloud technology in the cont
 Attendees will learn what comprises the cloud both in terms of core technologies and considering peripheral 
 issues including cost management, data security, web frameworks, collaborative tools and cloud-related 
 elements of project management.  Further details on course material and related resources may be found at
-[http://https://cloudmaven.org/rc_Foster101.html](https://cloudmaven.org/rc_Foster101.html).
+[https://cloudmaven.github.io/documentation/rc_Foster101.html](https://cloudmaven.github.io/documentation/rc_Foster101.html).
 
 
 ---
