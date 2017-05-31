@@ -83,7 +83,7 @@ entries:
       output: web, pdf
 
     - title: Foster 101 
-      url: /rc_foster101.html
+      url: /rc_Foster101.html
       output: web, pdf
 
     - title: WRF Data Science Studio

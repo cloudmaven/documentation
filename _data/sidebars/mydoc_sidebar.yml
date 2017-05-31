@@ -110,6 +110,18 @@ entries:
       url: /rc_visualization_virtual_globes.html
       output: web, pdf
 
+    - title: Lightweight Data Systems
+      url: /rc_lightweight_data_systems.html
+      output: web, pdf
+
+  - title: Curriculum
+    output: web, pdf
+    folderitems:
+
+    - title: Jupyter for coursework
+      url: /rc_jupyter_for_coursework.html
+      output: web, pdf
+
   - title: AWS
     output: web, pdf
     folderitems:
