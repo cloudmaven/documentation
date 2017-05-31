@@ -242,6 +242,14 @@ entries:
       url: /g_walkthrough.html
       output: web, pdf
 
+    - title: App Engine
+      url: /g_app_engine.html
+      output: web, pdf
+
+    - title: BigQuery
+      url: /g_big_query.html
+      output: web, pdf
+
     - title: Compute Engine
       url: /g_compute_engine.html
       output: web, pdf
@@ -252,10 +260,6 @@ entries:
 
     - title: Earth Engine
       url: /g_earth_engine.html
-      output: web, pdf
-
-    - title: App Engine
-      url: /g_app_engine.html
       output: web, pdf
 
   - title: Cloud Case Studies
