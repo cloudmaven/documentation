@@ -10,8 +10,6 @@ folder: cc
 ---
 
 ## Introduction
-
-## Introduction
 The purpose of this glossary is to provide you a research-oriented guide to some of the common terms used in cloud computing.
 
 ## Links
@@ -28,11 +26,11 @@ become out of date.***
 
 ## Common Terms
 
-AWS: Amazon Web Services: The public cloud provided by Amazon
+Amazon Web Services (AWS): The public cloud provided by Amazon
 
-Microsoft Azure: The public cloud provided by Microsoft Corporation
+Microsoft Azure: The public cloud provided by Microsoft 
 
-Google Cloud Platform: The public cloud provided by Google
+Google Cloud Platform (GCP): The public cloud provided by Google
 
 IAM: Identity and Access Management
 
@@ -60,9 +58,9 @@ IAM: Identity and Access Management
 
 - API: Application Program Interface, an automated mechanism for exchanging information between two computers. 
 
-- API Gateway:
+- API Gateway: A service provided by AWS that supports data access via an API
 
-- Billing: kilroy
+- Billing: The process of tracking and breaking down cloud utility spending based on tagging assets.
 
 - Blob storage: A storage service entity on Azure.
 
@@ -148,7 +146,6 @@ for signals and respond. There is implicitly a multi-layered underlying infrastr
 - Third Party: A company or other entity -- but not a cloud provider -- which builds and provides something useful to you 
 (the first party) related to research computing and perhaps relevant to a cloud platform (provided by a second party). 
 Example: The PuTTY ssh application is third party software that facilitates connecting to cloud VMs on Windows.
-
 
 - Utility model: 
 
