@@ -251,6 +251,13 @@
             
             
             
+            
+            
+            <li><a href="cc_network.html">Network</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -284,6 +291,13 @@
             
             
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_Foster101.html">Foster 101</a></li>
             
             
             
@@ -326,6 +340,28 @@
             
             
             <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_lightweight_data_systems.html">Lightweight Data Systems</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Curriculum</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
             
             
             
@@ -545,6 +581,20 @@
             
             
             
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_big_query.html">BigQuery</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="g_compute_engine.html">Compute Engine</a></li>
             
             
@@ -564,13 +614,6 @@
             
             
             
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
-            
-            
-            
-            
         </ul>
         
         
@@ -578,6 +621,13 @@
     <li>
         <a href="#">Cloud Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="ccs_student_research.html">Student Research</a></li>
+            
+            
+            
             
             
             
@@ -824,8 +874,66 @@ cloud VM.</p>
 
 <p>The <strong>-i</strong> switch specifies an identity file (key pair access to the cloud VM).</p>
 
-<p>The <strong>-L</strong> switch in the command stands for <strong>Local</strong>.  As another example concerning 
-MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
+<p>The <strong>-L</strong> switch in the command stands for <strong>Local</strong>.</p>
+
+<h3 id="double-hop-into-a-private-subnet">Double hop into a private subnet</h3>
+
+<p>(kilroy this migrates to HIPAA)</p>
+
+<p>Suppose we want to work on an EC2 instance on a private subnet in a VPC. On that machine we have three tasks:</p>
+
+<ul>
+  <li>Make sure any updates are installed</li>
+  <li>Pull in data from an S3 bucket</li>
+  <li>Start a jupyter notebook (with browser disabled).</li>
+</ul>
+
+<p>We assume the files are already in place on the S3 bucket.</p>
+
+<p>From a starting point ‘laptop’ run PuTTY or ssh to reach the bastion server. From the bastion server:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bastion% sudo yum update
+bastion% ssh -i ec2_private_keypair.pem ec2-user@10.0.1.248
+</code></pre>
+</div>
+
+<p>This gets us to the command line on the private subnet EC2 instance. We proceed with the three steps given above.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ec2_private% sudo yum update
+
+&lt;diagnostic print outs&gt;
+
+ec2_private% aws configure
+
+(enter both public and private IAM User access keys; nothing else required)
+
+ec2_private% aws s3 cp s3://s3-bucket-name/filename1 .
+ec2_private% aws s3 cp s3://s3-bucket-name/filename2 .
+ec2_private% aws s3 cp s3://s3-bucket-name/filename3 .
+
+ec2_private% jupyter notebook --no-browser --port=7777
+</code></pre>
+</div>
+
+<p>On our local machine:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>laptop% host1=ec2-user@34.208.221.24
+laptop% host2=ec2-user@10.0.1.248
+laptop% ssh -i hipaa_bastion_keypair.pem -L 7777:localhost:7777 $host1 ssh -i hipaa_ec2_private_keypair.pem -L 7777:localhost:7777 -N $host2
+</code></pre>
+</div>
+
+<p>In our local browser address bar:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://localhost:7777
+</code></pre>
+</div>
+
+<p>This brings up the Jupyter notebook view from the machine on the private subnet.</p>
+
+<h3 id="mysql-connection">MySQL connection</h3>
+
+<p>As another example concerning MySQL database connections: Here is a paraphrased quote from an online ssh tutorial
 <a href="http://support.suso.com/supki/SSH_Tutorial_for_Linux">http://support.suso.com/supki/SSH_Tutorial_for_Linux</a>:</p>
 
 <blockquote>
@@ -987,7 +1095,7 @@ as an initialization step every time the notebook is restarted.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Mar 26, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jun 1, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

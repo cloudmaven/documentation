@@ -251,6 +251,13 @@
             
             
             
+            
+            
+            <li><a href="cc_network.html">Network</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -284,6 +291,13 @@
             
             
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_Foster101.html">Foster 101</a></li>
             
             
             
@@ -326,6 +340,28 @@
             
             
             <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_lightweight_data_systems.html">Lightweight Data Systems</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Curriculum</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
             
             
             
@@ -545,6 +581,20 @@
             
             
             
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_big_query.html">BigQuery</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="g_compute_engine.html">Compute Engine</a></li>
             
             
@@ -564,13 +614,6 @@
             
             
             
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
-            
-            
-            
-            
         </ul>
         
         
@@ -578,6 +621,13 @@
     <li>
         <a href="#">Cloud Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="ccs_student_research.html">Student Research</a></li>
+            
+            
+            
             
             
             
@@ -752,12 +802,14 @@ virtual servers; which are just computers available for you to use.</p>
   <li><a href="https://aws.amazon.com/efs/">Elastic File System</a></li>
   <li><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">AWS Security Groups</a></li>
   <li><a href="https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/">AWS training fundamentals</a></li>
+  <li><a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">AWS tagging strategies</a></li>
 </ul>
 
 <h2 id="warnings">Warnings</h2>
-<p><em>** There are two really important things to understand before you start using EC2 instances:
+<p><em>** There are three really important things to understand before you start using EC2 instances:
 1. Never place your access keys in a public repository such as GitHub.
-2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down.
+2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down. Even stopped EC2 instances with attached EBS volumes will cost you money!
+3. Learn to tag your resources to help cost management. 
 **</em></p>
 
 <h2 id="informal-introduction">Informal introduction</h2>
@@ -814,6 +866,16 @@ save money by using the Spot Market and it does not cover turning EC2 instances 
 when they are possibly doing something expensive. We’ll build all of this into these documentation pages; but the main point 
 of this page at the moment is Resources: The short list of items that you tend to build and associate with EC2 instances. 
 This includes AMIs, Snapshots, Key Pairs, and Elastic IPs.</p>
+
+<h2 id="tagging">Tagging</h2>
+<p>Tagging helps to manage and organize your AWS resources. <a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">This page</a> contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to <em>always</em> set the following tags when spinning up a new EC2 instance:</p>
+
+<ul>
+  <li>name: Name of your resource (e.g. cloudmavencompute)</li>
+  <li>owner: Owner of the resource or who provisioned the resource</li>
+  <li>project: For billing purposes or which project the resource belongs to</li>
+  <li>confidentiality: For data security reasons if necessary</li>
+</ul>
 
 <h2 id="making-an-ami">Making an AMI</h2>
 <p>An EC2 instance: We take as a given. (Although we don’t have down “Encrypted” but let’s just flag that with kilroy. Notice I 
@@ -872,9 +934,11 @@ crazy so let’s leave it there for now.</p>
 - …is an AMI ID.</p>
 
 <h3 id="snapshot-archaeology">Snapshot Archaeology</h3>
-<p>Suppose you have an old Snapshot and you are not sure what is on it; and if nothing you might want to delete it. 
-Now can you look at it? If the associated AMI is gone you can always create a Volume from the Snapshot, Attach the Volume to some other EC2 
-instance in the same Availability Zone, mount the Attached Volume and peruse the file system in the usual way.  Maybe your important data is still there!</p>
+
+<p>Suppose you have an old Snapshot and you are not sure what is on it; and if nothing you might want to 
+delete it.  Now can you look at it? If the associated AMI is gone you can always create a Volume from the 
+Snapshot, Attach the Volume to some other EC2 instance in the same Availability Zone, mount the 
+Attached Volume and peruse the file system in the usual way.  Maybe your important data is still there!</p>
 
 <p>Create the Volume from the Snapshot</p>
 
@@ -892,9 +956,10 @@ instance in the same Availability Zone, mount the Attached Volume and peruse the
 
 <p><img src="/documentation/images/aws/aws_ec20007.png" alt="ec20007" /></p>
 
-<p><strong>PRO TIP: When you create a Volume from a Snapshot make sure it is in the same Availabilty Zone (AZ) as the Instance that you intend 
-to attach it to. Failing to do so is a waste of time: You can’t attach a Volume in Oregon to an EC2 in Virginia. 
-In fact you can’t attach a Volume in Virginia 1-a to an EC2 in Virginia 1-b.  Virginia is a Region, 1-a is the Availability Zone.</strong></p>
+<p><strong>PRO TIP: When you create a Volume from a Snapshot make sure it is in the same Availabilty Zone (AZ) 
+as the Instance that you intend to attach it to. Failing to do so is a waste of time: You can’t attach 
+a Volume in Oregon to an EC2 in Virginia.  In fact you can’t attach a Volume in Virginia 1-a to an EC2 
+in Virginia 1-b.  Virginia is a Region, 1-a is the Availability Zone.</strong></p>
 
 <p><img src="/documentation/images/aws/aws_ec20008.png" alt="ec20008" /></p>
 
@@ -902,8 +967,8 @@ In fact you can’t attach a Volume in Virginia 1-a to an EC2 in Virginia 1-b.  
 
 <p><img src="/documentation/images/aws/aws_ec20009.png" alt="ec20009" /></p>
 
-<p>This finds a host, creates a VM, points to the associated storage all of this takes a few minutes but you can be impatient and see if 
-you can Attach the restored Snapshot Volume whenever you like.</p>
+<p>This finds a host, creates a VM, points to the associated storage all of this takes a few minutes but you 
+can be impatient and see if you can Attach the restored Snapshot Volume whenever you like.</p>
 
 <p><img src="/documentation/images/aws/aws_ec20010.png" alt="ec20010" /></p>
 
@@ -911,12 +976,12 @@ you can Attach the restored Snapshot Volume whenever you like.</p>
 
 <h2 id="mounting-the-attached-volume">Mounting the Attached Volume</h2>
 
-<p>To check if there is an attached volume, log on (ssh) onto your EC2 instance (Original recipe located 
-<a href="http://maplpro.blogspot.com/2012/05/how-to-mount-ebs-volume-into-ec2-ubuntu.html">here</a>.</p>
+<p>To check if there is an attached volume, log on (ssh) onto your EC2 instance. More information is <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html">here</a></p>
 
 <p>First see if it is attached with:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt; sudo fdisk -l
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt; lsblk
+
 Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
 </code></pre>
 </div>
@@ -946,15 +1011,31 @@ Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
 </code></pre>
 </div>
 
-<p>Make it mount automatically on system start</p>
+<p>Next, you will want to edit the fstab configuration file to have it mount automatically on reboot. Get the disk UUID. For example, for <em>/dev/xvdb</em>,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo file -s /dev/xvdb
+
+/dev/xvdb: Linux rev 1.0 ext4 filesystem data, UUID=07273928-caa9-4822-98b7-912e6eea4494 (needs journal recovery) (extents) (large files) (huge files)
+</code></pre>
+</div>
+
+<p>Next, edit the fstab configuration file. You will want to change the label of the root disk (usually called cloudimg-rootfs)</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;sudo vim  /etc/fstab
 </code></pre>
 </div>
 
-<p>Add:</p>
+<p>Modify to read for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>/dev/xvdc /data auto defaults,nobootwait 0 0
+<div class="highlighter-rouge"><pre class="highlight"><code>UUID=4573eb39-57f3-439b-9a73-8aef508afd3f       /        ext4   defaults,discard        0 0
+UUID=07273928-caa9-4822-98b7-912e6eea4494       /data   ext4    defaults,nofail         0 2
+</code></pre>
+</div>
+<p>Note the the UUID for my /data drive is the same as the UUID we obtained the <em>sudo file -s /dev/xvdb</em> command above!</p>
+
+<p>Check if there are errors in your /etc/fstab file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo mount -a
 </code></pre>
 </div>
 
@@ -1190,7 +1271,7 @@ access into say ftp.cloudmaven.org.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Mar 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 1, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

@@ -272,6 +272,12 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/cc_network.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/cc_technical.html</loc>
   </url>
   
@@ -301,10 +307,22 @@
   
   
   
+  <url>
+    <loc>http://idratherbewriting.com/ccs_student_research.html</loc>
+  </url>
+  
+  
+  
   
   
   <url>
     <loc>http://idratherbewriting.com/g_app_engine.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/g_big_query.html</loc>
   </url>
   
   
@@ -562,13 +580,13 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
   </url>
   
   
@@ -864,6 +882,12 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/rc_Foster101.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/rc_cloud101_immersion.html</loc>
   </url>
   
@@ -877,6 +901,12 @@
   
   <url>
     <loc>http://idratherbewriting.com/rc_github.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/rc_lightweight_data_systems.html</loc>
   </url>
   
   

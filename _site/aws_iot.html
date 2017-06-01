@@ -251,6 +251,13 @@
             
             
             
+            
+            
+            <li><a href="cc_network.html">Network</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -284,6 +291,13 @@
             
             
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_Foster101.html">Foster 101</a></li>
             
             
             
@@ -326,6 +340,28 @@
             
             
             <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_lightweight_data_systems.html">Lightweight Data Systems</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Curriculum</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
             
             
             
@@ -545,6 +581,20 @@
             
             
             
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_big_query.html">BigQuery</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="g_compute_engine.html">Compute Engine</a></li>
             
             
@@ -564,13 +614,6 @@
             
             
             
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
-            
-            
-            
-            
         </ul>
         
         
@@ -578,6 +621,13 @@
     <li>
         <a href="#">Cloud Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="ccs_student_research.html">Student Research</a></li>
+            
+            
+            
             
             
             
@@ -737,9 +787,80 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h1 id="iot">IoT</h1>
+  <h2 id="introduction">Introduction</h2>
 
-<p>IoT experiment with Arduino Yun</p>
+<p>This page provides a template for registering and operating an IOT device – specifically an
+Arduino Yun – on a university WiFi network in relation to the AWS public cloud. Operation 
+includes both recording sensor data and actuation of a small light. The operational scenario 
+is described in more detail below.  We are implementing our example at the University of 
+Washington in Seattle. If you are working elsewhere you may benefit by getting in touch
+with your local IT management organization.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="http://aws.amazon.com/cli">The AWS CLI</a></li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<ul>
+  <li>Diaspora: A term adopted informally here to indicate a distribution and/or dispersion of 
+IOT devices. ‘Where all the devices are located’ often changes over time since transportation 
+is a common IOT theme.</li>
+  <li>IOT: Internet of Things, the realm of embedded devices (including smart phones) that interact
+in some way with a larger ensemble of electronics, people and the environment. While IOT emphasis
+is easily placed on the devices we are interested here primarily in the cloud aspect of the story; 
+specifically how to place intelligent data management in the cloud in support of an IOT diaspora.</li>
+  <li>CLI: The Command Line Interface for AWS, typically installed on an AWS EC2 instance and/or
+your computer depending on where you need to work. The CLI operates remotely to effect 
+changes and read states on the AWS cloud.</li>
+</ul>
+
+<h2 id="admonitions">Admonitions</h2>
+
+<ul>
+  <li><strong><em>IOT devices are vulnerable to failure in three senses. First they are susceptible to operational
+failure owing to the difficulties in getting bespoke (‘one-off’) prototype hardware to work reliably
+outside of the lab. Second they are susceptible to being undermined by people with malicious intent.
+Third they can produce spurious signals that are mistakenly interpreted as accurate.</em></strong></li>
+</ul>
+
+<h2 id="part-1-scenario">Part 1. Scenario</h2>
+
+<p>Two Arduino Yun devices are powered up, sitting adjacent to one another on a desktop. 
+Each has a light sensor and a laser diode. The laser diodes are aimed at the other Yun’s 
+light sensor. The objective is to set up a game of ping pong between the two Yuns.</p>
+
+<ul>
+  <li>First Yun turns on its laser diode</li>
+  <li>Second Yun measures an increase in its light sensor</li>
+  <li>Second Yun sends a <em>BRIGHT</em> signal to an AWS IOT Endpoint</li>
+  <li>AWS notifies First Yun that Second Yun is in state BRIGHT</li>
+  <li>First Yun turns off its laser diode</li>
+  <li>Second Yun measures a decrease in its light sensor</li>
+  <li>Second Yun turns on <em>its</em> laser diode</li>
+  <li>First Yun registers this in <em>its</em> sensor and sends a <em>BRIGHT</em> signal to AWS</li>
+  <li>AWS notifies Second Yun</li>
+  <li>Second Yun turns off its laser diode</li>
+  <li>…and so on…</li>
+</ul>
+
+<h2 id="part-2-procedural">Part 2. Procedural</h2>
+
+<ul>
+  <li>Install the AWS CLI per the instructions at http://aws.amazon.com/cli</li>
+  <li>Set up a REST API endpoint on AWS for the IOT devices to use
+    <ul>
+      <li>Need a little more detail here Kilroy</li>
+    </ul>
+  </li>
+  <li>Visit YouTube and search on AWS IOT to identify instructional material suited to your project.
+    <ul>
+      <li>You can certainly continue with this tutorial but we suggest checking online</li>
+    </ul>
+  </li>
+</ul>
 
 
 
@@ -773,7 +894,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Mar 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 1, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

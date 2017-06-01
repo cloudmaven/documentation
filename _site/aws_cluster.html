@@ -251,6 +251,13 @@
             
             
             
+            
+            
+            <li><a href="cc_network.html">Network</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -284,6 +291,13 @@
             
             
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_Foster101.html">Foster 101</a></li>
             
             
             
@@ -326,6 +340,28 @@
             
             
             <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_lightweight_data_systems.html">Lightweight Data Systems</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Curriculum</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
             
             
             
@@ -545,6 +581,20 @@
             
             
             
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_big_query.html">BigQuery</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="g_compute_engine.html">Compute Engine</a></li>
             
             
@@ -564,13 +614,6 @@
             
             
             
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
-            
-            
-            
-            
         </ul>
         
         
@@ -578,6 +621,13 @@
     <li>
         <a href="#">Cloud Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="ccs_student_research.html">Student Research</a></li>
+            
+            
+            
             
             
             
@@ -739,12 +789,206 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="introduction">Introduction</h2>
 
-<p>The purpose of this page is to overview the use of cluster computing on the AWS public cloud.</p>
+<p>This page runs through a build of a compute cluster on the AWS public cloud.</p>
 
 <h2 id="links">Links</h2>
-<p>Download the original instructional PDF <a href="/documentation/pdf/Doc41_AWSCloudFormationNetworkClusterBasics.pdf">here</a>.</p>
 
 <h2 id="warnings">Warnings</h2>
+
+<ul>
+  <li><strong><em>Some content here presumes use of other pages, e.g. <a href="aws_ec2.html">EC2 instances on AWS</a></em></strong></li>
+  <li><strong><em>Assumed: You have a properly sanitized AWS account</em></strong></li>
+  <li><em>**Assumed: You have an IAM User credential file giving both your public and private ID
+placed in a secure location (</em>never* on an open repo like GitHub!) ***</li>
+</ul>
+
+<h2 id="lets-begin">Let’s Begin</h2>
+
+<h3 id="important-vocabulary">important vocabulary</h3>
+
+<ul>
+  <li>PIT: Project Identifier Tag, a unique string you designate like ‘himat’</li>
+  <li>queue: A stack of jobs</li>
+  <li>Master: A VM charged with managing a cluster</li>
+  <li>Worker: A VM charged with executing sub-processes</li>
+  <li>Scheduler: Software that starts sub-processes within a compute task
+    <ul>
+      <li>Includes SLURM, Torque, OpenLava and SGE (which we use here)</li>
+    </ul>
+  </li>
+  <li>qsub: (Linux) submit a job to a processing queue</li>
+  <li>qstat: (Linux) get queue status</li>
+  <li>qdel: (Linux) delete a job from the queue</li>
+  <li>host: List Worker nodes</li>
+  <li>IAM User Keys: AWS Access Key ID, AWS Secret Access Key ID</li>
+</ul>
+
+<h3 id="strategy">Strategy</h3>
+
+<p>These steps depend upon some pre-configuration, already done for you prior to the class. 
+Specifically we created a Virtual Private Cloud with a public subnet for this exercise. 
+We created an associated Internet Gateway and a Security Group. The latter permits ssh 
+in from <em>any</em> location on the internet, so in passing this is not best practice because 
+your work is visible from anywhere.</p>
+
+<p>In what follows you will want to have a Project Identifer Tag or PIT handy. This is just 
+a short ID string that you will use to tag everything you create. Mine for example might 
+be ‘Basie’ because I like the music of Count Basie. In what follows when you see either 
+‘PIT’ or possibly ‘Basie’ you should substitute your own string. In this way everyone 
+can proceed on parallel tracks.</p>
+
+<p>Our strategy is fairly simple here:</p>
+
+<ol>
+  <li>Start up a manager machine on AWS</li>
+  <li>Log in to this machine as ‘ec2-user’ using ssh</li>
+  <li>Update this machine, install cfncluster software and create a cluster called PIT0</li>
+  <li>Turn to the CloudFormation service on the AWS console to monitor your progress</li>
+  <li></li>
+</ol>
+
+<ul>
+  <li>Autoscale group</li>
+  <li>Cloud Formation service</li>
+  <li>Cloud Watch service</li>
+  <li>Simple Notification Service</li>
+  <li>EC2 instance: Launcher with <em>cfncluster</em> installed</li>
+  <li>cfncluster creates a cluster that includes…
+    <ul>
+      <li>An EC2 Master instance
+        <ul>
+          <li>Recognizes Worker EC2 instances as they are <em>added</em> to the resource pool</li>
+          <li>Has some memory</li>
+          <li>Includes task software</li>
+          <li>Shell script to launch multiple jobs to the SGE processing queue</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="create-an-ec2-instance-cfncluster-launcher">Create an EC2 instance cfncluster Launcher</h3>
+
+<ul>
+  <li>Refer to the <a href="aws_ec2.html">EC2 page here</a></li>
+  <li>It will be the ‘base of operations’ for the compute task
+    <ul>
+      <li>Give it a PIT name like ‘rob101_Launcher’</li>
+      <li>It can be small and cheap to operate, for example a <strong>T2.micro</strong>.</li>
+    </ul>
+  </li>
+  <li>Choose the Amazon Linux AMI
+    <ul>
+      <li>This has AWS tools already installed; but we will update and install cfncluster</li>
+    </ul>
+  </li>
+  <li>The default EBS volume is fine but could be expanded as needed per data</li>
+  <li>We will place everything in a single Region/AZ/etceter
+    <ul>
+      <li>Region = us-west-2 (Oregon)</li>
+      <li>AZ = Zone C</li>
+      <li>VPC = Virtual Private Cloud cloud101_vpc</li>
+      <li>Subnet = cloud101_public_subnet</li>
+      <li>Internet Gateway = … kilroy</li>
+      <li>Route Table entries … kilroy</li>
+      <li>Security Group = cloud101_securitygroup (ssh allowed from anywhere: ‘hi risk’)</li>
+    </ul>
+  </li>
+  <li>Review and launch
+    <ul>
+      <li>Download a new key pair</li>
+      <li>You can use an existing key pair as well; be sure you have it on hand
+        <ul>
+          <li>This will be a ‘.pem’ file extension.
+            <ul>
+              <li>If you are Windows using PuTTY you will need to convert to a .ppk file format</li>
+              <li>This is done using the PuTTYGen application</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Once it spins up (green dot, ip address present) ssh to this EC2 as ec2-user</li>
+</ul>
+
+<p>Notice that the VPC and so on already exist: Preliminary spadework we are sparing you in this
+course.</p>
+
+<h3 id="log-in-and-configure-the-launcher">Log in and configure the Launcher</h3>
+
+<p>You should now be able to log in to your cfncluster Launcher using ssh (or PuTTY on Windows)
+where your login name is ‘ec2-user’. You do not enter a password as you are using your .pem
+(or .ppk) file to authenticate.</p>
+
+<p>Once logged in you will update your machine, install the cfncluster tools, configure 
+cfncluster and create a new named cluster. This in turn will lead to the last steps to 
+run a large-scale compute task.</p>
+
+<p>On your EC2 Launcher:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo yum update
+sudo pip install cfncluster
+sudo pip install --upgrade cfncluster
+cfncluster configure
+</code></pre>
+</div>
+
+<p>Running <em>configure</em> will produce a config file within the .cfncluster directory in your home
+directory. (Use ‘ls -al’ to see that this exists.) A good way to get the configure steps 
+correct is to follow the details at 
+a web page like <a href="http://cfncluster.readthedocs.io/en/latest/getting_started.html">this one</a>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cfncluster create PIT0
+</code></pre>
+</div>
+
+<p>The cluster you create includes a head node. By default this will be a small EC2 instance (T2). 
+On the AWS console in your browser you can monitor your progress</p>
+
+<h4 id="a-worker-program">A Worker program</h4>
+
+<p>This C code performs part of a Fourier transform on a simple dataset. In ensemble</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// fourier.c performs a simple Fourier transform of a small data vector
+//   This is intended as a fast but non-trivial compute task.
+//     Signal = a Gaussian envelope x sine wave with about 10 cycles
+//     FT: i is the i'th term of the FT; a_i is the coefficient, complex 
+//     a_i = Sum over n running 0 to N-1 of x_n * CE
+//     CE is a complex exponential e^{ -2 * pi * i * k * n / N }
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#define MAX_N 32768
+void main(int argc, char **argv)
+{
+    if (argc &lt; 3) { printf("\nfourier N i: i'th coeff of an N-element signal\n\n\n"); exit(0); }
+    int N = atoi(argv[1]); 
+    int i = atoi(argv[2]);          printf("\nSignal length %d, term %d.\n\n", N, i);
+    if (N &lt; 0 || N &gt; MAX_N || i &lt; 0 || i &gt;= N) { exit(0); }
+    double s[MAX_N], ar = 0.0, ai = 0.0, pi = acos(-1.0), dN = (double)N, di = (double)i;
+    double dShft = (double)(N/2), dScl = (2.0*pi*5.0)/dShft, dGScl = 2.0/dShft;
+    for (int n = 0; n &lt; N; n++) {             // signal generator block
+        double dn = (double)n;                  // convert index to a floating point value
+	double x = (dn - dShft) * dScl;         // ... to a number on [-5 * 2pi, 5 * 2pi]
+	double xg = (dn - dShft) * dGScl;       // ... also to a number on [-2, 2]
+	double g = exp(-xg*xg);                 // ... and get the Gaussian of the latter
+	double m = sin(x);                      // ... and the sine of the former
+	s[n] = g*m;                             // ... and compile their product into the signal vector s[]
+	// printf ("%d,%lf\n"n, s[n]);
+    }
+    for (int n = 0; n &lt; N; n++) {             // FT block
+        double dn = (double)n;                //   dn is the sum index
+        double exp_arg = -2.0*pi*(dn/dN)*di;  //   argument of the exponential
+	double real_n = cos(exp_arg);         //   real component of the exponential
+	double imag_n = sin(exp_arg);         //   imag component of the exponential
+        ar += s[n]*real_n;                    //   accumulate
+	ai += s[n]*imag_n;                    //      "
+    }
+    printf ("\n\ncoefficient %d = (%lf, %lf).\n\n\n"), i, ar, ai); exit(0);
+}
+</code></pre>
+</div>
 
 
 
@@ -786,7 +1030,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Mar 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 1, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>
