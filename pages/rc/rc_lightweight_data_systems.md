@@ -64,7 +64,7 @@ Our toolbox includes
   - But Bill's point is to start a project by working at the **Integration** piece... don't leave that for later
 
 
-![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.jpg)
+![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png)
 
 
 
