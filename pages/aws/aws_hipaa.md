@@ -9,6 +9,26 @@ permalink: aws_hipaa.html
 folder: aws
 ---
 
+## Encryption
+New Linux instances should have Gnupg installed, otherwise use:
+
+```bash
+sudo apt install gpg 
+```
+
+To encrypt
+```bash
+$ gpg -c filename
+```
+Output: 
+
+> Enter passphrase:
+> Enter passphrase again:
+
+To decrypt 
+```bash
+$ gpg filename.gpg
+```
 
 ## Introduction
 
