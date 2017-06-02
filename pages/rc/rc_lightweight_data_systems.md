@@ -34,10 +34,130 @@ Our toolbox includes
 - [Our page on GitHub](http://github.com)
 
 
-## Warnings
+
+## Some organizing ideas
 
 
-## Images of interest
+### Abstract?
+
+
+We describe here a process of creating a data system within a research program which is implicitly about sharing, collaboration, 
+reproducibility, and accelerated pace in data-driven science. This thesis is part of a shift in emphasis that borrows heavily from 
+both commercial and open software development paradigms that we trace to one central idea: The lifespan and value of data are not 
+intrinsically known at the outset (owing to the very nature of research) but in fact are commonly undervalued in traditional approaches 
+to data curation.  There are several instructive contrasts between success criteria in research software development versus commercial 
+software development versus open software development.  Here we borrow from these contrasts to illustrate the cultural and technical 
+shift necessary to accomplish the normative assertion that the value of data can be better realized through the cultural shift of 
+changing practices.  The research program has traditionally had as its end goal a peer-reviewed publication and this has contributed 
+to the de facto conservative life expectancy of source data. The following postulates are the basis for the lightweight data system
+framework presented here:
+
+
+- Data-driven research can be roughly divided into exploratory and perfunctory tasks
+- Open source solutions are built by software developers to solve common problems in a robust manner
+- Open source solutions have lifespans related to their degree of success and usefulness
+- Commercial software development is rigorous owing to the cost of failure
+- Commercial software development is commonly managed by non-developers who perform important supporting tasks
+- The public cloud is globally available as a powerful low-cost computing platform
+- Each research domain has its own idiosyncratic formats, practices and tools
+- Within and often across research domains -- despite idiosyncracies -- common objectives emerge in service to both perfunctory and exploratory tasks
+- Time is a research group's primary and most valuable commodity; followed by qualified people; followed by funding
+- The Scutero principle: Given the primacy of time: Never build any more than is absolutely necessary
+  - Corollary: Work from design patterns 
+  - Corollary: Be prepared to invest time learning what 'minimum necessary' actually is
+  - Corollary: Design patterns are one step from cookbook recipes; which can reduce development time
+- We Howe principle:  The Pyramid of human stability has a data-driven research analog which we develop and invert as follows
+  - Base: Storage 
+  - Upon the base: Sharing data
+  - Upon sharing: Query
+  - Upon query: Analytics
+  - Upon analytics: Integration
+  - Inversion: **Integration** from the outset is a project management strategy
+    - Integration means making the connectivity between various moving parts of a project work together
+      - The concept arose over countless failures where these interfaces generated friction 
+      - Integration amounts to devoting careful thought to what the end result looks like, how it functions
+      - Integration often involves two important human considerations: Use cases and stakeholders
+      - The positive admonition would be 'Ignore integration at your peril'
+
+
+- Any domain can generate a data to technology mapping that describes building a LWDS
+  - Our emphasis here has been on geosciences
+  - We might expand this paper to include genomics and something like neuroimagng
+  - Regardless: We claim to cover only a fraction of the domain detail
+    - With the idea that 'well begun is half done'
+
+
+![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png)
+
+
+### From the photos... some text
+
+- Creating a data resource for 2 groups is equivalent to creating a data resource for 10,000 groups (on the cloud)
+- Terms to review and incorporate include
+  - Scale
+    - Micro-LWDS?
+    - Small: SQLShare
+    - Small: Geotraces
+    - Large: Heidi Sosik
+    - Large: Ameriflux
+    - National: NASA DAACs
+    - Meta: Earthcube
+  - Archtypes
+    - ftp files!
+    - scp files!
+    - SQL Share
+    - Myria
+    - Don't even think about Sharepoint
+    - GitHub 
+    - Heidi Sosik at WHOI: Flow cytometry images
+    - Jupyter
+    - What is the history of MODIS?
+  - Civilized?!
+    - GINA
+    - Ice2Ocean
+    - LiveOcean
+    - OOI...
+    - IOOS
+    - NOAA
+    - USGS cf Katherine Kuhn
+    - EPA STORET
+    - USDA
+    - NEON
+    - Ameriflux
+    - R2R (L-D)
+    - L-D Directories, GeoLink
+    - BCO DMO
+    - NSIDC
+    - Various approaches to ARGO
+  - Wild West?!
+    - JGI (Genomics) 
+    - BLAST (as a tool) genes? proteins? 
+    - CINERGI out of EarthCube (UCSD)
+    - GEOSS as a Meta Organization
+    - DOM at WHOI
+    - Geometabolimics Data Systems (GDS) Rob's system for DOM
+    - GEOTRACES
+    - Harmonized world soil database
+    - FetchClimate???
+    - GEOLINK (authority tracking notification)
+    - David Shean's greatest hits
+    - ESIP as a Meta Organization
+
+### Triage
+
+- The interview
+- Who are you? 
+- What data problem are you trying to solve?
+- What impact are you trying to have on your community? 
+- What are your use cases?
+- Who are your producers?
+- Your consumers? 
+- Your dependencies? 
+- Your data formats? 
+- Your data types? 
+- And so on
+
+### Old images
 
 
 ![LWDS resource image 1](/documentation/images/rc/rc_lwds001_pyramid.jpg)
@@ -46,25 +166,6 @@ Our toolbox includes
 ![LWDS resource image 4](/documentation/images/rc/rc_lwds004_overview2.jpg)
 ![LWDS resource image 5](/documentation/images/rc/rc_lwds005_overview3.jpg)
 ![LWDS resource image 6](/documentation/images/rc/rc_lwds006_thought_experiment.jpg)
-
-
-## Some organizing ideas
-
-
-- Any domain can generate a data~technology map that describes building a LWDS
-- We adopt the Scutero principle after Joe Scutero: Never build one bit more than you need
-  - Joe also advocates providing design patterns rather than canned solutions
-  - We see advantages to canned solutions (recipes) as well
-- We adopt the Howe principle after Bill Howe: Pyramid of data science has...
-  - Integration
-  - Analytics
-  - Query
-  - Sharing
-  - Storage
-  - But Bill's point is to start a project by working at the **Integration** piece... don't leave that for later
-
-
-![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png)
 
 
 

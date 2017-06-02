@@ -9,27 +9,6 @@ permalink: aws_hipaa.html
 folder: aws
 ---
 
-## Encryption
-New Linux instances should have Gnupg installed, otherwise use:
-
-```bash
-sudo apt install gpg 
-```
-
-To encrypt
-```bash
-$ gpg -c filename
-```
-Output: 
-
-> Enter passphrase:
-> Enter passphrase again:
-
-To decrypt 
-```bash
-$ gpg filename.gpg
-```
-
 ## Introduction
 
 
@@ -711,6 +690,42 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
 #### Building a work environment EC2 instance on **Sprivate**
 
 - On **Sprivate** install a small Dedicated EC2 instance **E**
+
+#### Encrypting the key to the private subnet instance
+
+New Linux instances should have Gnupg installed, otherwise use:
+
+```bash
+sudo apt install gpg 
+```
+
+To encrypt
+
+```bash
+$ gpg -c filename
+```
+
+
+Output: 
+
+
+> Enter passphrase:
+> Enter passphrase again:
+
+
+To decrypt 
+```bash
+$ gpg filename.gpg
+```
+
+Now you have a mechanism for encrypting access to your private subnet instance on the bastion. There 
+are two considerations that follow: 
+
+- The private subnet instance key should be set aside in a secure location by the admin building 
+the system so that corruption of the key does not make the instance completely inaccessible.
+- The private subnet instance key on the bastion should be regularly encrypted so that a breach
+of the bastion does not grant the black hat access to the private instance.
+
 
 ### 1E. Server side encryption S3 bucket
 

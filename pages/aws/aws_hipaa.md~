@@ -9,6 +9,26 @@ permalink: aws_hipaa.html
 folder: aws
 ---
 
+## Encryption
+New Linux instances should have Gnupg installed, otherwise use:
+
+```bash
+sudo apt install gpg 
+```
+
+To encrypt
+```bash
+$ gpg -c filename
+```
+Output: 
+
+> Enter passphrase:
+> Enter passphrase again:
+
+To decrypt 
+```bash
+$ gpg filename.gpg
+```
 
 ## Introduction
 
@@ -465,16 +485,6 @@ it must be an allowed DNS name that does not conflict with any existing S3 bucke
 across the entire AWS cloud.
 
 
-#### Intermezzo: 30 Screencaps: Need to be interspersed (kilroy)
-
-
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0029.png)29
-![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0030.png)30
-
-
-#### To continue...
-
-
 - From the console create a new VPC **V**
 
 
@@ -641,11 +651,9 @@ the internet. This *does* accept inbound traffic allowing us to ssh in. This is 
 to the default.
 
 
-### 1C: Adding EC2 and S3 resources to the VPC
+### 1C S3 buckets and EC2 
 
-#### S3 buckets
-
-##### S3 Encryption policy
+#### S3 Encryption policy
 
 We create new S3 buckets associated with projects and assign them a Policy to ensure that
 Server-side encryption is requested by anyone attempting to upload data. This ensures the 
@@ -657,7 +665,12 @@ data will be encrypted when it comes to rest in the bucket.
 
 ![AWS HIPAA encryption bucket policy screencap](/documentation/images/aws/hipaa0031.png))
 
-##### S3 Endpoints
+
+#### S3 Endpoints
+
+
+![S3 endpoint 1 of 2](/documentation/images/aws/hipaa0029.png)29
+![S3 endpoint 2 of 2](/documentation/images/aws/hipaa0030.png)30
 
 An S3 Endpoint is routing information associated with the VPC.  S3 access from the VPC should not go through 
 the public internet; and this routing information ensures that. The S3 Endpoint is not subsequently invoked; 
