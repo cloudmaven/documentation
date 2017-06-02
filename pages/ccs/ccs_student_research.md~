@@ -11,6 +11,7 @@ folder: ccs
 
 ## Introduction 
 
+
 The purpose of this page is to describe student research on the public cloud as implemented at the University of Washington.
 The project was initiated from the High Performance Computing Club with initial support from the Student Technology Fee Committee
 and with a generous research credit grant from Amazon Web Services.
@@ -18,8 +19,26 @@ and with a generous research credit grant from Amazon Web Services.
 
 ## Links
 
+
 - [Configuring the account to allow IAM Users to track billing](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html?icmpid=docs_iam_console#tutorial-billing-step2)
 
+
+## For Administrators
+
+
+### Adding a new user
+
+
+UW-specific instructions...
+
+
+- Go to https://groups.uw.edu/
+- At the top click on My Groups
+- Click on hpccloud_student_group
+- Click on Membership
+- In the appropriate box add the new NetID (no at extension)
+- Click Do It
+- Invite them to log in at [this link](https://idp.u.washington.edu/idp/profile/SAML2/Unsolicited/SSO?providerId=urn:amazon:webservices)
 
 
 ## Account management guidelines

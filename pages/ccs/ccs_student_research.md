@@ -25,6 +25,11 @@ and with a generous research credit grant from Amazon Web Services.
 
 ## For Administrators
 
+- Someone has requested an increase in p2.xlarge quota which was granted
+  - "We've approved and processed your EC2 Instances p2.xlarge limit increase request for the US East region; your new limit is 10."
+- NetID authentication is presenting IAM challenges and we have resorted to granting IAM User admin access
+  - This should be reviewed with the AWS SA soonest opportunity
+
 
 ### Adding a new user
 

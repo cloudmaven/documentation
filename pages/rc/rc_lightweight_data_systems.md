@@ -38,6 +38,9 @@ Our toolbox includes
 ## Some organizing ideas
 
 
+![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png)
+
+
 ### Abstract?
 
 
@@ -87,7 +90,62 @@ framework presented here:
     - With the idea that 'well begun is half done'
 
 
-![LWDS data sharing geospatial context](/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png)
+### Geospatial domain 
+
+
+
+### Genomics domain
+
+
+#### Researcher remarks
+
+- GCP as interesting alternative to AWS
+  - particularly impressed by Google Genomics
+    - ISB is a great resource for supporting end-user efforts. (see kilroy email thread for details)
+  - + on Google Cloud console and cost estimator tool 
+  - Delta? Big Query ~ Big Table
+    - Iinitial efforts led to a very expensive outer join in Big Query > free tier 
+      - (which was good: it was a very sub-optimal query
+    - Based on conversation with Google solution architect: 
+      - Big Table requires about $1000/month of infrastructure
+      - ? not a clear on-ramp for testing it out at a small scale before ramping up 
+        - particularly for someone with limited experience with NOSQL
+
+#### Research project
+
+
+- [TOPMed project](https://www.nhlbiwgs.org)
+  - Aggregating whole genome sequence data from many people across multiple studies 
+  - Goal: Use this aggregated data to enable statistical analysis to search for associations between genetic variants and phenotypes (including common diseases) that arise from complex genetic interactions.
+  - When an individual's genome is sequenced new variants are observed and added to a list of "variants we've observed in TOPMed". 
+  - We currently have about 200e6 such variants; <500e6+>
+- With collaborator XL: Annotate each of those variants with about 1,000 descriptors. 
+  - XL has built a tool called [WGSA](https://sites.google.com/site/jpopgen/wgsa) 
+    - Includes annotation for all the possible 8,584,031,106 human single nucleotide variants.
+      - WGSA uses the Hg19 reference build of the human genome 
+      - 2,897,310,462 annotated bases [details](http://genomewiki.ucsc.edu/index.php/Hg19_Genome_size_statistics) 
+      - 2,897,310,462 * 3 = 8,691,931,386. 
+      - Looks like Hg19 includes 239,850,802 **N** bases, which are "unknown bases in the assembly marked by **N**". 
+  - The first expensive operation is intersect our 200e6 variants with the XL list of 8,584,031,106 potential variants 
+    - Retrieve a set of annotation for the TOPMed variants. 
+    - Currently, XL does this on AWS or his local infrastructure
+    - days to weeks 
+    - Ref conversation with SM and Scripps about incorporating WGSA resource into the myvariant.info webapp (also on AWS) 
+      - Backed by a mongodb and elasticsearch with a scaleable python/tornado front end
+  - Next expensive operation would be to aggregate variants from the TOPMed-specific list by filtering WGSA results by field. 
+    - For example: Define a set of about 40,000 genomic ranges that define *genes*. 
+    - I might want a list of all the variants in TOPMed studies that fall within each of those 40,000 ranges.
+  - Currently WGSA annotation results from XL are a set of large .gz tab-delim text files (one per chromosome). 
+    - Parse these files and import them into an unoptimized mysql database > do a join as described above, prohibitively slow 
+      - The import takes on the order of a week per chromosome (could be parallelized)
+      - Using a stored procedure can get the variants-by-gene list for a single chromosome in about 20 minutes.
+  - This approach is currently plagued with perf bottlenecks and *will not scale* any further 
+- Ideal path: Build an infrastructure like myvariant.info that will currently require 
+  - parsing the text to JSON
+  - import to a NOSQL document store 
+  - index it
+  - perform queries on it 
+
 
 
 ### From the photos... some text
