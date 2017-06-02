@@ -82,6 +82,11 @@ framework presented here:
       - Integration often involves two important human considerations: Use cases and stakeholders
       - The positive admonition would be 'Ignore integration at your peril'
 
+- Execution as artifact (not part of the original meeting)
+  - We can now create Docker images, AMIs, Kubernetes etc etc that preserve execution environments with data
+  - The Lightweight version of this is some form of Jupyter but it can be extended to heavy lifting 
+  - It would be good to indicate a cost order of magnitude for this as well 
+
 
 - Any domain can generate a data to technology mapping that describes building a LWDS
   - Our emphasis here has been on geosciences
