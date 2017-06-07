@@ -35,7 +35,7 @@
   - LH recollection: A's cases were small so only about 72 processes are required 
     - two c4.8xlarges, with hyperthreading turned on -- or four if it is turned off
   - Revised: 9e6 cells / 50k = 180 processors; so 4-5 c4.8xl
-  - I checked the config file and it didn’t have placement groups so suggest a new cfncluster is needed
+  - I checked the config file and it didn't have placement groups so suggest a new cfncluster is needed
  
-- Also running starccm+ with a batch or qsub file is documented in **The Steve’s portal** (starccm+ website). 
+- Also running starccm+ with a batch or qsub file is documented in **The Steve portal** (starccm+ website). 
   - AWS does not generally have access to The Steve Portal so no recommended practices 
