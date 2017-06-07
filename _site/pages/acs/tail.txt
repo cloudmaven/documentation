@@ -1,0 +1,41 @@
+
+
+- We will be using resource tagging per HPC Club cloud policy
+  - Please see [this link](https://cloudmaven.github.io/documentation/ccs_student_research.html)
+  - Each resource whether generated manually or automatically has a Project tag: Your UW NetID (not the @ part)
+  - Also add a 'End_date' tag
+  - Also add a 'Name' tag with netID_resource_purpose as the value field
+
+- Central importance: Use Spot market
+ 
+- AB can walk through most of this
+
+- Until we figure out the plan better: You can authenticate with a NetID but we also grant admin access for IAM Role config work
+
+- Create a cfncluster with a placement group
+
+- disable hyperthreading if desired (not critical). 
+  - This requires a config file and a post_install_script. (sent but may need to re-create)
+
+- There is a cfncluster tutorial that can be helpful. (see email chain for links). 
+ 
+- Install starccm+ on the shared volume and set up the license
+  - There has been an execution problem; A is making progress on this
+  - Please send Rob a confirmation this is working
+
+- Create a snapshot of the volume (for the next cluster).
+ 
+- create a qsub file and launch
+  - The qsub file is created from starccm+ documentation
+  - AWS does not generally know best practices for the individual software packages 
+  - Therefore get this file from siemmens; and/or email backlog; please send to Rob
+ 
+- number of processes requested (and hence the number of instances requested) depends on the number of gridcells in the CFD calculation 
+  - LH targets about 50,000 cells per process. 
+  - LH recollection: A's cases were small so only about 72 processes are required 
+    - two c4.8xlarges, with hyperthreading turned on -- or four if it is turned off
+  - Revised: 9e6 cells / 50k = 180 processors; so 4-5 c4.8xl
+  - I checked the config file and it didn’t have placement groups so suggest a new cfncluster is needed
+ 
+- Also running starccm+ with a batch or qsub file is documented in **The Steve’s portal** (starccm+ website). 
+  - AWS does not generally have access to The Steve Portal so no recommended practices 

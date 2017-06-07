@@ -37,6 +37,23 @@
 
 <link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
 
+    <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>AWS HIPAA</title>
+<meta property="og:title" content="AWS HIPAA" />
+<meta name="description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
+<meta property="og:description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
+<link rel="canonical" href="http://idratherbewriting.com/aws_hipaa.html" />
+<meta property="og:url" content="http://idratherbewriting.com/aws_hipaa.html" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "headline": "AWS HIPAA",
+    "description": "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.",
+    "url": "http://idratherbewriting.com/aws_hipaa.html"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -787,30 +804,7 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="encryption">Encryption</h2>
-<p>New Linux instances should have Gnupg installed, otherwise use:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt install gpg 
-</code></pre>
-</div>
-
-<p>To encrypt
-<code class="highlighter-rouge">bash
-$ gpg -c filename
-</code>
-Output:</p>
-
-<blockquote>
-  <p>Enter passphrase:
-Enter passphrase again:</p>
-</blockquote>
-
-<p>To decrypt 
-<code class="highlighter-rouge">bash
-$ gpg filename.gpg
-</code></p>
-
-<h2 id="introduction">Introduction</h2>
+  <h2 id="introduction">Introduction</h2>
 
 <p><a href="aws_hipaa.html">This document</a> presents a secure data management system motivated 
 by the need to manage data securely in the public cloud. We take more specific motivation 
@@ -1684,6 +1678,42 @@ it is simply infrastructure. For example an EC2 instance might access an S3 buck
   <li>On <strong>Sprivate</strong> install a small Dedicated EC2 instance <strong>E</strong></li>
 </ul>
 
+<h4 id="encrypting-the-key-to-the-private-subnet-instance">Encrypting the key to the private subnet instance</h4>
+
+<p>New Linux instances should have Gnupg installed, otherwise use:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt install gpg 
+</code></pre>
+</div>
+
+<p>To encrypt</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>gpg -c filename
+</code></pre>
+</div>
+
+<p>Output:</p>
+
+<blockquote>
+  <p>Enter passphrase:
+Enter passphrase again:</p>
+</blockquote>
+
+<p>To decrypt 
+<code class="highlighter-rouge">bash
+$ gpg filename.gpg
+</code></p>
+
+<p>Now you have a mechanism for encrypting access to your private subnet instance on the bastion. There 
+are two considerations that follow:</p>
+
+<ul>
+  <li>The private subnet instance key should be set aside in a secure location by the admin building 
+the system so that corruption of the key does not make the instance completely inaccessible.</li>
+  <li>The private subnet instance key on the bastion should be regularly encrypted so that a breach
+of the bastion does not grant the black hat access to the private instance.</li>
+</ul>
+
 <h3 id="e-server-side-encryption-s3-bucket">1E. Server side encryption S3 bucket</h3>
 
 <ul>
@@ -2447,7 +2477,7 @@ data systems.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Jun 1, 2017 <br />
+<span>Page last updated:</span> January 25, 2017<br/> Site last generated: Jun 7, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

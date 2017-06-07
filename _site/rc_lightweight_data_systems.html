@@ -37,6 +37,23 @@
 
 <link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
 
+    <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Lightweight Data Systems</title>
+<meta property="og:title" content="Lightweight Data Systems" />
+<meta name="description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
+<meta property="og:description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
+<link rel="canonical" href="http://idratherbewriting.com/rc_lightweight_data_systems.html" />
+<meta property="og:url" content="http://idratherbewriting.com/rc_lightweight_data_systems.html" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "headline": "Lightweight Data Systems",
+    "description": "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.",
+    "url": "http://idratherbewriting.com/rc_lightweight_data_systems.html"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -812,11 +829,281 @@ hours on the cloud that elevates your data from ‘a mess’ to ‘a usable mess
 
 <ul>
   <li><a href="http://github.com">Our page on GitHub</a></li>
+  <li><a href="https://cloudmaven.github.io/documentation/ccs_DIF.html">Dynamic Information Framework</a></li>
+  <li><a href="https://cloudmaven.github.io/documentation/ccs_high_mountain_asia.html">HiMAT</a></li>
+  <li><a href="https://cloudmaven.github.io/documentation/acs_geoserver.html">Geoserver and Lidar</a></li>
 </ul>
 
-<h2 id="warnings">Warnings</h2>
+<h2 id="some-organizing-ideas">Some organizing ideas</h2>
 
-<h2 id="images-of-interest">Images of interest</h2>
+<p><img src="/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.png" alt="LWDS data sharing geospatial context" /></p>
+
+<h3 id="abstract">Abstract?</h3>
+
+<p>We describe here a process of creating a data system within a research program which is implicitly about sharing, collaboration, 
+reproducibility, and accelerated pace in data-driven science. This thesis is part of a shift in emphasis that borrows heavily from 
+both commercial and open software development paradigms that we trace to one central idea: The lifespan and value of data are not 
+intrinsically known at the outset (owing to the very nature of research) but in fact are commonly undervalued in traditional approaches 
+to data curation.  There are several instructive contrasts between success criteria in research software development versus commercial 
+software development versus open software development.  Here we borrow from these contrasts to illustrate the cultural and technical 
+shift necessary to accomplish the normative assertion that the value of data can be better realized through the cultural shift of 
+changing practices.  The research program has traditionally had as its end goal a peer-reviewed publication and this has contributed 
+to the de facto conservative life expectancy of source data. The following postulates are the basis for the lightweight data system
+framework presented here:</p>
+
+<ul>
+  <li>Data-driven research can be roughly divided into exploratory and perfunctory tasks</li>
+  <li>Open source solutions are built by software developers to solve common problems in a robust manner</li>
+  <li>Open source solutions have lifespans related to their degree of success and usefulness</li>
+  <li>Commercial software development is rigorous owing to the cost of failure</li>
+  <li>Commercial software development is commonly managed by non-developers who perform important supporting tasks</li>
+  <li>The public cloud is globally available as a powerful low-cost computing platform</li>
+  <li>Each research domain has its own idiosyncratic formats, practices and tools</li>
+  <li>Within and often across research domains – despite idiosyncracies – common objectives emerge in service to both perfunctory and exploratory tasks</li>
+  <li>Time is a research group’s primary and most valuable commodity; followed by qualified people; followed by funding</li>
+  <li>The Scutero principle: Given the primacy of time: Never build any more than is absolutely necessary
+    <ul>
+      <li>Corollary: Work from design patterns</li>
+      <li>Corollary: Be prepared to invest time learning what ‘minimum necessary’ actually is</li>
+      <li>Corollary: Design patterns are one step from cookbook recipes; which can reduce development time</li>
+    </ul>
+  </li>
+  <li>We Howe principle:  The Pyramid of human stability has a data-driven research analog which we develop and invert as follows
+    <ul>
+      <li>Base: Storage</li>
+      <li>Upon the base: Sharing data</li>
+      <li>Upon sharing: Query</li>
+      <li>Upon query: Analytics</li>
+      <li>Upon analytics: Integration</li>
+      <li>Inversion: <strong>Integration</strong> from the outset is a project management strategy
+        <ul>
+          <li>Integration means making the connectivity between various moving parts of a project work together
+            <ul>
+              <li>The concept arose over countless failures where these interfaces generated friction</li>
+              <li>Integration amounts to devoting careful thought to what the end result looks like, how it functions</li>
+              <li>Integration often involves two important human considerations: Use cases and stakeholders</li>
+              <li>The positive admonition would be ‘Ignore integration at your peril’</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Execution as artifact (not part of the original meeting)
+    <ul>
+      <li>We can now create Docker images, AMIs, Kubernetes etc etc that preserve execution environments with data</li>
+      <li>The Lightweight version of this is some form of Jupyter but it can be extended to heavy lifting</li>
+      <li>It would be good to indicate a cost order of magnitude for this as well</li>
+    </ul>
+  </li>
+  <li>Any domain can generate a data to technology mapping that describes building a LWDS
+    <ul>
+      <li>Our emphasis here has been on geosciences</li>
+      <li>We might expand this paper to include genomics and something like neuroimagng</li>
+      <li>Regardless: We claim to cover only a fraction of the domain detail
+        <ul>
+          <li>With the idea that ‘well begun is half done’</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="geospatial-domain">Geospatial domain</h3>
+
+<h3 id="genomics-domain">Genomics domain</h3>
+
+<h4 id="researcher-remarks">Researcher remarks</h4>
+
+<ul>
+  <li>GCP as interesting alternative to AWS
+    <ul>
+      <li>particularly impressed by Google Genomics
+        <ul>
+          <li>ISB is a great resource for supporting end-user efforts. (see kilroy email thread for details)</li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li>on Google Cloud console and cost estimator tool</li>
+        </ul>
+      </li>
+      <li>Delta? Big Query ~ Big Table
+        <ul>
+          <li>Iinitial efforts led to a very expensive outer join in Big Query &gt; free tier
+            <ul>
+              <li>(which was good: it was a very sub-optimal query</li>
+            </ul>
+          </li>
+          <li>Based on conversation with Google solution architect:
+            <ul>
+              <li>Big Table requires about $1000/month of infrastructure</li>
+              <li>? not a clear on-ramp for testing it out at a small scale before ramping up
+                <ul>
+                  <li>particularly for someone with limited experience with NOSQL</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="research-project">Research project</h4>
+
+<ul>
+  <li><a href="https://www.nhlbiwgs.org">TOPMed project</a>
+    <ul>
+      <li>Aggregating whole genome sequence data from many people across multiple studies</li>
+      <li>Goal: Use this aggregated data to enable statistical analysis to search for associations between genetic variants and phenotypes (including common diseases) that arise from complex genetic interactions.</li>
+      <li>When an individual’s genome is sequenced new variants are observed and added to a list of “variants we’ve observed in TOPMed”.</li>
+      <li>We currently have about 200e6 such variants; &lt;500e6+&gt;</li>
+    </ul>
+  </li>
+  <li>With collaborator XL: Annotate each of those variants with about 1,000 descriptors.
+    <ul>
+      <li>XL has built a tool called <a href="https://sites.google.com/site/jpopgen/wgsa">WGSA</a>
+        <ul>
+          <li>Includes annotation for all the possible 8,584,031,106 human single nucleotide variants.
+            <ul>
+              <li>WGSA uses the Hg19 reference build of the human genome</li>
+              <li>2,897,310,462 annotated bases <a href="http://genomewiki.ucsc.edu/index.php/Hg19_Genome_size_statistics">details</a></li>
+              <li>2,897,310,462 * 3 = 8,691,931,386.</li>
+              <li>Looks like Hg19 includes 239,850,802 <strong>N</strong> bases, which are “unknown bases in the assembly marked by <strong>N</strong>”.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>The first expensive operation is intersect our 200e6 variants with the XL list of 8,584,031,106 potential variants
+        <ul>
+          <li>Retrieve a set of annotation for the TOPMed variants.</li>
+          <li>Currently, XL does this on AWS or his local infrastructure</li>
+          <li>days to weeks</li>
+          <li>Ref conversation with SM and Scripps about incorporating WGSA resource into the myvariant.info webapp (also on AWS)
+            <ul>
+              <li>Backed by a mongodb and elasticsearch with a scaleable python/tornado front end</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Next expensive operation would be to aggregate variants from the TOPMed-specific list by filtering WGSA results by field.
+        <ul>
+          <li>For example: Define a set of about 40,000 genomic ranges that define <em>genes</em>.</li>
+          <li>I might want a list of all the variants in TOPMed studies that fall within each of those 40,000 ranges.</li>
+        </ul>
+      </li>
+      <li>Currently WGSA annotation results from XL are a set of large .gz tab-delim text files (one per chromosome).
+        <ul>
+          <li>Parse these files and import them into an unoptimized mysql database &gt; do a join as described above, prohibitively slow
+            <ul>
+              <li>The import takes on the order of a week per chromosome (could be parallelized)</li>
+              <li>Using a stored procedure can get the variants-by-gene list for a single chromosome in about 20 minutes.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>This approach is currently plagued with perf bottlenecks and <em>will not scale</em> any further</li>
+    </ul>
+  </li>
+  <li>Ideal path: Build an infrastructure like myvariant.info that will currently require
+    <ul>
+      <li>parsing the text to JSON</li>
+      <li>import to a NOSQL document store</li>
+      <li>index it</li>
+      <li>perform queries on it</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="from-the-photos-some-text">From the photos… some text</h3>
+
+<ul>
+  <li>Creating a data resource for 2 groups is equivalent to creating a data resource for 10,000 groups (on the cloud)</li>
+  <li>Terms to review and incorporate include
+    <ul>
+      <li>Scale
+        <ul>
+          <li>Micro-LWDS?</li>
+          <li>Small: SQLShare</li>
+          <li>Small: Geotraces</li>
+          <li>Large: Heidi Sosik</li>
+          <li>Large: Ameriflux</li>
+          <li>National: NASA DAACs</li>
+          <li>Meta: Earthcube</li>
+        </ul>
+      </li>
+      <li>Archtypes
+        <ul>
+          <li>ftp files!</li>
+          <li>scp files!</li>
+          <li>SQL Share</li>
+          <li>Myria</li>
+          <li>Don’t even think about Sharepoint</li>
+          <li>GitHub</li>
+          <li>Heidi Sosik at WHOI: Flow cytometry images</li>
+          <li>Jupyter</li>
+          <li>What is the history of MODIS?</li>
+        </ul>
+      </li>
+      <li>Civilized?!
+        <ul>
+          <li>GINA</li>
+          <li>Ice2Ocean</li>
+          <li>LiveOcean</li>
+          <li>OOI…</li>
+          <li>IOOS</li>
+          <li>NOAA</li>
+          <li>USGS cf Katherine Kuhn</li>
+          <li>EPA STORET</li>
+          <li>USDA</li>
+          <li>NEON</li>
+          <li>Ameriflux</li>
+          <li>R2R (L-D)</li>
+          <li>L-D Directories, GeoLink</li>
+          <li>BCO DMO</li>
+          <li>NSIDC</li>
+          <li>Various approaches to ARGO</li>
+        </ul>
+      </li>
+      <li>Wild West?!
+        <ul>
+          <li>JGI (Genomics)</li>
+          <li>BLAST (as a tool) genes? proteins?</li>
+          <li>CINERGI out of EarthCube (UCSD)</li>
+          <li>GEOSS as a Meta Organization</li>
+          <li>DOM at WHOI</li>
+          <li>Geometabolimics Data Systems (GDS) Rob’s system for DOM</li>
+          <li>GEOTRACES</li>
+          <li>Harmonized world soil database</li>
+          <li>FetchClimate???</li>
+          <li>GEOLINK (authority tracking notification)</li>
+          <li>David Shean’s greatest hits</li>
+          <li>ESIP as a Meta Organization</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="triage">Triage</h3>
+
+<ul>
+  <li>The interview</li>
+  <li>Who are you?</li>
+  <li>What data problem are you trying to solve?</li>
+  <li>What impact are you trying to have on your community?</li>
+  <li>What are your use cases?</li>
+  <li>Who are your producers?</li>
+  <li>Your consumers?</li>
+  <li>Your dependencies?</li>
+  <li>Your data formats?</li>
+  <li>Your data types?</li>
+  <li>And so on</li>
+</ul>
+
+<h3 id="old-images">Old images</h3>
 
 <p><img src="/documentation/images/rc/rc_lwds001_pyramid.jpg" alt="LWDS resource image 1" />
 <img src="/documentation/images/rc/rc_lwds002_size_examples.jpg" alt="LWDS resource image 2" />
@@ -824,30 +1111,6 @@ hours on the cloud that elevates your data from ‘a mess’ to ‘a usable mess
 <img src="/documentation/images/rc/rc_lwds004_overview2.jpg" alt="LWDS resource image 4" />
 <img src="/documentation/images/rc/rc_lwds005_overview3.jpg" alt="LWDS resource image 5" />
 <img src="/documentation/images/rc/rc_lwds006_thought_experiment.jpg" alt="LWDS resource image 6" /></p>
-
-<h2 id="some-organizing-ideas">Some organizing ideas</h2>
-
-<ul>
-  <li>Any domain can generate a data~technology map that describes building a LWDS</li>
-  <li>We adopt the Scutero principle after Joe Scutero: Never build one bit more than you need
-    <ul>
-      <li>Joe also advocates providing design patterns rather than canned solutions</li>
-      <li>We see advantages to canned solutions (recipes) as well</li>
-    </ul>
-  </li>
-  <li>We adopt the Howe principle after Bill Howe: Pyramid of data science has…
-    <ul>
-      <li>Integration</li>
-      <li>Analytics</li>
-      <li>Query</li>
-      <li>Sharing</li>
-      <li>Storage</li>
-      <li>But Bill’s point is to start a project by working at the <strong>Integration</strong> piece… don’t leave that for later</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="/documentation/images/rc/rc_lwds007_data_sharing_geospatial_context.jpg" alt="LWDS data sharing geospatial context" /></p>
 
 
 
@@ -897,7 +1160,7 @@ hours on the cloud that elevates your data from ‘a mess’ to ‘a usable mess
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> May 31, 2017<br/> Site last generated: Jun 1, 2017 <br />
+<span>Page last updated:</span> May 31, 2017<br/> Site last generated: Jun 7, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>
