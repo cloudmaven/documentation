@@ -32,7 +32,9 @@ Our toolbox includes
 
 
 - [Our page on GitHub](http://github.com)
-
+- [Dynamic Information Framework](https://cloudmaven.github.io/documentation/ccs_DIF.html)
+- [HiMAT](https://cloudmaven.github.io/documentation/ccs_high_mountain_asia.html)
+- [Geoserver and Lidar](https://cloudmaven.github.io/documentation/acs_geoserver.html)
 
 
 ## Some organizing ideas
