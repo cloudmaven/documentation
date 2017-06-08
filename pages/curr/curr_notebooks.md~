@@ -12,8 +12,8 @@ folder: curr
 ## Introduction
 
 
-This curriculum page tracks work on notebooks for coursework at UW; emphasis on Jupyter 
-notebooks and Python. Desired features:
+This curriculum page describes notebook use by students for coursework with emphasis on Jupyter 
+notebooks and Python. There are several desirable features to cover including...
 
 
 - students authenticate to their copy of the Notebook via their usual campus login
@@ -38,23 +38,23 @@ notebooks and Python. Desired features:
 - [Access to Jupyter notebooks via ssh](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh)
 
 
-## Lighthouse
+## Yo
 
 
 - ***As always: Key files that arrive in GitHub repos are still available after deletion via versioning. Don't do it!***
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 - ***Search cloudmaven for 'tunneling' for more on connecting to notebooks through security barriers.***
-- ***Jupyter themes***
-  - [***Project Jupyter***](https://jupyter.org)***
-  - [***Jupyter Lab***](http://blog.jupyter.org/2016/07/14/jupyter-lab-alpha/)
-  - [***Jupyter Hub***](https://github.com/jupyterhub/jupyterhub)
-  - [***Binder***](http://mybinder.org)
+- Jupyter sub-themes
+  - Jupyter notebook
+  - Jupyter Lab
+  - Jupyter Hub
+  - 
 
 
-## Background Dialog
+## Dialog
 
 
-The following is a discussion between Professors A, B, M, and R together with a program manager apparently named Kilroy.
+The following is a discussion between Professors A, B, M, and R together with program manager Kilroy.
 
 
 Prof A: Are we doing anything to manage Jupyter notebooks for coursework at the university? I would like to be able to set
@@ -64,12 +64,17 @@ the students log off; and this implies the organizing structure is around the co
 of this already built in as a starting point. 
 
 
-Kilroy: Awesome, let's do it. Before other faculty chime: Microsoft Azure is hosting Jupyter notebooks as a free service.
-The features are evolving but the notebook content does persist (in Master or Clone versions) with ownership via Windows 
-LiveID. This is awesome.  Data files may need re-loading via curl; and data volume is limited. Management for a large class 
-could get tricky; this isn't a slam dunk yet.  A bonus: The Azure stack is more accessible by proximity.  We could also create 
-a dedicated cloud-based Notebook service: inexpensive for a single class provided not a lot of horsepower is needed. 
-We can enlist University IT to help build this in a robust way from a POC. NetID authentication is already done.
+Kilroy: Awesome, let's do it. Adding additional faculty with similar interests. Before they chime in let me mention that
+Microsoft Azure is hosting Jupyter notebooks as a free service at this time; where the features are evolving as they go but the
+notebook content does persist (Master or Clone) under ownership via Windows LiveID. Data files may need re-loading via
+curl; and the management of a large class could get tricky. I really appreciate Microsoft taking this approach and clearly
+their goal is to make the Azure stack more accessible; so that's great. 
+
+
+Kilroy: As an alternative to Azure we could also create a dedicated cloud-based Notebook service. It would be pretty 
+inexpensive for a single class provided that not a lot of compute/memory horsepower was needed. We could enlist the 
+folks at University IT to help build this in a robust way, up from a POC. The NetID authentication is already done (by
+those same folks). 
 
 
 Prof B: Would GitHub work for this? Perhaps there are FERPA compliance issues; but the good thing is that version control
@@ -100,7 +105,7 @@ some related references:
   - This may prove to be available only to PIMS researchers, not for general audiences
 - [NERSC supercomputer notebook interface](http://www.nersc.gov/news-publications/nersc-news/nersc-center-news/2016/jupyter-notebooks-will-open-up-new-possibilities-on-nerscs-cori-supercomputer)
 - [TACC supercomputer notebook hosting](https://www.tacc.utexas.edu/-/why-use-jupyter-notebooks-in-designsafe)
-- [SDSC supercomputer notebook repo](https://zonca.github.io/2015/09/ipython-jupyter-notebook-sdsc-comet.html)
+= [SDSC supercomputer notebook repo](https://zonca.github.io/2015/09/ipython-jupyter-notebook-sdsc-comet.html)
 
 
 {% include links.html %}
