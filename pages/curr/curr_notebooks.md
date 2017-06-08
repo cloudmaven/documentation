@@ -45,7 +45,7 @@ notebooks and Python. Desired features:
 - ***Our [glossary](cc_glossary.html) may help with unfamiliar terms.***
 - ***Search cloudmaven for 'tunneling' for more on connecting to notebooks through security barriers.***
 - ***Jupyter themes***
-  - [***Project Jupyter***](https://jupyter.org)***
+  - [***Project Jupyter***](https://jupyter.org)
   - [***Jupyter Lab***](http://blog.jupyter.org/2016/07/14/jupyter-lab-alpha/)
   - [***Jupyter Hub***](https://github.com/jupyterhub/jupyterhub)
   - [***Binder***](http://mybinder.org)
