@@ -119,7 +119,7 @@ entries:
     folderitems:
 
     - title: Jupyter for coursework
-      url: /rc_jupyter_for_coursework.html
+      url: /curr_notebooks.html
       output: web, pdf
 
   - title: AWS
