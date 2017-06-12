@@ -90,6 +90,10 @@ entries:
       url: http://escience.washington.edu
       output: web, pdf
 
+    - title: Yun Zhou Guan (Cloud Library)
+      url: /rc_yun_zhou_guan.html
+      output: web, pdf
+
     - title: Data science
       url: /rc_data_science.html
       output: web, pdf
@@ -120,6 +124,10 @@ entries:
 
     - title: Jupyter for coursework
       url: /curr_notebooks.html
+      output: web, pdf
+
+    - title: Cloud Library 
+      url: /curr_yun_zhou_guan.html
       output: web, pdf
 
   - title: AWS
