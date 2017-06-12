@@ -17,10 +17,16 @@ AralDIF program as implemented on the Microsoft Azure cloud platform.
 ## Links
 
 - [AralDIF](http://araldif.azurewebsites.net)
+- [ICIMOD](http://www.icimod.org)
+- [NASA SERVIR](https://www.nasa.gov/mission_pages/servir/index.html)
+
+
 
 ## Warnings
 
+
 ## Project overview
+
 
 The purpose of this project is to implement computational models that predict earth surface 
 conditions across an extended region. 
