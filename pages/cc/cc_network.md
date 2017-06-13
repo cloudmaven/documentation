@@ -103,86 +103,14 @@ i.e. at a much higher level than basic network connectivity. For more on this pl
 
 #### Cloud drive
 
-
-
-
-
-
-
-
-
-
-
-#### Cloud drive
-
 Map a cloud storage service to a drive letter: 
 
 - Use Expandrive software to map a cloud service to a drive letter.
-  - Can be unreliable due to cha
-
-
-
-
-
-
-
-
-
-
-........................
-
-
-
-
-: mapping a cloud storage services to a drive letter:
-
-
-The two ways to go:  the first, we did, the second: needs deeper examination:
-
-1) Using Expandrive software to map a cloud service to a drive letter.  Since cloud api's keep changing, and this is a small company developing the software, hard to fully rely on it. But it doesnt require any local disk space besides a small cache.
-
-It works ok for us.
-
-
-2) Using the Synology Diskstation product with "Cloud sync" - you can set up a local NAS and join it to AD, have users map areas based on their credentials on the AD (Havent tried this, but feels possible)    You can then set up a cloud account to do bi-directional sync with the NAS. So you have a copy of the cloud account's data on your own spinning disk.
-
-Anyone else done this and want to share?  I've only tried it on a single google account with no AD join.
-
-
-
-
-
-
-
-
-
-
-
-......................
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - Can be unreliable due to changing protocols; 'a moving target'
+  - Requires small local cache but no big disc volume: Advantage
+  - Works 'ok' 
+- Use the Synology Diskstation product with 'cloud sync'
+  - Not supported here as this requires buying hardware
 
 
 {% include links.html %}
