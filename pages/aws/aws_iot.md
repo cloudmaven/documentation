@@ -116,7 +116,43 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:
 ![quack REST API Endpoint status card](/documentation/images/aws/aws_iot_001_quack_endpoint_synopsis.png)
 
 
+- Set up the Arduino Yun
+  - WARNINGS: Some procedures may not match reality; and we will call attention to them
+    - Example: Out of the box on WiFi the Yun comes up as 'Linino-XXXXXX' with password 'doghunter'
+      - This is contrary to published information; and may be out of date as of this writing
+      - Upon updating the Atheros OS and connecting to local WiFi this changes...
+      - ...becoming 'Arduino-XXXXXXX' with password 'arduino' as advertised
+  - Installing hardware and software 
+    - Tutorial links
+      - Arduino
+        - [Linino wiki](http://wiki.linino.org)
+        - [Getting Started with Arduino Yun](http://www.arduino.cc/en/Guide/ArduinoYun)
+        - [Arduino Yun specs](http://www.arduino.org/products/4-arduino-boards/arduino-yun)
+        - [Arduino Yun schematic](http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/arduino-Yun-schematic.pdf)
+        - [Arduino Yun lab (many examples)](http://labs.arduino.org/Arduino%20Yun)
+      - AWS
+        - [AWS IOT main page](http://aws.amazon.com/iot)
+        - [AWS IOT blog entry](http://aws.amazon.com/blogs/aws/category/aws-iot)
+    - Arduino Yun + USB cables 'standard to micro' connectors with full USB connectivity support
+      - WARNING: Many common USB cables do *not* support full connectivity and *do not work*.
+    - Laptop install:
+      - PuTTY: required on Windows (ssh on Linux)
+      - WinSCP: required on Windows to transfer files (scp on Linux)
+      - Arduino IDE: to program the Atmega 
+        - The IDE is *not* used to program the Atheros, treated as a separate Linux system
+      - AWS IOT: Arduino SDK
+        - This is a library 
+        - It permits the Atmega sketch to converse with the AWS IOT
+      - AWS CLI: Command Line Interface to AWS, on Windows runs from PowerShell
+    - Atheros: issue commands as root (we do not believe sudo is involved)
+```
+# opkg update 
+# opkg install distribute 
+# opkg install python-openssl 
+# opkg install openssh-sftp-server (enables sftp from PC to Atheros) 
+```
 
+    
 
 
 {% include links.html %}

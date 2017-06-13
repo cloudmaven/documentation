@@ -37,6 +37,16 @@ the UW eScience Institute.
 - ***Focus here is topics; we try to preserve a degree of anonymity***
 
 
+## Yun Zhao Guan: A cloud library -- digital curation -- in cooperation with Suzallo Library
+
+
+- LIDARY: A pilot study providing geospatial LIDAR data as an open, curated digital resource
+  - [A simple map](http://map.cloudmaven.org) 
+  - [A GeoServer implementation](http://lidargeoserver.cloudmaven.org) 
+- Proof-of-concept curation of an epigenome imputation engine (see Student Research) 
+- Migration to the cloud of [BrainInfo.org](http://braininfo.org/) including [NeuroNames](https://en.wikipedia.org/wiki/NeuroNames)
+
+
 ## General Systems and Tools
 
 
@@ -103,14 +113,6 @@ analysis applied to naturally occurring Dissolved Organic Matter (DOM).
 - Metagenomics of methane-consuming microbial communities
 - Enzyme inhibition by molecular structure
 - Peptide scaffolding enumeration and design: Large-scale computing using the Rosetta protein folding toolkit
-
-
-## Library science: With Suzallo Library
-
-
-- LIDARY: A pilot study providing geospatial LIDAR data as an open, curated digital resource
-- Proof-of-concept curation of an epigenome imputation engine (see above: student projects)
-- Migration to the cloud of [BrainInfo.org](http://braininfo.org/) including [NeuroNames](https://en.wikipedia.org/wiki/NeuroNames)
 
 
 ## Ocean science
