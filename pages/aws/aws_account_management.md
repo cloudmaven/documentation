@@ -26,6 +26,7 @@ DLT-based accounts first as they provide some particular benefits such as egress
 - [DLT portal for new AWS accounts](https://customerportal.dlt.com/internet2/)
 - [Rotating access keys: Documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html?icmpid=docs_iam_console#Using_RotateAccessKey)
 - [Confederate a UW NetID with AWS (wiki)](https://wiki.cac.washington.edu/pages/viewpage.action?pageId=78712235)
+- Smart phone: [Activating MFA](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) and [De-activating MFA](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_disable.html)
 
 
 ## Warnings
@@ -46,12 +47,20 @@ We assume you are at the University of Washington or are a covered *affiliate* o
 
 ## Account set-up
 
+
 - Set up your account to have "all green checkmarks". This means you are logged out and back in as an **admin**.
   - After a year or so you may be encouraged to 'rotate your access keys'; see the link provided above
+  - One of those checkmarks is enabling MFA or Multi-Factor Authentication. Do this.
+    - It is a little bit of a pain but it gets you another measure of security for your cloud account
+    - Your MFA device is probably a smart phone. Here are the links for procedures to...
+      - [Activate](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) 
+      - [De-activate](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_disable.html)
 - Start and Stop an EC2 instance: Know what it costs, what EBS is, and log in to it before you Stop it.
 - Study up on cloud tech, enough to understand cost, security and capacity; and then make a plan. 
 
+
 ## Cost tracking via tags
+
 
 On AWS you can allocate assets such as S3 storage buckets and EC2 compute instances. These in turn cost money
 (either actual money or credits if you have them available) and you probably care about how much. To this end
