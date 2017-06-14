@@ -49,6 +49,8 @@ notebooks and Python. Desired features:
   - [***Jupyter Lab***](http://blog.jupyter.org/2016/07/14/jupyter-lab-alpha/)
   - [***Jupyter Hub***](https://github.com/jupyterhub/jupyterhub)
   - [***Binder***](http://mybinder.org)
+  - [***CoCalc***](https://cocalc.com/) (formerly SageMathCloud)
+- [***An example Jupyter notebook hosted on Azure***](https://notebooks.azure.com/library/89FHPIGSGMs/dashboard)
 
 
 ## Background Dialog
