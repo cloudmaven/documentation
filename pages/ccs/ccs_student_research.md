@@ -23,6 +23,20 @@ and with a generous research credit grant from Amazon Web Services.
 - [Configuring the account to allow IAM Users to track billing](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html?icmpid=docs_iam_console#tutorial-billing-step2)
 
 
+## Status
+
+- $10k in credits spends down *before* the $10k initial grant
+- Status on grant at end of initial period June 30 2017?
+- Spend to date is $73 (very light)
+- Leadership transfer all set
+- 1-2 part-time supporting roles
+  - Address governance and account management 
+  - Largely self-driven in terms of deliverables
+  - Can extend to cloud-based data science work provided documentation 
+- Second grant disbursal is the big open question at this point.
+  - Further research credit grant process would follow upon resolving this
+
+
 ## For Administrators
 
 - Someone has requested an increase in p2.xlarge quota which was granted

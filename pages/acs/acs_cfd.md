@@ -23,11 +23,15 @@ folder: acs
   - **End_date** tag key; value = when you expect to be done with the resource
   - **Name** tag key; value = NetID_descriptive_phrase
 
+
 - Central idea: Use the Spot market, do the first calculation, make sure it works, get cost
+
 
 - AB can assist with getting the technical details right
 
+
 - Authenticate with NetID possible but we will use IAM User for now
+
 
 - Procedural
   - Create cfn cluster with placement group
@@ -39,14 +43,20 @@ folder: acs
   - create a qsub file and launch
     - created from starccm+ documentation; get file from Siemmens, cf email chain; pls send to Rob
 
+
 - Number of processes / instance depends on number of gridcells in the CFD calc
   - LH: 50k cells per process
   - LH: 72 processes implies qty 2 c4.8xlarge with hyperthreading on; qty 4 if off
   - A revises: 9e6 cells 180 processors = 4-5 c4.8xl
   - 'existing config does not have a placement group' implies new cfncluster needed
 
+
+- Obstacle
+  - Insufficient space on the shared EFS drive... solution pending
+
 - The Steve's Portal
   - This is the starccm+ website
   - batch/qsub documentation available
+
 
 {% include links.html %}
