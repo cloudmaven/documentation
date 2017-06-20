@@ -1,11 +1,11 @@
 ---
-title: AWS Console
+title: AWS Lambda
 keywords: aws
-last_updated: January 26, 2017
+last_updated: June 20, 2017
 tags: [AWS, account_management]
 summary: "AWS Console"
 sidebar: mydoc_sidebar
-permalink: aws_console.html
+permalink: aws_lambda.html
 folder: aws
 ---
 
