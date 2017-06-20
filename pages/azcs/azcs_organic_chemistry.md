@@ -11,13 +11,19 @@ folder: azcs
 
 ## Introduction
 
-The purpose of this page is to describe a data system for organic chemistry research, specifically 
-for physical and spectral analysis of dissolved organic matter (DOM) obtained from samples of the 
-earth's hydrosphere.  
+This page describes a data system for organic chemistry research, specifically for physical 
+and spectral analysis of dissolved organic matter (DOM) obtained from samples of the earth's 
+hydrosphere.  This work was prototyped on the Microsoft Azure cloud and is currently on hiatus
+pending further development funding and corresponding cycles from the collaboration group.
+
 
 ## Links
 
+- [GDS prototype](http://bds-ui2.azurewebsites.net/)
+
+
 ## Warnings
+
 
 ## Overview
 

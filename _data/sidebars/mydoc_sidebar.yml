@@ -62,15 +62,15 @@ entries:
       url: /cc_network.html
       output: web, pdf
 
-  - title: Proposals
+  - title: Proposal Prep
     output: web, pdf
     folderitems:
 
-    - title: Consulting
+    - title: Consulting 
       url: /p_consulting.html
       output: web, pdf
 
-    - title: Costing
+    - title: Costing the cloud
       url: /p_costing.html
       output: web, pdf
 
@@ -164,6 +164,10 @@ entries:
 
     - title: Storage
       url: /aws_storage.html
+      output: web, pdf
+
+    - title: Lambda
+      url: /aws_lambda.html
       output: web, pdf
 
     - title: Jupyter

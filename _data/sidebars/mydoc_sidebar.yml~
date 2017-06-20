@@ -82,12 +82,16 @@ entries:
       url: /rc_cloud101_immersion.html
       output: web, pdf
 
-    - title: Foster 101 
+    - title: Foster 101
       url: /rc_Foster101.html
       output: web, pdf
 
     - title: WRF Data Science Studio
       url: http://escience.washington.edu
+      output: web, pdf
+
+    - title: Yun Zhou Guan (Cloud Library)
+      url: /rc_yun_zhou_guan.html
       output: web, pdf
 
     - title: Data science
@@ -120,6 +124,10 @@ entries:
 
     - title: Jupyter for coursework
       url: /curr_notebooks.html
+      output: web, pdf
+
+    - title: Cloud Library
+      url: /curr_yun_zhou_guan.html
       output: web, pdf
 
   - title: AWS
@@ -322,3 +330,14 @@ entries:
       url: /azcs_organic_chemistry.html
       output: web, pdf
 
+  - title: Google Case Studies
+    output: web, pdf
+    folderitems:
+
+    - title: Health Data Compass - Colorado Center for Personalized Medicine
+      external_url: 'https://cloud.google.com/customers/colorado-center-for-personalized-medicine/'
+      output: web, pdf
+
+    - title: Center of Genomics and Personalized Medicine - Stanford University
+      external_url: 'https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/'
+      output: web, pdf
