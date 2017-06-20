@@ -40,7 +40,7 @@ and to place the recovered data into an RDS database on AWS.
 ![capstone concept](/documentation/images/aws/aws_lambda0001.png)
 
 
-Student participants are some subset of these names: Anya, Anagha, Yuzhou (Sissi), Mingxin, Sissi, Aleksandr. 
+Student participants are some subset of these names: Anya, Anagha, Yuzhou (Sissi), Mingxin.
 
 
 AWS Solutions Architect solutions to problems are given in quote blocks.
