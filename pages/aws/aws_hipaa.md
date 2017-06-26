@@ -9,12 +9,24 @@ permalink: aws_hipaa.html
 folder: aws
 ---
 
+
 ## Introduction
 
 
 [This document](aws_hipaa.html) presents a secure data management system motivated 
 by the need to manage data securely in the public cloud. We take more specific motivation 
 from management of Private Health Information (PHI) under HIPAA regulations.
+
+
+## Links
+
+- [AWS talk (YouTube) on HIPAA compliance](https://www.youtube.com/watch?v=g4XI4IIYVrw)
+- [AWS HIPAA compliance blog Part 1 Automation](https://aws.amazon.com/blogs/security/how-to-automate-hipaa-compliance-part-1-use-the-cloud-to-protect-the-cloud/)
+- [AWS HIPAA compliance blog Part 2 Deployment](https://aws.amazon.com/blogs/security/how-to-use-aws-service-catalog-for-code-deployments-part-2-of-the-automating-hipaa-compliance-series/)
+- [AWS HIPAA compliance blog Part 3 CloudFormation](https://aws.amazon.com/blogs/security/how-to-translate-hipaa-controls-to-aws-cloudformation-templates-part-3-of-the-automating-hipaa-compliance-series/)
+- [AWS HIPAA compliance blog Part 4 Config](https://aws.amazon.com/blogs/security/how-to-use-aws-config-to-help-with-required-hipaa-audit-controls-part-4-of-the-automating-hipaa-compliance-series/)
+- [AWS HIPAA compliance architecture](https://medium.com/aws-activate-startup-blog/architecting-your-healthcare-application-for-hipaa-compliance-part-2-ea841a6f62a7)
+- 
 
 
 ### Use Case Outline
@@ -33,6 +45,16 @@ use case and list some of the related considerations. This is done again in more
 - Project approved: IRB 
 - Request for Secure Computing Environment, billing mechanism (e.g. ITHS; Red Cap form)
 - Research proceeds!
+  - Researcher wants data to go in... 
+    - S3 would be the initial destination idea
+    - An RDS on a VPC private subnet would be the eventual destination...
+    - ...via a S3 endpoint pull from S3
+  - Researcher wants a working environment on an EC2 on the private subnet
+    - with encrypted EBS
+    - kilroy consider using Workspaces which is HIPAA-compliant
+      - runs either through a Client or in the browser: A Virtual Desktop
+      - can look into S3 
+      - configuration details TBD
 - Close out
 
 

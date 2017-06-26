@@ -19,14 +19,21 @@ towards helping you (the proposal author) estimate costs for your project.
 
 - [AWS Grants](https://aws.amazon.com/grants/)
 - [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
-
 - [AWS monthly cost calculator](http://calculator.s3.amazonaws.com/calc5.html)
 
 
 ## Warnings
 
+- ***Research credits should be thought of us stopgap support, not as research support***
+  - By research support we mean: A long-term research computing subsidy
+  - By stopgap we mean the researcher uses cloud research credits to...
+    - ...evaluate the feasibility of the public cloud 
+    - ...tide over until standard research budgets can cover cloud costs
+  - Research credit awards typically last 12 months; grants are scaled to a cost estimate
+
 
 ## Overview
+
 
 - Review your status and options with regard to cloud research credit grants. 
 - Verify with the funding agency that cloud computing will be a welcome component of your proposal.
@@ -48,7 +55,9 @@ towards helping you (the proposal author) estimate costs for your project.
     - Similarity of compute environment to local machines
     - Rapidly growing user base and commensurate open resources from which to build your solutions
 
+
 ## Cloud Research Credits
+
 
 Generous research credit grants (circa 2017) are commonly provided by cloud vendors, specifically
 Microsoft Azure and AWS (and GCP grants may materialize as well). These grants can have a value as high 
@@ -63,9 +72,9 @@ Research credit cloud accounts are distinct from paid accounts secured under the
 Those accounts have legal terms associated with them (see respective overview pages herein: 
 [Azure overview](az_overiew) and [AWS overview](aws_overview.html).
 
-## Federally funded research 
 
 ## FAQ
+
 
 Q: How fast/powerful is a given instance?  
 
@@ -78,9 +87,6 @@ From the Linux command line you can issue commands such as:
 % lscpu
 % cat /proc/cpuinfo
 ```
-
-It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce 
-*on the order of* 10% performance variation. 
 
 
 {% include links.html %}
