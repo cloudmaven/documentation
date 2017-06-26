@@ -81,12 +81,12 @@ Q: How fast/powerful is a given instance?
 A: You can read about instance types on the vendor's cloud console 
 and/or information pages. For example AWS EC2 instances are 
 written up [here](https://aws.amazon.com/ec2/instance-types/).  
-From the Linux command line you can issue commands such as:
+From the Linux command line you can issue commands.
+
 
 ```
 % lscpu
-% cat /proc/cpuinfo
+% cat /proc/cpuinf
 ```
-
 
 {% include links.html %}
