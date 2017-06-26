@@ -76,17 +76,71 @@ Those accounts have legal terms associated with them (see respective overview pa
 ## FAQ
 
 
-Q: How fast/powerful is a given instance?  
+Q: How does the cloud work? 
 
-A: You can read about instance types on the vendor's cloud console 
-and/or information pages. For example AWS EC2 instances are 
-written up [here](https://aws.amazon.com/ec2/instance-types/).  
-From the Linux command line you can issue commands.
+
+A: See the ensuing questions to get a quick overview of the terminology. Taking that as read the first step
+is to get a cloud account and log in to the provider's website (console) using a web browser. Here you will 
+find many options including **start an instance**. This you can do immediately: It is equivalent to renting 
+a computer by the hour. Once you have started the instance -- which we also call a cloud computer or a cloud
+virtual machine -- you can log in to that machine and start building a computing enviornment. You can allocate 
+associated disk space, upload files, install software and quickly get back to your research.  This is the 
+simplest picture of moving your work to the cloud. There is much more to the story, however. To get a sense of 
+this vast 'what else?' we suggest looking into the case studies provided at this website. 
+
+
+Q: Why do I want to move to the cloud? 
+
+
+A: One way to answer this is to say 'Using the cloud drastically reduces your risk and gains you time.'
+Traditionally you have to purchase and maintain computers; and worry about them crashing and losing your
+work. Cloud providers do a huge amount of back-up work -- invisible to you -- so that 
+
+
+Q: How fast/powerful is a given cloud computer?  
+
+
+A: Cloud computers -- also called *instances* or *Virtual Machines* -- exist in many configurations and
+power levels. A small low-power machine will cost perhaps $0.01 USD to operate per hour and a pretty 
+powerful machine might cost $0.40 per hour. The most powerful machines you can find on the cloud can cost
+$15 per hour.  You can read about cost and power at the cloud vendor's website. At UW we focus on three
+vendors: AWS, Microsoft Azure and Google Cloud Platform.  From an instance command line you can issue 
+commands to learn more:
 
 
 ```
 % lscpu
 % cat /proc/cpuinf
 ```
+
+
+Q: How much does a cloud computer cost? 
+
+
+A: One penny per hour for a simple, low-power instance. $0.40 for a very powerful machine.
+
+
+Q: How much does cloud disk space cost? 
+
+
+A: RAM memory on a cloud instance is part of the cost of that instance. Disk space costs $0.10 per 
+Gigabyte per month on AWS and other vendors are comparable.
+
+
+Q: How much does cloud storage cost? 
+
+
+A: Rapid-access storage costs $0.025 (2.5 cents) per Gigabyte-month on the AWS cloud. Other vendor 
+costs are comparable. Low-access storage is cheaper, as low as 25% the cost of rapid-access storage. 
+
+
+Q: How is cloud storage different from disk space on the cloud? 
+
+
+A: Storage is cheaper than disk space by a factor of four; so content that you do not need to access 
+repeatedly and rapidly is cheaper to hold in storage. If you are analyzing some data files you might 
+copy them from storage to disk space attached to an instance to decrease access time. 
+
+
 
 {% include links.html %}

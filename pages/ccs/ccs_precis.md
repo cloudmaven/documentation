@@ -78,20 +78,35 @@ of projects undertaken by students during the pilot phase of this program, sprin
 - Learning multiple outcomes with predictive coding (CSE; in progress)
 
 
-## Medical research
+## Medical 
 
 
-- Laboratory Medicine: Cloud-based system for genome analysis: (oncology and related) clinical annotation
-- Crossing the clinical-to-research data barrier
+- Laboratory Medicine: Genome analysis and annotation (clinical oncology & co)
+- Clinical data availability for research 
 - Data access and tool access for MRI- and EEG-based research
 - Gut biome metagenomics (Children's Hospital)
 - Patterns in unexpected in-hospital mortality
+- Studies on Post-hospital-admission sepsis (blood infection)
 - Deep learning for patient behavior prediction: EEG data in relation to A/V transcripts of patient behavior
+  - See above under *Student research*
 - Canine longitudinal aging studies
 - Biostatistics
-- Light-sheet microscope for rapid-turnaround biopsy analysis 
+- Light-sheet microscopy for fast-turnaround biopsy analysis 
 - Neuroimaging: Functional MRI
 - Neuroimaging: Visual cortex studies
+
+
+## Genomics and Biochemistry (not included in *Medical* above)
+
+
+- Epigenome imputation: See above under *Student Research* 
+- Genetic architecture of autism
+- Metagenomics of methane-consuming microbial communities
+- Enzyme inhibition molecular structure
+- Peptide scaffolding enumeration and design: Large-scale computing using the Rosetta protein folding toolkit
+
+
+
 
 
 ## Hydrology and Geochemistry
@@ -105,14 +120,6 @@ analysis applied to naturally occurring Dissolved Organic Matter (DOM).
    - In resource management and public safety domains the incorporation of scientific modeling is not well developed.
    - This program provides localized information building from a reproducible model of free and open access
 
-
-## Genomics and Biochemistry
-
-
-- Genetic architecture of autism
-- Metagenomics of methane-consuming microbial communities
-- Enzyme inhibition by molecular structure
-- Peptide scaffolding enumeration and design: Large-scale computing using the Rosetta protein folding toolkit
 
 
 ## Ocean science

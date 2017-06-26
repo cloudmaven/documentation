@@ -23,10 +23,10 @@ The UW IT Connect cloud computing for research overview is [here](https://itconn
 
 We have (office hours)[http://escience.washington.edu/office-hours/#eScienceDataScientists] at the UW Data Science Studio on Mondays and Wednesday, 10am to 12pm and by appointment.  
 
-## Contacts
+## Connect with our program
 
-Rob Fatland \: rob5[at]uw[dot]edu
-
-Amanda Tan \: amandach[at]uw[dot]edu 
+- Contact Rob Fatland \: rob5[at]uw[dot]edu
+- Contact Amanda Tan \: amandach[at]uw[dot]edu 
+- [Subscribe to the mailing list here](http://mailman11.u.washington.edu/mailman/listinfo/uwcloud)
 
 {% include links.html %}

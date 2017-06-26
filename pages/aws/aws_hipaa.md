@@ -26,20 +26,32 @@ from management of Private Health Information (PHI) under HIPAA regulations.
 - [AWS HIPAA compliance blog Part 3 CloudFormation](https://aws.amazon.com/blogs/security/how-to-translate-hipaa-controls-to-aws-cloudformation-templates-part-3-of-the-automating-hipaa-compliance-series/)
 - [AWS HIPAA compliance blog Part 4 Config](https://aws.amazon.com/blogs/security/how-to-use-aws-config-to-help-with-required-hipaa-audit-controls-part-4-of-the-automating-hipaa-compliance-series/)
 - [AWS HIPAA compliance architecture](https://medium.com/aws-activate-startup-blog/architecting-your-healthcare-application-for-hipaa-compliance-part-2-ea841a6f62a7)
-- 
+- [AWS HIPAA compliance white paper](http://d0.awsstatic.com/whitepapers/compliance/AWS_HIPAA_Compliance_Whitepaper.pdf)
 
 
 ### Use Case Outline
 
 
-The objective of this project is to accelerate research by taking advantage of the HIPAA-aligned nature
-of the AWS public cloud platform to create a Secure Computing Environment (abbreviated **SCE** herein).  
-This objective implicitly means 'the cloud disappears'; the Researcher is simply focused on their data, 
-their analysis.  Before proceeding into technical details of the implementation we briefly describe a typical 
-use case and list some of the related considerations. This is done again in more detail below.
+The objective of this project is to accelerate medical research involving PHI via a HIPAA-aligned 
+Business Associeates Agreement between a university and AWS. The strategy is to build a Secure Computing 
+Environment (abbreviated **SCE** here) that addresses the three primary considerations: Encryption, 
+reporting and human use factors, all with the idea of reducing risk of a compromise of the SCE.  
+The end result is that the public cloud *disappears*: Researchers are able to focus on their data
+and on their work.  
+
+
+#### This content in relation to other resources
+
+
+The content provided here may be thought of as a limited foray into an SCE where the links above are much more 
+comprehensive.  One of the main objectives of this 'limited foray' is to provide a record of the learning 
+process *de novo*; so an attempt to de-mystify.  Before proceeding into technical details of the implementation 
+we therefore describe a typical use case with related considerations. This is then referenced in more detail below.
+
 
 
 #### Use Case
+
 
 - Researcher awareness: Service catalog, word-of-mouth etc
 - Project approved: IRB 
