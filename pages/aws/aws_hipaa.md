@@ -20,6 +20,7 @@ from management of Private Health Information (PHI) under HIPAA regulations.
 
 ## Links
 
+
 - [AWS talk (YouTube) on HIPAA compliance](https://www.youtube.com/watch?v=g4XI4IIYVrw)
 - [AWS HIPAA compliance blog Part 1 Automation](https://aws.amazon.com/blogs/security/how-to-automate-hipaa-compliance-part-1-use-the-cloud-to-protect-the-cloud/)
 - [AWS HIPAA compliance blog Part 2 Deployment](https://aws.amazon.com/blogs/security/how-to-use-aws-service-catalog-for-code-deployments-part-2-of-the-automating-hipaa-compliance-series/)
@@ -34,19 +35,20 @@ from management of Private Health Information (PHI) under HIPAA regulations.
 
 The objective of this project is to accelerate medical research involving PHI via a HIPAA-aligned 
 Business Associeates Agreement between a university and AWS. The strategy is to build a Secure Computing 
-Environment (abbreviated **SCE** here) that addresses the three primary considerations: Encryption, 
-reporting and human use factors, all with the idea of reducing risk of a compromise of the SCE.  
-The end result is that the public cloud *disappears*: Researchers are able to focus on their data
-and on their work.  
+Environment (abbreviated **SCE** here) that addresses the three primary considerations: Data security
+(e.g. encryption considerations), reporting (e.g. logging access) and human use factors (e.g. access key
+best practices), all with the idea of reducing risk of compromise to the SCE. The end result is that 
+the public cloud should *disappear*: Researchers simply focus on their research.
 
 
 #### This content in relation to other resources
 
 
-The content provided here may be thought of as a limited foray into an SCE where the links above are much more 
-comprehensive.  One of the main objectives of this 'limited foray' is to provide a record of the learning 
-process *de novo*; so an attempt to de-mystify.  Before proceeding into technical details of the implementation 
-we therefore describe a typical use case with related considerations. This is then referenced in more detail below.
+The content provided here may be thought of as a limited foray into an SCE. The links above are much more 
+comprehensive.  A primary objective of the 'limited foray' is to provide a record of the thought process
+*de novo*, i.e. it is an attempt to de-mystify matters for a medical researcher, our target audience.  
+Before proceeding into technical details of the implementation we therefore describe a typical use 
+case with related considerations. This is then referenced in more detail below.
 
 
 
