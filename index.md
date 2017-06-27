@@ -7,8 +7,8 @@ permalink: index.html
 toc: false
 summary: Cloud computing tutorials, case studies, pathways into data science technology; presenting the public cloud as opportunity for innovation. 
 This project is intended to accelerate research; developed in close association with the [UW eScience Institute](http://escience.washington.edu) 
-we have two goals: **Reduce friction**: Help with what you already do with computers, streamline your analysis and pathways to publication. 
-**New ideas**: We want to make it easy for you to share data, collaborate, sandbox ideas, learn about new methods in data science. 
+we have two goals: Reduce friction, i.e. help with what you already do with computers, streamline your analysis and pathways to publication. 
+Promote new ideas and methods, i.e. We want to make it easy for you to share data, collaborate, sandbox, and learn about new methods in data science. 
 ---
 
 
@@ -30,14 +30,19 @@ We've compiled this guide to help make your life easier. Navigation via the menu
 - [Official UW Research Computing cloud overview](https://itconnect.uw.edu/research/cloud-computing-for-research/ "UW IT Cloud for Research")
 - [How much does the cloud cost?](asdf.html)
 
+
 ## Help!
+
 
 We have (office hours)[http://escience.washington.edu/office-hours/#eScienceDataScientists] at the UW Data Science Studio on Mondays and Wednesday, 10am to 12pm and by appointment.  
 
+
 ## Connect with our program
+
 
 - Contact Rob Fatland \: rob5[at]uw[dot]edu
 - Contact Amanda Tan \: amandach[at]uw[dot]edu 
 - [Subscribe to the mailing list here](http://mailman11.u.washington.edu/mailman/listinfo/uwcloud)
+
 
 {% include links.html %}
