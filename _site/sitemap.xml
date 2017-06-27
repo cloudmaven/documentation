@@ -388,6 +388,12 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/mydoc_about.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/mydoc_about_ruby_gems_etc.html</loc>
   </url>
   
@@ -598,13 +604,13 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
   </url>
   
   

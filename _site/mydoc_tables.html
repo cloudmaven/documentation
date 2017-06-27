@@ -55,19 +55,15 @@
                     easing: 'swing'
                 }
             });
-
             $("#collapseAll").click(function(e) {
                 e.preventDefault();
                 $("#mysidebar").navgoco('toggle', false);
             });
-
             $("#expandAll").click(function(e) {
                 e.preventDefault();
                 $("#mysidebar").navgoco('toggle', true);
             });
-
         });
-
     </script>
     <script>
         $(function () {
@@ -79,7 +75,6 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function(){
-
             $('table.datatable').DataTable( {
                         paging: false,
                         stateSave: true
@@ -87,7 +82,6 @@
             );
     </script>
     
-
 </head>
 <body>
 <!-- Navigation -->
@@ -182,7 +176,6 @@
     <div class="row">
         <!-- Sidebar Column -->
         <div class="col-md-3">
-
           
 
 
@@ -1130,4 +1123,5 @@ $(document).ready(function(){
 <!-- /.container -->
     </div>
 </body>
+
 </html>
