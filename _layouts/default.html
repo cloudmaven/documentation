@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
     {% include head.html %}
-    {% seo %}
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -20,19 +19,15 @@
                     easing: 'swing'
                 }
             });
-
             $("#collapseAll").click(function(e) {
                 e.preventDefault();
                 $("#mysidebar").navgoco('toggle', false);
             });
-
             $("#expandAll").click(function(e) {
                 e.preventDefault();
                 $("#mysidebar").navgoco('toggle', true);
             });
-
         });
-
     </script>
     <script>
         $(function () {
@@ -44,7 +39,6 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function(){
-
             $('table.datatable').DataTable( {
                         paging: false,
                         stateSave: true
@@ -52,7 +46,6 @@
             );
     </script>
     {% endif %}
-
 </head>
 <body>
 {% include topnav.html %}
@@ -63,7 +56,6 @@
     <div class="row">
         <!-- Sidebar Column -->
         <div class="col-md-3">
-
           {% include sidebar.html %}
     <!-- Content Column -->
     <div class="col-md-9">
@@ -73,6 +65,5 @@
 </div>
 <!-- /.container -->
     </div>
-
 </body>
 </html>

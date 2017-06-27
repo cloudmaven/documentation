@@ -37,23 +37,6 @@
 
 <link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
 
-    <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>IoT on AWS</title>
-<meta property="og:title" content="IoT on AWS" />
-<meta name="description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<meta property="og:description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<link rel="canonical" href="http://idratherbewriting.com/aws_iot.html" />
-<meta property="og:url" content="http://idratherbewriting.com/aws_iot.html" />
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebPage",
-    "headline": "IoT on AWS",
-    "description": "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.",
-    "url": "http://idratherbewriting.com/aws_iot.html"
-  }
-</script>
-<!-- End Jekyll SEO tag -->
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -280,7 +263,7 @@
         
     
     <li>
-        <a href="#">Proposals</a>
+        <a href="#">Proposal Prep</a>
         <ul>
             
             
@@ -292,7 +275,7 @@
             
             
             
-            <li><a href="p_costing.html">Costing</a></li>
+            <li><a href="p_costing.html">Costing the cloud</a></li>
             
             
             
@@ -322,6 +305,13 @@
             
             
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_yun_zhou_guan.html">Yun Zhou Guan (Cloud Library)</a></li>
             
             
             
@@ -378,7 +368,14 @@
             
             
             
-            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
+            <li><a href="curr_notebooks.html">Jupyter for coursework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="curr_yun_zhou_guan.html">Cloud Library</a></li>
             
             
             
@@ -443,6 +440,13 @@
             
             
             <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_lambda.html">Lambda</a></li>
             
             
             
@@ -742,6 +746,28 @@
         </ul>
         
         
+    
+    <li>
+        <a href="#">Google Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/colorado-center-for-personalized-medicine/" target="_blank">Health Data Compass - Colorado Center for Personalized Medicine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/" target="_blank">Center of Genomics and Personalized Medicine - Stanford University</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -798,86 +824,212 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/aws/aws_iot.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    
-
     
 
   <h2 id="introduction">Introduction</h2>
 
-<p>This page provides a template for registering and operating an IOT device – specifically an
-Arduino Yun – on a university WiFi network in relation to the AWS public cloud. Operation 
-includes both recording sensor data and actuation of a small light. The operational scenario 
-is described in more detail below.  We are implementing our example at the University of 
-Washington in Seattle. If you are working elsewhere you may benefit by getting in touch
-with your local IT management organization.</p>
+<p>This page provides a template for registering and operating embedded IOT devices – specifically 
+an Arduino Yun – on the university WiFi network in relation to the AWS public cloud. Operation 
+includes both sensing and actuation using simple hardware (a light and a light sensor).</p>
 
 <h2 id="links">Links</h2>
 
 <ul>
-  <li><a href="http://aws.amazon.com/cli">The AWS CLI</a></li>
+  <li><a href="http://aws.amazon.com/cli">The AWS Command Line Interface (CLI)</a></li>
 </ul>
 
 <h2 id="glossary">Glossary</h2>
 
 <ul>
-  <li>Diaspora: A term adopted informally here to indicate a distribution and/or dispersion of 
-IOT devices. ‘Where all the devices are located’ often changes over time since transportation 
-is a common IOT theme.</li>
-  <li>IOT: Internet of Things, the realm of embedded devices (including smart phones) that interact
-in some way with a larger ensemble of electronics, people and the environment. While IOT emphasis
-is easily placed on the devices we are interested here primarily in the cloud aspect of the story; 
-specifically how to place intelligent data management in the cloud in support of an IOT diaspora.</li>
-  <li>CLI: The Command Line Interface for AWS, typically installed on an AWS EC2 instance and/or
-your computer depending on where you need to work. The CLI operates remotely to effect 
-changes and read states on the AWS cloud.</li>
+  <li>IOT: Internet of Things, embedded devices from smart phones to Arduino constructions to FitBits
+and beyond – limitless – that create an information framework in some environment.
+    <ul>
+      <li>IOT emphasis is first placed on devices</li>
+      <li>Here we are more interested here in a backing or supportive data system</li>
+      <li>This system is implemented on the public cloud</li>
+    </ul>
+  </li>
+  <li>Diaspora: Informally the distribution / dispersion of IOT devices into some environment
+    <ul>
+      <li>Devices locations may change over time; a common IOT theme</li>
+    </ul>
+  </li>
+  <li>CLI: Command Line Interface, here specifically the one for AWS
+    <ul>
+      <li>The CLI exists in the abstract as a means of communicating with the cloud</li>
+      <li>To use it: It must be installed on an EC2 instance</li>
+      <li>To use it from off the cloud (e.g. from your laptop) it must also be installed there</li>
+      <li>For IOT work we use the CLI to poll or query the supporting data system</li>
+    </ul>
+  </li>
+  <li>IDS: IOT Data System, an acronym of convenience
+    <ul>
+      <li>Implies that we build devices, build the IDS, and then connect them together</li>
+    </ul>
+  </li>
+  <li>REST API Endpoint: A URL where http messages will be POSTed by the IOT device</li>
+  <li>Shadow: An AWS cloud construct
+    <ul>
+      <li>Behaves as a shadow / proxy / image / representation of an IOT device</li>
+      <li>Persists on the cloud regardless of whether the IOT device is connected</li>
+      <li>As such it acts as the “latest known state record” of the device</li>
+    </ul>
+  </li>
+  <li>MQTT</li>
+  <li>MQTT topic: A message tag that enables a message stream to be sorted (by that tag)</li>
 </ul>
 
 <h2 id="admonitions">Admonitions</h2>
 
 <ul>
-  <li><strong><em>IOT devices are vulnerable to failure in three senses. First they are susceptible to operational
-failure owing to the difficulties in getting bespoke (‘one-off’) prototype hardware to work reliably
-outside of the lab. Second they are susceptible to being undermined by people with malicious intent.
-Third they can produce spurious signals that are mistakenly interpreted as accurate.</em></strong></li>
-</ul>
-
-<h2 id="part-1-scenario">Part 1. Scenario</h2>
-
-<p>Two Arduino Yun devices are powered up, sitting adjacent to one another on a desktop. 
-Each has a light sensor and a laser diode. The laser diodes are aimed at the other Yun’s 
-light sensor. The objective is to set up a game of ping pong between the two Yuns.</p>
-
-<ul>
-  <li>First Yun turns on its laser diode</li>
-  <li>Second Yun measures an increase in its light sensor</li>
-  <li>Second Yun sends a <em>BRIGHT</em> signal to an AWS IOT Endpoint</li>
-  <li>AWS notifies First Yun that Second Yun is in state BRIGHT</li>
-  <li>First Yun turns off its laser diode</li>
-  <li>Second Yun measures a decrease in its light sensor</li>
-  <li>Second Yun turns on <em>its</em> laser diode</li>
-  <li>First Yun registers this in <em>its</em> sensor and sends a <em>BRIGHT</em> signal to AWS</li>
-  <li>AWS notifies Second Yun</li>
-  <li>Second Yun turns off its laser diode</li>
-  <li>…and so on…</li>
-</ul>
-
-<h2 id="part-2-procedural">Part 2. Procedural</h2>
-
-<ul>
-  <li>Install the AWS CLI per the instructions at http://aws.amazon.com/cli</li>
-  <li>Set up a REST API endpoint on AWS for the IOT devices to use
+  <li><strong><em>IOT devices are vulnerable to multiple failure modes</em></strong>
     <ul>
-      <li>Need a little more detail here Kilroy</li>
+      <li><strong><em>Operational failure: Fragile, not ruggedized</em></strong></li>
+      <li><strong><em>Malicious interference</em></strong></li>
+      <li><strong><em>Spurious signals often assumed to be accurate</em></strong></li>
     </ul>
   </li>
-  <li>Visit YouTube and search on AWS IOT to identify instructional material suited to your project.
+  <li><strong><em>To all three such ends we emphasize here on the backing data system: In the public cloud</em></strong></li>
+</ul>
+
+<h2 id="scenario-1">Scenario 1</h2>
+
+<h3 id="a-game-of-ping-pong">A game of ping pong</h3>
+
+<p>Two Arduino Yun devices are powered up, are sitting adjacent to one another on a desktop. 
+Each has a light sensor and a laser diode. The laser diodes of one Yun is pointed at the
+light sensor of the other Yun.  The objective is to set up a sort of ping pong:</p>
+
+<ul>
+  <li>Yun 1 laser diode ON</li>
+  <li>Yun 2 senses increased signal at light sensor</li>
+  <li>Yun 2 transmit Sensor High to the IDS</li>
+  <li>IDS publishes Yun 2 Sensor High</li>
+  <li>Yun 1 polls IDS, notices Yun 2 Sensor High state, in response turns laser diode OFF</li>
+  <li>Yun 2 senses low signal at light sensor</li>
+  <li>Yun 2 transmit Sensor Low to the IDS, turn laser diode ON</li>
+  <li>IDS publishes Yun 1 Sensor Low</li>
+  <li>Yun 1 senses increased signal at <em>its</em> light sensor</li>
+  <li>Yun 1 transmit Sensor High to the IDS</li>
+  <li>IDS publishes Yun 1 Sensor High</li>
+  <li>Yun 2 polls IDS, notices Yun 1 Sensor High state, etcetera</li>
+</ul>
+
+<h3 id="ping-pong-procedural">Ping pong procedural</h3>
+
+<ul>
+  <li>Purchase at least 2 Arduino Yun boards (supported for IOT by AWS)
     <ul>
-      <li>You can certainly continue with this tutorial but we suggest checking online</li>
+      <li>Cost is around USD 60 circa 2016</li>
+      <li>These devices have not one but two distinct processors
+        <ul>
+          <li>The Arduino microcontroller ‘Atmega’ (technically ATmega32u4)</li>
+          <li>A LINUX processor ‘Atheros’ (technically AR9331)</li>
+          <li>Note that we are implicitly dealing with three complexities from the outset
+            <ul>
+              <li>Programming an Arduino microcontroller</li>
+              <li>Creating execution logic on a LINUX system</li>
+              <li>Coordinating communication between the two</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Install the Arduino IDE on your laptop
+    <ul>
+      <li>IDE = Integrated Development Environment</li>
+      <li>In the work shown here the installation is on a PC running Windows 10</li>
+      <li>The IDE connects with the Arduino Yun by means of a USB cable
+        <ul>
+          <li>The Arduino can receive its operating power through this cable</li>
+          <li>The Arduino will ultimately run autonomously off a separate power source</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Install the <a href="http://aws.amazon.com/cli">AWS CLI</a> on a laptop</p>
+  </li>
+  <li>Set up a REST API endpoint on AWS; our example is called ‘quack’</li>
+</ul>
+
+<p><img src="/documentation/images/aws/aws_iot_001_quack_endpoint_synopsis.png" alt="quack REST API Endpoint status card" /></p>
+
+<ul>
+  <li>Set up the Arduino Yun
+    <ul>
+      <li>WARNINGS: Some procedures may not match reality; and we will call attention to them
+        <ul>
+          <li>Example: Out of the box on WiFi the Yun comes up as ‘Linino-XXXXXX’ with password ‘doghunter’
+            <ul>
+              <li>This is contrary to published information; and may be out of date as of this writing</li>
+              <li>Upon updating the Atheros OS and connecting to local WiFi this changes…</li>
+              <li>…becoming ‘Arduino-XXXXXXX’ with password ‘arduino’ as advertised</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Installing hardware and software
+        <ul>
+          <li>Tutorial links
+            <ul>
+              <li>Arduino
+                <ul>
+                  <li><a href="http://wiki.linino.org">Linino wiki</a></li>
+                  <li><a href="http://www.arduino.cc/en/Guide/ArduinoYun">Getting Started with Arduino Yun</a></li>
+                  <li><a href="http://www.arduino.org/products/4-arduino-boards/arduino-yun">Arduino Yun specs</a></li>
+                  <li><a href="http://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/arduino-Yun-schematic.pdf">Arduino Yun schematic</a></li>
+                  <li><a href="http://labs.arduino.org/Arduino%20Yun">Arduino Yun lab (many examples)</a></li>
+                </ul>
+              </li>
+              <li>AWS
+                <ul>
+                  <li><a href="http://aws.amazon.com/iot">AWS IOT main page</a></li>
+                  <li><a href="http://aws.amazon.com/blogs/aws/category/aws-iot">AWS IOT blog entry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Arduino Yun + USB cables ‘standard to micro’ connectors with full USB connectivity support
+            <ul>
+              <li>WARNING: Many common USB cables do <em>not</em> support full connectivity and <em>do not work</em>.</li>
+            </ul>
+          </li>
+          <li>Laptop install:
+            <ul>
+              <li>PuTTY: required on Windows (ssh on Linux)</li>
+              <li>WinSCP: required on Windows to transfer files (scp on Linux)</li>
+              <li>Arduino IDE: to program the Atmega
+                <ul>
+                  <li>The IDE is <em>not</em> used to program the Atheros, treated as a separate Linux system</li>
+                </ul>
+              </li>
+              <li>AWS IOT: Arduino SDK
+                <ul>
+                  <li>This is a library</li>
+                  <li>It permits the Atmega sketch to converse with the AWS IOT</li>
+                </ul>
+              </li>
+              <li>AWS CLI: Command Line Interface to AWS, on Windows runs from PowerShell</li>
+            </ul>
+          </li>
+          <li>Atheros: issue commands as root (we do not believe sudo is involved)
+<code class="highlighter-rouge">
+# opkg update 
+# opkg install distribute 
+# opkg install python-openssl 
+# opkg install openssh-sftp-server (enables sftp from PC to Atheros) 
+</code></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
+
+<p>[]:</p>
+
+<p>[]:</p>
 
 
 
@@ -911,8 +1063,8 @@ light sensor. The objective is to set up a game of ping pong between the two Yun
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 7, 2017 <br />
-<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
 </footer>
@@ -923,7 +1075,5 @@ light sensor. The objective is to set up a game of ping pong between the two Yun
 </div>
 <!-- /.container -->
     </div>
-
 </body>
-
 </html>

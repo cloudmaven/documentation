@@ -154,6 +154,16 @@
 
 
 {
+"title": "AWS Lambda",
+"tags": "AWSaccount_management",
+"keywords": "aws",
+"url": "aws_lambda.html",
+"summary": "AWS Console"
+},
+
+
+
+{
 "title": "AWS Overview",
 "tags": "AWScloud_basics",
 "keywords": "aws, overview",
@@ -483,6 +493,26 @@
 
 
 
+{
+"title": "Course Notebooks",
+"tags": "research_computing",
+"keywords": "cloud",
+"url": "curr_notebooks.html",
+"summary": "Notebooks for students in coursework"
+},
+
+
+
+{
+"title": "Yun Zhou Guan",
+"tags": "research_computing",
+"keywords": "cloud",
+"url": "curr_yun_zhou_guan.html",
+"summary": "(Yun Zhou Guan) Cloud Walk Library"
+},
+
+
+
 
 
 {
@@ -558,9 +588,9 @@
 {
 "title": "Documentation for Cloud Computing and Data Science",
 "tags": "getting_started",
-"keywords": "sample homepage",
+"keywords": "homepage",
 "url": "index.html",
-"summary": "Cloud computing tutorials and pathways into data science technology - Developed for open use at the University of Washington. We offer solutions to help streamline your research analysis, processing, collaboration, and publication pathways."
+"summary": "Cloud computing tutorials, case studies, pathways into data science technology; presenting the public cloud as opportunity for innovation. This page is intended to accelerate research; developed in close association with the [UW eScience Institute](http://escience.washington.edu). We have two goals - Reduce friction, i.e. help with what you already do with computers, streamline your analysis and pathways to publication. Promote new ideas and methods, i.e. We want to make it easy for you to share data, collaborate, sandbox, and learn about new methods in data science."
 },
 
 
@@ -929,7 +959,7 @@
 "title": "Scroll layout",
 "tags": "special_layouts",
 "keywords": "json, scrolling, scrollto, jquery plugin",
-"url": "jsmydoc_scroll.html",
+"url": "mydoc_scroll.html",
 "summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
 },
 
@@ -939,7 +969,7 @@
 "title": "Scroll layout",
 "tags": "special_layouts",
 "keywords": "json, scrolling, scrollto, jquery plugin",
-"url": "mydoc_scroll.html",
+"url": "jsmydoc_scroll.html",
 "summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
 },
 
@@ -1503,6 +1533,16 @@
 "keywords": "visualization, virtual, globes",
 "url": "rc_visualization_virtual_globes.html",
 "summary": "Visualization on Virtual Globes"
+},
+
+
+
+{
+"title": "Yun Zhou Guan (Cloud Walk Library)",
+"tags": "research_computinggithubreproducibilitydata_sciencecloud_basicsweb_framework",
+"keywords": "research, computing",
+"url": "rc_yun_zhou_guan.html",
+"summary": "Yun Zhou Guan (cloud walk library)"
 },
 
 

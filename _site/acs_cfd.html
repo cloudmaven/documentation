@@ -37,23 +37,6 @@
 
 <link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
 
-    <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Computational fluid dynamics on AWS</title>
-<meta property="og:title" content="Computational fluid dynamics on AWS" />
-<meta name="description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<meta property="og:description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<link rel="canonical" href="http://idratherbewriting.com/acs_cfd.html" />
-<meta property="og:url" content="http://idratherbewriting.com/acs_cfd.html" />
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebPage",
-    "headline": "Computational fluid dynamics on AWS",
-    "description": "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.",
-    "url": "http://idratherbewriting.com/acs_cfd.html"
-  }
-</script>
-<!-- End Jekyll SEO tag -->
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -280,7 +263,7 @@
         
     
     <li>
-        <a href="#">Proposals</a>
+        <a href="#">Proposal Prep</a>
         <ul>
             
             
@@ -292,7 +275,7 @@
             
             
             
-            <li><a href="p_costing.html">Costing</a></li>
+            <li><a href="p_costing.html">Costing the cloud</a></li>
             
             
             
@@ -322,6 +305,13 @@
             
             
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_yun_zhou_guan.html">Yun Zhou Guan (Cloud Library)</a></li>
             
             
             
@@ -378,7 +368,14 @@
             
             
             
-            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
+            <li><a href="curr_notebooks.html">Jupyter for coursework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="curr_yun_zhou_guan.html">Cloud Library</a></li>
             
             
             
@@ -443,6 +440,13 @@
             
             
             <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_lambda.html">Lambda</a></li>
             
             
             
@@ -742,6 +746,28 @@
         </ul>
         
         
+    
+    <li>
+        <a href="#">Google Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/colorado-center-for-personalized-medicine/" target="_blank">Health Data Compass - Colorado Center for Personalized Medicine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/" target="_blank">Center of Genomics and Personalized Medicine - Stanford University</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -798,10 +824,6 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/acs/acs_cfd.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    
-
     
 
   <h2 id="introduction">Introduction</h2>
@@ -810,9 +832,71 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="warnings">Warnings</h2>
 
-<h2 id="start">Start</h2>
+<h2 id="procedure">Procedure</h2>
 
-<p>oh my</p>
+<ul>
+  <li>Resource tagging per HPC Club policy
+    <ul>
+      <li><a href="https://cloudmaven.github.io/documentation/ccs_student_research.html">Link</a></li>
+      <li><strong>Project</strong> tag key; value = NetID (without ‘@uw.edu’)</li>
+      <li><strong>End_date</strong> tag key; value = when you expect to be done with the resource</li>
+      <li><strong>Name</strong> tag key; value = NetID_descriptive_phrase</li>
+    </ul>
+  </li>
+  <li>
+    <p>Central idea: Use the Spot market, do the first calculation, make sure it works, get cost</p>
+  </li>
+  <li>
+    <p>AB can assist with getting the technical details right</p>
+  </li>
+  <li>
+    <p>Authenticate with NetID possible but we will use IAM User for now</p>
+  </li>
+  <li>Procedural
+    <ul>
+      <li>Create cfn cluster with placement group
+        <ul>
+          <li>See email chain for links</li>
+        </ul>
+      </li>
+      <li>optional: disable hyperthreading (config file and post_install_script required)</li>
+      <li>install starccm+ on the shared volume, set up the license
+        <ul>
+          <li>A making progress on the execution issue; please send Rob confirmation this is fixed</li>
+        </ul>
+      </li>
+      <li>create a snapshot of the volume for next cluster</li>
+      <li>create a qsub file and launch
+        <ul>
+          <li>created from starccm+ documentation; get file from Siemmens, cf email chain; pls send to Rob</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Number of processes / instance depends on number of gridcells in the CFD calc
+    <ul>
+      <li>LH: 50k cells per process</li>
+      <li>LH: 72 processes implies qty 2 c4.8xlarge with hyperthreading on; qty 4 if off</li>
+      <li>A revises: 9e6 cells 180 processors = 4-5 c4.8xl</li>
+      <li>‘existing config does not have a placement group’ implies new cfncluster needed</li>
+    </ul>
+  </li>
+  <li>Obstacle
+    <ul>
+      <li>Insufficient space on the shared EFS drive… solution pending</li>
+    </ul>
+  </li>
+  <li>The Steve’s Portal
+    <ul>
+      <li>This is the starccm+ website</li>
+      <li>batch/qsub documentation available</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[]:</p>
+
+<p>[]:</p>
 
 
 
@@ -842,8 +926,8 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> June 7, 2017<br/> Site last generated: Jun 7, 2017 <br />
-<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+<span>Page last updated:</span> June 7, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
 </footer>
@@ -854,7 +938,5 @@ $('#toc').on('click', 'a', function() {
 </div>
 <!-- /.container -->
     </div>
-
 </body>
-
 </html>
