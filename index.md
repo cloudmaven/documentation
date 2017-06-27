@@ -41,5 +41,4 @@ We have (office hours)[http://escience.washington.edu/office-hours/#eScienceData
 - Contact Amanda Tan \: amandach[at]uw[dot]edu 
 - [Subscribe to the mailing list here](http://mailman11.u.washington.edu/mailman/listinfo/uwcloud)
 
-
 {% include links.html %}
