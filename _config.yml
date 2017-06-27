@@ -1,5 +1,3 @@
-repository: cloudmaven/documentation
-
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
@@ -29,7 +27,7 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Cloud maven
+feedback_subject_line: cloud maven
 
 feedback_email: amandach@uw.edu
 # used as a contact email for the Feedback link in the top navigation bar

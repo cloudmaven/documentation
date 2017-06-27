@@ -5,8 +5,8 @@
         <description>Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.</description>
         <link>http://idratherbewriting.com/</link>
         <atom:link href="http://idratherbewriting.com/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 27 Jun 2017 14:35:05 -0700</pubDate>
-        <lastBuildDate>Tue, 27 Jun 2017 14:35:05 -0700</lastBuildDate>
+        <pubDate>Tue, 27 Jun 2017 15:24:41 -0700</pubDate>
+        <lastBuildDate>Tue, 27 Jun 2017 15:24:41 -0700</lastBuildDate>
         <generator>Jekyll v3.2.1</generator>
         
         <item>
@@ -18,10 +18,6 @@
 &lt;p&gt;but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;
 
 &lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries&lt;/p&gt;
-
-&lt;p&gt;[]:&lt;/p&gt;
-
-&lt;p&gt;[]:&lt;/p&gt;
 
 </description>
             <pubDate>Fri, 26 Feb 2016 00:00:00 -0800</pubDate>
@@ -49,10 +45,6 @@
   &lt;li&gt;sidebars configurable per page&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;[]:&lt;/p&gt;
-
-&lt;p&gt;[]:&lt;/p&gt;
-
 </description>
             <pubDate>Wed, 24 Feb 2016 00:00:00 -0800</pubDate>
             <link>http://idratherbewriting.com/myupdate.html</link>
@@ -66,10 +58,6 @@
         <item>
             <title>Test post from last year</title>
             <description>&lt;p&gt;This is just a test post from the previous year.&lt;/p&gt;
-
-&lt;p&gt;[]:&lt;/p&gt;
-
-&lt;p&gt;[]:&lt;/p&gt;
 
 </description>
             <pubDate>Sun, 12 Apr 2015 00:00:00 -0700</pubDate>
