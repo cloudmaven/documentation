@@ -20,6 +20,10 @@ from management of Private Health Information (PHI) under HIPAA regulations.
 
 ## Links
 
+
+- [AWS features that are HIPAA-aligned](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/)
+
+
 - [AWS talk (YouTube) on HIPAA compliance](https://www.youtube.com/watch?v=g4XI4IIYVrw)
 - [AWS HIPAA compliance blog Part 1 Automation](https://aws.amazon.com/blogs/security/how-to-automate-hipaa-compliance-part-1-use-the-cloud-to-protect-the-cloud/)
 - [AWS HIPAA compliance blog Part 2 Deployment](https://aws.amazon.com/blogs/security/how-to-use-aws-service-catalog-for-code-deployments-part-2-of-the-automating-hipaa-compliance-series/)
@@ -34,19 +38,20 @@ from management of Private Health Information (PHI) under HIPAA regulations.
 
 The objective of this project is to accelerate medical research involving PHI via a HIPAA-aligned 
 Business Associeates Agreement between a university and AWS. The strategy is to build a Secure Computing 
-Environment (abbreviated **SCE** here) that addresses the three primary considerations: Encryption, 
-reporting and human use factors, all with the idea of reducing risk of a compromise of the SCE.  
-The end result is that the public cloud *disappears*: Researchers are able to focus on their data
-and on their work.  
+Environment (abbreviated **SCE** here) that addresses the three primary considerations: Data security
+(e.g. encryption considerations), reporting (e.g. logging access) and human use factors (e.g. access key
+best practices), all with the idea of reducing risk of compromise to the SCE. The end result is that 
+the public cloud should *disappear*: Researchers simply focus on their research.
 
 
 #### This content in relation to other resources
 
 
-The content provided here may be thought of as a limited foray into an SCE where the links above are much more 
-comprehensive.  One of the main objectives of this 'limited foray' is to provide a record of the learning 
-process *de novo*; so an attempt to de-mystify.  Before proceeding into technical details of the implementation 
-we therefore describe a typical use case with related considerations. This is then referenced in more detail below.
+The content provided here may be thought of as a limited foray into an SCE. The links above are much more 
+comprehensive.  A primary objective of the 'limited foray' is to provide a record of the thought process
+*de novo*, i.e. it is an attempt to de-mystify matters for a medical researcher, our target audience.  
+Before proceeding into technical details of the implementation we therefore describe a typical use 
+case with related considerations. This is then referenced in more detail below.
 
 
 
@@ -241,14 +246,50 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
 
 
 - Questions from Dogfooding on March 23 2017
+
+  - A VPC costs nothing per day. EC2, EBS, networking egress (9 cents per Gig EC2 to internet), S3 egress is 9 cents per Gig up to 10 TB (then it drops a bit for more) 
+    - Other charges: NAT Gateway is 4.5 cents per hour plus 4.5 cents per Gigabyte
+    - S3 also costs... now 2.3 cents per GB-month. RDS costs based on chosen instance size. 
+      - Medium instance runs $1.16 per hour for the EC2 instance (which I see in the RDS console; but not in the EC2 console)
+      - $0.10 per GB-month for the storage which is equivalent to the EBS rate
+      - The I/O rate against the storage is 20 cents per one million requests so essentially free
+      - Backup storage is automated; and that costs at the S3 rate, 2.3 cents per Gig (less than the EBS snapshot cost)
+      - While we're here: What is the EBS snapshot cost? To S3: 5 cents per GB month 
+      - Let's talk Stop
+        - Launch: I am pulling an AMI out of S3 onto an EBS root volume (the OS is part of this) attached to an EC2
+          - This is EBS-backed AMI. There is also Instance Store-backed AMIs which would be for insanely fast local solid state drive access: Because these install directly into the solid state drive on the EC2, not on an EBS.
+        - I have an EC2 and I click Stop: Now I am paying for its EBS. That is: The EBS persists. To pay snapshot rate (0.05 per GB mo) I have to snapshot this EBS. 
+          - The snapshot runs $0.05 / GB month an d this is on the portion of the EBS it needs to save; not "all of it" 
+          - It might make sense to store a /data volume in S3 to save money. But this is splitting hares.
+        - Now I want to go back to my EC2 (which I stopped) from my Snapshot.
+        - Now I want to create an AMI: Ok do that. It is a snapshot plus a little bit of metadata about the instance
+          - Now I can re-start the AMI 
+          - This is the more typical use case 
+          - In fact from a stop work and start again later think AMI
+          - Philosophically get in the habit of adding a data partition to decouple your data from your compute
+          - Code base: GitHub
+        - So now the Launch process can include User Data which is a script that loads the code base from GitHub
+          - To avoid doing manual security patches: User Data lives outside the AMI and can install packages like Python 2.7 and GitHub pulls and so on; but there is a backward compatibility possible issue
+
+  - Changing instance type
+    - Stop
+    - EC2 console
+      - Change instance type
+        - Upgrade! T2.micro to P2.16X
+    - AMI
+      - Tame deal
+ 
   - Create VPC...
     - Does my VPC need a CIDR that doesn't overlap other ones in my account? 10.0.0.0 is very popular...
-      - Peered VPCs must not have collisions; otherwise fine
+        - VPCs can have overlapping CIDR blocks. However not if they are going to be peered. 
+        - VPN also can create conflicts. So yes: Overlap is fine when they are independent bubbles. 
+        - So: Peered VPCs are to be avoided and must not have collisions; otherwise fine
     - Stipulate 'Default Tenancy': 
-      - Shared versus dedicated: Shared not allowed; so this must be Dedicated Tenancy, not Default
+      - Shared versus dedicated: Shared is now allowed; so do not use Dedicated Tenancy for HIPAA: This is now in the BAA as unnecessary for HIPAA compliance.
     - Creating subnets: AZ: VPC is regional
       - Subnets are associated with AZs and should be intentionally designated
       - Using multiple AZs (multiple subnets across AZs) will make the VPC "present" in those AZs
+        - There is a charge for inter-AZ bandwidth: 1 cent per Gig which is one ninth the egress to internet rate
         - for SCE it is more controlled to be in just one AZ
       - Going multi-AZ would be a high availability strategy which is a compute-heavy idea 
 - AB: How to do determine Account has been registered at AWS as PHI/HIPAA-active?
@@ -329,9 +370,10 @@ Hence t-type AWS EC2 instances may not be used in an SCE.***
   - Siricata / Snort
   - Direct tools like **ssh** and third party apps like Cloudberry 
   - Dedicated Instance 
-  - Lambda Service
-  - NAT Gateway
-  - HIPAA-aligned tech at AWS: 13+
+  - Lambda Service: A micro-service which is code that runs under certain trigger conditions; see the dedicated cloudmaven page.
+  - NAT Gateway: A Diode that permits a private sub-net instance to access the internet without the internet having access back.
+    - Notice that an EC2 can use a NAT Gateway to transparently install software; but if this is malware then you have done it to yourself.
+  - [HIPAA-aligned components of AWS](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/)
 - "How can you be using Lambda? It is not on the list...?"
   - Tools that do not come in contact with PHI can be thought of as 'triggers and orchestration'.
   - Services that may come in contact with PHI can be described as 'data and compute'
