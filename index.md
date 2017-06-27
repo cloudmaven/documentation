@@ -5,10 +5,7 @@ tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
 toc: false
-summary: Cloud computing tutorials, case studies, pathways into data science technology; presenting the public cloud as opportunity for innovation. 
-This project is intended to accelerate research; developed in close association with the [UW eScience Institute](http://escience.washington.edu) 
-we have two goals: Reduce friction, i.e. help with what you already do with computers, streamline your analysis and pathways to publication. 
-Promote new ideas and methods, i.e. We want to make it easy for you to share data, collaborate, sandbox, and learn about new methods in data science. 
+summary: Cloud computing tutorials, case studies, pathways into data science technology; presenting the public cloud as opportunity for innovation. This page is intended to accelerate research; developed in close association with the [UW eScience Institute](http://escience.washington.edu). We have two goals - Reduce friction, i.e. help with what you already do with computers, streamline your analysis and pathways to publication. Promote new ideas and methods, i.e. We want to make it easy for you to share data, collaborate, sandbox, and learn about new methods in data science. 
 ---
 
 
@@ -43,6 +40,5 @@ We have (office hours)[http://escience.washington.edu/office-hours/#eScienceData
 - Contact Rob Fatland \: rob5[at]uw[dot]edu
 - Contact Amanda Tan \: amandach[at]uw[dot]edu 
 - [Subscribe to the mailing list here](http://mailman11.u.washington.edu/mailman/listinfo/uwcloud)
-
 
 {% include links.html %}
