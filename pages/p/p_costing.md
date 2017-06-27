@@ -150,6 +150,4 @@ A: Storage is cheaper than disk space by a factor of four; so content that you d
 repeatedly and rapidly is cheaper to hold in storage. If you are analyzing some data files you might 
 copy them from storage to disk space attached to an instance to decrease access time. 
 
-
-
 {% include links.html %}
