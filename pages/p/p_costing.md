@@ -79,22 +79,31 @@ Those accounts have legal terms associated with them (see respective overview pa
 Q: How does the cloud work? 
 
 
-A: See the ensuing questions to get a quick overview of the terminology. Taking that as read the first step
-is to get a cloud account and log in to the provider's website (console) using a web browser. Here you will 
-find many options including **start an instance**. This you can do immediately: It is equivalent to renting 
-a computer by the hour. Once you have started the instance -- which we also call a cloud computer or a cloud
-virtual machine -- you can log in to that machine and start building a computing enviornment. You can allocate 
-associated disk space, upload files, install software and quickly get back to your research.  This is the 
-simplest picture of moving your work to the cloud. There is much more to the story, however. To get a sense of 
-this vast 'what else?' we suggest looking into the case studies provided at this website. 
+A: This answer is the tip of the iceberg: 'How you log in to a computer on the cloud and run programs.'
+See ensuing remarks for a quick terminology overview. First you would get a cloud account from some provider;
+we work with Microsoft Azure, Amazon Web Services and Google Cloud Platform. Log in through a browser to their
+**Console** and **start an instance**. This is equivalent to renting a computer by the hour. This computer
+will have an ip address; and you can log on to *that* machine for example using **ssh** or **PuTTY** (a 
+terminal window).  Once there you can start building your computing enviornment, importing data, compiling and 
+running programs, and so on; as you would on a desktop machine. In other words: Get back to your research.  
+This snapshot of 'moving your work to the cloud' does not yet get to the *why*, which we address below. 
+There is much more to the story so to get a sense of this we suggest looking at the case studies provided here.
 
 
 Q: Why do I want to move to the cloud? 
 
 
-A: One way to answer this is to say 'Using the cloud drastically reduces your risk and gains you time.'
-Traditionally you have to purchase and maintain computers; and worry about them crashing and losing your
-work. Cloud providers do a huge amount of back-up work -- invisible to you -- so that 
+A: Reduced risk, reduced hassle, lower cost, massive compute power. (If you need additional reasons keep 
+reading.) Let's cover these points in slightly more detail.  Traditionally you must purchase and maintain 
+computers and then worry about disks crashing. The cloud is constantly creating backups and cloud operating 
+systems are maintained and updated by the cloud vendors. You never buy or maintain hardware and you never need 
+to worry about losing your work or data: The cloud is highly redundant. Your work environment is automatically 
+migrated to the latest hardware as it becomes available; there is no obsolescence issue. You *do* have to learn 
+and implement cost management and security practices; so there is a learning curve. When you are not working 
+you save your work environment as a machine image which has a negligible cost. Hence you do not pay for 
+cloud computing resources when you are not using them.  This is in contrast to purchasing your own 
+computer hardware which runs 24/7i With luck it will run for three to five years, gradually becoming less state-of-the-art. 
+Cloud providers do a huge amount of back-up work -- invisible to you -- so that 
 
 
 Q: How fast/powerful is a given cloud computer?  
