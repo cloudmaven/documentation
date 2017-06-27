@@ -12,7 +12,7 @@ site_title: Research Computing Resources
 company_name: cloudmaven
 # this appears in the footer
 
-github_editme_path: cloudmaven/documentation/blob/gh-pages/
+github_editme_path: 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 disqus_shortname: 
@@ -103,8 +103,4 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 
 # needed for sitemap.xml file only
 url: http://idratherbewriting.com
-
-#for SEO
-#gems:
- # - jekyll-seo-tag
 
