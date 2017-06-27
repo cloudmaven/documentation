@@ -37,23 +37,6 @@
 
 <link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
 
-    <!-- Begin Jekyll SEO tag v2.0.0 -->
-<title>Costing cloud in proposals</title>
-<meta property="og:title" content="Costing cloud in proposals" />
-<meta name="description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<meta property="og:description" content="Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features." />
-<link rel="canonical" href="http://idratherbewriting.com/p_costing.html" />
-<meta property="og:url" content="http://idratherbewriting.com/p_costing.html" />
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebPage",
-    "headline": "Costing cloud in proposals",
-    "description": "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features.",
-    "url": "http://idratherbewriting.com/p_costing.html"
-  }
-</script>
-<!-- End Jekyll SEO tag -->
     <script>
         $(document).ready(function() {
             // Initialize navgoco with default options
@@ -280,7 +263,7 @@
         
     
     <li>
-        <a href="#">Proposals</a>
+        <a href="#">Proposal Prep</a>
         <ul>
             
             
@@ -292,7 +275,7 @@
             
             
             
-            <li class="active"><a href="p_costing.html">Costing</a></li>
+            <li class="active"><a href="p_costing.html">Costing the cloud</a></li>
             
             
             
@@ -322,6 +305,13 @@
             
             
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_yun_zhou_guan.html">Yun Zhou Guan (Cloud Library)</a></li>
             
             
             
@@ -378,7 +368,14 @@
             
             
             
-            <li><a href="rc_jupyter_for_coursework.html">Jupyter for coursework</a></li>
+            <li><a href="curr_notebooks.html">Jupyter for coursework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="curr_yun_zhou_guan.html">Cloud Library</a></li>
             
             
             
@@ -443,6 +440,13 @@
             
             
             <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_lambda.html">Lambda</a></li>
             
             
             
@@ -742,6 +746,28 @@
         </ul>
         
         
+    
+    <li>
+        <a href="#">Google Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/colorado-center-for-personalized-medicine/" target="_blank">Health Data Compass - Colorado Center for Personalized Medicine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/" target="_blank">Center of Genomics and Personalized Medicine - Stanford University</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
         
         <!-- if you aren't using the accordion, uncomment this block:
            <p class="external">
@@ -798,23 +824,37 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/p/p_costing.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    
-
     
 
   <h2 id="introduction">Introduction</h2>
+
 <p>The purpose of this page is to provide guidelines for proposals that incorporate cloud computing, specifically 
 towards helping you (the proposal author) estimate costs for your project.</p>
 
 <h2 id="links">Links</h2>
+
 <ul>
   <li><a href="https://aws.amazon.com/grants/">AWS Grants</a></li>
   <li><a href="https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/">Azure Research Credits</a></li>
+  <li><a href="http://calculator.s3.amazonaws.com/calc5.html">AWS monthly cost calculator</a></li>
 </ul>
 
 <h2 id="warnings">Warnings</h2>
+
+<ul>
+  <li><strong><em>Research credits should be thought of us stopgap support, not as research support</em></strong>
+    <ul>
+      <li>By research support we mean: A long-term research computing subsidy</li>
+      <li>By stopgap we mean the researcher uses cloud research credits to…
+        <ul>
+          <li>…evaluate the feasibility of the public cloud</li>
+          <li>…tide over until standard research budgets can cover cloud costs</li>
+        </ul>
+      </li>
+      <li>Research credit awards typically last 12 months; grants are scaled to a cost estimate</li>
+    </ul>
+  </li>
+</ul>
 
 <h2 id="overview">Overview</h2>
 
@@ -864,24 +904,71 @@ of defraying computing costs in year one of the proposed effort.</p>
 Those accounts have legal terms associated with them (see respective overview pages herein: 
 <a href="az_overiew">Azure overview</a> and <a href="aws_overview.html">AWS overview</a>.</p>
 
-<h2 id="federally-funded-research">Federally funded research</h2>
-
 <h2 id="faq">FAQ</h2>
 
-<p>Q: How fast/powerful is a given instance?</p>
+<p>Q: How does the cloud work?</p>
 
-<p>A: You can read about instance types on the vendor’s cloud console 
-and/or information pages. For example AWS EC2 instances are 
-written up <a href="https://aws.amazon.com/ec2/instance-types/">here</a>.<br />
-From the Linux command line you can issue commands such as:</p>
+<p>A: This answer is the tip of the iceberg: ‘How you log in to a computer on the cloud and run programs.’
+See ensuing remarks for a quick terminology overview. First you would get a cloud account from some provider;
+we work with Microsoft Azure, Amazon Web Services and Google Cloud Platform. Log in through a browser to their
+<strong>Console</strong> and <strong>start an instance</strong>. This is equivalent to renting a computer by the hour. This computer
+will have an ip address; and you can log on to <em>that</em> machine for example using <strong>ssh</strong> or <strong>PuTTY</strong> (a 
+terminal window).  Once there you can start building your computing enviornment, importing data, compiling and 
+running programs, and so on; as you would on a desktop machine. In other words: Get back to your research.<br />
+This snapshot of ‘moving your work to the cloud’ does not yet get to the <em>why</em>, which we address below. 
+There is much more to the story so to get a sense of this we suggest looking at the case studies provided here.</p>
+
+<p>Q: Why do I want to move to the cloud?</p>
+
+<p>A: Reduced risk, reduced hassle, lower cost, massive compute power. (If you need additional reasons keep 
+reading.) Let’s cover these points in slightly more detail.  Traditionally you must purchase and maintain 
+computers and then worry about disks crashing. The cloud is constantly creating backups and cloud operating 
+systems are maintained and updated by the cloud vendors. You never buy or maintain hardware and you never need 
+to worry about losing your work or data: The cloud is highly redundant. Your work environment is automatically 
+migrated to the latest hardware as it becomes available; there is no obsolescence issue. You <em>do</em> have to learn 
+and implement cost management and security practices; so there is a learning curve. When you are not working 
+you save your work environment as a machine image which has a negligible cost. Hence you do not pay for 
+cloud computing resources when you are not using them.  This is in contrast to purchasing your own 
+computer hardware which runs 24/7i With luck it will run for three to five years, gradually becoming less state-of-the-art. 
+Cloud providers do a huge amount of back-up work – invisible to you – so that</p>
+
+<p>Q: How fast/powerful is a given cloud computer?</p>
+
+<p>A: Cloud computers – also called <em>instances</em> or <em>Virtual Machines</em> – exist in many configurations and
+power levels. A small low-power machine will cost perhaps $0.01 USD to operate per hour and a pretty 
+powerful machine might cost $0.40 per hour. The most powerful machines you can find on the cloud can cost
+$15 per hour.  You can read about cost and power at the cloud vendor’s website. At UW we focus on three
+vendors: AWS, Microsoft Azure and Google Cloud Platform.  From an instance command line you can issue 
+commands to learn more:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>% lscpu
-% cat /proc/cpuinfo
+% cat /proc/cpuinf
 </code></pre>
 </div>
 
-<p>It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce 
-<em>on the order of</em> 10% performance variation.</p>
+<p>Q: How much does a cloud computer cost?</p>
+
+<p>A: One penny per hour for a simple, low-power instance. $0.40 for a very powerful machine.</p>
+
+<p>Q: How much does cloud disk space cost?</p>
+
+<p>A: RAM memory on a cloud instance is part of the cost of that instance. Disk space costs $0.10 per 
+Gigabyte per month on AWS and other vendors are comparable.</p>
+
+<p>Q: How much does cloud storage cost?</p>
+
+<p>A: Rapid-access storage costs $0.025 (2.5 cents) per Gigabyte-month on the AWS cloud. Other vendor 
+costs are comparable. Low-access storage is cheaper, as low as 25% the cost of rapid-access storage.</p>
+
+<p>Q: How is cloud storage different from disk space on the cloud?</p>
+
+<p>A: Storage is cheaper than disk space by a factor of four; so content that you do not need to access 
+repeatedly and rapidly is cheaper to hold in storage. If you are analyzing some data files you might 
+copy them from storage to disk space attached to an instance to decrease access time.</p>
+
+<p>[]:</p>
+
+<p>[]:</p>
 
 
 
@@ -915,8 +1002,8 @@ From the Linux command line you can issue commands such as:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 7, 2017 <br />
-<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
 </footer>
@@ -927,7 +1014,5 @@ From the Linux command line you can issue commands such as:</p>
 </div>
 <!-- /.container -->
     </div>
-
 </body>
-
 </html>
