@@ -93,17 +93,18 @@ There is much more to the story so to get a sense of this we suggest looking at 
 Q: Why do I want to move to the cloud? 
 
 
-A: Reduced risk, reduced hassle, lower cost, massive compute power. (If you need additional reasons keep 
-reading.) Let's cover these points in slightly more detail.  Traditionally you must purchase and maintain 
-computers and then worry about disks crashing. The cloud is constantly creating backups and cloud operating 
-systems are maintained and updated by the cloud vendors. You never buy or maintain hardware and you never need 
-to worry about losing your work or data: The cloud is highly redundant. Your work environment is automatically 
-migrated to the latest hardware as it becomes available; there is no obsolescence issue. You *do* have to learn 
-and implement cost management and security practices; so there is a learning curve. When you are not working 
-you save your work environment as a machine image which has a negligible cost. Hence you do not pay for 
-cloud computing resources when you are not using them.  This is in contrast to purchasing your own 
-computer hardware which runs 24/7i With luck it will run for three to five years, gradually becoming less state-of-the-art. 
-Cloud providers do a huge amount of back-up work -- invisible to you -- so that 
+A: Reduced risk, reduced hassle, lower cost, and massive on-demand compute power should you need it. 
+(If you need additional reasons keep reading.) Let's cover these points in slightly more detail.  Traditionally 
+you must purchase and maintain computers and then worry about disks crashing. In the cloud someone else has set
+up the computers already; and the cloud provider is constantly creating backups of your disk partitions. Cloud 
+operating systems are maintained and updated and patched by the cloud provider (although you can also do security 
+patches as needed).  In short you never buy and/or maintain hardware and you won't worry about losing your work / data. 
+Migrating to more powerful machines is trivially easy so your hardware does not gradually become obsolete. 
+You *do* have to learn and implement cost management and security practices; so there is a learning curve. 
+When you are not working on cloud machines you turn them off. Your work environment as preserved at negligible
+cost (10 cents per GB per month). You do not pay for computing horsepower when you are not using it.  
+And should you need massive computing power the cloud has thousands of machines available. You can scale 
+your compute task out and complete your processing quickly. 
 
 
 Q: How fast/powerful is a given cloud computer?  
@@ -133,21 +134,28 @@ Q: How much does cloud disk space cost?
 
 
 A: RAM memory on a cloud instance is part of the cost of that instance. Disk space costs $0.10 per 
-Gigabyte per month on AWS and other vendors are comparable.
+Gigabyte per month on AWS; other vendors such as Microsoft Azure and Google are comparable.
 
 
 Q: How much does cloud storage cost? 
 
 
-A: Rapid-access storage costs $0.025 (2.5 cents) per Gigabyte-month on the AWS cloud. Other vendor 
+A: Rapid-access storage costs $0.023 (2.3 cents) per Gigabyte-month on the AWS cloud. Other vendor 
 costs are comparable. Low-access storage is cheaper, as low as 25% the cost of rapid-access storage. 
 
 
 Q: How is cloud storage different from disk space on the cloud? 
 
 
-A: Storage is cheaper than disk space by a factor of four; so content that you do not need to access 
-repeatedly and rapidly is cheaper to hold in storage. If you are analyzing some data files you might 
-copy them from storage to disk space attached to an instance to decrease access time. 
+A: Storage is distinct from and cheaper than disk space by a factor of four. Content that you do not need 
+to access repeatedly frequently is cheaper to place in storage. 
+
+
+Q: Is there an overview of costs? 
+
+
+A: For AWS [this diagram](https://luckylittle.gitbooks.io/the-open-guide-to-amazon-web-services/content/figures/aws-data-transfer-costs.png) 
+might help but it may also get out-of-date. 
+
 
 {% include links.html %}
