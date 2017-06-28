@@ -25,7 +25,23 @@ the mountain ranges of High Mountain Asia. The project lead for this NASA-sponso
 - [HIMAT website](http://himat.org)
 - [AralDIF](http://araldif.azurewebsites.net)
 - [ICIMOD](http://www.icimod.org)
-- [NASA SERVIR](https://www.nasa.gov/mission_pages/servir/index.html
+- [NASA SERVIR](https://www.nasa.gov/mission_pages/servir/index.html)
+
+
+## Status
+
+
+- Recent activity
+  - Juneau meeting with Chinese Academy of Sciences: Completed with presentation decks recovered
+- Work in progress
+  - Accumulating a comprehensive overview of the NASA projects and interrelationships
+  - Selected contributor datasets placed in cloud storage
+  - Jupyter Hub installed on the cloud
+  - Example scripts running on Jupyter Hub
+  - Idea: Progress towards comparative processes
+- High-Level Objectives
+  - Work to characterize degree of certainty in HIMAT program results / outputs: "How sure are you?"
+
 
 
 ## HiMAT data infrastructure
