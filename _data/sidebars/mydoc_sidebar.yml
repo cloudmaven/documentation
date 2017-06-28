@@ -298,6 +298,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Light Sheet Microscope
+      url: /acs_light_sheet_microscope.html
+      output: web, pdf
+
     - title: Epigenome Imputation
       url: /acs_epigenome_imputation.html
       output: web, pdf
