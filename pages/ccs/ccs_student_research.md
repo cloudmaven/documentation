@@ -27,8 +27,8 @@ and with a generous research credit grant from Amazon Web Services.
 
 - $10k in credits spends down *before* the $10k initial grant
 - Status on grant at end of initial period June 30 2017?
-- Spend to date is $73 (very light)
-- Leadership transfer all set
+- Spend to date is light (under $1k as of July 1)
+- Leadership transfer in progress
 - 1-2 part-time supporting roles
   - Address governance and account management 
   - Largely self-driven in terms of deliverables
@@ -77,6 +77,14 @@ UW-specific instructions...
 - Write up a synopsis of your research, results and blockers as you go. 
   - This is your primary deliverable for participating and we will use these to further promote the program.
 - Have fun, do incredible work.
+
+
+## IAM User additions
+
+- Until we figure out Roles etc the NetID authentication can fall short necessitating an additional login
+- This IAM User can be an admin... with attendant risk
+- We like to hand over creds using a thumb drive
+- Kilroy when this is not possible we need to write up PGP encryption for transferring creds via email securely 
 
 
 ## Tracking spending
