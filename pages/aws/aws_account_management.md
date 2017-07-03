@@ -150,19 +150,19 @@ First let's get working definitions:
   - Thought of as a set of permissions, or "the way that you assign permissions"
   - Policies are evaluated at the time of a request submitted to AWS; see below
 - Policy Evaluation
-  - By default: Everything starts **DENIED**
+  - By default: Everything starts with a **DENY**
   - Upon request: All policies are evaluated at once; there is no order of evaluation
-    - If there is an explicit DENIED it wins, even over an explicit ALLOW
-    - If DENIED not present: Look for ALLOW: If found: Ok. Else: See default, above.
+    - If there is an explicit DENY it wins, even over an explicit ALLOW
+    - If DENY is not present: Look for ALLOW: If found: Ok. Else: See default, above.
     - One more detail: There is also ALLOW a NOT which is not as strong as DENY: It can be overridden by another ALLOW.
-  - Debugging concept: If you have explicitly ALLOWED something that still does not happen 
-    - There must be an explicit DENIED somewhere else that you have not noticed
-  - Basic elements:
-    - Always an **Action**: What the API commands are. 
+  - Debugging concept: If you have explicitly set ALLOW for something that still does not happen 
+    - There must be an explicit DENY somewhere else that you have not noticed
+  - Basic elements of policies:
+    - There is always an **Action**: What the API commands are. 
       - '*' is wildcard do anything.
       - 'S3:*' is like the S3 API call, again with wildcard: Can do any action on S3
-    - Resource: In a sense the **Action**'s Direct Object: What the action is applied to
-    - Effect: Logical ALLOW or DENY; logical condition as noted above
+    - There is always a Resource: In a sense the **Action**'s Direct Object: What the action is applied to
+    - There is always an Effect: Logical ALLOW or DENY; logical condition as noted above
     - More: There is a great deal more to Policies and Policy Evaluation...
       - For example conditional stuff like CIDR blocks allowed to connect to a VPC
       - To pursue in depth: Don't use cloudmaven; go direct to the AWS resource content
@@ -177,6 +177,7 @@ which in turn requires an EC2 instance to receive an appopriate Spot Fleet role.
 that this problem will recur; therefore let's solve the problem with a Group. Second since the Power Access policy
 does not include an DENY it can be overridden. Therefore:
 
+
 - Create Group SpotFleetAccess
 - Include Bill in this Group
 - Create a new Policy (see below) that has the desired ALLOW actions
@@ -184,8 +185,10 @@ does not include an DENY it can be overridden. Therefore:
   - Lines that allow S3 access
 - Assign this Policy to the same Group
 
+
 Whereupon Bill now logs in and can spin up EC2 instances that access S3; and these instances receive a role that
 allows them to come from the Spot market pool. 
+
 
 [This link gives the necessary Spot Fleet policy](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html).
 Here is an example of the text; note the explicit ALLOW of PassRole, ListRoles, ListInstanceProfiles. This is required to work
