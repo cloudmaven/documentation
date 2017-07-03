@@ -187,6 +187,35 @@ does not include an DENY it can be overridden. Therefore:
 Whereupon Bill now logs in and can spin up EC2 instances that access S3; and these instances receive a role that
 allows them to come from the Spot market pool. 
 
+[This link gives the necessary Spot Fleet policy](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html).
+Here is an example of the text; note the explicit ALLOW of PassRole, ListRoles, ListInstanceProfiles. This is required to work
+with Spot Fleet.  Note: We recommend getting the actual text for this policy from the above link.
+
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+              "iam:PassRole",
+              "iam:ListRoles",
+              "iam:ListInstanceProfiles"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 
 
 
