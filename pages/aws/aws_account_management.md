@@ -126,4 +126,68 @@ recognizable like that.  The asset should be tagged Project: <xyz> and when it i
 asset or service it should be named <xyz>-etcetera. 
 
 
+# IAM 
+
+
+First let's get working definitions: 
+
+- Key pair: A certificate used to access some resource like an EC2 instance
+- Credential: Generically an access mechanism: User name + password; or access keys 
+- User: A person who is affiliated with the account; has some form of access
+  - i.e. is a person with an associated access key: Public and Private text strings; in one file, kept in a secure location
+  - This is **distinct** from the key pair (official term) associated with an EC2 instance used for logging in to that instance!!!
+- Group: A collection of Users
+  - Can have a permission attached that applies to all IAM Users in that group
+- Role: Similar to a User but without visible Credentials
+  - A Role exists as an abstract Thing -- with a unique name -- where it is actually *defined* by the policies attached to it
+  - Roles are nice because they have temporary Credentials that are automatically generated and invisible to our view of what is happening
+  - You *assume* a role
+    - An EC can assume a role on launch: For example **Can Write To S3**
+    - Federated identities: Once you authenticate you assume a role based on some pre-existing rule / logic
+    - Other AWS services can assume roles
+    - IAM Users can assume roles
+- Policy: Is a set of conditions that is *attached* to an IAM Role or to an IAM User or an IAM Group
+  - Thought of as a set of permissions, or "the way that you assign permissions"
+  - Policies are evaluated at the time of a request submitted to AWS; see below
+- Policy Evaluation
+  - By default: Everything starts **DENIED**
+  - Upon request: All policies are evaluated at once; there is no order of evaluation
+    - If there is an explicit DENIED it wins, even over an explicit ALLOW
+    - If DENIED not present: Look for ALLOW: If found: Ok. Else: See default, above.
+    - One more detail: There is also ALLOW a NOT which is not as strong as DENY: It can be overridden by another ALLOW.
+  - Debugging concept: If you have explicitly ALLOWED something that still does not happen 
+    - There must be an explicit DENIED somewhere else that you have not noticed
+  - Basic elements:
+    - Always an **Action**: What the API commands are. 
+      - '*' is wildcard do anything.
+      - 'S3:*' is like the S3 API call, again with wildcard: Can do any action on S3
+    - Resource: In a sense the **Action**'s Direct Object: What the action is applied to
+    - Effect: Logical ALLOW or DENY; logical condition as noted above
+    - More: There is a great deal more to Policies and Policy Evaluation...
+      - For example conditional stuff like CIDR blocks allowed to connect to a VPC
+      - To pursue in depth: Don't use cloudmaven; go direct to the AWS resource content
+
+
+# IAM Access Example: Spot market
+
+When the Power User policy (an AWS-managed policy) is assigned to an IAM User they still do not have the ability to 
+do IAM tasks such as passing a role to an instance. So Bill (an IAM User) has Power User access; which in turn has 
+an explicit ALLOW of NOT IAM. This means IAM tasks are not available to Bill; but Bill wishes to use the Spot market
+which in turn requires an EC2 instance to receive an appopriate Spot Fleet role. What to do? First let us anticipate 
+that this problem will recur; therefore let's solve the problem with a Group. Second since the Power Access policy
+does not include an DENY it can be overridden. Therefore:
+
+- Create Group SpotFleetAccess
+- Include Bill in this Group
+- Create a new Policy (see below) that has the desired ALLOW actions
+  - Lines that provide IAM Role assignment
+  - Lines that allow S3 access
+- Assign this Policy to the same Group
+
+Whereupon Bill now logs in and can spin up EC2 instances that access S3; and these instances receive a role that
+allows them to come from the Spot market pool. 
+
+
+
+
 {% include links.html %}
