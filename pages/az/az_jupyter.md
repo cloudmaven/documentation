@@ -11,12 +11,14 @@ folder: az
 
 # Jupyter notebooks on Microsoft Azure
 
+
 ## Introduction
+
 
 This page presents the Microsoft Azure Jupyter notebook hosting service as an extremely 
 valuable (and currently free (2017)) tool for research.  We use it to support a middle-school
 math club called the **Other Math Club** located 
-[here](https://notebooks.azure.com/kilroy/libraries/89FHPIGSGMs/dashboard). 
+[here](https://notebooks.azure.com/library/89FHPIGSGMs/dashboard).
 If you are interested in jumping in: Go to this link and Sign In using your Windows Live ID. 
 Your copy of the notebook spins on the Azure Cloud. Some content -- files referenced 
 by the notebook pages -- may be ephemeral meaning they can go away when the notebook is closed.
@@ -29,20 +31,23 @@ In general we advocate using Jupyter notebooks to create research sandboxes, to 
 to share reproducible results, and to communicate on a technical level. Jupyter notebooks support 
 Python, R, F Sharp, Julia and other programming languages. They also support markdown including LaTeX mathematical formatting.
 
+
 Microsoft to their immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two 
 advantages over hosting a Jupyter notebook on a machine that you manage: First Azure takes care of the basics of managing the 
 notebook and its host machine; so you don't.  Second the Azure Jupyter notebook is connected to other useful technogies;
 so it is already built into a broader technical context or ecosystem. These extensions include Azure Machine Learning Studio 
 and GitHub, just to begin with. We believe this service has a great future and is well worth your time exploring.
 
+
 ## Links
 
 
+- [Example notebook](https://notebooks.azure.com/library/89FHPIGSGMs/dashboard) for a middle school math club. 
 - [Microsoft Azure Jupyter notebook hosting site](http://notebooks.azure.com)
 - [The Azure Notebook FAQ](http://notebooks.azure.com/faq) is an excellent overview.
 - [Gallery of interesting notebooks](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-and-IPython-Notebooks)
-- [Example notebook](https://notebooks.azure.com/library/89FHPIGSGMs/dashboard) for a middle school math club. 
 - [Data loading > Jupyter instructions](https://notebooks.azure.com/run/Microsoft/samples?dest=/notebooks/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)
+
 
 ## Warnings
 
