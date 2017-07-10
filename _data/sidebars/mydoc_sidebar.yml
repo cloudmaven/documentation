@@ -294,6 +294,10 @@ entries:
       url: /ccs_high_mountain_asia.html
       output: web, pdf
 
+    - title: Ocean Observing Initiative
+      url: /ccs_OOI.html
+      output: web, pdf
+
   - title: AWS Case Studies
     output: web, pdf
     folderitems:
