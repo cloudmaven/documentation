@@ -31,7 +31,7 @@ We've compiled this guide to help make your life easier. Navigation via the menu
 ## Help!
 
 
-We have (office hours)[http://escience.washington.edu/office-hours/#eScienceDataScientists] at the UW Data Science Studio on Mondays and Wednesday, 10am to 12pm and by appointment.  
+We have [office hours](http://escience.washington.edu/office-hours/#eScienceDataScientists) at the UW Data Science Studio on Mondays and Wednesday, 10am to 12pm and by appointment.  
 
 
 ## Connect with our program

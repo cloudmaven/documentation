@@ -104,5 +104,24 @@ some related references:
 - [TACC supercomputer notebook hosting](https://www.tacc.utexas.edu/-/why-use-jupyter-notebooks-in-designsafe)
 - [SDSC supercomputer notebook repo](https://zonca.github.io/2015/09/ipython-jupyter-notebook-sdsc-comet.html)
 
+== Berkeley work on Jupyter + Kubernetes ==
+
+
+From AC: 
+
+
+The BIDS Jupyter teams at UC Berkeley have been working with our colleague AC on a JupyterHub+Kubernetes deployment 
+for Data Science Undergraduate education; with adaptation as well for faculty/grad/postdoc workshops and for research use cases.
+
+
+- [Zero to JupyterHub with Kubernetes Docs](https://zero-to-jupyterhub-with-kubernetes.readthedocs.io/)
+- [Zero to JupyterHub with Kubernetes GitHub](https://github.com/jupyterhub/zero-to-jupyterhub-k8s)
+- [More GitHub on the same](https://github.com/data-8/jupyterhub-k8s/)
+- [Still more](https://github.com/data-8/kubeadm-bootstrap/)
+
+
+This extends work from January 2017 on a workshop that involved AR (UW); cf the 
+[PEARC17 contribution](https://pearc17.sched.com/event/Aq90/portable-learning-environments-for-hands-on-computational-instruction-using-container-and-cloud-based-technology-to-teach-data-science)
+
 
 {% include links.html %}
