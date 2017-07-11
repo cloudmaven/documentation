@@ -10,7 +10,7 @@ folder: cc
 ---
 
 ## Introduction
-The purpose of this glossary is to provide you a research-oriented guide to some of the common terms used in cloud computing.
+The purpose of this glossary is to provide you a research-oriented guide to some of the common terms used in cloud computing. Jocelyn is now editting this file.
 
 ## Links
 
