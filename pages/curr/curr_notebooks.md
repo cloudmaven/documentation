@@ -124,4 +124,9 @@ This extends work from January 2017 on a workshop that involved AR (UW); cf the
 [PEARC17 contribution](https://pearc17.sched.com/event/Aq90/portable-learning-environments-for-hands-on-computational-instruction-using-container-and-cloud-based-technology-to-teach-data-science)
 
 
+RV notes: Berkeley has picked up [**binder**](https://beta.mybinder.org). No automatic badges etc yet but repo pointer 
+syntax looks like this: 
+[https://beta.mybinder.org/v2/gh/clawpack/riemann_book/master](https://beta.mybinder.org/v2/gh/clawpack/riemann_book/master)
+
+
 {% include links.html %}
