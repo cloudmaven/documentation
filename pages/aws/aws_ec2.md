@@ -11,9 +11,14 @@ folder: aws
 
 # EC2 on AWS
 
+
 ## Introduction
 The purpose of this page is to go into some detail about the provisioning and use of AWS EC2 (Elastic Cloud Compute) 
-virtual servers; which are just computers available for you to use. 
+virtual servers. What is an EC2 really? It is simply a computer available for you to use on the cloud. You pay for it
+by the hour, typically a few cents per hour. If you get a really powerful machine you can pay as much as $15 per hour
+so we suggest you do not do that, to start with. Also please be aware that you can **Stop** an EC2 instance and not
+pay the hourly rate without *losing* its contents. To get them back just **Start** the instance again. 
+
 
 ## Links
 
@@ -38,11 +43,15 @@ An EC2 (Elastic Cloud Compute) instance is a computer; or you may prefer the ter
 operating system just like a box under your desk might. However: If you need to increase your computing capacity or expand 
 your storage: There are many many such EC2 instances available at a moment's notice. 
 
+
 Please refer to our read our Cloud Core drop-down for more on how cloud computing may be suitable for your project, 
+
 
 ## Details and terminology
 
+
 Amazon Web Services (AWS) EC2 instances come with a host of features and terminlogy. Briefly: 
+
 
 - AMIs
 - Elastic Block Storage (EBS) 
@@ -52,8 +61,10 @@ Amazon Web Services (AWS) EC2 instances come with a host of features and terminl
 - Elastic IPs 
 - Access keys and 'Key Pairs'
 - S3 storage and access
+
  
 ## Setting up an EC2 Instance
+
 
 The 'compute' part of the cloud begins with Virtual Machines that are called Elastic Cloud Compute = ECC = EC2 ***instances***. 
 To get started with EC2 instances you would log on to the AWS console, click on the EC2 icon and follow the buttons to create a 
@@ -61,15 +72,46 @@ new instance; which takes a few minutes. And then you can log in to that machine
 operating system that you choose, it has some amount of computing power that you choose, it has some amount of RAM that you 
 choose and it has very little disk space. 
 
+
+## A short digression on logging in
+
+
+Before going any further let's log on to the instance. Note its ip address in the AWS console in the Instances table. Let's
+suppose this is 123.124.125.126 and that you chose the AWS Linux operating system. You have also downloaded the keypair file
+that we will call **kp.pem**. If you are on Windows you use PuTTYGen to convert this to **kp.ppk** but let's assume you are 
+on a Linux machine or a Mac which has the **ssh** command built in. (Also you can install the bash shell on Windows.) 
+
+
+Go to the file location of your .pem keypair file and type
+
+
+```
+% chmod 400 kp.pem
+% ssh ec2-user@123.124.125.126 -i kp.pem
+```
+
+
+It may ask whether you wish to continue to connect. Answer 'yes'. If everything has gone according to plan you should
+see a little banner and a login prompt. This is the command prompt on your EC2 instance on AWS. Welcome to the cloud.
+Depending on your instance type you may have more than one attached disk volume; but at this point we will back up 
+our narrative to try and be a bit more methodical. 
+
+
+
+## To continue with setting up your EC2 instance
+
+
 This is the big Aha: You also want to attach some disk space in the process as well. The generic term for disk space is a disk volume. You can 
 attach these volumes (more than one is fine) in the spin-up process or you can attach them later. This is Elastic Block Storage (EBS). A single 
 EBS volume can be up to 16 Terabytes. 
+
 
 Let's assume EBS is where you'll keep your data; and so to safely make a back-up copy of that EBS volume you can periodically take snapshots of it. 
 The snapshots bundle up all the stuff in the volume and put that (like a big zip file) in S3 storage. That storage is completely separate from the 
 EC2 instance and its attached EBS volumes. You can also bundle up an image of the entire EC2 instance into storage. This is a snapshot combined 
 with some additional instructions on setting up the instance; and together these comprise an AMI for Amazon Machine Image. So there are two levels 
 of granularity in backing up your work: Snapshots and AMIs. 
+
 
 Now how much does this cost? The EBS costs ten cents per GB-month. Storage costs three cents per GB-month; so if you have a lot of data this is 
 considerable cost savings, putting your EC2 instance in storage by means of an AMI; or putting your disk volume in storage by means 
@@ -78,20 +120,29 @@ of a snapshot. The EC2 instance itself (not considering the cost of the EBS) wil
 hour. You can also rent super-powerful machines for several dollars per hour. Since that adds up it is important to know that you can turn these 
 machines off (without losing your data) so that you are not paying for them when you are not using them. 
 
+
 ### What this page is / isn't
+
+
 Now this document is in preparation; so it does not cover everything in this topic. For example it does not cover how to 
 save money by using the Spot Market and it does not cover turning EC2 instances on and off and setting Alarms to inform you 
 when they are possibly doing something expensive. We'll build all of this into these documentation pages; but the main point 
 of this page at the moment is Resources: The short list of items that you tend to build and associate with EC2 instances. 
 This includes AMIs, Snapshots, Key Pairs, and Elastic IPs. 
 
+
 ## Tagging
-Tagging helps to manage and organize your AWS resources. [This page](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/) contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to *always* set the following tags when spinning up a new EC2 instance: 
+
+
+Tagging helps to manage and organize your AWS resources. [This page](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/) 
+contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to *always* 
+set the following tags when spinning up a new EC2 instance: 
 
 - name: Name of your resource (e.g. cloudmavencompute) 
 - owner: Owner of the resource or who provisioned the resource
 - project: For billing purposes or which project the resource belongs to
 - confidentiality: For data security reasons if necessary
+
 
 ## Making an AMI
 An EC2 instance: We take as a given. (Although we don't have down "Encrypted" but let's just flag that with kilroy. Notice I 

@@ -20,12 +20,16 @@ This page describes a case study of cloud computing applied to the Ocean Observi
 
 ### HD Video Data
 
+
 Tim Crone at LDEO is working with Aaron Marburg at APL. Tim has set up a [platform](https://chiron.ldeo.columbia.edu) 
 to provide co-located processing and storage of HD video data.  Transfer to cloud would require a cost evaluation; 
 and likewise with broadband hydrophone data. 
 
 
 ### OOI M2M with real-time data visualization
+
+
+...and other inspirational material provided by Friedrich Knuth...
 
 
 [IPython notebook](https://github.com/friedrichknuth/m2m_demo), documentation pending. The notebooks gets at the basic data
@@ -58,7 +62,7 @@ Another item: The FK et al paper on OOI HD video data. This work illustrates der
 work through the entire video archive. See [this pdf](https://www.dropbox.com/s/grky08o1hxgs8u9/PID4900623.pdf?dl=0).
 
 
-Another item: [A beautifully illustrated data story written in D3](http://ww.r2d3.us/visual-intro-to-machine-learning-part-1/).
+Visualization inspiration: [A beautifully illustrated data story written in D3](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/).
 
 
 {% include links.html %}
