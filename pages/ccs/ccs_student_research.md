@@ -148,9 +148,6 @@ Hit enter and then press the up arrow key to return to ssh ec2-user@12.123.56.11
 If you are asked to run sudo yum update, type this in to apply all updates. Complete! will show when the updating is done.
 For a more detailed instruction, visit http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
 
-
-
-
 Congratualtions! You have successfully connected to your linux instance.
 
 #### Autotagging EC2 instances
