@@ -1,0 +1,88 @@
+Neurohackweek is an annual 5-day workshop held at the University of Washington eScience Institute.
+The workshop convened more than 40 participants: graduate students, post-docs, faculty and research staff from all over the US and from the 
+UK and the Netherlands, from Psychology, Neuroscience, Computer Science and other fields. The workshop was structured as part conference, 
+part summer school and part hackathon. During the week participants took part in workshops and tutorials, presented their work in talks, 
+and worked in small teams on projects or *hacks* where results were presented at the end of the week. 
+Video recordings of some of presentations may be found in 
+[this YouTube channel](https://www.youtube.com/playlist?list=PLEdFhTRBFLObkatJOX9wp3BCueH4wNSl7).
+
+## Cloud work
+
+On the second day of the workshop Cameron Craddock (Child Mind Institute, NY) presented a morning tutorial on using the AWS public
+cloud for neuroimaging applications. The materials used for this tutorial are available on the 
+[Neurohackweek GitHub account](https://github.com/neurohackweek/NI_cloud_computing).
+
+For this tutorial we provided participants with AWS IAM User credentials. They were thereby able to explore several options of 
+neuroimaging compute pipelines with AWS, primarily built on EC2 and S3 technologies. 
+
+### Four cloud projects
+
+1. A system for running BIDS applications. These are docker containers for neuroimaging pipelines.
+Preprocessed data from the ABIDE initiative was used. (kilroy citation needed) Further developed 
+is needed and (kilroy) should be elaborated here together with a timeline and other planning notes. 
+The end result will greatly simplify user access to high powered neuroimaging pipelines; cf BIDS-Apps (Kilroy).
+
+2. An implementation of the NPAIRS framework: Using a pre-configured AMI from Cameron, this project added 
+nodes, installed python modules to the nodes, and ran machine learning scripts on the nodes. (Kilroy what are these
+nodes? VM nodes or some other meaning?) Participants found it easy to use a pre-built AMI but a little bit 
+tricky to install modules to nodes. AWS or other cloud computing would be good for running time-consuming and 
+parallel jobs that do not need lots of intermediate human interaction.  Kilroy more elaboration pls.
+
+3. Collaborative Jupyter on AWS EC2: providing easy access to and storage of the ABIDE data and serial processing of 
+scripts. The scripts for this project were then run in parallel on AWS, making it easy to then deploy them 
+on local clusters at the University of Oregon and at MIT when participants returned home. This team had 
+some difficulty with credentials when trying to create new nodes. Quickly debugging these kinds of issues 
+in the context of a hackathon is a challenge for the organizers. Kilroy more details please.
+
+4. Preprocess the [CoRR dataset](https://s3.amazonaws.com/fcp-indi/data/Projects/CORR): An AMI with the newest 
+version (v0.4.0) of the C-PAC pipeline software was created, and Starcluster was used to launch and manage 
+20 EC2 instances with the goal of preprocessing all of CoRR's datasets. Since CoRR  is so large (1629 subjects; 
+3357 anatomical scans; 5093 resting state functional scans), the instances didn't finish running before the end 
+of Neurohackweek, but the setup during the week will allow the team to continue the work. Kilroy please define
+fMRI.
+
+
+## Post-workshop evaluation 
+
+A survey distributed on the last day of the workshop asked participants to comment on *delta-skills*
+and *delta-learning* that occurred during the workshop. 
+
+- How much knowledge about cloud computing did you have coming into Neurohackweek?
+
+- How much did you learn about cloud computing during Neurohackweek?
+
+Kilroy need some fill-in here!
+
+In free form responses when asked "What did you learn?" several participants mentioned cloud computing. For example: 
+
+- "Learned rudimentary python and javascript, got a refresher on git/github, was introduced to many new tools like cloud computing."
+
+- "I learned how to use a bunch of tools I'd heard about but wasn't sure how to actually get working with my own data. I also 
+worked with a great team to ask a scientific question using shared Jupyter notebooks on the AWS cloud." 
+
+On the other hand several participants expressed frustration at not having enough time to learn more about these topics. 
+When asked "What would you have liked to learn more about in Neurohackweek?", a few participants responded that more time 
+should have been devoted to cloud computing. For example: 
+
+- "I couldn't get the cloud computing to work and I would very much have liked to learn more about it (at a more basic level... 
+perhaps in a format like the github lecture... step by step so anyone can follow along and everyone has accomplished executing 
+the mission-critical steps)."
+
+- "I wasn't able to absorb as much as I wanted about cloud computing. It was too much information for the limited time."
+
+- "If we'd had more time it would have been nice to have known what other folk are working on. I also need more time to 
+understand the cloud computing/storage/docker implementations."
+
+## Conclusion
+
+Incorporating cloud computing in Neurohackweek was a ‘multiple win’ proposition. It facilitated projects by providing simple access 
+for the participants to key neuroimaging computational tools. It helped identify bottlenecks to fix in cloud use. By training 
+the participants Neurohackweek advanced the cultural shift in building and sharing open analytical tools in domain research. 
+Finally of course Neurohackweek helped build awareness of the strengths of cloud computing. 
+
+UW IT Research Computing will continue to work with the event organizer Ariel Rokem and with this community to expand and solidify 
+the contribution of cloud computing to this important research. This continuation will include provision of compute resources, hosting 
+training sessions and supporting consultation with AWS solution architects. 
+We encourage other research communities to contact us about following the Neurohackweek model for community-building in other 
+respective domains. 
+

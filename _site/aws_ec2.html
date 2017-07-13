@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EC2 instances on AWS">
+<meta name="keywords" content="AWSscalecontainersresearch_computingconsoleapistorage,  aws, ec2, instances">
+<title>AWS EC2 | Research Computing Resources</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-purple.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://idratherbewriting.comfeed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Research Computing Resources</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="calendar.html">Calendar</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jekyll Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://github.com/tomjohnson1492/documentation-theme-jekyll" target="_blank">Github Repo</a></li>
+                        
+                        
+                        
+                        <li><a href="https://talk.jekyllrb.com" target="_blank">Jekyll Talk</a></li>
+                        
+                        
+                        
+                        <li><a href="http://jekyllrb.com/docs/home/" target="_blank">Jekyll documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="http://stackoverflow.com/questions/tagged/jekyll" target="_blank">Jekyll on Stack Overflow</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/category-jekyll/" target="_blank">Jekyll on my blog</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=Cloud maven f eedback&body=I have some feedback about the AWS EC2 page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="AWS EC2">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Cloud Core</a>
+        <ul>
+            
+            
+            
+            <li><a href="cc_what_is_the_cloud.html">What is the cloud?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_data_security.html">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_glossary.html">Glossary</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_cost_management.html">Cost management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_compute_power.html">Compute power</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_docker_containers.html">Docker containers</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_internet_of_things.html">Internet of things</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cc_technical.html">Cloud technical</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Proposals</a>
+        <ul>
+            
+            
+            
+            <li><a href="p_consulting.html">Consulting</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="p_costing.html">Costing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Research computing</a>
+        <ul>
+            
+            
+            
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_data_science.html">Data science</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_research_on_the_web.html">Research on the web</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_python.html">Visualization Python</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_visualization_virtual_globes.html">Visualization virtual globes</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS</a>
+        <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_console.html">Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="aws_ec2.html">EC2</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spot_market.html">Spot market</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cluster.html">Cluster</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_storage.html">Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_iot.html">IoT</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure</a>
+        <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_training.html">Training</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_visual_studio.html">Visual Studio</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_web_framework.html">Web Framework</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_machine_learning.html">Machine Learning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_spark.html">Spark</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_hipaa.html">HIPAA</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_jupyter.html">Jupyter</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="az_database.html">Database</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">AWS Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_rosetta.html">Rosetta</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_neurohackweek.html">Neurohackweek</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_cfd.html">CFD</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Azure Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">AWS EC2</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">EC2 instances on AWS</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+    
+
+    
+
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/aws/aws_ec2.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    
+
+    
+
+  <h1 id="ec2-on-aws">EC2 on AWS</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>The purpose of this page is to go into some detail about the provisioning and use of AWS EC2 (Elastic Cloud Compute) 
+virtual servers; which are just computers available for you to use.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="https://aws.amazon.com/ec2/pricing/on-demand/">EC2 Instance pricing</a></li>
+  <li><a href="http://calculator.s3.amazonaws.com/index.html">AWS Calculator</a></li>
+  <li><a href="https://aws.amazon.com/ebs/">Elastic Block Storage</a></li>
+  <li><a href="https://aws.amazon.com/efs/">Elastic File System</a></li>
+  <li><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">AWS Security Groups</a></li>
+  <li><a href="https://aws.amazon.com/training/course-descriptions/bigdata-fundamentals/">AWS training fundamentals</a></li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+<p><em>** There are two really important things to understand before you start using EC2 instances:
+1. Never place your access keys in a public repository such as GitHub.
+2. Never allocate EC2 resources and leave them running idle. This will cost you money. Learn to shut them down.
+**</em></p>
+
+<h2 id="informal-introduction">Informal introduction</h2>
+
+<p>An EC2 (Elastic Cloud Compute) instance is a computer; or you may prefer the term ‘virtual server’. It runs the Linux or Windows 
+operating system just like a box under your desk might. However: If you need to increase your computing capacity or expand 
+your storage: There are many many such EC2 instances available at a moment’s notice.</p>
+
+<p>Please refer to our read our Cloud Core drop-down for more on how cloud computing may be suitable for your project,</p>
+
+<h2 id="details-and-terminology">Details and terminology</h2>
+
+<p>Amazon Web Services (AWS) EC2 instances come with a host of features and terminlogy. Briefly:</p>
+
+<ul>
+  <li>AMIs</li>
+  <li>Elastic Block Storage (EBS)</li>
+  <li>Snapshots of EBS volumes</li>
+  <li>EC2 Resources</li>
+  <li>Elastic File System (EFS)</li>
+  <li>Elastic IPs</li>
+  <li>Access keys and ‘Key Pairs’</li>
+  <li>S3 storage and access</li>
+</ul>
+
+<h2 id="setting-up-an-ec2-instance">Setting up an EC2 Instance</h2>
+
+<p>The ‘compute’ part of the cloud begins with Virtual Machines that are called Elastic Cloud Compute = ECC = EC2 <strong><em>instances</em></strong>. 
+To get started with EC2 instances you would log on to the AWS console, click on the EC2 icon and follow the buttons to create a 
+new instance; which takes a few minutes. And then you can log in to that machine and use it like any other computer. It has an 
+operating system that you choose, it has some amount of computing power that you choose, it has some amount of RAM that you 
+choose and it has very little disk space.</p>
+
+<p>This is the big Aha: You also want to attach some disk space in the process as well. The generic term for disk space is a disk volume. You can 
+attach these volumes (more than one is fine) in the spin-up process or you can attach them later. This is Elastic Block Storage (EBS). A single 
+EBS volume can be up to 16 Terabytes.</p>
+
+<p>Let’s assume EBS is where you’ll keep your data; and so to safely make a back-up copy of that EBS volume you can periodically take snapshots of it. 
+The snapshots bundle up all the stuff in the volume and put that (like a big zip file) in S3 storage. That storage is completely separate from the 
+EC2 instance and its attached EBS volumes. You can also bundle up an image of the entire EC2 instance into storage. This is a snapshot combined 
+with some additional instructions on setting up the instance; and together these comprise an AMI for Amazon Machine Image. So there are two levels 
+of granularity in backing up your work: Snapshots and AMIs.</p>
+
+<p>Now how much does this cost? The EBS costs ten cents per GB-month. Storage costs three cents per GB-month; so if you have a lot of data this is 
+considerable cost savings, putting your EC2 instance in storage by means of an AMI; or putting your disk volume in storage by means 
+of a snapshot. The EC2 instance itself (not considering the cost of the EBS) will vary with which machine you chose. A cheap machine is free 
+(T2.micro). A basic, simple low-power machine will cost three cents per hour. A fairly powerful machine will cost perhaps 40 cents per 
+hour. You can also rent super-powerful machines for several dollars per hour. Since that adds up it is important to know that you can turn these 
+machines off (without losing your data) so that you are not paying for them when you are not using them.</p>
+
+<h3 id="what-this-page-is--isnt">What this page is / isn’t</h3>
+<p>Now this document is in preparation; so it does not cover everything in this topic. For example it does not cover how to 
+save money by using the Spot Market and it does not cover turning EC2 instances on and off and setting Alarms to inform you 
+when they are possibly doing something expensive. We’ll build all of this into these documentation pages; but the main point 
+of this page at the moment is Resources: The short list of items that you tend to build and associate with EC2 instances. 
+This includes AMIs, Snapshots, Key Pairs, and Elastic IPs.</p>
+
+<h2 id="making-an-ami">Making an AMI</h2>
+<p>An EC2 instance: We take as a given. (Although we don’t have down “Encrypted” but let’s just flag that with kilroy. Notice I 
+can create an AMI quite easily using the menu. Here is the configuration page:</p>
+
+<p><img src="/documentation/images/aws/aws_ec20001.png" alt="ec20001" /></p>
+
+<h2 id="resource-overview">Resource Overview</h2>
+
+<p>Returning to the EC2 Resource summary: Let’s take a look at what’s what here term by term: 
+<img src="/documentation/images/aws/aws_ec20002.png" alt="ec20002" /></p>
+
+<p>In this region I’m not (apparently) running any instances.</p>
+
+<h3 id="elastic-ip">Elastic IP</h3>
+
+<p>An Elastic IP is a convenient persistent ip address associated with my account (and with a particular machine unless that machine gets blown away). 
+It is said to be ‘publicly routable’: It is visible/findable on the internet.</p>
+
+<p>AWS will hand us some number of these on demand for very little money. If we do not request this, however, then the default is a temporary public ip 
+address that is only good as long as the instance is up and running. Shut it down and that ip evaporates.</p>
+
+<p>An Elastic IP is persistent on my account and could even be detached and re-attached to something else. This is like having a 
+piece of public plumbing at my dispoal to a resource that I want to share for example.  This ip stuff is distinct from a DNS 
+entry. The latter is a person-friendly string associated with an ip address (free or maybe for a nominal fee).</p>
+
+<h3 id="dedicated-host">Dedicated Host</h3>
+<p>A Dedicated Host is a physical computer which permits only me (my AWS account) to be connected. It does not thread in other virtual operating systems or 
+other accounts.  This is an important concept in HIPAA compliance.</p>
+
+<h3 id="snapshot">Snapshot</h3>
+
+<p>A Snapshot is always drawn from, i.e. is an image of some Elastic Block Storage (EBS). An 8GB Snapshot is quite likely the root 
+volume of an AWS Linux EC2 instance. However if you attach more EBS – like say 2TB – to that instance you can make a separate larger Snapshot.</p>
+
+<h3 id="ami">AMI</h3>
+
+<p>An AMI is a Snapshot together with some instructions for standing up an EC2 instance. Hence: When you create an AMI part of that process is a Snapshot 
+or Snapshots of all the EBS volumes associated with that instance.</p>
+
+<h3 id="snapshot-to-ami-conversion-in-linux">Snapshot to AMI Conversion in Linux</h3>
+
+<p>You can “upgrade” a Snapshot to an AMI in Linux but it is more complicated for Windows. And this is a little bit vague: Do 
+we mean that the snapshot is of the Root volume or an attached volume? The rebuilt AMI – in the case where the original AMI 
+instructions are unavailable – will be built out rather generically. This is one of these digressions that can drive one 
+crazy so let’s leave it there for now.</p>
+
+<h3 id="understanding-a-snapshot-listing">Understanding a Snapshot listing</h3>
+
+<p>When you look at your Snapshot listing:</p>
+
+<p><img src="/documentation/images/aws/aws_ec20003.png" alt="ec20003" /></p>
+
+<p>CreateImage is a facility for building an AMI. Fine. 
+- …is an instance ID. 
+- …is an AMI ID.</p>
+
+<h3 id="snapshot-archaeology">Snapshot Archaeology</h3>
+<p>Suppose you have an old Snapshot and you are not sure what is on it; and if nothing you might want to delete it. 
+Now can you look at it? If the associated AMI is gone you can always create a Volume from the Snapshot, Attach the Volume to some other EC2 
+instance in the same Availability Zone, mount the Attached Volume and peruse the file system in the usual way.  Maybe your important data is still there!</p>
+
+<p>Create the Volume from the Snapshot</p>
+
+<p><img src="/documentation/images/aws/aws_ec20004.png" alt="ec20004" /></p>
+
+<p><img src="/documentation/images/aws/aws_ec20005.png" alt="ec20005" /></p>
+
+<p>I will choose Magnetic because it is a bit cheaper… this is just an example. If I wish to have speed I would stay with SSD.</p>
+
+<p>The Volume is created very quickly.</p>
+
+<p><img src="/documentation/images/aws/aws_ec20006.png" alt="ec20006" /></p>
+
+<p>Here it is, now listed in the Volume table:</p>
+
+<p><img src="/documentation/images/aws/aws_ec20007.png" alt="ec20007" /></p>
+
+<p><strong>PRO TIP: When you create a Volume from a Snapshot make sure it is in the same Availabilty Zone (AZ) as the Instance that you intend 
+to attach it to. Failing to do so is a waste of time: You can’t attach a Volume in Oregon to an EC2 in Virginia. 
+In fact you can’t attach a Volume in Virginia 1-a to an EC2 in Virginia 1-b.  Virginia is a Region, 1-a is the Availability Zone.</strong></p>
+
+<p><img src="/documentation/images/aws/aws_ec20008.png" alt="ec20008" /></p>
+
+<p>That’s where my restored Volume is. Oh look I have a machine there also; though it is Stopped: Let us Start it.</p>
+
+<p><img src="/documentation/images/aws/aws_ec20009.png" alt="ec20009" /></p>
+
+<p>This finds a host, creates a VM, points to the associated storage all of this takes a few minutes but you can be impatient and see if 
+you can Attach the restored Snapshot Volume whenever you like.</p>
+
+<p><img src="/documentation/images/aws/aws_ec20010.png" alt="ec20010" /></p>
+
+<p><img src="/documentation/images/aws/aws_ec20011.png" alt="ec20011" /></p>
+
+<h2 id="mounting-the-attached-volume">Mounting the Attached Volume</h2>
+
+<p>To check if there is an attached volume, log on (ssh) onto your EC2 instance (Original recipe located 
+<a href="http://maplpro.blogspot.com/2012/05/how-to-mount-ebs-volume-into-ec2-ubuntu.html">here</a>.</p>
+
+<p>First see if it is attached with:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt; sudo fdisk -l
+Disk /dev/xvdc: 10.7 GB, 10737418240 bytes
+</code></pre>
+</div>
+
+<p>Then format (if you haven’t already):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt; sudo mkfs -t ext4 /dev/xvdc
+</code></pre>
+</div>
+
+<p>Create dir where it will be mounted:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;mkdir /data
+</code></pre>
+</div>
+
+<p>Mount it:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;sudo mount /dev/xvdc /data
+</code></pre>
+</div>
+
+<p>Check if it has been mounted correctly with:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;mount -l
+/dev/xvdc on /data type ext4 (rw)
+</code></pre>
+</div>
+
+<p>Make it mount automatically on system start</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;sudo vim  /etc/fstab
+</code></pre>
+</div>
+
+<p>Add:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/dev/xvdc /data auto defaults,nobootwait 0 0
+</code></pre>
+</div>
+
+<p>That’s it. Make sure your read and write permissions are set accordingly using chmod.</p>
+
+<h3 id="what-is-the-snapshot-id">What is the Snapshot ID?</h3>
+
+<p>Here is a screen capture of some volumes:</p>
+
+<p><img src="/documentation/images/aws/aws_ec20012.png" alt="ec20012" /></p>
+
+<p>Each is attached to an EC2 instance. Notice these have a snapshot ID. This means that these volumes were created from a 
+snapshot, for example from an AMI = Snapshot + instructions. It does not mean that this snapshot still exists; or that 
+if it did exist it would reflect what is actually in the restored volume. That volume probably has changed. So to 
+explore these volumes:  Again we would ssh into the EC2 instance associated and go look at the file system.</p>
+
+<p>In the case above, by the way, as noted earlier: These are all tell-tale Linux OS root volumes because the default on AWS Linux EC2 instances is 8GB.</p>
+
+<hr />
+<p>Pro Tip: Returning to the snapshot table comment field (‘Created by… in our example above): This can 
+have anything in there (User defined) when the snapshot is of an EBS without this AMI association business.
+***</p>
+
+<p>This concludes the overview of Snapshots and AMIs and the archaeological process of figuring out what is preserved 
+on an artifact Snapshot.</p>
+
+<h3 id="key-pairs">Key Pairs</h3>
+
+<p>In the Resource summary table there is an entry for Key Pairs. Let’s cover what these are next. A Key Pair is both a public and 
+a private key; and we will be primarily discussing the use of the private key file to authenticate into an AWS EC2 instance 
+using the secure shell (ssh) protocol.</p>
+
+<p>Start up an EC2 instance. You need an initial way of getting in via ssh. Rather than use a password let’s use Key Pair authentication. 
+I get the private Key file; and it contains JUST a private key: A long string of characters. Let’s not publish this on Github.</p>
+
+<p>When I authenticate using PuTTY I set it to use this private key. PuTTY uses the ‘.ppk’ version of the key but AWS only gives out a 
+‘.pem’ version of that file. No problem: There is a separate application called PuTTYGen that does the conversion. So procedurally:</p>
+
+<ol>
+  <li>Generate the EC2 instance</li>
+  <li>From the AWS Console: Get the key file associated.</li>
+  <li>Install both PuTTY and PuTTYGen (both will install in a PuTTY package)</li>
+  <li>Run PuTTYGen and convert the key file from .pem to .ppk format</li>
+  <li>Run PuTTY and use the .ppk file to log in to the instance.</li>
+</ol>
+
+<p>To ssh to this EC2 instance I will need to know what username to enter.  This can vary from one EC2 instance type (OS) to another. 
+For example on an AWS-styled Linux machine the user name is ec2-user. On an AWS EC2 Ubuntu instance the username is ubuntu.</p>
+
+<p>Now I have logged in to the machine using ssh. I can sudo anything I want. Success.</p>
+
+<p>How do I log in in the future? How do others log in? Three options:</p>
+
+<ol>
+  <li>I can use the key that I have and/or give that key to someone else.</li>
+  <li>I can generate a new key on that machine and share that key. This has nothing to do with AWS. I could do 
+it with a script for example, using Linux commands.</li>
+  <li>I can enable logging in by username and password.</li>
+</ol>
+
+<p>Notice that <a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a>
+is a secure (encrypted) tunnel through which these keys are passing.</p>
+
+<p>This security level is maintained as a separate effort by ssh / PuTTY. 
+(PuTTY is the application and ssh is the cryptographic network protocol.)</p>
+
+<h3 id="ssh-putty-scp-and-winscp">Ssh, PuTTY, scp and WinSCP</h3>
+
+<p>Now that we have identified PuTTY as the ssh-using application let’s go a bit further. Ssh is also a Linux command for logging into another 
+machine; so in a sense PuTTY is the Windows equivalent of the Linux ssh. Similarly there is a secure copy program in Linux called scp. The Windows analog is WinSCP.</p>
+
+<h3 id="more-on-keys">More on Keys</h3>
+
+<p>Keys are actually generated in pairs: The public and private key pair are associated; and the public key can be openly shared. For more on this see 
+<a href="https://en.wikipedia.org/wiki/Public-key_cryptography">this</a>.</p>
+
+<p>On AWS I can only generate one key pair per machine. The private key recognition machinery is injected into the instance when it launches the first time; and 
+I can start multiple instances using that same key. If I create an AMI and use that to generate many EC2 instances: Again just one private key provides 
+access to all of them. One key can map to many EC2 instances in the context of AWS.</p>
+
+<h3 id="keys-versus-s3-access-sharing">Keys Versus S3 Access Sharing</h3>
+
+<p>Let’s take a moment to contrast Key-based access to an EC2 instance with the process of sharing files using S3 buckets. The latter is done 
+using IAM permissions, specifically using a Bucket Policy.</p>
+
+<p>Sharing between AWS accounts is straightforward. If my friend has an AWS account then I just set that up in the S3 bucket policy by referring to his account 
+number. So he has to send me that.</p>
+
+<p>Sharing with non-AWS-account holders is also easy and there are several options. If my collaborator has no AWS account 
+I have three broad categories of approach: IAM User, Web Server and Signed URL.</p>
+
+<p>IAM User method: I get an Access Key and a Secret Key. I do not think this is the same thing as a Key Pair but I could be 
+proven wrong. I receive these two keys for example when I create a User. They reside in a single credential file. 
+I click “Download Credentials” and there it is in ASCII. The file is in CSV format and includes a user name, an 
+access key and a secret key (all strings).</p>
+
+<p>There are three ways of getting to the S3 bucket now for that person.</p>
+
+<ul>
+  <li>Third party tool: Cloudberry, Cyberduck, etcetera</li>
+  <li>AWS command line interface (CLI)</li>
+  <li>An API call
+    <ul>
+      <li>Notice this does NOT involve the Web Console.
+        <ul>
+          <li>They can only use the AWS Web Console if I generate a password for them using IAM.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Put a web server / web app in front of the S3 bucket. This pushes the problem down a level, so to speak.</p>
+
+<ul>
+  <li>Generate a signed URL</li>
+  <li>Gives access to one object during the time-to-live associated with that URL.</li>
+  <li>This can be done on the CLI or in one of those applications (Cloudberry etc)</li>
+  <li>Look for the button that says ‘Generate signed URL’</li>
+</ul>
+
+<p>So now we have covered Key Pairs and differentiated Key Pair use from S3 access.</p>
+
+<h3 id="mounting-an-ebs-to-your-instance">Mounting an EBS to your Instance</h3>
+
+<h3 id="ftp-setup-and-ec2-instance">FTP Setup and EC2 Instance</h3>
+
+<p>Overview: Create a virtual machine, install the ftp server and setup user accounts.</p>
+
+<p>Bonus: Bind your EC2 instance to an Elastic IP so you can reuse the same public IP even if your instance changes!</p>
+
+<ol>
+  <li>
+    <p>Sign up for a free AWS account <a href="https://aws.amazon.com/free">here</a>. 
+Usage and free tier information available 
+<a href="https://aws.amazon.com/free/?sc_ichannel=ha&amp;sc_ipage=signin&amp;sc_iplace=body_link_text&amp;sc_icampaigntype=free_tier&amp;sc_icampaign=ha_en_free_tier_signin_2014_03">here</a>.</p>
+  </li>
+  <li>
+    <p><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html">This recipe</a> from AWS is straightforward. Print it out and don’t skip a 
+step. An EC2 (elastic compute cloud) is your virtual computing environment i.e. your virtual machine. This video by Microwave Sam expands on the EC2 setup.</p>
+  </li>
+</ol>
+
+<iframe style="display: block; margin-left: auto; margin-right: auto;" src="//www.youtube.com/embed/wNr7YqjjzOY" width="425" height="350"></iframe>
+
+<ol>
+  <li>
+    <p>Once your VM is ok you can securely tunnel via Mac Terminal, Linux ssh or Windows PuTTY.</p>
+  </li>
+  <li>
+    <p>You can set up an FTP server on your VM. Search stackoverflow for “setting up ftp server on amazon cloud”.</p>
+  </li>
+  <li>
+    <p>Test by connecting an FTP client to your FTP server. You may need to change directory permissions on the VM.</p>
+  </li>
+</ol>
+
+<h3 id="elastic-ips">Elastic IPs</h3>
+
+<p>Stopping and re-starting EC2 instances can change the ip address. OVercome this using Elastic IP. You get a limited number
+of these with your account; and you can request more. See the AWS user guide (kilroy link needed).</p>
+
+<p>Once you’ve associated the Elastic IP with a running instance, you can ssh into the VM with the Elastic IP but using 
+the previous public key generated for the instance. Don’t forget to update the vsftpd.conf with your new Elastic IP 
+address which is now your public address.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; sudo vi /etc/vsftpd/vsftpd.conf
+pasv_address=&lt;Elastic IP address&gt;
+&gt; sudo /etc/init.d/vsftpd restart
+</code></pre>
+</div>
+
+<p>Microsoft Azure let’s you choose your own public DNS hostname which reduces the need for this workaround.</p>
+
+<h3 id="dns-hostnames">DNS Hostnames</h3>
+
+<p>If you have your own registered domain, you can set your A-Record to point to the Elastic IP address of your 
+instance. That gets rid of the unsightly public DNS that AWS assigns to you. Here’s the example for 
+cloudmaven.org (our domain registrar is Namecheap.com):</p>
+
+<p>(link was broken; image should be put in images/az and referenced directly)</p>
+
+<p>An A-record points the hostname (here “compute”) to the AWS instance Elastic IP (here “52.41.144.22”). 
+I can then ssh into my compute instance using ec2-user@compute.cloudmaven.org. You can also set up 
+similarly an A record called ftp that points to the elastic IP of your ftp server instance to allow ftp 
+access into say ftp.cloudmaven.org.</p>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tag_AWS.html" class="btn btn-default navbar-btn cursorNorm" role="button">AWS</a>
+        
+        
+        
+        <a href="tag_scale.html" class="btn btn-default navbar-btn cursorNorm" role="button">scale</a>
+        
+        
+        
+        <a href="tag_containers.html" class="btn btn-default navbar-btn cursorNorm" role="button">containers</a>
+        
+        
+        
+        <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_console.html" class="btn btn-default navbar-btn cursorNorm" role="button">console</a>
+        
+        
+        
+        <a href="tag_api.html" class="btn btn-default navbar-btn cursorNorm" role="button">api</a>
+        
+        
+        
+        <a href="tag_storage.html" class="btn btn-default navbar-btn cursorNorm" role="button">storage</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 cloudmaven. All rights reserved. <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jul 13, 2017 <br />
+<p><img src="images/Picture1.gif" alt="Company logo"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

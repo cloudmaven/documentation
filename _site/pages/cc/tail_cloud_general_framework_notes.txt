@@ -1,0 +1,22 @@
+
+## Geohackweek UW Cloud Intro November 17 2016
+
+This presentation is from the view of a cloud computing advocacy team at UW Research Computing. 
+You can reach us at rob at uw dot edu and amandach at uw dot edu.
+We present this as Introduction, Framework, Jargon Dive and Closing; then WRYTYNSP with Amanda.
+
+* Your goal is the same as our goal: Focus on the science.
+* CC is successful only when it disappears; it is showing every sign of succeeding.
+* If you have challenges in your research computing: You may need to make some changes.
+	* If you are the Red Queen you may perceive that you do not have time...
+	* This talk is intended to give you a Framework for thinking about cloud computing
+
+## Cloud Computing Framework Elements
+* Research in the Data Deluge Era = perfunctory + exploratory
+	* GDS
+
+* Cloud pillars (sounds dubious) are compute, storage, network, data management and Services
+	
+* Cloud management pillars are identity, authentication, security, cost, and training
+
+* Cloud practice pillars are Build, Test, Share 

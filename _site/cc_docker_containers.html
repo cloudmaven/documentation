@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Using Docker containers on the public cloud">
-<meta name="keywords" content="research_computing,  cloud, docker">
+<meta name="keywords" content="research_computingJupytercontainersreproducibilityaccount_managementdata_sciencecloud_basics,  cloud, docker">
 <title>Docker containers on the public cloud | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,18 +731,46 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/cc/cc_docker_containers.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/cc/cc_docker_containers.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
     
 
     
 
   <h2 id="introduction">Introduction</h2>
-<p>The purpose of this document – available <a href="http://cloudmaven.org" title="Cloud Maven technical website">here</a> – is 
-to provide an introduction to the use of Docker containers.</p>
+
+<p>This document – available <a href="http://cloudmaven.org" title="A cloud computing technical website">here</a> – is 
+an introduction to the use of Docker containers. These are software constructs that ‘contain’ an entire
+computing environment that can be bundled as a file called a Docker image. This image can be transported to 
+another physical computer and reconstituted there. 
+We recommend reading the <a href="https://en.wikipedia.org/wiki/Docker_(software)">Wikipedia Docker(software)</a> 
+entry as a first step in understanding the Docker project / phenomenon. Docker containers provide you 
+with intrinsic portability for your computing environment and reproducibility of execution results.</p>
 
 <h2 id="links">Links</h2>
 
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Docker_(software)">Wikipedia description of Docker containers / project</a></li>
+  <li><a href="https://www.docker.com/what-docker">Docker official website</a></li>
+  <li><a href="https://github.com/geohackweek/geohackweek.github.io/wiki/Docker-steps-to-run-containers">Geohackweek wiki entry</a></li>
+  <li><a href="https://geohackweek.github.io/Introductory/01-docker-tutorial/">Geohackweek docker tutorial</a></li>
+</ul>
+
 <h2 id="warnings">Warnings</h2>
+
+<p><strong>* Please let us know if you have a ‘vendor lock-in’ horror story; we are looking for evidence that this as more than 
+an urban myth. In any event: Docker containers are often presented as an antidote to vendor lock-in; so this remark is
+just a bit of (dubious!) folk wisdom.</strong>*</p>
+
+<h2 id="additional-remarks">Additional remarks</h2>
+
+<p>The <a href="https://github.com/geohackweek/geohackweek.github.io/wiki/Docker-steps-to-run-containers">configuration</a> 
+and <a href="https://geohackweek.github.io/Introductory/01-docker-tutorial/">tutorial</a> entries 
+at the Geohackweek web pages are together a tutorial for getting
+started with Docker containers. It is tailored to the event (November 2016); an update would be appreciated to
+generalize the solution away from geohackweek.</p>
+
+<p>The above material also indicates how Docker containers can be integrated with Jupyter notebooks.</p>
 
 
 
@@ -677,6 +781,30 @@ to provide an introduction to the use of Docker containers.</p>
         
         
         <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_Jupyter.html" class="btn btn-default navbar-btn cursorNorm" role="button">Jupyter</a>
+        
+        
+        
+        <a href="tag_containers.html" class="btn btn-default navbar-btn cursorNorm" role="button">containers</a>
+        
+        
+        
+        <a href="tag_reproducibility.html" class="btn btn-default navbar-btn cursorNorm" role="button">reproducibility</a>
+        
+        
+        
+        <a href="tag_account_management.html" class="btn btn-default navbar-btn cursorNorm" role="button">account_management</a>
+        
+        
+        
+        <a href="tag_data_science.html" class="btn btn-default navbar-btn cursorNorm" role="button">data_science</a>
+        
+        
+        
+        <a href="tag_cloud_basics.html" class="btn btn-default navbar-btn cursorNorm" role="button">cloud_basics</a>
         
         
         
@@ -692,7 +820,7 @@ to provide an introduction to the use of Docker containers.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jul 13, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>
