@@ -49,62 +49,9 @@ This page presents a case study on rapid throughput in microscopy.
   - [Networking notes for AWS](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
   - Notice in the AWS Console EC2 Launch Instance choice table includes a Network Performance column
     - Using a lightweight machine (t2micro) we get MB per second as expected 
-    - Using a c4.8xlarge with '10GBit' connection:
+    - Using a c4.8xlarge with '10GBit' connection: (1.91, 0.65, 1.14 Gbps, quite ow
+      - Via the NON-IPS path over 2 x 10G campus inet pipe: (1.47, 2.53, 2.44 Gbps)
+  - To S3...
 
-
-```
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41716 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec  2.23 GBytes  1.91 Gbits/sec
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41718 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec   770 MBytes   646 Mbits/sec
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41720 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec  1.33 GBytes  1.14 Gbits/sec
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-
-
-Via the NON-IPS path over 2x10G campus inet pipe:
-
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41726 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec  1.71 GBytes  1.47 Gbits/sec
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41728 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec  2.94 GBytes  2.53 Gbits/sec
-[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
-------------------------------------------------------------
-Client connecting to 128.208.75.35, TCP port 5001
-TCP window size: 45.0 KByte (default)
-------------------------------------------------------------
-[  3] local 172.31.11.32 port 41730 connected with 128.208.75.35 port 5001
-[ ID] Interval       Transfer     Bandwidth
-[  3]  0.0-10.0 sec  2.84 GBytes  2.44 Gbits/sec
-```
 
 {% include links.html %}
