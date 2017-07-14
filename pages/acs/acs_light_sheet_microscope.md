@@ -20,12 +20,16 @@ This page presents a case study on rapid throughput in microscopy.
 - [Feature story](http://www.washington.edu/urology/2017/06/27/tumor-scanning-microscope/)
 - [Second feature story](http://www.washington.edu/news/2017/06/26/microscope-can-scan-tumors-during-surgery-and-examine-cancer-biopsies-in-3-d/)
 
+- [Networking notes for AWS](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
+- [aws s3 cp multithreading](https://aws.amazon.com/blogs/apn/getting-the-most-out-of-the-amazon-s3-cli/)
+
 
 ## Overview
 
 
 ![acs_light_sheet_microscope0001.png](/documentation/images/acs/acs_light_sheet_microscope0001.png)
 ![acs_light_sheet_microscope0002.png](/documentation/images/acs/acs_light_sheet_microscope0002.png)
+
 
 
 ## Cloud 
@@ -37,5 +41,70 @@ This page presents a case study on rapid throughput in microscopy.
 - Test the link
 - Test the link from Health Sciences (relocate the microscope)
 - Supposing the microscope-to-AWS-S3 link is working: Get the processing running quickly
+
+
+## Benchmarks
+
+- With Ian Cote
+  - [Networking notes for AWS](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
+  - Notice in the AWS Console EC2 Launch Instance choice table includes a Network Performance column
+    - Using a lightweight machine (t2micro) we get MB per second as expected 
+    - Using a c4.8xlarge with '10GBit' connection:
+
+
+```
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41716 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  2.23 GBytes  1.91 Gbits/sec
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41718 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec   770 MBytes   646 Mbits/sec
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41720 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.33 GBytes  1.14 Gbits/sec
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+
+
+Via the NON-IPS path over 2x10G campus inet pipe:
+
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41726 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.71 GBytes  1.47 Gbits/sec
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41728 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  2.94 GBytes  2.53 Gbits/sec
+[root@ip-172-31-11-32 ec2-user]# iperf -c 128.208.75.35
+------------------------------------------------------------
+Client connecting to 128.208.75.35, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local 172.31.11.32 port 41730 connected with 128.208.75.35 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  2.84 GBytes  2.44 Gbits/sec
+```
 
 {% include links.html %}

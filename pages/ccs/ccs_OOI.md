@@ -12,7 +12,16 @@ folder: ccs
 ## Introduction 
 
 
-This page describes a case study of cloud computing applied to the Ocean Observing Intiative (OOI). 
+This page describes a case study of cloud computing applied to the Ocean Observing Intiative (OOI) in the 
+broader context of managing oceanographic data.  We are following the work of Friedrich Knuth in visualization
+and work by Vaughn Iverson on cruise data harmonization problem. 
+
+
+## Links
+
+- [OOI Real-time plotting](https://github.com/ooi-data-review/ooi-realtime-plotting) 
+- [Vaughn's initial dashboard](https://gradientscruise.com/dashboard/db/gradients-cruise-shore-dashboard?orgId=1)
+- [OOI Data Team portal](http://ooi.visualocean.net)
 
 
 ## Starting material provided by Friedrich Knuth
