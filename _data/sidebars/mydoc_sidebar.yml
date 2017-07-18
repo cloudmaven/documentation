@@ -78,6 +78,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Student Research
+      url: /rc_student_research.html
+      output: web, pdf
+
     - title: Cloud 101 Immersion
       url: /rc_cloud101_immersion.html
       output: web, pdf
@@ -277,10 +281,6 @@ entries:
   - title: Cloud Case Studies
     output: web, pdf
     folderitems:
-
-    - title: Student Research
-      url: /ccs_student_research.html
-      output: web, pdf
 
     - title: Precis
       url: /ccs_precis.html

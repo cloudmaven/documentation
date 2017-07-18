@@ -5,8 +5,8 @@ last_updated: January 30, 2017
 tags: [research_computing]
 summary: "Student-led research computing on the public cloud"
 sidebar: mydoc_sidebar
-permalink: ccs_student_research.html
-folder: ccs
+permalink: rc_student_research.html
+folder: rc
 ---
 
 ## Introduction 
