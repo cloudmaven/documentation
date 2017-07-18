@@ -106,6 +106,10 @@ entries:
       url: /rc_github.html
       output: web, pdf
 
+    - title: JupyterHub
+      url: /rc_jupyterhub.html
+      output: web, pdf
+
     - title: Visualization Python
       url: /rc_visualization_python.html
       output: web, pdf
