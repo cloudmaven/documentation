@@ -42,9 +42,4 @@ We have [office hours](http://escience.washington.edu/office-hours/#eScienceData
 - [Subscribe to the mailing list here](http://mailman11.u.washington.edu/mailman/listinfo/uwcloud)
 
 
-
-
-Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.
-(kilroy should be in footer)
-
 {% include links.html %}
