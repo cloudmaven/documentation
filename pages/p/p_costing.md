@@ -134,14 +134,19 @@ Q: How much does cloud disk space cost?
 
 
 A: RAM memory on a cloud instance is part of the cost of that instance. Disk space costs $0.10 per 
-Gigabyte per month on AWS; other vendors such as Microsoft Azure and Google are comparable.
+Gigabyte per month on AWS; other vendors such as Microsoft Azure and Google are comparable. These 
+disk resources are called Volumes and are directly associated with cloud compute instances, in contrast
+to cloud storage.
 
 
 Q: How much does cloud storage cost? 
 
 
-A: Rapid-access storage costs $0.023 (2.3 cents) per Gigabyte-month on the AWS cloud. Other vendor 
-costs are comparable. Low-access storage is cheaper, as low as 25% the cost of rapid-access storage. 
+A: Storage is unlimited and separate from the concept of disk space (see above). Rapid-access storage costs 
+$0.023 (2.3 cents) per Gigabyte-month on the AWS cloud. Other vendor costs are comparable. Low-access storage 
+is cheaper, as low as $0.004 USD per GByte-month. This translates to $48,000 per Petabyte-year. This cost 
+has dropped steadily over the past few years. Cloud storage is extremely secure and reliable.
+[This links to a comprehensive page on AWS storage costs](https://aws.amazon.com/s3/pricing). 
 
 
 Q: How is cloud storage different from disk space on the cloud? 
