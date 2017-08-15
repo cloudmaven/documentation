@@ -11,9 +11,16 @@ folder: aws
 
 ## Introduction
 
+This page describes creating and using a database on the AWS public cloud: As a service, not as 
+software installed on a Virtual Machine. Our example study captures a near-real-time data stream 
+from a university campus power consumption monitoring system. We begin by describing the distinction 
+between the traditional approach to SQL database management and the AWS **Relational Database 
+Service**.
+
 ## Links
 - AWS link
 - AWS RDS link
+- [What is my ip address?](http://whatsmyip.org)
 
 ## Warnings 
 
@@ -21,5 +28,15 @@ folder: aws
 to RDS flavors and what may be missing***
 
 ## RDS on AWS
+
+To create a MySQL database on a Linux machine typically requires some administrative access and a 
+command line; plus a browser to identify resources, search for procedures and get questions answered. 
+In the course of installing and maintaining the database you will also typically be concerned
+with patching the underlying operating system periodically. This requires time and thought if you
+are diligent and exposes your system to risk if you are not. 
+
+In contrast if you have an AWS cloud account you can create the database without the underlying
+Virtual Machine through the three typical approaches to 'talking with the cloud'. These are,
+in order of sophistication: Using the AWS console 
 
 {% include links.html %}
