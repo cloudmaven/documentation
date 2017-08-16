@@ -34,6 +34,16 @@ Components include:
 - The AWS [**Batch**](https://aws.amazon.com/batch/) service
 - The [AWS Research Credit Grant program](https://aws.amazon.com/grants/)
 
+
+## CC*IIE Remarks
+
+### Objective and Approach
+
+### Solution
+
+### Results
+
+
 ## Links
 
 - [Peptide design paper published by the Researcher](http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html)

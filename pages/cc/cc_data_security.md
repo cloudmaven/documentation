@@ -22,7 +22,9 @@ about people. The associated cloud technology can be translated as *extremely se
 
 ## CC*IIE Remarks
 
+
 ### Objective and Approach
+
 
 A research team must operate freely on data that is considered private or protected. 
 We conform to the stringent security requirements for HIPAA compliance as generally applicable to very securely 
@@ -61,6 +63,8 @@ Our end-result is a template for starting, operating, and shutting down a secure
 
 
 - Data are encrypted in transit by means of secure socket layers, i.e. using *https* connections directly to S3 buckets.
+  - Transport Layer Security (current) and Secure Sockets Layer (predecessor) are both referred to as **SSL** 
+  - The [Wikipedia page](https://en.wikipedia.org/wiki/Transport_Layer_Security) provides a good overview
 - Similarly data are moved to and from attached EBS volumes using SSL via an S3 endpoint: Data signals are routed entirely within the AWS cloud structure.
 - S3 buckets are assigned a policy whereby they do not receive / ingress data unless these data are requested to be encrypted. 
 - Similarly EBS attached volumes are required to be encrypted. 
@@ -69,11 +73,15 @@ Our end-result is a template for starting, operating, and shutting down a secure
 
 ## Secure Computing Environment (VMs)
 
+
 ## Logging
+
 
 ## Training and best practices for research team members
 
-## Additional notes
+
+## Additional facets of data security
+
 
 ### Access Control
 

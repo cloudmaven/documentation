@@ -18,6 +18,17 @@ by the need to manage data securely in the public cloud. We take more specific m
 from management of Private Health Information (PHI) under HIPAA regulations.
 
 
+
+## CC*IIE Remarks
+
+Please refer to the cloudmaven generic [data security page](cc/cc_data_security.html) for 
+remarks on campus cyberinfrastructure. This page is specifice to both the AWS public cloud
+and HIPAA regulations but has a general procedural and social applicability to the task of
+keeping research project data secure.
+
+
+
+
 ## Links
 
 

@@ -22,6 +22,17 @@ Our work in consulting and advocating for use of the public cloud is integrated 
 the UW eScience Institute.
 
 
+
+## CC*IIE Remarks
+
+### Objective and Approach
+
+### Solution
+
+### Results
+
+
+
 ## Links
 
 

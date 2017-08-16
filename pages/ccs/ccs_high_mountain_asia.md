@@ -19,6 +19,17 @@ The purpose of this page is to describe a cloud-aligned [research project](http:
 the mountain ranges of High Mountain Asia. The project lead for this NASA-sponsored High Mountain Asia Team (HiMAT) is [Dr. Anthony Arendt](http://psc.apl.uw.edu/people/investigators/anthony-arendt/), a UW Research Scientist.
 
 
+
+## CC*IIE Remarks
+
+### Objective and Approach
+
+### Solution
+
+### Results
+
+
+
 ## Key links
 
 

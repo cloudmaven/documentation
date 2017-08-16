@@ -17,6 +17,17 @@ broader context of managing oceanographic data.  We are following the work of Fr
 and work by Vaughn Iverson on cruise data harmonization problem. 
 
 
+
+## CC*IIE Remarks
+
+### Objective and Approach
+
+### Solution
+
+### Results
+
+
+
 ## Links
 
 - [OOI Real-time plotting](https://github.com/ooi-data-review/ooi-realtime-plotting) 

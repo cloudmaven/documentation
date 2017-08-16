@@ -13,18 +13,68 @@ folder: aws
 ## Introduction
 
 
-This page provides a template for registering and operating embedded IOT devices -- specifically 
-an Arduino Yun -- on the university WiFi network in relation to the AWS public cloud. Operation 
-includes both sensing and actuation using simple hardware (a light and a light sensor). 
+This page provides two views into **Internet of Things** on the public cloud: A template for registering 
+and operating embedded IOT devices and a database that receives data from an IOT system.
+In the former case we use an Arduino Yun that takes advantage of a university WiFi network; where 
+we are interested in both sensing and actuation. In the latter case we are interested in aggregating
+data as a Proof Of Concept for university power consumption and management.
+
+
+## CC*IIE Remarks
+
+### Embedded device
+
+#### Objective and Approach
+
+We take advantage of the Arduino microprocessor environment due to its large-scale adoption and available 
+support; particularly the Arduino Yun which has WiFi access and is also supported within the AWS stack. 
+We wish to establish a minimum viable IOT network; so two devices each with a light sensor and an actuator
+(laser diode). The approach is to obtain and configure these two devices and follow the various online 
+tutorials to arrive at a continuously operating but very simple system.
+
+#### Solution
+
+- Purchase 2 Arduino Yun devices; equip with light sensors and laser diodes
+- Power them up and establish WiFi connectivity; register them with UW IT
+- Install SDK; develope and test code
+- Establish an AWS IOT Endpoint for use with MQTT pub-sub protocol
+- Code, run, debug
+
+#### Results
+
+- TBD
+
+### Building power consumption
+
+#### Objective and Approach
+
+The University of Washington has a number of smart power consumption meters distributed through the Seattle
+campus. These are networked to a system called **Niagara** which can be configured to send data from a 
+particular building to a SQL database. Our objective is to provide a database that is updated frequently 
+(refresh rate ~ one minute). This will break the common CI barrier to data access by taking advantage of 
+the cloud service-based environment. 
+
+#### Solution
+
+On an AWS account we establish a small SQL Server database instance on the RDS (Relational Database Service). 
+This is blocked from direct internet access by means of a bastion server. The results are updated via a 
+data push originating from Niagara. 
+
+#### Results
+
+The end result of this effort is a first step towards near-real-time views of power consumption across 
+more than one hundred buildings at the University of Washington Seattle campus; in relation to external
+weather conditions, time of day, occupancy details and so on.  Results are documented here for open 
+adoption.
 
 
 ## Links
 
 
-- [The AWS Command Line Interface (CLI)](http://aws.amazon.com/cli)
+- [AWS Command Line Interface (CLI)](http://aws.amazon.com/cli)
 
 
-## Glossary
+## Terms
 
 
 - IOT: Internet of Things, embedded devices from smart phones to Arduino constructions to FitBits
@@ -46,7 +96,7 @@ and beyond -- limitless -- that create an information framework in some environm
     - Behaves as a shadow / proxy / image / representation of an IOT device
     - Persists on the cloud regardless of whether the IOT device is connected
     - As such it acts as the "latest known state record" of the device
-- MQTT
+- MQTT: Message Queue Telemetry Transport, a lightweight publish-subscribe messaging protocol used on top of TCP/IP.
 - MQTT topic: A message tag that enables a message stream to be sorted (by that tag)
 
 
@@ -60,20 +110,19 @@ and beyond -- limitless -- that create an information framework in some environm
 - ***To all three such ends we emphasize here on the backing data system: In the public cloud***
 
 
-## Scenario 1
+## Embedded device 
 
 
-### A game of ping pong 
+### Ping pong 
 
 
-Two Arduino Yun devices are powered up, are sitting adjacent to one another on a desktop. 
-Each has a light sensor and a laser diode. The laser diodes of one Yun is pointed at the
-light sensor of the other Yun.  The objective is to set up a sort of ping pong: 
+Two Arduino Yun devices are powered up adjacent to one another.  Each has a light sensor and a laser 
+diode pointed at the other's light sensor. State sequence:
 
 
 - Yun 1 laser diode ON
 - Yun 2 senses increased signal at light sensor
-- Yun 2 transmit Sensor High to the IDS
+- Yun 2 transmit Sensor High to IDS (**IOT Data System**: In this case an AWS IOT Endpoint)
 - IDS publishes Yun 2 Sensor High 
 - Yun 1 polls IDS, notices Yun 2 Sensor High state, in response turns laser diode OFF
 - Yun 2 senses low signal at light sensor
@@ -85,7 +134,7 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:
 - Yun 2 polls IDS, notices Yun 1 Sensor High state, etcetera
 
 
-### Ping pong procedural
+### Procedural
 
 
 - Purchase at least 2 Arduino Yun boards (supported for IOT by AWS)
@@ -145,6 +194,7 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:
         - It permits the Atmega sketch to converse with the AWS IOT
       - AWS CLI: Command Line Interface to AWS, on Windows runs from PowerShell
     - Atheros: issue commands as root (we do not believe sudo is involved)
+
 ```
 # opkg update 
 # opkg install distribute 
