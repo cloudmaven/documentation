@@ -39,19 +39,15 @@ DLT-based accounts first as they provide some particular benefits such as egress
 ## DLT issues
 
 **DLT** is a company that brokers daughter accounts to UW from a single AWS account. The idea is to create some benefits to
-the holders of the daughter accounts; but there is a problem to be aware of. 
+the holders of the daughter accounts; but there is a major issue to be aware of. 
 
-Alarms you set up on your AWS account prior to switching the account over to DLT will fail to trigger with the 
-error message *'Insufficient Data'*.  That is: Billing alerts fail when your account is under (DLT-style) consolidated 
-billing.  Once the DLT account is established: Use CloudWatch alerts.  These must be set by our Support team, i.e. at the 
-Payer level.  Send email to OpsCenter@dlt.com with:
+DLT essentially blocks some AWS billing features when you move to their consolidated account.
+In particular: Any alarms you set on your AWS prior to switching to the DLT consolidated account will stop working. 
+The fix is after your DLT account is activated: Use CloudWatch alerts. These must be set by contacting DLT
+using the email OpsCentral@dlt.com, providing your name, email, and an alarm threshold (monthly dollar amount
+to act as a notification trigger). 
 
-- Alarm Threshold: <monthly dollar amount that will trigger the notification>
-- Contact Name:
-- Contact Email: <email address>
-
-CloudWatch billing alarms provide a rough estimate of current monthly spend. They do not represent actual spend at any given point 
-in time and numbers may be skewed due to reserved instance usage and service credits/grants applied to any DLT linked account.
+At this stage (kilroy) we should discuss less indirect approaches. 
 
 
 ## Paid AWS accounts
