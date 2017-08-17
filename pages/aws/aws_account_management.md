@@ -32,17 +32,36 @@ DLT-based accounts first as they provide some particular benefits such as egress
 ## Warnings
 
 
+- ***Read this and linked documents carefully to familiarize yourself with cloud account management issues and guidelines***
 - ***Do not start using a new AWS account until you have trained up on how to keep the account secure.***
 
 
-## So you want to open a paid AWS account
+## DLT issues
+
+**DLT** is a company that brokers daughter accounts to UW from a single AWS account. The idea is to create some benefits to
+the holders of the daughter accounts; but there is a problem to be aware of. 
+
+Alarms you set up on your AWS account prior to switching the account over to DLT will fail to trigger with the 
+error message *'Insufficient Data'*.  That is: Billing alerts fail when your account is under (DLT-style) consolidated 
+billing.  Once the DLT account is established: Use CloudWatch alerts.  These must be set by our Support team, i.e. at the 
+Payer level.  Send email to OpsCenter@dlt.com with:
+
+- Alarm Threshold: <monthly dollar amount that will trigger the notification>
+- Contact Name:
+- Contact Email: <email address>
+
+CloudWatch billing alarms provide a rough estimate of current monthly spend. They do not represent actual spend at any given point 
+in time and numbers may be skewed due to reserved instance usage and service credits/grants applied to any DLT linked account.
+
+
+## Paid AWS accounts
 
 
 We assume you are at the University of Washington or are a covered *affiliate* of the University. 
 
 
 - Establish a Blanket Purchase Order
-- Email the UW help desk help at uw dot edu with the subject AWS Account. Ask for instructions on how to proceed. 
+- Email the UW help desk (help at uw dot edu) with the subject AWS Account. Ask for instructions on how to proceed. 
 
 
 ## Account set-up
@@ -64,21 +83,24 @@ We assume you are at the University of Washington or are a covered *affiliate* o
 
 On AWS you can allocate assets such as S3 storage buckets and EC2 compute instances. These in turn cost money
 (either actual money or credits if you have them available) and you probably care about how much. To this end
-you can tag each asset with any one of a number of supported keys. A tag is a key-value pair such as
+you can tag each asset. A tag is a key-value pair that you can establish through the AWS console; for example:
+
 
 ```
-Name: Kilroy
-Discipline: Genome Sciences
-Religion: Pastafarian
+Name: kilroy
+Project: genomics101
 ```
 
-After a month of using your AWS account suppose you want to see how much your resources are costing you sorted
-by discipline. First go back in time and tag everything; then use the AWS Console to sort by your values. 
 
-DLT will sort values for the following keys. Notice they are business-oriented and that there are ten
-generic 'CA' keys that you can make mean anything you like. You could for example decide to use CA003 
-to record room temperature when you create the tag; and you could later sort on those temperatures. 
-So again: You can tag with *any* key string you like but DLT will be able to sort on the following:
+After a month you can determine how much your resources for project *genomics101* are costing you.
+Use the AWS Cost Explorer. Remember that resources may be distributed across regions; so be sure to
+scan all regions or use the regional value 'global'.
+
+
+DLT daughter accounts support only a certain set of key values, listed below. In addition to the
+typical ones there are 10 'CA' keys that can mean anything you like. The point is that the Cost Explorer
+will allow you to sort using these keys for your tags if necessary.
+
 
 ```
 Application
@@ -120,16 +142,14 @@ Status
 Use
 ```
 
-For the HPC Club account we will be using the Project key to tag resources. Each student researcher will have
-an assigned project string, let's call that <xyz>. It will be typically the student's name or something easily 
-recognizable like that.  The asset should be tagged Project: <xyz> and when it is possible to name the 
-asset or service it should be named <xyz>-etcetera. 
+The HPC Club account uses the Project key in billing tags. Each student researcher will have
+an assigned project string, the lead researcher's NetID. 
 
 
 # IAM 
 
 
-First let's get working definitions: 
+Let's get working definitions: 
 
 - Key pair: A certificate used to access some resource like an EC2 instance
 - Credential: Generically an access mechanism: User name + password; or access keys 

@@ -21,6 +21,14 @@ where content is provided on the fly by OpenStreetMap, an online map tile resour
 The steps outlined here show that creating your own map server for geospatial data collaboration 
 is quite feasible using pre-existing tools. 
 
+## CC*IIE Remarks
+
+### Objective and Approach
+
+### Solution
+
+### Results
+
 ## Links
 
 - [Information about leaflet.js](http://leafletjs.com/)
