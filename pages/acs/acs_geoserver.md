@@ -1,5 +1,5 @@
 ---
-title: Geoserver on AWS
+title: Geoserver & LIDAR on AWS
 keywords: research_computing
 last_updated: January 26, 2017
 tags: [research_computing, case_studies, visualization, data_api, AWS, collaboration, cloud_service, storage, database]
@@ -12,22 +12,20 @@ folder: acs
 ## Introduction
 
 This page describes a Geoserver deployment for hosting and visualizing LIDAR (remote sensing) data. 
-This prototype was developed for the University of Washington Library Data Services. We use two complementary
-technologies in this prototype: Geoserver and Leaflet.  Geoserver is an open-source map server that can
-provide geospatial data in a number of possible formats via query/retrieval from an internal database.
-Leaflet is more properly 'leaflet.js', an open-source javacript library for creating interactive maps
-where content is provided on the fly by OpenStreetMap, an online map tile resource.  
-
-The steps outlined here show that creating your own map server for geospatial data collaboration 
-is quite feasible using pre-existing tools. 
+This prototype was developed for the University of Washington Library Data Services. 
 
 ## CC*IIE Remarks
 
 ### Objective and Approach
+The objective of this project is to demonstrate how researchers can collaborate and share geospatial data by using available open-source tools.  We use two complementary technologies in this prototype: Geoserver and Leaflet.  Geoserver is an open-source map server that can provide geospatial data in a number of possible formats via query/retrieval from an internal database. Leaflet is more properly 'leaflet.js', an open-source javacript library for creating interactive maps where content is provided on the fly by OpenStreetMap, an online map tile resource.
 
 ### Solution
+The steps to installing your own Geoserver are outlined below. We have also created Amazon Machine Images (AMI) that you can use to spin up your own Geoserver instance on AWS. 
+
+Geoserver is used as the backend for storing the LIDAR data that has been collected from the Puget Sound Lidar Consortium (PSLC). The front end is a map that allows users to subset and extract data as necessary. This PoC is intended to provide an architecture that is easy to emulate and to allow researchers to set such a system up fairly quickly. 
 
 ### Results
+This geoserver set
 
 ## Links
 
