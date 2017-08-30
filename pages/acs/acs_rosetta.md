@@ -159,38 +159,46 @@ validate that its structure is indeed as predicted by the software.
 
 
 Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
-(HPC) such as the work described here. This approach suffers from two limitations
-
-The public cloud represents an alternative approach wherein falling costs, increasing convenience, 
-read-to-use services and outsourced system administration are factors in its favor. At what point 
-is cloud computing cost-equivalent to on-premise computing?  We suggest two views of the 
-break-even point.
+(HPC) which includes the compute task described in this case study.  The public cloud represents an 
+alternative approach where low/falling cloud costs, increasing convenience, read-to-use services and outsourced 
+system administration are factors to consider. At what point is cloud computing cost-equivalent to 
+on-premise computing?  Here are two views of the break-even concept.
 
 
 ### Hard Break-even
 
 
 Take the lifespan of a purchased computer to be three years.  In this case study the compute task ran 
-for 53 hours on the AWS cloud and cost $3400. When an equivalent single computer costing $3400 requires 
+for 53 hours on the AWS cloud and cost $3500. When an equivalent single computer costing $3500 requires 
 3 years to complete the same task we could say that cloud cost has reached parity with on-premise 
 cost. It is worth noting however that the on-premise solution takes 500 times longer to finish the 
-computation.  We calculate that the time to complete the compute task would be 246 days today, 
-849 days sooner than the hard break-even of three years. 
+computation.  We estimate the time to complete the compute task described here would be 246 days which
+is 849 days sooner than the hard break-even of three years.  This means that a head-to-head comparison
+with 100% CPU utilization for three years favors the on premise computer today. It is when the
+purchased computer is not being used at 100% capacity that the cloud cost begins to be comparable. 
 
 
 ### Soft Break-even
 
 
-Soft break-even brings wall-clock time into consideration. At what point does waiting for compute tasks
-hinder the researcher's progress? In this case study the Researcher is fortunate to have access to an
-on-premise cluster that would complete the same task in two weeks. On that cluster the completion time 
-scales with the size of the computation: A four-times-larger compute task would require two months
+Soft break-even brings wall-clock time and other factors into consideration. At what point does waiting 
+for compute tasks hinder the researcher's progress? In this case study the Researcher is fortunate to have 
+access to an on-premise cluster that would complete the same task in two weeks. On that cluster the completion 
+time scales with the size of the computation: A four-times-larger compute task would require two months
 whereas on the public cloud time to complete is unchanged: The larger task will still only require 
 wall clock time on the order of 48 hours. 
 
 This matter of personal or wall-clock time is *prima facia* a strong argument for working when 
 possible on a cloud platform. We note that cloud vendor [*research credits*](p_research_credits.html) 
 enable a Researcher to explore this benefit with relatively low financial entry risk. 
+
+
+A final remark on human versus computer time: If human time becomes a factor in computing then a
+suitable question might be: How many computers do I need to purchase to reach an acceptable human 
+or 'wall clock' time for my computations to run? Again if this computation can be followed by 
+another and another in succession: That is 100% CPU use and it justifies purchasing dedicated 
+hardware. However the other side of the coin is that a research team may not have this level of
+processing requirement or they may not have this level of funding. 
 
 
 ## Some contextual terms and concepts for large computing tasks on AWS
