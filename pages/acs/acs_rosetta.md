@@ -1,5 +1,5 @@
 ---
-title: Rosetta scale computing case study
+title: Rosetta computing at scale
 keywords: research_computing, data_science
 last_updated: October 6, 2016
 tags: [Rosetta, scale, research_computing, AWS, organic_chemistry, data_science, research_credits, case_studies]
@@ -11,16 +11,15 @@ folder: acs
 
 ## Introduction
 
-This page presents a research-to-cloud success: a case study in which powerful 
-molecular design software is run at large scale on the AWS public cloud to explore
-the possible scaffolding-like structures of small proteins called peptides.  This new 
-approach to protein design rapidly generates encyclopedic results that could be used 
-to create new therapeutic medicines.
+This page presents a success story: Massive-scale cluster computing on the Amazon Web Services public cloud. 
+The computations use the **Rosetta** molecular design software to explore small protein (peptide) structures
+using a fixed number of amino acids.  These protein structures (scaffolding) could be used to target 
+binding sites in therapeutic medicine.
 
-The study shows that a *moderately large* compute task runs quickly and cost-effectively 
-on the public cloud. This result contrasts with the traditional time-consuming process 
-of purchasing, configuring, operating, maintaining and updating a compute cluster which
-in turn would compute more slowly.
+
+This case study shows that a *moderately large* compute task runs quickly and cost-effectively 
+on the public cloud. The computing machines are maintained by AWS so no time-consuming process of 
+purchasing, configuring, operating, maintaining and updating compute clusters was involved.
 
 This success on the AWS public cloud uses key technologies and methods that we describe
 in further detail below. The methods described are applicable to any research computing 
@@ -37,11 +36,37 @@ Components include:
 
 ## CC*IIE Remarks
 
+This component of the NSF-sponsored CC*IIE project looks at doing large-scale compute tasks on the public cloud. 
+The primary objective is to match cost to compute by spinning up a certain number of compute instances, 
+getting them to run pieces of the complete task, and then shut down quickly to minimize cost. 
+We first approach this on AWS using a standard mechanism called Cloud Formation Network clustering ('cfncluster'). 
+We also want to use the AWS Spot market since this cuts instance cost by up to 80% per virtual machine.
+The scale of the task ran into some obstacles because the Spot market instance pool is a small subset of 
+the complete AWS instance pool. We overcame this limitation using a new service from AWS called **Batch**.
+
+
 ### Objective and Approach
+
+- Identify the research problem that requires large-scale computing
+- Configure the user account, the execution software and the data structure on the public cloud
+- Configure cfncluster to run a job on the AWS Spot market
+- Recover the results (millions of protein scaffolds from 10-residue peptides)
 
 ### Solution
 
+- The Spot market proved to have limited capacity; that is, a limited number of available instances
+  - This is due to the two-tier resource allocation: Regions on a high level and Availability Zones on the sub-level
+  - cfncluster only works within one Availability Zone (AZ)
+  - The number of Spot instances within a single AZ was insufficient
+  - Desired capacity: On the order of 200 [c4.8xlarge](https://aws.amazon.com/ec2/instance-types/) compute instances
+- The project migrated to the [**AWS Batch**](http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html) 
+service to allocate Spot market instances across Availability Zones within a single Region
+- This **Batch** solution resulted in 160 c4.8xlarge instances running for 53 hours on a single compute task
+
+
 ### Results
+- The Rosetta compute produced 5 million peptide structures using 305,000 virtual CPU hours at a cost of $3180.
+- The results are documented below and in considerable detail [at this wiki](https://github.com/robfatland/Rosetta/wiki) 
 
 
 ## Links
