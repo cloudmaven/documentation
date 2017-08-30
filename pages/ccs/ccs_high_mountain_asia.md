@@ -19,21 +19,21 @@ The purpose of this page is to describe a cloud-aligned [research project](http:
 the mountain ranges of High Mountain Asia. The project lead for this NASA-sponsored High Mountain Asia Team (HiMAT) is [Dr. Anthony Arendt](http://psc.apl.uw.edu/people/investigators/anthony-arendt/), a UW Research Scientist.
 
 
-
-## CC*IIE Remarks
-
 ### Objective and Approach
+High Mountain Asia (HMA), extending from the Hindu Kush and Tien Shan in the west to the Eastern Himalaya, is the world’s largest reservoir of perennial glaciers and snow outside of the Earth’s polar ice sheets. The region is home to a range of unique landforms, ecosystems, hazards, and cultures; and HMA supplies water to more than a billion people. Changes in the region’s glaciers, snow, permafrost, and precipitation patterns have altered this water supply, while also transforming regional ecology, land utilization practices, and the hazards associated with landslides and glacial-lake-outburst floods.
+
+The goal of this project is to use satellite remote sensing observations to characterize these changes, gain insight into the Earth system processes that control them, and inform decisions, management actions, and policy development.
 
 ### Solution
+We have developed a database and web-based API to facilitate data sharing between the principal investigators. The tools were built on Amazon Web Services using managed services for the database (RDS) and elastic load balancing to manage and scale the website.  
+
+We also have geospatial data stored on a Geoserver (acs/acs_geoserver.html) with a Leaflet frontend to allow users to visualize the data. 
 
 ### Results
+[HIMAT website](http://himat.org)
 
+## Related links
 
-
-## Key links
-
-
-- [HIMAT website](http://himat.org)
 - [AralDIF](http://araldif.azurewebsites.net)
 - [ICIMOD](http://www.icimod.org)
 - [NASA SERVIR](https://www.nasa.gov/mission_pages/servir/index.html)
