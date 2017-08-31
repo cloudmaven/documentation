@@ -26,19 +26,19 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_rosetta.html</loc>
+    <loc>http://idratherbewriting.com/acs_cfd.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_rosetta.html</loc>
+    <loc>http://idratherbewriting.com/acs_epigenome_imputation.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_rosetta.html</loc>
+    <loc>http://idratherbewriting.com/acs_geoserver.html</loc>
   </url>
   
   
@@ -50,7 +50,13 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_rosetta.html</loc>
+    <loc>http://idratherbewriting.com/acs_nicadif.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/acs_rosetta.html</loc>
   </url>
   
   
@@ -62,7 +68,7 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/aws_cfncluster.html</loc>
+    <loc>http://idratherbewriting.com/aws_cluster.html</loc>
   </url>
   
   
@@ -80,7 +86,7 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/aws_ec2instances.html</loc>
+    <loc>http://idratherbewriting.com/aws_ec2.html</loc>
   </url>
   
   
@@ -105,6 +111,12 @@
   
   <url>
     <loc>http://idratherbewriting.com/aws_jupyter.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/aws_overview.html</loc>
   </url>
   
   
@@ -140,25 +152,19 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_jupyter.html</loc>
+    <loc>http://idratherbewriting.com/az_account_management.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_spark.html</loc>
+    <loc>http://idratherbewriting.com/az_database.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_spark.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>http://idratherbewriting.com/az_jupyter.html</loc>
+    <loc>http://idratherbewriting.com/az_hipaa.html</loc>
   </url>
   
   
@@ -170,49 +176,55 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_mls.html</loc>
+    <loc>http://idratherbewriting.com/az_machine_learning.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_portal.html</loc>
+    <loc>http://idratherbewriting.com/az_overview.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_spark.html</loc>
+    <loc>http://idratherbewriting.com/az_portal.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_training.html</loc>
+    <loc>http://idratherbewriting.com/az_spark.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_vs.html</loc>
+    <loc>http://idratherbewriting.com/az_training.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/azure_webframeworks.html</loc>
+    <loc>http://idratherbewriting.com/az_visual_studio.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_orgchem.html</loc>
+    <loc>http://idratherbewriting.com/az_walkthrough.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/rc_orgchem.html</loc>
+    <loc>http://idratherbewriting.com/azcs_araldif.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/azcs_organic_chemistry.html</loc>
   </url>
   
   
@@ -271,6 +283,24 @@
   
   
   
+  <url>
+    <loc>http://idratherbewriting.com/ccs_DIF.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/ccs_high_mountain_asia.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/ccs_precis.html</loc>
+  </url>
+  
+  
+  
   
   
   <url>
@@ -280,7 +310,25 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/g_compute_engine.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/g_earth_engine.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/g_overview.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://idratherbewriting.com/g_preemptible_instances.html</loc>
   </url>
   
   
@@ -514,13 +562,13 @@
   
   
   <url>
-    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://idratherbewriting.com/js/mydoc_scroll.html</loc>
+    <loc>http://idratherbewriting.com/mydoc_scroll.html</loc>
   </url>
   
   
@@ -816,6 +864,12 @@
   
   
   <url>
+    <loc>http://idratherbewriting.com/rc_cloud101_immersion.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>http://idratherbewriting.com/rc_data_science.html</loc>
   </url>
   
@@ -842,6 +896,70 @@
   <url>
     <loc>http://idratherbewriting.com/rc_visualization_virtual_globes.html</loc>
   </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

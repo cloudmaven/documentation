@@ -3,8 +3,8 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Costing">
-<meta name="keywords" content="research_computing,  aws">
+<meta name="description" content="Costing the cloud in proposals">
+<meta name="keywords" content="research_computingaccount_managementcost,  aws">
 <title>Costing cloud in proposals | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -623,7 +699,7 @@
 <div class="post-content">
 
    
-    <div class="summary">Costing</div>
+    <div class="summary">Costing the cloud in proposals</div>
    
 
     
@@ -655,19 +731,90 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/p/p_costing.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-    
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/p/p_costing.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
 
     
 
-  <h1 id="introduction">Introduction</h1>
-<p>Not started.</p>
+    
+
+  <h2 id="introduction">Introduction</h2>
+<p>The purpose of this page is to provide guidelines for proposals that incorporate cloud computing, specifically 
+towards helping you (the proposal author) estimate costs for your project.</p>
+
+<h2 id="links">Links</h2>
+<ul>
+  <li><a href="https://aws.amazon.com/grants/">AWS Grants</a></li>
+  <li><a href="https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/">Azure Research Credits</a></li>
+</ul>
+
+<h2 id="warnings">Warnings</h2>
+
+<h2 id="overview">Overview</h2>
+
+<ul>
+  <li>Review your status and options with regard to cloud research credit grants.</li>
+  <li>Verify with the funding agency that cloud computing will be a welcome component of your proposal.</li>
+  <li>Remember that the authors of this website have office hours and are happy to consult with you.</li>
+  <li>Create a cost plan per year
+    <ul>
+      <li>Estimate the compute power per machine and number of VMs you will want to secure</li>
+      <li>Estimate the cost of associated memory</li>
+      <li>Estimate the cost of separate storage</li>
+      <li>Estimate your egress cost (cost of retrieving data from the cloud)</li>
+      <li>Estimate the cost of other services you intend to use</li>
+    </ul>
+  </li>
+  <li>As necessary: Provide justification of your choice of cloud
+    <ul>
+      <li>You can compare to alternative cloud providers</li>
+      <li>You can refer to the advantages of using the cloud over purchasing and maintaining equipment</li>
+      <li>Cite case studies presented here at <a href="http://cloudmaven.org">cloudmaven.org</a></li>
+      <li>Remember that the case for cloud includes strengths:
+        <ul>
+          <li>Computing scale</li>
+          <li>Data security</li>
+          <li>Advanced tools and services</li>
+          <li>Similarity of compute environment to local machines</li>
+          <li>Rapidly growing user base and commensurate open resources from which to build your solutions</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 <h2 id="cloud-research-credits">Cloud Research Credits</h2>
-<p><a href="https://aws.amazon.com/grants/">AWS Grants</a>
-<a href="https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/">Azure Research Credits</a></p>
 
-<h2 id="federal-research">Federal research</h2>
+<p>Generous research credit grants (circa 2017) are commonly provided by cloud vendors, specifically
+Microsoft Azure and AWS (and GCP grants may materialize as well). These grants can have a value as high 
+as $20,000 and a typical duration of 12 months. They are considered non-renewable after that time.</p>
+
+<p>Having a research credit grant of this type is independent of writing a grant proposal to a funding 
+agency such as NIH or NSF. If a cloud research credit grant is secured by you en route to writing a
+proposal to an agency like NSF: You may wish to reference that grant in your proposal as a means 
+of defraying computing costs in year one of the proposed effort.</p>
+
+<p>Research credit cloud accounts are distinct from paid accounts secured under the UW BAA with AWS and Azure. 
+Those accounts have legal terms associated with them (see respective overview pages herein: 
+<a href="az_overiew">Azure overview</a> and <a href="aws_overview.html">AWS overview</a>.</p>
+
+<h2 id="federally-funded-research">Federally funded research</h2>
+
+<h2 id="faq">FAQ</h2>
+
+<p>Q: How fast/powerful is a given instance?</p>
+
+<p>A: You can read about instance types on the vendor’s cloud console 
+and/or information pages. For example AWS EC2 instances are 
+written up <a href="https://aws.amazon.com/ec2/instance-types/">here</a>.<br />
+From the Linux command line you can issue commands such as:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% lscpu
+% cat /proc/cpuinfo
+</code></pre>
+</div>
+
+<p>It is possible that (from evidence circa 2012) a certain degree of CPU type heterogeneity can introduce 
+<em>on the order of</em> 10% performance variation.</p>
 
 
 
@@ -678,6 +825,14 @@ $('#toc').on('click', 'a', function() {
         
         
         <a href="tag_research_computing.html" class="btn btn-default navbar-btn cursorNorm" role="button">research_computing</a>
+        
+        
+        
+        <a href="tag_account_management.html" class="btn btn-default navbar-btn cursorNorm" role="button">account_management</a>
+        
+        
+        
+        <a href="tag_cost.html" class="btn btn-default navbar-btn cursorNorm" role="button">cost</a>
         
         
         
@@ -693,7 +848,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jul 13, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>

@@ -283,6 +283,13 @@
             
             
             
+            <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="http:escience.washington.edu">WRF Data Science Studio</a></li>
             
             
@@ -330,6 +337,13 @@
     <li>
         <a href="#">AWS</a>
         <ul>
+            
+            
+            
+            <li><a href="aws_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -410,7 +424,7 @@
             
             
             
-            <li><a href="aws_rds.html">Database</a></li>
+            <li><a href="aws_database.html">Database</a></li>
             
             
             
@@ -422,6 +436,13 @@
     <li>
         <a href="#">Azure</a>
         <ul>
+            
+            
+            
+            <li><a href="az_overview.html">Overview</a></li>
+            
+            
+            
             
             
             
@@ -505,19 +526,105 @@
         
     
     <li>
+        <a href="#">Google</a>
+        <ul>
+            
+            
+            
+            <li><a href="g_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_walkthrough.html">Walkthrough</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_compute_engine.html">Compute Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_preemptible_instances.html">Preemptible Instances</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_earth_engine.html">Earth Engine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="g_app_engine.html">App Engine</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Case Studies</a>
+        <ul>
+            
+            
+            
+            <li><a href="ccs_precis.html">Precis</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_DIF.html">Dynamic Information Framework (DIF)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ccs_high_mountain_asia.html">High Mountain Asia (HiMAT/NASA)</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">AWS Case Studies</a>
         <ul>
             
             
             
-            <li><a href="acs_genome_association.html">Genome Association</a></li>
+            <li><a href="acs_epigenome_imputation.html">Epigenome Imputation</a></li>
             
             
             
             
             
             
-            <li><a href="acs_geoserver.html">Geospatial Data Sharing</a></li>
+            <li><a href="acs_nicadif.html">NicaDIF</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="acs_geoserver.html">Geoserver</a></li>
             
             
             
@@ -547,51 +654,20 @@
         
         
     
-        
-    
     <li>
         <a href="#">Azure Case Studies</a>
         <ul>
             
             
             
-            <li><a href="azcs_geospatial_api.html">Geospatial API</a></li>
+            <li><a href="azcs_araldif.html">AralDIF</a></li>
             
             
             
             
             
             
-            <li><a href="azcs_organic_chemistry.html">Organic chemistry</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Google</a>
-        <ul>
-            
-            
-            
-            <li><a href="g_walkthrough.html">Walkthrough</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_earth_engine.html">Earth Engine</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="g_app_engine.html">App Engine</a></li>
+            <li><a href="azcs_organic_chemistry.html">organic chemistry</a></li>
             
             
             
@@ -655,19 +731,77 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    <a target="_blank" href="https://github.com/tomjohnson1492/documentation-theme-jekyll/blob/gh-pages/pages//_pages/mydoc/az_jupyter.html.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+    <a target="_blank" href="https://github.com/cloudmaven/documentation/blob/gh-pages/pages/az/az_jupyter.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
     
 
     
 
   <h1 id="jupyter-notebooks-on-microsoft-azure">Jupyter notebooks on Microsoft Azure</h1>
 
-<h2 id="jupyter-on-azure">Jupyter on Azure</h2>
-<p>Microsoft Azure is hosting Jupyter notebooks. See http://notebooks.azure.com. You will create the source copy using a Windows Live ID.
-These you can share by URL where other people can clone what you have built (without affecting your copy).</p>
+<h2 id="introduction">Introduction</h2>
+
+<p>The purpose of this page is to present the Microsoft Azure Jupyter notebook hosting service as an extremely 
+valuable (currently free) tool for research.</p>
+
+<p>In general we advocate using Jupyter notebooks to create research sandboxes, to develop paper content, 
+to share reproducible results, and to communicate on a technical level. Jupyter notebooks support 
+Python, R, F Sharp, Julia and other programming languages. They also support markdown including LaTeX mathematical formatting.</p>
+
+<p>Microsoft to their immense credit has created a Jupyter notebook hosting service on their Azure cloud platform. This has two 
+advantages over hosting a Jupyter notebook on a machine that you manage: First Azure takes care of the basics of managing the 
+notebook and its host machine; so you don’t.  Second the Azure Jupyter notebook is connected to other useful technogies;
+so it is already built into a broader technical context or ecosystem. These extensions include Azure Machine Learning Studio 
+and GitHub, just to begin with. We believe this service has a great future and is well worth your time exploring.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="http://notebooks.azure.com">Microsoft Azure Jupyter notebook hosting site</a></li>
+  <li><a href="http://notebooks.azure.com/faq">The Azure Notebook FAQ</a> is an excellent overview.</li>
+  <li><a href="https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-and-IPython-Notebooks">Gallery of interesting notebooks</a></li>
+  <li><a href="https://notebooks.azure.com/library/89FHPIGSGMs">An example notebook</a> for a middle school math club.</li>
+  <li><a href="https://notebooks.azure.com/run/Microsoft/samples?dest=/notebooks/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb">Data loading &gt; Jupyter instructions</a></li>
+</ul>
 
 <h2 id="warnings">Warnings</h2>
-<p><strong>* UW NetID identity may not have proper access so test this and if you encounter problems: Start the Jupyter notebook from an alternative ID.</strong>*</p>
+
+<ul>
+  <li><em>** Azure hosting of Jupyter is under development so be prepared to shoot them a ‘help!’ email. The other important
+thing to realize is that from a Python cell you can issue a Linux command using ‘!command’. In particular the
+link above on data loading tells you how to use !curl to load data from GitHub; and you may also want to
+avail yourself of ‘!conda install’ at the top of a particular notebook to make sure your added libraries are in place.  **</em></li>
+  <li><strong>* When your notebook shuts down any data you have uploaded will evaporate. It does not persist. We have an entire
+section below called ‘Rehydration’ on how to deal with this by parking the necessary files on GitHub. Please note: 
+GitHub does have file size restrictions so you may need to resort to other means.</strong>*</li>
+</ul>
+
+<h2 id="rehydration">Rehydration</h2>
+
+<p>As of spring 2017 Azure Jupyter notebooks do not persist data that you upload when the Notebook shuts down. 
+This means that you have to “rehydrate” your data supply when you re-start; but this can be done with an 
+initialization cell running Python as follows:</p>
+
+<p>An Azure Jupyter notebook cell executing Python can run Linux commands by prefacing them with
+an exclamation mark ‘!’. In particular you can use the Linux curl command to inhale files (particularly 
+in our case: Smallish data files and important figures, say .png files)<br />
+to the current Notebook session from GitHub. The GitHub URL to use is not necessarily easy to find; 
+so let’s place it right here.</p>
+
+<p>The key information is as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>My github account is 'my_username'
+My repository is called 'my_reponame'
+My branch is 'my_branchname'
+My file is 'my_filename.png'
+</code></pre>
+</div>
+
+<p>The curl command to retrieve this to /nbuser/home (where it will be called file0001.png) is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>!curl https://raw.githubusercontent.com/my_username/my_reponame/my_branchname/my_filename.png -o file0001.png
+</code></pre>
+</div>
 
 
 
@@ -676,6 +810,8 @@ These you can share by URL where other people can clone what you have built (wit
         <b>Tags: </b>
         
         
+        
+        <a href="tag_Jupyter.html" class="btn btn-default navbar-btn cursorNorm" role="button">Jupyter</a>
         
         
         
@@ -691,7 +827,7 @@ These you can share by URL where other people can clone what you have built (wit
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jan 26, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jul 13, 2017 <br />
 <p><img src="images/Picture1.gif" alt="Company logo"/></p>
                 </div>
             </div>
