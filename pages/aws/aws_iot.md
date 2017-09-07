@@ -13,11 +13,18 @@ folder: aws
 ## Introduction
 
 
-This page provides two views into **Internet of Things** on the public cloud: A template for registering 
-and operating embedded IOT devices and a database that receives data from an IOT system.
-In the former case we use an Arduino Yun that takes advantage of a university WiFi network; where 
-we are interested in both sensing and actuation. In the latter case we are interested in aggregating
-data as a Proof Of Concept for university power consumption and management.
+This page provides two views into the **Internet of Things** on the public cloud: 
+A template for registering and operating embedded IOT devices and a database that receives 
+data from an IOT system, specifically environmental systems (HVAC, sensors, etc) in 
+buildings.  
+
+
+In the first case of IOT devices we use the Arduino Yun registered on the UW WiFi network. 
+We are interested in both sensing and actuation. 
+
+
+In the second case we are interested in aggregating data as a Proof Of Concept for university 
+power consumption and cost savings studies.
 
 
 ## CC*IIE Remarks
@@ -26,8 +33,11 @@ data as a Proof Of Concept for university power consumption and management.
 
 #### Objective and Approach
 
-We take advantage of the Arduino microprocessor environment due to its large-scale adoption and available 
-support; particularly the Arduino Yun which has WiFi access and is also supported within the AWS stack. 
+The Arduino microprocessor community features large-scale adoption and commensurate community-based
+support. The Arduino Yun has a standard microprocessor and a second processor running Linux with 
+WiFi.  This device is supported by the AWS stack by means of an *IOT Endpoint* and via the MPQQ
+communication protocol. 
+
 We wish to establish a minimum viable IOT network; so two devices each with a light sensor and an actuator
 (laser diode). The approach is to obtain and configure these two devices and follow the various online 
 tutorials to arrive at a continuously operating but very simple system.
@@ -36,7 +46,7 @@ tutorials to arrive at a continuously operating but very simple system.
 
 - Purchase 2 Arduino Yun devices; equip with light sensors and laser diodes
 - Power them up and establish WiFi connectivity; register them with UW IT
-- Install SDK; develope and test code
+- Install SDK; develope and test code 
 - Establish an AWS IOT Endpoint for use with MQTT pub-sub protocol
 - Code, run, debug
 
