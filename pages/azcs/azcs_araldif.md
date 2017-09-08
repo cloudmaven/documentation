@@ -55,13 +55,14 @@ analysis and data layers and used open-source tools for our cyberinfrastructure.
 
 
 The AralDIF website is available at: [AralDIF](http://araldif.azurewebsites.net). 
-Publications are pending. 
+Publications are pending. Code base is [located on GitHub](https://github.com/amandalehr/araldif).
 
 
 
 ### Links
 - [ICIMOD](http://www.icimod.org)
 - [NASA SERVIR](https://www.nasa.gov/mission_pages/servir/index.html)
+- [AralDIF project API code base on GitHub](https://github.com/amandalehr/araldif)
 
 
 
