@@ -58,20 +58,26 @@ for further expansion, for example into a prototype IOT network as part of a res
 
 #### Results
 
-- We successfully implemented this basic system
+- We have successfully implemented Arduino Yun registration and data passing to an AWS IOT end point
+- Further development will be supported out of our cloud research program at opportunity
 
-### Building power consumption
+### Monitoring and modifying campus building power consumption
 
 ![building temperature time-series plot with low-pass filters](/documentation/images/acs/acs_iot_building_temperature.png)
-
 
 #### Objective and Approach
 
 The University of Washington has a number of smart power consumption meters distributed through the Seattle
-campus. These are networked to a system called **Niagara** which can be configured to send data from a 
-particular building to a SQL database. Our objective is to provide a database that is updated frequently 
-(refresh rate ~ one minute). This will break the common CI barrier to data access by taking advantage of 
-the cloud service-based environment. 
+campus. These are networked to a system called **Niagara** which experiences considerable latency (6+ hours)
+in its current implementation. Our objective is to build an add-on work flow that does not disrupt the 
+current system but provides fast (zero-latency) access to power consumption and environmental data. 
+
+
+Our approach is to configure Niagara to send selected data from a single test building to an AWS-hosted RDS 
+database running SQL Server.  The update rate is to be on the order of five minutes with over 100 types of data 
+inbound. We then build a simple RESTful API for access to this data, again with no appreciable latency. 
+This overcomes the existing barrier to data access via the cloud service-based environment. 
+
 
 #### Solution
 
@@ -79,7 +85,9 @@ On an AWS account we establish a small SQL Server database instance on the RDS (
 This is blocked from direct internet access by means of a bastion server. The results are updated via a 
 data push originating from Niagara. 
 
+
 #### Results
+
 
 The end result of this effort is a first step towards near-real-time views of power consumption across 
 more than one hundred buildings at the University of Washington Seattle campus; in relation to external
