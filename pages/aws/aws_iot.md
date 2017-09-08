@@ -33,28 +33,37 @@ power consumption and cost savings studies.
 
 #### Objective and Approach
 
-The Arduino microprocessor community features large-scale adoption and commensurate community-based
-support. The Arduino Yun has a standard microprocessor and a second processor running Linux with 
-WiFi.  This device is supported by the AWS stack by means of an *IOT Endpoint* and via the MPQQ
-communication protocol. 
+The Arduino *Maker* community is quite large, active and supportive. 
+The Arduino Yun model has both a typical microprocessor as well as a second 'system on a chp' processor 
+running Linux with WiFi.  The Yun is therefore supported by AWS via an *IOT Endpoint*. This means that
+the device can be registered on the AWS cloud. It 'exists' there as a virtual extension of 
+itself. The physical device might generate signals or be interested in listening to other
+devices. The IOT endpoint is a routing destination where this communication takes place
+using the MPQQ communication protocol. 
 
-We wish to establish a minimum viable IOT network; so two devices each with a light sensor and an actuator
-(laser diode). The approach is to obtain and configure these two devices and follow the various online 
-tutorials to arrive at a continuously operating but very simple system.
+
+The objective here is to establish a POC IOT implementation that connects a device located inside
+a University (UW Seattle) to the AWS cloud; with signals going to and fro. 
+The approach is to obtain and configure such a device and document this initial success
+for further expansion, for example into a prototype IOT network as part of a research project.
 
 #### Solution
 
-- Purchase 2 Arduino Yun devices; equip with light sensors and laser diodes
-- Power them up and establish WiFi connectivity; register them with UW IT
-- Install SDK; develope and test code 
-- Establish an AWS IOT Endpoint for use with MQTT pub-sub protocol
-- Code, run, debug
+- Purchase an Arduino Yun device; install the IDE
+- Power up,  establish WiFi connectivity 
+- Register the device with the University IT department using its Mac address
+- Register the device at AWS by means of an IOT Endpoint service
+- Develop and test code on the Yun to communicate with (report in) to its virtualization on AWS
+- Document this process
 
 #### Results
 
-- TBD
+- We successfully implemented this basic system
 
 ### Building power consumption
+
+![building temperature time-series plot with low-pass filters](/documentation/images/acs/acs_iot_building_temperature.png)
+
 
 #### Objective and Approach
 
