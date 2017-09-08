@@ -27,14 +27,18 @@ about people. The associated cloud technology can be translated as *extremely se
 
 
 A research team must operate freely on data that is considered private or protected. 
-We conform to the stringent security requirements for HIPAA compliance as generally applicable to very securely 
-holding and operating on project data.  This breaks down in down into four sub-topics.
+We conform to the stringent security requirements for HIPAA compliance as these apply
+to the task of securely holding and operating on project data.  
+This work breaks down in down as four sub-topics.
 
 
 1. Encryption of data at rest and in motion
 2. Maintaining a secure virtual machine
 3. Logging access to the environment
 4. Research team education and practice
+
+
+In addition the considerations of account management (particularly cost-tracking) also apply.
 
 
 ### Solution
