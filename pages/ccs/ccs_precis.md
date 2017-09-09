@@ -25,11 +25,102 @@ the UW eScience Institute.
 
 ## CC*IIE Remarks
 
-### Objective and Approach
 
-### Solution
 
-### Results
+### What are the impacts of the CC*IIE (NSF) sponsored projects? How has it contributed?
+
+
+#### Preamble 
+
+
+Much of the impact of this work is speculative. The general topic is public cloud computing applied
+to research computing, broken down into smaller segments of work. These efforts were motivated as 
+contributions to specific projects; and we comment on their impact on those projects. However the 
+work was also carried out with the idea of solving broader recurring challenges.  For example we 
+developed a push notification of cloud spending on AWS to catch unauthorized account use and runaway
+resource allocation by student researchers; but this was in view of the fact that any research 
+groupd taking advantage of the AWS cloud will benefit from the same mechanism. At-a-glance cost
+summaries that arrive by email are easy to monitor in contrast with *every day* logging in to a 
+cost tracking console and configuring a set of queries. The former process takes a matter of seconds, 
+the latter requires 15 minutes.
+
+A note on scale: The group responsible for the cloud adaptation work described here as supported by
+NSF is tasked with supporting the entirety of University of Washington research including medicine. 
+This large-scale proposition is currently manageable because cloud computing is a relatively new
+technology that requires a certain investment of time to master. If we are on the verge of a phase
+transition to large-scale cloud adoption then we are in the calm before the storm. We want to 
+take advantage of the comparative lull to create as many pathways and patterns to successful 
+cloud adoption in preparation for the increase in migration volume. This NSF-sponsored project
+has been a windfall enabling us to bring in students and staff towards this end. 
+
+
+### Guiding report concepts
+- Discussion of data resources
+- Acquisition of data skills
+- Emergence of career paths (data scientists) 
+- New disciplines
+
+### What is the impact on the development of the principal discipline(s) of the project?
+
+Describe how findings, results, techniques that were developed or extended, or other products from the project
+made an impact or are likely to make an impact on the base of knowledge, theory, and research and/or pedagogical
+methods in the principal disciplinary field(s) of the project. 8000 chars.
+
+Be specific about how our efforts are driving a new approach to coordinated research at NASA in HIMAT.
+
+### What is the impact on other disciplines? 
+
+Describe how the findings, results or techniques that were developed or improved, or other products from the project
+made an impact or are likely to make an impact on other disciplines. 8000 chars. 
+ 
+### What is the impact on the development of human resources? 
+
+
+HR development in science, engineering and technology.
+
+
+Prior notes abbreviating 'Dr. Fatland' as 'Rob': 
+
+
+Rob's approach has been to *jump start* a community of practice and develop a growing toolkit of constructs for
+UW faculty, staff and student researchers, specifically, AWS and Azure cloud resources. In so doing, he has identified and 
+empowered researchers at all levels to acquire and share the skills neede to be effective CI engineers. 
+
+
+Rob: Outreach projects: Close collaboration with eScience Institute: Accumulate and track a variety of research challenges
+amenable to cloud. 
+
+
+Rob: Paired these challenges with motivated staff and students. Wove beginnings of a resilient cloud-focused social 
+fabric where researchers could come with problems; where researchers could access cloud tools and constructs needed. 
+Collaborative support.
+
+
+Challene: companies Boeing MSFT AWS Google
+
+
+Rob has empowered and coached staff, graduate and undergrads to engage with admin and tech frameworks. AWS and Azure. 
+
+
+### What is the impact on physical resources that form infrastructure? 
+
+
+-- facilities, laboratories, instruments --
+
+
+### What is the impact on institutional resources that form infrastructure? 
+
+### What is the impact on informational resources that form infrastructure? 
+
+### What is the impact on technology transfer?
+
+-- commercial technology or public use --
+
+
+### What is the impact on society beyond science and technology?
+
+'nothing to report'
+
 
 
 
