@@ -22,6 +22,7 @@ DLT-based accounts first as they provide some particular benefits such as egress
 
 
 ## Links
+- [NSF CC*IIE work on a spend notification push email](https://qjin2016.github.io/documentation/aws_cost_notification_system.html)
 - [AWS](http://aws.amazon.com)
 - [DLT portal for new AWS accounts](https://customerportal.dlt.com/internet2/)
 - [Rotating access keys: Documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html?icmpid=docs_iam_console#Using_RotateAccessKey)
