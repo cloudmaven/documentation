@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -824,7 +859,10 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="introduction">Introduction</h2>
 <p>The purpose of this page is to go into some detail about the provisioning and use of AWS EC2 (Elastic Cloud Compute) 
-virtual servers; which are just computers available for you to use.</p>
+virtual servers. What is an EC2 really? It is simply a computer available for you to use on the cloud. You pay for it
+by the hour, typically a few cents per hour. If you get a really powerful machine you can pay as much as $15 per hour
+so we suggest you do not do that, to start with. Also please be aware that you can <strong>Stop</strong> an EC2 instance and not
+pay the hourly rate without <em>losing</em> its contents. To get them back just <strong>Start</strong> the instance again.</p>
 
 <h2 id="links">Links</h2>
 
@@ -876,6 +914,27 @@ new instance; which takes a few minutes. And then you can log in to that machine
 operating system that you choose, it has some amount of computing power that you choose, it has some amount of RAM that you 
 choose and it has very little disk space.</p>
 
+<h2 id="a-short-digression-on-logging-in">A short digression on logging in</h2>
+
+<p>Before going any further let’s log on to the instance. Note its ip address in the AWS console in the Instances table. Let’s
+suppose this is 123.124.125.126 and that you chose the AWS Linux operating system. You have also downloaded the keypair file
+that we will call <strong>kp.pem</strong>. If you are on Windows you use PuTTYGen to convert this to <strong>kp.ppk</strong> but let’s assume you are 
+on a Linux machine or a Mac which has the <strong>ssh</strong> command built in. (Also you can install the bash shell on Windows.)</p>
+
+<p>Go to the file location of your .pem keypair file and type</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% chmod 400 kp.pem
+% ssh ec2-user@123.124.125.126 -i kp.pem
+</code></pre>
+</div>
+
+<p>It may ask whether you wish to continue to connect. Answer ‘yes’. If everything has gone according to plan you should
+see a little banner and a login prompt. This is the command prompt on your EC2 instance on AWS. Welcome to the cloud.
+Depending on your instance type you may have more than one attached disk volume; but at this point we will back up 
+our narrative to try and be a bit more methodical.</p>
+
+<h2 id="to-continue-with-setting-up-your-ec2-instance">To continue with setting up your EC2 instance</h2>
+
 <p>This is the big Aha: You also want to attach some disk space in the process as well. The generic term for disk space is a disk volume. You can 
 attach these volumes (more than one is fine) in the spin-up process or you can attach them later. This is Elastic Block Storage (EBS). A single 
 EBS volume can be up to 16 Terabytes.</p>
@@ -894,6 +953,7 @@ hour. You can also rent super-powerful machines for several dollars per hour. Si
 machines off (without losing your data) so that you are not paying for them when you are not using them.</p>
 
 <h3 id="what-this-page-is--isnt">What this page is / isn’t</h3>
+
 <p>Now this document is in preparation; so it does not cover everything in this topic. For example it does not cover how to 
 save money by using the Spot Market and it does not cover turning EC2 instances on and off and setting Alarms to inform you 
 when they are possibly doing something expensive. We’ll build all of this into these documentation pages; but the main point 
@@ -901,7 +961,10 @@ of this page at the moment is Resources: The short list of items that you tend t
 This includes AMIs, Snapshots, Key Pairs, and Elastic IPs.</p>
 
 <h2 id="tagging">Tagging</h2>
-<p>Tagging helps to manage and organize your AWS resources. <a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">This page</a> contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to <em>always</em> set the following tags when spinning up a new EC2 instance:</p>
+
+<p>Tagging helps to manage and organize your AWS resources. <a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/">This page</a> 
+contains the long spiel on tagging strategies. A few things to note: tagging will help with cost allocation. A good practice is to <em>always</em> 
+set the following tags when spinning up a new EC2 instance:</p>
 
 <ul>
   <li>name: Name of your resource (e.g. cloudmavencompute)</li>
@@ -1303,8 +1366,10 @@ access into say ftp.cloudmaven.org.</p>
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

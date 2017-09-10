@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -822,23 +857,48 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="introduction">Introduction</h2>
 
-<p>The purpose of this page is to provide a technical description of the 
-AralDIF program as implemented on the Microsoft Azure cloud platform.</p>
+<p>This page provides an overview of the 
+AralDIF project as implemented on the Microsoft Azure public cloud platform.
+‘Aral’ refers to the Aral Sea in central Asia, and DIF abbreviates ‘Dynamic Information System’. This is one of several
+related, regionally focused projects that implement hydrological models in concert with data from local stakeholders. 
+The ultimate objective is to provide actionable public data concerning water resources in regions that are subject
+to water stress.</p>
 
-<h2 id="links">Links</h2>
+<h2 id="cciie">CC*IIE</h2>
 
+<p>The NSF-sponsored work under the CC*IIE initiative is focused here on cloud adoption in research. Our perspective is
+researcher-centric and cloud-agnostic. It is therefore worth noting that this cloud implementation success story is
+based on the Microsoft Azure public cloud and built in part from the Microsoft Visual Studio integrated development environment.</p>
+
+<h3 id="objective-and-approach">Objective and Approach</h3>
+
+<p>The AralDIF program is an extension of the DIF (ccs/ccs_dif.html) framework for Central Asia. The primary focus domain is the Aral basin. 
+The core project is a collaboration between the World Bank and stakeholders from seven different countries with drainage basins flowing into 
+the Aral sea from the east.</p>
+
+<p>Our task has been to implement a hydrologic model to understand changes in the regional water balance, quantify the effects of climate 
+change on water resources and agricultural production, and translate these linkages into actionable information through a decision support 
+system.  In the process, we are also looking to build a system to encourage data sharing and collaboration in a geo-politically sensitive region.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>In order to facilitate the data sharing process, we have developed APIs that allow users to subset data from cloud-based storage. 
+We have also developed a website to help stakeholders visualize model input and outputs as well as perform minor analysis. Further, 
+all data layers, model setup and parameters are stored on a virtual machine on a public cloud platform (MS Azure), thus negating 
+the ability of a single country/stakeholder to dominate or manipulate the data. We have used publicly-available datasets for our 
+analysis and data layers and used open-source tools for our cyberinfrastructure.</p>
+
+<h3 id="results">Results</h3>
+
+<p>The AralDIF website is available at: <a href="http://araldif.azurewebsites.net">AralDIF</a>. 
+Publications are pending. Code base is <a href="https://github.com/amandalehr/araldif">located on GitHub</a>.</p>
+
+<h3 id="links">Links</h3>
 <ul>
-  <li><a href="http://araldif.azurewebsites.net">AralDIF</a></li>
   <li><a href="http://www.icimod.org">ICIMOD</a></li>
   <li><a href="https://www.nasa.gov/mission_pages/servir/index.html">NASA SERVIR</a></li>
+  <li><a href="https://github.com/amandalehr/araldif">AralDIF project API code base on GitHub</a></li>
 </ul>
-
-<h2 id="warnings">Warnings</h2>
-
-<h2 id="project-overview">Project overview</h2>
-
-<p>The purpose of this project is to implement computational models that predict earth surface 
-conditions across an extended region.</p>
 
 
 
@@ -863,8 +923,10 @@ conditions across an extended region.</p>
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 30, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> January 30, 2017<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -24,11 +24,21 @@
 
 
 {
-"title": "Geoserver on AWS",
+"title": "Geoserver &amp; LIDAR on AWS",
 "tags": "research_computingcase_studiesvisualizationdata_apiAWScollaborationcloud_servicestoragedatabase",
 "keywords": "research_computing",
 "url": "acs_geoserver.html",
 "summary": "Geospatial tools on AWS: A GeoServer case study"
+},
+
+
+
+{
+"title": "Light sheet microscope",
+"tags": "scaleresearch_computingAWScase_studies",
+"keywords": "research_computing, data_science",
+"url": "acs_light_sheet_microscope.html",
+"summary": "Light sheet microscope for fast-turnaround tumor biopsy"
 },
 
 
@@ -54,7 +64,7 @@
 
 
 {
-"title": "Rosetta scale computing case study",
+"title": "Rosetta computing at scale",
 "tags": "Rosettascaleresearch_computingAWSorganic_chemistrydata_scienceresearch_creditscase_studies",
 "keywords": "research_computing, data_science",
 "url": "acs_rosetta.html",
@@ -89,6 +99,26 @@
 "keywords": "aws",
 "url": "aws_console.html",
 "summary": "AWS Console"
+},
+
+
+
+{
+"title": "AWS Email Notification System",
+"tags": "AWSLambdaSNScost",
+"keywords": "aws, lambda, sns",
+"url": "aws_cost_notification_system.html",
+"summary": "AWS Email Notification System"
+},
+
+
+
+{
+"title": "AWS Cost Tracking",
+"tags": "AWSLambdaSNScost",
+"keywords": "aws, lambda, sns",
+"url": "aws_cost_tracking.html",
+"summary": "AWS Autotagging and Cost Tracking"
 },
 
 
@@ -454,6 +484,16 @@
 
 
 {
+"title": "Ocean Observing Initiative",
+"tags": "research_computing",
+"keywords": "NSF",
+"url": "ccs_OOI.html",
+"summary": "Ocean Observing Initiative"
+},
+
+
+
+{
 "title": "Dynamic Information Framework",
 "tags": "research_computinggeosciencecase_studiescloud_servicesdata_scienceweb_frameworkdata_apigithubvisualizationdata_management",
 "keywords": "public, value, hydrology, scientific, skill",
@@ -479,16 +519,6 @@
 "keywords": "summary, overview, case, study",
 "url": "ccs_precis.html",
 "summary": "Cloud Case Study Precis"
-},
-
-
-
-{
-"title": "Student Research",
-"tags": "research_computing",
-"keywords": "NASA",
-"url": "ccs_student_research.html",
-"summary": "Student-led research computing on the public cloud"
 },
 
 
@@ -1508,6 +1538,16 @@
 
 
 {
+"title": "JupyterHub for Research Computing",
+"tags": "research_computingreproducibilityJupyterdata_sciencecloud_basicsweb_framework",
+"keywords": "research, computing",
+"url": "rc_jupyterhub.html",
+"summary": "Installing and Using JupyterHub for research computing"
+},
+
+
+
+{
 "title": "Lightweight Data Systems",
 "tags": "research_computinggithubreproducibilityJupyterdata_sciencecloud_basicsweb_framework",
 "keywords": "research, computing",
@@ -1523,6 +1563,16 @@
 "keywords": "research_computing",
 "url": "rc_research_on_the_web.html",
 "summary": "Research on the web"
+},
+
+
+
+{
+"title": "Student Research",
+"tags": "research_computing",
+"keywords": "NASA",
+"url": "rc_student_research.html",
+"summary": "Student-led research computing on the public cloud"
 },
 
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Rosetta peptide design studies on the AWS cloud">
 <meta name="keywords" content="Rosettascaleresearch_computingAWSorganic_chemistrydata_scienceresearch_creditscase_studies,  research_computing, data_science">
-<title>Rosetta scale computing case study | Research Computing Resources</title>
+<title>Rosetta computing at scale | Research Computing Resources</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 
@@ -128,7 +128,7 @@
                 
                 
                 
-			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=cloud maven f eedback&body=I have some feedback about the Rosetta scale computing case study page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
+			<li><a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:amandach@uw.edu?subject=cloud maven f eedback&body=I have some feedback about the Rosetta computing at scale page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a><li>
 
 		
                 <!--comment out this block if you want to hide search-->
@@ -144,7 +144,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Rosetta scale computing case study">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Rosetta computing at scale">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -778,7 +813,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Rosetta scale computing case study</h1>
+   <h1 class="post-title-main">Rosetta computing at scale</h1>
 </div>
 
 
@@ -822,16 +857,14 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="introduction">Introduction</h2>
 
-<p>This page presents a research-to-cloud success: a case study in which powerful 
-molecular design software is run at large scale on the AWS public cloud to explore
-the possible scaffolding-like structures of small proteins called peptides.  This new 
-approach to protein design rapidly generates encyclopedic results that could be used 
-to create new therapeutic medicines.</p>
+<p>This page presents a success story: Massive-scale cluster computing on the Amazon Web Services public cloud. 
+The computations use the <strong>Rosetta</strong> molecular design software to explore small protein (peptide) structures
+using a fixed number of amino acids.  These protein structures (scaffolding) could be used to target 
+binding sites in therapeutic medicine.</p>
 
-<p>The study shows that a <em>moderately large</em> compute task runs quickly and cost-effectively 
-on the public cloud. This result contrasts with the traditional time-consuming process 
-of purchasing, configuring, operating, maintaining and updating a compute cluster which
-in turn would compute more slowly.</p>
+<p>This case study shows that a <em>moderately large</em> compute task runs quickly and cost-effectively 
+on the public cloud. The computing machines are maintained by AWS so no time-consuming process of 
+purchasing, configuring, operating, maintaining and updating compute clusters was involved.</p>
 
 <p>This success on the AWS public cloud uses key technologies and methods that we describe
 in further detail below. The methods described are applicable to any research computing 
@@ -847,59 +880,61 @@ Components include:</p>
   <li>The <a href="https://aws.amazon.com/grants/">AWS Research Credit Grant program</a></li>
 </ul>
 
-<h2 id="links">Links</h2>
+<h2 id="cciie-remarks">CC*IIE Remarks</h2>
+
+<p>This component of the NSF-sponsored CC*IIE project looks at doing large-scale compute tasks on the public cloud. 
+The primary objective is to match cost to compute by spinning up a certain number of compute instances, 
+getting them to run pieces of the complete task, and then shut down quickly to minimize cost. 
+We first approach this on AWS using a standard mechanism called Cloud Formation Network clustering (‘cfncluster’). 
+We also want to use the AWS Spot market since this cuts instance cost by up to 80% per virtual machine.
+The scale of the task ran into some obstacles because the Spot market instance pool is a small subset of 
+the complete AWS instance pool. We overcame this limitation using a new service from AWS called <strong>Batch</strong>.</p>
+
+<h3 id="objective-and-approach">Objective and Approach</h3>
 
 <ul>
-  <li><a href="http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html">Peptide design paper published by the Researcher</a></li>
-  <li><a href="https://aws.amazon.com/batch/">AWS Batch service</a></li>
-  <li><a href="https://www.bakerlab.org">Baker Lab Rosetta software suite</a></li>
-  <li>
-    <p><a href="https://els.comotion.uw.edu/express_license_technologies/rosetta">Rosetta (from COMOTION)</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/robfatland/Rosetta/wiki">Procedural Documentation (temporary wiki)</a></p>
-  </li>
-  <li><a href="https://www.rosettacommons.org/docs/latest/Home">Rosetta Commons website</a></li>
-  <li><a href="https://www.rosettacommons.org/docs/latest/scripting_documentation/RosettaScripts/RosettaScripts">Rosetta Commons ‘Scripts’</a></li>
-  <li><a href="https://www.rosettacommons.org/docs/latest/build_documentation/Build-Documentation">Compiling Rosetta</a></li>
+  <li>Science objective: Explore possible structures of proteins built from a small number of amino acids</li>
+  <li>Technical objective: Paralellize analysis software to show large-scale compute power on the public cloud</li>
 </ul>
 
-<h2 id="preliminary-remarks">Preliminary Remarks</h2>
+<p>To generalize this process the following steps would be typical:</p>
 
 <ul>
-  <li>
-    <p>The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
-features much better cost-per-hour rates.  We found that this smaller pool can constrain compute 
-scale in default usage patterns; so a major part of this effort was determining how to overcome 
-these constraints. We did so via choice of region combined with adoption of the Batch service 
-to allocate tasks across AWS availability zones (AZs) within that region. 
-This procedure is described in detail below.</p>
-  </li>
-  <li>
-    <p>This work was directed by the first author of the above-cited
-<a href="http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html">paper on peptide design</a>,
-Gaurav Bhardwaj.  He is herein referred to as <strong>The Researcher</strong>.</p>
-  </li>
+  <li>Identify the research problem that requires large-scale computing</li>
+  <li>Configure the AWS User account</li>
+  <li>Configure the execution software and the data structure</li>
+  <li>Configure <strong>cfncluster</strong>, <strong>EnginFrame</strong> or <strong>Batch</strong> to run the job at scale on the AWS Spot market</li>
+  <li>Recover the results and close the compute infrastructure</li>
 </ul>
 
-<h2 id="overview">Overview</h2>
+<h3 id="solution">Solution</h3>
 
 <ul>
-  <li>Objectives
+  <li>The Spot market proved to have limited capacity; that is, a limited number of available instances
     <ul>
-      <li>Explore possible structures of proteins built from a small number of amino acids</li>
-      <li>Paralellize the analysis software on the public cloud</li>
-      <li>Begin to demonstrate the compute power of the public cloud</li>
+      <li>This is due to the two-tier resource allocation: Regions on a high level and Availability Zones on the sub-level</li>
+      <li>cfncluster only works within one Availability Zone (AZ)</li>
+      <li>The number of Spot instances within a single AZ was insufficient</li>
+      <li>Desired capacity: On the order of 200 <a href="https://aws.amazon.com/ec2/instance-types/">c4.8xlarge</a> compute instances</li>
     </ul>
   </li>
-  <li>Means: The Rosetta peptide design software implemented on the AWS public cloud</li>
-  <li>Key numbers from the main compute task
+  <li>The project migrated to the <a href="http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"><strong>AWS Batch</strong></a> 
+service to allocate Spot market instances across Availability Zones within a single Region</li>
+</ul>
+
+<h3 id="results">Results</h3>
+<ul>
+  <li>This <strong>Batch</strong> solution resulted in 160 c4.8xlarge instances running for 53 hours on a single compute task
+producing 5 million positive structural results; at a fraction of the On Demand rate</li>
+  <li>The Rosetta compute produced 5 million peptide structures using 313,000 virtual CPU hours at a cost of $3477.</li>
+  <li>The results are documented below and in considerable detail <a href="https://github.com/cloudmaven/Rosetta/wiki">at this wiki</a>.</li>
+  <li>Key numbers
     <ul>
       <li>53: wall clock hours required to complete calculations
         <ul>
-          <li>391: Hours needed to complete the same compute task on the Researcher’s available HPC resources (Hyak)</li>
+          <li>391: Wall clock hours needed to complete the same task on the Researcher’s available on-premise HPC resources</li>
           <li>$800,000: Cost for on-premise hardware capable of producing this result in 53 hours</li>
-          <li>230: The number of these analysis tasks that could be run on AWS for $800,000</li>
+          <li>230: The number of such calculations that could be run for this amount</li>
         </ul>
       </li>
       <li>164: Number of C4.8xlarge EC2 instances allocated on average from the AWS Spot market (max 200)
@@ -908,15 +943,39 @@ Gaurav Bhardwaj.  He is herein referred to as <strong>The Researcher</strong>.</
           <li>$0.40: Spot market cost per instance-hour
             <ul>
               <li>showed no significant cost variation over the task duration, nor impact on market price</li>
-              <li>$0.012 per vCPU-hour. Optimization saved &gt; $600 over other instance choices</li>
+              <li>$0.012 per vCPU-hour. Careful optimization saved more than $600 over other instance choices</li>
             </ul>
           </li>
-          <li>$3400: Task compute cost (covered by an AWS research credit grant)</li>
+          <li>$3477: Task compute cost (covered by an AWS research credit grant)</li>
         </ul>
       </li>
-      <li>5.2 million: Number of positive results</li>
+      <li>5.2 million: Number of positive results (peptide scaffold structures)</li>
     </ul>
   </li>
+</ul>
+
+<h2 id="related-links">Related Links</h2>
+
+<ul>
+  <li><a href="http://www.nature.com/nature/journal/v538/n7625/full/nature19791.html">Peptide design paper: Gaurav Bhardwaj and others</a></li>
+  <li><a href="https://aws.amazon.com/batch/">AWS Batch service</a></li>
+  <li><a href="https://www.bakerlab.org">Baker Lab Rosetta software suite</a></li>
+  <li><a href="https://els.comotion.uw.edu/express_license_technologies/rosetta">Rosetta (from COMOTION)</a></li>
+  <li><a href="https://github.com/cloudmaven/Rosetta/wiki">Procedural Documentation</a></li>
+  <li><a href="https://www.rosettacommons.org/docs/latest/Home">Rosetta Commons website</a></li>
+  <li><a href="https://www.rosettacommons.org/docs/latest/scripting_documentation/RosettaScripts/RosettaScripts">Rosetta Commons ‘Scripts’</a></li>
+  <li><a href="https://www.rosettacommons.org/docs/latest/build_documentation/Build-Documentation">Compiling Rosetta</a></li>
+</ul>
+
+<h2 id="remark-on-aws-cfncluster-in-relation-to-aws-batch">Remark on <strong>AWS cfncluster</strong> in relation to <strong>AWS Batch</strong></h2>
+
+<ul>
+  <li>The AWS Spot instance pool is smaller in capacity than the AWS On Demand pool and typically
+features much better cost-per-hour rates.  We found that this smaller pool can constrain compute 
+scale; so a major part of this effort was determining how to overcome this constraints. 
+We did so via choice of region combined with adoption of the Batch service to allocate tasks 
+across AWS availability zones (AZs) within that region.<br />
+For more detail please refer to our <a href="https://github.com/cloudmaven/Rosetta/wiki">Rosetta wiki</a>.</li>
 </ul>
 
 <h2 id="science-background">Science background</h2>
@@ -956,28 +1015,28 @@ validate that its structure is indeed as predicted by the software.</p>
 <h2 id="cost-tradeoffs">Cost tradeoffs</h2>
 
 <p>Purchasing and maintaining dedicated hardware is the traditional approach to high performance computing
-(HPC) such as the work described here. This approach suffers from two limitations</p>
-
-<p>The public cloud represents an alternative approach wherein falling costs, increasing convenience, 
-read-to-use services and outsourced system administration are factors in its favor. At what point 
-is cloud computing cost-equivalent to on-premise computing?  We suggest two views of the 
-break-even point.</p>
+(HPC) which includes the compute task described in this case study.  The public cloud represents an 
+alternative approach where low/falling cloud costs, increasing convenience, read-to-use services and outsourced 
+system administration are factors to consider. At what point is cloud computing cost-equivalent to 
+on-premise computing?  Here are two views of the break-even concept.</p>
 
 <h3 id="hard-break-even">Hard Break-even</h3>
 
 <p>Take the lifespan of a purchased computer to be three years.  In this case study the compute task ran 
-for 53 hours on the AWS cloud and cost $3400. When an equivalent single computer costing $3400 requires 
+for 53 hours on the AWS cloud and cost $3500. When an equivalent single computer costing $3500 requires 
 3 years to complete the same task we could say that cloud cost has reached parity with on-premise 
 cost. It is worth noting however that the on-premise solution takes 500 times longer to finish the 
-computation.  We calculate that the time to complete the compute task would be 246 days today, 
-849 days sooner than the hard break-even of three years.</p>
+computation.  We estimate the time to complete the compute task described here would be 246 days which
+is 849 days sooner than the hard break-even of three years.  This means that a head-to-head comparison
+with 100% CPU utilization for three years favors the on premise computer today. It is when the
+purchased computer is not being used at 100% capacity that the cloud cost begins to be comparable.</p>
 
 <h3 id="soft-break-even">Soft Break-even</h3>
 
-<p>Soft break-even brings wall-clock time into consideration. At what point does waiting for compute tasks
-hinder the researcher’s progress? In this case study the Researcher is fortunate to have access to an
-on-premise cluster that would complete the same task in two weeks. On that cluster the completion time 
-scales with the size of the computation: A four-times-larger compute task would require two months
+<p>Soft break-even brings wall-clock time and other factors into consideration. At what point does waiting 
+for compute tasks hinder the researcher’s progress? In this case study the Researcher is fortunate to have 
+access to an on-premise cluster that would complete the same task in two weeks. On that cluster the completion 
+time scales with the size of the computation: A four-times-larger compute task would require two months
 whereas on the public cloud time to complete is unchanged: The larger task will still only require 
 wall clock time on the order of 48 hours.</p>
 
@@ -985,232 +1044,57 @@ wall clock time on the order of 48 hours.</p>
 possible on a cloud platform. We note that cloud vendor <a href="p_research_credits.html"><em>research credits</em></a> 
 enable a Researcher to explore this benefit with relatively low financial entry risk.</p>
 
-<h2 id="key-terminology">Key Terminology</h2>
+<p>A final remark on human versus computer time: If human time becomes a factor in computing then a
+suitable question might be: How many computers do I need to purchase to reach an acceptable human 
+or ‘wall clock’ time for my computations to run? Again if this computation can be followed by 
+another and another in succession: That is 100% CPU use and it justifies purchasing dedicated 
+hardware. However the other side of the coin is that a research team may not have this level of
+processing requirement or they may not have this level of funding.</p>
+
+<h2 id="some-contextual-terms-and-concepts-for-large-computing-tasks-on-aws">Some contextual terms and concepts for large computing tasks on AWS</h2>
 
 <ul>
-  <li>Batch service: An AWS service suited to larger-scale resource allocation on the AWS Spot market</li>
-  <li>cfncluster service: Abbreviated term for <em>Cloud Formation Network cluster</em>, an association of technologies
-that facilitate engaging many EC2 instances for parallel processing tasks in coordination with a Scheduler.</li>
-  <li>Sun Grid Engine (SGE): A Scheduler commonly used on AWS that coordinates with <em>cfncluster</em></li>
-  <li>Configuration Instance: A small EC2 instance used to configure and run <em>cfncluster</em></li>
-  <li>Master: An AWS EC2 instance (with EBS volume attached) running as the Master node of a <em>cfncluster</em> 
-under the SGE Scheduler</li>
+  <li>
+    <p>Batch service: An AWS service suited to larger-scale resource allocation on the AWS Spot market</p>
+  </li>
+  <li>
+    <p>cfncluster service: Abbreviated term for <em>Cloud Formation Network cluster</em>, an association of technologies
+that facilitate engaging many EC2 instances for parallel processing tasks in coordination with a Scheduler.</p>
+  </li>
+  <li>
+    <p>Sun Grid Engine (SGE): A Scheduler commonly used on AWS that coordinates with <em>cfncluster</em></p>
+  </li>
+  <li>
+    <p>Configuration Instance: A small EC2 instance used to configure and run <em>cfncluster</em></p>
+  </li>
+  <li>
+    <p>Master: An AWS EC2 instance (with EBS volume attached) running as the Master node of a <em>cfncluster</em> 
+under the SGE Scheduler</p>
+  </li>
   <li>
     <p>Worker: An AWS EC2 instance (for example from the Spot market pool) executing a large compute task</p>
   </li>
-  <li>Optimization benchmarking: Studying the consequences of choice of EC2 instance, task loading, other configuration settings.</li>
-  <li>Time optimization: Analysis of instances and settings to complete a given Job in minimal time.</li>
-  <li>Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.</li>
-</ul>
-
-<h2 id="kilroy-stack-open-issues">kilroy stack (open issues)</h2>
-
-<ul>
-  <li>AMI story</li>
-  <li>The cfncluster terminology is heavy; Batch is light</li>
-  <li>Elaborate on IAM User account permissions as key for cfncluster operations
-    <ul>
-      <li>blanket ‘admin’ is over-sufficient and backing off of this should be stated</li>
-    </ul>
+  <li>
+    <p>Optimization benchmarking: Studying the consequences of choice of EC2 instance, task loading, other configuration settings.</p>
   </li>
-  <li>Remarks on the wiki
+  <li>
+    <p>Time optimization: Analysis of instances and settings to complete a given Job in minimal time.</p>
+  </li>
+  <li>
+    <p>Cost optimization: Analysis of instances and settings to complete a given Job at lowest cost in USD.</p>
+  </li>
+  <li>
+    <p>T2 Micro: An EC2 instance that costs very little and can configure the heavy processing (cost saving strategy).</p>
+  </li>
+  <li>
+    <p>Key Pair: A digital signature contained as a file that grants ssh access to an EC2 instance without user/password login</p>
     <ul>
-      <li>“In what follows we try to emphasize what you <em>do</em> need to change on the forms; hence 
-if there is no comment you should leave the default value as-is.”</li>
-      <li>S3 region = US Standard (there is no N. Virginia) should be called out</li>
-      <li>Elastic ip: 34.205.126.203</li>
-      <li>On create VPC page: On Wizard setup: Do not click “Add Endpoint”</li>
-      <li>Must modify the CIDR block description in HIPAA and link to that (actually it belongs elsewhere…)</li>
-      <li>Page 4: At top: Motivate “what kind of EC2 do we start with?”
-        <ul>
-          <li>Point out that the Community AMI describes capabilities, not EC2 instance type: Separate concepts</li>
-          <li>In particular we must carefully elaborate: The EC2 instance in the next step (c4.4xlarge) is a
-model for building an AMI; and this AMI may subsequently be pulled into a <em>different</em> EC2 type
-such as a c4.8xlarge. This is ok: The scaling to machine power is automated.</li>
-        </ul>
-      </li>
-      <li>Page 4: Selection is Ubuntu and Docker 16.04; other features like Kubernetes does not factor in</li>
-      <li>The EC2 launch key pair section should be beefed up with references to the GitHub warning and so on</li>
-      <li>Emph on the prefix ubuntu at</li>
+      <li>Crucial concept: Never include Key Pair files in GitHub repositories; this can cost you tens of thousands of dollars</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="fossil-cfncluster--rosetta-configuration-steps">(fossil) cfncluster / Rosetta configuration steps</h2>
-
-<p>The Rosetta work by Srihari Vignesh is currently captured 
-at <a href="https://github.com/Sriharivignesh/Rosetta-Protein-Folding-Project/wiki">this wiki</a>.</p>
-
-<p>The remarks on tracing the wiki steps are up above in the kilroy stack section.</p>
-
-<p>The following content is from earlier, i.e. it is residual from earlier progress focused
-on using cfncluster.</p>
-
-<p>See <a href="acs_rosetta.html">this page</a> for the screen captures: All from console and terminal.</p>
-
-<p>Log in to your IAM User account on AWS.</p>
-
-<p>Start an EC2 instance; using a T2 Micro will work well; they cost very little and this instance will
-be used to configure the heavy processing so it does not need processing power.</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0001.png" alt="acs_rosetta0001" /></p>
-
-<p>Now let’s suppose someone has come here in advance and set up the AMI that I wish to use. 
-That is the case for now; and we will generalize to an arbitrary AWS User in the future. Here we go.</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0002.png" alt="acs_rosetta0002" />
-<img src="/documentation/images/acs/acs_rosetta0003.png" alt="acs_rosetta0003" /></p>
-
-<p>When I hit Launch I have a conversation about choice of Key Pair</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0004.png" alt="acs_rosetta0004" /></p>
-
-<p>Rather than use something existing I’m going to simply create and download a new key pair.</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0005.png" alt="acs_rosetta0005" />
-<img src="/documentation/images/acs/acs_rosetta0006.png" alt="acs_rosetta0006" /></p>
-
-<p>Following the usual procedure to log in using PuTTY we quickly arrive at</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0007.png" alt="acs_rosetta0007" /></p>
-
-<p>We now proceed in the Linux operating system on this cfncluster control instance. It will 
-be used to create the execution environment on other EC2 instances, specifically instances running on the AWS Spot market.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>% sudo pip install cfncluster
-</code></pre>
-</div>
-
-<p>This creates (in my home directory) a directory called .cfncluster. 
-I can verify that this installed by running</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>% cfncluster
-</code></pre>
-</div>
-
-<p>The output confirms that the command is present (installed).</p>
-
-<p>Next we build a <em>config</em> file in the .cfncluster directory with the following contents:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>[aws]
-aws_region_name = us-west-2
-aws_access_key_id = ...etc
-aws_secret_access_key = ...etc
-
-[global]
-update_check = true
-sanity_check = true
-cluster_template = rosetta_cfn_test
-
-[cluster rosetta_cfn_test]
-vpc_settings = public
-key_name = my_IAM_User_keypair_filename_with_no_extension
-compute_instance_type = c4.8xlarge
-master_instance_type = c4.8xlarge
-initial_queue_size = 2
-max_queue_size = 300
-maintain_initial_size = false
-scheduler = sge
-base_os = ubuntu1604
-custom_ami = ami-11df6571
-master_root_volume_size = 30
-compute_root_volume_size = 30
-cluster_type = spot
-spot_price = 0.72
-scaling_settings = custom
-
-[vpc public]
-master_subnet_id = subnet-4a37992d
-compute_subnet_id = subnet-4b37992c
-vpc_id = vpc-5c891c3b
-
-[scaling custom]
-scaling_cooldown = 20
-</code></pre>
-</div>
-
-<p>For ‘key_name’ enter the key pair file name associated with an IAM User identity 
-without any extensions.</p>
-
-<p>Check that max_queue_size is set to 300. (The original was a value of 2 which is too small 
-but a safe starting value.) This is the maximum number of Spot market instances that may
-be allocated.</p>
-
-<p>The access keys above are redacted for reasons of form: Although they could be included we
-blank out such information to encourage awareness of security issues. These access keys are
-IAM User credentials supplied from an IAM User account. The IAM User must in turn have adequate 
-permissions to carry out cfncluster operations.</p>
-
-<p>Look at the file <strong>job_submission.sh</strong>. There is a command argument <em>-nstruct</em> with a subsequent
-integer value such as 1000. This file will not be put to use on this machine; but will be copied to
-the Master machine shortly. Once there the <em>nstruct</em> parameter will have important implications 
-for the Rosetta processing task; so we will revisit this before starting that task.</p>
-
-<p>(The <em>nstruct</em> number is a number of random seeds that the Rosetta job will create. 
-Kilroy this needs further elaboration. We want to ensure that the nstruct value is large enough 
-that the number of jobs we launch (number of instances x jobs per instance) does not exceed the 
-number of random seeds we have available. Perhaps this number could be set to 1 million?</p>
-
-<p>Next we will use the cfncluster meta-command to ‘create’ a cfncluster: Three AWS instances
-that act as the starting point for the Rosetta processing run.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cfncluster create rosetta-identifier
-</code></pre>
-</div>
-
-<p>Note that ‘rosetta-identifier’ can be any recognizable indentification string.</p>
-
-<p>We expect the <em>create</em> task to take a few minutes.</p>
-
-<h3 id="what-is-cfncluster-create-doing">What is <strong>cfncluster create</strong> doing?</h3>
-
-<p>First it is going to create a trackable presence on the AWS console under Cloud Formation. 
-Let’s take a look at that by finding Cloud Formation on the AWS Console.</p>
-
-<p><img src="/documentation/images/acs/acs_rosetta0008.png" alt="acs_rosetta0008" /></p>
-
-<p>Here is the general outline of what is happening:</p>
-
-<p>The <strong>cfncluster create</strong> command is building three EC2 instances from one existing AMI with some 
-additional configuration to follow. The first EC2 instance will be a Master instance and the
-other two are Worker instances. All three machines will be on standby once they start; they have
-no work to do yet.</p>
-
-<p>cfncluster builds all three instances according to the rules we set up in the config file; and 
-the build will also include the job_submission.sh file that we noted above has an ‘nstruct’ 
-parameter.</p>
-
-<p><strong>cfncluster create</strong> will install Sun Grid Engine on the Master Server. It will run some 
-other boilerplate scripts taken from S3 storage.  The Rosetta configuration files are pre-loaded 
-on the AMI.  The Workers, while they are not doing any work yet, are ready to go as they have the 
-Rosetta software and the Rosetta configuration files pre-installed.</p>
-
-<h3 id="starting-rosetta">Starting Rosetta</h3>
-
-<p>After <strong>cfncluster create</strong> finishes log in to Master and use <strong>qsub</strong> to submit 
-the Rosetta job. This creates a job queue: A long list of processing tasks (for example
-100,000) which are to be executed. These jobs will be scheduled one by one: Assigned to 
-Worker nodes.</p>
-
-<p>Each Worker node has a number of ‘virtual CPUs’ available for running Rosetta jobs in 
-parallel. These are compute-intensive jobs. Each may complete in a matter of a few 
-minutes.  The large number of jobs is typical from required sample density in a 
-Monte Carlo task.</p>
-
-<p>kilroy left off here
-While we may run 100,000 jobs these may be distributed across perhaps only 300 Workers. These 
-Workers will (for this example) be powerful machines, each with the capacity to run 36 jobs 
-simultaneously. The jobs we expect to take about 8 minutes each; so in the course of an hour we 
-expect about 7 x 36 or 252 jobs to run. Multiplying this by 300 we expect 75600 jobs to complete
-in an hour.</p>
-
-<p>Since the two initial Workers will be insufficient to process the job list we have a mechanism
-for increasing the number of Workers. When there are jobs waiting and no Workers available 
-the SGE scheduler request that cfncluster spin up more instances. Cfncluster will do so until it 
-hits the maximum limit (300) that we specified in the <em>config</em> file.</p>
-
-<p>These 300 Workers will each process multiple threads/tasks.  When the job queue is empty the Workers 
-will be terminated; but not until after they have streamed their results back to the Master.</p>
+<p>As noted: For more on large compute tasks on AWS please refer to the <a href="https://github.com/cloudmaven/Rosetta/wiki">Rosetta wiki</a></p>
 
 
 
@@ -1263,8 +1147,10 @@ will be terminated; but not until after they have streamed their results back to
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -824,28 +859,82 @@ $('#toc').on('click', 'a', function() {
 
 <h2 id="introduction">Introduction</h2>
 
-<p>The cloud is extremely secure provided that the research group learns and follows appropriate guidelines. Both AWS and Microsoft have HIPAA-aligned 
-technology called out in respective Business Associate Agreements (BAAs). The burden of compliance is placed on the research team; and UW IT is 
-working to make this progress feasible and straightforward.</p>
+<p>The cloud – and your data therein – is extremely secure: Provided you and your research group learn and follow security guidelines. 
+On this page we describe essential security practices, the primary one being: Learn the ropes and how to avoid common mistakes.
+Under the <strong>security</strong> umbrella you may hear terms related to HIPAA compliance. HIPAA is a domain of federal regulation for information
+about people. The associated cloud technology can be translated as <em>extremely secure</em>.</p>
 
-<h2 id="access-control">Access Control</h2>
+<h2 id="cciie-remarks">CC*IIE Remarks</h2>
 
-<p>In both AWS and Azure, Identity and Access Management enables you to manage user access to your cloud services and resources. That is to say, it allows 
-you to be the gatekeeper. You can create users and groups and assign “ depending on the level of access you want to authorize them for. More information 
-on how to use the IAM console is elaborated in the procedural sections for each of the different cloud providers: 
-<a href="/azure_portal.html">Azure</a> or <a href="/aws_console.html">AWS</a>.</p>
+<h3 id="objective-and-approach">Objective and Approach</h3>
 
-<h2 id="data-loss-prevention">Data Loss Prevention</h2>
+<p>A research team must operate freely on data that is considered private or protected. 
+We conform to the stringent security requirements for HIPAA compliance as these apply
+to the task of securely holding and operating on project data.<br />
+This work breaks down in down as four sub-topics.</p>
+
+<ol>
+  <li>Encryption of data at rest and in motion</li>
+  <li>Maintaining a secure virtual machine</li>
+  <li>Logging access to the environment</li>
+  <li>Research team education and practice</li>
+</ol>
+
+<p>In addition the considerations of account management (particularly cost-tracking) also apply.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>We build on the AWS technology stack:</p>
 
 <ul>
-  <li><a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html">AWS Snapshot</a></li>
-  <li><a href="https://www.microsoft.com/en-us/cloud-platform/azure-information-protection">Azure Information Protection</a></li>
+  <li>S3 bucket storage must require encryption on ingress.</li>
+  <li>A Virtual Private Cloud (VPC) with a private sub-net for sequestered virtual machines</li>
+  <li>Configure virtual machines via an NAT gateway to block unwanted external access</li>
+  <li>Enabled Cloud Watch / Cloud Front logging and associated access alarms</li>
+  <li>Bastion server and key-protected tunneling</li>
+  <li>Access management procedures for research group members</li>
+  <li>Education: How to protect access keys, how to stop virtual machines to manage cost etcetera</li>
 </ul>
+
+<h3 id="results">Results</h3>
+
+<p>Our end-result is a template for starting, operating, and shutting down a secure computing environment.</p>
 
 <h2 id="encryption">Encryption</h2>
 
 <ul>
+  <li>Data are encrypted in transit by means of secure socket layers, i.e. using <em>https</em> connections directly to S3 buckets.
+    <ul>
+      <li>Transport Layer Security (current) and Secure Sockets Layer (predecessor) are both referred to as <strong>SSL</strong></li>
+      <li>The <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Wikipedia page</a> provides a good overview</li>
+    </ul>
+  </li>
+  <li>Similarly data are moved to and from attached EBS volumes using SSL via an S3 endpoint: Data signals are routed entirely within the AWS cloud structure.</li>
+  <li>S3 buckets are assigned a policy whereby they do not receive / ingress data unless these data are requested to be encrypted.</li>
+  <li>
+    <p>Similarly EBS attached volumes are required to be encrypted.</p>
+  </li>
   <li><a href="https://aws.amazon.com/kms/">AWS Key Management</a></li>
+</ul>
+
+<h2 id="secure-computing-environment-vms">Secure Computing Environment (VMs)</h2>
+
+<h2 id="logging">Logging</h2>
+
+<h2 id="training-and-best-practices-for-research-team-members">Training and best practices for research team members</h2>
+
+<h2 id="additional-facets-of-data-security">Additional facets of data security</h2>
+
+<h3 id="access-control">Access Control</h3>
+
+<p>For both AWS and Azure public clouds, Identity and Access Management (IAM) controls access to cloud services and resources. 
+The account administrator creates users and groups, assigns permissions and monitors access.</p>
+
+<h3 id="data-preservation">Data preservation</h3>
+
+<ul>
+  <li><a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html">AWS Snapshot</a></li>
+  <li><a href="https://www.microsoft.com/en-us/cloud-platform/azure-information-protection">Azure Information Protection</a></li>
 </ul>
 
 
@@ -871,8 +960,10 @@ on how to use the IAM console is elaborated in the procedural sections for each 
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> October 6, 2016<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

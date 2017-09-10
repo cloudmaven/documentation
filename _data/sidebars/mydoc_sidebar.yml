@@ -158,6 +158,14 @@ entries:
       url: /aws_account_management.html
       output: web, pdf
 
+    - title: Cost Tracking 
+      url: /aws_cost_tracking.html
+      output: web, pdf
+
+    - title: Cost Notification System
+      url: /aws_cost_notification_system.html
+      output: web, pdf
+    
     - title: EC2
       url: /aws_ec2.html
       output: web, pdf

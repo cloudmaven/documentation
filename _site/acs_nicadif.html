@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -823,29 +858,27 @@ $('#toc').on('click', 'a', function() {
   <h2 id="introduction">Introduction</h2>
 <p>The purpose of this page is to describe the implementation of the Dynamic Information Framework (DIF) in Nicaragua.</p>
 
+<h2 id="cciie-remarks">CC*IIE Remarks</h2>
+
+<h3 id="objective-and-approach">Objective and Approach</h3>
+<p>The country of Nicaragua is set in a climatic zone subjected to extreme storm events that cause land slides
+and flooding. This work is highly motivated by the need to improve coherence in addressing the development of Nicaragua’s
+rural landscape and exploring the important linkages between agriculture, water, land and food security An overarching goal here is to provide advanced warning systems and explore different avenues of adaptation to possible climate change outcomes..
+There exists various possibilities for tackling resource problems and arriving at actionable infomation through multi-sectoral partnerships.</p>
+
+<p>This project aims to promote data sharing and collaboration by deploying a base hydrologic model on a virtual machine in the cloud, storing the data on cloud-backed storage, providing analytical tools and scripts via Jupyter notebooks and developing a cloud-based web framework.</p>
+
+<h3 id="solution">Solution</h3>
+<p>The project consists of interrelated analytical pieces: (i) An evaluation of available geospatial information resources (b) Merging and data collection of information into dataframes for hydrologic modeling and watershed analysis (c) deploying modeling platform and associated information in the cloud to encourage data sharing and collaboration (d) visualization tools for actionable information and decision making. Together, these pieces form the backbone of a “<a href="ccs/ccs_dif.html">dynamic information framework</a>”.</p>
+
+<h3 id="results">Results</h3>
+<p>We have provisioned AWS resources as part of the cloud deployment of the framework. The hydrologic model and associated datasets are stored on an AWS virtual machine (EC2) that is has been made accessible to stakeholders. Technical collaborators can essentially run the complex hydrological model “out of the box”. We have also developed Jupyter Notebooks to help with analysis. We are currently working on developing the web framework and refining the training/stakeholder input objectives.</p>
+
 <h2 id="links">Links</h2>
 <p><a href="/ccs/ccs_dif.html">Overarching DIF concept</a></p>
 
 <h2 id="warnings">Warnings</h2>
 <p><strong><em>Stakeholder inputs and participation necessary</em></strong></p>
-
-<h2 id="project-description">Project Description</h2>
-<p>The country of Nicaragua is set in a climatic zone subjected to extreme storm events that cause land slides and flooding. A goal of the government of Nicaragua for this project is to provide advanced warning systems and to explore different avenues of adaptation to future climate change.</p>
-
-<p>This work is highly motivated by the need to improve coherence in addressing the development of Nicaragua’s rural landscape and exploring the important linkages between agriculture, water, land and food security. There exists various possibilities for tackling resource problems through multi-sectoral collaborations and interventions using existing diagnostic tools 
-   ra series of topography, soils, and landuse transitions set in a climatic zone subject to extreme storm events, with subsequent land slides and flooding. A goal of the Government of Nicaragua is to provide advanced warning systems and explore different avenues of adaptation to possible climate change outcomes.</p>
-
-<p>This work is motivated by the need to improve coherence in addressing the development of Nicaragua’s rural landscape; the important linkages between agriculture, water, land, and food security, and therefore the possibilities for tackling multiple problems with multi-sectoral interventions; the unexplored potential for adopting existing diagnostic tools to test key hypotheses about future directions for Nicaragua’s development; and the need for targeting public financing to meet funding gaps in rural development. 
-Objective(s) of the Assignment. The project will consist of four interrelated analytical pieces: (i) An evaluation of the geospatial information resources (topography, soils, landcover and landcover properties, and meteorological, infrastructure) available within agencies of Nicaragua, and international sources, (ii) Merging this information into dataframes, to prepare them for computer modelling of overall water resources, crossing borders when necessary for activities such as watershed analysis (iii) developing a computer model(s) of water sources, including facilitating deployment and visualizations in the Cloud, (iv) analyzing scenarios of current and future conditions. Further, the project will work with local institutions and stakeholders for training. Together, these activities create a “dynamic information framework” (DIF).
-Specifically, the Consultant will be responsible for the development and application of the DIF, in concert with local agencies and stakeholders. The consultant will prepare and submit appropriate reports/documents/input throughout the study. 
-Scope of Services, Tasks (Components) and Expected Deliverables.   The Consultant will undertake a landscape analysis of Nicaragua, within the context of a “dynamic information framework” for the country (Nicaragua DIF, or NicaDIF). The work will include development of geospatial information layers, including a 90-meter Digital Elevation Model (DEM, from SRTM), possibly a 10-30-meter DEM from local or international [I have been experimenting with Dave’s SHALSTAB model on the 30-meter SRTM data.] sources (relevant for disaster risk management) a soils map (local sources as provided, else FAO), landuse and landuse change maps (from local sources, Landsat) and MODIS, a regional climatology (from a climate re-analysis product), a preliminary evaluation of changes in total water storage (GRACE satellite; if determined feasible/useful), and incorporation of local knowledge (as provided by counterparts). Information products will be delivered by a website.</p>
-
-<h3 id="data-layers">Data layers</h3>
-<ol>
-  <li>
-    <h3 id="model-description">Model Description</h3>
-  </li>
-</ol>
 
 
 
@@ -886,8 +919,10 @@ Scope of Services, Tasks (Components) and Expected Deliverables.   The Consultan
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

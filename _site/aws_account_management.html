@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li class="active"><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -841,16 +876,30 @@ DLT-based accounts first as they provide some particular benefits such as egress
 <h2 id="warnings">Warnings</h2>
 
 <ul>
+  <li><strong><em>Read this and linked documents carefully to familiarize yourself with cloud account management issues and guidelines</em></strong></li>
   <li><strong><em>Do not start using a new AWS account until you have trained up on how to keep the account secure.</em></strong></li>
 </ul>
 
-<h2 id="so-you-want-to-open-a-paid-aws-account">So you want to open a paid AWS account</h2>
+<h2 id="dlt-issues">DLT issues</h2>
+
+<p><strong>DLT</strong> is a company that brokers daughter accounts to UW from a single AWS account. The idea is to create some benefits to
+the holders of the daughter accounts; but there is a major issue to be aware of.</p>
+
+<p>DLT essentially blocks some AWS billing features when you move to their consolidated account.
+In particular: Any alarms you set on your AWS prior to switching to the DLT consolidated account will stop working. 
+The fix is after your DLT account is activated: Use CloudWatch alerts. These must be set by contacting DLT
+using the email OpsCentral@dlt.com, providing your name, email, and an alarm threshold (monthly dollar amount
+to act as a notification trigger).</p>
+
+<p>At this stage (kilroy) we should discuss less indirect approaches.</p>
+
+<h2 id="paid-aws-accounts">Paid AWS accounts</h2>
 
 <p>We assume you are at the University of Washington or are a covered <em>affiliate</em> of the University.</p>
 
 <ul>
   <li>Establish a Blanket Purchase Order</li>
-  <li>Email the UW help desk help at uw dot edu with the subject AWS Account. Ask for instructions on how to proceed.</li>
+  <li>Email the UW help desk (help at uw dot edu) with the subject AWS Account. Ask for instructions on how to proceed.</li>
 </ul>
 
 <h2 id="account-set-up">Account set-up</h2>
@@ -880,21 +929,20 @@ DLT-based accounts first as they provide some particular benefits such as egress
 
 <p>On AWS you can allocate assets such as S3 storage buckets and EC2 compute instances. These in turn cost money
 (either actual money or credits if you have them available) and you probably care about how much. To this end
-you can tag each asset with any one of a number of supported keys. A tag is a key-value pair such as</p>
+you can tag each asset. A tag is a key-value pair that you can establish through the AWS console; for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Name: Kilroy
-Discipline: Genome Sciences
-Religion: Pastafarian
+<div class="highlighter-rouge"><pre class="highlight"><code>Name: kilroy
+Project: genomics101
 </code></pre>
 </div>
 
-<p>After a month of using your AWS account suppose you want to see how much your resources are costing you sorted
-by discipline. First go back in time and tag everything; then use the AWS Console to sort by your values.</p>
+<p>After a month you can determine how much your resources for project <em>genomics101</em> are costing you.
+Use the AWS Cost Explorer. Remember that resources may be distributed across regions; so be sure to
+scan all regions or use the regional value ‘global’.</p>
 
-<p>DLT will sort values for the following keys. Notice they are business-oriented and that there are ten
-generic ‘CA’ keys that you can make mean anything you like. You could for example decide to use CA003 
-to record room temperature when you create the tag; and you could later sort on those temperatures. 
-So again: You can tag with <em>any</em> key string you like but DLT will be able to sort on the following:</p>
+<p>DLT daughter accounts support only a certain set of key values, listed below. In addition to the
+typical ones there are 10 ‘CA’ keys that can mean anything you like. The point is that the Cost Explorer
+will allow you to sort using these keys for your tags if necessary.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>Application
 CA001
@@ -936,10 +984,135 @@ Use
 </code></pre>
 </div>
 
-<p>For the HPC Club account we will be using the Project key to tag resources. Each student researcher will have
-an assigned project string, let’s call that <xyz>. It will be typically the student's name or something easily 
-recognizable like that.  The asset should be tagged Project: <xyz> and when it is possible to name the 
-asset or service it should be named <xyz>-etcetera.</xyz></xyz></xyz></p>
+<p>The HPC Club account uses the Project key in billing tags. Each student researcher will have
+an assigned project string, the lead researcher’s NetID.</p>
+
+<h1 id="iam">IAM</h1>
+
+<p>Let’s get working definitions:</p>
+
+<ul>
+  <li>Key pair: A certificate used to access some resource like an EC2 instance</li>
+  <li>Credential: Generically an access mechanism: User name + password; or access keys</li>
+  <li>User: A person who is affiliated with the account; has some form of access
+    <ul>
+      <li>i.e. is a person with an associated access key: Public and Private text strings; in one file, kept in a secure location</li>
+      <li>This is <strong>distinct</strong> from the key pair (official term) associated with an EC2 instance used for logging in to that instance!!!</li>
+    </ul>
+  </li>
+  <li>Group: A collection of Users
+    <ul>
+      <li>Can have a permission attached that applies to all IAM Users in that group</li>
+    </ul>
+  </li>
+  <li>Role: Similar to a User but without visible Credentials
+    <ul>
+      <li>A Role exists as an abstract Thing – with a unique name – where it is actually <em>defined</em> by the policies attached to it</li>
+      <li>Roles are nice because they have temporary Credentials that are automatically generated and invisible to our view of what is happening</li>
+      <li>You <em>assume</em> a role
+        <ul>
+          <li>An EC can assume a role on launch: For example <strong>Can Write To S3</strong></li>
+          <li>Federated identities: Once you authenticate you assume a role based on some pre-existing rule / logic</li>
+          <li>Other AWS services can assume roles</li>
+          <li>IAM Users can assume roles</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Policy: Is a set of conditions that is <em>attached</em> to an IAM Role or to an IAM User or an IAM Group
+    <ul>
+      <li>Thought of as a set of permissions, or “the way that you assign permissions”</li>
+      <li>Policies are evaluated at the time of a request submitted to AWS; see below</li>
+    </ul>
+  </li>
+  <li>Policy Evaluation
+    <ul>
+      <li>By default: Everything starts with a <strong>DENY</strong></li>
+      <li>Upon request: All policies are evaluated at once; there is no order of evaluation
+        <ul>
+          <li>If there is an explicit DENY it wins, even over an explicit ALLOW</li>
+          <li>If DENY is not present: Look for ALLOW: If found: Ok. Else: See default, above.</li>
+          <li>One more detail: There is also ALLOW a NOT which is not as strong as DENY: It can be overridden by another ALLOW.</li>
+        </ul>
+      </li>
+      <li>Debugging concept: If you have explicitly set ALLOW for something that still does not happen
+        <ul>
+          <li>There must be an explicit DENY somewhere else that you have not noticed</li>
+        </ul>
+      </li>
+      <li>Basic elements of policies:
+        <ul>
+          <li>There is always an <strong>Action</strong>: What the API commands are.
+            <ul>
+              <li>‘*’ is wildcard do anything.</li>
+              <li>‘S3:*’ is like the S3 API call, again with wildcard: Can do any action on S3</li>
+            </ul>
+          </li>
+          <li>There is always a Resource: In a sense the <strong>Action</strong>’s Direct Object: What the action is applied to</li>
+          <li>There is always an Effect: Logical ALLOW or DENY; logical condition as noted above</li>
+          <li>More: There is a great deal more to Policies and Policy Evaluation…
+            <ul>
+              <li>For example conditional stuff like CIDR blocks allowed to connect to a VPC</li>
+              <li>To pursue in depth: Don’t use cloudmaven; go direct to the AWS resource content</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="iam-access-example-spot-market">IAM Access Example: Spot market</h1>
+
+<p>When the Power User policy (an AWS-managed policy) is assigned to an IAM User they still do not have the ability to 
+do IAM tasks such as passing a role to an instance. So Bill (an IAM User) has Power User access; which in turn has 
+an explicit ALLOW of NOT IAM. This means IAM tasks are not available to Bill; but Bill wishes to use the Spot market
+which in turn requires an EC2 instance to receive an appopriate Spot Fleet role. What to do? First let us anticipate 
+that this problem will recur; therefore let’s solve the problem with a Group. Second since the Power Access policy
+does not include an DENY it can be overridden. Therefore:</p>
+
+<ul>
+  <li>Create Group SpotFleetAccess</li>
+  <li>Include Bill in this Group</li>
+  <li>Create a new Policy (see below) that has the desired ALLOW actions
+    <ul>
+      <li>Lines that provide IAM Role assignment</li>
+      <li>Lines that allow S3 access</li>
+    </ul>
+  </li>
+  <li>Assign this Policy to the same Group</li>
+</ul>
+
+<p>Whereupon Bill now logs in and can spin up EC2 instances that access S3; and these instances receive a role that
+allows them to come from the Spot market pool.</p>
+
+<p><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html">This link gives the necessary Spot Fleet policy</a>.
+Here is an example of the text; note the explicit ALLOW of PassRole, ListRoles, ListInstanceProfiles. This is required to work
+with Spot Fleet.  Note: We recommend getting the actual text for this policy from the above link.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"ec2:*"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"iam:PassRole"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"iam:ListRoles"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"iam:ListInstanceProfiles"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 
 
@@ -980,8 +1153,10 @@ asset or service it should be named <xyz>-etcetera.</xyz></xyz></xyz></p>
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>

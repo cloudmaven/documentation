@@ -72,7 +72,7 @@ Be specific about how our efforts are driving a new approach to coordinated rese
 
 Describe how the findings, results or techniques that were developed or improved, or other products from the project
 made an impact or are likely to make an impact on other disciplines. 8000 chars. 
- 
+â€ 
 ### What is the impact on the development of human resources? 
 
 

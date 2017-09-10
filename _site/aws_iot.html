@@ -284,6 +284,13 @@
             
             
             
+            <li><a href="rc_student_research.html">Student Research</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="rc_cloud101_immersion.html">Cloud 101 Immersion</a></li>
             
             
@@ -327,6 +334,13 @@
             
             
             <li><a href="rc_github.html">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="rc_jupyterhub.html">JupyterHub</a></li>
             
             
             
@@ -406,6 +420,20 @@
             
             
             <li><a href="aws_account_management.html">Account management</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_tracking.html">Cost Tracking</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="aws_cost_notification_system.html">Cost Notification System</a></li>
             
             
             
@@ -639,13 +667,6 @@
             
             
             
-            <li><a href="ccs_student_research.html">Student Research</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="ccs_precis.html">Precis</a></li>
             
             
@@ -665,6 +686,13 @@
             
             
             
+            
+            
+            <li><a href="ccs_OOI.html">Ocean Observing Initiative</a></li>
+            
+            
+            
+            
         </ul>
         
         
@@ -672,6 +700,13 @@
     <li>
         <a href="#">AWS Case Studies</a>
         <ul>
+            
+            
+            
+            <li><a href="acs_light_sheet_microscope.html">Light Sheet Microscope</a></li>
+            
+            
+            
             
             
             
@@ -822,17 +857,90 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="introduction">Introduction</h2>
 
-<p>This page provides a template for registering and operating embedded IOT devices – specifically 
-an Arduino Yun – on the university WiFi network in relation to the AWS public cloud. Operation 
-includes both sensing and actuation using simple hardware (a light and a light sensor).</p>
+<p>This page provides two views into the <strong>Internet of Things</strong> on the public cloud: 
+A template for registering and operating embedded IOT devices and a database that receives 
+data from an IOT system, specifically environmental systems (HVAC, sensors, etc) in 
+buildings.</p>
+
+<p>In the first case of IOT devices we use the Arduino Yun registered on the UW WiFi network. 
+We are interested in both sensing and actuation.</p>
+
+<p>In the second case we are interested in aggregating data as a Proof Of Concept for university 
+power consumption and cost savings studies.</p>
+
+<h2 id="cciie-remarks">CC*IIE Remarks</h2>
+
+<h3 id="embedded-device">Embedded device</h3>
+
+<h4 id="objective-and-approach">Objective and Approach</h4>
+
+<p>The Arduino <em>Maker</em> community is quite large, active and supportive. 
+The Arduino Yun model has both a typical microprocessor as well as a second ‘system on a chp’ processor 
+running Linux with WiFi.  The Yun is therefore supported by AWS via an <em>IOT Endpoint</em>. This means that
+the device can be registered on the AWS cloud. It ‘exists’ there as a virtual extension of 
+itself. The physical device might generate signals or be interested in listening to other
+devices. The IOT endpoint is a routing destination where this communication takes place
+using the MPQQ communication protocol.</p>
+
+<p>The objective here is to establish a POC IOT implementation that connects a device located inside
+a University (UW Seattle) to the AWS cloud; with signals going to and fro. 
+The approach is to obtain and configure such a device and document this initial success
+for further expansion, for example into a prototype IOT network as part of a research project.</p>
+
+<h4 id="solution">Solution</h4>
+
+<ul>
+  <li>Purchase an Arduino Yun device; install the IDE</li>
+  <li>Power up,  establish WiFi connectivity</li>
+  <li>Register the device with the University IT department using its Mac address</li>
+  <li>Register the device at AWS by means of an IOT Endpoint service</li>
+  <li>Develop and test code on the Yun to communicate with (report in) to its virtualization on AWS</li>
+  <li>Document this process</li>
+</ul>
+
+<h4 id="results">Results</h4>
+
+<ul>
+  <li>We have successfully implemented Arduino Yun registration and data passing to an AWS IOT end point</li>
+  <li>Further development will be supported out of our cloud research program at opportunity</li>
+</ul>
+
+<h3 id="monitoring-and-modifying-campus-building-power-consumption">Monitoring and modifying campus building power consumption</h3>
+
+<p><img src="/documentation/images/acs/acs_iot_building_temperature.png" alt="building temperature time-series plot with low-pass filters" /></p>
+
+<h4 id="objective-and-approach-1">Objective and Approach</h4>
+
+<p>The University of Washington has a number of smart power consumption meters distributed through the Seattle
+campus. These are networked to a system called <strong>Niagara</strong> which experiences considerable latency (6+ hours)
+in its current implementation. Our objective is to build an add-on work flow that does not disrupt the 
+current system but provides fast (zero-latency) access to power consumption and environmental data.</p>
+
+<p>Our approach is to configure Niagara to send selected data from a single test building to an AWS-hosted RDS 
+database running SQL Server.  The update rate is to be on the order of five minutes with over 100 types of data 
+inbound. We then build a simple RESTful API for access to this data, again with no appreciable latency. 
+This overcomes the existing barrier to data access via the cloud service-based environment.</p>
+
+<h4 id="solution-1">Solution</h4>
+
+<p>On an AWS account we establish a small SQL Server database instance on the RDS (Relational Database Service). 
+This is blocked from direct internet access by means of a bastion server. The results are updated via a 
+data push originating from Niagara.</p>
+
+<h4 id="results-1">Results</h4>
+
+<p>The end result of this effort is a first step towards near-real-time views of power consumption across 
+more than one hundred buildings at the University of Washington Seattle campus; in relation to external
+weather conditions, time of day, occupancy details and so on.  Results are documented here for open 
+adoption.</p>
 
 <h2 id="links">Links</h2>
 
 <ul>
-  <li><a href="http://aws.amazon.com/cli">The AWS Command Line Interface (CLI)</a></li>
+  <li><a href="http://aws.amazon.com/cli">AWS Command Line Interface (CLI)</a></li>
 </ul>
 
-<h2 id="glossary">Glossary</h2>
+<h2 id="terms">Terms</h2>
 
 <ul>
   <li>IOT: Internet of Things, embedded devices from smart phones to Arduino constructions to FitBits
@@ -869,7 +977,7 @@ and beyond – limitless – that create an information framework in some enviro
       <li>As such it acts as the “latest known state record” of the device</li>
     </ul>
   </li>
-  <li>MQTT</li>
+  <li>MQTT: Message Queue Telemetry Transport, a lightweight publish-subscribe messaging protocol used on top of TCP/IP.</li>
   <li>MQTT topic: A message tag that enables a message stream to be sorted (by that tag)</li>
 </ul>
 
@@ -886,18 +994,17 @@ and beyond – limitless – that create an information framework in some enviro
   <li><strong><em>To all three such ends we emphasize here on the backing data system: In the public cloud</em></strong></li>
 </ul>
 
-<h2 id="scenario-1">Scenario 1</h2>
+<h2 id="embedded-device-1">Embedded device</h2>
 
-<h3 id="a-game-of-ping-pong">A game of ping pong</h3>
+<h3 id="ping-pong">Ping pong</h3>
 
-<p>Two Arduino Yun devices are powered up, are sitting adjacent to one another on a desktop. 
-Each has a light sensor and a laser diode. The laser diodes of one Yun is pointed at the
-light sensor of the other Yun.  The objective is to set up a sort of ping pong:</p>
+<p>Two Arduino Yun devices are powered up adjacent to one another.  Each has a light sensor and a laser 
+diode pointed at the other’s light sensor. State sequence:</p>
 
 <ul>
   <li>Yun 1 laser diode ON</li>
   <li>Yun 2 senses increased signal at light sensor</li>
-  <li>Yun 2 transmit Sensor High to the IDS</li>
+  <li>Yun 2 transmit Sensor High to IDS (<strong>IOT Data System</strong>: In this case an AWS IOT Endpoint)</li>
   <li>IDS publishes Yun 2 Sensor High</li>
   <li>Yun 1 polls IDS, notices Yun 2 Sensor High state, in response turns laser diode OFF</li>
   <li>Yun 2 senses low signal at light sensor</li>
@@ -909,7 +1016,7 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:<
   <li>Yun 2 polls IDS, notices Yun 1 Sensor High state, etcetera</li>
 </ul>
 
-<h3 id="ping-pong-procedural">Ping pong procedural</h3>
+<h3 id="procedural">Procedural</h3>
 
 <ul>
   <li>Purchase at least 2 Arduino Yun boards (supported for IOT by AWS)
@@ -1008,18 +1115,19 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:<
               <li>AWS CLI: Command Line Interface to AWS, on Windows runs from PowerShell</li>
             </ul>
           </li>
-          <li>Atheros: issue commands as root (we do not believe sudo is involved)
-<code class="highlighter-rouge">
-# opkg update 
-# opkg install distribute 
-# opkg install python-openssl 
-# opkg install openssh-sftp-server (enables sftp from PC to Atheros) 
-</code></li>
+          <li>Atheros: issue commands as root (we do not believe sudo is involved)</li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># opkg update 
+# opkg install distribute 
+# opkg install python-openssl 
+# opkg install openssh-sftp-server (enables sftp from PC to Atheros) 
+</code></pre>
+</div>
 
 
 
@@ -1052,8 +1160,10 @@ light sensor of the other Yun.  The objective is to set up a sort of ping pong:<
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
+<p>Support for this program is provided in part by the NSF Campus Cyberinfrastructure (CC*IIE) program, grant award number ACI-1440281.</p>
+<br>
                &copy;2017 cloudmaven. All rights reserved. <br />
-<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Jun 27, 2017 <br />
+<span>Page last updated:</span> January 26, 2017<br/> Site last generated: Sep 9, 2017 <br />
 <p><img src="images/cloudmaven_logo.png" alt="Company logo"/></p>
                 </div>
             </div>
