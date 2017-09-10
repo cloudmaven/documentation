@@ -9,6 +9,17 @@ permalink: aws_cost_notification_system.html
 folder: aws
 ---
 
+## CC*IIE Remarks
+
+### Objective and Approach
+The overarching goal of this project is to create a cost notification system to send cost summary of Amazon Web Services resources on a daily basis so that account owners can monitor costs and prevent overspending. There currently does not exist any free pre-canned solution for cost notification. 
+
+### Solution
+We use a combination of AWS Lambda, AWS Simple Notification Service(SNS) and S3 to create a cost summary framework that delivers a summary of spend based on tags and users, with the costs extracted from the DLT billing record. The DLT billing record is delivered twice daily to an s3 bucket, which triggers an event calling the AWS Lambda function. The AWS Lambda function in return combs through the DLT billing record (which is a comma separated value spreadsheet), and sums the costs of resources based on cost tags. The cost of untagged resources are also calculated. The summary of costs are then sent to an email list through AWS SNS.    
+
+### Results
+We have developed a cost notification system that sends an email to subscribers on a daily basis. The Lambda code and configuration is detailed below. 
+
 ## Introduction
 The Email notification system is designed to send cost summary on a daily basis to subscribed emails. This system is based on AWS Lambda serverless computing framework, Simple Notification Service (SNS) and Simple Storage Service (S3). The figure below illustrates the system architecture.
 

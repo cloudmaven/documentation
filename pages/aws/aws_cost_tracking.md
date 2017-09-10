@@ -9,27 +9,54 @@ permalink: aws_cost_tracking.html
 folder: aws
 ---
 
-# All About AWS Autotagging & Cost Tracking
+## CC*IIE Remarks
 
+### Objective and Approach
 Sometimes it can be really hard to track down who is using the correct tags on AWS, especially when you have many people launching instances in different regions across the United States.
 
 So, what strategy could you use to solve a problem of this kind?
 
 Before we delve into this problem, let's understand why tagging is so important.
 
-Here is a list of reasons. Please don't skip this part. 
+Here is a list of reasons. Please don't skip this part.
 
 1. Tags can help you track cost
 2. Tags can help you track AWS resource usage
 3. Tags can help you find your own AWS resource easily
 4. Tags can help you find whoever isn't tagging their resources
 
-## How to track cost by tags.
 
-There are two ways to track cost.
+### Solution
+There are two ways to track cost on AWS: The first is using the cost explorer in the AWS console and the second is Autotaggin
+g to append tags to resources used. The steps to implement autotagging is detailed below. 
 
-#### Cost Explorer
 
+### Results
+We created an autotagging service that automatically tags EC2 instances, volumes, snapshots, AMIs, and RDS instances with the owner and principal ID, and
+automatically sends you an email when it detects improperly tagged resources. Isn't that great?
+
+How do we ensure that people are tagging all the time? The SNS code that we wrote solves this problem. Another way
+to keep track of users that aren't following the tagging rules is this solution, Required tags, that we'll introduce in the following section.
+
+### Glossary
+
+- CloudWatch:
+An AWS service that deploys templates (like packages) that configure resources for you.
+Definition from AWS below.
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html
+AWS CloudFormation is a service that helps you model and set up your Amazon Web Services resources so that you can spend less time managing those resources and more time focusing on your applications that run in AWS. You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and AWS CloudFormation takes care of provisioning and configuring those resources for you. You don't need to individually create and configure AWS resources and figure out what's dependent on what; AWS CloudFormation handles all of that. The following scenarios demonstrate how AWS CloudFormation can help.
+
+- CloudTrail:
+An AWS service that records every action performed by the user, role, or AWS service as events.
+Definition from AWS below.
+http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html
+AWS CloudTrail is an AWS service that helps you enable governance, compliance, and operational and risk auditing of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.
+
+- AWS Config (AWS definition):
+http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html
+An AWS services that provides you with a detailed view of the configuration of AWS resources in your AWS account. This includes how the resources are related to one another and how they were configured in the past so that you can see how the configurations and relationships change over time.
+
+### Cost Explorer
 In AWS Services Billing, you can find Cost Explorer, which shows you month-date spendings and daily spendings. On the left side of Cost Explorer, you have the option of selecting which tags to filter, for example, Name: Sally. On top of the graph, you can even group the costs and usage by tag key.
 This is very convenient because you can see how much is spent by each user.
 
@@ -49,7 +76,7 @@ Before we get into some lambda code, let's first understand something even more 
 
 After reading about cost tracking, you might ask what if the users forget to tag their resources?
 
-## Autagging 
+#### Autotagging 
 
 A way to solve this problem is Autotagging.
 
@@ -225,24 +252,6 @@ You can use AWS config to quickly find all the users who are not tagging their r
 7. When the stack, required-tags-stack, has been created, go to the AWS config dashboard.
 8. On the left side, you will see Rules. Click on it.
 9. Click on rule name, required-tags. Here, you will see all the noncompliant EC2, RDS, and S3 buckets.
-
-#### Glossary
-
-##### CloudWatch: 
-An AWS service that deploys templates (like packages) that configure resources for you. 
-Definition from AWS below.
-http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html
-AWS CloudFormation is a service that helps you model and set up your Amazon Web Services resources so that you can spend less time managing those resources and more time focusing on your applications that run in AWS. You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and AWS CloudFormation takes care of provisioning and configuring those resources for you. You don't need to individually create and configure AWS resources and figure out what's dependent on what; AWS CloudFormation handles all of that. The following scenarios demonstrate how AWS CloudFormation can help.
-
-##### CloudTrail: 
-An AWS service that records every action performed by the user, role, or AWS service as events.
-Definition from AWS below.
-http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html
-AWS CloudTrail is an AWS service that helps you enable governance, compliance, and operational and risk auditing of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.
-
-##### AWS Config (AWS definition): 
-http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html
-An AWS services that provides you with a detailed view of the configuration of AWS resources in your AWS account. This includes how the resources are related to one another and how they were configured in the past so that you can see how the configurations and relationships change over time.
 
 
 

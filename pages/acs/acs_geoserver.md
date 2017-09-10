@@ -17,7 +17,7 @@ This prototype was developed for the University of Washington Library Data Servi
 ## CC*IIE Remarks
 
 ### Objective and Approach
-The objective of this project is to demonstrate how researchers can collaborate and share geospatial data by using available open-source tools.  We use two complementary technologies in this prototype: Geoserver and Leaflet.  Geoserver is an open-source map server that can provide geospatial data in a number of possible formats via query/retrieval from an internal database. Leaflet is more properly 'leaflet.js', an open-source javacript library for creating interactive maps where content is provided on the fly by OpenStreetMap, an online map tile resource.
+The objective of this project is to demonstrate how researchers can collaborate and share geospatial data by using available open-source tools.  We use two complementary technologies in this prototype: Geoserver and Leaflet.  Geoserver is an open-source map server that can provide geospatial data in a number of possible formats via query/retrieval from an internal database. Leaflet is more properly known as 'leaflet.js', an open-source javacript library for creating interactive maps where content is provided on the fly by OpenStreetMap, an online map tile resource.
 
 ### Solution
 The steps to installing your own Geoserver are outlined below. We have also created Amazon Machine Images (AMI) that you can use to spin up your own Geoserver instance on AWS. 
@@ -25,17 +25,16 @@ The steps to installing your own Geoserver are outlined below. We have also crea
 Geoserver is used as the backend for storing the LIDAR data that has been collected from the Puget Sound Lidar Consortium (PSLC). The front end is a map that allows users to subset and extract data as necessary. This PoC is intended to provide an architecture that is easy to emulate and to allow researchers to set such a system up fairly quickly. 
 
 ### Results
-This geoserver set
+This geoserver setup is available at:
+- [LIDAR Demo: Map interface (using Leaflet.js)](http://lidarwebmap.cloudmaven.org)
+- [LIDAR Demo: Data access via a Geoserver instance hosting Lidar data](http://lidargeoserver.cloudmaven.org)
 
+We also have an AMI to spin up 
 ## Links
 
 - [Information about leaflet.js](http://leafletjs.com/)
 - [Information about Geoserver](http://geoserver.org/)
 - [Information about OpenStreetMap](http://www.openstreetmap.org/)
-
-
-- [LIDAR Demo: Map interface (using Leaflet.js)](http://lidarwebmap.cloudmaven.org)
-- [LIDAR Demo: Data access via a Geoserver instance hosting Lidar data](http://lidargeoserver.cloudmaven.org)
 
 
 ## Warnings
