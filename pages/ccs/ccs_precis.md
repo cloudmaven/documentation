@@ -55,12 +55,41 @@ has been a windfall enabling us to bring in students and staff towards this end.
 
 
 ### Guiding report concepts
+
+
 - Discussion of data resources
 - Acquisition of data skills
 - Emergence of career paths (data scientists) 
 - New disciplines
 
+
+### Cloud Computing Innovation and Cyber-Infrastructure Elements for Research Topics
+
+- Data security
+- Data sharing
+- Computing at scale
+- Institutional IT support for cloud adoption/migration
+- Internet of Things in relation to the public cloud
+- Student access to cloud platforms for research computing 
+- Connectivity for high-speed data transfer from the lab to the cloud
+
+
 ### What is the impact on the development of the principal discipline(s) of the project?
+
+
+To set the stage for our remarks on impact we describe a research transition to the cloud. 
+Cloud computing represents a break with traditional research computing on 'owned resources'; 
+and as such -- because of the perceived cost of change -- it requires considerable motivation 
+to overcome social inertia. This motivation often originates from a desire to stop purchasing 
+and maintaining computers. However the cloud has so many additional benefits that the 
+inquisitive research team often finds there is more benefit from what the cloud *actually offers* 
+than there is in *leaving behind* purchase orders and operating sytem patches. We call this
+perceptual shift 'cloud socialization'.
+
+
+A major impetus towards cloud socialization is the advent of cloud-hosted services, particularly
+the *Git* paradigm for open source code control, for example as embodied by *GitHub* repositories. 
+
 
 Describe how findings, results, techniques that were developed or extended, or other products from the project
 made an impact or are likely to make an impact on the base of knowledge, theory, and research and/or pedagogical
