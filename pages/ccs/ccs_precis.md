@@ -137,6 +137,32 @@ leading the way into this new solution.
 
 ### What is the impact on other disciplines? 
 
+
+This work included as one of its seven focus topics the security of data that are moved, managed and analyzed
+on the public cloud. The cloud solution involves (particular to AWS) a virtual private cloud construct which
+guarantees isolation of the data from the web and other elements of the cloud. Furthermore data encryption can
+be required and guaranteed (at rest and in motion) and access logging is facilitated to track who comes in 
+contact with what. Together with best practices this ensemble essentially guarantees data security for a given
+project where the largest threat is (as one might expect) human error. 
+
+A signal impact of our data security work can be cited from hydrological science: Proprietary data 
+(for example river stage) received from countries can be sequestered on private subnetworks and used
+to force or validate hydrological models with no risk of public dissemination. Model results *are* 
+intended to be shared 
+in turn 
+
+
+thaimpacted by is to engage in what amounts to a science 
+technology transfer, specifically the public value of information that proceeds from scientific expertise. 
+
+The NASA-sponsored High Mountain Asia Team project is using data security practices 
+
+
+While this is not a panacea it solves several important problems in data privacy
+with implications across the physical sciences, across biological sciences, and across medical research. 
+
+
+
 Describe how the findings, results or techniques that were developed or improved, or other products from the project
 made an impact or are likely to make an impact on other disciplines. 8000 chars. 
 †
