@@ -102,6 +102,7 @@ $3500. This cost is approximately 3x the corresponding cost on owned hardware. I
 this means that the cloud is not cost competitive with owned hardware unless one or more of 
 the following considerations comes into play:
 
+
 - The researcher tasks owned compute resources at <= a 1/3 duty cycle
 - The research scientist values their own time spent waiting for processing runs to start / complete
 - There is more computation to be done than can be supported on owned resources
@@ -119,7 +120,20 @@ alternative to standard computing practice that eliminates queue time and shorte
 to complete processing runs. (The **AWS Batch** process secured 164 high-powered computers 
 for the 53-hour duration of the compute task.)
 
-Be specific about how our efforts are driving a new approach to coordinated research at NASA in HIMAT.
+
+To be very specific about how this effort drives a new approach in science: From molecular engineering
+to genomics to the hydrology of high mountain Asia (all real projects we are involved in): 
+Scientists tend to compute in bursts and the cloud is at cost parity with on-premise computers; 
+the cloud is much much powerful than owned machines; the cloud is public and hence dissociated from 
+any particular funding source or agency; and so the public cloud allows scientists to ask deeper and
+more computationally intensive questions without purchasing a single extension cord; at the cost of 
+the time investment to learn the procedures and services; and at the cost of just the resources
+(computers) used. Cloud computing is a new solution for moving research forward, for coping
+with the data deluge problem, for *not being constrained* by available compute resources. To this 
+end we are documenting solutions and building a trans-disciplinary community of practice that is 
+leading the way into this new solution. 
+
+
 
 ### What is the impact on other disciplines? 
 
@@ -149,7 +163,7 @@ fabric where researchers could come with problems; where researchers could acces
 Collaborative support.
 
 
-Challene: companies Boeing MSFT AWS Google
+Challenge: companies Boeing MSFT AWS Google
 
 
 Rob has empowered and coached staff, graduate and undergrads to engage with admin and tech frameworks. AWS and Azure. 
