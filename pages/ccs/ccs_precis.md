@@ -54,7 +54,7 @@ cloud adoption in preparation for the increase in migration volume. This NSF-spo
 has been a windfall enabling us to bring in students and staff towards this end. 
 
 
-### Guiding report concepts
+#### Guiding concepts for this report 
 
 
 - Discussion of data resources
@@ -63,7 +63,8 @@ has been a windfall enabling us to bring in students and staff towards this end.
 - New disciplines
 
 
-### Cloud Computing Innovation and Cyber-Infrastructure Elements for Research Topics
+#### Cloud Computing Innovation and Cyber-Infrastructure Elements for Research Topics
+
 
 - Data security
 - Data sharing
@@ -84,16 +85,39 @@ to overcome social inertia. This motivation often originates from a desire to st
 and maintaining computers. However the cloud has so many additional benefits that the 
 inquisitive research team often finds there is more benefit from what the cloud *actually offers* 
 than there is in *leaving behind* purchase orders and operating sytem patches. We call this
-perceptual shift 'cloud socialization'.
+perceptual shift 'cloud socialization'.  Lastly it is important to note that a major impetus 
+towards cloud socialization is the advent of cloud-hosted services. *GoogleDrive* is a typical
+example but in the research the most impactful development has been the *Git* 
+paradigm for open source code control, for example as embodied by *GitHub* repositories. 
 
 
-A major impetus towards cloud socialization is the advent of cloud-hosted services, particularly
-the *Git* paradigm for open source code control, for example as embodied by *GitHub* repositories. 
+We began discussion with a postdoc working within a well-funded molecular engineering laboratory.
+This provided an opportunity to explore cloud computing scale as a means of solving two related
+problems. First protein folding (the central research task) requires a huge number of computations to 
+resolve peptide configuration in a search space of 10 trillion possible configurations. Second,
+a research lab operating its own computers will experience intermittent resource demand with a
+job queue. Our solution was to work with AWS representatives to harness a cluster technology
+called **Batch** which enabled the postdoc to run a 2-week computation in 53 hours at a cost of
+$3500. This cost is approximately 3x the corresponding cost on owned hardware. In strict terms
+this means that the cloud is not cost competitive with owned hardware unless one or more of 
+the following considerations comes into play:
+
+- The researcher tasks owned compute resources at <= a 1/3 duty cycle
+- The research scientist values their own time spent waiting for processing runs to start / complete
+- There is more computation to be done than can be supported on owned resources
+- The university hides or subsidizes cost of operations, for example power and HVAC
+- The cost of cloud computing continues to drop, consistent with the current multi-year trend
 
 
-Describe how findings, results, techniques that were developed or extended, or other products from the project
-made an impact or are likely to make an impact on the base of knowledge, theory, and research and/or pedagogical
-methods in the principal disciplinary field(s) of the project. 8000 chars.
+Our engagement here had the impact of producing a library of ten million peptide structures in a
+reference dataset that will be made publicly available. However the principle impact of this work
+has been the documentation of the process within the *cloudmaven* resource corpus. By capturing
+cloud adoption success stories such as this one we provide a means for addressing the scale of 
+research computing cloud migration as the social phase transition accelerates over the next
+decade. The methods described here will -- in the near term for this laboratory -- provide an 
+alternative to standard computing practice that eliminates queue time and shortens the time
+to complete processing runs. (The **AWS Batch** process secured 164 high-powered computers 
+for the 53-hour duration of the compute task.)
 
 Be specific about how our efforts are driving a new approach to coordinated research at NASA in HIMAT.
 
