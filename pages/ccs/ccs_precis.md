@@ -163,34 +163,36 @@ is helping to build the cyberinfrastructure of data security on the public cloud
 ### What is the impact on the development of human resources? 
 
 
-Needs section on training up, not classing out.
+University IT staff are faced with a constantly shifting landscape of technology; which they are
+obliged to filter through, understand, and pass along to a somewhat indifferent (or intransigent)
+user community in the form of stable, reliable services. As a perceived edifice the public cloud
+can present an intimidating prospect to IT staff: Rather than one or two new ideas, a given cloud 
+provider can surface 100 or more new technologies. To hazard a normative statement in response
+to this observation: It is incumbent on early cloud adopters -- be they researchers, IT staff, 
+graduate students, undergraduates, or administrators -- to leave a well-documented path in the 
+wake of their learning and solution-building projects. This path should emphasize 'how it was
+done' but as importantly 'how a new person can learn the background -- in depth -- to do 
+likewise.'
 
 
-Jump start a community of practice and develop a growing toolkit of constructs for
-UW faculty, staff and student researchers, specifically, AWS and Azure cloud resources. 
+From this there follows a corollary: University administration must keep pace by providing for 
+the training and hiring of IT staff in support of cloud computing. Research is a natural avenue 
+for this growth because it is by its nature unbounded. The work carried out in this project 
+produced a set of case studies with documentation; where the attempt has been to imply such 
+a path, from cloud newcomer to cloud adept. The shift of training on the cloud will take 
+diligence but we feel we have contributed some impetus to the process. Cloud working groups
+and workshops for community of practice will be the follow-on sign posts as the effort 
+continues. 
 
 
-In so doing, he has identified and empowered researchers at all levels to acquire and share the 
-skills neede to be effective CI engineers. 
-
-
-Outreach projects: Close collaboration with eScience Institute: Accumulate and track a variety of research challenges
-amenable to cloud. 
-
-
-Match to motivated staff and students. 
-
-Wove beginnings of a resilient cloud-focused social fabric where researchers could come with problemsi.
-
-Researchers could access cloud tools and constructs needed. 
-
-Collaborative support.
-
-
-Challenge: companies Boeing MSFT AWS Google
-
-
-Empower and coach staff, graduate and undergrads to engage with admin and tech frameworks.
+One further aspect of this sociological and technical shift deserves mention. 
+The most flexible and adaptable demographic within the university community is (arguably) 
+the student population.  It was therefore a natural choice to hire several students in the 
+course of this work to take on tractable problems and build solutions; for example push
+notifications of daily cloud expenditure. This approach proved to be extremely effective.
+Further: Through a student computing organization these students have the opportunity to 
+transfer their enthusiasm and technical skills for cloud computing to others; and thence 
+into research groups and through the community in general. 
 
 
 ### What is the impact on physical resources that form infrastructure? 
