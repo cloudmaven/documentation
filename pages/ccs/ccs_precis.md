@@ -138,82 +138,76 @@ leading the way into this new solution.
 ### What is the impact on other disciplines? 
 
 
-This work included as one of its seven focus topics the security of data that are moved, managed and analyzed
-on the public cloud. The cloud solution involves (particular to AWS) a virtual private cloud construct which
-guarantees isolation of the data from the web and other elements of the cloud. Furthermore data encryption can
-be required and guaranteed (at rest and in motion) and access logging is facilitated to track who comes in 
-contact with what. Together with best practices this ensemble essentially guarantees data security for a given
-project where the largest threat is (as one might expect) human error. 
+This work included as one of its focus topics the security of data that are moved, managed and analyzed
+on the public cloud. The cloud solution involves (particular to AWS) a virtual private cloud construct that
+guarantees isolation of the data (i.e. unauthorized data access via internet is virtually impossible). 
+Furthermore data encryption can be required and guaranteed (at rest and in motion) and access logging is 
+facilitated to track parties that come into contact with the secured data. Together with best practices 
+this ensemble of technologies essentially guarantees data security for a given project where the largest 
+threat is (as one might expect) human error. 
+
 
 A signal impact of our data security work can be cited from hydrological science: Proprietary data 
 (for example river stage) received from countries can be sequestered on private subnetworks and used
-to force or validate hydrological models with no risk of public dissemination. Model results *are* 
-intended to be shared 
-in turn 
+to force or validate hydrological models with no risk of public dissemination of those data. 
 
 
-thaimpacted by is to engage in what amounts to a science 
-technology transfer, specifically the public value of information that proceeds from scientific expertise. 
-
-The NASA-sponsored High Mountain Asia Team project is using data security practices 
-
-
-While this is not a panacea it solves several important problems in data privacy
-with implications across the physical sciences, across biological sciences, and across medical research. 
+Extending beyond hydrology and the proprietary 'national asset' nature of water resource data: Our 
+group has been in contact with research teams from other disciplines looking for a cloud-based data
+security template. These include researchers from clinical trial research, disease and epidemiology, 
+laboratory medicine (for example annotation of genomic markers), genomics, demography, business, 
+and data centers that have some degree of contact with sensitive data. Our progress in this area
+is helping to build the cyberinfrastructure of data security on the public cloud. 
 
 
-
-Describe how the findings, results or techniques that were developed or improved, or other products from the project
-made an impact or are likely to make an impact on other disciplines. 8000 chars. 
-†
 ### What is the impact on the development of human resources? 
 
 
-HR development in science, engineering and technology.
+Needs section on training up, not classing out.
 
 
-Prior notes abbreviating 'Dr. Fatland' as 'Rob': 
+Jump start a community of practice and develop a growing toolkit of constructs for
+UW faculty, staff and student researchers, specifically, AWS and Azure cloud resources. 
 
 
-Rob's approach has been to *jump start* a community of practice and develop a growing toolkit of constructs for
-UW faculty, staff and student researchers, specifically, AWS and Azure cloud resources. In so doing, he has identified and 
-empowered researchers at all levels to acquire and share the skills neede to be effective CI engineers. 
+In so doing, he has identified and empowered researchers at all levels to acquire and share the 
+skills neede to be effective CI engineers. 
 
 
-Rob: Outreach projects: Close collaboration with eScience Institute: Accumulate and track a variety of research challenges
+Outreach projects: Close collaboration with eScience Institute: Accumulate and track a variety of research challenges
 amenable to cloud. 
 
 
-Rob: Paired these challenges with motivated staff and students. Wove beginnings of a resilient cloud-focused social 
-fabric where researchers could come with problems; where researchers could access cloud tools and constructs needed. 
+Match to motivated staff and students. 
+
+Wove beginnings of a resilient cloud-focused social fabric where researchers could come with problemsi.
+
+Researchers could access cloud tools and constructs needed. 
+
 Collaborative support.
 
 
 Challenge: companies Boeing MSFT AWS Google
 
 
-Rob has empowered and coached staff, graduate and undergrads to engage with admin and tech frameworks. AWS and Azure. 
+Empower and coach staff, graduate and undergrads to engage with admin and tech frameworks.
 
 
 ### What is the impact on physical resources that form infrastructure? 
 
 
--- facilities, laboratories, instruments --
+Research teams are rapidly improving their table tennis skills, having emptied their server rooms and 
+installed high-quality ping pong tables. 
 
-
-### What is the impact on institutional resources that form infrastructure? 
 
 ### What is the impact on informational resources that form infrastructure? 
 
-### What is the impact on technology transfer?
 
--- commercial technology or public use --
-
-
-### What is the impact on society beyond science and technology?
-
-'nothing to report'
-
+The GitHub repository-based [coudmaven.org](http://cloudmaven.org) website is the principle informational
+resource proceeding from this work. The website captures basics of cloud computing, provides links to 
+instructional resources online, and follows cloud case studies at the level of tutorials. These enable
+subsequent research teams to accelerate the pace at which they can build cloud-based research computing
+tools, workflows, websites, data repositories and other data-arc solutions. 
 
 
 

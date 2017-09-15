@@ -10,16 +10,20 @@ folder: g
 ---
 
 ## Introduction
-The purpose of this page is to provide an overview of the **Google Cloud Platform**, which is
-of course the Google public cloud. 
+
+The purpose of this page is to provide an overview of the **Google Cloud Platform** (GCP). 
+
 
 ## Links
 - [Google Cloud Platform](http://cloud.google.com)
 - [Google App Engine](https://cloud.google.com/appengine)
 
+
 ## Warnings
 
+
 ## What we know
+
 
 - We are working on building a relationship with and understanding of the Google cloud. 
 - Our initial look indicates that cost of a Google VM instance compares *well* with that for 
