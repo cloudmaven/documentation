@@ -20,6 +20,7 @@ towards helping you (the proposal author) estimate costs for your project.
 - [AWS Grants](https://aws.amazon.com/grants/)
 - [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
 - [AWS monthly cost calculator](http://calculator.s3.amazonaws.com/calc5.html)
+- [UW research overhead waiver information](http://itconnect.uw.edu/research/waiver/)
 
 
 ## Warnings
@@ -54,6 +55,9 @@ towards helping you (the proposal author) estimate costs for your project.
     - Advanced tools and services
     - Similarity of compute environment to local machines
     - Rapidly growing user base and commensurate open resources from which to build your solutions
+- If you are budgeting for cloud resources *and* you use a UW IT cloud service 
+  - You do not pay indirect cost overhead
+  - See [this web page](http://itconnect.uw.edu/research/waiver/) for more information
 
 
 ## Cloud Research Credits
