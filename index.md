@@ -8,6 +8,7 @@ toc: false
 summary: "Cloud computing tutorials, case studies, pathways into data science technology; presenting the public cloud as opportunity for innovation. This page is intended to accelerate research; developed in close association with the [UW eScience Institute](http://escience.washington.edu). We have two goals - Reduce friction, i.e. help with what you already do with computers, streamline your analysis and pathways to publication. Promote new ideas and methods, i.e. We want to make it easy for you to share data, collaborate, sandbox, and learn about new methods in data science." 
 ---
 
+***Help us improve this website, take a short survey [here](https://goo.gl/forms/qQuq61wiFUh8Sarg2).***
 
 ## Announcements & News
 * [GeohackWeek](https://geohackweek.github.io/ghw2017/) will be held from Sept 11-15, 2017
