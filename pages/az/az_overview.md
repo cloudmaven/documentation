@@ -26,7 +26,7 @@ Get your apps to market faster. Azure integrated tools, from mobile DevOps to se
 
 ### Azure is the only consistent hybrid cloud
 Azure is the only consistent hybrid cloud
-Build and deploy wherever you want with Azure, the only consistent hybrid cloud on the market. Connect data and apps in the cloud and on-premises—for maximum portability and value from your existing investments. Azure offers hybrid consistency in application development, management and security, identity management, and across the data platform.
+Build and deploy wherever you want with Azure, the only consistent hybrid cloud on the market. Connect data and apps in the cloud and on-premise for maximum portability and value from your existing investments. Azure offers hybrid consistency in application development, management and security, identity management, and across the data platform.
 
 - Extend Azure on-premises and build innovative, hybrid apps with [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/).
 - Connect on-premises data and apps to overcome complexity and optimize your existing assets.
@@ -35,7 +35,7 @@ Build and deploy wherever you want with Azure, the only consistent hybrid cloud 
 [Learn more about our consistent hybrid cloud  >](https://www.microsoft.com/en-us/cloud-platform/hybrid-cloud?wt.mc_id=AID601064_QSG_BNR_156079)
 
 ### Azure is the cloud for building intelligent apps
-Use Azure to create data-driven, intelligent apps. From image recognition to bot services, take advantage of Azure data services and artificial intelligence to create new experiences—that scale—and support deep learning, HPC simulations, and real-time analytics on any shape and size of data.
+Use Azure to create data-driven, intelligent apps. From image recognition to bot services, take advantage of Azure data services and artificial intelligence to create new experience that scale and support deep learning, HPC simulations, and real-time analytics on any shape and size of data.
 
 - Develop breakthrough apps with built-in AI.
 - Build and deploy custom AI models at scale, on any data.
@@ -59,7 +59,7 @@ Ninety percent of Fortune 500 companies trust the Microsoft Cloud. Join them. Ta
 - [Compliance coverage](https://azure.microsoft.com/en-us/support/trust-center/)
 
 ## Azure or AWS?
-With the most data center regions around the globe, unmatched consistent hybrid cloud capabilities, and comprehensive AI services—Azure is the right choice for your business. See why organizations worldwide are choosing Azure.
+With the most data center regions around the globe, unmatched consistent hybrid cloud capabilities, and comprehensive AI services Azure is the right choice for your business. See why organizations worldwide are choosing Azure.
 
 [Learn more >](https://azure.microsoft.com/en-us/overview/azure-vs-aws/)
 
@@ -68,7 +68,7 @@ With the most data center regions around the globe, unmatched consistent hybrid 
 Microsoft includes a HIPAA BAA in our [Online Service Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).  This is by default for all commercial customers. The current HIPAA BBA is located [here](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=52&Language=1).
 
 ### HIPAA and the HITECH Act
-The Health Insurance Portability and Accountability Act (HIPAA) is a US healthcare law that establishes requirements for the use, disclosure, and safeguarding of individually identifiable health information. It applies to covered entities—doctors’ offices, hospitals, health insurers, and other healthcare companies—with access to patients’ protected health information (PHI), as well as to business associates, such as cloud service and IT providers, that process PHI on their behalf. (Most covered entities do not carry out functions such as claims or data processing on their own; they rely on business associates to do so.)
+The Health Insurance Portability and Accountability Act (HIPAA) is a US healthcare law that establishes requirements for the use, disclosure, and safeguarding of individually identifiable health information. It applies to covered entities doctors offices, hospitals, health insurers, and other healthcare companies with access to patients protected health information (PHI), as well as to business associates, such as cloud service and IT providers, that process PHI on their behalf. (Most covered entities do not carry out functions such as claims or data processing on their own; they rely on business associates to do so.)
  
 The law regulates the use and dissemination of PHI in four general areas: 
 - Privacy, which covers patient confidentiality.
@@ -82,7 +82,7 @@ The scope of HIPAA was extended with the enactment of the Health Information Tec
 - The HIPAA Security Rule, which sets the standards for administrative, technical, and physical safeguards to protect electronic PHI from unauthorized access, use, and disclosure. It also includes such organizational requirements as Business Associate Agreements (BAAs).
 - The HITECH Breach Notification Final Rule, which requires giving notice to individuals and the government when a breach of unsecured PHI occurs.
 
-HIPAA regulations require that covered entities and their business associates—in this case, Microsoft when it provides services, including cloud services, to covered entities—enter into contracts to ensure that those business associates will adequately protect PHI. These contracts, or BAAs, clarify and limit how the business associate can handle PHI, and set forth each party’s adherence to the security and privacy provisions set forth in HIPAA and the HITECH Act. Once a BAA is in place, Microsoft customers—covered entities—can use its services to process and store PHI. 
+HIPAA regulations require that covered entities and their business associates in this case, Microsoft when it provides services, including cloud services, to covered entities enter into contracts to ensure that those business associates will adequately protect PHI. These contracts, or BAAs, clarify and limit how the business associate can handle PHI, and set forth each party's adherence to the security and privacy provisions set forth in HIPAA and the HITECH Act. Once a BAA is in place, Microsoft customers' covered entities can use its services to process and store PHI. 
 
 Currently there is no official certification for HIPAA or HITECH Act compliance. However, those Microsoft services covered under the BAA have undergone audits conducted by accredited independent auditors for the Microsoft ISO/IEC 27001 certification. 
 
