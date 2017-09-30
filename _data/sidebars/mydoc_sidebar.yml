@@ -286,11 +286,10 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: AralDIF
-      url: /azcs_araldif.html
-      output: web, pdf
-
-    - title: organic chemistry
+    - title: Organic Chemistry
       url: /azcs_organic_chemistry.html
       output: web, pdf
 
+    - title: Water Resources Management in the Aral Sea Basin
+      url: /azcs_araldif.html
+      output: web, pdf
