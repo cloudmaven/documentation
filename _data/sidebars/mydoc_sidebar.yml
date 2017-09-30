@@ -346,11 +346,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: AralDIF
-      url: /azcs_araldif.html
-      output: web, pdf
-
-    - title: organic chemistry
+    - title: Organic Chemistry
       url: /azcs_organic_chemistry.html
       output: web, pdf
 
@@ -364,4 +360,7 @@ entries:
 
     - title: Center of Genomics and Personalized Medicine - Stanford University
       external_url: 'https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/'
+    
+    - title: Water Resources Management in the Aral Sea Basin
+      url: /azcs_araldif.html
       output: web, pdf

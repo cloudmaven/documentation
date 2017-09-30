@@ -15,6 +15,9 @@ summary: "Cloud computing tutorials, case studies, pathways into data science te
 * [Cloud 101 for the Foster School of Business](https://cloudmaven.github.io/documentation/rc_Foster101.html) was presented on May 25, 2017. 
 * [Research Computing Cloud 101 Immersion Day](https://cloudmaven.github.io/documentation/rc_cloud101_immersion.html)  was April 4, 2017. 
 
+=======
+## Announcement
+The first UW-IT Research Computing Cloud 101 Immersion Day will be held on April 4, 2017. Find out [more](https://cloudmaven.github.io/documentation/rc_cloud101_immersion.html). 
 
 ## Don't Panic!
 
