@@ -350,6 +350,10 @@ entries:
       url: /azcs_organic_chemistry.html
       output: web, pdf
 
+    - title: Water Resources Management in the Aral Sea Basin
+      url: /azcs_araldif.html
+      output: web, pdf
+
   - title: Google Case Studies
     output: web, pdf
     folderitems:
