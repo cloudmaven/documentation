@@ -222,6 +222,10 @@ entries:
       url: /az_training.html
       output: web, pdf
 
+    - title: Resources and Requests
+      url: /az_resources.html
+      output: web, pdf
+
     - title: Portal
       url: /az_portal.html
       output: web, pdf
