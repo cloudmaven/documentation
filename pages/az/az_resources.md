@@ -1,7 +1,7 @@
 ---
 title: Azure Resources and Requests 
 keywords: azure, resources, requests
-last_updated: September 30, 2017
+last_updated: October 3, 2017
 tags: [Azure, research_computing, resources, requests, help, GitHub,python, ruby,iOS, android]
 summary: "Microsoft Resources and Request for Help Form." 
 sidebar: mydoc_sidebar
