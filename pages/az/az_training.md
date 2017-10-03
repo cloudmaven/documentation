@@ -24,8 +24,8 @@ Develop Azure skills you need for your job and career. Explore free learning res
    - [Azure for AWS Professionals](https://azure.microsoft.com/en-us/training/learning-paths/azure-for-aws-professional/)
 
 ### Go Deeper
-1. [Massive Online Open Courses](https://www.edx.org/course?school=Microsoft%3A%20Microsoft) – self-paced online courses provide In-depth learning across a broad range of Azure technology’s and skills  
-2. [Microsoft Official Curriculum](https://www.microsoft.com/en-us/learning/course-list.aspx)  -Instructor led and on-demand learning that drills deeper into specific topics and offers practice and assessments 
+1. [Massive Online Open Courses](https://www.edx.org/course?school=Microsoft%3A%20Microsoft) - Self-paced online courses provide In-depth learning across a broad range of Azure technology and skills  
+2. [Microsoft Official Curriculum](https://www.microsoft.com/en-us/learning/course-list.aspx)  - Instructor led and on-demand learning that drills deeper into specific topics and offers practice and assessments 
 
 ### Further your Career
 1. [Microsoft Certifications](https://www.microsoft.com/en-us/learning/browse-all-certifications.aspx?technology=Microsoft%20Azure)  - widely recognized credential and certification that helps you demonstrate your knowledge and capability to build credibility in your profession.   
