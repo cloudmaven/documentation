@@ -1,7 +1,7 @@
 ---
 title: Azure Training 
 keywords: azure, training 
-last_updated: September 30, 2017
+last_updated: October 3, 2017
 tags: [Azure, research_computing, python, cloud_basics, data_science]
 summary: "Azure training resources to you can learn at your own pace." 
 sidebar: mydoc_sidebar
@@ -13,7 +13,7 @@ folder: az
 Develop Azure skills you need for your job and career. Explore free learning resources to learn in ways that work best for you, with hands-on learning to build expertise in Azure.
 
 ### Learn
-1. [Azure Essentials](https://docs.microsoft.com/en-us/azure/#pivot=get-started) is the quickest way to get started and learn new skills with Azure. Includes short videos and demos, topic specific videos and blogs. 
+1. [Azure Essentials](https://www.microsoft.com/en-us/azureessentials?wa=wsignin1.0) is the quickest way to get started and learn new skills with Azure. Includes short videos and demos, topic specific videos and blogs. 
 2. [Azure Learning Paths](https://azure.microsoft.com/en-us/training/) build practical Azure job skills you can start using right away. Role based learning paths with self-paced courses, assessments and hands-on labs. Challenges are provided to accelerate your skills acquisition.
    - [Azure Administrator](https://azure.microsoft.com/en-us/training/learning-paths/azure-administrator/)
    - [Azure Stack Operator](https://azure.microsoft.com/en-us/training/learning-paths/azure-stack-operator/)
