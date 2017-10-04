@@ -3,7 +3,7 @@ title: Creating intelligent water systems to unlock the potential of Smart Citie
 keywords: Azure, smart_cities, water, crisis
 last_updated: September 30, 2017
 tags: [Azure,data_visualization,analytics, platform, IoT, systems,networks]
-summary: "Water shortages in Bangalore are being solved by Azure. Using services from Microsoft’s Azure, the project harnesses the power of the cloud to collect and process data from the network of IoT sensors."
+summary: "Water shortages in Bangalore are being solved by Azure. Using services from Microsoft's Azure, the project harnesses the power of the cloud to collect and process data from the network of IoT sensors."
 sidebar: mydoc_sidebar
 permalink: azcs_smart_cities.html
 folder: azcs
