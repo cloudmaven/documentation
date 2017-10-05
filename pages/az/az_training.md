@@ -1,7 +1,7 @@
 ---
 title: Azure Training 
 keywords: azure, training 
-last_updated: October 3, 2017
+last_updated: October 5, 2017
 tags: [Azure, research_computing, python, cloud_basics, data_science]
 summary: "Azure training resources to you can learn at your own pace." 
 sidebar: mydoc_sidebar
@@ -29,7 +29,7 @@ Develop Azure skills you need for your job and career. Explore free learning res
 
 ### Further your Career
 1. [Microsoft Certifications](https://www.microsoft.com/en-us/learning/browse-all-certifications.aspx?technology=Microsoft%20Azure)  - widely recognized credential and certification that helps you demonstrate your knowledge and capability to build credibility in your profession.   
-? 
+
 ### Azure for Researchers
 We have place several walk throughs in GitHub.  They are stored [here](https://github.com/MSRConnections/Azure-training-course).
 
