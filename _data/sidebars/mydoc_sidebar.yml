@@ -214,11 +214,7 @@ entries:
       url: /az_overview.html
       output: web, pdf
 
-    - title: Walkthrough
-      url: /az_walkthrough.html
-      output: web, pdf
-
-    - title: Training
+      - title: Training
       url: /az_training.html
       output: web, pdf
 
@@ -226,42 +222,7 @@ entries:
       url: /az_resources.html
       output: web, pdf
 
-    - title: Portal
-      url: /az_portal.html
-      output: web, pdf
-
-    - title: Account management
-      url: /az_account_management.html
-      output: web, pdf
-
-    - title: Visual Studio
-      url: /az_visual_studio.html
-      output: web, pdf
-
-    - title: Web Framework
-      url: /az_web_framework.html
-      output: web, pdf
-
-    - title: Machine Learning
-      url: /az_machine_learning.html
-      output: web, pdf
-
-    - title: Spark
-      url: /az_spark.html
-      output: web, pdf
-
-    - title: HIPAA
-      url: /az_hipaa.html
-      output: web, pdf
-
-    - title: Jupyter
-      url: /az_jupyter.html
-      output: web, pdf
-
-    - title: Database
-      url: /az_database.html
-      output: web, pdf
-
+   
   - title: Google
     output: web, pdf
     folderitems:
