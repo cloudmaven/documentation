@@ -214,7 +214,7 @@ entries:
       url: /az_overview.html
       output: web, pdf
 
-      - title: Training
+    - title: Training
       url: /az_training.html
       output: web, pdf
 
