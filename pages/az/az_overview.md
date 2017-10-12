@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure Overview
 keywords: azure, overview
-last_updated: September 30, 2017
+last_updated: October 6, 2017
 tags: [Azure, cloud_basics, hipaa_baa, security, introduction, trust, intelligent]
 summary: "Azure Overview" 
 sidebar: mydoc_sidebar
@@ -57,11 +57,6 @@ Ninety percent of Fortune 500 companies trust the Microsoft Cloud. Join them. Ta
 - [What is cloud computing](https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/)
 - [Azure Datacenters](https://azure.microsoft.com/en-us/overview/datacenters/)
 - [Compliance coverage](https://azure.microsoft.com/en-us/support/trust-center/)
-
-## Azure or AWS?
-With the most data center regions around the globe, unmatched consistent hybrid cloud capabilities, and comprehensive AI services Azure is the right choice for your business. See why organizations worldwide are choosing Azure.
-
-[Learn more >](https://azure.microsoft.com/en-us/overview/azure-vs-aws/)
 
 
 ## Business Associates Agreement Summary
