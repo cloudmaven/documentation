@@ -11,41 +11,131 @@ folder: rc
 
 ## Introduction
 
-The purpose of this page is to walk through the installation of JupyterHub on a remote server: e.g. on an AWS instance. JupyterHub helps to create a multi-user hub to serve Jupyter Notebooks. 
+This page describes the operation of a JupyterHub instance on the public cloud and gives a walk-through
+of both installation and operational issues. The location for the instance is a remote server; in our first
+example an EC2 instance on AWS public cloud. JupyterHub is a multi-user hub that serves Jupyter Notebooks. 
+The key ideas are cost management, fully functional working environments for a User pool, software 
+versioning, data access, and ingress and egress paths. Much of this narrative is predicated on the use
+of the Anaconda Python environment; hence there are references to **conda**, the Anaconda command
+line invocation. This is the '*conda install*' path for configuration. The other path -- which will be
+elaborated in a future version of this document -- is docker-based configuration. 
 
-The procedures here mostly follow the recipe outlined in the links provided below with minor notes and changes. 
+- Set up a machine instance (or instances: to manage *many* users)
+- Create options for pre-built collections of Jupyter Notebooks. We will call these Libraries
+- Build a computation environment that includes Python and necessary Python packages 
+- Establish a User pool with authentication by each User; we use OAuth with GitHub for this
+  - Cascade of User groups
+    - root: propagate User-built environments as notebook kernels (as dropdown menu choice) 
+    - admin: can ssh into VMs to modify groups and owners; and can sudo install packages
+      - this avoids collisions and other uncomfortable outcomes from power users = admin
+    - power users: can configure their own conda environment
+    - student users
+- Create a disk volume appropriate for datasets in common use by the User pool
+- Ensure that each User has a PATH environment variable appropriate to the work they are doing
+- Establish a cost management plan that minimizes operational cost without creating User inconvenience
+- Establish an upload mechanism where a User can push files to their environment
+- Establish a download mechanism where results (e.g. result files) can be pulled onto a local machine
+- Establish a GitHub repository connection whereby the User can synchronize their progress
+- Further manage costs through images and object storage when hot environments are not needed is not needed
+- Support an Integrated Development Environment (IDE) called JupyterLab
+- Support static (render/display) visualization (%pylab inline etc)
+- Support dynamic visualization
+
+
+## Use Cases
+
+
+This document and the JupyterHub implementation at 
+https://jupyterhub.cloudmaven.org are driven by the following use cases.
+
+
+- **Course**
+  - Professor X is teaching a course with 50 students
+  - Uses Python and R 
+  - Connects to external (astronomy) data sources
+- **NeuroHackweek**
+  - One-week 'hackathon' with lots of domain-specific (neuro-imaging) work involved
+- **GeoHackweek**
+  - One-week 'hackathon' with lots of domain-specific (geospatial) work involved
+- **research team**
+- **Jupyterhub demonstration**
+  - Show Jupyterhub in action, particularly in talks
+- **IOT study**
+  - University HVAC/power-consumption study 
+  - Includes access to a SQL Server RDS instance
+- **Hyrdology study**
+  - Intent: Involve DASC cluster scheduler
+- **High Mountain Asia study**
+  - Collateral to a highly secured NASA system to help illustrate practical advantages of an open data approach
+
+
+## Imperatives from Use Cases
+
+
+This section calls out certain features and details are called out and briefly defined.
+- Installing and working with Anaconda 
+- Scaling machine size
+- Scaling number of machines
+- Kubernetes/Docker approach
+- GCP autoscaling
+- DASC and cluster computing
+- GitHub connectivity
+
+
+## Procedural 
+
+
+Procedures here follow the recipes in the links provided with minor notes and changes. 
+
 
 ## Links
+
 [JupyterHub](https://jupyterhub.readthedocs.io/en/latest/)
 [Installation of Jupyterhub on remote server](https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server)
 
-## Warnings
-None. Installation is fairly easy
+## Admonitions and warnings
+
+- The basic installation is not too challenging
+- The customization of environments is challenging ('Hey why doesn't PIL display my image?')
+- User account security is managed via a whitelist of GitHub usernames and Linux permissions
+
 
 ## Installation of Jupyterhub on remote server
+
 
 ** I have spun up an micro AWS EC2 Instance with the root user of ubuntu **
 
 
 1. Linux Anaconda Installation
-(Anaconda conveniently installs Python, the Jupyter Notebook, and other commonly used packages for scientific computing and data science. )
 
-    * Go to : [Continuum Analytics - Anaconda Downloads](https://www.continuum.io/downloads)
+- Anaconda conveniently installs Python, Jupyter Notebook, other commonly used scientific computing packages
+- Go to [Continuum Analytics - Anaconda Downloads](https://www.continuum.io/downloads)
+- Under Linux Anaconda Installation (copy link of 64 bit):
+- On Terminal
 
-    * Under Linux Anaconda Installation (copy link of 64 bit):
-    On Terminal
 
-        `$ wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh`
+```
+$ wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh
+```
 
-        It will download Anaconda*.sh file
 
-    * Installing by using following command:
+- Downloads Anaconda*.sh file
+- Install:
 
-        `$ bash Anaconda2-4.0.0-Linux-x86_64.sh`
 
-        Enter(many times) >> yes >> give directory or keep it as Default
+```
+bash Anaconda2-4.0.0-Linux-x86_64.sh
+```
 
-** Note: You may also have to type source ~/.bashrc to load your default bash profile
+
+- Enter yes (many times) >> provide directory or keep default
+- You may have to load your default bash profile with
+
+
+```
+type source ~/.bashrc to load your default bash profile
+```
+
  
 2. Installing Python3 (dependency of jupyterhub is on python3)
 
