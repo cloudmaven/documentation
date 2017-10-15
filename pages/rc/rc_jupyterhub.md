@@ -11,14 +11,25 @@ folder: rc
 
 ## Introduction
 
-This page describes the operation of a JupyterHub instance on the public cloud and gives a walk-through
-of both installation and operational issues. The location for the instance is a remote server; in our first
-example an EC2 instance on AWS public cloud. JupyterHub is a multi-user hub that serves Jupyter Notebooks. 
-The key ideas are cost management, fully functional working environments for a User pool, software 
-versioning, data access, and ingress and egress paths. Much of this narrative is predicated on the use
-of the Anaconda Python environment; hence there are references to **conda**, the Anaconda command
-line invocation. This is the '*conda install*' path for configuration. The other path -- which will be
-elaborated in a future version of this document -- is docker-based configuration. 
+- Jupyter Notebooks are -- briefly -- powerful interactive data science laboratories. 
+- Jupyter Hubs are centers that disperse and support Jupyter Notebooks to a User community: Scientists, students, 
+research teams and the like. 
+
+
+This page describes the operation of a JupyterHub instance on the public cloud. We provide a walk-through
+and conceptual framework for both installation and operation. The cloudmaven.org working instance is 
+not public but a Jupyter Notebook service is provided at no cost by the Microsoft Azure team; 
+see [this link](http://notebooks.azure.com).
+
+
+Our first implementation is built on the AWS public cloud.  We address cost management, 
+provision of fully functional working environments for the User pool, software versioning, 
+data access, ingress and egress. We rely heavily on Anaconda here; but a future revision 
+will emphasize the kubernetes/docker approach. 
+
+
+## Facets of the JupyterHub framework
+
 
 - Set up a machine instance (or instances: to manage *many* users)
 - Create options for pre-built collections of Jupyter Notebooks. We will call these Libraries
@@ -40,6 +51,7 @@ elaborated in a future version of this document -- is docker-based configuration
 - Support an Integrated Development Environment (IDE) called JupyterLab
 - Support static (render/display) visualization (%pylab inline etc)
 - Support dynamic visualization
+  - Note that javascript / Python interoperability has led to excellent advances
 
 
 ## Use Cases
@@ -82,111 +94,122 @@ This section calls out certain features and details are called out and briefly d
 - GitHub connectivity
 
 
-## Procedural 
-
-
-Procedures here follow the recipes in the links provided with minor notes and changes. 
-
-
 ## Links
 
-[JupyterHub](https://jupyterhub.readthedocs.io/en/latest/)
-[Installation of Jupyterhub on remote server](https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server)
+
+- [JupyterHub](https://jupyterhub.readthedocs.io/en/latest/)
+- [Install Jupyterhub remotely](https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server)
+- [Interactive data visualization in Jupyter](https://www.youtube.com/watch?v=p7Hr54VhOp0)
+
 
 ## Admonitions and warnings
+
 
 - The basic installation is not too challenging
 - The customization of environments is challenging ('Hey why doesn't PIL display my image?')
 - User account security is managed via a whitelist of GitHub usernames and Linux permissions
 
 
-## Installation of Jupyterhub on remote server
+## Terms
 
 
-** I have spun up an micro AWS EC2 Instance with the root user of ubuntu **
+- Jupyterhub: A multi-user server that manages and proxies multiple instances of the single-user Jupyter notebook server
+- [Jupyterlab](https://www.youtube.com/watch?v=p7Hr54VhOp0): A contextual support/development environment for Jupyter notebooks
+- Jupyter notebook: a web app for creating and sharing data science workspaces that include live code, equations, visualizations and narrative text
+- nodejs/node.js: A lightweight, efficient javascript runtime (execution engine)
+- npm: node package manager associated with nodejs
 
 
-1. Linux Anaconda Installation
-
-- Anaconda conveniently installs Python, Jupyter Notebook, other commonly used scientific computing packages
-- Go to [Continuum Analytics - Anaconda Downloads](https://www.continuum.io/downloads)
-- Under Linux Anaconda Installation (copy link of 64 bit):
-- On Terminal
+## Procedural 
 
 
-```
-$ wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh
-```
+Procedures here follow the recipes in the links provided with minor notes and changes. 
 
 
-- Downloads Anaconda*.sh file
-- Install:
+1. Spin up (start) an AWS EC2 Ubuntu instance (root username is 'ubuntu')
+  - Suggest first time use a small ('micro') instance for practice
+  - The following steps presume you are logged on to this machine e.g. using ssh or PuTTY
 
 
-```
-bash Anaconda2-4.0.0-Linux-x86_64.sh
-```
+2. Install Linux Anaconda 
+  - Anaconda conveniently installs Python, Jupyter Notebook, other commonly used scientific computing packages
+  - Go to [Continuum Analytics - Anaconda Downloads](https://www.continuum.io/downloads)
+  - Under Linux Anaconda Installation (copy link of 64 bit):
+  - On Terminal
 
 
-- Enter yes (many times) >> provide directory or keep default
-- You may have to load your default bash profile with
+    `$ wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh`
 
 
-```
-type source ~/.bashrc to load your default bash profile
-```
+  - This gets the Anaconda*.sh file
+  - Install it with
+
+
+    `bash Anaconda2-4.0.0-Linux-x86_64.sh`
+
+
+  - Enter yes (many times) >> provide directory or keep default
+  - You may have to load your default bash profile
+
+
+    `type source ~/.bashrc to load your default bash profile`
 
  
-2. Installing Python3 (dependency of jupyterhub is on python3)
+3. Installing Python3 (dependency of jupyterhub is on python3) and nodejs/npm (node package manager)
+
 
     `$ sudo apt-get install python3-pip`
-
-3. Install nodejs/npm
-
     `$ sudo apt-get install npm nodejs-legacy`
+
 
 4. Install proxy with npm
 
+
     `$ sudo npm install -g configurable-http-proxy`
+
 
 5. Install Jupyterhub
 
+
     `$ sudo pip3 install jupyterhub`
+
  
 6. Install Jupyter notebook (/upgrade)
 
+
     `$ sudo pip3 install --upgrade notebook`
+
 
 7. Test Jupyterhub default configuration
 
+
     `$ jupyterhub --no-ssl`
 
-    This will start session in localhost:8000
-    
 
-    * Go to [http://your_ip_address:8000](http://www.example.com)
+    - This starts the session in localhost:8000 (i.e. on port 8000)
+    - Connect from a browser on your local machine to http://server_ip_address:8000
+    - Ensure this port is not protected / firewalled
 
-    ** Make sure that port isn't protected under Firewall of your system. Since I am installing this on an EC2 instance, the IP address will be the public IP address of the instance **
-
-8. It is recommended to use secure SSL certificate file for the public facing
-   interface of the proxy.
-    To produce personal security certificates commands are as follows:
+8. Recommended: Use a secure SSL certificate file for the public facing interface of the proxy
+    - Produce personal security certificates as follows:
 
     `$ openssl req ­-x509 ­-nodes ­-days 365 ­-newkey rsa:1024 ­-keyout mykey.key ­-out mycert.pem`
     
-    **Fill in the credentials.(even if you dont..It's ok!)
+    - Fill in credentials
+      - kilroy would like clarification on this cryptic remark: 'Even if you dont..It's ok!'
 
 
 9. Create Jupyterhub configuration file
 
+
     `$ jupyterhub --generate-config`
 
-10. We will use Github OAuthentication as our Authenticator.
- so steps are as follows:
+
+10. We use Github OAuthentication as our Authenticator,  as follows:
 
   1. On the top left hand corner of Github.com, Go to your Github profile (click on profile icon) > Settings > Oauth application (under Developer Settings)
 
-  * it is more convenient to not use capital letters in GitHub username
+    - it is more convenient to not use capital letters in GitHub usernames
 
   2. Register new application
 
@@ -216,7 +239,7 @@ type source ~/.bashrc to load your default bash profile
     ```
     amandalehr admin
     robfatland admin
-    aaarendt
+    aaarendt 
     ```
 
 13. Create these users in your server machine:
