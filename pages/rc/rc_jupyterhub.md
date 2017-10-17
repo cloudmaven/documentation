@@ -18,14 +18,15 @@ research teams and the like.
 
 This page describes the operation of a JupyterHub instance on the public cloud. We provide a walk-through
 and conceptual framework for both installation and operation. The cloudmaven.org working instance is 
-not public but a Jupyter Notebook service is provided at no cost by the Microsoft Azure team; 
+not public.  However a Jupyter Notebook service is provided at no cost by the Microsoft Azure team; 
 see [this link](http://notebooks.azure.com).
 
 
 Our first implementation is built on the AWS public cloud.  We address cost management, 
 provision of fully functional working environments for the User pool, software versioning, 
 data access, ingress and egress. We rely heavily on Anaconda here; but a future revision 
-will emphasize the kubernetes/docker approach. 
+will include kubernetes/docker-based scaling. That is: By scaling up the Jupyter Hub can
+serve larger groups of people. 
 
 
 ## Facets of the JupyterHub framework
