@@ -13,7 +13,7 @@ folder: rc
 
 **Location:** Data Science Studio, eScience Institute, University of Washington
 
-**Time:** 8.30am to 5pm 
+**Time:** 9am to 12pm 
 
 
 ---
