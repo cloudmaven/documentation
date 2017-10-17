@@ -44,7 +44,7 @@ success stories.
 Participants can choose to any or all of the days, but please be
 considerate and attend the workshops you register for.
 
-https://goo.gl/forms/3fTE81zb3AJsDmEw1
+[https://goo.gl/forms/3fTE81zb3AJsDmEw1](https://goo.gl/forms/3fTE81zb3AJsDmEw1)
 
 For more on our research computing program see http://cloudmaven.org.
 _______________________________________________
