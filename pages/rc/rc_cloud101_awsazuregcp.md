@@ -17,6 +17,7 @@ folder: rc
 
 
 ---
+** REGISTRATION IS NOW CLOSED. WE HAVE FILLED TO CAPACITY **
  
 ## Objective
 This three-day, hands-on immersion course will introduce participants to  three major cloud providers (Amazon Web Services, Microsoft Azure and Google Cloud Platform).
