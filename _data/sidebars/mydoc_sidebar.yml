@@ -126,6 +126,10 @@ entries:
       url: /rc_lightweight_data_systems.html
       output: web, pdf
 
+    - title: Globus
+      url: /rc_globus.html
+      output: web, pdf
+
   - title: Curriculum
     output: web, pdf
     folderitems:
