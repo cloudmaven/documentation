@@ -222,6 +222,14 @@ entries:
       url: /az_resources.html
       output: web, pdf
 
+    - title: Best Practices
+      url: /az_best_practices.html
+      output: web, pdf
+
+    - title: Request Information or Send Feedback
+      external_url: 'https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxLOqWUi_fJItLLsEfSA7I9UQzk5TVNQMThJRUJQMk00Wk1BWE9CMENCMC4u'
+
+
    
   - title: Google
     output: web, pdf
