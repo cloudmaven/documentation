@@ -38,6 +38,7 @@ serve larger groups of people.
 - Establish a User pool with authentication by each User; we use OAuth with GitHub for this
   - Cascade of User groups
     - root: propagate User-built environments as notebook kernels (as dropdown menu choice) 
+      - From the User perspective: I customize a working environment and it is easy for anyone to use
     - admin: can ssh into VMs to modify groups and owners; and can sudo install packages
       - this avoids collisions and other uncomfortable outcomes from power users = admin
     - power users: can configure their own conda environment
@@ -91,8 +92,9 @@ This section calls out certain features and details are called out and briefly d
 - Scaling number of machines
 - Kubernetes/Docker approach
 - GCP autoscaling
-- DASC and cluster computing
+- DASK and cluster computing
 - GitHub connectivity
+- Reproducible configurations (kernels)
 
 
 ## Links
@@ -397,6 +399,48 @@ Procedures here follow the recipes in the links provided with minor notes and ch
 
  ** Make sure all file link given in `jupyter_config.py` are proper.
 
+
+## Configure a custom environment
+
+- Get your kilroy sysadmin to give you correct permissions
+- Log in to Jupyterhub
+- Open a terminal
+- Insert a new path into your PATH variable
+
+
+```
+prompt> export PATH=/opt/anaconda/bin:$PATH
+```
+
+- create a new kernel named **awesome** (notice the prompt changes when you activate):
+
+
+```
+prompt> conda create -n awesome anaconda
+prompt> source activate awesome
+
+(awesome) prompt>
+```
+
+- In your activated kernel install some custom software
+  - Some packages are part of Anaconda: pyodbc, scikit-learn, JSAnimate, ipywidgets, dask
+  - Other packages may be outside the ken of conda install: azure-sdk-for-python and so on. 
+
+
+```
+(awesome) prompt> conda install networkx
+(awesome) prompt> conda install boto3
+(awesome) prompt> conda install xarray
+```
+
+
+- De-activate the kernel. 
+
+```
+(awesome) prompt> source deactivate
+
+prompt>
+```
 
 
 {% include links.html %}
