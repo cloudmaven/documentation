@@ -218,8 +218,24 @@ entries:
       url: /az_overview.html
       output: web, pdf
 
+    - title: Azure Fundamentals
+      url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/fundamentals-introduction-to-azure.md
+      output: web, pdf
+	  
+    - title: Reference Architecture
+	  url: /az_ref_arch.html
+	  output: web, pdf 
+
     - title: Training
       url: /az_training.html
+      output: web, pdf
+
+    - title: Azure Notebooks (Jupyter)
+      url: /az_notebooks.html
+      output: web, pdf
+
+    - title: HIPAA/HITECH
+      url: /az_hipaa.html
       output: web, pdf
 
     - title: Resources and Requests
@@ -232,9 +248,8 @@ entries:
 
     - title: Request Information or Send Feedback
       external_url: 'https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxLOqWUi_fJItLLsEfSA7I9UQzk5TVNQMThJRUJQMk00Wk1BWE9CMENCMC4u'
+      output: web, pdf
 
-
-   
   - title: Google
     output: web, pdf
     folderitems:
