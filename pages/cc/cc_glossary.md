@@ -71,11 +71,12 @@ account is used to appropriate and release resources which have associated billi
 include a virtual machine that runs continuously for one month at a rate of ten cents per hour. At the end of one month 
 this resource would incur a $72 charge. 
 
-- Container: An abstraction in which a compute environment is placed. See 'Docker container'.
+- Container: A virtualization of a computing environment (such as **Docker**) as a 'user space instance'. 
+Synonymous: Container, partition, virtualization engine, jail. From the perspective of a running program
+or from that of a User: A container appears to be a typical computer. However while computers provide 
+visibility of all resources a container provides visibiltiy only of assigned resources. 
 
 - Data signal: A conceptual wire carrying information, typically backed up by physical hardware.
-
-- Docker container:  
 
 - [EBS](http://www.rightscale.com/blog/cloud-industry-insights/amazons-elastic-block-store-explained): Elastic Block 
 Storage; disk memory associated with EC2 instances on AWS. Cost estimate $0.10 per (Gbyte-month)
@@ -98,6 +99,15 @@ On the cloud you can appropriate 100 such computers at once and complete the job
 - [HIPAA](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act): Health insurance portability 
 and accountability act. In short: A set of standards for securely managing Private Health Information (PHI).
 
+- Hypervisor: A computer that creates and runs virtual machines (VMs) through some combination of software, firmware
+and hardware. A hypervisor is also called a VMM for *virtual machine monitor*. See more under 'Virtual Machine'.
+
+- Virtual Machines: A 'heavy weight' systems implemented on a host system 
+and managed by a hypervisor which provides the VM access to the kernel of the host operating system.
+This has the advantage that a VM can run *any* operating system regardless of the kernel's 
+operating system in contrast to a lighter-weight container approach which shares OS type with 
+the kernel. 
+
 - IAM User: A user account created by an account administrator for specific use by a project participant.
 
 - IOT: Abbreviates 'Internet of Things', typically embedded devices that send and possibly receive information from 
@@ -114,11 +124,15 @@ of "must take a short amount of time".
 - ML: Machine Learning, referring to a large class of methods in computer science which typically carry out 
 classification tasks based on learned rules. Learning is either guided or unguided, meaning that either a 
 test dataset with correct assignment information is used; or the algorithm simply operates on statistical 
-distributions of data.
+distributions of data. Sub-categories include email filtering, text interpretation, audio transcription, 
+vision, neural networks, deep learning, cluster analysis, Bayesian networks and genetic algorithms. See
+the entry for SciKitLearn for the most common Python-based ML environment. 
 
 - NIC: kilroy
 
 - That thing on AWS that is a NIC: kilroy
+
+- NLTK: Natural Language Toolkit, a suite of Python libraries and programs for Natural Language Processing (NLP).
 
 - Policy: kilroy
 
@@ -130,7 +144,17 @@ distributions of data.
 
 - S3: Storage on AWS
 
+- Scalability: The capability to handle a growing work load, a term used in cyber-infrastructure to indicate
+that a given system can accommodate an increase in demand for resources by allocating more (for exampl on 
+the public cloud) or a decrease in demand by down-sizing thereby (again on the cloud) reducing cost of operation.
+
+- Scaling horizontal versus vertical: Horizontal scaling means expanding resources by adding nodes (or removing them); 
+for example by adding commodity (low-cost) nodes to a cluster performing a distributed compute task. In contrast vertical
+scaling means making a single node in a system more (less) powerful. Examples include adding CPUs and adding RAM.
+
 - Scheduler kilroy
+
+- Scikit-learn: A machine learning library for Python designed to interoperate with NumPy and SciPy.
 
 - Server: A Computers acting as an information resource. More extensively a server can be thought of as
 a compute entity acting as the distal resource in a server-client relationship. Servers typically "listen" 

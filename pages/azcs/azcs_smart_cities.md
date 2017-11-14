@@ -3,7 +3,7 @@ title: Creating intelligent water systems to unlock the potential of Smart Citie
 keywords: Azure, smart_cities, water, crisis
 last_updated: October 5, 2017
 tags: [Azure,data_visualization,analytics, platform, IoT, systems,networks]
-summary: "Water shortages in Bangalore are being solved by Azure. Using services from Microsoft’s Azure, the project harnesses the power of the cloud to collect and process data from the network of IoT sensors."
+summary: "Water shortages in Bangalore are being solved by Azure. Using services from Microsoft's Azure, the project harnesses the power of the cloud to collect and process data from the network of IoT sensors."
 sidebar: mydoc_sidebar
 permalink: azcs_smart_cities.html
 folder: azcs
@@ -21,7 +21,7 @@ Using services from Microsoft's Azure, the project harnesses the power of the cl
 
 [View YouTube Video](https://youtu.be/HkY39WThRxk)
 
-The system consists of three components physical sensors, networking components and cloud. The sensing is done through microcontrollers that communicate wirelessly to a gateway that then sends the data to the cloud. The analytics are enabled through an Apache Storm-based service on Azure. All the edge devices are visible in the Azure resource directory, helping monitor hardware malfunctions or failure.  Rashmi B., a project assistant on the team, is responsible for the execution and deployment of the network. She aspires to ultimately bring this product to the end user, who should be able to log in from anywhere and monitor the health of the water resource network and intervene to prevent water leakage and avert crises.
+The system consists of three components physical sensors, networking components and cloud. The sensing is done through microcontrollers that communicate wirelessly to a gateway that then sends the data to the cloud. The analytics are enabled through an Apache Storm-based service on Azure. All the edge devices are visible in the Azure resource directory, helping monitor hardware malfunctions or failure.â€  Rashmi B., a project assistant on the team, is responsible for the execution and deployment of the network. She aspires to ultimately bring this product to the end user, who should be able to log in from anywhere and monitor the health of the water resource network and intervene to prevent water leakage and avert crises.
 
 The government of India envisions designating 100 cities in the country as Smart Cities. The idea is to deliver citizen services in these cities comparable to the best global standards. Providing citizens with clean and safe water in the most efficient manner that meets the needs of the population will be an important part of this mission. The water management project at the IISc campus can serve as a model showcase of water services provisioning, which can be scaled out to these 100 cities, across the whole country. It offers a beacon of hope towards the goal of managing and conserving precious water resources and makes a lasting contribution in improving the lives of a billion people.
 
