@@ -221,7 +221,7 @@ entries:
     - title: Azure Fundamentals
       url: "https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/fundamentals-introduction-to-azure.md"
       output: web, pdf
-	  
+
     - title: Reference Architecture
       url: /az_ref_arch.html
       output: web, pdf 
