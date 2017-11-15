@@ -83,7 +83,7 @@ A way to solve this problem is Autotagging.
 The autotagging solution we'll be using is summarized below.
 
 When a resource is created, an API call is made and recorded by CloudWatch. Then, a CloudWatch event rule triggers a lambda function providing it with event details.
-The lambda function extracts every resource ID and the user's identity and applies two tags, Owner and PrincipalId (current user’s aws:userid value), to the created resource.
+The lambda function extracts every resource ID and the user's identity and applies two tags, Owner (current users AWS IAM username) and PrincipalId (AWS account number), to the created resource.
 
 A simpler one sentence summary:
 
