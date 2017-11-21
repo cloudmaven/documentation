@@ -146,6 +146,12 @@ For untagged billing the script summarizes cost by resource ID if the resource I
 - Choose an existing role: **kilroy_burn_role**
 - Create function
 - Edit code inline (see below), select Python 3.6, keep event handler as lambda_function.lambda_handler
+  - Modify the pasted code by searching for the string 'kilroy mod' and making modifications as directed 
+- Environment variables and Tags may be left blank
+  - It is good practice to tag everything; so we recommend entering the tag Key = Owner and Value = your User name
+- Verify Execution role = kilroy_burn_role set in step 1
+- Set Memory to 256MB and Timeout to 2 min 10 sec
+- SAVE your settings so far
 
 
 
@@ -603,6 +609,19 @@ def lambda_handler(event, context):
 ```
 
 
+### 3 Lambda trigger
+
+- Above the code box are three tabs: Configuration, Triggers and Monitoring. 
+- Select Triggers
+- Add trigger
+- Click on the dashed-line box to the left of **Lambda** and select S3
+- Set the Bucket (using dropdown menu) to 123456789012-dlt-utilization
+  - This is the standardized name for the billing bucket
+  - This orients the Python function to trigger when this bucket receives a new object
+- Set Event type to 'Object Created (All)'
+- Submit
+
+### 4 SNS
 ## Earlier version follows
 ### 1, Billing information in the S3 bucket
 
