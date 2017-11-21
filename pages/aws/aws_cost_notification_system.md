@@ -293,16 +293,14 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
             aggs[tag][pname]['blended_cost'] += cost_blend
             aggs[tag][pname]['unblended_cost'] += cost_unblend
         else:
-            aggs[tag][pname] = {'blended_cost': cost_blend, \
-                            'unblended_cost': cost_unblend}
+            aggs[tag][pname] = {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}
             
     else:
-        aggs[tag] = {'total_blended_cost': cost_blend, \
-                     'total_unblended_cost': cost_unblend, \
-                    pname: {'blended_cost': cost_blend, \
-                    'unblended_cost': cost_unblend}}
+        aggs[tag] = {'total_blended_cost': cost_blend, 'total_unblended_cost': cost_unblend, \
+            pname: {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}}
 
 # marker 2
+
 
 ### cost aggregation parser (for daily)
 def dailyAgg(file_path):
@@ -437,11 +435,6 @@ def weeklyAgg(file_paths):
                                     untagged[line[idx_resource]]['total_unblended_cost'] = float(line[idx_dollar_unblend])
         return untagged, aggs, total_blend, total_unblend, \
                 total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend
-
-
-
-
-
 
 
 ```
