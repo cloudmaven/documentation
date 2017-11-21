@@ -311,8 +311,8 @@ def dailyAgg(file_path):
         str file_path : path to the cost file
     return:
         an array contains daily cost summary
-        1, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
-        2, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        1, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
+        2, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
 
 
 ```
