@@ -377,6 +377,15 @@ def weeklyAgg(file_paths):
         str file_path : path to the cost file
     return:
         an array contains daily cost summary
+        1, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
+        2, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
+        3, float total_blend;
+        4, float total_unblend;
+        5, float total_tagged_blend;
+        6, float total_tagged_unblend;
+        7, float total_untagged_blend;
+        8, float total_untagged_unblend
+    '''
 
 
 ```
