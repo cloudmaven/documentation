@@ -299,7 +299,6 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
         aggs[tag] = {'total_blended_cost': cost_blend, 'total_unblended_cost': cost_unblend, \
             pname: {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}}
 
-# marker 2
 
 
 ### cost aggregation parser (for daily)
@@ -313,6 +312,71 @@ def dailyAgg(file_path):
         an array contains daily cost summary
         1, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
         2, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
+# marker 3
+        3, float total_blend;
+        4, float total_unblend;
+        5, float total_tagged_blend;
+        6, float total_tagged_unblend;
+        7, float total_untagged_blend;
+        8, float total_untagged_unblend
+    '''
+    untagged, aggs = {}, {}
+    total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
+    total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
+    with open('/tmp/' + file_path, 'r', newline = '\n') as csvfile:
+        lines = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for idx, line in enumerate(lines):
+            if idx == 0:
+                col_dict = {}
+                for i, n in enumerate(line):
+                    col_dict.update({n.strip(): i})
+                # get index for tags (user:Name, user:Project)
+                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], \
+                    col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
+                # get index for datetime
+                idx_dt = col_dict['UsageEndDate']
+                # get index for ProductName
+                idx_pname = col_dict['ProductName']
+                # use quantity has two, blended and unblended
+                idx_dollar_blend = col_dict['BlendedCost']
+                idx_dollar_unblend = col_dict['UnBlendedCost']
+                # for untagged resources
+                idx_resource = col_dict['ResourceId']
+            else:
+                # avoid parse the last few lines
+                if line[idx_pname]:
+                    if dayChecker(line, idx_dt):
+                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
+                        total_blend += float(line[idx_dollar_blend])
+                        total_unblend += float(line[idx_dollar_unblend])
+                        if tag:
+                            Agg(line, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblend)
+                            total_tagged_blend += float(line[idx_dollar_blend])
+                            total_tagged_unblend += float(line[idx_dollar_unblend])
+                        else:
+                            total_untagged_blend += float(line[idx_dollar_blend])
+                            total_untagged_unblend += float(line[idx_dollar_unblend])
+
+                            if line[idx_resource] in untagged:
+                                untagged[line[idx_resource]]['total_blended_cost'] += float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] += float(line[idx_dollar_unblend])
+                            else:
+                                untagged[line[idx_resource]] = {}
+                                untagged[line[idx_resource]]['total_blended_cost'] = float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] = float(line[idx_dollar_unblend])
+    return [untagged, aggs, total_blend, total_unblend, \
+            total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend]
+
+
+# cost aggregation parser (for weekly)
+def weeklyAgg(file_paths):
+    '''
+    parse through the csv file and generate weekly cost summary
+    ---
+    arg:    
+        str file_path : path to the cost file
+    return:
+        an array contains daily cost summary
 
 
 ```
