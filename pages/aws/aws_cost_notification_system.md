@@ -582,16 +582,16 @@ def lambda_handler(event, context):
         sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 
         # kilroy mod: In the response = sns.publish( there are four things to do:
-	#   kilroy mod: TopicArn: Change the account number (notice it is 123456789012)
-	#   kilroy mod: TopicArn: Verify the region is correct 
-	#   kilroy mod: TopicArn: Provide the correct SNS topic name
-	#   kilroy mod: Subject: Choose a subject that fits your account
+        #   kilroy mod: TopicArn: Change the account number (notice it is 123456789012)
+        #   kilroy mod: TopicArn: Verify the region is correct 
+        #   kilroy mod: TopicArn: Provide the correct SNS topic name
+        #   kilroy mod: Subject: Choose a subject that fits your account
         response = sns.publish(
             TopicArn='arn:aws:sns:us-east-1:123456789012:kilroy_burn_sns',
             Message=cost_agg_str,
             Subject='Kilroy Burn')
 
-	# kilroy mod: Customize the completion message if you like
+        # kilroy mod: Customize the completion message if you like
         return 'kilroy_burn_lambda completed!'
 
     except Exception as e:
