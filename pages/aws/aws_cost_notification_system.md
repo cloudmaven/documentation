@@ -127,10 +127,12 @@ For untagged billing the script summarizes cost by resource ID if the resource I
 
 ### 1 Role
 
+
 - Log in to the AWS console as an admin with IAM privileges. 
 - Verify that your region (upper right corner) is set to N.Virginia
 - Have at hand your IAM User Access Keys (Access Key ID and Secret Access Key; two strings)
-  - Here they will be called ACCESSKEYIDSTRING and SECRETACCESSKEYSTRINGXXXXXXXXXXXXXXX
+  - Here they will be called XXXXXXXXXXXXXXXXX and XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+- Also have on hand your 12-digit account number; here we use 123456789012
 - Go to the **IAM** services page and select **Roles**
 - Create role of type Lambda and proceed to the permissions page
 - Search for the managed policy **AWSLambdaExecute** and associate that with this role
@@ -140,12 +142,14 @@ For untagged billing the script summarizes cost by resource ID if the resource I
 
 ### 2 Lambda
 
+
 - Go to the Lambda services page and Create function
 - Author from scratch
 - Name the lambda **kilroy_burn_lambda**
 - Choose an existing role: **kilroy_burn_role**
 - Create function
 - Edit code inline (see below), select Python 3.6, keep event handler as lambda_function.lambda_handler
+  - The code is included below these five steps for cut-and-paste
   - Modify the pasted code by searching for the string 'kilroy mod' and making modifications as directed 
 - Environment variables and Tags may be left blank
   - It is good practice to tag everything; so we recommend entering the tag Key = Owner and Value = your User name
@@ -153,6 +157,61 @@ For untagged billing the script summarizes cost by resource ID if the resource I
 - Set Memory to 256MB and Timeout to 2 min 10 sec
 - SAVE your settings so far
 
+
+### 3 Lambda trigger
+
+
+- Above the code box are three tabs: Configuration, Triggers and Monitoring. 
+- Select Triggers
+- Add trigger
+- Click on the dashed-line box to the left of **Lambda** and select S3
+- Set the Bucket (using dropdown menu) to 123456789012-dlt-utilization
+  - This is the standardized name for the billing bucket
+  - This orients the Python function to trigger when this bucket receives a new object
+- Set Event type to 'Object Created (All)'
+- Submit
+
+
+### 4 SNS
+
+
+- In the AWS console go to the SNS services page
+- Select Create topic
+- Enter the topic name (per the Python code in the lambda function): kilroy_burn_sns
+- Enter the topic abbreviation, 10 characters; which will be in the From field of the email notifications
+  - I used kilroyburn
+- Continue to topic details and click Create subscription
+  - Choose type = email and add your email address plus any others you think should receive notifications
+- Click on Create subscription to send a confirmation email to yourself; and then confirm that 
+
+
+You're done. You should now start receiving daily cost/burn summaries in your inbox. What remains is to verify 
+that this is working properly. Assuming you have not already run this function you should be able to generate
+a cost report immediately (with actual dollar amounts, not zeros) by uploading a small file to your S3 bucket.
+Since this is a 'new object' n the bucket it will trigger the lambda function you just created.
+
+
+### 5 Validation and Debugging
+
+
+- Upload a file to your S3 billing bucket 123456789012-dlt-utilization
+  - One simple way is to install and configure an app like **S3 Browser**
+  - You will need to use your personal access keys handy for the configure step
+- This upload creates a new object (the file you uploaded) in the bucket which triggers the lambda function
+  - You should therefore receive in short order an email with your cost summary
+- When you receive a billing statement you should compare it with the Cost Explorer estimate of yor daily burn
+  - At the upper right of the console use your Account Name dropdown to select My Billing Dashboard
+  - Link to the Cost Explorer and launch it
+  - Use the Reports dropdown to select Daily Costs
+  - You should see a daily expense that is commensurate with your email notification
+    - If there is a discrepancy it is very likely that your email notification is wrong (low)
+- If something is going wrong
+  - If you receive the email but it is all zeros wait for a day to pass and try again
+  - If you are not receiving the email; or other things seem to be going wrong...
+    - click on the Monitoring tab at the top of your lambda service page (under the name of the lambda function)
+    - You should see some dashboard charts indicating that the lambda function has been triggered
+    - There is a useful link here to View logs in Cloudwatch
+      - The logs on Cloudwatch are themselves links to log entries; her you can see diagnostics printed by the lambda function
 
 
 
@@ -530,7 +589,6 @@ def lambda_handler(event, context):
     return:
         None
     '''
-    print('Debug attempt: Delete this and next line')
     print(event)
     # print("Received event: " + json.dumps(event, indent=2))
     # kilroy mod: change the two keys in the following line
@@ -609,19 +667,7 @@ def lambda_handler(event, context):
 ```
 
 
-### 3 Lambda trigger
 
-- Above the code box are three tabs: Configuration, Triggers and Monitoring. 
-- Select Triggers
-- Add trigger
-- Click on the dashed-line box to the left of **Lambda** and select S3
-- Set the Bucket (using dropdown menu) to 123456789012-dlt-utilization
-  - This is the standardized name for the billing bucket
-  - This orients the Python function to trigger when this bucket receives a new object
-- Set Event type to 'Object Created (All)'
-- Submit
-
-### 4 SNS
 ## Earlier version follows
 ### 1, Billing information in the S3 bucket
 
