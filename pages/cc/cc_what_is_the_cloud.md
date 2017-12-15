@@ -12,6 +12,75 @@ folder: cc
 ![cc_intro0001](/documentation/images/cc/cc_intro0001.png)
 
 ## Introduction
+
+
+Some 95% plus of the questions we are asked about cloud computing are answered on this page. Think of this as a 
+narrative version of an FAQ; and please scroll down if you don't see the topic you're interested in.
+
+
+(**This page is undergoing a major revision so pardon the dust**)
+
+
+## Question: How do I get Research Credits on the public cloud? 
+
+
+To rephrase the question: 'I hear that both Microsoft and Amazon Web Services (public cloud vendors) provide free 
+credits for research projects. Is this the case? How does it work?'
+
+
+Answer: Yes; in both cases you as a researcher can apply for and in many cases receive an allotment of cloud
+credits. The typical amount awarded is on the scale of thousands of dollars -- strictly as credits, not as 
+actual money -- and it comes with a conceptual caveat. We (the UW cloud consultants) want you to understand 
+the context and the caveat for these grants so you can increase your chances of writing a successful proposal;
+and so you know what to expect as you move on from there. 
+
+
+Three things to know. First is again: Yes 
+[Microsoft](http://https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
+and 
+[AWS](https://aws.amazon.com/research-credits/) 
+will both gladly provide research credits in response to 
+a short but thoughtful research computing proposal. Please read those respective pages for details on 
+their programs.  
+
+
+Our interpretation of the situation is this -- this is the second thing to be aware of -- that these companies
+very much *value* intellectual investment in their public cloud platforms. What they have to gain by giving 
+away credits in this manner is a *transition proposition*. They are betting that you the research scientist
+will like the cloud so much that you will give up on buying computers and move your research to their cloud. 
+We happen to think this is a great idea as well; in many but not necessarily all cases. Further down on this
+page we will give you more detailed views on 'is the cloud right for me?'.  
+
+
+So the idea the cloud vendors have is to get researchers through this cloud phase transition by lowering that 
+initial barrier of paying for those initial cloud cycles. Therefore we suggest sending the message in your proposal 
+that the proposal is in your view a stage in transition to using the cloud for research computing in the long
+term. This is your evaluation period... and as such it is not a source of ongoing funding. In fact -- supposing you 
+fall into this category of 'early cloud adopter' -- you might start writing cloud computing into grant 
+proposals today to NSF or NIH or NASA or whomever so that when your cloud credit grant runs out you can keep forging 
+ahead with your research. 
+
+
+As we make our way in this new frontier of computing we find that some research teams do not anticipate 
+the (typically one year) end of their credit support.  In some cases they apply again; 'Can we get some 
+additional funding?' Sometimes this works and sometimes it does not. But of course our point is that it
+misses the idea that these grants are transitional; so there, now you know the second thing.
+
+
+The third item is this: Having a cloud computing account comes with some administrative overhead. It is not 
+as intense or time consuming as owning and operating your own hardware. But there are some things to learn 
+and understand; and that is what we're here to help you with. That is: We are running a consultancy which 
+includes Cloud 101 courses and informal conversations and office hours and so on. So get in touch with us
+if you are new to using the cloud; or have questions; or want to share your expertise with us. 
+
+
+
+
+## Question: How much does the cloud cost? 
+
+## Question: Which cloud should I use? 
+
+
 The purpose of this document -- available [here](http://cloudmaven.org "Cloud Maven technical website") -- is 
 to introduce you to the public cloud as a research computing platform: Capable of powerful computation, secure,
 cost-effective, and potentially broadening your team's capabilities. 
