@@ -24,15 +24,7 @@ entries:
 
   - title: FAQ
     output: web, pdf
-    folderitems: 
-
-    - title: FAQ
-      url: /faq.html
-      output: web, pdf
-
-    - title: FAQ annotations
-      url: /faq_annotations.html
-      output: web, pdf
+    url: /faq.html
 
   - title: Cloud Core
     output: web, pdf
