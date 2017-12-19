@@ -27,6 +27,7 @@ The cloud is a massive, secure, reliable ensemble of computers, storage, network
 services available for public use on a utility payment basis. The cloud is a hence a computing 
 environment that scales with demand in an elastic manner.
 
+
 * You pay for the compute power that you need / use
 
 * You do not purchase, maintain, update, patch, service and/or recycle computer hardware 
@@ -42,8 +43,8 @@ environment that scales with demand in an elastic manner.
 * You can easily build a web presence and use that to share data with collaborators or with the public
 
 
-## Q: As I am accustomed to my computing environment *persisting*... how do I understand the cloud 
-where it seems my work could *evaporate* at any moment?
+## Q: As I am accustomed to my computing environment *persisting*... how do I understand the cloud?  It seems 
+that my work could *evaporate* at any moment!!!
 
 
 Cloud platforms are designed and operated as multiply-redundant persistent resources.  What takes some 
@@ -55,22 +56,21 @@ When executing a computational task on a small cluster of computers you have an 
 take to finish.  Modifying this task to run on a larger cluster might require time and effort; but comes
 with the benefit of finishing faster. On the cloud the 'larger cluster' can be enormous; it can be instantly
 available; and costs the same per compute task as the small cluster. That is: On the cloud ten computers 
-running for 100 hours costs the same as 1000 computers running for one hour, broadly speaking. 
-This is scaling *up*.
+running for 100 hours costs the same as 1000 computers running for one hour broadly speaking. 
+This is called scaling *up*.
 
 
-Then when you are developing code you may not need powerful computers. The cloud enables you to
-move your work environment to a small cheaper computer for this. You can also **Stop** your cloud 
-computer when it is not in use -- say over the weekend -- so that you are paying only a few cents to store 
-the digital image of your work environment. Everything can be restarted again in a matter of a few minutes 
-as needed. This is scaling *down*.
+When you are developing code you may not need powerful computers. On the cloud you move your work environment 
+to a small cheap computer. You can also **Stop** your cloud computer when it is not in use -- say over the 
+weekend -- so that you are paying only a few cents to store the digital image of your work environment. 
+Everything can be restarted again in a matter of a few minutes as needed. This is called scaling *down*.
 
 
 
 ## Q: What is the cloud good for? 
 
 
-Reproducible research. Data science. Collaboration. Data sharing. 
+Reproducible research. Data science. Collaboration. Data sharing. Data security.
 
 
 
@@ -131,10 +131,10 @@ try it out on a serious (computational) scale.
 
 
 
-## Question: How much does the cloud cost? 
+## Q: How much does the cloud cost? 
 
 
-- Archival is $50 per Terabyte per year: Some latency time to pull items out of storage
+- Archival is $50 per Terabyte per year: With a few hours latency to pull items out of storage
 - Object storage runs $300 per Terabyte per year: Instantaneous access to any stored object
 - A powerful computer will cost you $0.50 per hour
 - Attaching a 1 Terabyte disk volume to that computer will cost you an additional 100.00 per month
@@ -142,16 +142,29 @@ try it out on a serious (computational) scale.
 - Downloading data from the cloud costs $0.10 per Gigabyte
 
 
+### Q: Why do I have to pay so much to get my own data back?
 
-## Question: Which cloud should I use? 
+
+The short answer is that data ingest is free and egress is expensive because cloud providers like to
+weight the cost in favor of extended tenancy. The fact is they like having your business. But this is 
+not really a bad situation for a cloud practitioner.  It comes down to another shift in reference frame. 
+The cloud paradigm raises the question 'Do I *need* to get my data back?' and 'What is *back* anyway?' 
+
+
+### Q: What if my funding agency requires me to keep my data around for five years? 
+
+
+We suggest multiplying your expected data volume by the archival rate for five years. Budget that and 
+pay it in advance. At the end of that time you can allow the data to evaporate... or you may find it 
+has some further value to your community; in which case it is in an ideal location.
+
+
+## Q: Which cloud should I use? 
 
 
 You should use either Amazon Web Services, Google Cloud Platform or Microsoft Azure. 
 We support these three with no strong preference because each has its merits. 
 And if you find a different cloud you like better then use that. 
-
-
-
 
 
 
@@ -170,26 +183,20 @@ And if you find a different cloud you like better then use that.
 
 
 The [**eScience Institute**](http://escience.washington.edu/)
-is our originating organization at the University of Washington. They can help you with data science.
+is our originating organization at the University of Washington. 
+We are here to help you with data science.
 
 
-## Skills
-In order to successfully carry your computing to the cloud you and your team will need to learn a new set of skills. 
+## Q: What are the skills I need to pick up?
+
+
 You will need to understand account management, security, cost estimation, and computing scale; all in relation to your 
-work which we tend to assume depends on data-driven research computing. 
-We recommend setting aside time for training (online or in person if possible) and setting aside more time for 
-discussions on how to migrate to the cloud. If you and your group see the benefits and are anxious to get going 
-the good news is that the cloud learning curve is not too bad; and is even pretty fun.
+work which we assume depends on data-driven research computing.  We recommend setting aside time for training (online or 
+in person if possible) and discussions on how to migrate to the cloud.  The good news is that the cloud learning curve is 
+not too bad; and it is even pretty fun.
 
-## Vendors
-The public cloud came about as an excess of computing capacity at Amazon.  The company realized they could make 
-available and monetize these compute resources; hence was born Amazon Web Services (AWS), the first large-scale 
-public cloud. Other cloud vendors include Microsoft Azure and Google. We do not advocate any particular cloud vendor 
-over the others. Each has its merits and we try and present some of those here at cloudmaven.org. 
 
-## Cost
-How much does the cloud cost? The fast answer is "3 cents per GB-month of storage and 3 cents for an hour of CPU time". 
-That is an answer we will qualify and expand on; but just to get you started... 
+****************************
 
 When you purchase a computer you are (apparently) done paying for it and you can use it until it fails; hopefully for 2 or 
 more years. Then you need to purchase another computer. This is the traditional computing model and it makes sense if your
@@ -205,23 +212,33 @@ out of control and expensive.
 See also the section below on cloud research credits, a way to mitigate the cost of learning if the cloud works for you.
 
 ## Machines
+
+
 Cloud computers typically run a version of Linux or a version of Windows. Furthermore you can choose from among dozens of 
 machine types with varying amounts of memory and computing power. Cloud computers are accessed from (say) your laptop 
 using various Client Applications, starting with **ssh** or **PuTTY**. As a rule you would develop your code locally, test 
 it, and then deploy it to cloud machines where it runs. 
 
+
 ### Clusters
+
 
 When you need compute power the cloud is a great resource. Cluster and Schedulers technologies are in place that enable you
 to grab hundreds to thousands of machines as needed, run your compute task to completion, and then just as quickly release
 those resources back into the general pool. Inter-node connection speed on the cloud is catching up to on-premise compute
 cluster solutions via technologies like Infiniband. 
 
+
 ## Development and Testing
+
+
 The cloud is not necessarily a great place to write code.  Typically we write and test code locally and then test again on the cloud
 to verify that everything is working as expected, *before* going to large-scale processing tasks.
 
+
 ## A Success Story
+
+
 Tim Durham works in genomics at UW and has an analytical pipeline that operates on segments of the human genome; up to 3 billion base 
 pairs. He is working to interpolate information linking human cell types to proteins.  Using the "server room at the end of the hall" 
 Tim can complete small data subset processing runs in a matter of a week or two; in the process possibly restricting other 
@@ -229,100 +246,75 @@ researchers from using those machines. By taking the computing task to the publi
 many times more resources at once and finish a computation in a matter of hours. Hence three important cloud computing positives: 
 No 'shared resource' restriction, no wait time to start processing, and faster processing for tasks that can be parallelized. 
 
+
 When Tim completes a processing run he turns off the Linux machines he is using and thereby stops paying for them. This is the 
 cloud utility cost model: You pay for what you use. The recovered output data are analyzed and his methods are refined. Once he 
 feels that the configuration is optimized he'll do a single large 'scale up' from 1% to the entire human genome. This task -- built 
 on Apache Spark -- should run in a day and can be repeated in the future if the algorithm is further refined. 
+
 
 Tim can -- if he so chooses -- make the results of this analysis publicly available through a cloud-hosted website. He could 
 build this out on a Web Framework such as Django and build an API that provides public, programmatic access to the full 
 results or to selected subsets. 'Programmatic access' means that other researchers can pull the results of interest into their 
 workspace using a computer program rather than using a manual approach.
 
+
 ## Research Software Development
+
+
 Software repositories such as GitHub are enabling research collaborations to better manage software development. This is 
 something of a developing art form (in research) with practices that can be quickly learned and readily implemented; and 
 which will make software more robust, secure, and easier to build. It is highly likely that taking any steps to formalize 
 software development within a research group will be beneficial, particularly as software typically has a half-life 
 of a small number of years. 
 
+
 In cloud computing software is often written on local computers -- possibly tested there as well -- and then migrated 
 to cloud instances where the actual processing of data, modeling, etcetera takes place in earnest. The manner of 
 development has a direct impact on security and is commensurately more important. 
 
+
 ## Security
+
+
 The cloud is extremely secure provided that the research group learns and follows appropriate guidelines. Both AWS and Microsoft have 
 HIPAA-aligned technology called out in respective Business Associate Agreements (BAAs). The burden of compliance is placed on the 
 research team; and UW IT is working to make this progress feasible and straightforward.
 
 ## Alarms
+
+
 The cloud is elastic -- designed to expand to meet computing challenges -- but this expansion is frequently automated. Since 
 automation can do things in error, by accident, it is important to know how to cope with an undesirable growth condition using 
 other means, i.e. means outside of the machinery that is causing the growth. This leads to the notion of Alarms. An alarm is 
 how the cloud can be configured to catch circumstances in which resources grow out of control. 
 
-## Research Credit
-AWS and Microsoft Azure both have programs to grant cloud credits to approved research programs. The one-page application 
-typically requires one to three months to process and can secure you in the neighborhood of $20,000 in cloud credits good for one year.
 
-[Amazon cloud research credit page](https://aws.amazon.com/research-credits/)
-[Azure cloud research credit page](http://azure4research.com)
+## Q: How do I *access* the cloud?
 
-The idea of these programs is to remove the cost risk of learning how to use the cloud. We anticipate that in the course
-of a successful cloud adoption process you will learn to cost and budget for cloud computing after the grant is expired.
 
-## Support contracts
-You may very well want to pay a surcharge for technical support on your cloud account. You can pay for this using your research 
-credits. It costs you $100 / month on AWS for "Business Level support" (or ten percent of your monthly budget if that is 
-larger). You will 
-be connected with skilled cloud professionals who will be able to help you overcome technical obstacles. You can also opt in to
-a support contract when you realize you need it.
+- Start a *cloud account*. It will be associated with your email account. 
+- Go to the providers cloud access website and log in. 
+- Use this website to carry out basic tasks 
+- Grab a cloud computer and log in remotely: Use ssh or PuTTY or some other terminal emulator
+- Move your code and data to this computer
+- Compute
 
-## Services
 
-'Services' is a pretty general term; but here it means specifically things you 
-This section describes a part of the cloud that you may not know about; but can learn: Services that are often dissociated from machines.
+There are more details but this is the basic framework.
 
-### Getting started
 
-Your access to the cloud depends on you having a *cloud account* like an email account. Your account ID gets you
-access through a web browser to a cloud console where you allocate and manage resources. Suppose you have both
-data and code on your Windows PC. You want to get a powerful machine to run some analysis; here are the steps:
+## Q: Cloud XYZ has a free entry-level account. Should I try that? 
 
-- Log in to your cloud account
 
-- Allocate a Linux machine (for which you will pay an hourly rate, for example 47 cents per hour
 
-- Download the login credentials for that machine
 
-- Use WinSCP to copy your code and data to that rented cloud computer 
+Sure, we support this idea. You go through a form to set up your account; but this may not be your long-term cloud account.
+It is a place to start learning the ropes. Once your account is established you can do a *great deal* of computing on small 
+low-cost resources without running up a bill, a great way to get started.  But beware: If the company requests a credit card 
+number from you and you accidentally burn through the initial credit allotment (typically $100 or so) you will find your 
+card being charged. 
 
-- Compile and run your code
-
-- Recover the results using WinSCP 
-
-There are many more details but this example covers the basic framework of getting something done on the cloud. 
-To get started you will need an account. There are at least four approaches open to you:
-
-- Cloud novice approach: Get a [$100 free credit account on AWS](https://aws.amazon.com/free/) 
-or a [$200 free credit account on Microsoft Azure](https://azure.microsoft.com/en-us/free). 
-Both require you to enter credit card info. This is like giving your hotel your credit card in case you break the TV. 
-
-- You need some substantial compute power *Today*: Contact us by email. We may be able to quickly (within a 
-few hours) set you up with a temporary User account. You will need to coordinate your usage with us; we will 
-need to make sure you are 'good to go' managing resources; and we will ask that you do some reporting 
-on your experience. This can be a short-term stop-gap if you're stuck.
-
-- You need some serious compute power for a year at no cost (requires 2 months to set up): Fill out the 
-[one-page application here](https://aws.amazon.com/research-credits/) for AWS or 
-the [one-page application here](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) 
-for Microsoft Azure. On approval you can receive up to $20k in research credits for a year. Both public clouds are 
-excellent so we do not recommend one over the other. Come visit our office hours if you would like to disucss relative merits further.
-
-- You need some serious compute power and you have a budget: Contact UW IT to set up a purchase order. This will take a couple of days.
-
-We also wish to emphasize that other public clouds, particularly Google, have fantastic features as well. We are working to 
-expand our representation of these other options. 
 
 
 ## Q: Can you provide a quick glossary to cover cloud jargon?
