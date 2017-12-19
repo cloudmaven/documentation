@@ -24,12 +24,11 @@ common pitfalls.
 ## Q: What is the *cloud*?
 
 
-The public cloud is a rent-by-the-hour collection of computers, storage, networking and services that allow
-you to configure, use and pay for the computing power you need: Without every having to purchase, maintain, 
-upgrade, patch, or recycle computer hardware. It is a secure, reliable and cost-effective way of doing data 
-science and it is characterized by rapidly expanding capabilities that are created and maintained and by 
-thousands of professional software developers.  The cloud is a great way to approach research computing
-if you can make the necessary time to learn how it works. Additional features include...
+The public cloud is a massive ensemble of computers, storage, networking and other computing services 
+where you to configure, use and pay for the computing power you need. That is, the cloud is a computing
+environment that scales in an elastic manner. You can use it for research computing without needing 
+to purchase, maintain, upgrade, patch, or recycle computer hardware. The public cloud is secure, reliable 
+and cost-effective.  Additional features include...
 
 
 * You pay for the compute power that you use.
@@ -45,6 +44,13 @@ if you can make the necessary time to learn how it works. Additional features in
 * You can purchase services such as a database without having to install and maintain them
 
 * You can easily build a web presence and use that to share data and information: With collaborators or with the public
+
+
+## Q: I am accustomed to my computing environment *persisting*... how do I come to terms with the cloud sounding
+like my work could evaporate at any moment?
+
+
+kilroy left off here...
 
 
 ## Q: What is the cloud not good for? 
