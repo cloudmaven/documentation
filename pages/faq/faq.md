@@ -15,65 +15,86 @@ folder: pages
 ## Introduction
 
 
-Here we briefly answer common questions about migrating research computing to the cloud.  
-We aim to show how the cloud can work for you; and we also try and keep you out of some
-common pitfalls. 
+Brief answers to common questions on migrating research computing to the cloud:
+What's possible, what are the pitfalls.  
 
 
 
 ## Q: What is the *cloud*?
 
 
-The public cloud is a massive ensemble of computers, storage, networking and other computing services 
-where you to configure, use and pay for the computing power you need. That is, the cloud is a computing
-environment that scales in an elastic manner. You can use it for research computing without needing 
-to purchase, maintain, upgrade, patch, or recycle computer hardware. The public cloud is secure, reliable 
-and cost-effective.  Additional features include...
+The cloud is a massive, secure, reliable ensemble of computers, storage, networking and computing 
+services available for public use on a utility payment basis. The cloud is a hence a computing 
+environment that scales with demand in an elastic manner.
+
+* You pay for the compute power that you need / use
+
+* You do not purchase, maintain, update, patch, service and/or recycle computer hardware 
+
+* You access computing at unlimited scale; from one core to tens of thousands depending on your needs
+
+* You do not have to wait for cloud resources to become available
+
+* You run your computing jobs to completion without interruption
+
+* You purchase services such as databases without needing to install and maintain them
+
+* You can easily build a web presence and use that to share data with collaborators or with the public
 
 
-* You pay for the compute power that you use.
-
-* You do not have to purchase, maintain, update, and re-purchase equipment
-
-* You have access to computing at tremendous scale; from one core to tens of thousands depending on your needs
-
-* You do not have to wait for cloud computing resources to become available
-
-* You can run your computing jobs to completion without interruption
-
-* You can purchase services such as a database without having to install and maintain them
-
-* You can easily build a web presence and use that to share data and information: With collaborators or with the public
+## Q: As I am accustomed to my computing environment *persisting*... how do I understand the cloud 
+where it seems my work could *evaporate* at any moment?
 
 
-## Q: I am accustomed to my computing environment *persisting*... how do I come to terms with the cloud sounding
-like my work could evaporate at any moment?
+Cloud platforms are designed and operated as multiply-redundant persistent resources.  What takes some 
+getting used to is the scale up / scale down model of cloud operation. Let's consider these in turn 
+for a moment. 
 
 
-kilroy left off here...
+When executing a computational task on a small cluster of computers you have an idea of how long it will 
+take to finish.  Modifying this task to run on a larger cluster might require time and effort; but comes
+with the benefit of finishing faster. On the cloud the 'larger cluster' can be enormous; it can be instantly
+available; and costs the same per compute task as the small cluster. That is: On the cloud ten computers 
+running for 100 hours costs the same as 1000 computers running for one hour, broadly speaking. 
+This is scaling *up*.
+
+
+Then when you are developing code you may not need powerful computers. The cloud enables you to
+move your work environment to a small cheaper computer for this. You can also **Stop** your cloud 
+computer when it is not in use -- say over the weekend -- so that you are paying only a few cents to store 
+the digital image of your work environment. Everything can be restarted again in a matter of a few minutes 
+as needed. This is scaling *down*.
+
+
+
+## Q: What is the cloud good for? 
+
+
+Reproducible research. Data science. Collaboration. Data sharing. 
+
 
 
 ## Q: What is the cloud not good for? 
 
 
-If you can do all of your research computing on a local machine -- say on your laptop -- then you don't need to
-migrate to the cloud.  The rest of this answer presumes that you have larger, possibly growing compute tasks that you
-need to perform. 
+If you can do all of your research computing on a local machine -- say on your laptop -- then perhaps you don't need to
+migrate to the cloud.  On the other hand: Read further if your computing environment is in some way hindering progress 
+in your research.  
 
 
-If you do not feel you can spare the time (a few days, say) to learn cloud technology then the cloud may not be
-for you. The cloud feels a little rough around the edges right now like any new technology. Really you want to 
-read further only if your computing environment is hindering your progress in research.
+If you do not feel you can spare some time (say a few days, say) to learn the ins and outs of cloud technology then the 
+cloud may not be for you. The cloud can feel a little rough around the edges like many emerging technologies. 
+Again if you have an unlimited supply of patience; if you do not need your compute tasks to finish any sooner then 
+the time investment to learn the cloud may not be worthwhile.
 
 
-If you have an unlimited amount of patience; and you do not need your compute tasks to finish any time soon:
-You may not need to invest time learning how to work on the cloud.  
+If you purchase a block of computers and run them full blast for upwards of 60% of the time: They may be more cost-effective 
+than the same computing power rented on the public cloud. At 50% utilization and below the public cloud will start to 
+break even and become *more* cost-effective than purchasing and operating your own computers.
 
 
-If you purchase a block of computers and run them full blast for something like 60% 70% 80% 90% 100% of the time: 
-They may be more cost-effective than the same amount of computing purchased from a public cloud vendor. Down at 50% 
-and lower (let's call this your compute duty-cycle) the public cloud will break even or be *more* cost-effective as 
-a utility where you pay for what you use.
+Data security does not belong in this category. The public cloud is extremely secure in comparison with privately-held
+resources; again with the caveat that one must learn how to manage a secure environment on said cloud.
 
 
 ## Q: How do I get Research Credits on the public cloud? 
@@ -144,16 +165,13 @@ And if you find a different cloud you like better then use that.
 
 
 
-## The Case for Cloud
 
-If your computing environment meets your needs then migrating to the cloud could very well be unnecesary. However if
-you see room for improvement in your computing then the cloud is worth understanding. Here is a short list of some of the major
-advantages of cloud migration.
+## Q: What is the eScience Institute 
 
 
-## The eScience Institute 
-The **eScience Institute** is our originating organization at the University of Washington. They can help you with
-computing challenges beyond the cloud. For more please [visit](http://escience.washington.edu/)!
+The [**eScience Institute**](http://escience.washington.edu/)
+is our originating organization at the University of Washington. They can help you with data science.
+
 
 ## Skills
 In order to successfully carry your computing to the cloud you and your team will need to learn a new set of skills. 
