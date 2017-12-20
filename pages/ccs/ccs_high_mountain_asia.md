@@ -15,15 +15,114 @@ folder: ccs
 ## Introduction 
 
 
-The purpose of this page is to describe a cloud-aligned [research project](http://himat.org) with the purposes of advancing scientific understanding of the hydrology of
-the mountain ranges of High Mountain Asia. The project lead for this NASA-sponsored High Mountain Asia Team (HiMAT) is [Dr. Anthony Arendt](http://psc.apl.uw.edu/people/investigators/anthony-arendt/), a UW Research Scientist.
+This page describes cloud-based research tools aligned with the [HIMAT research program](http://himat.org)
+and the Ocean Observing Initiative.
 
 
-### Objective and Approach
-High Mountain Asia (HMA), extending from the Hindu Kush and Tien Shan in the west to the Eastern Himalaya, is the world’s largest reservoir of perennial glaciers and snow outside of the Earth’s polar ice sheets. The region is home to a range of unique landforms, ecosystems, hazards, and cultures; and HMA supplies water to more than a billion people. Changes in the region’s glaciers, snow, permafrost, and precipitation patterns have altered this water supply, while also transforming regional ecology, land utilization practices, and the hazards associated with landslides and glacial-lake-outburst floods.
+### OOI
 
-The goal of this project is to use satellite remote sensing observations to characterize these changes, gain insight into the Earth system processes that control them, and inform decisions, management actions, and policy development.
 
+### HiMAT
+
+
+Project lead = [Dr. Anthony Arendt](http://psc.apl.uw.edu/people/investigators/anthony-arendt/).
+High Mountain Asia (HMA) extends from the Hindu Kush and Tien Shan in the west to the Eastern Himalaya.
+It is the world's largest reservoir of perennial glaciers and snow outside the polar ice sheets. 
+The region is home to a range of unique landforms, ecosystems, hazards, and cultures; and supplies 
+water to more than a billion people. Changes in the region's glaciers, snow, permafrost, and precipitation
+patterns have altered this water supply while also transforming regional ecology, land utilization practices, 
+and the hazards associated with landslides and glacial-lake-outburst floods.
+
+
+
+The goal of the HiMAT project is to use satellite remote sensing observations to characterize these 
+changes, gain insight into the Earth system processes that control them, and inform decisions, management 
+actions, and policy development.
+
+
+
+## Jupyter Notebook
+
+
+The objective is to pull NetCDF data from S3 to a Jupyter Notebook environment and proceed to explore 
+those data.
+
+
+## InSAR
+
+
+- Got the AMI shared at me by Scott
+- Assigned it to a c4.8xlarge (and it is Ubuntu)
+- Attached 256GB of block storage
+- Follow this to mount the drive...
+
+
+```
+% lsblk
+% sudo mkdir /processing
+% sudo mkfs -t ext4 /dev/xvdb
+% sudo mount /dev/xvdb /processing
+% sudo chown -R ubuntu /processing
+```
+
+
+These commands...
+
+
+- give me the ID of the EBS as /dev/xvdb
+- make a mount point called /processing
+- make a file system of the correct type
+- mount the storage
+- change the ownership
+
+
+This gets us close to processing tandem phase ERS data. 
+
+
+The tandem mission ran 21-Mar-95 through 5-Jun-96. There is orbital ephemeris available for this but 
+unfortunately it is not public on the web. Rathre I used an aws command line interface command to 
+grab all of the ephemeris from Scott. 
+
+
+```
+% aws s3 sync s3://bucketname local-directory
+```
+
+
+After this it is a matter of configuring two .xml files with the correct pointers and running the 
+**insarApp.py** program.  Which is already in my path thanks to the AMI knowing. 
+
+
+After a bit of searching at https://vertex.daac.asf.alaska.edu we find a decent pair 
+and add these to the queue. Order RAW format (L0) since L1 is amplitude only. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Everything below here is old
+
+
+
+
+## Objective and Approach
 ### Solution
 We have developed a database and web-based API to facilitate data sharing between the principal investigators. The tools were built on Amazon Web Services using managed services for the database (RDS) and elastic load balancing to manage and scale the website.  
 
