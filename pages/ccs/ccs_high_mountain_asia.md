@@ -44,8 +44,54 @@ actions, and policy development.
 ## Jupyter Notebook
 
 
-The objective is to pull NetCDF data from S3 to a Jupyter Notebook environment and proceed to explore 
-those data.
+First we suggest UW researchers sign on to the eScience mailing list.  It's the box on the bottom right-hand side of 
+the front page of the [escience website](http://escience.washington.edu/). You will receive notifications of upcoming
+events like software carpentry and data carpentry and cloud computing courses. 
+
+
+Our objective here is to pull raster data in NetCDF format from S3 to a Jupyter Notebook environment and 
+proceed to explore those data. To do this requires several steps... and we are writing here both for the
+person configuring the environment and the person using the environment. Therefore we suggest bear in mind
+whether you are one, the other or both.
+
+
+As the person building the environment you will secure resources on the cloud and configure JupyterHub. This acts
+like a dispensary of Jupyter Notebook environments for example for a research team or a set of students. 
+
+
+As the person using the environment you will have a sense of what programming language you prefer and what 
+libraries you would like to have pre-installed. You also may wish to install additional libraries in your
+environment. 
+
+
+As the builder you'll need a cloud account. We tend to talk about AWS, Azure and GCP.
+
+
+- Get a cloud instance to work on
+- Follow [Zero To Jupyter Hub](http://zero-to-jupyterhub.readthedocs.io/en/latest/) 
+  - This guide is provided by the Berkeley Institute for Data Science (BIDS)
+  - The guide will help you set up authentication for your JupyterHub customers
+  - It helps you with administration and other follow-on tasks
+- Have your customers start using the system both by building notebooks and by learning how to manage the environment
+
+
+As the customer of the JupyterHub instance you will want to jump in head-first with both feet and try to start breaking things.
+This helps pave the way (once the broken things are fixed) for others to come in to the environment and not be hindered
+by things breaking.  Here are some other notes on getting up to speed...
+
+
+- To manage your environment you may need to open a terminal window from your Jupyter Notebook home page
+  - From here you can issue Linux commands and edit files, particularly batch files and script files
+  - You may need to use the **vi** editor... and the text may be very annoying colors 
+    - Let's fix that: Create a .vimrc file in your home directory (or append to existing) these three lines:
+
+```
+syntax off
+set nohlsearch
+set t_Co=0
+```
+
+Let's go through the steps of installing a new Python package as the JupyterHub customer.
 
 
 ## InSAR
