@@ -220,7 +220,7 @@ costs 2.4 cents per Gigabyte; and this is based on the literal size of the objec
 In contrast a block storage device, i.e. a file system costs 10 cents per Gigabyte per month; but for 
 its designated volume regardless what is on that volume. A 30% full 1 Terabyte drive will cost $100 per 
 month on the Amazon cloud (ten cents per Gigabyte). Take a snapshot of that drive and it will occupy 
-only 300 GBytes because the volume is only 30$ full. This snapshot object will cost only $7.20 per
+only 300 GBytes because the volume is only 30% full. This snapshot object will cost only $7.20 per
 month in object storage. This idea also applies to special snapshots that capture the state of 
 an operating system. These snapshots -- called *machine images* -- can be stored in object storage
 when the machine (computer) is not needed. Here a powerful computer might cost $1 per hour whereas
