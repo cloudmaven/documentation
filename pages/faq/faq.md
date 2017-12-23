@@ -240,10 +240,11 @@ And if you find a different cloud you like better then use that.
 
 
 * The University of Washington has introductory material 
-[here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research").
-* Learn about using Python to control a cloud computing environment [here](http://boto3.readthedocs.io/en/latest/ "Boto 3").
-* Learn about [available machines (on the AWS Cloud)](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-demand rates").
-
+[here](https://itconnect.uw.edu/research/cloud-computing-for-research/ "Intro to cloud computing for research")
+* Learn about using Python to control a cloud computing environment [here](http://boto3.readthedocs.io/en/latest/ "Boto 3")
+* Learn about [available machines from Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)
+* Learn about [available machines on the Google Cloud Platform](https://cloud.google.com/compute/docs/machine-types)
+* Learn about [available machines from Amazon Web Services](http://aws.amazon.com/ec2/pricing/on-demand "AWS EC2 on-demand rates")
 
 
 
@@ -255,7 +256,22 @@ is our originating organization at the University of Washington.
 We are here to help you with data science.
 
 
-## Q: What are the skills I need to pick up?
+## Q: Are cloud computers limited in connection speed or machine power? 
+
+
+We contend that the cloud does not really lag behind in this regard.  Selecting the Azure cloud for an example: 
+The M128s machine (December 2017) has 128 cores and 2 Terabytes of RAM. Azure also features both RDMA and 
+Infiniband inter-node communication technologies. 
+
+
+A strength of the cloud in fact is that it keeps pace with technology. Purchasing today's state-of-the-art 
+computer means using that machine until either it fails or you replace it; both time-consuming propositions. 
+In contrast every six months or so the cloud features a whole new generation of hardware with more computing power 
+per node and faster interconnect technology. Migrating into these new options is straightforward and generally
+not time-consuming.
+
+
+## Q: What are the skills I need to pick up to use the cloud?
 
 
 You will need to understand account management, security, cost estimation, and computing scale; all in relation to your 
@@ -265,6 +281,7 @@ not too bad; and it is even pretty fun.
 
 
 ****************************
+
 
 When you purchase a computer you are (apparently) done paying for it and you can use it until it fails; hopefully for 2 or 
 more years. Then you need to purchase another computer. This is the traditional computing model and it makes sense if your
