@@ -43,8 +43,8 @@ environment that scales with demand in an elastic manner.
 * You can easily build a web presence and use that to share data with collaborators or with the public
 
 
-## Q: As I am accustomed to my computing environment *persisting*... how do I think about the 
-## cloud?  It seems that my work could *evaporate* at any moment!!!
+## Q: As I am accustomed to my computing environment *persisting*... how do I think about the cloud?  
+### (It seems that my work could *evaporate* at any moment!!!)
 
 
 Cloud platforms are designed and operated as multiply-redundant persistent resources.  
