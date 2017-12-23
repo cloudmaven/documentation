@@ -43,27 +43,38 @@ environment that scales with demand in an elastic manner.
 * You can easily build a web presence and use that to share data with collaborators or with the public
 
 
-## Q: As I am accustomed to my computing environment *persisting*... how do I understand the 
+## Q: As I am accustomed to my computing environment *persisting*... how do I think about the 
 ## cloud?  It seems that my work could *evaporate* at any moment!!!
 
 
-Cloud platforms are designed and operated as multiply-redundant persistent resources.  What takes some 
-getting used to is the scale up / scale down model of cloud operation. Let's consider these in turn 
-for a moment. 
+Cloud platforms are designed and operated as multiply-redundant persistent resources.  
+
+
+This is rather novel and important and is therefore worth repeating so allow us to phrase it another way: 
+The traditional *on premise* computing environment persists as a physical object but eventually it wears out 
+and fails. Say it has a lifespan of some 4 or 5 years.  On the cloud a computing environment is created and 
+maintained with multiple redundancy in perpetuity.  There are no dedicated computers and therefore nothing breaks 
+fails (or evaporates).  Under this model the effort on your part shifts to cost management; paying for these 
+resources under the utility model. 
+
+
+This approach to computing is fairly novel and involves a shift in thinking. Another aspect that
+goes with this and also takes some getting used to is the scale up / scale down model of cloud operation. 
+Let's consider these in turn for a moment. 
 
 
 When executing a computational task on a small cluster of computers you have an idea of how long it will 
 take to finish.  Modifying this task to run on a larger cluster might require time and effort; but comes
-with the benefit of finishing faster. On the cloud the 'larger cluster' can be enormous; it can be instantly
-available; and costs the same per compute task as the small cluster. That is: On the cloud ten computers 
-running for 100 hours costs the same as 1000 computers running for one hour broadly speaking. 
-This is called scaling *up*.
+with the benefit of finishing faster. On the cloud the 'larger cluster' can be enormous; it is instantly
+available; and it costs the same per compute task as the small cluster. Why? Because on the cloud ten 
+computers running for 100 hours costs the same as 1000 computers running for one hour broadly speaking. 
+This is scaling *up*.
 
 
 When you are developing code you may not need powerful computers. On the cloud you move your work environment 
 to a small cheap computer. You can also **Stop** your cloud computer when it is not in use -- say over the 
 weekend -- so that you are paying only a few cents to store the digital image of your work environment. 
-Everything can be restarted again in a matter of a few minutes as needed. This is called scaling *down*.
+Everything can be restarted again in a matter of a few minutes as needed. This is scaling *down*.
 
 
 
