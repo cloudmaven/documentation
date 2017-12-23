@@ -89,23 +89,35 @@ Reproducible research. Data science. Collaboration. Data sharing. Data security.
 
 
 If you can do all of your research computing on a local machine -- say on your laptop -- then perhaps you don't need to
-migrate to the cloud.  On the other hand: Read further if your computing environment is in some way hindering progress 
-in your research.  
+migrate to the cloud.  There is some learning involved; and there are monthly bills; and while you need not pay overhead
+on your cloud computing (at UW) you do need to manage your account. So if your computing environment is not an impediment
+to progress for the foreseeable future then we suggest "If it ain't broke don't fix it." 
 
 
-If you do not feel you can spare some time (say a few days, say) to learn the ins and outs of cloud technology then the 
-cloud may not be for you. The cloud can feel a little rough around the edges like many emerging technologies. 
-Again if you have an unlimited supply of patience; if you do not need your compute tasks to finish any sooner then 
-the time investment to learn the cloud may not be worthwhile.
+On the other hand: Read further if your computing environment is in some way hindering progress in your research.  
 
 
-If you purchase a block of computers and run them full blast for upwards of 60% of the time: They may be more cost-effective 
-than the same computing power rented on the public cloud. At 50% utilization and below the public cloud will start to 
-break even and become *more* cost-effective than purchasing and operating your own computers.
+If you do not feel you can spare some time (a few days to get started at the outset) to learn the ins and outs of cloud 
+technology then the cloud may not be for you. The cloud can feel a little rough around the edges like many emerging technologies 
+will; so you would need to be prepared for that. Without that headspace doing a migration to the cloud will be a painful
+and potentially disastrous experience; so beware!
 
 
-Data security does not belong in this category. The public cloud is extremely secure in comparison with privately-held
-resources; again with the caveat that one must learn how to manage a secure environment on said cloud.
+If you are doing very compute-intensive research... for example suppose you purchase a block of computers and run them full 
+blast for upwards of 60% of the time for four solid years (and you don't need the results any faster than they come) -- then
+operating your own hardware may well be more cost-effective than the same computing power rented on the public cloud. 
+
+
+At 50% utilization and below that the public cloud will start to break even and other factors will come into consideration;
+mostly involving how you and your research group spend their time. Cloud break-even with on premise computers (that you own)
+will vary from one group to another; and we can help you with this evaluation. 
+
+
+Data security does not belong in the category of 'what is the cloud not good for?'. The reason for this is that the 
+public cloud is extremely secure in comparison with privately-held resources; again with the caveat that one must learn 
+how to manage a secure environment on said cloud. However even in this case we recommend paying attention to what the cloud
+makes possible, particularly with respect to data-sharing and collaboration. Entry-level cloud experimentation is 
+easy to try out and quite cheap.
 
 
 ## Q: How do I get Research Credits on the public cloud? 
@@ -115,29 +127,31 @@ Both [Microsoft](http://https://www.microsoft.com/en-us/research/academic-progra
 [Amazon Web Services](https://aws.amazon.com/research-credits/) 
 -- two of the major public cloud vendors in addition to Google -- 
 may choose to provide free credits to research teams after evaluating a short proposal. 
+Google might respond positively to a direct communication which would amount to the same thing but there is no
+official program running for transitional cloud research credits for the Google Cloud Platform at this time.
 
 
-### Q: How much funding is available?
+### Q: How much funding is available in these programs?
 
 
-Thousands to tens of thousands of dollars worth of cloud credits.
+Thousands to tens of thousands of dollars worth of cloud credits. (No actual dollars, to be clear.)
 
 
 ### Q: What should my proposal emphasize to increase my chances of receiving an award? 
 
 
-Three things. First you are interested in going 'all in' on cloud computing. 
-Second you understand and appreciate the advantages of using the cloud as enumerated thus and such.
-Third that you understand and regard an award to be transitional support to help you evaluate the cloud 
-platform (i.e. you do not regard a cloud credit grant as an ongoing source of funding). 
-This plus a thoughtful summary of your research we find works well.
+Three things beyond outlining the computational nature of your research. First that you are interested in going 
+'all in' on cloud computing.  Second you understand and appreciate the advantages of using the cloud as enumerated thus 
+and such. In other words: Indicate that the cloud does stuff you need to do.  Third that you regard an award to be 
+transitional support to help you evaluate the cloud platform.  That is: You do not regard a cloud credit grant as 
+an ongoing source of funding.  This plus a summary of your research and why it is cool we find works well.
 
 
 ### Q: Why do these companies give out these grants? 
 
 
-They want cutting edge researchers such as yourself to invest in their technology. They realize it can be
-a big leap to understand and use their cloud platform; so they are essentially providing an incentive to
+Mindshare. They want cutting edge researchers such as yourself to invest in their technology. They realize it 
+can be a big leap to understand and use their cloud platform; so they are essentially providing an incentive to
 try it out on a serious (computational) scale.
 
 
@@ -146,11 +160,12 @@ try it out on a serious (computational) scale.
 
 
 - Archival is $50 per Terabyte per year: With a few hours latency to pull items out of storage
-- Object storage runs $300 per Terabyte per year: Instantaneous access to any stored object
-- A powerful computer will cost you $0.50 per hour
-- Attaching a 1 Terabyte disk volume to that computer will cost you an additional 100.00 per month
+- Object storage runs $0.30 per GByte per year; or if you like $300 per Terabyte per year.  This means instantaneous access to any stored object.
+- A powerful computer will cost you $0.50 per hour.
+- Attaching a 1 Terabyte disk volume to that computer will cost you an additional $100 per month
 - Uploading data to the cloud is free
 - Downloading data from the cloud costs $0.10 per Gigabyte
+- Anything you are not activel using (think system and data drives) can be placed in object storage (explained below) to drastically reduce operating cost.
 
 
 ### Q: Why do I have to pay so much to get my own data back?
@@ -158,8 +173,9 @@ try it out on a serious (computational) scale.
 
 The short answer is that data ingest is free and egress is expensive because cloud providers like to
 weight the cost in favor of extended tenancy. The fact is they like having your business. But this is 
-not really a bad situation for a cloud practitioner.  It comes down to another shift in reference frame. 
+not really a bad situation for a cloud practitioner.  It comes down to another shift in perspective.
 The cloud paradigm raises the question 'Do I *need* to get my data back?' and 'What is *back* anyway?' 
+
 
 
 ### Q: What if my funding agency requires me to keep my data around for five years? 
@@ -168,6 +184,47 @@ The cloud paradigm raises the question 'Do I *need* to get my data back?' and 'W
 We suggest multiplying your expected data volume by the archival rate for five years. Budget that and 
 pay it in advance. At the end of that time you can allow the data to evaporate... or you may find it 
 has some further value to your community; in which case it is in an ideal location.
+
+
+## Q: What is meant by **object storage**?
+
+
+This question is really about cost management on the cloud -- the central idea -- while at the same
+time explaining this useful bit of cloud jargon '*object storage*'.
+
+
+Object storage is a key concept in using the cloud because it is what makes cloud computing cost-effective. 
+There is a really [nice description of it on Wikipedia](https://en.wikipedia.org/wiki/Object_storage) that we
+recommend reading; but in brief: Suppose your data are represented by a set of luggage. When you place 
+those data on a file system the luggage is open and the contents are all readily accessible. You can 
+instantly reach into any pocket of any garment or grab the toothbrush or the phone charger.
+That's a file system. Object storage in this metaphor is a coat check counter. The whole piece of luggage 
+goes in and you can get it back out whenever you like.  But you can't use it interactively the way you can 
+with the file system. The object that you check might be a single file or it might be a tar ball of an
+entire file system. Object storage does not have any practical restriction on object size.
+
+
+Now why does this make the cloud cost-effective? Because the cloud also has file systems (aka 'block
+storage') available for use; and just like on any computer this is how you store and manage your software 
+and data. The block storage is mounted on a cloud computing instance precisely as an attached drive.
+This is not an option with object storage. 
+
+
+When not in use the cloud makes it very easy to bundle digital resources from block storage into object storage 
+where the cost to maintain them is significantly less. Object storage is cheap whereas block storage (file systems) 
+cost more. In the metaphor it is comparing the cost of a coat check to the cost of a hotel room.  
+
+
+Here is a specific example to help illustrate the difference in cost.  For one month object storage 
+costs 2.4 cents per Gigabyte; and this is based on the literal size of the object being stored. 
+In contrast a block storage device, i.e. a file system costs 10 cents per Gigabyte per month; but for 
+its designated volume regardless what is on that volume. A 30% full 1 Terabyte drive will cost $100 per 
+month on the Amazon cloud (ten cents per Gigabyte). Take a snapshot of that drive and it will occupy 
+only 300 GBytes because the volume is only 30$ full. This snapshot object will cost only $7.20 per
+month in object storage. This idea also applies to special snapshots that capture the state of 
+an operating system. These snapshots -- called *machine images* -- can be stored in object storage
+when the machine (computer) is not needed. Here a powerful computer might cost $1 per hour whereas
+the machine image might require only 8 Gigabytes; so the per month cost goes from $720 to 19 cents.
 
 
 ## Q: Which cloud should I use? 
