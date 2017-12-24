@@ -24,7 +24,7 @@ entries:
 
   - title: FAQ
     output: web, pdf
-    url: /faq.html
+    url: faq.html
 
   - title: Cloud Core
     output: web, pdf
