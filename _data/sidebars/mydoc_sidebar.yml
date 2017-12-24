@@ -22,9 +22,9 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: FAQ
-    output: web, pdf
-    url: faq.html
+    - title: FAQ
+      output: web, pdf
+      url: faq.html
 
   - title: Cloud Core
     output: web, pdf
