@@ -24,6 +24,8 @@ entries:
 
   - title: FAQ
     url: faq.html
+    output: pdf
+    type: frontmatter
 
   - title: Cloud Core
     output: web, pdf
