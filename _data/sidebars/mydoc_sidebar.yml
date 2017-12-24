@@ -23,13 +23,8 @@ entries:
       type: frontmatter
 
   - title: FAQ
-    output: web, pdf
+    output: pdf
     url: /faq.html
-    folderitems:
-
-    - title: What is the cloud?
-      url: /faq.html
-      output: web, pdf
 
   - title: Cloud Core
     output: web, pdf
