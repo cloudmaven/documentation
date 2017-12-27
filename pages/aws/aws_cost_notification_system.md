@@ -49,10 +49,31 @@ Key Pairs associated with EC2 instances.
 - **Policy**: A text document that uses a particular (JSON) syntax to permit or restrict actions. Policies are atomic.
 
 
-### What is the story line here?
+### Caveat emptor: How accurate is this method?
 
 
-Now that we have some reference terminology let's go ahead and describe what we are going to assemble.
+Short answer: Pretty accurate; but we're not completely satisfied with our results yet. Here is an 
+example from December 2017 for two accounts showing pretty good agreement and only one peculiar discrepancy.
+
+
+| Date | Account 1 | Cost Explorer | Account 2 | Cost Explorer |
+| ------- |: ---------- :|: ------------ :|: ----------- :| ----------- :|
+| 16-Dec|130.19|127.01|19.87|18.6|
+| 17-Dec|101.39|101.45|22.25|20.8|
+| 18-Dec|101.47|101.41|19.2|17.75|
+| 19-Dec|102.53|102.41|1.45|21.25|
+| 20-Dec|99.13|102.41|20.4|20.06|
+| 21-Dec|101.48|99.3|18.42|17.16|
+| 22-Dec|99.3|99.29|18.39|17.02|
+| 23-Dec|99.26|99.25|18.53|17.07|
+| 24-Dec|99.21|99.2|18.43|17|
+| 25-Dec|99.33|99.34|18.46|17.04|
+| 26-Dec|99.29|99.29|18.72|17.28|
+
+
+So for the first account our system gave $1132.58 for the period whereas the cost explorer gave 1130.36.
+In the second case it was 194.12 compared to 201.03. 
+
 
 
 #### The situation

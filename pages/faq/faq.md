@@ -1,7 +1,7 @@
 ---
 title: Frequently Asked Questions
 keywords: cloud, basics
-last_updated: December 18, 2017
+last_updated: December 27, 2017
 tags: [research_computing]
 summary: "What you need to know about using the public cloud for research"
 sidebar: mydoc_sidebar
@@ -16,7 +16,9 @@ folder: pages
 
 
 Brief answers to common questions on migrating research computing to the cloud:
-What's possible, what are the pitfalls.  
+What's possible, what are the pitfalls.   If you are interested in using the cloud
+for coursework -- particularly JupyterHub technology -- please see our additional
+content found in the left sidebar under **Curriculum**.
 
 
 
@@ -24,57 +26,62 @@ What's possible, what are the pitfalls.
 
 
 The cloud is a massive, secure, reliable ensemble of computers, storage, networking and computing 
-services available for public use on a utility payment basis. The cloud is a hence a computing 
-environment that scales with demand in an elastic manner.
+services available for public use on a utility payment basis. The cloud is hence a computing 
+environment that scales with demand in an elastic manner. It's fairly new and it gets you out
+of the business of dealing with computer hardware; so it can save you time. On the public cloud...
 
 
-* You pay for the compute power that you need / use
+* you pay for the compute power that you need / use
 
-* You do not purchase, maintain, update, patch, service and/or recycle computer hardware 
+* you do not purchase, maintain, update, patch, service and/or recycle computer hardware 
 
-* You access computing at unlimited scale; from one core to tens of thousands depending on your needs
+* you access computing at unlimited scale; from one core to tens of thousands depending on your needs
 
-* You do not have to wait for cloud resources to become available
+* you do not have to wait for cloud resources to become available; they always are
 
-* You run your computing jobs to completion without interruption
+* you run your computing jobs to completion without interruption
 
-* You purchase services such as databases without needing to install and maintain them
+* you purchase services such as databases without needing to install and maintain them
 
-* You can easily build a web presence and use that to share data with collaborators or with the public
+* you can easily build a web presence and use that to share data with collaborators or with the public
 
 
 ## Q: As I am accustomed to my computing environment *persisting*... how do I think about the cloud?  
-### (It seems that my work could *evaporate* at any moment!!!)
+### (It sounds like on a cloud my work could *evaporate* at a moment's notice!!!)
+
+<br>
 
 
 Cloud platforms are designed and operated as multiply-redundant persistent resources.  
 
 
-This is rather novel and important and is therefore worth repeating so allow us to phrase it another way: 
-The traditional *on premise* computing environment persists as a physical object but eventually it wears out 
-and fails. Say it has a lifespan of some 4 or 5 years.  On the cloud a computing environment is created and 
-maintained with multiple redundancy in perpetuity.  There are no dedicated computers and therefore nothing breaks 
-fails (or evaporates).  Under this model the effort on your part shifts to cost management; paying for these 
-resources under the utility model. 
+This is novel and key; therefore allow us to phrase it another way: 
+Traditional *on premise* computing persists as physical objects, say under your desk. Eventually these devices
+wear out and fails.  Say your computers have a lifespan of some 4 or 5 years; so you periodically have a
+replace/ugrade task to deal with.  On the cloud a computing environment is created and maintained with multiple 
+redundancy, in perpetuity.  There are no dedicated computers. Nothing breaks or fails or evaporates.  Under 
+this model the effort on your part shifts to cost management; paying for these resources under the utility model. 
+The actual bits may migrate (securely) across physical systems in the cloud; but this is done for you.
 
 
-This approach to computing is fairly novel and involves a shift in thinking. Another aspect that
-goes with this and also takes some getting used to is the scale up / scale down model of cloud operation. 
-Let's consider these in turn for a moment. 
+This approach to computing involves shifts in thinking. Not everyone is ready for that today; so we 
+advocate migration to the public cloud for folks who are conceptually ready and for whom it makes fiscal 
+sense; and / or to whom there are other big advantages. These include the ability to scale resources; so let's 
+describe that briefly. 
 
 
-When executing a computational task on a small cluster of computers you have an idea of how long it will 
-take to finish.  Modifying this task to run on a larger cluster might require time and effort; but comes
-with the benefit of finishing faster. On the cloud the 'larger cluster' can be enormous; it is instantly
-available; and it costs the same per compute task as the small cluster. Why? Because on the cloud ten 
-computers running for 100 hours costs the same as 1000 computers running for one hour broadly speaking. 
-This is scaling *up*.
+When executing a computational task on a single computer or on a cluster you have an idea of how long it 
+will take.  Perhaps it takes some time; and perhaps these are shared resources so you have a certain wait
+time before they are available to you. Modifying this task to run on a larger cluster means it will finish 
+faster. On the cloud a 'large cluster' can be enormous and instantly available; and as a utility it costs 
+the same per compute task as the small cluster. That is, on the cloud ten computers running for 
+100 hours costs the same as 1000 computers running for one hour broadly speaking.  
 
 
-When you are developing code you may not need powerful computers. On the cloud you move your work environment 
-to a small cheap computer. You can also **Stop** your cloud computer when it is not in use -- say over the 
-weekend -- so that you are paying only a few cents to store the digital image of your work environment. 
-Everything can be restarted again in a matter of a few minutes as needed. This is scaling *down*.
+Conversely when you are developing code you may not need a large cluster of powerful computers. On the cloud 
+you would move your work environment to a small cheap computer. You can also **Stop** your cloud computer 
+when it is not in use, say over the weekend. You pay only a few cents to store a digital image of your work 
+environment.  Everything can be restarted again in a matter of a few minutes on Monday.
 
 
 
