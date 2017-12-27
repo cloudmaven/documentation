@@ -65,6 +65,8 @@ The 'Account' column is the daily spend our software generates for an AWS accoun
 The **Cost Explorer** tool is available through the AWS browser console; so that is our reference for
 what the system thinks we spent for the day.  Values are in US dollars.
 
+<br>
+
 
 | Date | Account 1 | Cost Explorer | Account 2 | Cost Explorer |
 | ------- |: ------------ :|: ------------ :|: ------------ :| ------------ :|
@@ -80,6 +82,8 @@ what the system thinks we spent for the day.  Values are in US dollars.
 | 25-Dec|99.33|99.34|18.46|17.04|
 | 26-Dec|99.29|99.29|18.72|17.28|
 
+
+<br>
 
 
 For the first account *our* approach gave $1132.58 for the period whereas the cost explorer gave 1130.36.
@@ -107,12 +111,6 @@ You will see at a glance how much you are burning to use the cloud. You will als
 in spending, for example due to unauthorized access.  This is measure of security against accidental cost overruns.
 
 
-## Tutorial
-
-
-This segment walks the builder through the process. 
-
-
 ### The *how* of this end result 
 
 
@@ -128,11 +126,40 @@ The DLT billing record is updated only twice daily.  One approach is to use this
 generates your bill. However we have deprecated this approach in favor of simply using AWS CloudWatch. This is an 
 alarm that goes off every day and triggers a Lambda function that tallies up and emails your daily spend. 
 Said Lambda function has permission to scan through the DLT billing record (which is comma separated text) to do 
-its sums.  It is also doing account breakdown sums based on resource tagging.  The costs of untagged resources are 
-also tallied. Notice therefore that you receive your total burn broken into a sum of tagged and un-tagged resources.
-If resource tagging is an important part of your cost management (perhaps you are conducting two different 
-research projects under one AWS/DLT account) then the *untagged* cost will give you an idea of what costs you
-are currently not tracking.  
+its sums.  It is also doing account breakdown sums based on resource tagging.  Let's digress on this for a moment.
+
+
+hobie would like to point out, ma'am, that he's not sure we made it clear that the account owner needs to 
+turn on the S3 bucket access... but he's not sure how that goes now. perhaps it is quite simple?
+
+
+#### What is resource tagging and why do I care? 
+
+
+The costs of untagged resources are tallied and reported in the body of your burn email.  This is based on
+the **Owner** tag, a key which should have a value equal to one of your IAM User IDs. By summing by Owner
+you can determine cost/burn over any time period for a user or set of users.  Perhaps you are running two 
+different research projects using one AWS/DLT account. The tagged sums help you split your total bill; and 
+the *untagged* cost will give you a sense of how much you are spending that is untraceable.
+
+
+#### What is auto-tagging?
+
+
+hobie would like to suggest a sequence of events for integrating auto-tagging
+
+
+- Replace this section with a short description of auto-tagging 
+- Re-name the AWS 'Cost Tracking' page to 'Auto-tagging resources'
+- Rewrite that page to harmonize with this one
+- Combine that page with this one and blow that page away
+
+
+
+## Procedural to set up the cost (burn) notification email
+
+
+### Intro
 
 
 From a builder's point of view we take the following steps: 
@@ -660,9 +687,9 @@ def lambda_handler(event, context):
     print(event)
     # print("Received event: " + json.dumps(event, indent=2))
     # kilroy mod: change the two keys in the following line
-    s3 = boto3.client('s3', aws_access_key_id='AKIAJWY2HDSR47EFNU2Q', aws_secret_access_key='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')
+    s3 = boto3.client('s3', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
     # Get the object from the event and show its content type
-    bucket = '879605964811-dlt-utilization'
+    bucket = '123456789012-dlt-utilization'
     
     #key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
 
@@ -712,7 +739,7 @@ def lambda_handler(event, context):
             cost_agg_str += ('\n ~~~ weekly cost summary: ~~~ \n' + weekly_cost_agg_str)
 
         # kilroy mod: change the access keys in the following line:
-        sns = boto3.client('sns', aws_access_key_id='AKIAJWY2HDSR47EFNU2Q', aws_secret_access_key='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')
+        sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 
         # kilroy mod: In the response = sns.publish( there are four things to do:
         #   kilroy mod: TopicArn: Change the account number (notice it is 123456789012)
