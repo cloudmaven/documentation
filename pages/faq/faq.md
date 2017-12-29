@@ -96,9 +96,9 @@ Reproducible research. Data science. Collaboration. Data sharing. Data security.
 
 
 If you can do all of your research computing on a local machine -- say on your laptop -- then perhaps you don't need to
-migrate to the cloud.  There is some learning involved; and there are monthly bills; and while you need not pay overhead
+migrate to the cloud.  There is some learning involved; and there are monthly bills; and while you need not pay F&A overhead
 on your cloud computing (at UW) you do need to manage your account. So if your computing environment is not an impediment
-to progress for the foreseeable future then we suggest "If it ain't broke don't fix it." 
+to research progress for the foreseeable future then we suggest 'If it ain't broke don't fix it.' 
 
 
 On the other hand: Read further if your computing environment is in some way hindering progress in your research.  
@@ -125,6 +125,15 @@ public cloud is extremely secure in comparison with privately-held resources; ag
 how to manage a secure environment on said cloud. However even in this case we recommend paying attention to what the cloud
 makes possible, particularly with respect to data-sharing and collaboration. Entry-level cloud experimentation is 
 easy to try out and quite cheap.
+
+
+A final comment on mindset. One line of reasoning goes as follows: 'if I spend $4000 on the cloud -- say running a massive 
+compute task -- then that $4000 is spent, gone. *Whereas* if I had spent $4000 on a computer... and run the same job to
+completion... then I still have the computer and I can run more jobs on it because it isn't gone!' While this is in a sense
+accurate it is also glosses over our main assertion: A careful cost comparison allows you to make an informed choice
+on whether the cloud makes sense for you.  Just to begin with: $4000 is equivalent to more than 8 years of compute time 
+on a modestly powerful computer (based on spot rates on AWS for an m5.xlarge with 4 vCPUs).  We work with researchers
+at UW to make accurate comparisons.
 
 
 ## Q: How do I get Research Credits on the public cloud? 
@@ -166,7 +175,9 @@ try it out on a serious (computational) scale.
 ## Q: How much does the cloud cost? 
 
 
-- Archival is $50 per Terabyte per year: With a few hours latency to pull items out of storage
+- Archival is $50 (or less) per Terabyte per year; and note these qualifiers on retrieval from archives
+  - The wait time for retrieval is a few hours and runs $10 per Terabyte...
+  - ...and you can pay more to retrieve archival data in minutes
 - Object storage runs $0.30 per GByte per year; or if you like $300 per Terabyte per year.  This means instantaneous access to any stored object.
 - A powerful computer will cost you $0.50 per hour.
 - Attaching a 1 Terabyte disk volume to that computer will cost you an additional $100 per month
