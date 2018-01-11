@@ -1,4 +1,149 @@
 
+# check if the line belongs to <time range>
+def dayChecker(line_elements, idx_dt, lo_day_bdry, hi_day_bdry):
+    '''
+    when parsing through the cost info file, this function checks if a certain line contains info of the most recent 24 hrs
+    ---
+    arg:    
+        array line_elements : a line of a csv file
+        int idx_dt : the index of datetime
+        int lo_day_bdry: days-ago of time range to consider
+        int hi_day_bdry: days-ago of time range to consider, other extreme
+    return:
+        bool  
+    '''
+    line_dt = line_elements[idx_dt]
+    now_dt = datetime.datetime.utcnow()
+    time_elapsed = now_dt - datetime.datetime.strptime(line_dt, '%Y-%m-%d %H:%M:%S')
+    if lo_day_bdry <= time_elapsed.days <= hi_day_bdry : return True
+    return False
+
+### check if the resource is untagged, if true, print a tag, if not, print False
+def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
+    '''
+    grab tags
+    ---
+    arg:    
+        array line_elements : a line of a csv file
+        int idx_tag1-idx_tag4 : the index of tag
+    return:
+        if there is a tag, return a string of the tag
+        if not return bool False
+    '''
+    # kilroy does not like this code returning mixed types
+    if line_elements[idx_tag1]: return line_elements[idx_tag1]
+    if line_elements[idx_tag2]: return line_elements[idx_tag2]
+    if line_elements[idx_tag3]: return line_elements[idx_tag3]
+    if line_elements[idx_tag4]: return line_elements[idx_tag4]
+    return False
+
+
+### aggregate cost by tag and product name
+def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblend):
+    '''
+    aggregate blended and unblended cost by product name
+    ---
+    arg:    
+        array line_elements : a line of a csv file
+        dict aggs : a dictionary like this: {{tag1: {}}, {tag2: {}}, {tag3: {}}}
+        int idx_pname, idx_dollar_blend, idx_dollar_unblend : the index of product name, quantity of blended and unblended cost
+    return:
+        updated aggs with aggregated cost
+    '''
+    # product name
+    pname = line_elements[idx_pname]
+    # cost
+    cost_blend = float(line_elements[idx_dollar_blend])
+    cost_unblend = float(line_elements[idx_dollar_unblend])
+    if tag in aggs:
+        aggs[tag]['total_blended_cost'] += cost_blend
+        aggs[tag]['total_unblended_cost'] += cost_unblend
+        if pname in aggs[tag]:
+            aggs[tag][pname]['blended_cost'] += cost_blend
+            aggs[tag][pname]['unblended_cost'] += cost_unblend
+        else:
+            aggs[tag][pname] = {'blended_cost': cost_blend,
+                            'unblended_cost': cost_unblend}
+            
+    else:
+        aggs[tag] = {'total_blended_cost': cost_blend,
+                     'total_unblended_cost': cost_unblend,
+                    pname: {'blended_cost': cost_blend,
+                    'unblended_cost': cost_unblend}}
+
+### cost aggregation parser for days-ago-based time range
+def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
+    '''
+    parse through the csv file and generate daily cost summary
+    ---
+    arg:    
+        str file_path : path to the cost file
+        lo_day_bdry: days-ago time range to consider
+        hi_day_bdry: days-ago time range to consider, other limit
+    return:
+        an array contains daily cost summary
+        1, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        2, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        3, float total_blend;
+        4, float total_unblend;
+        5, float total_tagged_blend;
+        6, float total_tagged_unblend;
+        7, float total_untagged_blend;
+        8, float total_untagged_unblend
+    '''
+    untagged, aggs = {}, {}
+    total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
+    total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
+    #start_date = 0
+
+    with open('/tmp/' + file_path, 'r', newline = '\n') as csvfile:
+        lines = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for idx, line in enumerate(lines):
+            if idx == 0:
+                col_dict = {}
+                for i, n in enumerate(line):
+                    col_dict.update({n.strip(): i})
+                # get index for tags (user:Name, user:Project)
+                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
+                # get index for datetime
+                idx_dt = col_dict['UsageEndDate']
+                # get index for ProductName
+                idx_pname = col_dict['ProductName']
+                # 'use quantity' has two types: blended and unblended
+                idx_dollar_blend = col_dict['BlendedCost']
+                idx_dollar_unblend = col_dict['UnBlendedCost']
+                # for untagged resources
+                idx_resource = col_dict['ResourceId']
+            else:
+                # kilroy does not follow the next bit of logic... clearly tied to DLT pathology but unclear if this is effective
+                # avoid parse the last few lines
+                if line[idx_pname]:
+                    # day boundaries refer to some interval in the past, as in days-ago
+                    # lo_day_bdry and hi_day_bdry were traditionally 0 and 0 to give one day of recent results
+                    # make them 3 and 4 to look at a two-day range 3 days ago for example
+                    if dayChecker(line, idx_dt, lo_day_bdry, hi_day_bdry):
+                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
+                        total_blend += float(line[idx_dollar_blend])
+                        total_unblend += float(line[idx_dollar_unblend])
+                        if tag:
+                            Agg(line, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblend)
+                            total_tagged_blend += float(line[idx_dollar_blend])
+                            total_tagged_unblend += float(line[idx_dollar_unblend])
+                        else:
+                            total_untagged_blend += float(line[idx_dollar_blend])
+                            total_untagged_unblend += float(line[idx_dollar_unblend])
+
+                            if line[idx_resource] in untagged:
+                                untagged[line[idx_resource]]['total_blended_cost'] += float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] += float(line[idx_dollar_unblend])
+                            else:
+                                untagged[line[idx_resource]] = {}
+                                untagged[line[idx_resource]]['total_blended_cost'] = float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] = float(line[idx_dollar_unblend])
+    return [untagged, aggs, total_blend, total_unblend, \
+            total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend]
+
+
 ### method composes an email message body 'msg' to be sent to the cost monitoring team
 def ComposeMessage(aggs, untagged, *all_costs):
     '''
