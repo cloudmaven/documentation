@@ -22,6 +22,9 @@ tells you at a glance what you spent on the AWS cloud in the past 24 hours, as i
 ![pic0000](/documentation/images/aws/aws_email_summary.png)
 
 
+To cut to the chase: Skip down to the Installation Recipe section below. 
+
+
 This introductory segment is a brief glossary and a description of what you want to build.
 The subsequent section is the step-by-step of building it. 
 
@@ -59,10 +62,13 @@ Key Pairs associated with EC2 instances.
 ### Caveat emptor: How accurate is this method?
 
 
-Short answer: Pretty accurate; but we're not completely satisfied with our results yet. Here is an 
-example from December 2017 for two accounts showing pretty good agreement and only one peculiar discrepancy.
-The 'Account' column is the daily spend our software generates for an AWS account provided through DLT. 
-The **Cost Explorer** tool is available through the AWS browser console; so that is our reference for
+Short answer: Pretty accurate; but this solution is still under development. In the table below we 
+compare some results that show we are in the ballpark. However until DLT fixes up their reporting rate
+we notice some pathologies and report the burn from two days ago to avoid them. 
+
+
+In this table the 'Account' column is the daily spend our software generates for an AWS account provided through DLT. 
+The **Cost Explorer** tool is available through the AWS browser console. That is our reference for
 what the system thinks we spent for the day.  Values are in US dollars.
 
 <br>
@@ -156,13 +162,13 @@ hobie would like to suggest a sequence of events for integrating auto-tagging
 
 
 
-## Procedural to set up the cost (burn) notification email
+## Installation Recipe: A procedural to set up cost (burn) notification email
 
 
 ### Intro
 
 
-From a builder's point of view we take the following steps: 
+Steps: 
 
 
 - Create a role that has assigned to it a single policy (policies grant permissions to take action)
@@ -172,23 +178,22 @@ From a builder's point of view we take the following steps:
 - Create an SNS topic and attach email subscribers to that topic
 
 
+##### Pro Tip
 The DLT billing record S3 bucket has a standardized name based on your account ID '123456789012':
 **123456789012-dlt-utilization**.  This bucket is in US-East-1 (N.Virginia) so we do all of the 
-cost notification building in that region.  
+cost notification building in that region.  Make sure this is the region shown in the AWS console
+at the upper right.
 
 
-For our purposes let us assume an identifier strong '**kilroy**'.  As we are building a cost 'burn'
-notification email let's use the string '**kilroy_burn**'.  The lambda will be named kilroy_burn_lambda.
-The SNS topic will be kilroy_burn_sns. The role will be kilroy_burn_role.  Again these are all in the 
-US-East-1 (N.Virginia) region.
+We will use an identifier string for this task: '**kilroy_burn**'.  
+For example the lambda function will be named kilroy_burn_lambda.
+The SNS topic will be kilroy_burn_sns. The role will be kilroy_burn_role.  
 
 
 The kilroy_burn_lambda service is a Python script with an event handler method. This service is passed
-an event that is parsed in code, eventually leading to parsing and analysis of the contents of the S3 bucket.
+an event that is parsed in code, eventually leading to parsing and analysis of the contents of the S3 bucket
+where the billing data is compiled by DLT.
 
-
-The Python script will aggregate cost information based on tags and resource type (e.g. EC2). 
-For untagged billing the script summarizes cost by resource ID if the resource ID appears in the file. 
 
 
 ### 1 Role
@@ -261,13 +266,9 @@ You should now start receiving daily cost/burn summaries in your Inbox. Verify t
 ### 5 Validation and Debugging
 
 
-- hobie says the following five lines need to be deleted or modified
-  - Upload a file to your S3 billing bucket 123456789012-dlt-utilization
-    - One simple way is to install and configure an app like **S3 Browser**
-    - You will need to use your personal access keys handy for the configure step
-  - This upload creates a new object (the file you uploaded) in the bucket which triggers the lambda function
-    - You should therefore receive in short order an email with your cost summary
-  
+Needed here: 
+A remark on creating a test. (Don't need some other sort of trigger.)
+
 
 #### Cost Explorer
 
@@ -298,25 +299,59 @@ and selecting My Billing Dashboard; then start the Cost Explorer.  In more detai
     - This means you can set print statements in the lambda, save it, trigger it, and diagnose issue by looking at the output
 
 
-hobie again points out the necessity for a non-upload-to-S3 trigger of the lambda...
-
-
 #### Lambda Python code
 
 
-Here is the lambda code circa Dec 27 2017.
+Here is the lambda code circa Jan 2018. Looks for the string 'kilroy mod' to find the six-or-so places where
+you will make changes.
 
 
 
 ```
-# last update: Nov 11, 2017
-# author: Jin Qu
-# this implementation: Rob Fatland (kilroy), Amanda Lehr
-# contact: rob5@uw.edu
+# last update: Jan 10, 2018
+# author: Jin Qu, Amanda Tan Lehr, Rob Fatland
 # programming environment: python3.6
 #
-# To modify this file for use with your own account search for the string 'kilroy mod'
-# kilroy: This example file is made safe for publication using XXXX args
+# Modify this file for use with your own account by searching for the tag 'kilroy mod' (about 7 lines of code)
+#
+# Background
+#   DLT is a company that acts as a distributor for AWS accounts. Assuming you have a DLT version of an AWS
+#   account: DLT can be notified that you want your hourly costs written to an S3 bucket. Their process is 
+#   to append on a ~daily basis lines of billing data for the past day. These lines are appended to a billing 
+#   file that spans one calendar month. This file is in zipped CSV format (CSV means comma-separated-values) 
+#   so it must be unzipped before we can read it. Each line of the file is a separate billing item typically
+#   covering one hour. So the basic algorithm for this code is something like this: 
+#  
+#   Identify which files are going to have relevant timestamped billing lines
+#   Open those files and read through every line looking for timestamps in a desired range (say 2 days ago)
+#     Each cost line in this file will include a resource type (e.g. EC2 instance) and a cost
+#     If the cost line includes an identified Owner of the resource: 
+#       Add the cost to that owner's total
+#     If not: Add the cost to a cumulative 'untagged' sum
+#   Once the lines are all scanned and relevant costs are aggregated...
+#     Create an email message body with a readable summary of all of this
+#     The very first line includes total + tagged + untagged costs
+#     Use the Simple Notification Service at AWS to send this email to interested persons
+# 
+#   Now this all sounds simple enough although as you'll see it requires three hundred plus lines of code.
+#   However there are some 'wild west of the public cloud' warnings that go with it, circa 2018... so we 
+#   strongly suggest reading the next two paragraphs carefully.
+#
+#   First and foremost: If you use this code and insert your own access keys and then publish the code
+#     to a public location like GitHub you are at risk of losing tens of thousands of dollars. This
+#     is because your access keys can be used to spin up other AWS resources en masse; and there are
+#     bots out there that scan GitHub for just this mistake. So keep the working code here in this 
+#     Lambda function and here only. This has happened many many times. If you accidentally publish 
+#     your keys just go disable them and generate new keys; it's quite easy.
+#
+#   Second and less critical: We have found that DLT has a very irregular cost-reporting schedule; so if
+#     you use this code to look at recent billing -- say today or yesterday -- you are very likely to get
+#     an incorrect aggregate spend estimate. In fact you should check your results from this code against 
+#     the AWS Cost Explorer tool. That will take some effort to sort out; but it will give you an idea of 
+#     whether this Lambda is working properly. If it is then you will see your 'recent past' daily burn 
+#     in your Inbox every day; which is intended as a quick glance check that your account is not burning 
+#     huge amounts of your money. 
+#
 
 import json
 import os
@@ -326,20 +361,15 @@ import csv
 import datetime
 import urllib
 
-# kilroy mod: Customize the start notification message if desired
-print('kilroy says: starting kilroy_burn_lambda')
-
-
-# check if today is Sunday (day 6 indexing from 0)
-#   If so return True. Intent: A weekly cost summary will be added to the report
-def IncludeWeeklySummary(): return datetime.datetime.utcnow().weekday() == 6
-
+# search tag 'kilroy mod': The following diagnostic should reflect your idea of a label for this lambda function
+# Look in the Monitoring tab to find the log where this and other print messages appear
+print('kilroy cost burn lambda starting')
 
 ### choose which file(s) to parse
 '''
-    Pick up the most recently updated file;
-    Since the cost info of the first day of a month might appear in the cost file of prior month:
-    for weekly summary two files will be included.
+    Pick up the most recently updated file
+    kilroy there is some broken logic here: Which files based on day of month and time-ago range
+    should be fixed to reflect an arbitrary time range
 '''
 def FilePicker(contents_list):
     file_list, update_dt = [], []
@@ -350,9 +380,6 @@ def FilePicker(contents_list):
             file_list.append(con['Key'])
             update_dt.append(con['LastModified'].timestamp())
     update_dt = sorted(update_dt)
-    # check if the current date is within the first 7 days of a month
-    # If so output the two most recent files to handle month-end discontinuity
-    # If not, output the most recent files
     current_d = datetime.datetime.utcnow().today().day
     if current_d <= 6:
         idx1, idx2 = update_dt.index(update_dt[-1]), update_dt.index(update_dt[-2])
@@ -363,52 +390,26 @@ def FilePicker(contents_list):
     return file_picked
 
 
-# check if the line belongs to today or yesterday's usage
-def dayChecker(line_elements, idx_dt):
+# check if the line belongs to <time range>
+def dayChecker(line_elements, idx_dt, lo_day_bdry, hi_day_bdry):
     '''
-    when parsing through the cost info file, this function checks if a 
-    certain line contains info from the most recent 24 hrs
+    when parsing through the cost info file, this function checks if a certain line contains info of the most recent 24 hrs
     ---
     arg:    
         array line_elements : a line of a csv file
         int idx_dt : the index of datetime
+        int lo_day_bdry: days-ago of time range to consider
+        int hi_day_bdry: days-ago of time range to consider, other extreme
     return:
         bool  
     '''
-    dt_on_line = line_elements[idx_dt]
-    cur_dt = datetime.datetime.utcnow()
-    time_elapsed = cur_dt - datetime.datetime.strptime(dt_on_line, '%Y-%m-%d %H:%M:%S')
-    updated_last24 = False
-    if 0 < time_elapsed.days <= 1: # AMANDA: If date falls between last 24 - 48 hours of trigger
-        updated_last24 = True
-    return updated_last24
+    line_dt = line_elements[idx_dt]
+    now_dt = datetime.datetime.utcnow()
+    time_elapsed = now_dt - datetime.datetime.strptime(line_dt, '%Y-%m-%d %H:%M:%S')
+    if lo_day_bdry <= time_elapsed.days <= hi_day_bdry : return True
+    return False
 
-
-
-# check if the line belongs to the current week
-def weekChecker(line_elements, idx_dt):
-    '''
-    when parsing through the cost info file, this function checks if a certain line 
-    contains info from the most recent 7 days
-    ---
-    arg:    
-        array line_elements : a line of a csv file
-        int idx_dt : the index of datetime
-    return:
-        bool  
-    '''
-    dt_on_line = line_elements[idx_dt]
-    # get current datetime
-    cur_dt = datetime.datetime.utcnow()
-    # caculate days passed
-    time_elapsed = cur_dt - datetime.datetime.strptime(dt_on_line, '%Y-%m-%d %H:%M:%S')
-    pick_this_line = False
-    if time_elapsed.days <= 6:
-        pick_this_line = True
-    return pick_this_line
-
-
-### check if the resource is untagged, if true, return a tag, if not, return False
+### check if the resource is untagged, if true, print a tag, if not, print False
 def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
     '''
     grab tags
@@ -420,6 +421,7 @@ def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
         if there is a tag, return a string of the tag
         if not return bool False
     '''
+    # kilroy does not like this code returning mixed types
     if line_elements[idx_tag1]: return line_elements[idx_tag1]
     if line_elements[idx_tag2]: return line_elements[idx_tag2]
     if line_elements[idx_tag3]: return line_elements[idx_tag3]
@@ -434,7 +436,7 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
     ---
     arg:    
         array line_elements : a line of a csv file
-        dict aggs : a dictionary like this: \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\}
+        dict aggs : a dictionary like this: {{tag1: {}}, {tag2: {}}, {tag3: {}}}
         int idx_pname, idx_dollar_blend, idx_dollar_unblend : the index of product name, quantity of blended and unblended cost
     return:
         updated aggs with aggregated cost
@@ -451,26 +453,28 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
             aggs[tag][pname]['blended_cost'] += cost_blend
             aggs[tag][pname]['unblended_cost'] += cost_unblend
         else:
-            aggs[tag][pname] = {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}
+            aggs[tag][pname] = {'blended_cost': cost_blend,
+                            'unblended_cost': cost_unblend}
             
     else:
-        aggs[tag] = {'total_blended_cost': cost_blend, 'total_unblended_cost': cost_unblend, \
-            pname: {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}}
+        aggs[tag] = {'total_blended_cost': cost_blend,
+                     'total_unblended_cost': cost_unblend,
+                    pname: {'blended_cost': cost_blend,
+                    'unblended_cost': cost_unblend}}
 
-
-
-### cost aggregation parser (for daily)
-def dailyAgg(file_path):
+### cost aggregation parser for days-ago-based time range
+def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
     '''
     parse through the csv file and generate daily cost summary
     ---
     arg:    
         str file_path : path to the cost file
+        lo_day_bdry: days-ago time range to consider
+        hi_day_bdry: days-ago time range to consider, other limit
     return:
         an array contains daily cost summary
-        1, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
-        2, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
-# marker 3
+        1, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        2, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
         3, float total_blend;
         4, float total_unblend;
         5, float total_tagged_blend;
@@ -481,6 +485,8 @@ def dailyAgg(file_path):
     untagged, aggs = {}, {}
     total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
     total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
+    #start_date = 0
+
     with open('/tmp/' + file_path, 'r', newline = '\n') as csvfile:
         lines = csv.reader(csvfile, delimiter=',', quotechar='"')
         for idx, line in enumerate(lines):
@@ -489,21 +495,24 @@ def dailyAgg(file_path):
                 for i, n in enumerate(line):
                     col_dict.update({n.strip(): i})
                 # get index for tags (user:Name, user:Project)
-                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], \
-                    col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
+                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
                 # get index for datetime
                 idx_dt = col_dict['UsageEndDate']
                 # get index for ProductName
                 idx_pname = col_dict['ProductName']
-                # use quantity has two, blended and unblended
+                # 'use quantity' has two types: blended and unblended
                 idx_dollar_blend = col_dict['BlendedCost']
                 idx_dollar_unblend = col_dict['UnBlendedCost']
                 # for untagged resources
                 idx_resource = col_dict['ResourceId']
             else:
+                # kilroy does not follow the next bit of logic... clearly tied to DLT pathology but unclear if this is effective
                 # avoid parse the last few lines
                 if line[idx_pname]:
-                    if dayChecker(line, idx_dt):
+                    # day boundaries refer to some interval in the past, as in days-ago
+                    # lo_day_bdry and hi_day_bdry were traditionally 0 and 0 to give one day of recent results
+                    # make them 3 and 4 to look at a two-day range 3 days ago for example
+                    if dayChecker(line, idx_dt, lo_day_bdry, hi_day_bdry):
                         tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
                         total_blend += float(line[idx_dollar_blend])
                         total_unblend += float(line[idx_dollar_unblend])
@@ -525,86 +534,16 @@ def dailyAgg(file_path):
     return [untagged, aggs, total_blend, total_unblend, \
             total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend]
 
-
-# cost aggregation parser (for weekly)
-def weeklyAgg(file_paths):
-    '''
-    parse through the csv file and generate weekly cost summary
-    ---
-    arg:    
-        str file_path : path to the cost file
-    return:
-        an array contains daily cost summary
-        1, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
-        2, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
-        3, float total_blend;
-        4, float total_unblend;
-        5, float total_tagged_blend;
-        6, float total_tagged_unblend;
-        7, float total_untagged_blend;
-        8, float total_untagged_unblend
-    '''
-    untagged, aggs = {}, {}
-    total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
-    total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
-
-    for f in file_paths:
-        with open('/tmp/' + f.split('.')[0]+'.csv', 'r', newline = '\n') as csvfile:
-            lines = csv.reader(csvfile, delimiter=',', quotechar='"')
-            for idx, line in enumerate(lines):
-                if idx == 0:
-                    col_dict = {}
-                    for i, n in enumerate(line):
-                        col_dict.update({n.strip(): i})
-                    # get index for tags (user:Name, user:Project)
-                    idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], \
-                        col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
-                    # get index for datetime
-                    idx_dt = col_dict['UsageEndDate']
-                    # get index for ProductName
-                    idx_pname = col_dict['ProductName']
-                    # use quantity has two, blended and unblended
-                    idx_dollar_blend = col_dict['BlendedCost']
-                    idx_dollar_unblend = col_dict['UnBlendedCost']
-                    # for untagged resources
-                    idx_resource = col_dict['ResourceId']
-                else:
-                    # avoid parse the last few lines
-                    if line[idx_pname]:
-                        if weekChecker(line, idx_dt):
-                            tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
-                            total_blend += float(line[idx_dollar_blend])
-                            total_unblend += float(line[idx_dollar_unblend])
-                            if tag:
-                                Agg(line, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblend)
-                                total_tagged_blend += float(line[idx_dollar_blend])
-                                total_tagged_unblend += float(line[idx_dollar_unblend])
-                            else:
-                                total_untagged_blend += float(line[idx_dollar_blend])
-                                total_untagged_unblend += float(line[idx_dollar_unblend])
-
-                                if line[idx_resource] in untagged:
-                                    untagged[line[idx_resource]]['total_blended_cost'] += float(line[idx_dollar_blend])
-                                    untagged[line[idx_resource]]['total_unblended_cost'] += float(line[idx_dollar_unblend])
-                                else:
-                                    untagged[line[idx_resource]] = {}
-                                    untagged[line[idx_resource]]['total_blended_cost'] = float(line[idx_dollar_blend])
-                                    untagged[line[idx_resource]]['total_unblended_cost'] = float(line[idx_dollar_unblend])
-        return untagged, aggs, total_blend, total_unblend, \
-                total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend
-
-
-### friendly print out aggregated cost
-def BeautifulPrint(aggs, untagged, is_weekly_summary, *all_costs):
+### method composes an email message body 'msg' to be sent to the cost monitoring team
+def ComposeMessage(aggs, untagged, *all_costs):
     '''
     give the cost summary generated by func dailyAgg or weeklyAgg, 
     output a reader-friendly string 
     ---
     arg:    
-        1, dict aggs : \{\{tag1: \{\}\}, \{tag2: \{\}\}, \{tag3: \{\}\}\};
-        2, dict untagged : \{\{'resource id 1': $$$\}, 'resource id 2': $$$\};
-        3, bool is_weekly_summary : True/False;
-        4, *all_costs : float total_blend, float total_unblend, float total_tagged_blend, 
+        1, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        2, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        3, *all_costs : float total_blend, float total_unblend, float total_tagged_blend, 
                         float total_tagged_unblend, float total_untagged_blend, float total_untagged_unblend
     return:
         str cost_summary
@@ -616,66 +555,43 @@ def BeautifulPrint(aggs, untagged, is_weekly_summary, *all_costs):
     # dictionary for substituting full name with shorter name
     resource_name_map = {'Amazon Elastic Compute Cloud': 'EC2', 'Amazon Simple Storage Service': 'S3'}
     
-    cost_agg = ' '
+    msg = ' '
+    msg += 'TOTAL: ${} / ${} / ${} (All/Tagged/Untagged)\n'.format(str(round(total_blend, 2)),\
+      str(round(total_tagged_blend, 2)), str(round(total_untagged_blend, 2)))
+    # This is commented out because it is no longer an accurate calculation of the time range reflected in what follows
+    # msg += 'daily spend from {} to {} \n'.format(datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() \
+    #   - 86400.0 * 2)).strftime('%Y-%m-%d %H:%M:%S') + \
+    #   ' UTC to ', datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - \
+    #   86400.0)).strftime('%Y-%m-%d %H:%M:%S') + ' UTC ')
+    # msg += '~ ' * 20 
+    # msg += '\n'
     
-    cost_agg += 'TOTAL SPEND: ${} / ${} / ${} (Total/Tagged/Untagged)\n\n'.format(str(round(total_blend, 2)), \
-        str(round(total_tagged_blend, 2)), str(round(total_untagged_blend, 2)))
-    
-    cost_agg += '~ ' * 20
-    cost_agg += '\n'
-    
-    ## AMANDA: Fixed the printed dates 
-    
-    if is_weekly_summary:
-        cost_agg += 'Cloud Czar WEEKLY spend = ${}(${}) from {} to {} \n'.format(str(round(total_tagged_blend, 2)), \
-            str(round(total_untagged_blend, 2)), \
-            datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - 86400.0 * 7)).strftime('%Y-%m-%d %H:%M:%S') + \
-            ' UTC to ', cur_time.strftime('%Y-%m-%d %H:%M:%S') + ' UTC ')
-    else:
-        cost_agg += 'Cloud Czar DAILY spend from {} to {} \n'.format(datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - 86400.0 * 2)).strftime('%Y-%m-%d %H:%M:%S') + \
-                                                                     ' UTC to ', datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - 86400.0)).strftime('%Y-%m-%d %H:%M:%S') + ' UTC ')
-    cost_agg += '~ ' * 20 
-    cost_agg += '\n'
-    
-    
-    ### Get usage summary OWNER:Total
-    cost_agg += '\nSUMMARY: \n\n'
-    
+    ### Get usage summary Owner tag:Total
+    msg += '\nSUMMARY: \n'
     for k1, v1 in aggs.items():
-        cost_agg += '{tag}{blend}\n'.format(tag='Tag: '+k1, 
-                                            blend='\t Total: $' + str(round(v1['total_blended_cost'], 2)) + '\n')
-    
-    cost_agg += '~ ' * 20
-    
+        msg += '{ID}{spend}\n'.format(ID=k1 + ',', spend='\t$' + str(round(v1['total_blended_cost'], 2)))
+    msg += '~ ' * 20 + '\n'
     
     ### Get usage details
-    cost_agg += '\n DETAILS: \n'
-                                                                                                     
+    msg += '\n DETAILS: \n'
     for k1, v1 in aggs.items():
-        cost_agg += '{tag}{blend}\n'.format(tag='Tag: '+k1, 
-                                            blend='\t Total: $' + str(round(v1['total_blended_cost'], 2)) + ', ')
+        msg += '{tag}{blend}\n'.format(tag=k1 + ',', blend='\t $' + str(round(v1['total_blended_cost'], 2)))
         for k2, v2 in v1.items():
             if k2 not in ['total_blended_cost', 'total_unblended_cost']:
-                cost_agg += '{resource} '.format(resource = resource_name_map[k2] if resource_name_map.get(k2) else k2)
+                msg += '{resource} '.format(resource = resource_name_map[k2] if resource_name_map.get(k2) else k2)
                 kv3 = list(v2.items())
-                cost_agg += '{cost1}\n'.format(cost1 = ': $'+str(round(kv3[0][1], 2)))
-                    
-        cost_agg += ('-'*10 + '\n')
-        
-    cost_agg += 'Cost with untagged resources: \n' + '~ ' * 10 + '\n'
+                msg += '{cost1}\n'.format(cost1 = ': $'+str(round(kv3[0][1], 2)))
+    msg += '\nCost with untagged resources: \n' + '~ ' * 10 + '\n'
     for k, v in untagged.items():
-        cost_agg += '{id:}'.format(id = 'ResourceID(if any): ' + k + '\n')
-        cost_agg += '{blend}\n'.format(blend='Total: $' + str(round(v['total_blended_cost'], 2)) + ', ')
-        cost_agg += '----------\n'
-    
-    return cost_agg
-    
+        msg += '{id:}'.format(id = k + ',')
+        msg += '{blend}\n'.format(blend=' $' + str(round(v['total_blended_cost'], 2)))
+    return msg
 
-### this is the primary method; it catches S3 update event and fires off the aggregation parser   
+# this method is called by the outside world. The original 'event' was used to fuel the logic but it is better
+#   to have no dependency so it is autonomous and easy to test
 def lambda_handler(event, context):
     '''
-    catches S3 update event, parse cost info and send cost summary to SSN, 
-    which will send email notifications
+    parse cost info and send cost summary to SNS > email notifications
     ---
     arg:    
         1, list event
@@ -683,80 +599,73 @@ def lambda_handler(event, context):
     return:
         None
     '''
-    print('Debug attempt: Delete this and next line')
-    print(event)
-    # print("Received event: " + json.dumps(event, indent=2))
-    # kilroy mod: change the two keys in the following line
+    # diagnostic commented out: print("Received event: " + json.dumps(event, indent=2))
+    # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+    # !!!!!!Do not make these keys publicly visible!!!!!!
     s3 = boto3.client('s3', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-    # Get the object from the event and show its content type
+    # search tag 'kilroy mod': The following line should reflect your 12-digit account number
+    # this is hard-coded to match your account ID
     bucket = '123456789012-dlt-utilization'
+
+    #some archaeology: bucket = ['Records'][0]['s3']['bucket']['name']
+    #                  key = urllib.parse.unquote_plus(['bucket']['key'], encoding='utf-8')
     
-    #key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
-
     try:
-        # list objects
-        obj_list = s3.list_objects(Bucket = bucket)
+        # s3 is the boto Client and bucket is the S3 bucket ID string so csv_file_list will be 
+        #   a list of the CSV cost log files in this bucket. Actually zipped so we unzip below.
+        csv_file_list = s3.list_objects(Bucket = bucket)
         
-        # response2 = s3.get_object(Bucket=bucket, Key = obj_list['Contents'][1]['Key'])
         s3_resource = boto3.resource('s3')
-        # s3_resource.Object(bucket, obj_list['Contents'][1]['Key']).download_file('/tmp/'+obj_list['Contents'][1]['Key'])
-        files_for_parse = FilePicker(obj_list['Contents'])
+        key = csv_file_list['Contents'][1]['Key']
         
-        print(files_for_parse)
+        # files_to_parse will be a list of relevant files to scan through
+        files_to_parse = FilePicker(csv_file_list['Contents'])
+        
+        # Take a look at the logs to see if we chose the right files to parse from!
+        print(files_to_parse)
 
-        for f in files_for_parse:
-            # print(f)
-            # print('\n')
-            # print(type(f))
+        # unzip all the files we need
+        for f in files_to_parse:
             s3_resource.Object(bucket, f).download_file('/tmp/' + f)
             zip_ref = zipfile.ZipFile('/tmp/'+ f, 'r')
             zip_ref.extractall('/tmp/')
-        
-        # print(os.listdir('/tmp/'))
 
         # read and process the most recently updated file
-        file_for_daily_agg = files_for_parse[0]
+        file_for_daily_agg = files_to_parse[0]
 
+        # set day boundaries for a time range: These are days-ago, i.e. in the past
+        #   The code is lo_day_bdry <= time <= hi_day_bdry so to get one day of data
+        #   make the boundaries equal
+        lo_day_bdry = 2
+        hi_day_bdry = 2
+        
+        # dailyAgg() returns a big tuple of 2 dictionaries and 6 floats (in that order)
         daily_untagged, daily_aggs, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, \
-        daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend = dailyAgg(file_for_daily_agg.split('.')[0]+'.csv')
+          daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend = \
+          dailyAgg(file_for_daily_agg.split('.')[0]+'.csv', lo_day_bdry, hi_day_bdry)
         
-        # print(aggs)
-        # print('---------\n')
-        # print(untagged)
-        
-        cost_agg_str = BeautifulPrint(daily_aggs, daily_untagged, False, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, 
+        # Use ComposeMessage() to assemble the body of the email message
+        email_body = ComposeMessage(daily_aggs, daily_untagged, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, 
                daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend)
 
-        if IncludeWeeklySummary():
-            weekly_untagged, weekly_aggs, weekly_total_blend, weekly_total_unblend, \
-            weekly_total_tagged_blend, weekly_total_tagged_unblend, weekly_total_untagged_blend, \
-            weekly_total_untagged_unblend = weeklyAgg(files_for_parse)
-
-            weekly_cost_agg_str = BeautifulPrint(weekly_aggs, weekly_untagged, True, weekly_total_blend, weekly_total_unblend, 
-                weekly_total_tagged_blend, weekly_total_tagged_unblend, weekly_total_untagged_blend, weekly_total_untagged_unblend)
-
-            cost_agg_str += ('\n' + '-'*10)
-            cost_agg_str += ('\n ~~~ weekly cost summary: ~~~ \n' + weekly_cost_agg_str)
-
-        # kilroy mod: change the access keys in the following line:
+        # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+        # Do not make these publicly visible!!!!
         sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 
-        # kilroy mod: In the response = sns.publish( there are four things to do:
-        #   kilroy mod: TopicArn: Change the account number (notice it is 123456789012)
-        #   kilroy mod: TopicArn: Verify the region is correct 
-        #   kilroy mod: TopicArn: Provide the correct SNS topic name
-        #   kilroy mod: Subject: Choose a subject that fits your account
+        # search tag 'kilroy mod': Three things to check in the following code:
+        #   You must have an SNS topic corresponding to your entry in the TopicArn string
+        #   Your notification email will have as its subject whatever you place in the Subject string
+        #   The return value (also a string) should reflect your idea of labeling this lambda function
         response = sns.publish(
-            TopicArn='arn:aws:sns:us-east-1:879605964811:kilroy_burn_sns',
-            Message=cost_agg_str,
-            Subject='Kilroy Burn')
-
-        # kilroy mod: Customize the completion message if you like
-        return 'kilroy_burn_lambda completed!'
-
+            TopicArn='arn:aws:sns:us-east-1:123456789012:kilroy_burn_sns',
+            Message=email_body,
+            Subject='kilroy cost burn summary')
+        return 'kilroy cost burn calculation completed!'
+    
+    # Last piece of the event handler: something went wrong  
     except Exception as e:
         print(e)
-        print('Err in object {} from bucket {}. Ensure bucket exists in same region as this lambda fn.'.format(key, bucket))
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
         raise e
 ```
 
