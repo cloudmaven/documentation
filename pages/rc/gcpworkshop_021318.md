@@ -5,7 +5,7 @@ last_updated: March 16, 2017
 tags: [research_computing]
 summary: "Cloud computing basics hands-on training by UW Research Computing and the UW eScience Institute"
 sidebar: mydoc_sidebar
-permalink: gcpworksop_021318.html
+permalink: gcpworkshop_021318.html
 folder: rc
 ---
 
