@@ -567,6 +567,78 @@ def ComposeMessage(aggs, untagged, *all_costs):
     return msg
 
 
+# this method is called by the outside world. The original 'event' was used to fuel the logic but it is better
+#   to have no dependency so it is autonomous and easy to test
+def lambda_handler(event, context):
+    # diagnostic commented out: print("Received event: " + json.dumps(event, indent=2))
+    # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+    # !!!!!!Do not make these keys publicly visible!!!!!!
+    s3 = boto3.client('s3', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    # search tag 'kilroy mod': The following line should reflect your 12-digit account number
+    # this is hard-coded to match your account ID
+    bucket = '123456789012-dlt-utilization'
+
+    #some archaeology: bucket = ['Records'][0]['s3']['bucket']['name']
+    #                  key = urllib.parse.unquote_plus(['bucket']['key'], encoding='utf-8')
+    
+    try:
+        # s3 is the boto Client and bucket is the S3 bucket ID string so csv_file_list will be 
+        #   a list of the CSV cost log files in this bucket. Actually zipped so we unzip below.
+        csv_file_list = s3.list_objects(Bucket = bucket)
+        
+        s3_resource = boto3.resource('s3')
+        key = csv_file_list['Contents'][1]['Key']
+        
+        # files_to_parse will be a list of relevant files to scan through
+        files_to_parse = FilePicker(csv_file_list['Contents'])
+        
+        # Take a look at the logs to see if we chose the right files to parse from!
+        print(files_to_parse)
+
+        # unzip all the files we need
+        for f in files_to_parse:
+            s3_resource.Object(bucket, f).download_file('/tmp/' + f)
+            zip_ref = zipfile.ZipFile('/tmp/'+ f, 'r')
+            zip_ref.extractall('/tmp/')
+
+        # read and process the most recently updated file
+        file_for_daily_agg = files_to_parse[0]
+
+        # set day boundaries for a time range: These are days-ago, i.e. in the past
+        #   The code is lo_day_bdry <= time <= hi_day_bdry so to get one day of data
+        #   make the boundaries equal
+        lo_day_bdry = 2
+        hi_day_bdry = 2
+        
+        # dailyAgg() returns a big tuple of 2 dictionaries and 6 floats (in that order)
+        daily_untagged, daily_aggs, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, \
+          daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend = \
+          dailyAgg(file_for_daily_agg.split('.')[0]+'.csv', lo_day_bdry, hi_day_bdry)
+        
+        # Use ComposeMessage() to assemble the body of the email message
+        email_body = ComposeMessage(daily_aggs, daily_untagged, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, 
+               daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend)
+
+        # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+        # Do not make these publicly visible!!!!
+        sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+
+        # search tag 'kilroy mod': Three things to check in the following code:
+        #   You must have an SNS topic corresponding to your entry in the TopicArn string
+        #   Your notification email will have as its subject whatever you place in the Subject string
+        #   The return value (also a string) should reflect your idea of labeling this lambda function
+        response = sns.publish(
+            TopicArn='arn:aws:sns:us-east-1:123456789012:kilroy_burn_sns',
+            Message=email_body,
+            Subject='kilroy cost burn summary')
+        return 'kilroy cost burn calculation completed!'
+    
+    # Last piece of the event handler: something went wrong  
+    except Exception as e:
+        print(e)
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        raise e
+
 
 
 
