@@ -1,5 +1,5 @@
 ---
-title: Cloud 101 Three-Day, Three Clouds
+title: Google Cloud Platform Cloud 101
 keywords: research, computing
 last_updated: March 16, 2017
 tags: [research_computing]
@@ -39,6 +39,7 @@ _______________________________________________
 ---
 
 ## Pre-requisites 
-TBD
 
+- Basic knowledge of Python and Linux
+- Preinstalled version of bash terminal
 {% include links.html %}
