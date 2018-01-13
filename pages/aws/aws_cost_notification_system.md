@@ -464,6 +464,186 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
 
 
 
+
+### cost aggregation parser for days-ago-based time range
+def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
+
+    untagged, aggs = {}, {}
+    total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
+    total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
+    #start_date = 0
+
+    with open('/tmp/' + file_path, 'r', newline = '\n') as csvfile:
+        lines = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for idx, line in enumerate(lines):
+            if idx == 0:
+                col_dict = {}
+                for i, n in enumerate(line):
+                    col_dict.update({n.strip(): i})
+                # get index for tags (user:Name, user:Project)
+                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
+                # get index for datetime
+                idx_dt = col_dict['UsageEndDate']
+                # get index for ProductName
+                idx_pname = col_dict['ProductName']
+                # 'use quantity' has two types: blended and unblended
+                idx_dollar_blend = col_dict['BlendedCost']
+                idx_dollar_unblend = col_dict['UnBlendedCost']
+                # for untagged resources
+                idx_resource = col_dict['ResourceId']
+            else:
+                # kilroy does not follow the next bit of logic... clearly tied to DLT pathology but unclear if this is effective
+                # avoid parse the last few lines
+                if line[idx_pname]:
+                    # day boundaries refer to some interval in the past, as in days-ago
+                    # lo_day_bdry and hi_day_bdry were traditionally 0 and 0 to give one day of recent results
+                    # make them 3 and 4 to look at a two-day range 3 days ago for example
+                    if dayChecker(line, idx_dt, lo_day_bdry, hi_day_bdry):
+                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
+                        total_blend += float(line[idx_dollar_blend])
+                        total_unblend += float(line[idx_dollar_unblend])
+                        if tag:
+                            Agg(line, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblend)
+                            total_tagged_blend += float(line[idx_dollar_blend])
+                            total_tagged_unblend += float(line[idx_dollar_unblend])
+                        else:
+                            total_untagged_blend += float(line[idx_dollar_blend])
+                            total_untagged_unblend += float(line[idx_dollar_unblend])
+
+                            if line[idx_resource] in untagged:
+                                untagged[line[idx_resource]]['total_blended_cost'] += float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] += float(line[idx_dollar_unblend])
+                            else:
+                                untagged[line[idx_resource]] = {}
+                                untagged[line[idx_resource]]['total_blended_cost'] = float(line[idx_dollar_blend])
+                                untagged[line[idx_resource]]['total_unblended_cost'] = float(line[idx_dollar_unblend])
+    return [untagged, aggs, total_blend, total_unblend, \
+            total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend]
+
+
+
+
+
+### method composes an email message body 'msg' to be sent to the cost monitoring team
+def ComposeMessage(aggs, untagged, *all_costs):
+
+    total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
+    total_untagged_blend, total_untagged_unblend = [*all_costs]
+    cur_time = datetime.datetime.utcnow()
+    
+    # dictionary for substituting full name with shorter name
+    resource_name_map = {'Amazon Elastic Compute Cloud': 'EC2', 'Amazon Simple Storage Service': 'S3'}
+    
+    msg = ' '
+    msg += 'TOTAL: ${} / ${} / ${} (All/Tagged/Untagged)\n'.format(str(round(total_blend, 2)),\
+      str(round(total_tagged_blend, 2)), str(round(total_untagged_blend, 2)))
+    # This is commented out because it is no longer an accurate calculation of the time range reflected in what follows
+    # msg += 'daily spend from {} to {} \n'.format(datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() \
+    #   - 86400.0 * 2)).strftime('%Y-%m-%d %H:%M:%S') + \
+    #   ' UTC to ', datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - \
+    #   86400.0)).strftime('%Y-%m-%d %H:%M:%S') + ' UTC ')
+    # msg += '~ ' * 20 
+    # msg += '\n'
+    
+    ### Get usage summary Owner tag:Total
+    msg += '\nSUMMARY: \n'
+    for k1, v1 in aggs.items():
+        msg += '{ID}{spend}\n'.format(ID=k1 + ',', spend='\t$' + str(round(v1['total_blended_cost'], 2)))
+    msg += '~ ' * 20 + '\n'
+    
+    ### Get usage details
+    msg += '\n DETAILS: \n'
+    for k1, v1 in aggs.items():
+        msg += '{tag}{blend}\n'.format(tag=k1 + ',', blend='\t $' + str(round(v1['total_blended_cost'], 2)))
+        for k2, v2 in v1.items():
+            if k2 not in ['total_blended_cost', 'total_unblended_cost']:
+                msg += '{resource} '.format(resource = resource_name_map[k2] if resource_name_map.get(k2) else k2)
+                kv3 = list(v2.items())
+                msg += '{cost1}\n'.format(cost1 = ': $'+str(round(kv3[0][1], 2)))
+    msg += '\nCost with untagged resources: \n' + '~ ' * 10 + '\n'
+    for k, v in untagged.items():
+        msg += '{id:}'.format(id = k + ',')
+        msg += '{blend}\n'.format(blend=' $' + str(round(v['total_blended_cost'], 2)))
+    return msg
+
+
+# this method is called by the outside world. The original 'event' was used to fuel the logic but it is better
+#   to have no dependency so it is autonomous and easy to test
+def lambda_handler(event, context):
+    # diagnostic commented out: print("Received event: " + json.dumps(event, indent=2))
+    # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+    # !!!!!!Do not make these keys publicly visible!!!!!!
+    s3 = boto3.client('s3', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    # search tag 'kilroy mod': The following line should reflect your 12-digit account number
+    # this is hard-coded to match your account ID
+    bucket = '123456789012-dlt-utilization'
+
+    #some archaeology: bucket = ['Records'][0]['s3']['bucket']['name']
+    #                  key = urllib.parse.unquote_plus(['bucket']['key'], encoding='utf-8')
+    
+    try:
+        # s3 is the boto Client and bucket is the S3 bucket ID string so csv_file_list will be 
+        #   a list of the CSV cost log files in this bucket. Actually zipped so we unzip below.
+        csv_file_list = s3.list_objects(Bucket = bucket)
+        
+        s3_resource = boto3.resource('s3')
+        key = csv_file_list['Contents'][1]['Key']
+        
+        # files_to_parse will be a list of relevant files to scan through
+        files_to_parse = FilePicker(csv_file_list['Contents'])
+        
+        # Take a look at the logs to see if we chose the right files to parse from!
+        print(files_to_parse)
+
+        # unzip all the files we need
+        for f in files_to_parse:
+            s3_resource.Object(bucket, f).download_file('/tmp/' + f)
+            zip_ref = zipfile.ZipFile('/tmp/'+ f, 'r')
+            zip_ref.extractall('/tmp/')
+
+        # read and process the most recently updated file
+        file_for_daily_agg = files_to_parse[0]
+
+        # set day boundaries for a time range: These are days-ago, i.e. in the past
+        #   The code is lo_day_bdry <= time <= hi_day_bdry so to get one day of data
+        #   make the boundaries equal
+        lo_day_bdry = 2
+        hi_day_bdry = 2
+        
+        # dailyAgg() returns a big tuple of 2 dictionaries and 6 floats (in that order)
+        daily_untagged, daily_aggs, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, \
+          daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend = \
+          dailyAgg(file_for_daily_agg.split('.')[0]+'.csv', lo_day_bdry, hi_day_bdry)
+        
+        # Use ComposeMessage() to assemble the body of the email message
+        email_body = ComposeMessage(daily_aggs, daily_untagged, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, 
+               daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend)
+
+        # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
+        # Do not make these publicly visible!!!!
+        sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+
+        # search tag 'kilroy mod': Three things to check in the following code:
+        #   You must have an SNS topic corresponding to your entry in the TopicArn string
+        #   Your notification email will have as its subject whatever you place in the Subject string
+        #   The return value (also a string) should reflect your idea of labeling this lambda function
+        response = sns.publish(
+            TopicArn='arn:aws:sns:us-east-1:123456789012:kilroy_burn_sns',
+            Message=email_body,
+            Subject='kilroy cost burn summary')
+        return 'kilroy cost burn calculation completed!'
+    
+    # Last piece of the event handler: something went wrong  
+    except Exception as e:
+        print(e)
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        raise e
+
+
+
+
+
+
 ```
 
 
