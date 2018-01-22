@@ -11,7 +11,7 @@ folder: rc
 
 **Date:** Tuesday, 13 Feb. 2018
 
-**Location:** Data Science Studio, eScience Institute, University of Washington
+**Location:** Physics Astronomy Building (PAB) 5th Floor Lecture Room (one floor below the Data Science Studio), University of Washington
 
 **Time:** 9am to 12pm 
 
@@ -19,17 +19,25 @@ folder: rc
 ---
  
 ## Objective
-This hands-on immersion course will introduce participants to the Google Cloud Platform.
+This hands-on course will introduce participants to the Google Cloud Platform (GCP): Compute power, 
+storage, network connectivity, and data management tools. It will also introduce some of the powerful 
+features of GCP that can facilitate data science and will back these up with cloud adoption success 
+stories. 
 
 
-We will focus on cloud computing terminology, creating a secure
-environment for your work, costing the cloud in advance, and  granular
-cost management as you go. We will demonstrate the basic process of
-starting and configuring both virtual machines and cloud storage and
-will overview other key mechanisms that help you translate your
-computing
-to the public cloud. We will also share a number of early-adopter
-success stories.
+The course will include an overview of cloud computing terminology, 
+how cloud computing environments are made secure, cost estimation and tracking, 
+and how massive available resources on the cloud reduce processing time. To make
+the course as hands-on as possible we will have participants start their own accounts 
+to try things out using an initial modest credit grant.
+
+
+Our two main requests from attendees are 'Explain how I get compute instances up and 
+running' and 'explain how I get to doing machine learning on the cloud.' The UW Research 
+Computing group is working with the Google course presenters to address these topics
+specifically. Our goal is for participants to be able to leave the class with plenty of 
+momentum to carry further; and both ourselves and Google employees are available 
+through office hours at the Data Science Studio to help with follow on questions.
 
 Rgistration form: [https://goo.gl/forms/DuYtOcr1Q8hzjfb83](https://goo.gl/forms/DuYtOcr1Q8hzjfb83)
 
