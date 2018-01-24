@@ -139,21 +139,51 @@ at UW to make accurate comparisons.
 ## Q: How do I get Research Credits on the public cloud? 
 
 
-Both [Microsoft](http://https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) and 
-[Amazon Web Services](https://aws.amazon.com/research-credits/) 
--- two of the major public cloud vendors in addition to Google -- 
-may choose to provide free credits to research teams after evaluating a short proposal. 
-Google might respond positively to a direct communication which would amount to the same thing but there is no
-official program running for transitional cloud research credits for the Google Cloud Platform at this time.
+Before we answer that let's make a couple things clear from the outset. First research credits are granted by some
+cloud company to a research faculty member (or other affiliated person) and are then applied to the monthly cloud bill 
+until they are exhausted or until they expire. Second: These grants are on the order of hundreds to thousands of 
+credit-dollars and are intended to help you explore using the cloud without an initial cash outlay; so it mitigates your 
+risk in trying out the cloud. Thirdly in our experience the real barrier to getting going on the cloud is not funding. 
+It is rather the time required to learn how to use the cloud; which is what we are here to help you with. Is the cloud
+the right place to go? What's involved in getting there? How do you manage your account, keep your data secure, 
+and get back focusing on your research? Those are the important things to resolve. This is why we suggest contacting 
+us to get into some of the details. 
 
 
-### Q: How much funding is available in these programs?
+Meanwhile the cloud vendors (through credit programs and other promotions) hope to prime the pump of cool research 
+happening on *their* cloud platform; and we think that is awesome. Particularly we think it is awesome provided 
+it is win-win for both cloud vendor and for you the researcher. 
 
 
-Thousands to tens of thousands of dollars worth of cloud credits. (No actual dollars, to be clear.)
+From this preamble we conclude on a cautionary remark: Treating incentive grants (our term of choice) as a source of
+research funding is a mistake.  It creates a dependency on something out of your control and it can often obscure the
+more central issues we outline above. With this in mind we now review *research credits* on the three major cloud 
+providers: AWS, Azure and Google. 
 
 
-### Q: What should my proposal emphasize to increase my chances of receiving an award? 
+[Microsoft Azure](http://https://azure.microsoft.com) formerly had a cloud credit program called **Azure For Research**. 
+To the best of our knowledge this is shutting down or discontinued but because Microsoft is a very research-oriented company 
+they are very open to engaging in a conversation about your research program. 
+[Amazon Web Services](https://aws.amazon.com/research-credits/) has a research credit granting program
+in which they evaluate a short proposal that you would write. 
+Google, like Azure, might very well respond positively to direct communication but they do not currently have 
+an open proposal-based program, again to the best of our knowledge.  The process of engaging with these 
+vendors is a matter of your initiative and theirs; we are here as technical consultants so we tend to stay 
+out of the credit-granting process. 
+
+
+To reiterate what we have said elsewhere in this FAQ: We enthusiastically recommend all three public cloud platforms 
+and we encourage you to get in touch with us. We are always happy to connect you with the cloud vendor representatives.
+
+
+### Q: How much funding is available as cloud research credit grants?
+
+
+Research credit grants traditionally run thousands to tens of thousands of dollars in cloud credits. 
+(No actual dollars, to be clear.)  They generally require you to do a cost estimation.
+
+
+### Q: What should my proposal emphasize to increase my chances of receiving a cloud credit award? 
 
 
 Three things beyond outlining the computational nature of your research. First that you are interested in going 
@@ -169,6 +199,20 @@ an ongoing source of funding.  This plus a summary of your research and why it i
 Mindshare. They want cutting edge researchers such as yourself to invest in their technology. They realize it 
 can be a big leap to understand and use their cloud platform; so they are essentially providing an incentive to
 try it out on a serious (computational) scale.
+
+
+## Q: I'm a faculty member teaching a course and I'd like to do that on the cloud. Can I get sponsorship from a cloud vendor? 
+
+
+Our response to this question is in three parts (and we suggest that first reading the preceding section might be helpful). 
+
+
+First: We can put you in touch with the cloud vendors to discuss the topic with them; it is outside of our 
+current purview. Second: We do work closely with a number of faculty members on the technical aspects of 
+teaching a course that uses the public cloud; so if you are interested in help with that please get in touch
+with us.  Third: We are working on developing -- in collaboration with the cloud vendors -- a sort of entry process 
+to standardize use of the cloud in the classroom. This will cover all the facets of the idea including how 
+cloud resources are paid for. We will reflect our progress on this here at cloudmaven.org.  
 
 
 
