@@ -139,41 +139,40 @@ at UW to make accurate comparisons.
 ## Q: How do I get Research Credits on the public cloud? 
 
 
-Before we answer that let's make a couple things clear from the outset. First research credits are granted by some
-cloud company to a research faculty member (or other affiliated person) and are then applied to the monthly cloud bill 
-until they are exhausted or until they expire. Second: These grants are on the order of hundreds to thousands of 
-credit-dollars and are intended to help you explore using the cloud without an initial cash outlay; so it mitigates your 
-risk in trying out the cloud. Thirdly in our experience the real barrier to getting going on the cloud is not funding. 
-It is rather the time required to learn how to use the cloud; which is what we are here to help you with. Is the cloud
-the right place to go? What's involved in getting there? How do you manage your account, keep your data secure, 
-and get back focusing on your research? Those are the important things to resolve. This is why we suggest contacting 
-us to get into some of the details. 
+Before we answer that let's go over a couple things at the outset. First research credits are granted by a
+cloud vendor to a research faculty member (or other affiliated person) and these are then applied to the monthly 
+cloud bill until they are exhausted or they expire. Second these grants are on the order of hundreds to thousands 
+of credit-dollars.  They are intended to help you try out the cloud without an initial cash outlay; so it mitigates your 
+risk. Thirdly in our experience the real barrier to getting on the cloud is not funding.  It is the time required 
+to learn how to use the cloud. This is what we are here to help you with: Is the cloud the right place to go? 
+What's involved in getting there? How do you manage your account, keep your data secure, and get back to focusing 
+on your research? Those are important to resolve and this is why we suggest 
+[contacting us](http://escience.washington.edu/office-hours/#CloudComputing).
 
 
-Meanwhile the cloud vendors (through credit programs and other promotions) hope to prime the pump of cool research 
-happening on *their* cloud platform; and we think that is awesome. Particularly we think it is awesome provided 
-it is win-win for both cloud vendor and for you the researcher. 
+The cloud vendors -- through credit grants and other promotions -- hope to prime the pump of cool research 
+happening on *their* cloud platform; and we think that is awesome provided 
+it is win-win for both the cloud vendor and for you the researcher. 
 
 
-From this preamble we conclude on a cautionary remark: Treating incentive grants (our term of choice) as a source of
-research funding is a mistake.  It creates a dependency on something out of your control and it can often obscure the
-more central issues we outline above. With this in mind we now review *research credits* on the three major cloud 
-providers: AWS, Azure and Google. 
+From this preamble we conclude on a cautionary note: Treating these incentivizing credit grants as a source of
+research funding can be a bit of a trap.  It creates a dependency on something out of your control and it can 
+obscure the more central issues we outline above. With this in mind let's now review the situation with
+the three major cloud providers: AWS, Azure and Google. 
 
 
 [Microsoft Azure](http://https://azure.microsoft.com) formerly had a cloud credit program called **Azure For Research**. 
-To the best of our knowledge this is shutting down or discontinued but because Microsoft is a very research-oriented company 
-they are very open to engaging in a conversation about your research program. 
-[Amazon Web Services](https://aws.amazon.com/research-credits/) has a research credit granting program
-in which they evaluate a short proposal that you would write. 
-Google, like Azure, might very well respond positively to direct communication but they do not currently have 
-an open proposal-based program, again to the best of our knowledge.  The process of engaging with these 
-vendors is a matter of your initiative and theirs; we are here as technical consultants so we tend to stay 
-out of the credit-granting process. 
+To the best of our knowledge this program is shutting down or discontinued but Microsoft is a very research-oriented company 
+so they are very open to engaging in conversations about your research program. 
+[Amazon Web Services](https://aws.amazon.com/research-credits/) has a formal research credit granting program
+where they evaluate a short proposal that you would write. 
+Google, like Azure, will also respond positively to direct communication on research projects; however they do not 
+currently have an open proposal-based program for granting credits to the best of our knowledge.  
+Engaging with these vendors is a matter of initiatives and theirs. However please
+[contact us](http://escience.washington.edu/office-hours/#CloudComputing)
+if you need help with grant writing pertaining to the cloud including cost estimation; or if you need 
+an intro-connection to the vendors. 
 
-
-To reiterate what we have said elsewhere in this FAQ: We enthusiastically recommend all three public cloud platforms 
-and we encourage you to get in touch with us. We are always happy to connect you with the cloud vendor representatives.
 
 
 ### Q: How much funding is available as cloud research credit grants?
@@ -207,13 +206,16 @@ try it out on a serious (computational) scale.
 Our response to this question is in three parts (and we suggest that first reading the preceding section might be helpful). 
 
 
-First: We can put you in touch with the cloud vendors to discuss the topic with them; it is outside of our 
-current purview. Second: We do work closely with a number of faculty members on the technical aspects of 
-teaching a course that uses the public cloud; so if you are interested in help with that please get in touch
-with us.  Third: We are working on developing -- in collaboration with the cloud vendors -- a sort of entry process 
-to standardize use of the cloud in the classroom. This will cover all the facets of the idea including how 
-cloud resources are paid for. We will reflect our progress on this here at cloudmaven.org.  
-
+First: 
+You can 
+[contact us](http://escience.washington.edu/office-hours/#CloudComputing)
+and we will put you in touch with the cloud vendors to discuss this with them. (It is beyond our current purview.) 
+Second: We do work closely with a number of faculty members on the technical aspects of 
+teaching a course that uses the public cloud; so if you are interested in help with *that* then again
+just get in touch.  
+Third: We are working on developing -- in collaboration with the cloud vendors -- a sort of entry process 
+to standardize use of the cloud in the classroom. This will cover all facets including how cloud resources 
+are paid for. We will reflect our progress on this here at [cloudmaven](http://cloudmaven.org).  
 
 
 ## Q: How much does the cloud cost? 
