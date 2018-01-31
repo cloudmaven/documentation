@@ -179,6 +179,10 @@ entries:
       url: /aws_ec2.html
       output: web, pdf
 
+    - title: Storage
+      url: /aws_storage.html
+      output: web, pdf
+
     - title: Spot market
       url: /aws_spot_market.html
       output: web, pdf
@@ -187,12 +191,12 @@ entries:
       url: /aws_cluster.html
       output: web, pdf
 
-    - title: Storage
-      url: /aws_storage.html
-      output: web, pdf
-
     - title: Lambda
       url: /aws_lambda.html
+      output: web, pdf
+
+    - title: Cloudknot
+      url: /aws_cloudknot.html
       output: web, pdf
 
     - title: Jupyter
