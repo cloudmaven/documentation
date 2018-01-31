@@ -13,95 +13,19 @@ folder: aws
 ## Introduction
 
 
-This page provides two views into the **Internet of Things** on the public cloud: 
-A template for registering and operating embedded IOT devices and a database that receives 
-data from an IOT system, specifically environmental systems (HVAC, sensors, etc) in 
-buildings.  
+This page describes three views of the **Internet of Things** (IOT) on the public cloud.
+Before enumerating them we make the claim that the story of IOT is really a cloud story...
+once you get your devices up and running. To put this another way: Deploy your devices, 
+get the data flowing into the cloud, and then the fun begins. 
 
 
-In the first case of IOT devices we use the Arduino Yun registered on the UW WiFi network. 
-We are interested in both sensing and actuation. 
+Here we discuss
+- Smart meter data from a University of Washington building
+- AWS IoT buttons connected to the AWS Lambda service (through UW WiFi)
+- Arduino devices connected to the AWS cloud IoT service
 
 
-In the second case we are interested in aggregating data as a Proof Of Concept for university 
-power consumption and cost savings studies.
-
-
-## CC*IIE Remarks
-
-### Embedded device
-
-#### Objective and Approach
-
-The Arduino *Maker* community is quite large, active and supportive. 
-The Arduino Yun model has both a typical microprocessor as well as a second 'system on a chp' processor 
-running Linux with WiFi.  The Yun is therefore supported by AWS via an *IOT Endpoint*. This means that
-the device can be registered on the AWS cloud. It 'exists' there as a virtual extension of 
-itself. The physical device might generate signals or be interested in listening to other
-devices. The IOT endpoint is a routing destination where this communication takes place
-using the MPQQ communication protocol. 
-
-
-The objective here is to establish a POC IOT implementation that connects a device located inside
-a University (UW Seattle) to the AWS cloud; with signals going to and fro. 
-The approach is to obtain and configure such a device and document this initial success
-for further expansion, for example into a prototype IOT network as part of a research project.
-
-#### Solution
-
-- Purchase an Arduino Yun device; install the IDE
-- Power up,  establish WiFi connectivity 
-- Register the device with the University IT department using its Mac address
-- Register the device at AWS by means of an IOT Endpoint service
-- Develop and test code on the Yun to communicate with (report in) to its virtualization on AWS
-- Document this process
-
-#### Results
-
-- We have successfully implemented Arduino Yun registration and data passing to an AWS IOT end point
-- Further development will be supported out of our cloud research program at opportunity
-
-### Monitoring and modifying campus building power consumption
-
-![building temperature time-series plot with low-pass filters](/documentation/images/acs/acs_iot_building_temperature.png)
-
-#### Objective and Approach
-
-The University of Washington has a number of smart power consumption meters distributed through the Seattle
-campus. These are networked to a system called **Niagara** which experiences considerable latency (6+ hours)
-in its current implementation. Our objective is to build an add-on work flow that does not disrupt the 
-current system but provides fast (zero-latency) access to power consumption and environmental data. 
-
-
-Our approach is to configure Niagara to send selected data from a single test building to an AWS-hosted RDS 
-database running SQL Server.  The update rate is to be on the order of five minutes with over 100 types of data 
-inbound. We then build a simple RESTful API for access to this data, again with no appreciable latency. 
-This overcomes the existing barrier to data access via the cloud service-based environment. 
-
-
-#### Solution
-
-On an AWS account we establish a small SQL Server database instance on the RDS (Relational Database Service). 
-This is blocked from direct internet access by means of a bastion server. The results are updated via a 
-data push originating from Niagara. 
-
-
-#### Results
-
-
-The end result of this effort is a first step towards near-real-time views of power consumption across 
-more than one hundred buildings at the University of Washington Seattle campus; in relation to external
-weather conditions, time of day, occupancy details and so on.  Results are documented here for open 
-adoption.
-
-
-## Links
-
-
-- [AWS Command Line Interface (CLI)](http://aws.amazon.com/cli)
-
-
-## Terms
+## Lexicon
 
 
 - IOT: Internet of Things, embedded devices from smart phones to Arduino constructions to FitBits
@@ -125,6 +49,77 @@ and beyond -- limitless -- that create an information framework in some environm
     - As such it acts as the "latest known state record" of the device
 - MQTT: Message Queue Telemetry Transport, a lightweight publish-subscribe messaging protocol used on top of TCP/IP.
 - MQTT topic: A message tag that enables a message stream to be sorted (by that tag)
+
+
+## Smart Meter Project
+
+
+- UW buildings talk to an aggregator called Tritium Niagara
+- This in turn is passing certain data from Gowan Hall along to a SQL Server database on AWS
+- These data are available for query using proper connection credentials
+
+
+![building temperature time-series plot with low-pass filters](/documentation/images/aws/aws_iot_uw_niagara001.png)
+
+
+UW 'smart meters' connect to an aggregator system called **Tritium Niagara**.  Our objective is to 
+provide fast access to these power consumption and other sensor/actuator data.  We are specifically working 
+a single building: Gowan Hall.  The update rate is typically five to fifteen minutes with about 70 sensors. 
+
+
+On an AWS account we establish a small SQL Server database instance on the RDS (Relational Database Service). 
+This is blocked from direct internet access by means of a bastion server. The results are updated via a 
+data push originating from Niagara. 
+
+
+kilroy more details from implementation to grand scheme
+
+
+kilroy need github version of the jupyter notebook
+
+
+## AWS IoT buttons
+
+
+We follow [this guide](https://docs.aws.amazon.com/iot/latest/developerguide/iot-gs.html).
+
+
+## Arduino devices connected to the AWS cloud
+
+
+### Objective and Approach
+
+
+The Arduino *Maker* community is quite large, active and supportive. 
+The Arduino Yun model has both a typical microprocessor as well as a second 'system on a chp' processor 
+running Linux with WiFi.  The Yun is therefore supported by AWS via an *IOT Endpoint*. This means that
+the device can be registered on the AWS cloud. It 'exists' there as a virtual extension of 
+itself. The physical device might generate signals or be interested in listening to other
+devices. The IOT endpoint is a routing destination where this communication takes place
+using the MPQQ communication protocol. 
+
+
+# kilroy sidewalk ends here
+
+
+The objective here is to establish a POC IOT implementation that connects a device located inside
+a University (UW Seattle) to the AWS cloud; with signals going to and fro. 
+The approach is to obtain and configure such a device and document this initial success
+for further expansion, for example into a prototype IOT network as part of a research project.
+
+#### Solution
+
+- Purchase an Arduino Yun device; install the IDE
+- Power up,  establish WiFi connectivity 
+- Register the device with the University IT department using its Mac address
+- Register the device at AWS by means of an IOT Endpoint service
+- Develop and test code on the Yun to communicate with (report in) to its virtualization on AWS
+- Document this process
+
+#### Results
+
+- We have successfully implemented Arduino Yun registration and data passing to an AWS IOT end point
+- Further development will be supported out of our cloud research program at opportunity
 
 
 ## Admonitions
