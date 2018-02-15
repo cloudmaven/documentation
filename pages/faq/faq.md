@@ -12,6 +12,12 @@ folder: pages
 ![cc_intro0001](/documentation/images/cc/cc_intro0001.png)
 
 
+...and...
+
+
+![cc_intro0002](/documentation/images/dont_panic.png)
+
+
 ## Introduction
 
 
@@ -20,6 +26,11 @@ What's possible, what are the pitfalls.   If you are interested in using the clo
 for coursework -- particularly JupyterHub technology -- please see our additional
 content found in the left sidebar under **Curriculum**.
 
+
+## Q: I'm impatient!! How do I get in touch with you directly? 
+
+
+Look us up at the [eScience Institute's WRF Data Science Studio](http://escience.washington.edu/wrf-data-science-studio/).
 
 
 ## Q: What is the *cloud*?
@@ -483,11 +494,6 @@ information. We are working to make implementation of these environments straigh
 Yes; and this is another ongoing area of learning and development in our group. Our first big milestone has been implementation
 of daily spend in the Inbox. Contact us for more information.
 
-
-## Q: How do I get in touch with you? 
-
-
-Look us up at the [eScience Institute's WRF Data Science Studio](http://escience.washington.edu/wrf-data-science-studio/).
 
 
 {% include links.html %}
