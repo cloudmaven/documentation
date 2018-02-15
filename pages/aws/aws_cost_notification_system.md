@@ -196,6 +196,16 @@ where the billing data is compiled by DLT.
 
 
 
+### 0 Enable DLT Logging
+
+
+Please email DLT AWS-PA@dlt.com or check their website for technical support. Send from your admin
+account and request that they enable billing logging to S3 for your account. Provide the account number. 
+Once they confirm this is in place you should be able to see an S3 bucket called 
+123456789012-dlt-utilization with Public access in US East (N. Virginia). This will contain
+a time sequence of csv.zip files where each row of each file is a billing item. 
+
+
 ### 1 Role
 
 
@@ -238,13 +248,19 @@ where the billing data is compiled by DLT.
 
 - Above the code box are tabs for Configuration and for Monitoring 
 - In the Configuration tab find the Designer region which describes your lambda function Triggers
-- Add a CloudWatch Events trigger
+- Add a CloudWatch Events trigger. Cloud watch is a management tool that allows you to create an Event linked to your Lambda.
+  - This Event begins with creating a rule in Step 1
+    - I chose **schedule**
+    - I chose a Fixed rate of 24 Hours
+    - I chose to add a target: Specifically a Lambda function: Specifically kilroy_burn_lambda 
+    - Then I move forward to Configure details in Step 2
+    - I give my rule a Name 'kilroytrigger' and a Description and click the button 'Create rule'
+    - The new rule should appear with a little timer icon and it should fire off your lambda every 24 hours
+      - kilroy has no idea how to set the actual time of day that this trigger goes off
 
 
-- hobie notes that this is where the Maven would include some details including a sub-section on setting up the CloudWatch...
-- hobie notes that kilroy_burn_lambda is still configured to trigger off an S3 access (Get or Put Object) which seems like it should be deleted
-  - bucket name is 123456789012-dlt-utilization
-- hobie suggests there ought to be a method or button to push that triggers for testing...  but the S3 upload method is not it
+- A Lambda can also be set to trigger off an S3 access (Get or Put Object)
+- You can configure your Lambda to execute off of the default Test; obviously this is useful
 
 
 ### 4 SNS
