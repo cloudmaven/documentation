@@ -199,11 +199,20 @@ where the billing data is compiled by DLT.
 ### 0 Enable DLT Logging
 
 
-Please email DLT AWS-PA@dlt.com or check their website for technical support. Send from your admin
-account and request that they enable billing logging to S3 for your account. Provide the account number. 
-Once they confirm this is in place you should be able to see an S3 bucket called 
-123456789012-dlt-utilization with Public access in US East (N. Virginia). This will contain
-a time sequence of csv.zip files where each row of each file is a billing item. 
+Send an email to the AWS account provider 'DLT': Use the email address OpsCenter@dlt.com. 
+You should send this from your account manager email alias; so for example if the root user
+is kilroy_administrator@kilroy.org you should send it from there. In this email 
+simply request that DLT enable cost logging to an S3 bucket and provide your account number. 
+
+
+Once they confirm you should find an S3 bucket called 123456789012-dlt-utilization in your S3
+console. It should have access = Public and it will be located in US East (N. Virginia). 
+This bucket will accumulate a time sequence of csv.zip files where each row of each file is a 
+billing item. 
+
+
+If this procedure fails you may need to check the DLT website to locate more 
+technical support. 
 
 
 ### 1 Role
