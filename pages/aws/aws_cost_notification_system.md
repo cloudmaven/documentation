@@ -13,23 +13,21 @@ folder: aws
 ## Objective and Approach
 
 
-This page is a walkthrough for building an email notifier into your AWS/DLT account. The main idea is to follow the recipe
-and note the connectivity of AWS components as you go. What you get is an email every day in your Inbox where the lead line
-tells you at a glance what you spent on the AWS cloud in the past 24 hours, as in: 
+This page walks you through building the burn notifier for your AWS/DLT public cloud account. 
+Follow the recipe and note the connectivity of AWS components as you go: Lambda, SNS, S3, CloudWatch, IAM Role, IAM Policy. 
+If all goes well you will receive an email every day that (with a glance at your Inbox) tells you how much you spent
+from your account 2 days ago. Yes we agree 'past 24 hours' would be better but it takes some time for the data to post.
 
 
 
 ![pic0000](/documentation/images/aws/aws_email_summary.png)
 
 
-To cut to the chase: Skip down to the Installation Recipe section below. 
+Skip down to the Installation Recipe to get started; or read on for more context.
 
 
 This introductory segment is a brief glossary and a description of what you want to build.
 The subsequent section is the step-by-step of building it. 
-
-
-Editor: Please search for 'hobie' for places that need improvement on this pass (and delete this line).
 
 
 ### Glossary
@@ -125,18 +123,19 @@ Taking the glossary above as read: ...
 
 In relation to your account: DLT has allocated an S3 bucket with a standardized name in which they record -- as text lines -- 
 the hourly cost of virtually all of your account resources. An EC2 instance that has run for one hour at a cost of $0.17 will 
-appear as a time-tagged entry in this cost ledger.  This ledger in S3 is the DLT billing record. 
+appear as a time-tagged entry in this cost ledger.  This ledger in S3 is the DLT billing record. Here in this document we
+take your account number to be 123456789012 and the corresponding S3 bucket will be named 123456789012-dlt-utilization. 
+Turning the service on will require sending an email to OpsCenter@dlt.com so plan on this taking a day or so to resolve.
+We have further notes on this below. 
 
 
-The DLT billing record is updated only twice daily.  One approach is to use this update as a trigger event which 
-generates your bill. However we have deprecated this approach in favor of simply using AWS CloudWatch. This is an 
-alarm that goes off every day and triggers a Lambda function that tallies up and emails your daily spend. 
-Said Lambda function has permission to scan through the DLT billing record (which is comma separated text) to do 
-its sums.  It is also doing account breakdown sums based on resource tagging.  Let's digress on this for a moment.
-
-
-hobie would like to point out, ma'am, that he's not sure we made it clear that the account owner needs to 
-turn on the S3 bucket access... but he's not sure how that goes now. perhaps it is quite simple?
+The DLT billing record is updated sporadically; and it may take more than 24 hours to post everything.  
+The update can be used as a trigger event but we prefer to look at the spend of 2 days ago and to trigger 
+that calculation every day at noon using AWS CloudWatch (which behaves like an alarm clock). The alarm
+triggers a Lambda function to run; which tallies up and emails your daily spend.  The Lambda function has permission 
+to scan through the DLT billing record (comma-separated text).  The cost breakdown is based on resource tagging
+using tag keys 'Owner', 'Name' and 'Project'.  These should appear as column headers in all billing files 
+in the S3 bucket. 
 
 
 #### What is resource tagging and why do I care? 
@@ -149,17 +148,16 @@ different research projects using one AWS/DLT account. The tagged sums help you 
 the *untagged* cost will give you a sense of how much you are spending that is untraceable.
 
 
+
 #### What is auto-tagging?
 
 
-hobie would like to suggest a sequence of events for integrating auto-tagging
-
+This section needs an update per...
 
 - Replace this section with a short description of auto-tagging 
 - Re-name the AWS 'Cost Tracking' page to 'Auto-tagging resources'
 - Rewrite that page to harmonize with this one
 - Combine that page with this one and blow that page away
-
 
 
 ## Installation Recipe: A procedural to set up cost (burn) notification email
@@ -171,64 +169,76 @@ hobie would like to suggest a sequence of events for integrating auto-tagging
 Steps: 
 
 
-- Create a role that has assigned to it a single policy (policies grant permissions to take action)
-- Create a lambda function that assumes this role and therefore has the policy's permissions
-- Configure the lambda function for the account
-- Configure a trigger that will invoke the lambda function (the CloudWatch alarm)
+- Create the S3 bucket in your account
+- Create an IAM Role with a particular Policy 
+- Create a Lambda function that will assume this Role 
+- Configure the Lambda function
+- Configure a CloudWatch trigger that will invoke the Lambda function
 - Create an SNS topic and attach email subscribers to that topic
-
-
-#### Pro Tip
-The DLT billing record S3 bucket has a standardized name based on your account ID '123456789012':
-**123456789012-dlt-utilization**.  This bucket is in US-East-1 (N.Virginia) so we do all of the 
-cost notification building in that region.  Make sure this is the region shown in the AWS console
-at the upper right.
-
-
-We will use an identifier string for this task: '**kilroy_burn**'.  
-For example the lambda function will be named kilroy_burn_lambda.
-The SNS topic will be kilroy_burn_sns. The role will be kilroy_burn_role.  
-
-
-The kilroy_burn_lambda service is a Python script with an event handler method. This service is passed
-an event that is parsed in code, eventually leading to parsing and analysis of the contents of the S3 bucket
-where the billing data is compiled by DLT.
+- Test your notifier
 
 
 
 ### 0 Enable DLT Logging
 
 
-Send an email to the AWS account provider 'DLT': Use the email address OpsCenter@dlt.com. 
-You should send this from your account manager email alias; so for example if the root user
-is kilroy_administrator@kilroy.org you should send it from there. In this email 
-simply request that DLT enable cost logging to an S3 bucket and provide your account number. 
+In the US-East-1 region of AWS create an S3 bucket based upon your account ID '123456789012'. 
+Name it **123456789012-dlt-utilization**.  Give it default permissions and do give it Public Read 
+access.  As you do so double check that **US-East-1** is the region shown in the AWS console at 
+the upper right.  Once you have established this bucket: Attach a policy that you create by 
+pasting in the following text:
 
 
-Once they confirm you should find an S3 bucket called 123456789012-dlt-utilization in your S3
-console. It should have access = Public and it will be located in US East (N. Virginia). 
-This bucket will accumulate a time sequence of csv.zip files where each row of each file is a 
-billing item. 
+```
+{
+"Version": "2012-10-17",
+"Id": "Policy1335892530063",
+"Statement": [
+{
+"Sid": "Stmt1335892526596",
+"Effect": "Allow",
+"Principal": {
+"AWS": "arn:aws:iam::371652583900:user/utilization"
+},
+"Action": "s3:PutObject",
+"Resource":"arn:aws:s3:::123456789012-dlt-utilization/*"   
+}
+]
+}
+```
 
 
-If this procedure fails you may need to check the DLT website to locate more 
-technical support. 
+Notice that you must substitute your actual account number for both the name of the S3 bucket
+and in the above policy for the string '123456789012'. 
 
 
-### 1 Role
+Once this is done send an email from your root email account to OpsCenter@dlt.com. In this email request 
+DLT to turn on the utilization logging into your bucket. Give your account number and the S3 bucket name; 
+and paste in the text of the Policy you used so they can double check it. Once they get back to you with 
+'everything is working' or words to that effect: Go to the S3 part of the console and verify that the bucket 
+is still there and that it contains objects, specifically zipped csv log files. These will accumulate daily 
+so it may take a day or two for the content to start showing up. If it is not showing up: Contact DLT 
+for help.
 
 
-- Log in to the AWS console as an admin with IAM privileges. 
-- Verify that your region (upper right corner) is set to N.Virginia
-- Have at hand your IAM User Access Keys (Access Key ID and Secret Access Key; two strings)
+From here we will configure a Role + Policy and a Lambda function that will refer back to this bucket; 
+so keep the bucket name handy.
+
+
+### 1 Create a Role for your Lambda function in advance
+
+
+- Log in to the AWS console with admin privileges. 
+- Verify that your region (upper right corner) is N.Virginia
+- Have in hand your IAM User Access Keys (Access Key ID and Secret Access Key; two strings)
   - Here they will be called XXXXXXXXXXXXXXXXX and XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 - Also have on hand your 12-digit account number; here we use 123456789012
 - Go to the **IAM** services page and select **Roles**
 - Create role of type Lambda and proceed to the permissions page
 - Search for the managed policy **AWSLambdaExecute** and associate that with this role
-- Name the role **kilroy_burn_role** (or your equivalent identifier)
-  - Remember 'kilroy_burn' is an identifier for what we are doing: Reporting your daily burn
-  - The _role is the name given to the role which is part of the overall machinery
+- Name the role **kilroy_burn_role** (use your own equivalent identifier)
+  - 'kilroy_burn' is a string we use here for everything associated with the notifier we are building
+  - 'kilroy_burn_role' is the name for the role just as 'kilroy_burn_lambda' will be the name for the lambda
 - Create the role
 
 
@@ -239,16 +249,17 @@ technical support.
 - Author from scratch
 - Name the lambda **kilroy_burn_lambda**
   - As above 'kilroy_burn' identifiers this as a cost (burn) reporting tool
-  - and _lambda labels the Lambda as a lambda. It's a bit redundant but we like it.
-- Choose an existing role: **kilroy_burn_role**
+  - and '_lambda' labels the Lambda as a lambda. It's a bit redundant but we like it.
+- Choose the existing role from above: **kilroy_burn_role**
 - Create function
 - Edit code inline (see below), select Python 3.6, keep event handler as lambda_function.lambda_handler
   - The code is included below these five steps for cut-and-paste
-  - Modify the pasted code by searching for the string 'kilroy mod' and making modifications as directed 
+  - Modify the pasted code by searching for the string 'kilroy mod' to make modifications as directed 
+  - Make sure the file you create is called lambda_function.py
 - Environment variables and Tags may be left blank
-  - It is good practice to tag everything; so we recommend entering the tag Key = Owner and Value = your User name
+  - A better version of this code (future) will incorporate tags so you can just place them here once
 - Verify Execution role = kilroy_burn_role set in step 1
-- Set Memory to 256MB and Timeout to 2 min 10 sec
+- Set Memory to 256MB and Timeout to 2 min 0 sec
 - SAVE your settings so far
 
 
@@ -259,9 +270,10 @@ technical support.
 - In the Configuration tab find the Designer region which describes your lambda function Triggers
 - Add a CloudWatch Events trigger. Cloud watch is a management tool that allows you to create an Event linked to your Lambda.
   - This Event begins with creating a rule in Step 1
-    - I chose **schedule**
-    - I chose a Fixed rate of 24 Hours
-    - I chose to add a target: Specifically a Lambda function: Specifically kilroy_burn_lambda 
+    - I chose **schedule** and use the following string to stipulate 'once per day at noon'...
+      - cron(0 12 * * ? *)
+      - For more on this see [this link](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-experessions.html)
+    - I set the target as the Lambda function name: kilroy_burn_lambda 
     - Then I move forward to Configure details in Step 2
     - I give my rule a Name 'kilroytrigger' and a Description and click the button 'Create rule'
     - The new rule should appear with a little timer icon and it should fire off your lambda every 24 hours
@@ -269,7 +281,10 @@ technical support.
 
 
 - A Lambda can also be set to trigger off an S3 access (Get or Put Object)
-- You can configure your Lambda to execute off of the default Test; obviously this is useful
+  - We do not do that because of irregularities in the DLT logging mechanism; it just acts glitchy
+- You can configure your Lambda to execute off of the Test button 
+  - Go through the default configuration process; you don't have to modify anything
+  - Save and click the Test button. It will fail for now until everything is in place 
 
 
 ### 4 SNS
@@ -291,8 +306,7 @@ You should now start receiving daily cost/burn summaries in your Inbox. Verify t
 ### 5 Validation and Debugging
 
 
-Needed here: 
-A remark on creating a test. (Don't need some other sort of trigger.)
+You should be able to run the Test now. If it fails you'll have to debug it. 
 
 
 #### Cost Explorer
@@ -435,13 +449,13 @@ def dayChecker(line_elements, idx_dt, lo_day_bdry, hi_day_bdry):
     return False
 
 ### check if the resource is untagged, if true, print a tag, if not, print False
-def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
+def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3):
     '''
     grab tags
     ---
     arg:    
         array line_elements : a line of a csv file
-        int idx_tag1-idx_tag4 : the index of tag
+        int idx_tag1-idx_tag3 : the index of tag
     return:
         if there is a tag, return a string of the tag
         if not return bool False
@@ -450,7 +464,6 @@ def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
     if line_elements[idx_tag1]: return line_elements[idx_tag1]
     if line_elements[idx_tag2]: return line_elements[idx_tag2]
     if line_elements[idx_tag3]: return line_elements[idx_tag3]
-    if line_elements[idx_tag4]: return line_elements[idx_tag4]
     return False
 
 
@@ -505,8 +518,8 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
                 col_dict = {}
                 for i, n in enumerate(line):
                     col_dict.update({n.strip(): i})
-                # get index for tags (user:Name, user:Project)
-                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
+                # get index for tags (user:Name, user:Project, user:Owner)
+                idx_tag1, idx_tag2, idx_tag3 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:Name']
                 # get index for datetime
                 idx_dt = col_dict['UsageEndDate']
                 # get index for ProductName
@@ -524,7 +537,7 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
                     # lo_day_bdry and hi_day_bdry were traditionally 0 and 0 to give one day of recent results
                     # make them 3 and 4 to look at a two-day range 3 days ago for example
                     if dayChecker(line, idx_dt, lo_day_bdry, hi_day_bdry):
-                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
+                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3)
                         total_blend += float(line[idx_dollar_blend])
                         total_unblend += float(line[idx_dollar_unblend])
                         if tag:
