@@ -107,8 +107,8 @@ entries:
       url: /rc_data_science.html
       output: web, pdf
 
-    - title: Research on the web
-      url: /rc_research_on_the_web.html
+    - title: Configuring Python in a JupyterHub
+      url: /rc_configuring_python_in_a_jupyterhub.html
       output: web, pdf
 
     - title: GitHub
