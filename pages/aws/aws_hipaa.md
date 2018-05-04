@@ -13,28 +13,18 @@ folder: aws
 ## Introduction
 
 
-[This document](aws_hipaa.html) presents a secure data management system motivated 
-by the need to manage data securely in the public cloud. We take more specific motivation 
+[This document](aws_hipaa.html) constructs a secure computing environment (SCE) motivated 
+by the need to manage data securely in the public cloud. We take specific motivation 
 from management of Private Health Information (PHI) under HIPAA regulations.
 
-
-
-## CC*IIE Remarks
-
-Please refer to the cloudmaven generic [data security page](cc/cc_data_security.html) for 
-remarks on campus cyberinfrastructure. This page is specifice to both the AWS public cloud
-and HIPAA regulations but has a general procedural and social applicability to the task of
-keeping research project data secure.
 
 
 
 
 ## Links
 
-
-- [AWS features that are HIPAA-aligned](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/)
-
-
+- See the [data security page](cc/cc_data_security.html) relating to campus cyberinfrastructure. 
+- [AWS HIPAA-aligned services](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/)
 - [AWS talk (YouTube) on HIPAA compliance](https://www.youtube.com/watch?v=g4XI4IIYVrw)
 - [AWS HIPAA compliance blog Part 1 Automation](https://aws.amazon.com/blogs/security/how-to-automate-hipaa-compliance-part-1-use-the-cloud-to-protect-the-cloud/)
 - [AWS HIPAA compliance blog Part 2 Deployment](https://aws.amazon.com/blogs/security/how-to-use-aws-service-catalog-for-code-deployments-part-2-of-the-automating-hipaa-compliance-series/)
