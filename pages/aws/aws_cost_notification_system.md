@@ -448,7 +448,8 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
         aggs[tag] = {'total_blended_cost': cost_blend,
                      'total_unblended_cost': cost_unblend,
                     pname: {'blended_cost': cost_blend,
-                    'unblended_cost': cost_unblend}}
+                    'unblended_cost': cost_unblend} 
+                    }
 
 ### cost aggregation parser for days-ago-based time range
 def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
