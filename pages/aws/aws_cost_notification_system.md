@@ -424,7 +424,7 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
     ---
     arg:    
         array line_elements : a line of a csv file
-        dict aggs : a dictionary like this: {{tag1: {}}, {tag2: {}}, {tag3: {}}}
+        dict aggs : a dictionary like this: op op tag1: op cp cp , op tag2: op cp cp , op tag3: op cp cp cp 
         int idx_pname, idx_dollar_blend, idx_dollar_unblend : the index of product name, quantity of blended and unblended cost
     return:
         updated aggs with aggregated cost
@@ -441,15 +441,10 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
             aggs[tag][pname]['blended_cost'] += cost_blend
             aggs[tag][pname]['unblended_cost'] += cost_unblend
         else:
-            aggs[tag][pname] = {'blended_cost': cost_blend,
-                            'unblended_cost': cost_unblend}
+            aggs[tag][pname] = {'blended_cost': cost_blend, 'unblended_cost': cost_unblend}
             
     else:
-        aggs[tag] = {'total_blended_cost': cost_blend,
-                     'total_unblended_cost': cost_unblend,
-                    pname: {'blended_cost': cost_blend,
-                    'unblended_cost': cost_unblend} 
-                    }
+        aggs[tag] = { 'total_blended_cost': cost_blend, 'total_unblended_cost': cost_unblend, pname: { 'blended_cost': cost_blend, 'unblended_cost': cost_unblend } }
 
 ### cost aggregation parser for days-ago-based time range
 def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
@@ -462,8 +457,8 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
         hi_day_bdry: days-ago time range to consider, other limit
     return:
         an array contains daily cost summary
-        1, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
-        2, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        1, dict untagged : op op 'resource id 1': $$$ cp , 'resource id 2': $$$ cp;
+        2, dict aggs : op op tag1: op cp cp , op tag2: op cp cp , op tag3: op cp cp cp ;
         3, float total_blend;
         4, float total_unblend;
         5, float total_tagged_blend;
@@ -529,8 +524,8 @@ def ComposeMessage(aggs, untagged, *all_costs):
     output a reader-friendly string 
     ---
     arg:    
-        1, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
-        2, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        1, dict aggs : ...
+        2, dict untagged : ...
         3, *all_costs : float total_blend, float total_unblend, float total_tagged_blend, 
                         float total_tagged_unblend, float total_untagged_blend, float total_untagged_unblend
     return:
