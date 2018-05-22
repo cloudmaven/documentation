@@ -13,17 +13,46 @@ folder: aws
 ## Objective and Approach
 
 
-This page walks you through building the burn notifier for your AWS/DLT public cloud account. 
-Follow the recipe and note the connectivity of AWS components as you go: Lambda, SNS, S3, CloudWatch, IAM Role, IAM Policy. 
-If all goes well you will receive an email every day that (with a glance at your Inbox) tells you how much you spent
-from your account 2 days ago. Yes we agree 'past 24 hours' would be better but it takes some time for the data to post.
+This is	a walk-through of installing a daily burn (cost) email on your AWS + DLT account. 
 
+
+What does this mean? 
+Magda's Second Law states "Keeping track of one's cloud computing spending should require **close to zero effort**;
+otherwise the barrier may lead to a lapse in vigilence and undesirable further consequences." 
+
+
+Now: To deconvolve the Statement of Purpose sentence at the top: 
+DLT is the AWS re-seller at the University of Washington. You want to have
+your AWS account *through them* for reasons given elsewhere at this website. Once you do you can enable hourly
+cost accounting as rows in a file kept in an S3 bucket. From there you will want an automated script (we write
+ours in Python) to run once per day -- a cron job -- to tot up how much you have spent and send this to you 
+in an email. The amount spent should be the email Subject so that as you glance through your Inbox every day 
+you will exert close to zero effort to notice (hopefully) that your spend yesterday was as expected. If your
+spend ever rises in an alarming fashion: You may be able to catch this through careful deployment of AWS alarms.
+However in cases where alarms fall short this email notification is a good thing to have in place.
+
+
+##### Qualifiers 
+
+
+- We use the informal English expression 'burn' to mean 'spend of money'. 'I burnt $7' means 'I spent $7'.
+
+- This walkthrough uses AWS components (and therefore jargon): Lambda functions, SNS, S3, CloudWatch, IAM Role, IAM Policy. 
+
+- These terms are described briefly below and elsewhere at this website in more detail. 
+
+- On successfully following these steps: You will receive an email each day telling you at a glance what your spend was **two days ago**.  
+
+- We can not provide the spend for *one* day ago because this information is not delivered to the accounting bucket in real time. 
+  - This is a how AWS + DLT work at this time.  The past 24 hours burn would be much better but not available at this time.
+
+- For more on best practices please refer to the (UW CSE Database group's helpful page](http://db.cs.washington.edu/etc/aws.html).
 
 
 ![pic0000](/documentation/images/aws/aws_email_summary.png)
 
 
-Skip down to the Installation Recipe to get started; or read on for more context.
+Skip down to **Installation** to get started; or read on for more context.
 
 
 This introductory segment is a brief glossary and a description of what you want to build.
@@ -42,7 +71,7 @@ automatically. In our case this action will be triggered by a Lambda function
 - **S3**: Object storage on AWS, i.e. the place where *objects* are placed and accessed. An object 
 in the S3 object store is for our purposes analogous to a file in a file system
 - **spend**: The amount of money you owe at the end of a period of time (here: one day / 
-one week) due to the resources you have used on AWS
+one week) due to the resources you have used on AWS, aka **burn**
 - **tag**: A key-value pair associated with a resource. The number of tags you associate with 
 a resource is unlimited; but the keys must be unique
 - **Owner**: A reserved tag key where the value is an IAM User username 
@@ -50,7 +79,7 @@ a resource is unlimited; but the keys must be unique
 policies, and groups
 - **IAM User**: A user identity assigned to a person that includes a username and authentication (password; 
 possibly multi-factor authentication; public/private keys etcetera)
-- **Access Keys**: Two fairly short strings associated with *IAM Users* for authentication; not to be conflated with AWS 
+- **Access Keys**: Two strings associated with *IAM Users* for authentication; not to be conflated with AWS 
 Key Pairs associated with EC2 instances. 
 - **Group**: A set-like construct: IAM Users can be assigned to a Group
 - **Role**: An entity that defines an assumable set of permissions to take actions. Roles are molecular.
@@ -60,9 +89,12 @@ Key Pairs associated with EC2 instances.
 ### Caveat emptor: How accurate is this method?
 
 
-Short answer: Pretty accurate; but this solution is still under development. In the table below we 
-compare some results that show we are in the ballpark. However until DLT fixes up their reporting rate
-we notice some pathologies and report the burn from two days ago to avoid them. 
+In other words: Is the quoted cost equal to the actual cost I will pay at the end of the month?
+
+
+Short answer: Yes, this is pretty accurate; but the solution is still under development. In the table below we 
+compare some results that show we are in the ballpark. As noted until DLT can fix their reporting rate
+some pathologies may come in; and we report the cost from two days ago, not yesterday. 
 
 
 In this table the 'Account' column is the daily spend our software generates for an AWS account provided through DLT. 
@@ -91,7 +123,7 @@ what the system thinks we spent for the day.  Values are in US dollars.
 
 
 For the first account *our* approach gave $1132.58 for the period whereas the cost explorer gave 1130.36.
-In the second case it was 194.12 compared to 201.03. 
+And so forth.
 
 
 
@@ -160,17 +192,17 @@ This section needs an update per...
 - Combine that page with this one and blow that page away
 
 
-## Installation Recipe: A procedural to set up cost (burn) notification email
+## Installation 
 
 
-### Intro
+### Introduction
 
 
 Steps: 
 
 
-- Create the S3 bucket in your account
-- Create an IAM Role with a particular Policy 
+- Create the S3 bucket in your account and turn on the billing process with DLT
+- Create an IAM Role with a couple of Policies: General Lambda permissions and SNS permission
 - Create a Lambda function that will assume this Role 
 - Configure the Lambda function
 - Configure a CloudWatch trigger that will invoke the Lambda function
@@ -208,12 +240,16 @@ pasting in the following text:
 ```
 
 
-Notice that you must substitute your actual account number for both the name of the S3 bucket
-and in the above policy for the string '123456789012'. 
+What does this policy do? It allows DLT to write content to a file in this bucket; which we will subsequently
+read.
 
 
-Once this is done send an email from your root email account to OpsCenter@dlt.com. In this email request 
-DLT to turn on the utilization logging into your bucket. Give your account number and the S3 bucket name; 
+** Notice you must substitute your 12-digit account number in both the name of the S3 bucket
+*and* in the policy text above where it reads '123456789012'.**
+
+
+Once this bucket is set up send an email from your root email account to OpsCenter@dlt.com. In this email 
+request DLT to turn on the utilization logging into your bucket. Give your account number and the S3 bucket name; 
 and paste in the text of the Policy you used so they can double check it. Once they get back to you with 
 'everything is working' or words to that effect: Go to the S3 part of the console and verify that the bucket 
 is still there and that it contains objects, specifically zipped csv log files. These will accumulate daily 
@@ -221,175 +257,88 @@ so it may take a day or two for the content to start showing up. If it is not sh
 for help.
 
 
-From here we will configure a Role + Policy and a Lambda function that will refer back to this bucket; 
-so keep the bucket name handy.
+From here we will configure a role (which will have two policies) and a lambda function (which will assume this role).
+The lambda function will refer to the above bucket; so keep the bucket name handy.
 
 
 ### 1 Create a Role for your Lambda function in advance
 
 
-- Log in to the AWS console with admin privileges. 
-- Verify that your region (upper right corner) is N.Virginia
-- Have in hand your IAM User Access Keys (Access Key ID and Secret Access Key; two strings)
-  - Here they will be called XXXXXXXXXXXXXXXXX and XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-- Also have on hand your 12-digit account number; here we use 123456789012
-- Go to the **IAM** services page and select **Roles**
-- Create role of type Lambda and proceed to the permissions page
-- Search for the managed policy **AWSLambdaExecute** and associate that with this role
-- Name the role **kilroy_burn_role** (use your own equivalent identifier)
-  - 'kilroy_burn' is a string we use here for everything associated with the notifier we are building
-  - 'kilroy_burn_role' is the name for the role just as 'kilroy_burn_lambda' will be the name for the lambda
+- Log in to the AWS console with admin privileges
+- Go to IAM (Identity and Access Management) and choose (left sidebar) **Roles**
+  - Notice these are Global; there is no *region* to consider
+- Create a new role of type **Lambda**, proceed to Permissions
+- Search for the managed policy **AWSLambdaExecute** and check the box
+- Search for the managed policy **SNSFullAccess** and check the box 
+  - As you do this the previous **AWSLambdaExecute** policy will not be visible; this is ok, it will remember
+- At lower right click the button **Next: Review**. You should (must!) see both of these policies listed here.
+- Name the role and give a description of it
+  - An example name: 'daily_burn_notify_lambda_role' 
 - Create the role
+
+
+##### Qualifier
+
+
+An earlier version made use of IAM User Access Keys. We now avoid using them: More secure.
 
 
 ### 2 Lambda
 
 
-- Go to the Lambda services page and Create function
-- Author from scratch
-- Name the lambda **kilroy_burn_lambda**
-  - As above 'kilroy_burn' identifiers this as a cost (burn) reporting tool
-  - and '_lambda' labels the Lambda as a lambda. It's a bit redundant but we like it.
-- Choose the existing role from above: **kilroy_burn_role**
-- Create function
-- Edit code inline (see below), select Python 3.6, keep event handler as lambda_function.lambda_handler
-  - The code is included below these five steps for cut-and-paste
-  - Modify the pasted code by searching for the string 'kilroy mod' to make modifications as directed 
-  - Make sure the file you create is called lambda_function.py
-- Environment variables and Tags may be left blank
-  - A better version of this code (future) will incorporate tags so you can just place them here once
-- Verify Execution role = kilroy_burn_role set in step 1
-- Set Memory to 256MB and Timeout to 2 min 0 sec
-- SAVE your settings so far
-
-
-### 3 Lambda trigger
-
-
-- Above the code box are tabs for Configuration and for Monitoring 
-- In the Configuration tab find the Designer region which describes your lambda function Triggers
-- Add a CloudWatch Events trigger. Cloud watch is a management tool that allows you to create an Event linked to your Lambda.
-  - This Event begins with creating a rule in Step 1
-    - I chose **schedule** and use the following string to stipulate 'once per day at noon'...
-      - cron(0 12 * * ? *)
-      - For more on this see [this link](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-experessions.html)
-    - I set the target as the Lambda function name: kilroy_burn_lambda 
-    - Then I move forward to Configure details in Step 2
-    - I give my rule a Name 'kilroytrigger' and a Description and click the button 'Create rule'
-    - The new rule should appear with a little timer icon and it should fire off your lambda every 24 hours
-      - kilroy has no idea how to set the actual time of day that this trigger goes off
-
-
-- A Lambda can also be set to trigger off an S3 access (Get or Put Object)
-  - We do not do that because of irregularities in the DLT logging mechanism; it just acts glitchy
-- You can configure your Lambda to execute off of the Test button 
-  - Go through the default configuration process; you don't have to modify anything
-  - Save and click the Test button. It will fail for now until everything is in place 
-
-
-### 4 SNS
-
-
-- In the AWS console go to the SNS services page
-- Select Create topic
-- Enter the topic name (per the Python code in the lambda function): kilroy_burn_sns
-- Enter the topic abbreviation, 10 characters; which will be in the From field of the email notifications
-  - I used kilroyburn
-- Continue to topic details and click Create subscription
-  - Choose type = email and add your email address plus any others you think should receive notifications
-- Click on Create subscription to send a confirmation email to yourself; and then confirm that 
-
-
-You should now start receiving daily cost/burn summaries in your Inbox. Verify that this is working properly. 
-
-
-### 5 Validation and Debugging
-
-
-You should be able to run the Test now. If it fails you'll have to debug it. 
-
-
-#### Cost Explorer
-
-
-Cost Explorer is a feature of the AWS browser console. You can access this using the top right dropdown menu 
-and selecting My Billing Dashboard; then start the Cost Explorer.  In more detail:
-
-
-- When you receive a billing statement you should compare it with the Cost Explorer estimate of yor daily burn
-  - At the upper right of the console use your Account Name dropdown to select My Billing Dashboard
-  - Link to the Cost Explorer and launch it
-  - Use the Reports dropdown to select **Daily Costs**
-  - A calendar drop-down allows you to select a time range (I use MTD); and you must click the **Apply** button
-  - You should now see daily expense as a bar chart
-    - You can hover over a particular day to get the exact value
-    - One DLT accounts the current day cost will look low and tend to be inaccurate
-  - This daily cost record should be -- we intend -- commensurate with the email notification you will now receive from lambda
-
-
-#### Lambda monitoring tab
-
-
-- If something is going wrong
-  - click on the Monitoring tab at the top of your lambda service page (under the name of the lambda function)
-  - You should see some dashboard charts indicating that the lambda function has been triggered
-  - There is a useful link here to View logs in Cloudwatch
-    - The logs on Cloudwatch are themselves links to log entries; her you can see diagnostics printed by the lambda function
-    - This means you can set print statements in the lambda, save it, trigger it, and diagnose issue by looking at the output
-
-
-#### Lambda Python code
-
-
-Here is the lambda code circa Jan 2018. Looks for the string 'kilroy mod' to find the six-or-so places where
-you will make changes.
-
+- Go to the Lambda services page and select the **N. Virginia** region at the upper right
+- Create a new Lambda function: Choose to author it from scratch
+- Give it a name like **daily_burn_notify_lambda**
+- Choose the Python 3.6 runtime
+- Choose the role from step 1 above: **daily_burn_notify_lambda_role**
+- Click the button **Create function** at lower right. This should take you to a 'congrats' message at the top of your new Lambda page
+  - Notice there are two tabs available: Configuration and Monitoring
+  - Both tabs are important and for now we will stay on the Configuration tab
+- Scroll down past the **Designer** panel and the **Function code** panel to the Environment variables panel
+  - Enter a Key value string: accountnumber
+  - Enter a Value string: 1234567890 (in other words: Enter your 12-digit account number, not literally 123456789012)
+  - This will be referenced in the Lambda Python code so that you do not need to hardcode your account number
+- Scroll down further to the Basic settings panel
+  - Set the Memory (MB) slider to 256 MB
+  - Set the Timeout values to reflect 2 min 10 sec 
+- The remaining lower panels can be left as-is
+  - Notice that the Execution role panel should list the role you created in step 1
+- Scroll back up to the **Function code** panel
+  - Delete the three or so lines of code already in the code window
+  - Paste in the code block given here: 
 
 
 ```
-# last update: Jan 10, 2018
-# author: Jin Qu, Amanda Tan Lehr, Rob Fatland
+# last update: May 22, 2018
+# authors: Jin Qu, Amanda Tan Lehr, Rob Fatland
 # programming environment: python3.6
 #
-# Modify this file for use with your own account by searching for the tag 'kilroy mod' (about 7 lines of code)
+# Modify this file for use with your own account by searching for the tag 'kilroy mod'
 #
 # Background
-#   DLT is a company that acts as a distributor for AWS accounts. Assuming you have a DLT version of an AWS
-#   account: DLT can be notified that you want your hourly costs written to an S3 bucket. Their process is 
-#   to append on a ~daily basis lines of billing data for the past day. These lines are appended to a billing 
-#   file that spans one calendar month. This file is in zipped CSV format (CSV means comma-separated-values) 
-#   so it must be unzipped before we can read it. Each line of the file is a separate billing item typically
-#   covering one hour. So the basic algorithm for this code is something like this: 
+#   DLT is a distributor for AWS accounts. Assuming you have a DLT version of an AWS. DLT can be notified that you want your 
+#   hourly costs written to an S3 bucket. This is done by appending lines/items to a billing file that spans one calendar month. 
+#   This file is in zipped CSV format (CSV means comma-separated-values) and must be unzipped before reading its contents. Each 
+#   line typically covers one hour.
 #  
-#   Identify which files are going to have relevant timestamped billing lines
-#   Open those files and read through every line looking for timestamps in a desired range (say 2 days ago)
-#     Each cost line in this file will include a resource type (e.g. EC2 instance) and a cost
-#     If the cost line includes an identified Owner of the resource: 
-#       Add the cost to that owner's total
-#     If not: Add the cost to a cumulative 'untagged' sum
-#   Once the lines are all scanned and relevant costs are aggregated...
-#     Create an email message body with a readable summary of all of this
-#     The very first line includes total + tagged + untagged costs
-#     Use the Simple Notification Service at AWS to send this email to interested persons
+#   This code...
+#     identifies files with relevant timestamped billing lines
+#     opens those files and reads through every line looking for timestamps in a desired range (24-hour-period 2 days ago)
+#         Each line includes a resource type (e.g. EC2 instance) and a cost
+#         If the cost line includes an identified Owner of the resource: 
+#             Add the cost to that owner's total
+#         If not: 
+#             Add the cost to a cumulative 'untagged' sum
+#     creates an email message body with a readable summary of all of this
+#         the first line is total = tagged + untagged costs
+#     sense email via AWS Simple Notification Service (SNS)
 # 
-#   Now this all sounds simple enough although as you'll see it requires three hundred plus lines of code.
-#   However there are some 'wild west of the public cloud' warnings that go with it, circa 2018... so we 
-#   strongly suggest reading the next two paragraphs carefully.
-#
-#   First and foremost: If you use this code and insert your own access keys and then publish the code
-#     to a public location like GitHub you are at risk of losing tens of thousands of dollars. This
-#     is because your access keys can be used to spin up other AWS resources en masse; and there are
-#     bots out there that scan GitHub for just this mistake. So keep the working code here in this 
-#     Lambda function and here only. This has happened many many times. If you accidentally publish 
-#     your keys just go disable them and generate new keys; it's quite easy.
-#
-#   Second and less critical: We have found that DLT has a very irregular cost-reporting schedule; so if
-#     you use this code to look at recent billing -- say today or yesterday -- you are very likely to get
-#     an incorrect aggregate spend estimate. In fact you should check your results from this code against 
-#     the AWS Cost Explorer tool. That will take some effort to sort out; but it will give you an idea of 
-#     whether this Lambda is working properly. If it is then you will see your 'recent past' daily burn 
-#     in your Inbox every day; which is intended as a quick glance check that your account is not burning 
-#     huge amounts of your money. 
+#   This code has been cleaned up: It does not make use of secret access keys; hence it can be shared as-is publicly. 
+#     It does make use of an environment variable to recover the 12-digit account number.
+#   
+#   Do not set the time interval to the past 24 hours without verifying. In our experience there is some cost reporting latency
+#     that will produce inaccurate results. Furthermore after you have allowed this Lambda to run for a few days you should check 
+#     the output against the AWS Cost Explorer tool to make sure they are in close agreement (to within a few cents).
 #
 
 import json
@@ -400,14 +349,14 @@ import csv
 import datetime
 import urllib
 
-# search tag 'kilroy mod': The following diagnostic should reflect your idea of a label for this lambda function
-# Look in the Monitoring tab to find the log where this and other print messages appear
-print('kilroy cost burn lambda starting')
+print('my AWS cost notify lambda function is starting')
+
+accountnumber = os.environ['accountnumber']
 
 ### choose which file(s) to parse
 '''
     Pick up the most recently updated file
-    kilroy there is some broken logic here: Which files based on day of month and time-ago range
+    cassandra says there is some broken logic here: Which files based on day of month and time-ago range
     should be fixed to reflect an arbitrary time range
 '''
 def FilePicker(contents_list):
@@ -449,21 +398,22 @@ def dayChecker(line_elements, idx_dt, lo_day_bdry, hi_day_bdry):
     return False
 
 ### check if the resource is untagged, if true, print a tag, if not, print False
-def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3):
+def untaggedChecker(line_elements, idx_tag1, idx_tag2, idx_tag3, idx_tag4):
     '''
     grab tags
     ---
     arg:    
         array line_elements : a line of a csv file
-        int idx_tag1-idx_tag3 : the index of tag
+        int idx_tag1-idx_tag4 : the index of tag
     return:
         if there is a tag, return a string of the tag
         if not return bool False
     '''
-    # kilroy does not like this code returning mixed types
+    # cassandra does not like this code returning mixed types
     if line_elements[idx_tag1]: return line_elements[idx_tag1]
     if line_elements[idx_tag2]: return line_elements[idx_tag2]
     if line_elements[idx_tag3]: return line_elements[idx_tag3]
+    if line_elements[idx_tag4]: return line_elements[idx_tag4]
     return False
 
 
@@ -500,12 +450,26 @@ def Agg(line_elements, aggs, tag, idx_pname, idx_dollar_blend, idx_dollar_unblen
                     pname: {'blended_cost': cost_blend,
                     'unblended_cost': cost_unblend}}
 
-
-
-
 ### cost aggregation parser for days-ago-based time range
 def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
-
+    '''
+    parse through the csv file and generate daily cost summary
+    ---
+    arg:    
+        str file_path : path to the cost file
+        lo_day_bdry: days-ago time range to consider
+        hi_day_bdry: days-ago time range to consider, other limit
+    return:
+        an array contains daily cost summary
+        1, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        2, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        3, float total_blend;
+        4, float total_unblend;
+        5, float total_tagged_blend;
+        6, float total_tagged_unblend;
+        7, float total_untagged_blend;
+        8, float total_untagged_unblend
+    '''
     untagged, aggs = {}, {}
     total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
     total_untagged_blend, total_untagged_unblend = 0, 0, 0, 0, 0, 0
@@ -518,8 +482,8 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
                 col_dict = {}
                 for i, n in enumerate(line):
                     col_dict.update({n.strip(): i})
-                # get index for tags (user:Name, user:Project, user:Owner)
-                idx_tag1, idx_tag2, idx_tag3 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:Name']
+                # get index for tags (user:Name, user:Project)
+                idx_tag1, idx_tag2, idx_tag3, idx_tag4 = col_dict['user:Owner'], col_dict['user:Project'], col_dict['user:ProjectName'], col_dict['user:Name']
                 # get index for datetime
                 idx_dt = col_dict['UsageEndDate']
                 # get index for ProductName
@@ -530,14 +494,13 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
                 # for untagged resources
                 idx_resource = col_dict['ResourceId']
             else:
-                # kilroy does not follow the next bit of logic... clearly tied to DLT pathology but unclear if this is effective
                 # avoid parse the last few lines
                 if line[idx_pname]:
                     # day boundaries refer to some interval in the past, as in days-ago
                     # lo_day_bdry and hi_day_bdry were traditionally 0 and 0 to give one day of recent results
                     # make them 3 and 4 to look at a two-day range 3 days ago for example
                     if dayChecker(line, idx_dt, lo_day_bdry, hi_day_bdry):
-                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3)
+                        tag = untaggedChecker(line, idx_tag1, idx_tag2, idx_tag3, idx_tag4)
                         total_blend += float(line[idx_dollar_blend])
                         total_unblend += float(line[idx_dollar_unblend])
                         if tag:
@@ -558,13 +521,20 @@ def dailyAgg(file_path, lo_day_bdry, hi_day_bdry):
     return [untagged, aggs, total_blend, total_unblend, \
             total_tagged_blend, total_tagged_unblend,total_untagged_blend, total_untagged_unblend]
 
-
-
-
-
 ### method composes an email message body 'msg' to be sent to the cost monitoring team
 def ComposeMessage(aggs, untagged, *all_costs):
-
+    '''
+    give the cost summary generated by func dailyAgg or weeklyAgg, 
+    output a reader-friendly string 
+    ---
+    arg:    
+        1, dict aggs : {{tag1: {}}, {tag2: {}}, {tag3: {}}};
+        2, dict untagged : {{'resource id 1': $$$}, 'resource id 2': $$$};
+        3, *all_costs : float total_blend, float total_unblend, float total_tagged_blend, 
+                        float total_tagged_unblend, float total_untagged_blend, float total_untagged_unblend
+    return:
+        str cost_summary
+    '''
     total_blend, total_unblend, total_tagged_blend, total_tagged_unblend, \
     total_untagged_blend, total_untagged_unblend = [*all_costs]
     cur_time = datetime.datetime.utcnow()
@@ -575,13 +545,6 @@ def ComposeMessage(aggs, untagged, *all_costs):
     msg = ' '
     msg += 'TOTAL: ${} / ${} / ${} (All/Tagged/Untagged)\n'.format(str(round(total_blend, 2)),\
       str(round(total_tagged_blend, 2)), str(round(total_untagged_blend, 2)))
-    # This is commented out because it is no longer an accurate calculation of the time range reflected in what follows
-    # msg += 'daily spend from {} to {} \n'.format(datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() \
-    #   - 86400.0 * 2)).strftime('%Y-%m-%d %H:%M:%S') + \
-    #   ' UTC to ', datetime.datetime.fromtimestamp(int(datetime.datetime.utcnow().timestamp() - \
-    #   86400.0)).strftime('%Y-%m-%d %H:%M:%S') + ' UTC ')
-    # msg += '~ ' * 20 
-    # msg += '\n'
     
     ### Get usage summary Owner tag:Total
     msg += '\nSUMMARY: \n'
@@ -604,26 +567,24 @@ def ComposeMessage(aggs, untagged, *all_costs):
         msg += '{blend}\n'.format(blend=' $' + str(round(v['total_blended_cost'], 2)))
     return msg
 
-
 # this method is called by the outside world. The original 'event' was used to fuel the logic but it is better
 #   to have no dependency so it is autonomous and easy to test
 def lambda_handler(event, context):
-    # diagnostic commented out: print("Received event: " + json.dumps(event, indent=2))
-    # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
-    # !!!!!!Do not make these keys publicly visible!!!!!!
-    s3 = boto3.client('s3', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-    # search tag 'kilroy mod': The following line should reflect your 12-digit account number
-    # this is hard-coded to match your account ID
-    bucket = '123456789012-dlt-utilization'
-
-    #some archaeology: bucket = ['Records'][0]['s3']['bucket']['name']
-    #                  key = urllib.parse.unquote_plus(['bucket']['key'], encoding='utf-8')
+    '''
+    parse cost info and send cost summary to SNS > email notifications
+    ---
+    arg:    
+        1, list event
+        2, list context
+    return:
+        None
+    '''
     
+    s3 = boto3.client('s3')
+    bucketName = accountnumber + '-dlt-utilization'
+
     try:
-        # s3 is the boto Client and bucket is the S3 bucket ID string so csv_file_list will be 
-        #   a list of the CSV cost log files in this bucket. Actually zipped so we unzip below.
-        csv_file_list = s3.list_objects(Bucket = bucket)
-        
+        csv_file_list = s3.list_objects(Bucket = bucketName)
         s3_resource = boto3.resource('s3')
         key = csv_file_list['Contents'][1]['Key']
         
@@ -635,7 +596,7 @@ def lambda_handler(event, context):
 
         # unzip all the files we need
         for f in files_to_parse:
-            s3_resource.Object(bucket, f).download_file('/tmp/' + f)
+            s3_resource.Object(bucketName, f).download_file('/tmp/' + f)
             zip_ref = zipfile.ZipFile('/tmp/'+ f, 'r')
             zip_ref.extractall('/tmp/')
 
@@ -657,32 +618,107 @@ def lambda_handler(event, context):
         email_body = ComposeMessage(daily_aggs, daily_untagged, daily_total_blend, daily_total_unblend, daily_total_tagged_blend, 
                daily_total_tagged_unblend, daily_total_untagged_blend, daily_total_untagged_unblend)
 
-        # search tag 'kilroy mod': The following line should reflect your aws key ID and secret key. 
-        # Do not make these publicly visible!!!!
-        sns = boto3.client('sns', aws_access_key_id='XXXXXXXXXXXXXXXXXXXX', aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+        sns = boto3.client('sns')
 
-        # search tag 'kilroy mod': Three things to check in the following code:
-        #   You must have an SNS topic corresponding to your entry in the TopicArn string
-        #   Your notification email will have as its subject whatever you place in the Subject string
-        #   The return value (also a string) should reflect your idea of labeling this lambda function
+        # here is the search tag 'kilroy mod'
+        #   SNS topic should match what is set up in SNS
+        #   Customize your email Subject
+        #   Customize your return value (string)
+        arnString = 'arn:aws:sns:us-east-1:' + accountnumber + ':burn_notify_sns'
         response = sns.publish(
-            TopicArn='arn:aws:sns:us-east-1:123456789012:kilroy_burn_sns',
+            TopicArn=arnString,
             Message=email_body,
-            Subject='kilroy cost burn summary')
-        return 'kilroy cost burn calculation completed!'
+            Subject='my AWS burn')
+        return 'my AWS burn notify lambda fn completed'
     
     # Last piece of the event handler: something went wrong  
     except Exception as e:
         print(e)
-        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucketName))
         raise e
-
-
-
-
-
-
 ```
+
+- Edit this file to customize it to your own account
+  - Search for 'kilroy mod' to find the section at the end that is amenable to customizing
+- Note down the arnString value for use in the SNS setup (below)
+  - In this case it would be 'arn:aws:sns:us-east-1:123456789012:burn_notify_sns'
+    - Where again 123456789012 should actually be your 12-digit account number
+  - This will be the SNS topic as described below
+- SAVE your settings so far: Click the Save button at the top of the web page
+
+
+### 3 Setting the Lambda triggers: CloudWatch and Lambda Test button
+
+
+- At the top of the lambda function page are tabs for Configuration and Monitoring as noted
+- Staying on the Configuration tab locate the Designer region at the top of the page which includes a block diagram of the lambda function
+- Add a CloudWatch Events trigger. CloudWatch is a management tool that allows you to create an Event linked to your Lambda.
+  - This Event begins with creating a rule in Step 1
+    - Choose **schedule** and use the following string to stipulate 'once per day at noon'...
+      - cron(0 12 * * ? *)
+      - For more on this see [this link](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-experessions.html)
+    - Set the target as the Lambda function name: **daily_burn_notify_lambda** 
+    - Move forward to Configure details in Step 2
+    - Give this rule a Name 'daily_burn_notify_trigger'. Add a Description and click the button 'Create rule'
+    - The new rule should appear with a timer icon
+      - It will trigger your lambda function every 24 hours
+      - Missing piece: Setting the actual time of day for this trigger...
+  - Note: A lambda function can be set to trigger from S3 access (Get or Put Object)
+    - We do not do that here because the DLT logging process has latency built in
+  - As a separate task: Configure the Lambda function to execute from the Test button 
+    - Go through the default configuration process; you don't have to modify anything
+    - Save and click the Test button. It will fail until everything below is also in place 
+
+
+### 4 SNS
+
+
+- In the AWS console go to the SNS services page
+- Select Create topic
+- Enter the topic name per the Python code above: burn_notify_sns
+- Enter a topic abbreviation, 10 characters
+  - Example: burnnotify
+- Continue to topic details and click Create subscription
+  - Choose type = email and add your email address plus any others you think should receive notifications
+- Click on Create subscription to send a confirmation email to yourself; and then confirm that 
+
+
+You should now start receiving daily cost/burn summaries in your Inbox. 
+Verify that this works using the Test button on the lambda function page.
+
+
+### 5 Validation and Debugging
+
+
+You should be able to Test your lambda function now. If it fails you'll have to debug it. 
+
+
+#### Cost Explorer
+
+
+Cost Explorer is a feature of the AWS browser console. You can access this using the top right dropdown menu 
+and selecting My Billing Dashboard; then start the Cost Explorer.  In more detail:
+
+
+- When you receive a billing statement you should compare it with the Cost Explorer estimate of yor daily burn
+  - At the upper right of the console use your Account Name dropdown to select My Billing Dashboard
+  - Link to the Cost Explorer and launch it
+  - Use the Reports dropdown to select **Daily Costs**
+  - A calendar drop-down allows you to select a time range (I use MTD); and you must click the **Apply** button
+  - You should now see daily expense as a bar chart
+    - You can hover over a particular day to get the exact value
+    - One DLT accounts the current day cost will look low and tend to be inaccurate
+  - This daily cost record should be -- we intend -- commensurate with the email notification you will now receive from lambda
+
+
+#### The Lambda function monitoring tab
+
+
+- This tab is very useful is something is not working properly with your lambda function
+- The monitoring tab is selected near the top of your lambda service page in the AWS console
+- Dashboard charts indicate the lambda has been triggered
+- The link to View logs in Cloudwatch is also helpful; diagnostics printed by the lambda show up here
+  - Set print statements in the lambda; save the lambda; trigger it using the Test button; diagnose 
 
 
 
