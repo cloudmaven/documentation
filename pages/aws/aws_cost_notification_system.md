@@ -214,11 +214,9 @@ Steps:
 ### 0 Enable DLT Logging
 
 
-In the US-East-1 region of AWS create an S3 bucket based upon your account ID '123456789012'. 
-Name it **123456789012-dlt-utilization**.  Give it default permissions and do give it Public Read 
-access.  As you do so double check that **US-East-1** is the region shown in the AWS console at 
-the upper right.  Once you have established this bucket: Attach a policy that you create by 
-pasting in the following text:
+In either US-East-1 or US-WEst-2 (AWS regions) create an S3 bucket based upon your account ID '123456789012'. 
+Name it **123456789012-dlt-utilization**. The bucket should not be public.  Once you have established this 
+bucket: Attach a policy that you create by pasting in the following text:
 
 
 ```
@@ -239,9 +237,8 @@ pasting in the following text:
 }
 ```
 
-
-What does this policy do? It allows DLT to write content to a file in this bucket; which we will subsequently
-read.
+Again be sure to substitute your 12-digit account number for '123456789012'.  What does this policy do? It allows 
+DLT to write content to a file in this bucket; which the lambda function will subsequently read.
 
 
 ** Notice you must substitute your 12-digit account number in both the name of the S3 bucket
@@ -650,7 +647,7 @@ def lambda_handler(event, context):
 - Staying on the Configuration tab locate the Designer region at the top of the page which includes a block diagram of the lambda function
 - Add a CloudWatch Events trigger. CloudWatch is a management tool that allows you to create an Event linked to your Lambda.
   - This Event begins with creating a rule in Step 1
-    - Choose **schedule** and use the following string to stipulate 'once per day at noon'...
+    - Choose **schedule** and use the following string to stipulate 'once per day at noon GMT'...
       - cron(0 12 * * ? *)
       - For more on this see [this link](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-experessions.html)
     - Set the target as the Lambda function name: **daily_burn_notify_lambda** 
