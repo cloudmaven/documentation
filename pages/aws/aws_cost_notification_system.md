@@ -268,7 +268,9 @@ The lambda function will refer to the above bucket; so keep the bucket name hand
 - Search for the managed policy **AWSLambdaExecute** and check the box
 - Search for the managed policy **SNSFullAccess** and check the box 
   - As you do this the previous **AWSLambdaExecute** policy will not be visible; this is ok, it will remember
-- At lower right click the button **Next: Review**. You should (must!) see both of these policies listed here.
+- Search for the managed policy **AmazonS3ReadOnlyAccess** and check the box
+  - As above the other two policies you have selected will not be visible
+- At lower right click the button **Next: Review**. You should (must!) see all three of these policies listed here.
 - Name the role and give a description of it
   - An example name: 'daily_burn_notify_lambda_role' 
 - Create the role
