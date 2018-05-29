@@ -71,7 +71,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Consulting 
+    - title: Consulting
       url: /p_consulting.html
       output: web, pdf
 
@@ -167,14 +167,14 @@ entries:
       url: /aws_account_management.html
       output: web, pdf
 
-    - title: Cost Tracking 
+    - title: Cost Tracking
       url: /aws_cost_tracking.html
       output: web, pdf
 
     - title: Cost Notification System
       url: /aws_cost_notification_system.html
       output: web, pdf
-    
+
     - title: EC2
       url: /aws_ec2.html
       output: web, pdf
@@ -233,7 +233,7 @@ entries:
 
     - title: Reference Architecture
       url: /az_ref_arch.html
-      output: web, pdf 
+      output: web, pdf
 
     - title: Training
       url: /az_training.html
@@ -343,6 +343,10 @@ entries:
       url: /acs_cfd.html
       output: web, pdf
 
+    - title: Community Snow observations
+      url: /acs_cso.html
+      output: web, pdf
+
   - title: Azure Case Studies
     output: web, pdf
     folderitems:
@@ -354,7 +358,7 @@ entries:
     - title: Smart Cities with IoT
       url: /azcs_smart_cities.html
       output: web, pdf
-    
+
     - title: Water Resources Management in the Aral Sea Basin
       url: /azcs_araldif.html
       output: web, pdf
@@ -369,4 +373,3 @@ entries:
 
     - title: Center of Genomics and Personalized Medicine - Stanford University
       external_url: 'https://cloud.google.com/customers/stanford-universitys-center-of-genomics-and-personalized-medicine/'
-    
