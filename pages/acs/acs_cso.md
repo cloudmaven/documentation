@@ -1,4 +1,13 @@
-# Community Snow Observations in AWS
+---
+title: Community Snow Observations on AWS
+keywords: research,case,study,citizen_science,webapp
+last_updated: May 29, 2018
+tags: [research_computing, case_studies, visualization, data_api, AWS, collaboration, cloud_service, storage, database]
+summary: "Community Snow Observations on AWS: A Web Application case study"
+sidebar: mydoc_sidebar
+permalink: acs_cso.html
+folder: acs
+---
 
 The [community snow observations](http://communitysnowobs.org) project aims to achieve a better understanding of snow depth variability in mountainous regions. We are recruiting community-based observers (citizen scientists), including backcountry professionals and recreationists, to help gather snow observations.
 
