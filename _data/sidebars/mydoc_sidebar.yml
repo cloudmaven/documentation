@@ -22,6 +22,11 @@ entries:
       output: pdf
       type: frontmatter
 
+#  - title: FAQ
+#    output: web, pdf
+#    url: faq.html
+#    type: frontmatter
+
   - title: Cloud Core
     output: web, pdf
     folderitems:
@@ -102,8 +107,8 @@ entries:
       url: /rc_data_science.html
       output: web, pdf
 
-    - title: Research on the web
-      url: /rc_research_on_the_web.html
+    - title: Configuring Python in a JupyterHub
+      url: /rc_configuring_python_in_a_jupyterhub.html
       output: web, pdf
 
     - title: GitHub
@@ -124,6 +129,10 @@ entries:
 
     - title: Lightweight Data Systems
       url: /rc_lightweight_data_systems.html
+      output: web, pdf
+
+    - title: Globus
+      url: /rc_globus.html
       output: web, pdf
 
   - title: Curriculum
@@ -170,6 +179,10 @@ entries:
       url: /aws_ec2.html
       output: web, pdf
 
+    - title: Storage
+      url: /aws_storage.html
+      output: web, pdf
+
     - title: Spot market
       url: /aws_spot_market.html
       output: web, pdf
@@ -178,12 +191,12 @@ entries:
       url: /aws_cluster.html
       output: web, pdf
 
-    - title: Storage
-      url: /aws_storage.html
-      output: web, pdf
-
     - title: Lambda
       url: /aws_lambda.html
+      output: web, pdf
+
+    - title: Cloudknot
+      url: /aws_cloudknot.html
       output: web, pdf
 
     - title: Jupyter
@@ -214,52 +227,36 @@ entries:
       url: /az_overview.html
       output: web, pdf
 
-    - title: Walkthrough
-      url: /az_walkthrough.html
+    - title: Azure Fundamentals
+      external_url: "https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/fundamentals-introduction-to-azure.md"
       output: web, pdf
+
+    - title: Reference Architecture
+      url: /az_ref_arch.html
+      output: web, pdf 
 
     - title: Training
       url: /az_training.html
+      output: web, pdf
+
+    - title: Azure Notebooks (Jupyter)
+      url: /az_notebooks.html
+      output: web, pdf
+
+    - title: HIPAA/HITECH
+      url: /az_hipaa.html
       output: web, pdf
 
     - title: Resources and Requests
       url: /az_resources.html
       output: web, pdf
 
-    - title: Portal
-      url: /az_portal.html
+    - title: Best Practices
+      url: /az_best_practices.html
       output: web, pdf
 
-    - title: Account management
-      url: /az_account_management.html
-      output: web, pdf
-
-    - title: Visual Studio
-      url: /az_visual_studio.html
-      output: web, pdf
-
-    - title: Web Framework
-      url: /az_web_framework.html
-      output: web, pdf
-
-    - title: Machine Learning
-      url: /az_machine_learning.html
-      output: web, pdf
-
-    - title: Spark
-      url: /az_spark.html
-      output: web, pdf
-
-    - title: HIPAA
-      url: /az_hipaa.html
-      output: web, pdf
-
-    - title: Jupyter
-      url: /az_jupyter.html
-      output: web, pdf
-
-    - title: Database
-      url: /az_database.html
+    - title: Request Information or Send Feedback
+      external_url: 'https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxLOqWUi_fJItLLsEfSA7I9UQzk5TVNQMThJRUJQMk00Wk1BWE9CMENCMC4u'
       output: web, pdf
 
   - title: Google

@@ -9,17 +9,37 @@ permalink: cc_cost_management.html
 folder: cc
 ---
 
+![cc_cost_management_grim](/documentation/images/cc/cc_cost_management_grim.png)
+
+
 ## Introduction
-This page describes the cost of putting research computing on the public cloud. In the **Proposals** section of 
-[cloudmaven](http://cloudmaven.org) we have [a more tactical page](p_costing.html) which may also be of interest.
+
+
+This page describes the cost of putting research computing on the public cloud; and keeping it there. Knowing how much 
+cloud services cost is the first part of this process. Be aware however that it is fairly easy to leave things running
+by accident; so it is important to periodically make sure you tidy up abandoned or forgotten resources (that you are
+nevertheless being charged for).  In the **Proposals** section of [cloudmaven](http://cloudmaven.org) we also have 
+[a more tactical page](p_costing.html) which may also be of interest.
+
 
 ## Links
+
+
 - [The cloudmaven page on cost estimation for research proposal writing](p_costing.html)
 
+
 ## Warnings
-- ***It is commonly asserted that the cloud does not compare in cost to purchasing your own hardware. We make the case here that this assertion is false.***
- 
+
+
+- Common zombie resources that cost you money include...
+  - EC2 instances
+  - EBS volumes (attached / detached disk drives; can be very large)
+  - RDS databases
+  - S3 buckets that contain data that could be archived in Glacier
+
+
 ## How much does the cloud cost?
+
 
 A quick answer is "3 cents per GB-month of storage, 3 cents for an hour of CPU time". This is something we will qualify and expand upon here;
 but for the sake of getting started those are useful numbers to keep in mind.  
