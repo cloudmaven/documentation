@@ -18,6 +18,12 @@ by the need to manage data securely in the public cloud. We take specific motiva
 from management of Private Health Information (PHI) under HIPAA regulations.
 
 
+## Front end working notes (need organize/integrate)
+
+- The bastion can be reached using a **bastion.pem** file that has -r-------- via *chmod 400* for example.
+- sftp to this bastion to move the **private.pem** key file to the bastion. Notice the **-i bastion.pem** argument precedes the user@dns:directory part of the **sftp** command
+- On ssh to a private subnet EC2 instance see [this page in the AWS documentation](https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/).
+
 
 
 
