@@ -13,18 +13,26 @@ folder: aws
 ## Objective and Approach
 
 
-This is	a walk-through of installing a daily burn (cost) email on your AWS + DLT account. 
+This is	a walk-through for installing a daily burn (cost) emailer on your AWS + DLT account. 
 
 
 What does this mean? 
-Magda's Second Law states "Keeping track of one's cloud computing spending should require **close to zero effort**;
-otherwise the barrier may lead to a lapse in vigilence and undesirable further consequences." 
+Magda's Second Law states "Tracking cloud computing spending should require **zero effort**;
+otherwise a lapse in vigilence is inevitable." 
 
 
-Now: To deconvolve the Statement of Purpose sentence at the top: 
-DLT is the AWS re-seller at the University of Washington. You want to have
-your AWS account *through them* for reasons given elsewhere at this website. Once you do you can enable hourly
-cost accounting as rows in a file kept in an S3 bucket. From there you will want an automated script (we write
+Background: DLT is the AWS re-seller at the University of Washington. You want to set up your AWS account 
+*through DLT* by first emailing *help@uw.edu* and telling them this. You'll go through a process that will
+take a few days; and you will need to pre-designate some funds using BPO or Blanket Purchase Order. This
+generally involves coordinating with your business office.  Why? Because it means your F&A overhead is 
+waived on your cloud spending. And other reasons.
+
+
+Once you are up and running on AWS via DLT you can do cost accounting: All of your spending events (say
+hourly fees) will appear as rows in a file kept in an S3 bucket. This 
+
+
+From there you will want an automated script (we write
 ours in Python) to run once per day -- a cron job -- to tot up how much you have spent and send this to you 
 in an email. The amount spent should be the email Subject so that as you glance through your Inbox every day 
 you will exert close to zero effort to notice (hopefully) that your spend yesterday was as expected. If your
