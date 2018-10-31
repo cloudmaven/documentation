@@ -10,6 +10,9 @@ folder: aws
 ---
 
 ## Introduction
+Amazon Web Services provides databases as a service. If you can afford the rates you should consider going that way since 
+there is no underlying EC2 instance (Virtual Machine) for you to maintain. You just use the database.
+
 
 ## Links
 - to our RDS page
