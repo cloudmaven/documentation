@@ -17,7 +17,8 @@ computing.
 
 ## Links
 - [AWS Research Credit Grants](https://aws.amazon.com/grants/)
-- [Azure Research Credit Grants](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
+- Google Cloud Platform research credits: Find by searching (link not available)
+- [Azure Research Credit Grants](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/) (may be discontinued (2018))
 
 ## Warnings
 
