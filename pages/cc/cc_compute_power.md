@@ -52,15 +52,15 @@ are represented here; and in particular there are older generation units that wi
 And of course this table is subject to change. 
 
 
-| Vendor        | Name           | $/h  |   Description    |
-| ----- |:---------|:------------:|:-------------------------------------------------------|
+| Vendor | Name | $/h  | Description                                                         |
+|:----- |:---------|:------------:|:-------------------------------------------------------|
 | AWS    | p3.2xl   | 3.06 (1.36) | 4 core E5-2686 v4; 1 V100 GPU x (5120 CUDA + 640 Tensor cores) |
 |        | p3.8xl   |12.24 (3.77) | 16 core E5-2686 v4; 4 V100 GPU x (5120 CUDA + 640 Tensor cores) |
 |        | p3.16xl  |24.48 (7.47) | 32 core E5-2686 v4; 8 V100 GPU x (5120 CUDA + 640 Tensor cores) |
 |        | g3.4xl   | 1.14 (0.35) | 8 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
 |        | g3.8xl   | 2.28 (0.68) | 16 core E5-2686 v4; 2 M60 GPU x (2048 cores, 8 GiB video memory) |
 |        | g3.16xl  | 4.56 (1.37) | 32 core E5-2686 v4; 4 M60 GPU x (2048 cores, 8 GiB video memory) |
-|        | g3s.xl   | 0.750 (.23) |  2 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
+|        | g3s.xl   | 0.75 (.23) |  2 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
 | Azure  | NC6      | 0.90 | 6 core 1 K80 GPU |
 |        | NC12     | 1.80 | 12 core 2 K80 GPU |
 |        | NC24     | 3.60 | 24 core 4 K80 GPU |
