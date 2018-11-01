@@ -88,9 +88,24 @@ more work to do to ensure thata inter-node communication is not creating a bottl
 
 | Vendor        | Name           | $/h  |   Description    |
 | ------------- |:-------------:| -----:| ----------------:|
-| AWS           | SuperDuper    | $1600 | lots of GPUness  |
+| AWS           | g3.4xlarge    | 1.14 | lots of GPUness  |
+|               | g3.8xlarge    | 2.28 | lots of GPUness  |
+|               | g3.16xlarge    | 4.56 | lots of GPUness  |
+|               | g3s.xlarge    | 0.750 | lots of GPUness  |
 | Google        | MagnaVista    | $1600 | lots of GPUness  | 
 | Azure         | HurdyGurdy    | $1600 | lots of GPUness  |
+| AWS           | p2.xlarge    | $0.90 | lots of GPUness  |
+|               | p2.8xlarge    | $7.20 | lots of GPUness  |
+|               | p2.16xlarge    | $14.40 | lots of GPUness  |
+
+
+#### Pricing notes
+
+- AWS g3 instances are current-generation; p2 are previous generation.
+- AWS will charge up to about $0.27/hour for Elastic Map Reduce for a given GPU instance type
+(i.e. it varies with type) but this is *not* a per-machine charge in a cluster. The point is that
+this cost is pretty 'down in the weeds'.
+
 
 
 ### Top of the line VMs
