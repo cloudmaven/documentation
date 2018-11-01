@@ -52,6 +52,19 @@ GPU-capable instances are represented here; there are older generation units tha
 And of course these data are subject to change. 
 
 
+### Small table version
+
+
+| Vendor | Name    |      $/h     | Description            |
+|--------|---------|:------------:|------------------------|
+| AWS    | p3.16xl | 24.48 (7.47) | 32 core, V100 x 8 GPUs |
+| Azure  | NC24 v3 |  12.24 (---) | 24 core, V100 x 4 GPUs |
+| Google | 8 GPU   |  22.07(6.40) | 32 core, V100 x 8 GPUs |
+
+
+### Large table version
+
+
 |Vendor|Name|$/h|Description                                                                                      |
 |:---|:---|:-------------:|:--------------------------------------------------------------------------------------|
 | AWS | p3.2xl   | 3.06 (1.36) | 4 core E5-2686 v4; 1 V100 GPU x (5120 CUDA + 640 Tensor cores) |
