@@ -85,6 +85,14 @@ more work to do to ensure thata inter-node communication is not creating a bottl
 
 ### GPU-centric
 
+
+| Vendor        | Name           | $/h  |   Description    |
+| ------------- |:-------------:| -----:| ----------------:|
+| AWS           | SuperDuper    | $1600 | lots of GPUness  |
+| Google        | MagnaVista    | $1600 | lots of GPUness  | 
+| Azure         | HurdyGurdy    | $1600 | lots of GPUness  |
+
+
 ### Top of the line VMs
 
 ## Attached drive strategies
