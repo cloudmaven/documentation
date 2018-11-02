@@ -46,10 +46,13 @@ On computing scale we do enjoy sharing this [AWS case study using the Rosetta pr
  
 ## GPU-based cloud instances
 
-Using a very coarse comparative of $/GPU/hour on V100s we get AWS and Azure both $3.06, Google $2.76. 
-Preemptible costs are $0.80 to $0.94/GPU/hour, again no panic but Google is slightly cheaper. Not all 
-GPU-capable instances are represented here; there are older generation units that run comparatively less. 
-And of course these data are subject to change. 
+A comparison of $/GPU/hour on V100s gives preemptible rates of .93/.61/.84 dollars per GPU per hour
+for AWS, Azure and Google respectively. The on-demand rates are respectively 3.06/3.06/2.95 dollars per GPU per hour.
+These feature the current generation: NVIDIA Tesla V100 GPUs.  Prior-generation GPUs (P100, P4, K80, M60) are also available
+at commensurately lower rates.  These data are subject to change. 
+
+
+Note that data for Tensorflow Processing Units (TPUs) are still pending; available only 
 
 
 ### Small table version
@@ -57,9 +60,9 @@ And of course these data are subject to change.
 
 | Vendor | Name | $/hr preemptible | $/hr on-demand | Description |
 |:----|:---|:---:|:---:|:---|
-| AWS    | p3.16xlg (8 GPU) |7.47 |24.48 | 32 core, V100 x 8 GPUs |
-| Azure  | NC24 v3 (4 GPU) |2.45 |12.24 | 24 core, V100 x 4 GPUs |
-| Google | (8 GPU)|6.40 |22.07 | 32 core, V100 x 8 GPUs |
+| AWS    | p3.16xlg with 8 GPU |7.47 |24.48 | 32 core, V100 x 8 GPUs |
+| Azure  | NC24 v3 with 4 GPU |2.45 |12.24 | 24 core, V100 x 4 GPUs |
+| Google | n1-highmem-64 with 8 GPU|6.72 |23.63| 32 core, V100 x 8 GPUs |
 
 
 ### Large table version
@@ -82,25 +85,22 @@ And of course these data are subject to change.
 |       | NC12 v3  |1.22| 6.12 | 12 core 2 V100 GPU |
 |       | NC24 v3  |2.45 | 12.24 | 24 core 4 V100 GPU |
 |       | NC24r v3 |2.63 | 13.47 | 24 core 4 V100 GPU with low latency high throughput network interface |
-| Google | 1 GPU    |.80|2.76| 4 core, 1 GPU V100 | 
-|        | 2 GPU    |1.60|5.52| 8 core, 2 GPU V100 | 
-|        | 4 GPU    |3.20|11.03| 16 core, 4 GPU V100 | 
-|        | 8 GPU    |6.40|22.07| 32 core, 8 GPU V100 | 
+| Google |n1-highmem-8|0.84|2.95| 4 core, 1 GPU V100 | 
+|        |n1-highmem-16|1.68|5.91| 8 core, 2 GPU V100 | 
+|        |n1-highmem-32|3.36|11.81| 16 core, 4 GPU V100 | 
+|        |n1-highmem-64 |6.72|23.63| 32 core, 8 GPU V100 | 
 
 
 #### Microsoft Azure notes
 
 
-- Azure has preemptible instances called 'Low-Priority VM' available through Azure 
-Batch Service; but I did get cost estimates here. It is safe to assume they are comparable to AWS. 
-- More information needed on memory / RAM / CPU make and model
+- Azure preemptible instances are 'Low-Priority VM' available through Azure Batch Service
 
 
 #### Google Cloud Platform notes
 
 
-- Cost in parentheses is the preemptible rate
-- GCP instances have a base cost and you then pay a premium ($2.48 ($0.74)) per GPU attached, up to 8
+- Instances have a base rate (e.g. $0.80 / hr preemptible) with an added premium ($2.48) per attached GPU up to 8
 - vCPUs as AWS; see note below
 - More information needed on memory / RAM / CPU make and model
 
