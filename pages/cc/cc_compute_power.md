@@ -55,37 +55,37 @@ And of course these data are subject to change.
 ### Small table version
 
 
-| Vendor | Name    |      $/h     | Description            |
-|--------|---------|:------------:|------------------------|
-| AWS    | p3.16xl | 24.48 (7.47) | 32 core, V100 x 8 GPUs |
-| Azure  | NC24 v3 |  12.24 (---) | 24 core, V100 x 4 GPUs |
-| Google | 8 GPU   |  22.07(6.40) | 32 core, V100 x 8 GPUs |
+| Vendor | Name | $/hr preemptible | $/hr on-demand | Description |
+|:----|:---|:---:|:---:|:---|
+| AWS    | p3.16xlg (8 GPU) |7.47 |24.48 | 32 core, V100 x 8 GPUs |
+| Azure  | NC24 v3 (4 GPU) |2.45 |12.24 | 24 core, V100 x 4 GPUs |
+| Google | (8 GPU)|6.40 |22.07 | 32 core, V100 x 8 GPUs |
 
 
 ### Large table version
 
 
-|Vendor|Name|$/h|Description                                                                                      |
-|:---|:---|:-------------:|:--------------------------------------------------------------------------------------|
-| AWS | p3.2xl   | 3.06 (1.36) | 4 core E5-2686 v4; 1 V100 GPU x (5120 CUDA + 640 Tensor cores) |
-|        | p3.8xl   |12.24 (3.77) | 16 core E5-2686 v4; 4 V100 GPU x (5120 CUDA + 640 Tensor cores) |
-|        | p3.16xl  |24.48 (7.47) | 32 core E5-2686 v4; 8 V100 GPU x (5120 CUDA + 640 Tensor cores) |
-|        | g3.4xl   | 1.14 (0.35) | 8 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
-|        | g3.8xl   | 2.28 (0.68) | 16 core E5-2686 v4; 2 M60 GPU x (2048 cores, 8 GiB video memory) |
-|        | g3.16xl  | 4.56 (1.37) | 32 core E5-2686 v4; 4 M60 GPU x (2048 cores, 8 GiB video memory) |
-|        | g3s.xl   | 0.75 (.23) |  2 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
-| Azure | NC6      | 0.90 | 6 core 1 K80 GPU |
-|        | NC12     | 1.80 | 12 core 2 K80 GPU |
-|        | NC24     | 3.60 | 24 core 4 K80 GPU |
-|        | NC24r    | 3.96 | 24 core 4 K80 GPU with low latency high throughput network interface |
-|        | NC6 v3   | 3.06 | 6 core 1 V100 GPU |
-|        | NC12 v3  | 6.12 | 12 core 2 V100 GPU |
-|        | NC24 v3  |12.24 | 24 core 4 V100 GPU |
-|        | NC24r v3 |13.47 | 24 core 4 V100 GPU with low latency high throughput network interface |
-| Google | 1 GPU    |2.76 (.80)| 4 core, 1 GPU V100 | 
-|        | 2 GPU    |5.52 (1.60)| 8 core, 2 GPU V100 | 
-|        | 4 GPU    |11.03 (3.20)| 16 core, 4 GPU V100 | 
-|        | 8 GPU    |22.07 (6.40)| 32 core, 8 GPU V100 | 
+|Vendor|Name|$/hr preemptible|$/hr on-demand|Description|
+|:---|:---|:---:|:---:|:-----------------|
+| AWS | p3.2xl   | 1.36 |3.06| 4 core E5-2686 v4; 1 V100 GPU x (5120 CUDA + 640 Tensor cores) |
+|     | p3.8xl   | 3.77 |12.24| 16 core E5-2686 v4; 4 V100 GPU x (5120 CUDA + 640 Tensor cores) |
+|     | p3.16xl  | 7.47 |24.48| 32 core E5-2686 v4; 8 V100 GPU x (5120 CUDA + 640 Tensor cores) |
+|     | g3.4xl   | 0.35 |1.14| 8 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
+|     | g3.8xl   | 0.68 |2.28| 16 core E5-2686 v4; 2 M60 GPU x (2048 cores, 8 GiB video memory) |
+|     | g3.16xl  | 1.37 |4.56| 32 core E5-2686 v4; 4 M60 GPU x (2048 cores, 8 GiB video memory) |
+|     | g3s.xl   | 0.23 |0.75|  2 core E5-2686 v4; 1 M60 GPU x (2048 cores, 8 GiB video memory) |
+| Azure | NC6      |0.18| 0.90 | 6 core 1 K80 GPU |
+|       | NC12     |0.36| 1.80| 12 core 2 K80 GPU |
+|       | NC24     |0.72| 3.60 | 24 core 4 K80 GPU |
+|       | NC24r    |0.79| 3.96 | 24 core 4 K80 GPU with low latency high throughput network interface |
+|       | NC6 v3   |0.61| 3.06 | 6 core 1 V100 GPU |
+|       | NC12 v3  |1.22| 6.12 | 12 core 2 V100 GPU |
+|       | NC24 v3  |2.45 | 12.24 | 24 core 4 V100 GPU |
+|       | NC24r v3 |2.63 | 13.47 | 24 core 4 V100 GPU with low latency high throughput network interface |
+| Google | 1 GPU    |.80|2.76| 4 core, 1 GPU V100 | 
+|        | 2 GPU    |1.60|5.52| 8 core, 2 GPU V100 | 
+|        | 4 GPU    |3.20|11.03| 16 core, 4 GPU V100 | 
+|        | 8 GPU    |6.40|22.07| 32 core, 8 GPU V100 | 
 
 
 #### Microsoft Azure notes
