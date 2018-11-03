@@ -52,7 +52,7 @@ These feature the current generation: NVIDIA Tesla V100 GPUs.  Prior-generation 
 at commensurately lower rates.  These data are subject to change. 
 
 
-Note that data for Tensorflow Processing Units (TPUs) are still pending; available only 
+Note that data for Tensorflow Processing Units (TPUs) are still pending; available only on Google Cloud Platform.
 
 
 ### Summary for high-end instances, 3 cloud providers
