@@ -13,7 +13,7 @@ folder: aws
 ## Objective and Approach
 
 
-This is	a walk-through for installing a daily burn (cost) emailer on your AWS + DLT account. 
+This is	a walk-through for installing a daily cost notify email from your AWS + DLT account to you. 
 
 
 What does this mean? 
@@ -43,8 +43,6 @@ However in cases where alarms fall short this email notification is a good thing
 ##### Qualifiers 
 
 
-- We use the informal English expression 'burn' to mean 'spend of money'. 'I burnt $7' means 'I spent $7'.
-
 - This walkthrough uses AWS components (and therefore jargon): Lambda functions, SNS, S3, CloudWatch, IAM Role, IAM Policy. 
 
 - These terms are described briefly below and elsewhere at this website in more detail. 
@@ -52,7 +50,7 @@ However in cases where alarms fall short this email notification is a good thing
 - On successfully following these steps: You will receive an email each day telling you at a glance what your spend was **two days ago**.  
 
 - We can not provide the spend for *one* day ago because this information is not delivered to the accounting bucket in real time. 
-  - This is a how AWS + DLT work at this time.  The past 24 hours burn would be much better but not available at this time.
+  - This is a how AWS + DLT work at this time.  The past 24 hours spend would be much better but not available at this time.
 
 - For more on best practices please refer to the (UW CSE Database group's helpful page](http://db.cs.washington.edu/etc/aws.html).
 
@@ -79,7 +77,7 @@ automatically. In our case this action will be triggered by a Lambda function
 - **S3**: Object storage on AWS, i.e. the place where *objects* are placed and accessed. An object 
 in the S3 object store is for our purposes analogous to a file in a file system
 - **spend**: The amount of money you owe at the end of a period of time (here: one day / 
-one week) due to the resources you have used on AWS, aka **burn**
+one week) due to the resources you have used on AWS
 - **tag**: A key-value pair associated with a resource. The number of tags you associate with 
 a resource is unlimited; but the keys must be unique
 - **Owner**: A reserved tag key where the value is an IAM User username 
@@ -151,7 +149,7 @@ hold of your cloud access keys for example.
 
 In your Inbox every day you and your selected account minders will receive an email summary of yesterday's 
 spend on AWS.  The first piece of data is a bulk cost and this is followed by a cost breakdown by users. 
-You will see at a glance how much you are burning to use the cloud. You will also notice any strange spikes
+You will see at a glance how much you are spending to use the cloud. You will also notice any strange spikes
 in spending, for example due to unauthorized access.  This is measure of security against accidental cost overruns.
 
 
@@ -181,9 +179,9 @@ in the S3 bucket.
 #### What is resource tagging and why do I care? 
 
 
-The costs of untagged resources are tallied and reported in the body of your burn email.  This is based on
-the **Owner** tag, a key which should have a value equal to one of your IAM User IDs. By summing by Owner
-you can determine cost/burn over any time period for a user or set of users.  Perhaps you are running two 
+The costs of untagged resources are tallied and reported in the body of your dailycostnotify (spend) email.  
+This is based on the **Owner** tag, a key which should have a value equal to one of your IAM User IDs. By summing 
+by Owner you can determine spend over any time period for a user or set of users.  Perhaps you are running two 
 different research projects using one AWS/DLT account. The tagged sums help you split your total bill; and 
 the *untagged* cost will give you a sense of how much you are spending that is untraceable.
 
@@ -280,7 +278,7 @@ The lambda function will refer to the above bucket; so keep the bucket name hand
   - As above the other two policies you have selected will not be visible
 - At lower right click the button **Next: Review**. You should (must!) see all three of these policies listed here.
 - Name the role and give a description of it
-  - An example name: 'daily_burn_notify_lambda_role' 
+  - An example name: 'dailycostnotify' 
 - Create the role
 
 
@@ -295,9 +293,9 @@ An earlier version made use of IAM User Access Keys. We now avoid using them: Mo
 
 - Go to the Lambda services page and select the **N. Virginia** region at the upper right
 - Create a new Lambda function: Choose to author it from scratch
-- Give it a name like **daily_burn_notify_lambda**
+- Give it a name like **dailycostnotify**
 - Choose the Python 3.6 runtime
-- Choose the role from step 1 above: **daily_burn_notify_lambda_role**
+- Choose the role from step 1 above: **dailycostnotify**
 - Click the button **Create function** at lower right. This should take you to a 'congrats' message at the top of your new Lambda page
   - Notice there are two tabs available: Configuration and Monitoring
   - Both tabs are important and for now we will stay on the Configuration tab
@@ -313,7 +311,7 @@ An earlier version made use of IAM User Access Keys. We now avoid using them: Mo
       - You can try other values (remember these are days in the past, relative to today) to see how that works
       - If you run this on the second day of the month with values like 32 and 2 you should see something close to your monthly spend as the total
   - Enter a Key string 'emailsubject'
-    - Enter a simple recognizable string as the Value, for example 'AWS daily burn'
+    - Enter a simple recognizable string as the Value, for example 'AWS daily spend'
 - Scroll down further to the Basic settings panel
   - Set the Memory (MB) slider to 256 MB
   - Set the Timeout values to reflect 2 min 10 sec 
@@ -638,12 +636,12 @@ def lambda_handler(event, context):
         #   Import your account number as the external variable accountnumber
         #   Customize your email Subject using the external variable emailsubject
         #   Customize your return value (string)
-        arnString = 'arn:aws:sns:us-east-1:' + accountnumber + ':burn_notify_sns'
+        arnString = 'arn:aws:sns:us-east-1:' + accountnumber + ':dailycostnotify'
         response = sns.publish(
             TopicArn=arnString,
             Message=email_body,
             Subject=emailsubject)
-        return 'eSci AWS burn notify lambda fn completed'
+        return 'eSci AWS spend notify lambda fn completed'
     
     # Last piece of the event handler: something went wrong  
     except Exception as e:
@@ -655,7 +653,7 @@ def lambda_handler(event, context):
 - Edit this file to customize it to your own account
   - Search for 'kilroy mod' to find the section at the end that is amenable to customizing
 - Note down the arnString value for use in the SNS setup (below)
-  - In this case it would be 'arn:aws:sns:us-east-1:123456789012:burn_notify_sns'
+  - In this case it would be 'arn:aws:sns:us-east-1:123456789012:dailycostnotify'
     - Where again 123456789012 should actually be your 12-digit account number
   - This will be the SNS topic as described below
 - SAVE your settings so far: Click the Save button at the top of the web page
@@ -671,9 +669,9 @@ def lambda_handler(event, context):
     - Choose **schedule** and use the following string to stipulate 'once per day at noon GMT'...
       - cron(0 12 * * ? *)
       - For more on this see [this link](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-experessions.html)
-    - Set the target as the Lambda function name: **daily_burn_notify_lambda** 
+    - Set the target as the Lambda function name: **dailycostnotify** 
     - Move forward to Configure details in Step 2
-    - Give this rule a Name 'daily_burn_notify_trigger'. Add a Description and click the button 'Create rule'
+    - Give this rule a Name 'dailycostnotify'. Add a Description and click the button 'Create rule'
     - The new rule should appear with a timer icon
       - It will trigger your lambda function every 24 hours
       - Missing piece: Setting the actual time of day for this trigger...
@@ -689,15 +687,15 @@ def lambda_handler(event, context):
 
 - In the AWS console go to the SNS services page
 - Select Create topic
-- Enter the topic name per the Python code above: burn_notify_sns
+- Enter the topic name per the Python code above: dailycostnotify
 - Enter a topic abbreviation, 10 characters
-  - Example: burnnotify
+  - Example: dailycost
 - Continue to topic details and click Create subscription
   - Choose type = email and add your email address plus any others you think should receive notifications
 - Click on Create subscription to send a confirmation email to yourself; and then confirm that 
 
 
-You should now start receiving daily cost/burn summaries in your Inbox. 
+You should now start receiving a daily spend summary in your Inbox. 
 Verify that this works using the Test button on the lambda function page.
 
 
@@ -714,7 +712,7 @@ Cost Explorer is a feature of the AWS browser console. You can access this using
 and selecting My Billing Dashboard; then start the Cost Explorer.  In more detail:
 
 
-- When you receive a billing statement you should compare it with the Cost Explorer estimate of yor daily burn
+- When you receive a billing statement you should compare it with the Cost Explorer estimate of yor daily spend
   - At the upper right of the console use your Account Name dropdown to select My Billing Dashboard
   - Link to the Cost Explorer and launch it
   - Use the Reports dropdown to select **Daily Costs**
