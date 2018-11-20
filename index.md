@@ -29,7 +29,7 @@ We've compiled this guide to help make your life easier. Navigation via the menu
 
 
 - [Official UW Research Computing cloud overview](https://itconnect.uw.edu/research/cloud-computing-for-research/ "UW IT Cloud for Research")
-- [How much does the cloud cost?](asdf.html)
+- [How much does the cloud cost?](https://cloudmaven.github.io/documentation/p_costing.html)
 
 
 ## Help!
