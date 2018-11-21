@@ -10,13 +10,12 @@ summary: "Cloud computing tutorials, case studies, pathways into data science te
 
 ***Help us improve this website, take a short survey [here](https://goo.gl/forms/qQuq61wiFUh8Sarg2).***
 
-## Announcements & News
+## Presentations and Get-started Resources
 * [Cloud 101 for Google Cloud Platform](gcpworkshop_021318.html) will be held on Feb. 13, 2018 from 9am to 12pm. Registration now open. 
-* [Cloud 101 for Amazon Web Services, Microsoft Azure & Google Cloud Platform](https://cloudmaven.github.io/documentation/rc_cloud101_awsazuregcp.html) will be held from Nov. 13 - Nov. 15, 2017 ** REGISTRATION IS NOW CLOSED. WE HAVE FILLED TO CAPACITY**
+* [Cloud 101 across three cloud platforms](https://cloudmaven.github.io/documentation/rc_cloud101_awsazuregcp.html)
 
-* [GeohackWeek](https://geohackweek.github.io/ghw2017/) was held from Sept 11-15, 2017
-* [Cloud 101 for the Foster School of Business](https://cloudmaven.github.io/documentation/rc_Foster101.html) was presented on May 25, 2017. 
-* [Research Computing Cloud 101 Immersion Day](https://cloudmaven.github.io/documentation/rc_cloud101_immersion.html)  was April 4, 2017. 
+* [Presentation to the Foster School of Business](https://cloudmaven.github.io/documentation/rc_Foster101.html) was presented on May 25, 2017. 
+* [Research Computing Cloud 101](https://cloudmaven.github.io/documentation/rc_cloud101_immersion.html)  was April 4, 2017. 
 
 =======
 
