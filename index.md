@@ -11,7 +11,7 @@ summary: "Cloud computing tutorials, case studies, pathways into data science te
 ***Help us improve this website, take a short survey [here](https://goo.gl/forms/qQuq61wiFUh8Sarg2).***
 
 ## Presentations and Get-started Resources
-* [Cloud 101 for Google Cloud Platform](gcpworkshop_021318.html) will be held on Feb. 13, 2018 from 9am to 12pm. Registration now open. 
+* [Cloud 101 for the Google Cloud Platform](gcpworkshop_021318.html) 
 * [Cloud 101 across three cloud platforms](https://cloudmaven.github.io/documentation/rc_cloud101_awsazuregcp.html)
 
 * [Presentation to the Foster School of Business](https://cloudmaven.github.io/documentation/rc_Foster101.html) was presented on May 25, 2017. 
