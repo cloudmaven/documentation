@@ -1,9 +1,9 @@
 ---
-title: Costing cloud in proposals
+title: Costing cloud
 keywords: aws
 last_updated: January 26, 2017
 tags: [research_computing, account_management, cost]
-summary: "Costing the cloud in proposals"
+summary: "Costing the cloud (planning, proposals writing, ...)"
 sidebar: mydoc_sidebar
 permalink: p_costing.html
 folder: p
@@ -12,33 +12,56 @@ folder: p
 ## Introduction
 
 
-The purpose of this page is to provide guidelines for proposals that incorporate cloud computing, specifically 
-towards helping you (the proposal author) estimate costs for your project. 
+Let's do some ballpark numbers without further ado... these are for purposes of "order of magnitude" 
+only. Getting more precise takes a bit more work. 
+
+
+- A fairly powerful cloud computer (instance) costs $1 per hour: 8 cores, 128GB RAM
+  - Other instance type costs scale with horsepower from 'raspberry pi' to '8-GPU-monster'
+- It costs $0.023 per Gigabyte per month to store data in a cloud bucket, also called object storage
+  - Archival cost is one sixth at $0.004 / GB / month or $48 per Terabyte per year
+- Data ingress (upload to the cloud) is free
+- Data egress (download from the cloud) is $0.10 per GByte
+  - At UW a certain amount of your egress charges are waived
+- Attaching a drive to a cloud machine costs $0.10 per GByte per month 
+- Cloud machines can be stopped when you are not using them; and re-started in the same state
+  - While they are stopped they cost very very little
+  - When you re-start them you can do so on more powerful computers
+    - This allows you to develop on cheap / small machines and run big processing jobs on big machines
+- The prices for cloud computers given here are *on-demand* prices: You get the machine for as long as you like.
+  - You can also get preemptible machines at typically 20% to 40% of the on-demand rate
+- A cloud machine with an attached current-generation NVIDIA Tesla V100 GPU costs $3 per hour 
+  - A preemptible version of the same costs $0.63 per hour
+
+
+This page provides some additional ideas and guidelines for costing cloud usage. 
+
 
 ## Links
 
 - [AWS Grants](https://aws.amazon.com/grants/)
-- [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
 - [AWS monthly cost calculator](http://calculator.s3.amazonaws.com/calc5.html)
+- [Google Cloud Platform (GCP) research credit program](https://www.blog.google/products/google-cloud/google-cloud-platform-announces-new-credits-program-researchers/)
+- [Azure Research Credits](https://www.microsoft.com/en-us/research/academic-program/microsoft-azure-for-research/)
+  - This program may currently be discontinued
 - [UW research overhead waiver information](http://itconnect.uw.edu/research/waiver/)
 
 
 ## Warnings
 
-- ***Research credits should be thought of us stopgap support, not as research support***
-  - By research support we mean: A long-term research computing subsidy
+- ***Research credits are stopgap or transitional support, not 'ongoing funding'***
   - By stopgap we mean the researcher uses cloud research credits to...
     - ...evaluate the feasibility of the public cloud 
     - ...tide over until standard research budgets can cover cloud costs
-  - Research credit awards typically last 12 months; grants are scaled to a cost estimate
+  - Research credit awards typically last 12 months; amounts are based on cost estimation for the proposed work
 
 
-## Overview
+## Building cloud computing into a research proposal
 
 
-- Review your status and options with regard to cloud research credit grants. 
-- Verify with the funding agency that cloud computing will be a welcome component of your proposal.
-- Remember that the authors of this website have office hours and are happy to consult with you.
+- Review your status and options with regard to cloud research credit grants
+- Verify with the funding agency that cloud computing will be a welcome component of your proposal
+- We hold office hours and are happy to consult with you
 - Create a cost plan per year
   - Estimate the compute power per machine and number of VMs you will want to secure
   - Estimate the cost of associated memory
@@ -56,7 +79,7 @@ towards helping you (the proposal author) estimate costs for your project.
     - Similarity of compute environment to local machines
     - Rapidly growing user base and commensurate open resources from which to build your solutions
 - If you are budgeting for cloud resources *and* you use a UW IT cloud service 
-  - You do not pay indirect cost overhead
+  - You do not pay indirect cost overhead (F&A)
   - See [this web page](http://itconnect.uw.edu/research/waiver/) for more information
 
 
@@ -64,17 +87,14 @@ towards helping you (the proposal author) estimate costs for your project.
 
 
 Generous research credit grants (circa 2017) are commonly provided by cloud vendors, specifically
-Microsoft Azure and AWS (and GCP grants may materialize as well). These grants can have a value as high 
+Microsoft Azure and GCP.  These grants can have a value as high 
 as $20,000 and a typical duration of 12 months. They are considered non-renewable after that time. 
+
 
 Having a research credit grant of this type is independent of writing a grant proposal to a funding 
 agency such as NIH or NSF. If a cloud research credit grant is secured by you en route to writing a
 proposal to an agency like NSF: You may wish to reference that grant in your proposal as a means 
 of defraying computing costs in year one of the proposed effort. 
-
-Research credit cloud accounts are distinct from paid accounts secured under the UW BAA with AWS and Azure. 
-Those accounts have legal terms associated with them (see respective overview pages herein: 
-[Azure overview](az_overiew) and [AWS overview](aws_overview.html).
 
 
 ## FAQ
@@ -94,7 +114,7 @@ This snapshot of 'moving your work to the cloud' does not yet get to the *why*, 
 There is much more to the story so to get a sense of this we suggest looking at the case studies provided here.
 
 
-Q: Why do I want to move to the cloud? 
+Q: Why would I consider moving to the cloud? 
 
 
 A: Reduced risk, reduced hassle, lower cost, and massive on-demand compute power should you need it. 
@@ -116,10 +136,10 @@ Q: How fast/powerful is a given cloud computer?
 
 A: Cloud computers -- also called *instances* or *Virtual Machines* -- exist in many configurations and
 power levels. A small low-power machine will cost perhaps $0.01 USD to operate per hour and a pretty 
-powerful machine might cost $0.40 per hour. The most powerful machines you can find on the cloud can cost
-$15 per hour.  You can read about cost and power at the cloud vendor's website. At UW we focus on three
+powerful machine might cost $1.00 per hour. The most powerful machines you can find on the cloud can cost
+$15 to $25 per hour.  You can read about cost and power at the cloud vendor's website. At UW we focus on three
 vendors: AWS, Microsoft Azure and Google Cloud Platform.  From an instance command line you can issue 
-commands to learn more:
+commands to learn more; such as...
 
 
 ```
@@ -131,7 +151,7 @@ commands to learn more:
 Q: How much does a cloud computer cost? 
 
 
-A: One penny per hour for a simple, low-power instance. $0.40 for a very powerful machine.
+A: One penny per hour for a basic low-power instance. $0.40 for a powerful machine, $1.00 for *very* powerful.
 
 
 Q: How much does cloud disk space cost? 
@@ -148,15 +168,15 @@ Q: How much does cloud storage cost?
 
 A: Storage is unlimited and separate from the concept of disk space (see above). Rapid-access storage costs 
 $0.023 (2.3 cents) per Gigabyte-month on the AWS cloud. Other vendor costs are comparable. Low-access storage 
-is cheaper, as low as $0.004 USD per GByte-month. This translates to $48,000 per Petabyte-year. This cost 
+is cheaper, as low as $0.004 USD per GByte-month. This translates to $48 per Terabyte-year. This cost 
 has dropped steadily over the past few years. Cloud storage is extremely secure and reliable.
 [This links to a comprehensive page on AWS storage costs](https://aws.amazon.com/s3/pricing). 
 
 
-Q: How is cloud storage different from disk space on the cloud? 
+Q: How is cloud object storage different from disk space on the cloud? 
 
 
-A: Storage is distinct from and cheaper than disk space by a factor of four. Content that you do not need 
+A: Object storage is distinct from and cheaper than disk space by a factor of four. Content that you do not need 
 to access repeatedly frequently is cheaper to place in storage. 
 
 
@@ -164,6 +184,7 @@ Q: Is there an overview of costs?
 
 
 A: For AWS [this diagram](https://luckylittle.gitbooks.io/the-open-guide-to-amazon-web-services/content/figures/aws-data-transfer-costs.png) 
+
 might help but it may also get out-of-date. 
 
 
